@@ -1,0 +1,100 @@
+﻿    @using Himall.Core
+
+@model Himall.Model.CapitalInfo
+
+<div class="container assets">
+    <div id="covered"></div>
+    <div class="divBalance"> <span id="spanBalance"><i>¥</i><span id="balanceValue">@(Model != null && Model.Balance.HasValue ? Model.Balance.Value.ToString("f2") : "0.00")</span></span><span class="baM">元可用</span>
+        <div class="B-btn">
+                <a id="btnWithDraw" class="btn btn-primary">提现</a>
+        </div>
+    </div>
+    <div class="total-red">
+        <span><i>@ViewBag.RedPacketAmount 元</i><p>累计收到红包</p></span>
+        <span class="red-envelop"><i>@(Model!=null && Model.ChargeAmount.HasValue?Model.ChargeAmount.Value.ToString("f2"):"0") 元</i><p>累计充值金额</p></span>
+    </div>
+    <div class="ulList">
+        <table class="table" id="ulList">
+            @if (ViewBag.CapitalDetails != null)
+            {
+                var capitaldetails = (IEnumerable<Himall.Model.CapitalDetailInfo>)ViewBag.CapitalDetails;
+                foreach (var detail in capitaldetails)
+                {
+                    <tr>
+                        @if (detail.Amount > 0)
+                        {
+                            <td style="color:green">@detail.Amount</td>
+                        }
+                        else
+                        {
+                            <td>@detail.Amount</td>
+                        }
+                        <td>@detail.CreateTime.Value.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>@detail.SourceType.ToDescription()</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <div style="display:none;" class="loading" id="autoLoad"><span></span></div>
+
+
+
+
+  <div class="box1 lh24 steponeee" id="stepone" style="display:none">
+        <span class="glyphicon glyphicon-remove close" aria-hidden="true"></span>
+    <form>
+         <h3 class="title_txt cur">请设置支付密码</h3>
+         <div class="item">
+             <div class="fl">
+                 <input type="password" placeholder="请输入支付密码" value="" id="firstPwd" name="userVo.realName" maxlength="20" class="itxt fl">
+              <span id="new_msg" class="prompt-06" style="padding-left:10px;"></span>
+              </div>
+         </div>
+         <div class="item">
+             <div class="fl">
+                 <input type="password" placeholder="请再次输入支付密码" value="" id="secondPwd" name="userVo.realName" maxlength="20" class="itxt fl">
+                 <span class="prompt-06" id="confirm_msg" style="padding-left:10px;"></span>
+             </div>
+         </div>
+         <span id="secondPwd_msg"></span>
+         <div class="item">
+            <div class="fl">
+            <a id="submitPwd" class="btn btn-primary" >提交</a>
+            </div>
+         </div>
+     </form>
+  </div>
+
+
+    <div class="box1 lh24 steponeee" id="steptwo" style="display:none">
+    <span class="glyphicon glyphicon-remove close" aria-hidden="true"></span>
+        <form>
+            <h3 class="title_txt cur">提现申请</h3>
+            <div class="item">
+
+                 <div class="fl">
+                     <input value="" id="inputMoney" placeholder="提现金额" name="userVo.realName" maxlength="20" class="itxt fl">
+                 </div>
+            </div>
+            <div class="item">
+
+                  <div class="fl">
+                      <input type="password" placeholder="支付密码" value="" id="payPwd" name="userVo.realName" maxlength="20" class="itxt fl">
+                  </div>
+            </div>
+            <span id="secondPwd_msg"></span>
+            <div class="item">
+               <div class="fl">
+                   <a id="submitApply" class="btn btn-primary" >提交</a>
+               </div>
+            </div>
+        </form>
+</div>
+  </div>
+
+
+<script>
+    var pwdflag = '@ViewBag.IsSetPwd';
+</script>
+<script src="~/Areas/Mobile/Templates/Default/Scripts/ApplyWithDraw.js"></script>

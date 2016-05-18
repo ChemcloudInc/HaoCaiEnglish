@@ -1,0 +1,1002 @@
+
+
+
+ 记录时间：2015-10-15 15:29:06,106 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:29:06,132 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:29:06,148 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 15:29:06,167 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:29:06,184 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 15:29:52,737 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:29:52,756 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:29:52,764 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 15:29:52,775 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:29:52,786 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 15:41:33,249 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:41:33,303 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:41:33,313 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 15:41:33,326 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:41:33,341 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 15:42:50,833 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:42:50,853 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:42:50,865 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 15:42:50,878 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:42:50,891 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 15:43:50,039 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:43:50,058 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:43:50,073 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 15:43:50,085 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:43:50,095 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 15:43:51,172 
+日志级别：  INFO  
+出错类：Himall.ServiceProvider.Instance`1[T].get_Create  
+错误描述：ISiteSettingService服务实例创建失败 
+
+Autofac.Core.DependencyResolutionException: An exception was thrown while invoking the constructor 'Void .ctor()' on type 'SiteSettingService'. ---> The DbConfiguration type 'MySql.Data.Entity.MySqlEFConfiguration, MySql.Data.Entity.EF6' specified in the application config file could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260883 for more information. (See inner exception for details.) ---> System.InvalidOperationException: The DbConfiguration type 'MySql.Data.Entity.MySqlEFConfiguration, MySql.Data.Entity.EF6' specified in the application config file could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260883 for more information. ---> System.IO.FileNotFoundException: 未能加载文件或程序集“MySql.Data.Entity.EF6”或它的某一个依赖项。系统找不到指定的文件。
+   在 System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   在 System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   在 System.RuntimeType.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark)
+   在 System.Type.GetType(String typeName, Boolean throwOnError)
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationLoader.TryLoadFromConfig(AppConfig config)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationLoader.TryLoadFromConfig(AppConfig config)
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationManager.EnsureLoadedForAssembly(Assembly assemblyHint, Type contextTypeHint)
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationManager.EnsureLoadedForContext(Type contextType)
+   在 System.Data.Entity.DbContext.InitializeLazyInternalContext(IInternalConnection internalConnection, DbCompiledModel model)
+   在 System.Data.Entity.DbContext..ctor(String nameOrConnectionString)
+   在 Himall.Entity.Entities..ctor() 位置 C:\Project\ObeliskTech\Himall2.1\trunk\Himall.Entity\Entities.cs:行号 744
+   在 Himall.Service.ServiceBase..ctor() 位置 C:\Project\ObeliskTech\Himall2.1\trunk\Himall.Service\ServiceBase.cs:行号 13
+   在 lambda_method(Closure , Object[] )
+   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   在 Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.InstanceLookup.Execute()
+   在 Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.ResolveOperation.Execute(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Container.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   在 Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve[TService](IComponentContext context, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve[TService](IComponentContext context)
+   在 Himall.ServiceProvider.Instance`1.get_Create() 位置 C:\Project\ObeliskTech\Himall2.1\trunk\Himall.ServiceProvider\Instance_T_.cs:行号 60
+
+
+
+ 记录时间：2015-10-15 15:43:51,356 
+日志级别：  INFO  
+出错类：Himall.ServiceProvider.Instance`1[T].get_Create  
+错误描述：ISiteSettingService服务实例创建失败 
+
+Autofac.Core.DependencyResolutionException: An exception was thrown while invoking the constructor 'Void .ctor()' on type 'SiteSettingService'. ---> The DbConfiguration type 'MySql.Data.Entity.MySqlEFConfiguration, MySql.Data.Entity.EF6' specified in the application config file could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260883 for more information. (See inner exception for details.) ---> System.InvalidOperationException: The DbConfiguration type 'MySql.Data.Entity.MySqlEFConfiguration, MySql.Data.Entity.EF6' specified in the application config file could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260883 for more information. ---> System.IO.FileNotFoundException: 未能加载文件或程序集“MySql.Data.Entity.EF6”或它的某一个依赖项。系统找不到指定的文件。
+   在 System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   在 System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   在 System.RuntimeType.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark)
+   在 System.Type.GetType(String typeName, Boolean throwOnError)
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationLoader.TryLoadFromConfig(AppConfig config)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationLoader.TryLoadFromConfig(AppConfig config)
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationManager.EnsureLoadedForAssembly(Assembly assemblyHint, Type contextTypeHint)
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationManager.EnsureLoadedForContext(Type contextType)
+   在 System.Data.Entity.DbContext.InitializeLazyInternalContext(IInternalConnection internalConnection, DbCompiledModel model)
+   在 System.Data.Entity.DbContext..ctor(String nameOrConnectionString)
+   在 Himall.Entity.Entities..ctor() 位置 C:\Project\ObeliskTech\Himall2.1\trunk\Himall.Entity\Entities.cs:行号 744
+   在 Himall.Service.ServiceBase..ctor() 位置 C:\Project\ObeliskTech\Himall2.1\trunk\Himall.Service\ServiceBase.cs:行号 13
+   在 lambda_method(Closure , Object[] )
+   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   在 Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.InstanceLookup.Execute()
+   在 Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.ResolveOperation.Execute(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Container.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   在 Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve[TService](IComponentContext context, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve[TService](IComponentContext context)
+   在 Himall.ServiceProvider.Instance`1.get_Create() 位置 C:\Project\ObeliskTech\Himall2.1\trunk\Himall.ServiceProvider\Instance_T_.cs:行号 60
+
+
+
+ 记录时间：2015-10-15 15:44:33,936 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:44:33,963 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:44:33,977 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 15:44:33,990 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:44:34,000 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 15:44:35,237 
+日志级别：  INFO  
+出错类：Himall.ServiceProvider.Instance`1[T].get_Create  
+错误描述：ISiteSettingService服务实例创建失败 
+
+Autofac.Core.DependencyResolutionException: An exception was thrown while invoking the constructor 'Void .ctor()' on type 'SiteSettingService'. ---> The DbConfiguration type 'MySql.Data.Entity.MySqlEFConfiguration, MySql.Data.Entity.EF6' specified in the application config file could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260883 for more information. (See inner exception for details.) ---> System.InvalidOperationException: The DbConfiguration type 'MySql.Data.Entity.MySqlEFConfiguration, MySql.Data.Entity.EF6' specified in the application config file could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260883 for more information. ---> System.IO.FileNotFoundException: 未能加载文件或程序集“MySql.Data.Entity.EF6”或它的某一个依赖项。系统找不到指定的文件。
+   在 System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   在 System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   在 System.RuntimeType.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark)
+   在 System.Type.GetType(String typeName, Boolean throwOnError)
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationLoader.TryLoadFromConfig(AppConfig config)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationLoader.TryLoadFromConfig(AppConfig config)
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationManager.EnsureLoadedForAssembly(Assembly assemblyHint, Type contextTypeHint)
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationManager.EnsureLoadedForContext(Type contextType)
+   在 System.Data.Entity.DbContext.InitializeLazyInternalContext(IInternalConnection internalConnection, DbCompiledModel model)
+   在 System.Data.Entity.DbContext..ctor(String nameOrConnectionString)
+   在 Himall.Entity.Entities..ctor() 位置 C:\Project\ObeliskTech\Himall2.1\trunk\Himall.Entity\Entities.cs:行号 744
+   在 Himall.Service.ServiceBase..ctor() 位置 C:\Project\ObeliskTech\Himall2.1\trunk\Himall.Service\ServiceBase.cs:行号 13
+   在 lambda_method(Closure , Object[] )
+   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   在 Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.InstanceLookup.Execute()
+   在 Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.ResolveOperation.Execute(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Container.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   在 Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve[TService](IComponentContext context, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve[TService](IComponentContext context)
+   在 Himall.ServiceProvider.Instance`1.get_Create() 位置 C:\Project\ObeliskTech\Himall2.1\trunk\Himall.ServiceProvider\Instance_T_.cs:行号 60
+
+
+
+ 记录时间：2015-10-15 15:44:35,496 
+日志级别：  INFO  
+出错类：Himall.ServiceProvider.Instance`1[T].get_Create  
+错误描述：ISiteSettingService服务实例创建失败 
+
+Autofac.Core.DependencyResolutionException: An exception was thrown while invoking the constructor 'Void .ctor()' on type 'SiteSettingService'. ---> The DbConfiguration type 'MySql.Data.Entity.MySqlEFConfiguration, MySql.Data.Entity.EF6' specified in the application config file could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260883 for more information. (See inner exception for details.) ---> System.InvalidOperationException: The DbConfiguration type 'MySql.Data.Entity.MySqlEFConfiguration, MySql.Data.Entity.EF6' specified in the application config file could not be loaded. Make sure that the assembly-qualified name is used and that the assembly is available to the running application. See http://go.microsoft.com/fwlink/?LinkId=260883 for more information. ---> System.IO.FileNotFoundException: 未能加载文件或程序集“MySql.Data.Entity.EF6”或它的某一个依赖项。系统找不到指定的文件。
+   在 System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   在 System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   在 System.RuntimeType.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark)
+   在 System.Type.GetType(String typeName, Boolean throwOnError)
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationLoader.TryLoadFromConfig(AppConfig config)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationLoader.TryLoadFromConfig(AppConfig config)
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationManager.EnsureLoadedForAssembly(Assembly assemblyHint, Type contextTypeHint)
+   在 System.Data.Entity.Infrastructure.DependencyResolution.DbConfigurationManager.EnsureLoadedForContext(Type contextType)
+   在 System.Data.Entity.DbContext.InitializeLazyInternalContext(IInternalConnection internalConnection, DbCompiledModel model)
+   在 System.Data.Entity.DbContext..ctor(String nameOrConnectionString)
+   在 Himall.Entity.Entities..ctor() 位置 C:\Project\ObeliskTech\Himall2.1\trunk\Himall.Entity\Entities.cs:行号 744
+   在 Himall.Service.ServiceBase..ctor() 位置 C:\Project\ObeliskTech\Himall2.1\trunk\Himall.Service\ServiceBase.cs:行号 13
+   在 lambda_method(Closure , Object[] )
+   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   在 Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.InstanceLookup.Execute()
+   在 Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.ResolveOperation.Execute(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Container.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   在 Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve[TService](IComponentContext context, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve[TService](IComponentContext context)
+   在 Himall.ServiceProvider.Instance`1.get_Create() 位置 C:\Project\ObeliskTech\Himall2.1\trunk\Himall.ServiceProvider\Instance_T_.cs:行号 60
+
+
+
+ 记录时间：2015-10-15 15:45:23,542 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:45:23,563 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:45:23,574 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 15:45:23,588 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:45:23,600 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 15:47:07,952 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:47:07,967 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:47:07,972 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 15:47:07,978 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:47:07,982 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 15:47:27,861 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:47:27,898 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:47:27,913 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 15:47:27,932 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:47:27,950 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 15:49:02,214 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:49:02,238 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:49:02,249 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 15:49:02,261 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 15:49:02,274 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 16:30:11,184 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:30:11,228 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:30:11,242 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 16:30:11,256 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:30:11,267 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 16:30:47,374 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.Login  
+错误描述：用户名和密码不匹配 
+
+Himall.Core.HimallException: 用户名和密码不匹配
+
+
+
+ 记录时间：2015-10-15 16:30:49,043 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.Login  
+错误描述：用户名和密码不匹配 
+
+Himall.Core.HimallException: 用户名和密码不匹配
+
+
+
+ 记录时间：2015-10-15 16:30:52,596 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.Login  
+错误描述：用户名和密码不匹配 
+
+Himall.Core.HimallException: 用户名和密码不匹配
+
+
+
+ 记录时间：2015-10-15 16:32:20,941 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.Login  
+错误描述：用户名和密码不匹配 
+
+Himall.Core.HimallException: 用户名和密码不匹配
+
+
+
+ 记录时间：2015-10-15 16:32:44,404 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.CheckCheckCode  
+错误描述：30分钟内登录错误3次以上需要提供验证码 
+
+Himall.Core.HimallException: 30分钟内登录错误3次以上需要提供验证码
+
+
+
+ 记录时间：2015-10-15 16:32:48,644 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.Login  
+错误描述：用户名和密码不匹配 
+
+Himall.Core.HimallException: 用户名和密码不匹配
+
+
+
+ 记录时间：2015-10-15 16:32:53,539 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.Login  
+错误描述：用户名和密码不匹配 
+
+Himall.Core.HimallException: 用户名和密码不匹配
+
+
+
+ 记录时间：2015-10-15 16:34:03,267 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.Login  
+错误描述：用户名和密码不匹配 
+
+Himall.Core.HimallException: 用户名和密码不匹配
+
+
+
+ 记录时间：2015-10-15 16:34:08,781 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.CheckCheckCode  
+错误描述：30分钟内登录错误3次以上需要提供验证码 
+
+Himall.Core.HimallException: 30分钟内登录错误3次以上需要提供验证码
+
+
+
+ 记录时间：2015-10-15 16:34:45,123 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.CheckCheckCode  
+错误描述：30分钟内登录错误3次以上需要提供验证码 
+
+Himall.Core.HimallException: 30分钟内登录错误3次以上需要提供验证码
+
+
+
+ 记录时间：2015-10-15 16:34:48,381 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.Login  
+错误描述：用户名和密码不匹配 
+
+Himall.Core.HimallException: 用户名和密码不匹配
+
+
+
+ 记录时间：2015-10-15 16:37:24,168 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.Login  
+错误描述：用户名和密码不匹配 
+
+Himall.Core.HimallException: 用户名和密码不匹配
+
+
+
+ 记录时间：2015-10-15 16:38:02,551 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:38:02,575 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:38:02,588 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 16:38:02,603 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:38:02,625 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 16:38:23,898 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.Login  
+错误描述：用户名和密码不匹配 
+
+Himall.Core.HimallException: 用户名和密码不匹配
+
+
+
+ 记录时间：2015-10-15 16:42:00,500 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.Admin.Controllers.LoginController.Login  
+错误描述：用户名和密码不匹配 
+
+Himall.Core.HimallException: 用户名和密码不匹配
+
+
+
+ 记录时间：2015-10-15 16:50:46,918 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:50:46,936 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:50:46,944 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 16:50:46,948 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:50:46,953 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 16:53:34,827 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:53:34,848 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:53:34,851 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:53:34,856 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:53:34,858 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:53:34,876 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:53:35,224 
+日志级别：  INFO  
+出错类：Himall.Plugin.Payment.Alipay_QRCode.Service.GetRequestUrl  
+错误描述：生成二维码出现异常:ILLEGAL_PARTNER 
+
+Himall.Core.PluginConfigException: 生成二维码出现异常:ILLEGAL_PARTNER
+
+
+
+ 记录时间：2015-10-15 16:53:35,229 
+日志级别：  INFO  
+出错类：Himall.Plugin.Payment.Alipay_QRCode.Service.GetRequestUrl  
+错误描述：生成二维码出现异常:生成二维码出现异常:ILLEGAL_PARTNER 
+
+Himall.Core.PluginConfigException: 生成二维码出现异常:生成二维码出现异常:ILLEGAL_PARTNER
+
+
+
+ 记录时间：2015-10-15 16:53:35,248 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:53:35,249 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 16:53:35,271 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 16:53:35,274 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 16:53:35,351 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2015-10-15 16:53:35,351 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:53:35,368 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 16:53:35,371 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 16:53:35,962 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 16:54:21,521 
+日志级别：  INFO  
+出错类：Himall.Plugin.Message.SMS.Service.SetFormValues  
+错误描述：AppKey不能为空 
+
+Himall.Core.PluginConfigException: AppKey不能为空
+
+
+
+ 记录时间：2015-10-15 16:54:37,369 
+日志级别：  INFO  
+出错类：Himall.Plugin.Message.Email.Service.SetFormValues  
+错误描述：SMTP邮箱错误 
+
+Himall.Core.PluginConfigException: SMTP邮箱错误
+
+
+
+ 记录时间：2015-10-15 16:56:40,337 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:56:47,639 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 16:58:20,672 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:58:26,197 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2015-10-15 16:58:29,024 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2015-10-15 16:58:40,232 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].get_WorkDirectory  
+错误描述：get WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+

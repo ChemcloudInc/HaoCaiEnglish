@@ -1,0 +1,5 @@
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Himall.MessagePlugin\bin\Debug\Himall.MessagePlugin.dll
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Himall.MessagePlugin\bin\Debug\Himall.MessagePlugin.pdb
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.csprojResolveAssemblyReference.cache
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.dll
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.pdb

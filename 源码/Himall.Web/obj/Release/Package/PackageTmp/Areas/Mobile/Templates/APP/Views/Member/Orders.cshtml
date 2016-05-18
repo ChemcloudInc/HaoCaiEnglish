@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "我的订单";
+}
+<div class="container">
+    <div class="my_menu">
+        <ul class="clearfix">
+            <li><a onclick="userOrders(0)">全部订单@*@(ViewBag.AllOrders == 0 ? "" : "(" + ViewBag.AllOrders + ")")*@</a></li>
+            <li><a onclick="userOrders(1)">待付款@(ViewBag.WaitingForPay == 0 ? "" : "(" + ViewBag.WaitingForPay + ")")</a></li>
+            <li><a onclick="userOrders(3)">待收货@(ViewBag.WaitingForRecieve == 0 ? "" : "(" + ViewBag.WaitingForRecieve + ")")</a></li>
+            <li><a onclick="userOrders(5)">待评价@(ViewBag.WaitingForComments == 0 ? "" : "(" + ViewBag.WaitingForComments + ")")</a></li>
+        </ul>
+    </div>
+
+    <ul class="order-list">
+    </ul>
+    <div class="custom-dialog" id="paymentsChooser"></div>
+    <div class="cover"></div>
+    <div class="loading hide" id="autoLoad"><span></span></div>
+</div>
+<script src="~/Areas/Mobile/Templates/APP/Scripts/memberOrders.js"></script>

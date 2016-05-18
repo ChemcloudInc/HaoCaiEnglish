@@ -1,0 +1,68 @@
+﻿@model Himall.Model.UserMemberInfo
+@{
+    ViewBag.Title = "个人中心";
+    ViewBag.FootIndex = 4;
+}
+
+
+<div class="container">
+    <div class="user-info clearfix">
+        <div class="img"><img src="@Model.Photo" alt="" /><div class="border"></div></div>
+        <p><span>@(string.IsNullOrWhiteSpace(Model.RealName)?Model.Nick:Model.RealName)</span><span>@(ViewBag.GradeName!=null?ViewBag.GradeName:string.Empty)</span></p>
+        <div class="user-fav row">
+                <span class="col-xs-5"><a href="CollectionProduct"><i>@Model.FavoriteInfo.Count</i><br />收藏的商品</a></span>
+                <span class="col-xs-2 line"><br>|</span>
+                <span class="col-xs-5"><a href="CollectionShop"><i>@ViewBag.CollectionShop</i><br />收藏的店铺</a></span>
+        </div>
+    </div>
+
+    <div class="my_menu">
+        <ul class="clearfix">
+            <li><a href="/@(ViewBag.AreaName)/Member/Orders?orderStatus=1"><span class="icon01"></span><p>待付款</p>@(MvcHtmlString.Create(ViewBag.WaitingForPay == 0 ? "" : "<i>" + ViewBag.WaitingForPay + "</i>"))</a></li>
+            <li><a href="/@(ViewBag.AreaName)/Member/Orders?orderStatus=3"><span class="icon03"></span><p>待收货</p>@(MvcHtmlString.Create(ViewBag.WaitingForRecieve == 0 ? "" : "<i>" + ViewBag.WaitingForRecieve + "</i>"))</a></li>
+            <li><a href="/@(ViewBag.AreaName)/Member/Orders?orderStatus=5"><span class="icon04"></span><p>待评价</p>@(MvcHtmlString.Create(ViewBag.WaitingForComments == 0 ? "" : "<i>" + ViewBag.WaitingForComments + "</i>"))</a></li>
+            <li><a href="/@(ViewBag.AreaName)/Member/Orders?orderStatus=0"><span class="icon02"></span><p>全部订单</p></a></li>
+        </ul>
+    </div>
+    <div class="list-grouppp">
+        <a href="../Coupon/Management">
+            <b  class="icon05"></b><div class="list">我的优惠劵</div>
+            <span class="glyphicon glyphicon-menu-right"></span>
+            <span class="rt">你有@(ViewBag.CouponsCount)张优惠券未使用</span>
+        </a>
+    </div>
+    <div class="list-grouppp">
+                <a>
+                    <b  class="icon06"></b><div class="list">我的积分</div>
+                    <span></span>
+                    <span class="rt code">@(Model.AvailableIntegrals)分</span>
+                </a>
+            </div>
+    <div class="list-grouppp">
+        <a href="../Capital/Index">
+            <b  class="icon07"></b><div class="list">我的资产</div>
+            <span class="glyphicon glyphicon-menu-right"></span>
+            <span class="rt ">@(ViewBag.Capital)元</span>
+        </a>
+    </div>
+
+    <div class="list-grouppp list_00">
+        <a href="@Url.Action("index","userinvite")">
+            <b  class="icon08"></b><div class="list">我要推广</div>
+            <span class="glyphicon glyphicon-menu-right"></span>
+        </a>
+    </div>
+    <div class="list-grouppp">
+        <a href="../Order/ChooseShippingAddress">
+            <b  class="icon09"></b><div class="list">收货地址管理</div>
+            <span class="glyphicon glyphicon-menu-right"></span>
+        </a>
+    </div>
+    <div class="list-grouppp">
+            <a href="AccountManagement">
+                <b  class="icon10"></b><div class="list">账号管理</div>
+                <span class="glyphicon glyphicon-menu-right"></span>
+            </a>
+        </div>
+    @{Html.RenderPartial("~/Areas/Mobile/Templates/Default/Views/Shared/_4ButtonsFoot.cshtml");}
+</div>

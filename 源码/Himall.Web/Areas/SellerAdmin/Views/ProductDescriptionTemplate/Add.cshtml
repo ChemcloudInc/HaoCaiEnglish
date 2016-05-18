@@ -1,0 +1,75 @@
+﻿@model Himall.Web.Areas.SellerAdmin.Models.ProductDescriptionTemplateModel
+<script src="~/Scripts/ueditor/ueditor.config.js"></script>
+<script src="~/Scripts/ueditor/ueditor.all.min.js"></script>
+<script src="~/Areas/SellerAdmin/Scripts/addProductDesctiptionTemplate.js"></script>
+
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>关联版式</strong>
+        <li><a href="management">管理</a></li>
+        <li class="active"><a>新增</a></li>
+    </ul>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label"><span class="red">*</span>名称：</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control input-sm" name="name" value="@Model.Name" />
+            </div>
+            <div class="col-sm-4"><span class="field-validation-error" id="nameTip"></span></div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">版式位置：</label>
+            <div class="col-sm-9">
+                <label><input type="radio" value="1" name="position" @(Model.Position == 1 ? "checked" : "") />顶部</label>
+                <label><input type="radio" value="2" name="position" @(Model.Position==2?"checked":"") />底部</label>
+                <span class="help-default">选择“顶部”为商品详情上方内容，“底部”为商品详情下方内容。</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label"><span class="red">*</span>版式内容：</label>
+            <div class="col-sm-9">
+                <textarea id="contentContainer" name="htmlContent">
+                    @Model.HtmlContent
+                </textarea>
+            </div>
+        </div>
+        <input type="hidden" name="id" value="@Model.Id" />
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" id="submit" class="btn btn-primary">保 存</button>
+            </div>
+        </div>
+        
+    </form>
+</div>
+<script>
+    $(function(){
+        $('input[name="name"]').blur(function () {
+            var name = $.trim($('input[name="name"]').val());
+            var reg = /^[a-zA-Z0-9\u4e00-\u9fa5]+$/;
+            if (!name) {
+                $("#nameTip").text("请输入关联板式的名称！");
+                $('input[name="name"]').css({ border: '1px solid #f60' });
+                $('input[name="name"]').focus();
+                return false;
+            }
+            if (reg.test(name) == false) {
+                $("#nameTip").text("名称必须是中文，字母，数字！");
+                $('input[name="name"]').css({ border: '1px solid #f60' });
+                $('input[name="name"]').focus();
+                return false;
+            }
+            
+            if (name.length > 30) {
+                $("#nameTip").text("名称最多只能输入30个字符！");
+                $('input[name="name"]').css({ border: '1px solid #f60' });
+                $('input[name="name"]').focus();
+                return false;
+            }
+            else {
+                $("#nameTip").text("");
+                $('input[name="name"]').css({ border: '1px solid #ccc' });
+            }
+        })
+    })
+</script>

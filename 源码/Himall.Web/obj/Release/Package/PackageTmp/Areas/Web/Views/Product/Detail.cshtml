@@ -1,0 +1,644 @@
+﻿@model Himall.Web.Areas.Web.Models.ProductDetailModelForWeb
+@{
+    ViewBag.Title = Model.Product.ProductName;
+}
+@using Himall.Model
+<meta property="wb:webmaster" content="13b21966c78f011e" />
+<style type="text/css">
+    .header, .nav-bar {
+        background-color: #fff;
+    }
+
+    .green {
+        color: green;
+        font-size: 15px;
+    }
+
+    .red {
+        color: #e3393c;
+        font-size: 15px;
+    }
+
+    .theA {
+        color: #999;
+    }
+</style>
+@section Script{
+    <script src="~/Areas/Web/Scripts/cloud-zoom.1.0.2.min.js"></script>
+    <script src="~/Areas/Web/Scripts/SKU.js"></script>
+    <script src="~/Areas/Web/Scripts/ProductComment.js"></script>
+    <script src="~/Areas/Web/Scripts/ProductConsultation.js"></script>
+    <script src="~/Areas/Web/Scripts/ProductDetail.js"></script>
+    <script src="~/Scripts/Region.js"></script>
+    <script src="~/Scripts/jquery.himallDistrict.js"></script>
+	<script src="~/Scripts/jquery.fly.js"></script>
+	<!--[if lte IE 10]>
+	<script src="~/Scripts/requestAnimationFrame.js"></script>
+	<![endif]-->
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        /* 计算规则：
+       高 （店铺得分-同行业平均分）/（同行业商家最高得分-同行业平均分）
+       低 （同行业平均分-店铺得分）/（同行业平均分-同行业商家最高低分）
+        */
+
+
+
+        var isSellerAdminProdcut = "@ViewBag.IsSellerAdminProdcut".toLowerCase();
+        var upImage = "up";
+        var dowmImage = "down";
+        var red = "red";
+        var green = "green";
+
+        var productAndDescription = parseFloat("@ViewBag.ProductAndDescription").toFixed(2);
+        var productAndDescriptionPeer = parseFloat("@ViewBag.ProductAndDescriptionPeer").toFixed(2);
+        var productAndDescriptionMax = parseFloat("@ViewBag.ProductAndDescriptionMax").toFixed(2);
+        var productAndDescriptionMin = parseFloat("@ViewBag.ProductAndDescriptionMin").toFixed(2);
+        var productAndDescriptionContrast = 0;
+        var productAndDescriptionColor = "";
+        if (productAndDescription > productAndDescriptionPeer) {
+            if (productAndDescriptionMax - productAndDescriptionPeer == 0) {
+                productAndDescriptionContrast = "持平";
+            } else {
+                productAndDescriptionContrast = (((productAndDescription - productAndDescriptionPeer) / (productAndDescriptionMax - productAndDescriptionPeer)) * 100).toFixed(2) + '%';
+            }
+            productAndDescriptionColor = red;
+        }
+        else {
+            if (productAndDescriptionPeer - productAndDescriptionMin == 0) {
+                productAndDescriptionContrast = "持平";
+                productAndDescriptionColor = red;
+            }
+            else {
+                productAndDescriptionContrast = ((productAndDescriptionPeer - productAndDescription) / (productAndDescriptionPeer - productAndDescriptionMin) * 100).toFixed(2) + '%';
+                productAndDescriptionColor = green;
+            }
+
+
+        }
+
+        var sellerServiceAttitude = parseFloat("@ViewBag.SellerServiceAttitude").toFixed(2);
+        var sellerServiceAttitudePeer = parseFloat("@ViewBag.SellerServiceAttitudePeer").toFixed(2);
+        var sellerServiceAttitudeMax = parseFloat("@ViewBag.SellerServiceAttitudeMax").toFixed(2);
+        var sellerServiceAttitudeMin = parseFloat("@ViewBag.SellerServiceAttitudeMin").toFixed(2);
+        var sellerServiceAttitudeContrast = 0;
+        var sellerServiceAttitudeColor = "";
+
+        if (sellerServiceAttitude > sellerServiceAttitudePeer) {
+            if (sellerServiceAttitudeMax - sellerServiceAttitudePeer == 0) {
+                sellerServiceAttitudeContrast = "持平";
+            } else {
+                sellerServiceAttitudeContrast = (((sellerServiceAttitude - sellerServiceAttitudePeer) / (sellerServiceAttitudeMax - sellerServiceAttitudePeer)) * 100).toFixed(2) + '%';
+            }
+
+            sellerServiceAttitudeColor = red;
+        }
+        else {
+            if (sellerServiceAttitudePeer - sellerServiceAttitudeMin == 0) {
+                sellerServiceAttitudeContrast = "持平";
+                sellerServiceAttitudeColor = red;
+            } else {
+                sellerServiceAttitudeContrast = ((sellerServiceAttitudePeer - sellerServiceAttitude) / (sellerServiceAttitudePeer - sellerServiceAttitudeMin) * 100).toFixed(2) + '%';
+                sellerServiceAttitudeColor = green;
+            }
+
+        }
+
+
+        var sellerDeliverySpeed = parseFloat("@ViewBag.SellerDeliverySpeed").toFixed(2);
+        var sellerDeliverySpeedPeer = parseFloat("@ViewBag.SellerDeliverySpeedPeer").toFixed(2);
+        var sellerDeliverySpeedMax = parseFloat("@ViewBag.SellerDeliverySpeedMax").toFixed(2);
+        var sellerDeliverySpeedMin = parseFloat("@ViewBag.SellerDeliverySpeedMin").toFixed(2);
+        var sellerDeliverySpeedContrast = 0;
+        var sellerDeliverySpeedColor = "";
+        if (sellerDeliverySpeed > sellerDeliverySpeedPeer) {
+            if (sellerDeliverySpeedMax - sellerDeliverySpeedPeer == 0) {
+                sellerDeliverySpeedContrast = "持平";
+            }
+            else {
+                sellerDeliverySpeedContrast = (((sellerDeliverySpeed - sellerDeliverySpeedPeer) / (sellerDeliverySpeedMax - sellerDeliverySpeedPeer)) * 100).toFixed(2) + '%';
+            }
+            sellerDeliverySpeedColor = red;
+        }
+        else {
+            if (sellerDeliverySpeedPeer - sellerDeliverySpeedMin == 0) {
+                sellerDeliverySpeedContrast = "持平";
+                sellerDeliverySpeedColor = red;
+            } else {
+                sellerDeliverySpeedContrast = ((sellerDeliverySpeedPeer - sellerDeliverySpeed) / (sellerDeliverySpeedPeer - sellerDeliverySpeedMin) * 100).toFixed(2) + '%';
+                sellerDeliverySpeedColor = green;
+            }
+
+
+        }
+
+
+        var productAndDescriptionImage = productAndDescription >= productAndDescriptionPeer ? upImage : dowmImage;
+        var sellerServiceAttitudeImage = sellerServiceAttitude >= sellerServiceAttitudePeer ? upImage : dowmImage;
+        var sellerDeliverySpeedImage = sellerDeliverySpeed >= sellerDeliverySpeedPeer ? upImage : dowmImage;
+        var showShop = "@(Model.Product.AddedDate.Year<=2000?"true":"")";
+        showShop = !!showShop;
+    </script>
+}
+
+
+
+<input type="hidden" id="gid" value="@Model.Product.Id" />
+<input type="hidden" id="shopid" value="@Model.Product.ShopId" />
+<input type="hidden" id="has" value="@(Model.Product.SKUInfo.Count()==0?0:1)" />
+@{
+    var hdFreightType = Model.Product.Himall_FreightTemplate == null ? 0 : Model.Product.Himall_FreightTemplate.IsFree.GetHashCode();
+}
+<input id="hdFreightType" type="hidden" value="@hdFreightType" />
+
+<div class="bg-g">
+    <div id="catePath" class="w">
+        @MVCHelpers.CategoryPath(Model.Product.CategoryPath, Model.Product.ProductName)
+    </div>
+    <div class="w">
+        <div id="product-intro">
+            <div id="name">
+                <h1>@Model.Product.ProductName</h1>
+                <strong>@Model.Product.ShortDescription</strong>
+            </div>
+            <div class="cl">
+                <ul id="summary">
+                    <li id="summary-price">
+                        <div class="t">
+                            <div class="dt dt01">价格</div>
+                            <strong class="p-price dt" id="jd-price">￥@ViewBag.Price</strong><span class="dt dt02">￥128</span>
+							@if (!string.IsNullOrEmpty(Model.Product.Himall_FreightTemplate.SendTime))
+                            {
+                                <i class="dt" style="width:auto;margin-right:20px;color:#737b9e; float:right;">@(Model.Product.Himall_FreightTemplate.SendTime)h内发货</i>
+                            }
+                        </div>
+                        <div class="b">
+                            <div class="b-01 dt">销量 &nbsp;&nbsp;<a id="saleCounts">@Model.Product.SaleCounts@Model.Product.MeasureUnit</a></div> <div class="b-01 dt">评价 &nbsp;&nbsp;<a id="Comments" href="#comment">0</a></div>
+                            <div class="dt b-02">评分：</div> <div class="dt summary-grade" style="margin-right:10px">
+                                <span class="star sa@((int)Model.Shop.ProductMark)"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="summary-promotion">
+                        @if (ViewBag.CouponCount > 0 || Model.Shop.FreeFreight > 0)
+                        {
+                            <div class="dt l l01">促销</div>
+                            <div class="promotion-l">
+                                @if (Model.Shop.FreeFreight > 0)
+                                {
+                                    <div><em class="hl_red_bg">满免</em><em class="hl_red">单笔订单满<span>@(Model.Shop.FreeFreight)</span>元免运费</em></div>
+                                }
+                                @if (ViewBag.CouponCount > 0)
+                                {<div class="d02" style="margin-left:50px;"><em class="hl_red_bg hl_coupon">领券</em><em class="hl_red"> <span>@ViewBag.CouponCount 张</span>优惠券可领,</em> &nbsp;&nbsp; <a target="_blank" href="@Url.Action("home", "Shop" , new { id=Model.Shop.Id})">立即领取&gt;&gt;</a></div>}
+                            </div>
+                    
+                        }
+                        </li>
+                    <li id="summary-service">
+                        <div class="dt l">库存</div>
+                        <div class="dd d03">
+                            <span id="stockProductImage" style="float:left;">有货，下单后立即领取</span>
+                        </div>
+                    </li>
+                    <li id="summary-service">
+                        <div class="dt l" style="line-height: 26px;">物流</div>
+                        <div class="dd">
+                            <span id="addressId">@ViewBag.ProductAddress</span> &nbsp; 至 &nbsp; <a class="address-choose" id="addressChoose" data-select="@ViewBag.ShippingValue">@ViewBag.ShippingAddress</a> &nbsp;| &nbsp;<span id="spFreight">@ViewBag.Freight</span>
+                            
+                        </div>
+                    </li>
+
+                </ul>
+                <!--summary end-->
+                <div id="brand-bar-pop" style=" display:none"   >
+
+                </div>
+                <!--brand-bar-pop-->
+                <ul id="choose" class="choose">
+                    @if (Model.Color.Count() > 0)
+                    {
+                        <li class="choose-sku">
+                            <div class="dt l">颜色</div>
+                            <div class="dd">
+                                @foreach (var color in Model.Color)
+                                {
+                                    <div st="0" cid="@color.SKUId" class="item @color.EnabledClass @color.SelectedClass">
+                                        <b>◆</b>
+                                        <a href="#none" title="@color.Value">
+                                            <i>@color.Value</i>
+                                        </a>
+                                    </div>
+                                }
+
+                            </div>
+                        </li>
+                    }
+                    @if (Model.Size.Count() > 0)
+                    {
+                        <li class="choose-sku">
+                            <div class="dt l">尺码</div>
+                            <div class="dd">
+                                @foreach (var size in Model.Size)
+                                {
+                                    <div st="1" cid="@size.SKUId" class="item @size.EnabledClass @size.SelectedClass">
+                                        <b>◆</b>
+                                        <a href="#none" title="@size.Value">@size.Value</a>
+                                    </div>
+                                }
+                            </div>
+                        </li>
+                    }
+
+                    @if (Model.Version.Count() > 0)
+                    {
+                        <li class="choose-sku">
+                            <div class="dt l">规格</div>
+                            <div class="dd">
+                                @foreach (var version in Model.Version)
+                                {
+                                    <div st="2" cid="@version.SKUId" class="item @version.EnabledClass @version.SelectedClass">
+                                        <b>◆</b>
+                                        <a href="#none" title="@version.Value">@version.Value</a>
+                                    </div>
+                                }
+                            </div>
+                        </li>
+                    }
+                    <li id="choose-amount" style="line-height: 26px;">
+                        <div class="dt l">数量</div>
+                        <div class="dd">
+                            <div class="wrap-input">
+                                <a class="btn-reduce" href="javascript:;">-</a>
+                                <a class="btn-add" href="javascript:;">+</a>
+                                <input class="text quantity-text" id="buy-num" value="1" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'1'); if(this.value==''){this.value='1'}}).call(this)" onblur="this.v()" />
+                            </div>
+                        </div>
+                        <span> &nbsp; 库存：<i id="stockProduct"></i>@Model.Product.MeasureUnit</span>
+                    </li>
+                    <li id="choose-result">
+                        <div class="dt"></div><div class="dd"><strong></strong><strong></strong></div>
+                    </li>
+                    <li id="choose-btns">
+                        <div id="choose-btn-buy" class="btn " style="display: none">
+                            <a class="btn-append btn-order-now" id="OrderNow">立即购买<b></b></a>
+                        </div>
+                        <div id="choose-btn-append" class="btn disabled">
+                            <a class="btn-append" id="InitCartUrl">加入购物车<b></b></a>
+                        </div>
+
+                        <div style="display: none" id="choose-btn-easybuy" class="btn">
+                            <a id="easyBuyBtn" class="btn-easybuy" href="#none">轻松购<b></b></a>
+                        </div>
+
+                    </li>
+                    
+                </ul>
+
+                <input id="IsExpiredShop" type="hidden" value="@ViewBag.IsExpiredShop" />
+                <!--choose end-->
+                <span class="clr"></span>
+
+            </div>
+
+            <div id="preview">
+                <div class="jqzoom" style="position:relative;">
+                    <a class="cloud-zoom" id="zoom1" rel="lensOpacity:1,adjustX:10" href="@Model.Product.ImagePath/1.png" style="position: relative; display: block;">
+                        <img src="@Model.Product.ImagePath/1_350.png" alt="@Model.Product.ProductName">
+                    </a>
+                </div>
+
+                <div id="spec-list">
+                    <ul class="lh">
+                        @for (int i = 1; i < 6; i++)
+                        {
+
+                            if (i == 1 || File.Exists(Server.MapPath(Model.Product.ImagePath + string.Format("/{0}.png", i))))
+                            {
+                                <li><a href="@(Model.Product.ImagePath+string.Format("/{0}.png",i))" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: '@(Model.Product.ImagePath+string.Format("/{0}_350.png",i))'"><img src="@(Model.Product.ImagePath+string.Format("/{0}_50.png",i))" width="50" height="50"></a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="attent-goods" id="choose-btn-coll">
+                    <a href="#none" class="btn-coll">收藏商品</a>
+
+                </div>
+                <span class="btn" style="margin-top: 5px; padding-left:10px;float:right; margin-top: 25px;color:#000;">
+                    <span style="float:none;display:inline-block;vertical-align:top;margin-top:3px">分享到：</span>
+                    <wb:share-button count="n" addition="simple" type="icon" size="medium" title="@Model.Product.ProductName" pic="http://@Request.Url.Host@Model.Product.ImagePath/1_100.png" url="http://@Request.Url.Host/product/detail/@Model.Product.Id"></wb:share-button>
+                    <script type="text/javascript">
+                        (function () {
+                            var p = {
+                                url: 'http://@Request.Url.Host/product/detail/@Model.Product.Id',
+                                showcount: '0',/*是否显示分享总数,显示：'1'，不显示：'0' */
+                                desc: '',/*默认分享理由(可选)*/
+                                summary: '',/*分享摘要(可选)*/
+                                title: '@Model.Product.ProductName',/*分享标题(可选)*/
+                                site: '',/*分享来源 如：腾讯网(可选)*/
+                                pics: 'http://@Request.Url.Host@Model.Product.ImagePath', /*分享图片的路径(可选)*/
+                                style: '203',
+                                width: 22,
+                                height: 22
+                            };
+                            var s = [];
+                            for (var i in p) {
+                                s.push(i + '=' + encodeURIComponent(p[i] || ''));
+                            }
+                            document.write(['<a version="1.0" class="qzOpenerDiv" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?', s.join('&'), '" target="_blank">分享</a>'].join(''));
+                        })();
+                    </script>
+                    <script src="http://qzonestyle.gtimg.cn/qzone/app/qzlike/qzopensl.js#jsdate=20111201" charset="utf-8"></script>
+                    <a href="javascript:void(0);" title="分享到微信" onclick="showQrCode()" style="float:none;display:inline-block;vertical-align:top;margin-top:3px"><img src="/Images/wx.png"></a>
+                </span>
+
+            </div><!--preview end-->
+        </div><!--product-intro end-->
+    </div>
+</div>
+<div class="w">
+	@if (@Model.Product.SaleStatus == ProductInfo.ProductSaleStatus.OnSale && @Model.Product.AuditStatus == ProductInfo.ProductAuditStatus.Audited&&Model.Product.SKUInfo.Sum(a=>a.Stock)>0)
+	{
+		@Html.Action("ProductColloCation", new { productId = @Model.Product.Id });
+	}
+</div>
+<div class="w">
+    <div class="right">
+        <div id="product-detail" class="m m2">
+            <div class="float-nav-wrap">
+                <div class="mt">
+                    <ul class="tab">
+                        <li class="curr goods-li"><span><a href="javascript:;" class="toggle-link">商品介绍<b></b></a></span></li>
+                        <li class="comment-li"><a href="javascript:;" class="toggle-link">商品评价<b></b><span id="CommentsU" class="hl_blue"> 0 </span></a></li>
+                        <li class="consult-li"><a href="javascript:;" class="toggle-link">商品咨询<b></b><span id="ConsU" class="hl_blue"> 0 </span></a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="mc" id="product-detail-1">
+                <ul class="detail-list" id="detail-list">
+                    <li title="">商品名称：@Model.Product.ProductName</li>
+                    <li>商品货号：@Model.Product.ProductCode</li>
+                    <li>品牌：@Model.Product.BrandName</li>
+                    @*@if (!string.IsNullOrWhiteSpace(Model.Shop.Name))
+                        {
+                        <li>店铺：<a href="@Url.Action("home", "Shop" , new { id=Model.Shop.Id})" target="_blank">@Model.Shop.Name</a></li>
+                        }*@
+                    @*
+                        <li>上架时间：@Model.Product.AddedDate.ToString("yyyy-MM-dd:HH:mm:ss")</li>*@
+
+
+                </ul>
+                <div id="product-html" style="position:relative"></div>
+                @*@MvcHtmlString.Create(Model.DescriptionPrefix)
+                    @MvcHtmlString.Create(Model.ProductDescription)
+                    @MvcHtmlString.Create(Model.DescriptiondSuffix)*@
+            </div>
+
+        </div>
+        <!--product-detail end-->
+        <div id="comment" class="m m1">
+            <div class="mt">
+                <h2>商品评价</h2>
+            </div>
+            <div class="mc">
+                <div id="i-comment">
+                    <div class="rate">
+                        <strong>100%</strong> <br />
+                        <span>好评度</span>
+                    </div>
+                    <div class="percent">
+                        <dl>
+                            <dt>好评<span>(100%)</span></dt>
+                            <dd>
+                                <div style="width: 100px;"></div>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>中评<span>(0%)</span></dt>
+                            <dd class="d1">
+                                <div style="width: 0%;"> </div>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>差评<span>(0%)</span></dt>
+                            <dd class="d1">
+                                <div style="width: 0%;"> </div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--comment end-->
+
+        <div id="comments-list" class="m">
+            <div class="mt">
+                <ul class="tab" id="id_comment_btn">
+                    <li class="curr"><a href="javascript:;">全部评价<em id="totalComment"></em></a></li>
+                    <li><a href="javascript:;">好评<em id="goodComment"></em></a></li>
+                    <li><a href="javascript:;">中评<em id=""></em></a></li>
+                    <li><a href="javascript:;">差评<em id="badComment"></em></a></li>
+                    <li class="tab-last"></li>
+                </ul>
+            </div>
+        </div>
+
+        <!--comment end-->
+        <div id="consult" class="m m2">
+            <div class="mt">
+                <ul class="tab">
+                    <li class="curr"><a href="javascript:;">商品咨询</a></li>
+                </ul>
+                <div class="consult-pub"> <a href="@Url.Action("index", "ProductConsultation" , new { id=Model.Product.Id})#ConsultForm" class="css3-btn" target="_blank">发表咨询</a> </div>
+            </div>
+            <div id="consult-search">
+                <div class="prompt"> <strong>温馨提示:</strong>因厂家更改产品包装、产地或者更换随机附件等没有任何提前通知，且每位咨询者购买情况、提问时间等不同，为此以下回复仅对提问者3天内有效，其他网友仅供参考！若由此给您带来不便请多多谅解，谢谢！ </div>
+            </div>
+            <!--consult-search end-->
+            <div id="consult-0" class="mc tabcon" data-widget="tab-content">
+
+
+            </div>
+        </div>
+        <!--consult end-->
+
+    </div>
+    <!--right end-->
+    <div class="left product-left">
+        <div id="sp-search" class="m m2">
+            <div class="mt">
+                <h2>本店搜索</h2>
+            </div>
+            <div class="mc">
+                <p class="sp-form-item1">
+                    <label for="sp-keyword">关键字</label>
+                    <span>
+                        <input type="text" id="sp-keyword" onkeydown="javascript:if(event.keyCode==13){}" />
+                    </span>
+                </p>
+                <p class="sp-form-item2">
+                    <label for="sp-price">价　格</label>
+                    <span>
+                        <input type="text" id="sp-price" />
+                        -
+                        <input type="text" id="sp-price1" onkeydown="javascript:if(event.keyCode==13){}" />
+                    </span>
+                </p>
+                <p class="sp-form-item3">
+                    <label for="">　　　</label>
+                    <span>
+                        <input type="submit" id="shopInSearch" value="搜索" />
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div id="sp-category" class="m m2 sp-category">
+            <div class="mt">
+                <h2>店铺分类</h2>
+            </div>
+            <div id="shopCateDiv" class="mc">
+                <dl>
+                    <dt><a href="#" target="_blank"><s></s>加载中...</a></dt>
+                </dl>
+            </div>
+        </div>
+        <div id="sp-brand-official" class="m m2 sp-category of-category">
+            <div class="mt">
+                <h2>同类其他品牌</h2>
+            </div>
+            <div id="brandDivOfficial" class="mc">
+                <dl>
+                    <dt><a href="#" target="_blank"><s></s>加载中...</a></dt>
+                </dl>
+            </div>
+        </div>
+        <div id="sp-hot-sale" class="m m2 m3">
+            <div class="mt">
+                <span class="cur">热门销售</span>
+				<span>热门关注</span>
+            </div>
+            <div class="mc">
+                <ul id="hotsaleDiv"></ul>
+				<ul id="hotConcerned" style="display:none"></ul>
+            </div>
+        </div>
+        <!--<div id="sp-hot-fo" class="m m2 m3">
+            <div class="mt">
+                
+            </div>
+            <div class="mc">
+                
+            </div>
+        </div>-->
+		@if (@Model.BoughtProducts.Count > 0){
+		<div class="m m2 m3">
+            <div class="mt">
+                <h2>购买该商品的还购买了</h2>
+            </div>
+            <div class="mc">
+                <ul>
+					@foreach (var p in Model.BoughtProducts)
+					{
+						<li class="fore1">
+							<div class="p-img"><a href="@Url.Action("detail", "Product" , new { id=@p.Id })" title="@p.Name" target="_blank">
+								<img  src="@p.ImgPath.Replace("1_100","1_220")" alt="@p.Name">
+							</a></div>
+							<div class="p-name">
+								<a href="@Url.Action("detail", "Product" , new { id=@p.Id })" title="@p.Name" target="_blank">@p.Name</a>
+							</div>
+							<div class="p-info p-bfc">
+								<div class="p-price"><strong>￥@p.Price.ToString("f2")</strong></div>
+							</div>
+						</li>
+					}
+				</ul>
+            </div>
+        </div>
+		}
+    </div><!--left end-->
+    <span class="clr"></span>
+    <input type="hidden" id="logined" value="@ViewBag.Logined" />
+    <input type="hidden" id="hasQuick" value="@ViewBag.hasQuick" />
+</div>
+<div class="form-group" id="weixinQrCode" style="display:none">
+    <img id="QrCode" src="@ViewBag.Code" />
+</div>
+<dl id="online-service" style=" display:none;">
+    <dd>@Html.Action("CustmerServices", "Product", new { shopId = @Model.Product.ShopId })</dd>
+</dl>
+<script src="~/Scripts/jquery.fly.js"></script>
+<!--[if lte IE 10]>
+<script src="~/Scripts/requestAnimationFrame.js"></script>
+<![endif]-->
+<script>
+
+    $( function ()
+    {
+        $.post( "/product/GetShopBonus", {shopid : @Model.Product.ShopId} , function( data ){
+            if(data != undefined && data != null )
+            {
+                var html = '<div class="dd d02" style="margin-left:50px;"><em class="hl_red_bg">红包</em><em class="hl_red">满<span>'+data.GrantPrice+'元</span>送红包（'+data.Count+'个'+data.RandomAmountStart+'—'+data.RandomAmountEnd+'元代金券红包）</em></div>';
+                if ($(".promotion-l").length>0)
+                {                 
+                    $(html).appendTo(".promotion-l");
+                }
+                else{
+                    $('#summary-promotion').append('<div class="dt l l01">促销</div>'+html);
+                }
+            }
+        });
+    } )
+	$('#addressChoose').click(function () {
+		$(this).himallDistrict({ items: province, closeFn: function () { calcFreight(); } });
+	});
+
+	//处理物流目的地
+
+    function calcFreight() {
+        var isFree = $("#hdFreightType").val();//是否包邮
+        var select = $("#addressChoose").data("select");
+        if (select != "") {
+            var cityid = select.split(',')[1];//收货城市Id
+            if (parseInt(cityid) > 0 && isFree == "0") {
+                //重新计算运费
+                var totalnum = 0;//商品总数量
+                $('.wrap-input .text').each(function (i, e) {
+                    if (parseInt($(e).val()) > 0) {
+                        totalnum += parseInt($(e).val());
+                    }
+                });
+                if (totalnum == 0) {
+                    totalnum = 1;
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '../CalceFreight',
+                    data: { cityId: cityid, pId: "@Model.Product.Id", count: totalnum },
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        if (data.success == true) {
+                            $("#spFreight").text(data.msg);
+                        }
+                    }
+                });
+            }
+        }
+    }
+</script>
+<script>
+    function showQrCode() {
+        $.dialog({
+            title: '二维码',
+            lock: true,
+            id: 'weixinQrCode',
+            content: $("#weixinQrCode").html(),
+            padding: '10px',
+            init: function () {
+            }
+        });
+    }
+</script>
+<div id="addCollocation" class="cl porducts-group-box">
+
+</div>

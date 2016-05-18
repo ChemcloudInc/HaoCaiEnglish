@@ -1,0 +1,105 @@
+﻿<div class="container">
+    @if (ViewBag.address != null)
+    {
+        var defaultAddress = (Himall.Model.ShippingAddressInfo)ViewBag.address;
+        <div class="well" id="choiceAddr">
+            <p id="selectedAddress">收货人：@defaultAddress.ShipTo <span>@defaultAddress.Phone</span></p>
+            <p>地址： @defaultAddress.RegionFullName &nbsp; &nbsp;@defaultAddress.Address&nbsp;<i class="glyphicon glyphicon-menu-right"></i></p>
+        </div>
+    }
+    else
+    {
+        <div class="well" id="addaddr">
+            <p>您还没有填写收货地址<a style="color:red">去新增</a></p>
+        </div>
+    }
+
+    
+        @{var products = (IEnumerable<Himall.Web.Areas.Mobile.Models.ShopCartItemModel>)ViewBag.products;}
+        @foreach (var shop in products)
+        {
+            <div class="goods-info mb10">
+				<div class="item">
+					<div class="goods-shop">
+						@if(@shop.vshopId!=0)
+						{ 
+							<a href="/@(ViewBag.AreaName)/vshop/detail/@shop.vshopId">店铺：@shop.ShopName</a>
+						}
+						else
+						{
+							@shop.ShopName
+						}
+					</div>
+				</div>
+             
+            @foreach (var product in shop.CartItemModels)
+            {
+                <div class="item">
+                    <div class="buy-goods">
+                        <img src="@product.imgUrl" />
+                        <h6><span><a href="/@(ViewBag.AreaName)/product/detail/@product.id">@product.name</a></span><em>¥ @product.price.ToString("F2")</em></h6>
+                        <p class="gray text-right">x @product.count</p>
+                        <p class="gray">
+                            @if (!string.IsNullOrEmpty(product.size))
+                            {
+                                <label>尺寸：@product.size &nbsp;&nbsp;</label>
+                            }
+                            @if (!string.IsNullOrEmpty(product.color))
+                            {
+                                <label>颜色：@product.color &nbsp;&nbsp;</label>
+                            }
+                            @if (!string.IsNullOrEmpty(product.version))
+                            {
+                                <label>版本：@product.version</label>
+                            }
+							&nbsp;
+                        </p>
+                    </div>
+                </div>
+            }
+            @if(shop.Coupon != null)
+            { 
+                <div class="item">
+                    <div class="detail-anchor">优惠券：@shop.Coupon.CouponName<span class="pull-right">已优惠 ¥ @shop.Coupon.CouponPrice</span></div>
+                    <input type="hidden" data-type="@shop.Coupon.Type" name="couponIds" value="@shop.Coupon.CouponId" />
+                </div>
+            }
+            <div class="item">
+                <div class="detail-anchor">
+                &nbsp;
+                <span class="pull-right">@(shop.shopFreeFreight > 0 ? "(满" + shop.shopFreeFreight.ToString("F2") + "元免)" : "")快递费：@(shop.isFreeFreight ? "免运费" : shop.Freight.ToString("F2") + "元")</span></div>
+            </div>
+            
+            <div class="item">
+                <div class="detail-anchor">
+                    &nbsp;<span class="pull-right">微店合计：@((shop.CartItemModels.Sum(item => item.price * item.count) + shop.Freight-(shop.Coupon==null?0:shop.Coupon.CouponPrice)).ToString("F2"))元</span>
+                </div>
+            </div>
+            </div>
+        }
+        @if (ViewBag.integralPerMoney != null)
+        {
+		<div class="goods-info mb10">
+			<div class="item">
+				<div class="detail-anchor">&nbsp;<span class="pull-right"><label>可用@(ViewBag.userIntegrals)积分抵扣@(ViewBag.integralPerMoney)元<input type="checkbox" id="userIntegrals" value="@(ViewBag.userIntegrals)" /></label></span></div>
+			</div>
+		</div>
+        }
+   
+    <div class="custom-dialog" id="paymentsChooser">
+    </div>
+
+    <div class="cover" style="display:none;"></div>
+
+</div>
+<input type="hidden" id="shippingAddressId" value="@(ViewBag.address != null ? ((Himall.Model.ShippingAddressInfo)ViewBag.address).Id.ToString() : "")" />
+<input type="hidden" id="couponIds" value="@(ViewBag.memberIntegralInfo!=null? ((Himall.Model.MemberIntegral)ViewBag.memberIntegralInfo).Id.ToString():"")" />
+<input type="hidden" id="integralPerMoney" value="@(ViewBag.integralPerMoney)" />
+
+<footer class="clearfix footer-cart">
+    <em class="cart-total cart-total-lg">
+        合计：<a id="allTotal">¥@ViewBag.orderAmount.ToString("F2")</a>
+    </em>
+    <a id="submit-order" class="cart-pay">提 交</a>
+</footer>
+<script src="~/Areas/Mobile/Templates/Default/Scripts/submiteByCart.js"></script>

@@ -1,0 +1,250 @@
+﻿@using Himall.Core
+@model Himall.Web.Areas.Web.Models.ProductDetailModelForWeb
+
+@{
+    Layout = "../Shared/_Base.cshtml";
+    ViewBag.Title = "限时购商品详情";
+}
+<input type="hidden" id="gid" value="@Model.Product.Id" />
+<input type="hidden" id="has" value="@(Model.Product.SKUInfo.Count()==0?0:1)" />
+<input type="hidden" id="maxSaleCount" value="@Model.MaxSaleCount" />
+
+<div class="container">
+    <div id="slides">
+        @for (int i = 1; i < 6; i++)
+        {
+            if (File.Exists(Server.MapPath(Model.Product.ImagePath + string.Format("/{0}.png", i))))
+            {
+                <img src="@(Model.Product.ImagePath+string.Format("/{0}_350.png",i))" />
+            }
+        }
+    </div>
+    <div class="goods-info">
+        <div class="item">
+            <h4>@Model.Product.ProductName, 每个ID限购 @Model.MaxSaleCount 件</h4>
+            <h5 class="color">@Model.Product.ShortDescription</h5>
+            <p><s>商城价:￥@Model.Product.MinSalePrice.ToString("F2")</s></p>
+            <h4>促销价:<em class="color" id="jd-price">￥@Model.Product.MarketPrice.ToString("F2")</em><span>评价数：(@(ViewBag.CommentCount)条)</span></h4>
+        </div>
+        @if (ViewBag.CouponCount != null)
+        {
+            <a href="/@ViewBag.AreaName/Coupon/ShopCouponList?shopid=@Model.Shop.Id">
+                <div class="item" id="divCoupon">
+                    <div class="promotion"><label>促销</label><span id="couponTip">优惠券 (@ViewBag.CouponCount)</span></div>
+                    <span id="couponLink" class="glyphicon glyphicon-menu-right"></span>
+                </div>
+            </a>
+        }
+        @if (Model.Shop.FreeFreight > 0)
+        {
+            <div class="item" id="divCoupon">
+                <div class="promotion"><label>促销</label><span id="couponTip">满@(Model.Shop.FreeFreight)免运费</span></div>
+                <span id="couponLink" class="glyphicon glyphicon-menu-right"></span>
+            </div>
+        }
+
+        <div class="item" id="choose">
+            @if (Model.Color.Count() > 0)
+            {
+                <div class="spec">
+                    <label>颜色</label>
+                    <div style="padding-left:53px;">
+                        @foreach (var color in Model.Color)
+                    {
+                            <span st="0" cid="@color.SKUId" class="@color.EnabledClass @color.SelectedClass">@color.Value</span>
+                    }
+                        </div>
+                    </div>
+            }
+            @if (Model.Size.Count() > 0)
+            {
+                <div class="spec">
+                    <label>尺寸</label>
+                    <div style="padding-left:53px;">
+                        @foreach (var size in Model.Size)
+                    {
+                            <span st="1" cid="@size.SKUId" class="@size.EnabledClass @size.SelectedClass">@size.Value</span>
+                    }
+                    </div>
+                </div>
+            }
+            @if (Model.Version.Count() > 0)
+            {
+                <div class="spec">
+                    <label>版本</label>
+                    <div style="padding-left:53px;">
+                        @foreach (var version in Model.Version)
+                    {
+                            <span st="2" cid="@version.SKUId" class="@version.EnabledClass @version.SelectedClass">@version.Value</span>
+                    }
+                    </div>
+                </div>
+            }
+        </div>
+
+
+
+        <div class="item">
+            <a href="#top" onclick="gotoProductImg()">
+                <div class="detail-anchor">商品图文详情</div>
+                <a class="glyphicon glyphicon-menu-right"></a>
+            </a>
+        </div>
+        <div class="item">
+            <div class="buy-num">
+                <label>数量</label>
+                <div class="wrap-num">
+                    <a class="glyphicon glyphicon-minus" href="javascript:;"></a>
+                    <input class="input-xs form-control" id="buy-num" value="1" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v()">
+                    <a class="glyphicon glyphicon-plus" href="javascript:;"></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <h4>@Model.Shop.Name</h4>
+            <h6 class="gray">每个ID限购：@(Model.MaxSaleCount)</span></h6>
+            @if (ViewBag.VShopId != -1)
+            {
+                <a class="btn btn-warning btn-sm btn-go-shop" href="/@ViewBag.AreaName/vshop/detail/@ViewBag.VShopId">进店逛逛</a>
+            }
+        </div>
+        <div class="item">
+            <div class="shop-score">商品：<em>@(((decimal)ViewBag.ProductAndDescription).ToString("F2"))</em>发货：<em>@(((decimal)ViewBag.SellerDeliverySpeed).ToString("F2"))</em>服务：<em>@(((decimal)ViewBag.SellerServiceAttitude).ToString("F2"))</em></div>
+        </div>
+    </div>
+    <div class="comment mt10">
+        <div class="comment-hd">
+            <strong>评论</strong>
+            好评 <span>@((int)Model.Shop.ProductMark == 0 ? "100" : @ViewBag.NicePercent)%</span>
+            <em>共@(Model.Product.Himall_ProductComments.Count())条 评价</em>
+        </div>
+        <ul id="commentReview"></ul>
+    </div>
+    <div class="goods-img">
+
+    </div>
+    <footer class="clearfix footer-buy">
+        <p class="countime"><s class="glyphicon glyphicon-time"></s><b class="hour">00</b><em>天</em> <b class="hour">00</b><em>时</em> <b class="hour">00</b><em>分</em> <b class="hour">00</b><em>秒</em></p>
+        @if (Model.Product.SaleStatus == Himall.Model.ProductInfo.ProductSaleStatus.OnSale && Model.Product.AuditStatus == Himall.Model.ProductInfo.ProductAuditStatus.Audited)
+        {
+            <a class="btn btn-danger" id="easyBuyBtn">立即抢购</a>
+        }
+        else
+        {
+            <a class="btn btn-danger" disabled id="easyBuyBtn">已下架</a>
+        }
+        @if ((bool)(@ViewBag.IsFavorite))
+        {
+            <i class="glyphicon gly-collect glyphicon-star red" id="favoriteProduct"></i>
+        }
+        else
+        {
+            <i class="glyphicon gly-collect glyphicon-star-empty" id="favoriteProduct"></i>
+        }
+    </footer>
+    <!-- 日龙添加 -->
+    <div id="HideDiv" style="display:none">
+        @MvcHtmlString.Create(Model.ProductDescription.Replace("'", " ’"))
+    </div>
+</div>
+<script src="~/Areas/Web/Scripts/cloud-zoom.1.0.2.min.js"></script>
+<script src="~/Areas/Web/Scripts/jQuery.Web.Alert.js"></script>
+<script src="~/Areas/Web/Scripts/jQuery.Web.Login.js"></script>
+<script src="~/Areas/Mobile/Templates/APP/Scripts/ProductDetail.js"></script>
+<script src="~/Areas/Mobile/Templates/APP/Scripts/ProductComment.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Areas/Web/Scripts/SKU.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+    var shopid = '@Model.Shop.Id';
+    var isLimitTimeBuy = true;
+    $(function () {
+
+        //焦点图滚动
+        if ($('#slides').children().length == 0) {
+            $('#slides').hide();
+        }
+        if ($('#slides').children().length > 1) {
+            $('#slides').slidesjs({
+                width: 640,
+                height: 640,
+                navigation: false,
+                play: {
+                    active: false,
+                    auto: true,
+                    interval: 4000,
+                    swap: true
+                }
+            });
+        } else {
+            $('#slides').css({ 'height': $(document).width() * 15 / 32 })
+        }
+    });
+    var flag;
+    $(window).scroll(function () {
+
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        if (flag == 1) {
+            return false;
+        }
+
+        if (scrollTop + windowHeight >= scrollHeight) {
+            loadProductImg();
+            flag = 1;
+        }
+    });
+
+    function gotoProductImg() {
+        if (flag == 1) {
+            return false;
+        }
+        else {
+            loadProductImg();
+            flag = 1;
+        }
+    }
+
+    function loadProductImg() {
+        $(".goods-img").append('<h4><a name="top">商品图文详情</a></h4>'+$("#HideDiv").html());
+    }
+
+</script>
+<script type="text/javascript">
+    //倒计时
+    var intDiff = parseInt("@ViewBag.Second");//倒计时总秒数量
+    function timer(intDiff) {
+        window.setInterval(function () {
+            var day = 0,
+                hour = 0,
+                minute = 0,
+                second = 0;//时间默认值
+            if (intDiff > 0) {
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+            $('.countime').html('<s class="glyphicon glyphicon-time"></s> <b class="hour">' + day + '</b><em>天</em> <b class="hour">' + hour + '</b><em>时</em> <b class="hour">' + minute + '</b><em>分</em> <b class="hour">' + second + '</b><em>秒</em>');
+            intDiff--;
+        }, 1000);
+    }
+    $(function () {
+        timer(intDiff);
+        if ($(".btn-goshop_in").hasClass("disabled")) {
+            $(".btn-goshop_in").attr('disabled', "true");
+        }
+    });
+
+    function checkFirstSKUWhenHas() {
+        if ($(".spec").length == 0)
+            return;
+        $(".spec").each(function () {
+            $(this).children("div:first").not(".disabled").find("span:first").trigger("click");
+        });
+    }
+</script>
+<a class="WX-backtop"></a>

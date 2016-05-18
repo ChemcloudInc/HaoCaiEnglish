@@ -1,0 +1,5 @@
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Hishop.Weixin.MP\bin\Debug\Hishop.Weixin.MP.dll
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Hishop.Weixin.MP\bin\Debug\Hishop.Weixin.MP.pdb
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.csprojResolveAssemblyReference.cache
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.dll
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.pdb

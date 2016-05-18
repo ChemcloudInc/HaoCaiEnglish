@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<ExpressInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>圆通速递</Name>
+  <DisplayName>圆通速递</DisplayName>
+  <TaobaoCode>YTO</TaobaoCode>
+  <Kuaidi100Code>yuantong</Kuaidi100Code>
+  <Width>2300</Width>
+  <Height>1270</Height>
+  <BackGroundImage>background.jpg</BackGroundImage>
+  <Logo>logo.png</Logo>
+  <Elements>
+    <ExpressPrintElement>
+      <PrintElementIndex>16</PrintElementIndex>
+      <LeftTopPoint>
+        <X>4688</X>
+        <Y>3818</Y>
+      </LeftTopPoint>
+      <RightBottomPoint>
+        <X>5841</X>
+        <Y>4451</Y>
+      </RightBottomPoint>
+    </ExpressPrintElement>
+    <ExpressPrintElement>
+      <PrintElementIndex>22</PrintElementIndex>
+      <LeftTopPoint>
+        <X>7834</X>
+        <Y>3396</Y>
+      </LeftTopPoint>
+      <RightBottomPoint>
+        <X>8986</X>
+        <Y>4029</Y>
+      </RightBottomPoint>
+    </ExpressPrintElement>
+  </Elements>
+</ExpressInfo>

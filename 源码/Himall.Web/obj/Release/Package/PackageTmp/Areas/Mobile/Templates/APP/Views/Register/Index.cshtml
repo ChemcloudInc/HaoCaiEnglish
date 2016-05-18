@@ -1,0 +1,142 @@
+﻿@{
+    ViewBag.CopyRight = false;
+    
+}
+<div class="login">
+    <h3>注册账号</h3>
+    <div class="option"><input type="text" class="form-control" placeholder="用户名" id="username" /><i class="glyphicon glyphicon-user"></i></div>
+    <div class="option"><input type="password" class="form-control" placeholder="密码" id="password" /><i class="glyphicon glyphicon-lock"></i></div>
+    <div class="option"><input type="password" class="form-control" placeholder="重复密码" id="repeatPassword" /><i class="glyphicon glyphicon-lock"></i></div>
+    <div class="option">
+        <input type="text" class="form-control code" placeholder="验证码" maxlength="4" id="checkCode" />
+        <a><img src="" id="checkCodeImg"/></a>
+        <i id="checkBoxIcon" class="glyphicon"></i>
+    </div>
+    <a class="btn btn-primary btn-block" id="registBtn">注 册</a>
+    <p id="bindInfo"><i class="glyphicon glyphicon-info-sign"></i> 成功注册后，即自动绑定微信，不可再更改账号</p>
+</div>
+
+<style>body,html{ height:100%}</style>
+<script type="text/javascript">
+    $(function () {
+        var openId = QueryString('openId');
+        var serviceProvider = QueryString('serviceProvider');
+        
+        if (!openId || !serviceProvider)
+            $('#bindInfo').hide();
+
+
+        $('.login').css('marginTop', -$('.login').height() / 2);
+
+        var checkCodeUrl = '/' + areaName + '/register/GetCheckCode';
+        $('#checkCodeImg').attr('src', checkCodeUrl + '?time=' + (new Date()).getTime());
+
+        $('#checkCodeImg').click(function () {
+            $('#checkCodeImg').attr('src', checkCodeUrl + '?time=' + (new Date()).getTime());
+        });
+
+        $('#registBtn').click(function () {
+
+            regist();
+        });
+
+
+
+        $('#checkCode').bind('input', function () {
+            checkCheckCode();
+        });
+
+
+    });
+
+function checkCheckCode(callback) {
+    var checkCode = $('#checkCode').val();
+    var icon = $('#checkBoxIcon');
+    var correct = false;
+    if (checkCode && checkCode.length == 4) {
+        $.ajax({
+            type: "post",
+            url: '/' + areaName + '/register/CheckCode',
+            data: { checkCode: checkCode },
+            dataType: "json",
+            async: true,
+            success: function (result) {
+                if (result.success) {
+                    !icon.hasClass('glyphicon-ok-circle') && icon.addClass('glyphicon-ok-circle');
+                    correct = true;
+                }
+                else
+                    !icon.hasClass('glyphicon-remove-circle') && icon.addClass('glyphicon-remove-circle');
+                callback && callback(correct);
+            }
+        });
+    }
+    else {
+        icon.removeClass('glyphicon-ok-circle').removeClass('glyphicon-remove-circle');
+        callback && callback(correct);
+    }
+}
+
+
+function regist() {
+    var username = $.trim($('#username').val());
+    var password = $.trim($('#password').val());
+    var repeatPassword = $.trim($('#repeatPassword').val());
+    var checkCode = $('#checkCode').val();
+
+    var openId = QueryString('openId');
+    var serviceProvider = QueryString('serviceProvider');
+
+    var reg = /^[\u4E00-\u9FA5\@@A-Za-z0-9\_\-]{4,20}$/;
+    if (!username)
+        $.dialog.errorTips('请输入用户名');
+    else if(!reg.test(username))
+        $.dialog.errorTips('用户名只能4-20位字符，暂只支持中英文、数字及"-"、"_"的组合');
+    else if (!password)
+        $.dialog.errorTips('请输入密码');
+    else if(password.length < 6 && password.length > 20)
+        $.dialog.errorTips('密码必须6-20位字符');
+    else if (!repeatPassword)
+        $.dialog.errorTips('请再次输入密码');
+    else if (password != repeatPassword)
+        $.dialog.errorTips('两次密码不一致');
+    else if (!checkCode)
+        $.dialog.errorTips('请填写验证码');
+    else {
+        var loading = showLoading('请稍候', 1);
+        checkCheckCode(function (success) {
+            if (!success) {
+                loading.close();
+                $.dialog.errorTips('验证码错误');
+            }
+            else {
+                var headimgurl = QueryString('headimgurl');
+                $.post('/' + areaName + '/register',
+                {
+                    username: username,
+                    password: password,
+                    checkCode: checkCode,
+                    serviceProvider: serviceProvider,
+                    openId: openId,
+                    headimgurl: headimgurl
+                },
+                function (result) {
+                    loading.close();
+                    if (result.success) {
+                        $.dialog.succeedTips('注册成功!', function () {
+                            var returnUrl = QueryString('returnUrl');
+                            if (!returnUrl)
+                                returnUrl = '/' + areaName;
+                            location.replace(decodeURIComponent(returnUrl));
+                        });
+                    }
+                    else
+                        $.dialog.alert('注册失败!' + result.msg);
+                });
+            }
+
+        });
+    }
+}
+
+</script>

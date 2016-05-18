@@ -1,0 +1,316 @@
+﻿@using Himall.Model
+@using Himall.Core
+
+@{
+    ViewBag.Title = "菜单设置";
+}
+
+@model List<Himall.Web.Areas.SellerAdmin.Models.MenuManageModel>
+@if ((@Himall.Model.VShopInfo)@ViewBag.VShop == null)
+{
+	<div class="container">
+		<ul class="nav nav-tabs-custom clearfix">
+			<li class="active"><a>未开通微店</a></li>
+		</ul>
+		<div class="form-horizontal">
+			<div class="form-group">
+				<p class="apply-primary"><span class="glyphicon glyphicon-info-sign"></span>您还未开设自己的微店，<a href="../vshop/EditVShop?shopId=@ViewBag.ShopId">现在开设</a></p>
+			</div>
+		</div>
+	</div>
+}
+else
+{
+    <form>
+        <div class="container">
+            <ul class="nav nav-tabs-custom clearfix">
+                <strong>菜单设置</strong>
+                <li class="active"><a>菜单管理</a></li>
+                <li><a onclick="SaveMainMenu(null)">添加一级菜单</a></li>
+                <li><a onclick="SaveMenu(null)">添加二级菜单</a></li>
+            </ul>
+            <table class="table mt20">
+                <thead>
+                    <tr>
+                        <th>一级菜单名称</th>
+                        <th>二级菜单名称</th>
+                        <th>跳转连接</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.TopMenuName
+                            </td>
+                            <td></td>
+                            <td>@item.URL</td>
+                            <td>
+                                <span class="btn-a">
+                                    <a class="good-check" onclick="SaveMainMenu(@item.ID)">编辑</a> <a class="good-check" onclick="DeleteMainMenu(@item.ID)">删除</a>
+                                </span>
+                            </td>
+                        </tr>
+                        foreach (var menu in item.SubMenu)
+                        {
+
+                            <tr>
+                                <td></td>
+                                <td>@menu.Title</td>
+                                @if (!string.IsNullOrWhiteSpace(menu.Url))
+                                {
+                                    <td>@menu.Url</td>
+                                }
+                                else
+                                {
+                                    <td>@menu.UrlType.ToDescription()</td>
+
+                                }
+                                <td>
+                                    <span class="btn-a">
+                                        <a class="good-check" onclick="SaveMenu(@menu.Id)">编辑</a> <a class="good-check" onclick="DeleteMenu(@menu.Id)">删除</a>
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+            <div class="table-bt clearfix">
+                <div class="col-sm-10">
+                    <button type="button" class="btn btn-primary" onclick="RequestToWeixin()">同步至微信</button>
+                </div>
+            </div>
+
+            <div id="mainMenu" style="display:none">
+                <div class="dialog-form">
+                    <div class="form-group">
+                        <label for="" class="label-inline">菜单名称：</label>
+                        <input type="text" class="form-control input-sm" id="txtMenuName1">
+                        <p class="help-block">限5个字符</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="label-inline">链接对象：</label>
+                        <select id="ddlType1" onchange="Onchange($(this))" class="form-control input-sm">
+                            <option value="0">不绑定</option>
+                            <option value="1">店铺首页</option>
+                            <option value="2">商品分类</option>
+                            <option value="3">购物车</option>
+                            <option value="4">个人中心</option>
+                            <option value="5">链接</option>
+                        </select>
+                        <p class="help-block">选择链接对象后将不能添加二级菜单</p>
+                    </div>
+                    <div class="form-group linkUrl" style="display:none">
+                        <label for="" class="label-inline">链接地址：</label>
+                        <input type="text" class="form-control input-sm" id="menuUrl1" />
+                    </div>
+                </div>
+            </div>
+            <div id="childMenu" style="display:none;">
+                <div class="dialog-form">
+                    <div class="form-group">
+                        <label for="" class="label-inline">菜单名称：</label>
+                        <input type="text" class="form-control input-sm" id="txtMenuName">
+                        <p class="help-block">限7个字符</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="label-inline">上级菜单：</label>
+                        <select id="mainMenu" class="form-control input-sm">
+                            @foreach (var item in Model.Where(i => i.LinkType == Himall.Model.MenuInfo.UrlTypes.Nothing))
+                            {
+                                <option value=@item.ID>@item.TopMenuName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="label-inline">链接对象：</label>
+                        <select id="ddlType" onchange="Onchange($(this))" class="form-control input-sm">
+                            <option value="1">店铺首页</option>
+                            <option value="2">商品分类</option>
+                            <option value="3">购物车</option>
+                            <option value="4">个人中心</option>
+                            <option value="5">链接</option>
+                        </select>
+                    </div>
+                    <div class="form-group linkUrl" style="display:none">
+                        <label for="" class="label-inline">链接地址：</label>
+                        <input type="text" class="form-control input-sm" id="menuUrl" value="http://" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+    function Onchange(obj) {
+        if (obj.val() == "5")
+        {
+            obj.parents('.dialog-form').find(".linkUrl").show();
+            obj.parents('.dialog-form').find(".linkUrl").find('input').eq(0).val();
+        }
+        else {
+            obj.parents('.dialog-form').find(".linkUrl").hide();
+            obj.parents('.dialog-form').find(".linkUrl").find('input').eq(0).val();
+        }
+    }
+
+    function DeleteMainMenu(MenuId) {
+        $.dialog.confirm('删除该分类将会同时删除该分类的所有下级分类，您确定要删除吗？', function () {
+            var loading = showLoading();
+            $.post('./DeleteMenu', { menuId: MenuId }, function (result) {
+                loading.close();
+                if (result.success) {
+                    $.dialog.tips('删除成功');
+                    location.reload();
+                }
+                else
+                    $.dialog.alert('删除失败！' + result.msg);
+            });
+        });
+    }
+    function DeleteMenu(MenuId) {
+        //var loading = showLoading();
+        $.dialog.confirm('确定删除该分类吗？', function () {
+            $.post('./DeleteMenu', { menuId: MenuId }, function (result) {
+                if (result.success) {
+                    $.dialog.tips('删除成功');
+                    location.reload();
+                }
+                else
+                    $.dialog.alert('删除失败！' + result.msg);
+            });
+        });
+    }
+
+    function RequestToWeixin() {
+        var loading = showLoading();
+        $.post('./RequestToWeixin', {}, function (result) {
+            loading.close();
+            if (result.success) {
+                $.dialog.tips('同步成功');
+                location.reload();
+            }
+            else
+                $.dialog.alert('同步失败！' + result.msg);
+        });
+    }
+
+    /*保存二级菜单*/
+    function SaveMenu(menuId)
+    {
+        $.post('./GetMenu',{menuId:menuId},function(result)
+        {
+            if(result.success)
+            {
+                $.dialog({
+                    title: '保存二级菜单',
+                    lock: true,
+                    id: 'addWeixinMenu',
+                    content: $("#childMenu").html(),
+                    padding: '10px',
+                    init:function(){
+                        $("#txtMenuName").val(result.title);
+                        $("#ddlType").val(result.urlType);
+                        $("#menuUrl").val(result.url);
+                        $("#mainMenu").val(result.parentId);
+                        if(result.urlType==5)
+                        {
+                            $('.linkUrl').show();
+                        }
+                    },
+                    button: [
+                    {
+                        name: '确认',
+                        callback: function () {
+                            if ($("#txtMenuName").val().length <= 0 || $("#txtMenuName").val().length > 7) {
+                                $.dialog.alert("菜单名称不能为空在7个字符以内");
+                                return false;
+                            }
+                            if ($("#mainMenu").val() == null) {
+                                $.dialog.alert("请选择一级菜单");
+                                return false;
+                            }
+                            Add($("#txtMenuName").val(), $("#ddlType").val(), $("#mainMenu").val(), $("#menuUrl").val(),menuId);
+                        },
+                        focus: true
+                    },
+                    {
+                        name: '取消',
+                    }]
+                });
+            }
+            else
+                $.dialog.alert("保存失败"+result.msg)
+        });
+    }
+
+    /*保存一级菜单*/
+    function SaveMainMenu(menuId)
+    {
+        $.post('./GetMenu',{menuId:menuId},function(result)
+        {
+            if(result.success)
+            {
+                $.dialog({
+                    title: '保存一级菜单',
+                    lock: true,
+                    id: 'addWeixinMainMenu',
+                    content: $("#mainMenu").html(),
+                    padding: '10px',
+                    init: function () {
+                        $("#txtMenuName1").val(result.title);
+                        $("#ddlType1").val(result.urlType);
+                        $("#menuUrl1").val(result.url);
+                        if(result.urlType==5)
+                        {
+                            $('.linkUrl').show();
+                        }
+                    },
+                    button: [
+                    {
+                        name: '确认',
+                        callback: function () {
+                            if ($("#txtMenuName1").val().length <= 0 || $("#txtMenuName1").val().length > 5) {
+                                $.dialog.alert("菜单名称不能为空在5个字符以内");
+                                return false;
+                            }
+                            Add($("#txtMenuName1").val(), $("#ddlType1").val(), '0', $("#menuUrl1").val(),menuId);
+                        },
+                        focus: true
+                    },
+                    {
+                        name: '取消',
+                    }]
+                });
+            }
+            else
+                $dialog.alert("保存失败"+result.msg);
+        });
+    }
+
+    function AddMainMenu(menuId) {
+
+    }
+
+
+    function Add(title, urlType, parentId, url,menuId) {
+        var loading = showLoading();
+        $.post('./AddMenu', { title: title, url: url, parentId: parentId, urlType: urlType,menuId:menuId }, function (result) {
+            loading.close();
+            if (result.success) {
+                $.dialog.succeedTips("保存成功！");
+                location.reload();
+            }
+            else
+                $.dialog.alert("保存失败" + result.msg);
+        });
+    }
+
+
+        </script>
+    </form>
+}

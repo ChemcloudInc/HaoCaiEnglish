@@ -1,0 +1,21 @@
+﻿<script src="~/Scripts/jquery.hiMallDatagrid.js"></script>
+<script src="~/Scripts/jqeury.himallLinkage.js"></script>
+<script src="~/Areas/Admin/Scripts/ProductConsultation.js"></script>
+
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>咨询管理</strong>
+        <li class="active"><a id="notReply" onclick="ShowStatus(this)">未处理</a></li>
+        <li><a onclick="ShowStatus(this)">全部</a></li>
+        <em class="primary-btn">
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <div class="primary">
+                <h3>温馨提示：</h3>
+                <span>*</span><p>管理会员提交的商品咨询消息</p>
+            </div>
+        </em>
+    </ul>
+    <table class="table" id="list">
+    </table>
+</div>
+

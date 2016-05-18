@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "CashDepositDetail";
+}
+
+<script src="~/Scripts/jquery.hiMallDatagrid.js"></script>
+
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap-datetimepicker.min.css">
+<script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.zh-CN.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+
+        Query();
+        $("#searchBtn").click(function () {
+            Query();
+        });
+    });
+
+    function Query() {
+
+        var id = $("#cashDepositId").val();
+        var name = $("#name").val();
+        var startDate = $("#inputStartDate").val();
+        var endDate = $("#inputEndDate").val();
+
+        $("#shopDatagrid").hiMallDatagrid({
+            url: "/Admin/CashDeposit/CashDepositDetailList",
+            singleSelect: true,
+            pagination: true,
+            NoDataMsg: '没有找到符合条件的数据',
+            idField: "Id",
+            pageSize: 15,
+            pageNumber: 1,
+            queryParams: {"id":id, "name": name,"startDate":startDate,"endDate":endDate},
+            toolbar: "#shopToolBar",
+            columns:
+            [[
+
+                { field: "Id", title: "Id", hidden: true },
+                { field: "Date", title: "时间", width: 140 },
+                { field: "Balance", title: "金额", width: 140 },
+                { field: "Operator", title: "操作人", width: 140 },
+                { field: "Description", title: "说明", width: 140 }
+            ]]
+        });
+
+    };
+
+</script>
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>保证金</strong>
+        <li><a href="../Management">保证金管理</a></li>
+        <li class="active"><a>保证金详情</a></li>
+    </ul>
+    <div id="shopToolBar">
+        <div class="search-box only-line">
+            <form class="custom-inline" role="form">
+                <div class="form-group">
+                    <label class="label-inline" for="">操作人</label>
+                    <input class="form-control input-ssm" type="text" id="name">
+                </div>
+
+                <div class="form-group">
+                    <label class="label-inline" for="">开始日期</label>
+                    <input id="inputStartDate" class="form-control input-ssm start_datetime" type="text" >
+                </div>
+                <div class="form-group">
+                    <label class="label-inline" for="">结束日期</label>
+                    <input id="inputEndDate" class="form-control input-ssm end_datetime" type="text" >
+                </div>
+                <input type="button" class="btn btn-primary btn-sm" id="searchBtn" value="搜 索">
+            </form>
+        </div>
+    </div>
+    <table class="table" id="shopDatagrid"></table>
+    <input type="hidden" value="@ViewBag.Id" id="cashDepositId" />
+</div>
+<script src="~/Scripts/datetimeCustom.js"></script>

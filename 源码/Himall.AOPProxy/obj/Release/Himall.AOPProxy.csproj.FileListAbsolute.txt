@@ -1,0 +1,6 @@
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Himall.AOPProxy\bin\Release\Himall.AOPProxy.dll
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Himall.AOPProxy\bin\Release\Himall.AOPProxy.pdb
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Himall.AOPProxy\bin\Release\Newtonsoft.Json.dll
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Himall.AOPProxy\obj\Release\Himall.AOPProxy.csprojResolveAssemblyReference.cache
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Himall.AOPProxy\obj\Release\Himall.AOPProxy.dll
+D:\项目相关\02.原型\Mall_v2.1\HiMall_v2.1\Himall.AOPProxy\obj\Release\Himall.AOPProxy.pdb

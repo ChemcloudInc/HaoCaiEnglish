@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.FootIndex = 1;
+    ViewBag.Title = "微店列表";
+}
+
+@model Himall.Model.VShopInfo
+<div class="container">
+    @if (Model != null)
+    {
+        <section class="vshop-section">
+            <h5>微店推荐：<b>@Model.Name</b></h5>
+            <div class="vshop-item">
+                <div class="vshop-banner"><a href="/@ViewBag.AreaName/VShop/Detail/@Model.Id"><img src="@Model.BackgroundImage" /></a><a class="btn btn-primary btn-sm" type="addFavorite" shopid="@Model.ShopId">@(ViewBag.IsFavorite ? "已收藏" : "收 藏")</a></div>
+                <ul class="v-goods clearfix">
+                    @{var products = (IEnumerable<Himall.Web.Areas.Mobile.Models.ProductItem>)ViewBag.TopShopProducts;}
+                    @foreach (var product in products)
+                    {
+                        <li>
+                            <a class="p-img" href="/@ViewBag.AreaName/product/detail/@product.Id"><img src="@product.ImageUrl" alt=""></a>
+                            <h3><a href="/@ViewBag.AreaName/product/detail/@product.Id">@product.Name</a></h3>
+                            <p><span>￥@product.SalePrice</span></p>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </section>
+    }
+    <section class="vshop-section" id="shopList">
+        <h5>热门微店</h5>
+    </section>
+
+    <div class="more-btn" id="more"></div>
+    @{Html.RenderPartial("~/Areas/Mobile/Templates/APP/Views/Shared/_4ButtonsFoot.cshtml");}
+</div>
+<a class="WX-backtop" href="#"></a>
+<div class="loading hide" id="autoLoad"><span></span></div>
+<script src="~/Areas/Mobile/Templates/APP/Scripts/vshopMain.js"></script>

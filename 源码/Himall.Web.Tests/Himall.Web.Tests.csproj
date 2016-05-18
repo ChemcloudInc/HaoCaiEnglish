@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BCD8E770-CB7E-4EA8-BF0D-F06BE3832F46}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Himall.Web.Tests</RootNamespace>
+    <AssemblyName>Himall.Web.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Himall.API\AppApiTest.cs" />
+    <Compile Include="Himall.Plugin.Message\MessageTest.cs" />
+    <Compile Include="Himall.Plugin.Payment\AlipayTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Himall.AOPProxy\Himall.AOPProxy.csproj">
+      <Project>{4a24d511-a0fa-4ad8-8ba6-dbf6d2a30ab9}</Project>
+      <Name>Himall.AOPProxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Core\Himall.Core.csproj">
+      <Project>{6b29c2e8-7b98-4707-89a4-09cfee15b9af}</Project>
+      <Name>Himall.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Entity\Himall.Entity.csproj">
+      <Project>{193a0267-e8af-435a-93ae-bbc7a5242dc0}</Project>
+      <Name>Himall.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.ExpressPlugin\Himall.ExpressPlugin.csproj">
+      <Project>{98d02bdf-7a4b-4564-ac66-d842c676f2c2}</Project>
+      <Name>Himall.ExpressPlugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.IServices\Himall.IServices.csproj">
+      <Project>{7ba1dd42-e886-486c-8aec-d96055b331fe}</Project>
+      <Name>Himall.IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.MessagePlugin\Himall.MessagePlugin.csproj">
+      <Project>{5d6b6f87-894d-4e8d-a760-fecbc2f65ef8}</Project>
+      <Name>Himall.MessagePlugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Model\Himall.Model.csproj">
+      <Project>{414728c0-81d4-4c8a-905e-83834bd74332}</Project>
+      <Name>Himall.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.PaymentPlugin\Himall.PaymentPlugin.csproj">
+      <Project>{59d01100-d6a1-4947-94eb-cd39d5def684}</Project>
+      <Name>Himall.PaymentPlugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Express.EMS\Himall.Plugin.Express.EMS.csproj">
+      <Project>{c5f5c8c7-2613-411f-8119-59079e42d21c}</Project>
+      <Name>Himall.Plugin.Express.EMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Express.Shentong\Himall.Plugin.Express.Shentong.csproj">
+      <Project>{8142ceaa-6e4d-4616-91f0-3c7775f9341d}</Project>
+      <Name>Himall.Plugin.Express.Shentong</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Express.Shunfeng\Himall.Plugin.Express.Shunfeng.csproj">
+      <Project>{bc5a48cd-81d3-48ae-ae44-780201ca8586}</Project>
+      <Name>Himall.Plugin.Express.Shunfeng</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Express.Tiantian\Himall.Plugin.Express.Tiantian.csproj">
+      <Project>{00e4ce47-0be0-4e12-bc47-bff0de658940}</Project>
+      <Name>Himall.Plugin.Express.Tiantian</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Express.Yuantong\Himall.Plugin.Express.Yuantong.csproj">
+      <Project>{d4b6f5a1-5301-440f-8539-eeef9807ef25}</Project>
+      <Name>Himall.Plugin.Express.Yuantong</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Express.Yunda\Himall.Plugin.Express.Yunda.csproj">
+      <Project>{c91a6058-d719-4a8f-b988-91d76ce980ba}</Project>
+      <Name>Himall.Plugin.Express.Yunda</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Express.Zhaijisong\Himall.Plugin.Express.Zhaijisong.csproj">
+      <Project>{c9000963-c433-45fc-8418-fc3ab49de417}</Project>
+      <Name>Himall.Plugin.Express.Zhaijisong</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Express.Zhongtong\Himall.Plugin.Express.Zhongtong.csproj">
+      <Project>{3615ab04-5b82-47e8-9260-bb1c0c5c0d06}</Project>
+      <Name>Himall.Plugin.Express.Zhongtong</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Express.Zhongyouwuliu\Himall.Plugin.Express.Zhongyouwuliu.csproj">
+      <Project>{9fe4afb6-f445-4510-85a7-3d7e07a7f2b6}</Project>
+      <Name>Himall.Plugin.Express.Zhongyouwuliu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Message.Email\Himall.Plugin.Message.Email.csproj">
+      <Project>{6c094566-a80e-4a00-94bd-2137ff3345c4}</Project>
+      <Name>Himall.Plugin.Message.Email</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Message.SMS\Himall.Plugin.Message.SMS.csproj">
+      <Project>{0ad38215-ba32-4be0-b03a-627fe85085c6}</Project>
+      <Name>Himall.Plugin.Message.SMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.OAuth.QQ\Himall.Plugin.OAuth.QQ.csproj">
+      <Project>{61efa66f-7fa2-4e5b-941c-4cfb562874ae}</Project>
+      <Name>Himall.Plugin.OAuth.QQ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.OAuth.Weibo\Himall.Plugin.OAuth.Weibo.csproj">
+      <Project>{4738297a-67b8-48ee-9e1d-f0fb86aac7d5}</Project>
+      <Name>Himall.Plugin.OAuth.Weibo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.OAuth.WeiXin\Himall.Plugin.OAuth.WeiXin.csproj">
+      <Project>{f92f36c4-e7d4-4de4-b6d3-88ee906a4668}</Project>
+      <Name>Himall.Plugin.OAuth.WeiXin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Payment.Alipay\Himall.Plugin.Payment.Alipay.csproj">
+      <Project>{dbe33e2a-ae6e-473e-acb1-90a2c9482363}</Project>
+      <Name>Himall.Plugin.Payment.Alipay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Payment.Alipay_QRCode\Himall.Plugin.Payment.Alipay_QRCode.csproj">
+      <Project>{c37ab78e-f390-4235-bbc1-9b59b42f8549}</Project>
+      <Name>Himall.Plugin.Payment.Alipay_QRCode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Payment.UnionPay\Himall.Plugin.Payment.UnionPay.csproj">
+      <Project>{02db72de-f769-4e6e-acfe-9431608e9756}</Project>
+      <Name>Himall.Plugin.Payment.UnionPay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Payment.WeiXinPay\Himall.Plugin.Payment.WeiXinPay.csproj">
+      <Project>{b3530481-2d82-44b5-b2bb-af738ae7ccaa}</Project>
+      <Name>Himall.Plugin.Payment.WeiXinPay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Plugin.Payment.WeiXinPay_Native\Himall.Plugin.Payment.WeiXinPay_Native.csproj">
+      <Project>{9f34e254-23d2-4a4e-906f-b157b87163d8}</Project>
+      <Name>Himall.Plugin.Payment.WeiXinPay_Native</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.ServiceProvider\Himall.ServiceProvider.csproj">
+      <Project>{f0577c75-1c44-4e95-bc2f-083e78151c4e}</Project>
+      <Name>Himall.ServiceProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Service\Himall.Service.csproj">
+      <Project>{36c9fdec-6088-48f0-a541-08921598ccc0}</Project>
+      <Name>Himall.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Strategy.AspNetCache\Himall.Strategy.AspNetCache.csproj">
+      <Project>{7a71091d-67a3-4f73-838c-da965b30bda0}</Project>
+      <Name>Himall.Strategy.AspNetCache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Strategy.Memecached\Himall.Strategy.Memecached.csproj">
+      <Project>{ae64bdfa-04b8-47e1-9c5c-254afbeb3c87}</Project>
+      <Name>Himall.Strategy.Memecached</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Web.Framework\Himall.Web.Framework.csproj">
+      <Project>{59d59baa-aad9-4cd9-ae7c-d904824625fc}</Project>
+      <Name>Himall.Web.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Web\Himall.Web.csproj">
+      <Project>{a91921c6-9d05-4abc-97e6-dc5861c4470a}</Project>
+      <Name>Himall.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.WeixinPaymentBase\Himall.WeixinPaymentBase.csproj">
+      <Project>{c296e319-dc11-4a29-b9f1-75899049fc3f}</Project>
+      <Name>Himall.WeixinPaymentBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hishop.Weixin.MP\Hishop.Weixin.MP.csproj">
+      <Project>{886401f0-f37f-46be-9e1e-58c986361c8b}</Project>
+      <Name>Hishop.Weixin.MP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Himall.Service\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

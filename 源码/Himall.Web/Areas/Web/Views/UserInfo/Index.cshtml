@@ -1,0 +1,147 @@
+﻿@{
+    Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
+    ViewBag.Title = "个人信息";
+}
+@model Himall.Model.UserMemberInfo
+
+<div class="box1 lh24">
+    <div class="title bot-border">
+        <h3 class="title_txt cur">修改个人信息</h3>
+    </div>
+    <div class="border-box">
+        <div class="user-set userset-lcol">
+            <div class="form">
+                <div class="item">
+                    <span class="label">昵称：</span>
+                    <div class="fl">
+                        <input type="text" value="@Model.Nick" id="nick" maxlength="20" class="itxt">
+                        <div class="clr"></div>
+                        <div id="nick_msg" class="prompt-06" style="display:none">密码错误!</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="label">邮箱：</span>
+                    <div class="fl">
+                        @{var disableEmail = "";
+                        if (@ViewBag.BindEmail!=null&&@ViewBag.BindEmail.IsBind && @ViewBag.BindEmail.IsSettingsValid)
+                        {
+                            disableEmail = "disabled";
+                        }
+                        }
+                        <input type="text" value="@Model.Email" id="email" @disableEmail class="itxt">
+                        @{if (@ViewBag.BindEmail!=null&&!string.IsNullOrEmpty(disableEmail))
+                        {
+                            <a href="/UserInfo/Rebind?pluginid=Himall.Plugin.Message.Email">更改</a>
+                        }
+                         else if (@ViewBag.BindEmail != null)
+                        {
+                            <a href="/UserCenter/bind?pluginid=Himall.Plugin.Message.Email">绑定</a>
+                        }}
+                        <div class="clr"></div>
+                        <div id="email_msg" class="prompt-06" style="display:none"></div>
+
+                    </div>
+                </div>
+                <div class="item">
+                    @{var disableSMS = "";
+                    if (@ViewBag.BindSMS!=null&&@ViewBag.BindSMS.IsBind && @ViewBag.BindSMS.IsSettingsValid)
+                    {
+                        disableSMS = "disabled";
+                    }
+                    }
+                    <span class="label">手机：</span>
+                    <div class="fl">
+                        <input type="text" value="@Model.CellPhone" id="cellphone" maxlength="20" @disableSMS class="itxt">
+                        @{if (@ViewBag.BindSMS!=null&&!string.IsNullOrEmpty(disableSMS))
+                        {
+                            <a href="/UserInfo/Rebind?pluginid=Himall.Plugin.Message.SMS">更改</a>
+                        }
+                          else if (@ViewBag.BindSMS != null)
+                        {
+                            <a href="/UserCenter/bind?pluginid=Himall.Plugin.Message.SMS">绑定</a>
+                        }}
+                        <div class="clr"></div>
+                        <div id="email_msg" class="prompt-06" style="display:none"></div>
+
+
+
+                        <div class="clr"></div>
+                        <div id="phone_msg" class="prompt-06" style="display:none"></div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <span class="label">QQ：</span>
+                    <div class="fl">
+                        <input type="text" value="@Model.QQ" id="qq" maxlength="20" class="itxt">
+                        <div class="clr"></div>
+                        <div id="email_msg" class="prompt-06" style="display:none"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="label">真实姓名：</span>
+                    <div class="fl">
+                        <input type="text" value="@Model.RealName" id="name1" maxlength="20" class="itxt">
+                        <div class="clr"></div>
+                        <div class="prompt-06" id="name_msg"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="label">&nbsp;</span>
+                    <div class="fl">
+                        <a id="id_btn" class="btn-5">保存修改</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    //验证
+    ; (function ($) {
+        var stae1, stae2, stae3, check, reg = /^([a-zA-Z0-9_-])+@@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+        $("#nick").focus();
+        $('#email').blur(function () {
+            var d = $(this).val();
+            check = 1;
+            if (!reg.test(d)) {
+                $('#email').css({ borderColor: '#f60' });
+                $('#email_msg').css({ color: '#f60' }).html('邮箱格式不正确!');
+            } else {
+                $('#email').css({ borderColor: '#ccc' });
+                $('#email_msg').css({ color: '#ccc' }).html('');
+            }
+        });
+        $('#id_btn').bind('click', function () {
+            stae1 = $('#nick').val();
+            stae2 = $('#email').val();
+            stae3 = $('#name1').val();
+            stae4 = $('#qq').val();
+            stae5 = $('#cellphone').val();
+            if (stae2 && (!reg.test(stae2))) {
+                $('#email').css({ borderColor: '#f60' });
+                $('#email_msg').css({ color: '#f60' }).html('邮箱格式不正确!');
+                return;
+            }
+            if (stae1 || stae2 || stae3) {
+                var loading = showLoading();
+                $.ajax({
+                    type: 'post',
+                    url: '@Url.Action("UpdateUserInfo")',
+                    data: { "nick": stae1, "email": stae2, "realName": stae3, "QQ": stae4, "cellPhone": stae5 },
+                    dataType: "json",
+                    success: function (data) {
+                        loading.close();
+                        if (data.success) {
+                            $.dialog.succeedTips("修改成功！", '', 2);
+
+                        } else {
+                            $.dialog.errorTips("修改失败！", '', 3);
+                        }
+                    }
+                });
+            }
+        });
+    }(jQuery));
+</script>

@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "积分兑换规则";
+}
+@model Himall.Model.MemberIntegralExchangeRules
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>积分规则</strong>
+        <li><a href="./Management">积分获取规则</a></li>
+        <li class="active">@Html.ActionLink( "积分兑换规则" , "Change" , new
+                      {
+                          area = "admin"
+                      } )</li>
+        <em class="primary-btn">
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <div class="primary">
+                <h3>温馨提示：</h3>
+                <span>*</span><p>平台积分的规则</p>
+            </div>
+        </em>
+    </ul><form class="form-horizontal" id="v-form" method="post">
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">兑换规则：</label>
+            <div class="col-sm-10">
+                每 <input class="form-control input-sm" style="display:inline-block;width:50px;" id="IntegralPerMoney" name="IntegralPerMoney" type="text" value="@(Model==null?0:Model.IntegralPerMoney)"> 积分可抵扣一元
+                <p class="help-block">在订单结算时，会员可直接用积分抵扣订单金额（到分）。该部分抵扣金额，由平台承担。当配置为0时，表示积分不能抵扣金额。</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Scripts/v.js"></script>
+<script>
+    var a = v( {
+        form: 'v-form',// 表单id 必须
+        beforeSubmit: function ()
+        {
+            if ( $( "div.tip-error span" ).length === 0 )
+            {
+                loadingobj = showLoading();
+            }
+        },// 表单提交之前的回调 不是必须
+        afterSubmit: function ( data )
+        {
+            if ( data.success )
+            {
+                // a.reset();
+                $.dialog.succeedTips( data.msg );
+            } else
+            {
+                $.dialog.errorTips( data.msg );
+            }
+            loadingobj.close();
+        },// 表单提交之后的回调 不是必须
+        ajaxSubmit: true// 是否ajax提交 如果没有这个参数那么就是默认提交方式 如果没有特殊情况建议默认提交方式
+    } );
+    a.add(
+    {
+        target: "IntegralPerMoney",
+        ruleType: "required&&uint",
+        tips: '该信息为必填项，请输入所需积分数!',
+        error: '所需积分数为正整数且必填填写!'
+    }
+    );
+</script>

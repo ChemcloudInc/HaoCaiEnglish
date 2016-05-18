@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+}
+@model  List<Himall.Model.CollocationProducts>
+    @if (Model != null&&Model.Count>1)
+    {
+        var pros = @Model;
+        int i = 0;
+        var main = "";
+        <div class="products-group m m2">
+			<div class="p-group-list cl">
+				<div class="p-group-main curr">
+					@{var mainpro = pros.Take(1).FirstOrDefault();}
+					<a title="@mainpro.ProductName" target="_blank" href="@Url.Action("detail", new { id = @mainpro.ProductId })"><img src="@mainpro.Image/1_220.png" /></a>
+					<p class="name"><a target="_blank" href="@Url.Action("detail", new { id = @mainpro.ProductId })">@mainpro.ProductName</a></p>
+					<p class="price"><label><input type="checkbox" checked="checked" disabled name="collochk" class="collochk" data-collpid="@mainpro.ColloPid"
+                              data-MinCollprice="@mainpro.MinCollPrice" data-MaxCollprice="@mainpro.MaxCollPrice"    data-MaxSaleprice="@mainpro.MaxSalePrice" data-MinSaleprice="@mainpro.MinSalePrice" value="@mainpro.ProductId" />
+                        价格 ¥ @mainpro.MinCollPrice
+                        </label></p>
+				</div>
+				<div class="p-group-child-box">
+					<ul class="p-group-child cl">
+						@foreach (var t in pros.Skip(1))
+						{
+                            if (t.Stock == 0) { main = "disabled"; }
+                            else if (i < 2 && t.Stock > 0) { main = "checked"; i++; }
+                            else { main = ""; }
+							<li>
+								<a title="@t.ProductName" href="@Url.Action("detail", new { id=t.ProductId})"><img src="@t.Image/1_220.png" /></a>
+                                <p class="name"><a target="_blank" href="@Url.Action("detail", new { id = @t.ProductId })">@t.ProductName</a></p>
+								<p class="price"><label><input type="checkbox" @main name="collochk" class="collochk" data-collpid="@t.ColloPid"
+       data-MinCollprice="@t.MinCollPrice" data-MaxCollprice="@t.MaxCollPrice" data-MaxSaleprice="@t.MaxSalePrice" data-MinSaleprice="@t.MinSalePrice" value="@t.ProductId" />价格 ¥ @t.MinCollPrice</label></p>
+
+							</li>
+						}
+					</ul>
+				</div>
+				<div class="group-arrow">
+					<a class="group-arrow-pre"></a>
+					<a class="group-arrow-next"></a>
+				</div>
+			</div>
+            <div class="p-group-btn">
+				<h3>组合价<span id="collTotalPrice"></span></h3>
+				<p class="oldp">原价：<s id="saleTotalPrice"></s></p>
+				<p><i>省</i><span class="dis" id="groupPriceMinus"></span> </p>
+				<a onclick="CollocationBuy()">立即购买</a>
+			</div>
+			
+        </div>
+    }

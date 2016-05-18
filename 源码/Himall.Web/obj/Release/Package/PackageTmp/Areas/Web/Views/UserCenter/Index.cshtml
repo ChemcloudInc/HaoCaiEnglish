@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-stand">
+    <meta name="viewport" content="width=device-width" />
+    <title>买家中心</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <style type="text/css">
+	body{ background:#f2f2f2;}
+	.logo{ background:none;}
+	.aside,.content {top:110px; }
+	.aside ul{ margin:0;}
+	.aside ul li{ margin:0;}
+	.aside li{ height:32px; line-height:32px;}
+	.aside li.li-lg{ font-size:14px;color:#666;border-top:1px solid #f4f5fa; border-bottom:1px solid #f4f5fa; line-height:40px; height:40px; background:url(/images/usecenter_l.png) no-repeat;}
+	.aside li.li-lg.user-c{ background:none;}
+	.aside li.li-lg.user-c a{ background:url(/images/usecenter_l.png) no-repeat 20px 13px;}
+	.aside li.li-lg.user-c.current a{ background-color:#e3393c; background-position:20px -197px;}
+	.aside li.user-o{ background-position:20px -18px;}
+	.aside li.user-m{ background-position:20px -48px;}
+	.aside li.user-a{ background-position:20px -78px}
+	.aside li.user-r{ background-position:20px -139px;}
+	.aside li.user-i{ background-position:20px -169px;}
+	.aside li.user-p{ background-position:20px -108px;}
+	.aside li.li-lg:first-child{ border:0;}
+	.aside li.li-lg a{ color:#000;}
+	.aside li.li-lg a:hover{ color:#e3393c}
+	.aside li.li-lg.current a{ color:#fff;}
+	.user-header{ height:80px; border-bottom:2px solid #e3393c; background:#fff;}
+	.search-bar { height: 60px; padding-top:10px;  width: 1190px; margin: 0 auto;}
+	.logo { float: left; width: 330px; }
+	.logo img{  display: inline-block;}
+	.search { float: right; padding-right:280px; margin-top:10px; }
+	.search-form { height: 36px; margin-bottom: 3px; position: relative;}
+	.search-form input { float: left; outline:0;}
+	.search-form .text { width: 400px; height: 36px; padding: 5px; background-color: #fff; line-height: 22px; color: rgb(51, 51, 51); font-size: 14px;border: 2px solid #ddd;border-right: 0;padding-left: 70px;}
+	.search-form .button { background: #e3393c; width: 78px; font-size: 14px; font-weight: 700; color: #fff; cursor: pointer;   height: 36px; border: none 0 ;}
+    .search-form ul{ list-style:none; position:absolute; top:1px; left:1px; background-color:#fff;  width: 56px;line-height: 32px; font-size: 14px; box-shadow:0 2px 4px #ddd; border:1px solid #ddd; z-index:2; display:none;}
+    .search-form ul li{ cursor:pointer; text-indent:12px;}
+    .search-form ul li:hover{ color: #e3393c;}
+    .search-form label{ position:absolute; left:2px; width:56px; text-indent:12px; font-size:14px; line-height:36px; cursor:pointer; color:#666; font-weight:normal;}
+    .search-form label:after{ content:''; position:absolute; top:16px; right:0; border-top:5px solid #e3393c; border-left:5px dashed transparent; border-right:5px dashed transparent; font-size:0; width:0; height:0;}
+
+	</style>
+
+    <link href="~/Areas/Web/Content/artdilog.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/CommonJS.js"></script>
+</head>
+
+
+<body>
+    @{Html.RenderAction("TopInfo", "ProductPartial");}
+	
+	<div class="user-header">
+		<div class="search-bar clearfix">
+			<div class="logo"><a href="/"><img src="@ViewBag.Logo" height="40" alt="Himall" /></a></div>
+			<div class="search">
+				<div class="search-form">
+                    <ul>
+                        <li>商品</li>
+                        <li>店铺</li>
+                    </ul>
+                    <label>商品</label>
+					<input type="text" id="searchBox" class="text" name="" value="" placeholder="@ViewBag.Keyword" />
+					<input type="button" id="searchBtn" class="button" value="搜索" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div class="aside">
+		<ul class="aside-list">
+			<li class="current li-lg user-c"><a href="/UserCenter/home" target="iframe">个人中心</a></li>
+			<li class="li-lg user-o">订单中心</li>
+			<li><a href="/UserOrder" target="iframe">我的订单</a></li>
+			<li><a href="/userConsultation" target="iframe">咨询管理</a></li>
+			<li><a href="/userComment" target="iframe">评价管理</a></li>
+			<li class="li-lg user-m">资产中心</li>
+			<li><a href="/userCoupon/index" target="iframe">我的优惠劵</a></li>
+			<li><a href="/userIntegral/Index" target="iframe">我的积分</a></li>
+            <li><a href="/UserCapital/Index" target="iframe">我的账户</a></li>
+			<li class="li-lg user-a">我的关注</li>
+			<li><a href="/productConcern/index" target="iframe">商品关注</a></li>
+			<li><a href="/shopConcern/Index" target="iframe">店铺关注</a></li>
+            <li class="li-lg user-p">推广</li>
+            <li><a href="/userInvite/index" target="iframe">平台推广</a></li>
+			<li class="li-lg user-r">售后服务</li>
+			<li><a href="@Url.Action("List", "OrderRefund", new { Area = "Web", showtype =2})" target="iframe">退换货</a></li>
+			<li><a href="/OrderComplaint" target="iframe">投诉维权</a></li>
+			<li class="li-lg user-i">帐户管理</li>
+			<li><a href="/UserAddress" target="iframe">收货地址管理</a></li>
+			<li><a href="/UserInfo/Index" target="iframe">个人信息</a></li>
+			<li><a href="/userCenter/AccountSafety" target="iframe">账户安全管理</a></li>
+			
+		</ul>
+		<!--<a class="btn-change-link" href="@Url.Action("index", "home", new { area = "SellerAdmin" })"><i class="glyphicon glyphicon-shopping-cart"></i>我要卖</a>-->
+	</div>
+	<div class="content">
+		<iframe id="iframe" name="iframe" frameborder="0" scrolling="auto" src="/UserCenter/home"></iframe>
+	</div>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+	<script src="~/Scripts/jquery.nicescroll.min.js"></script>
+	<script type="text/javascript">
+        $(function () {
+            //下拉菜单
+            $('.top .dropdown').hover(function () {
+                $(this).toggleClass('hover');
+            });
+
+            //搜索切换
+            $('.search-form label').click(function () {
+                $(this).siblings('ul').show();
+            });
+            $('.search-form ul li').click(function () {
+                $(this).parent().hide().siblings('label').text($(this).text());
+            });
+			
+			//iframe高度自适应
+			$('.content,.aside').height($(window).height() - 110);
+			$(window).resize(function () {
+				$('.content,.aside').height($(window).height() - 110);
+			});
+			
+			$('.aside-list li a').click(function() {
+				$(this).parent().addClass('current').siblings().removeClass('current');
+			});
+			
+			$(".aside").niceScroll({
+				cursorwidth:3,
+				cursorcolor:"#616161",
+				cursorborder :0,
+				cursorborderradius:0
+			});
+			//$('#searchBtn').click(function () {
+			//    var keyWords = $('#searchBox').val();
+			//    location.href = "/search?keywords=" + encodeURIComponent(keyWords ? keyWords : $('#searchBox').attr('placeholder'))
+			//});
+
+			$('#searchBtn').click(function () {
+			    var keyWords = $.trim($('#searchBox').val());
+
+			    var selected = $(".search .search-form label").html();
+			    if (selected == "店铺") {
+			        if (keyWords == '') {
+			            return;
+			        }
+			        location.href = "/shopsearch?keywords=" + encodeURIComponent(keyWords ? keyWords : $('#searchBox').attr('placeholder'))
+			    }
+			    else {
+			        location.href = "/search?keywords=" + encodeURIComponent(keyWords ? keyWords : $('#searchBox').attr('placeholder'))
+			    }
+
+			});
+
+			$("#searchBox").keydown(function (e) {
+			    if (e.keyCode == 13) {
+			        var keyWords = $('#searchBox').val();
+			        location.href = "/search?keywords=" + encodeURIComponent(keyWords ? keyWords : $('#searchBox').attr('placeholder'))
+			    }
+			});
+        });
+
+
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+
+        $(function () {
+            var myurl = GetQueryString("url");
+
+            if (myurl != null && myurl.toString().length > 1) {
+                var tar = GetQueryString("tar").toLowerCase();
+                $(".aside-list li a").each(
+                    function (index, item) {
+                        if ($(item).attr("href").toLowerCase().indexOf(tar) >= 0) {
+                            $(item).parent().click();
+                        }
+                    }
+                );
+                window.iframe.location.href = myurl;
+                //$("#iframe").attr("src", myurl);
+
+            } else {
+                $(".nav li").first().click();
+            }
+        });
+    </script>
+
+
+
+</body>
+</html>

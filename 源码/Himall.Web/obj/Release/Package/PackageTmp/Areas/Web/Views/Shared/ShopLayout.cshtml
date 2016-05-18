@@ -1,0 +1,362 @@
+﻿@model Himall.Web.Areas.Web.Models.ShopHomeModel
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta property="qc:admins" content="45417012167221416513066547" />
+    <meta name="renderer" content="webkit|ie-stand" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Areas/Web/Content/common.css" rel="stylesheet" />
+    <link href="~/Areas/Web/Content/inner.css" rel="stylesheet" />
+    <link href="~/Areas/Web/Content/artdilog.css" rel="stylesheet" />
+    <link href="/Areas/Web/Content/WebLoginPlug.css" rel="stylesheet" />
+    <link href="/Areas/Web/Content/WebAlertPlug.css" rel="stylesheet" />
+    @RenderSection("Style", false)
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jQuery.mouseDelay.min.js"></script>
+    <script src="~/Scripts/jquery.scrollLoading.min.js"></script>
+    <script src="~/Areas/Web/Scripts/web.js"></script>
+    <script src="~/Areas/Web/Scripts/userInfo.js"></script>
+    <script src="~/Scripts/jquery.artDialog.js"></script>
+    <script src="~/Areas/Web/Scripts/artDialog.iframeTools.js"></script>
+    <script src="/Areas/Web/Scripts/jQuery.Web.Login.js"></script>
+    <script src="/Areas/Web/Scripts/jQuery.Web.Alert.js"></script>
+    @RenderSection("Script", false)
+    <style type="text/css">
+        .green {
+            color: green;
+            font-size:15px;
+        }
+
+        .red {
+            color: red;
+            font-size: 15px;
+        }
+    </style>
+    <script>
+        function addFavorite(shopId) {
+            checkLogin(function (func) {
+                addFavoriteFun(shopId, func);
+            });
+        }
+
+        function addFavoriteFun(shopId, callBack) {
+            $.post('/shop/AddFavorite', { shopId: shopId }, function (result) {
+                if (result.success)
+                    $.dialog.succeedTips('关注成功', function () { callBack && callBack(); });
+                else
+                    $.dialog.succeedTips(result.msg, function () { callBack && callBack(); });
+
+            });
+        }
+
+        function checkLogin(callBack) {
+            var memberId = $.cookie('Himall-User');
+            if (memberId) {
+                callBack();
+            }
+            else {
+                $.fn.login({}, function () {
+                    callBack(function () { location.reload(); });
+                }, './', '', '/Login/Login');
+            }
+        }
+
+        /* 计算规则：
+      高 （商家得分-同行业平均分）/（同行业商家最高得分-同行业平均分）
+      低 （同行业平均分-商家得分）/（同行业平均分-同行业商家最高低分）
+       */
+
+        var upImage = "up";
+        var dowmImage = "down";
+        var red="red";
+        var green="green";
+
+        var productAndDescription = parseFloat("@ViewBag.ProductAndDescription").toFixed(2);
+        var productAndDescriptionPeer = parseFloat("@ViewBag.ProductAndDescriptionPeer").toFixed(2);
+        var productAndDescriptionMax = parseFloat("@ViewBag.ProductAndDescriptionMax").toFixed(2);
+        var productAndDescriptionMin = parseFloat("@ViewBag.ProductAndDescriptionMin").toFixed(2);
+        var productAndDescriptionContrast=0;
+        var productAndDescriptionColor="";
+        if( productAndDescription>productAndDescriptionPeer)
+        {
+            if(productAndDescriptionMax-productAndDescriptionPeer==0)
+            {
+                productAndDescriptionContrast="持平";
+            }
+            else
+            {
+                productAndDescriptionContrast=(((productAndDescription-productAndDescriptionPeer)/(productAndDescriptionMax-productAndDescriptionPeer))*100).toFixed(2)+'%';
+            }
+            productAndDescriptionColor=red;
+        }
+        else
+        {
+            if(productAndDescriptionPeer-productAndDescriptionMin==0)
+            {
+                productAndDescriptionContrast="持平";
+                productAndDescriptionColor=red;
+            }
+            else
+            {
+                productAndDescriptionContrast=((productAndDescriptionPeer-productAndDescription)/(productAndDescriptionPeer-productAndDescriptionMin)*100).toFixed(2)+'%';
+                productAndDescriptionColor=green;
+            }
+
+
+        }
+
+        var sellerServiceAttitude = parseFloat("@ViewBag.SellerServiceAttitude").toFixed(2);
+        var sellerServiceAttitudePeer = parseFloat("@ViewBag.SellerServiceAttitudePeer").toFixed(2);
+        var sellerServiceAttitudeMax = parseFloat("@ViewBag.SellerServiceAttitudeMax").toFixed(2);
+        var sellerServiceAttitudeMin = parseFloat("@ViewBag.SellerServiceAttitudeMin").toFixed(2);
+        var sellerServiceAttitudeContrast=0;
+        var sellerServiceAttitudeColor="";
+
+        if( sellerServiceAttitude>sellerServiceAttitudePeer)
+        {
+            if(sellerServiceAttitudeMax-sellerServiceAttitudePeer==0)
+            {
+                sellerServiceAttitudeContrast="持平";
+            }
+            else
+            {
+                sellerServiceAttitudeContrast=(((sellerServiceAttitude-sellerServiceAttitudePeer)/(sellerServiceAttitudeMax-sellerServiceAttitudePeer))*100).toFixed(2)+'%';
+            }
+
+            sellerServiceAttitudeColor=red;
+        }
+        else
+        {
+            if(sellerServiceAttitudePeer-sellerServiceAttitudeMin==0)
+            {
+                sellerServiceAttitudeContrast="持平";
+                sellerServiceAttitudeColor=red;
+            }
+            else
+            {
+                sellerServiceAttitudeContrast=((sellerServiceAttitudePeer-sellerServiceAttitude)/(sellerServiceAttitudePeer-sellerServiceAttitudeMin)*100).toFixed(2)+'%';
+                sellerServiceAttitudeColor=green;
+            }
+
+        }
+
+
+        var sellerDeliverySpeed = parseFloat("@ViewBag.SellerDeliverySpeed").toFixed(2);
+        var sellerDeliverySpeedPeer = parseFloat("@ViewBag.SellerDeliverySpeedPeer").toFixed(2);
+        var sellerDeliverySpeedMax = parseFloat("@ViewBag.SellerDeliverySpeedMax").toFixed(2);
+        var sellerDeliverySpeedMin = parseFloat("@ViewBag.SellerDeliverySpeedMin").toFixed(2);
+        var sellerDeliverySpeedContrast=0;
+        var sellerDeliverySpeedColor="";
+        if( sellerDeliverySpeed>sellerDeliverySpeedPeer)
+        {
+            if(sellerDeliverySpeedMax-sellerDeliverySpeedPeer==0)
+            {
+                sellerDeliverySpeedContrast="持平";
+            }
+            else
+            {
+                sellerDeliverySpeedContrast=(((sellerDeliverySpeed-sellerDeliverySpeedPeer)/(sellerDeliverySpeedMax-sellerDeliverySpeedPeer))*100).toFixed(2)+'%';
+            }
+            sellerDeliverySpeedColor=red;
+        }
+        else
+        {
+            if(sellerDeliverySpeedPeer-sellerDeliverySpeedMin==0)
+            {
+                sellerDeliverySpeedContrast="持平";
+                sellerDeliverySpeedColor=red;
+            }
+            else
+            {
+                sellerDeliverySpeedContrast=((sellerDeliverySpeedPeer-sellerDeliverySpeed)/(sellerDeliverySpeedPeer-sellerDeliverySpeedMin)*100).toFixed(2)+'%';
+                sellerDeliverySpeedColor=green;
+            }
+
+
+        }
+
+
+        var productAndDescriptionImage = productAndDescription >= productAndDescriptionPeer ? upImage : dowmImage;
+        var sellerServiceAttitudeImage = sellerServiceAttitude >= sellerServiceAttitudePeer ? upImage : dowmImage;
+        var sellerDeliverySpeedImage = sellerDeliverySpeed >= sellerDeliverySpeedPeer ? upImage : dowmImage;
+
+
+        var sellerServiceAttitudeHTML = '<span class="' + sellerServiceAttitudeColor + '">' + sellerServiceAttitude + '</span>' +
+                                '<i class="' + sellerServiceAttitudeImage + '"></i>' +
+                                 '<span class="' + sellerServiceAttitudeColor + '">' + sellerServiceAttitudeContrast + '</span>';
+
+        var sellerDeliverySpeedHTML = '<span class="' + sellerDeliverySpeedColor + '">' + sellerDeliverySpeed + '</span>' +
+                            '<i class="' + sellerDeliverySpeedImage + '"></i>' +
+                            '<span class="' + sellerDeliverySpeedColor + '">' + sellerDeliverySpeedContrast + '</span>';
+
+        var productAndDescriptionHTML = '<span class="' + productAndDescriptionColor + '">' + productAndDescription + '</span>' +
+                            '<i class="' + productAndDescriptionImage + '"></i>' +
+                            '<span class="' + productAndDescriptionColor + '">' + productAndDescriptionContrast + '</span>';
+        $(function () {
+            $("#sellerDeliverySpeed").html(sellerDeliverySpeedHTML);
+            $("#productAndDescription").html(productAndDescriptionHTML);
+            $("#sellerServiceAttitude").html(sellerServiceAttitudeHTML);
+        })
+
+
+    </script>
+</head>
+<body>
+    @{Html.RenderAction("ShopHeader", "ProductPartial");}
+    <div class="w shops cl">
+        <div class="shop-header">
+            @{
+                var src = Model.ImageAds.Count() > 0 ? Model.ImageAds.ElementAt(0).ImageUrl : "";
+                var url = Model.ImageAds.Count() > 0 ? Model.ImageAds.ElementAt(0).Url : "#";
+            }
+
+            <div class="shop-banner">
+                @*<div class="shop_logo"><img width="210" height="90" src="@(string.IsNullOrWhiteSpace(Model.Logo)?"http://fpoimg.com/210x90":Model.Logo)" /></div>*@
+                <a target="_blank" href="@url">
+                    <img width="1210" height="90" src="@(string.IsNullOrWhiteSpace(src)?"http://fpoimg.com/1210x90":src)" alt="" />
+                </a>
+            </div>
+            <div class="shop-nav cl">
+                <ul>
+                    @foreach (var nav in Model.Navignations)
+                    {
+                        <li><a href="@nav.Url">@nav.Name</a></li>
+                    }
+                </ul>
+                <div class="shop-search"><input id="shopSearchText" value="@ViewBag.Keyword" type="text" /><a id="shopSearchBtn" class="search-bt"></a></div>
+            </div>
+        </div>
+        <div class="shop-left">
+            <div id="brand-bar-pop">
+                <dl id="seller">
+                    <dt>卖　　家：</dt>
+                    <dd><a href="/shop/home/@Model.Shop.Id">@Model.Shop.Name</a></dd>
+                </dl>
+                <dl id="plus-attent">
+                    <dt></dt>
+                    <dd><a href="javascript:addFavorite(@Model.Shop.Id)">加关注</a></dd>
+                </dl>
+
+                <div id="evaluate-detail">
+                    <div class="mc">
+                        <dl>
+                            <dt>描述相符：</dt>
+                            <dd id="productAndDescription" title="（商家得分-行业平均得分）/（行业商家最高得分-行业平均得分）">
+
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>发货速度：</dt>
+                            <dd id="sellerDeliverySpeed" title="（行业平均得分-商家得分）/（行业平均得分-行业商家最低得分）">
+
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>服务态度：</dt>
+                            <dd id="sellerServiceAttitude" title="（行业平均得分-商家得分）/（行业平均得分-行业商家最低得分）">
+
+                            </dd>
+                        </dl>
+                        <div class="line"></div>
+                    </div>
+                </div>
+                <dl>
+                    <dt style="margin-bottom: 10px;">在线客服：</dt>
+                    <dd>@Html.Action("CustmerServices", "Product", new { shopId = @Model.Shop.Id })</dd>
+                </dl>
+                
+                <dl id="pop-company"><dt>公司名称：</dt><dd>@Model.Shop.CompanyName</dd></dl>
+                <dl id="pop-address"><dt>所在地：</dt><dd id="regionAddressId">@Model.Shop.Address</dd></dl>
+                <dl id="hotline">
+                    <dt>联系电话：</dt>
+                    <dd>@Model.Shop.Phone</dd>
+                </dl>
+            </div>
+
+            <div class="shop-sort-list">
+                @foreach (var cate in Model.ShopCategory)
+                {
+                    <h3><a href="@Url.Action("Search", "Shop", new { cid = cate.Id, sid = Model.Shop.Id, pageNo = 1 })">@cate.Name</a></h3>
+                    <ul>
+                        @foreach (var item in cate.SubCategory)
+                        {
+                            <li><a href="@Url.Action("Search", "shop", new { cid = item.Id ,sid=Model.Shop.Id,pageNo=1 })">@item.Name</a></li>
+                        }
+                    </ul>
+                }
+            </div>
+
+
+            <div class="shop-ranking">
+                <h3><span class="current">销量排行</span><span>关注排行</span></h3>
+                <ul class="cl" style="display:block">
+                    @foreach (var item in Model.HotSaleProducts)
+                    {
+
+                        <li>
+                            <a target="_blank" href="@Url.Action("Detail", "Product", new { id = item.Id })">
+                                <img src="@item.ImgPath/1_100.png" alt="" />
+                            </a>
+                            <h3><a target="_blank" href="@Url.Action("Detail", "Product", new { id = item.Id })">@item.Name</a></h3>
+                            <p><span>￥@item.Price.ToString("f2")</span></p>
+                            <p>已售@(item.SaleCount)件</p>
+                        </li>
+                    }
+                </ul>
+                <ul class="cl">
+                    @foreach (var item in Model.HotAttentionProducts)
+                    {
+
+                        <li>
+                            <a target="_blank" href="@Url.Action("Detail", "Product", new { id = item.Id })">
+                                <img src="@item.ImgPath/1_100.png" alt="" />
+                            </a>
+                            <h3><a target="_blank" href="@Url.Action("Detail", "Product", new { id = item.Id })">@item.Name</a></h3>
+                            <p><span>￥@item.Price.ToString("f2")</span></p>
+                            <p>已关注@(item.SaleCount)次</p>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+    <script>
+
+        $(function ()
+        {
+
+            $('#shopSearchText').keydown(function (e)
+            {
+                if (e.keyCode == 13)
+                {
+                    var text = $("#shopSearchText").val();
+                    if (text.length === 0)
+                    {
+                        $.dialog.errorTips('请输入搜索的关键字');
+                        return;
+                    } else
+                    {
+                        location.href = "/Shop/Search?pageNo=1&sid=@Model.Shop.Id&keywords=" + text;
+                    }
+                }
+            });
+
+            $("#shopSearchBtn").click(function () {
+                var text = $("#shopSearchText").val();
+                if (text.length === 0) {
+                    $.dialog.errorTips('请输入搜索的关键字');
+                    return;
+                } else {
+                    location.href = "/Shop/Search?pageNo=1&sid=@Model.Shop.Id&keywords=" + text;
+                }
+            });
+        });
+    </script>
+    @{Html.RenderAction("Foot", "ProductPartial");}
+    @{Html.RenderAction("GetShopCoupon", "ProductPartial", new { Shopid = @Model.Shop.Id });}
+</body>
+</html>

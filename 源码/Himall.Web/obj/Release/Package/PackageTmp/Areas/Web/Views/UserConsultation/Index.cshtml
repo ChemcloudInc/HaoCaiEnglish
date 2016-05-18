@@ -1,0 +1,83 @@
+﻿@{
+    Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
+    ViewBag.Title = "商品咨询";
+}
+@model  IEnumerable<Himall.Web.Models.ProductConsultationModel>
+
+<div class="box1 lh24">
+    <div class="title">
+        <span class="title_txt cur">购买咨询</span>
+    </div>
+    <div class="border-box">
+        <table class="tb-void tb-goods">
+            <colgroup>
+                <col width="90px">
+                <col width="200px">
+                <col></col>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>咨询商品</th>
+                    <th>商品名称</th>
+                    <th>咨询回复</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() == 0)
+                {
+                    <tr><td colspan="4"><div class="empty"><b></b>暂时没有咨询记录！</div></td></tr>
+                }
+                @foreach (var m in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="img-list">
+                                <a href="@Url.Action("Detail", "Product", new { id = @m.ProductId })" target="_blank">
+                                    <img src="@m.ProductPic/1_100.png" title="">
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="p-name">
+                                <a href="@Url.Action("Detail", "Product", new { id = @m.ProductId })" target="_blank">@m.ProductName</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col3">
+                                <div class="col3q">
+                                    <span title="@m.ConsultationContent" class="fore2">
+                                        我的咨询：@m.ConsultationContent.Replace("&nbsp","")
+                                    </span>
+                                    <span class="ftx-03 time2">@m.ConsultationDate.ToString("yyyy-MM-dd HH:mm")</span>
+                                </div>
+                                <div class="col3a mt5">
+                                    @if (!string.IsNullOrWhiteSpace(m.ReplyContent))
+                                    {
+                                        <div class="ftx04 col3a-lcol">商家回复：</div>
+                                        <div class="col3a-rcol">
+                                            @m.ReplyContent.Replace("&nbsp","")
+                                            <span class="ftx03 time">@(m.ReplyDate.HasValue ? m.ReplyDate.Value.ToString("yyyy-MM-dd HH:mm") : "")</span>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="cl mt10" id="bottom_pager">
+            <div id="pagin-btm" class="pagin fr" style="clear:both">
+                @{
+                    var count = ((PagingInfo)ViewBag.pageInfo).TotalPages;
+                    var curr = ((PagingInfo)ViewBag.pageInfo).CurrentPage;
+                }
+                @Html.PageLinks((PagingInfo)ViewBag.pageInfo, x => Url.Action("Index", new { pageNo = x }))
+                <span class="page-skip">
+                    <em>&nbsp;&nbsp;共 @count 页&nbsp;&nbsp;&nbsp;&nbsp;</em>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>

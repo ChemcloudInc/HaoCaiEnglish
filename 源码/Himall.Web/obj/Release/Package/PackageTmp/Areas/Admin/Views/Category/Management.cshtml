@@ -1,0 +1,65 @@
+﻿@model List<Himall.Web.Areas.Admin.Models.Product.CategoryModel>
+
+@{
+    ViewBag.Title = "分类管理";
+}
+<script src="~/Scripts/CommonJS.js"></script>
+<script src="~/Areas/Admin/Scripts/categoryJS.js"></script>
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>分类</strong>
+        <li class="active"><a>管理</a></li>
+        <li><a href="./Add">新增</a></li>
+        <em class="primary-btn">
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <div class="primary">
+                <h3>温馨提示：</h3>
+                <span>*</span><p>管理商品所属分类，分类最大支持三级，分类通过在"网站"-->"页面设置"中配置后，会在商场首页显示</p>
+            </div>
+        </em>
+    </ul>
+
+    <table class="table category_table">
+        <thead>
+            <tr>
+                <th class="td-choose">选择</th>
+                <th>分类名称</th>
+                <th class="td-operate">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (null == Model)
+            {
+                <tr>
+                    <td style="text-align:center;" colspan="3"><h2>没有任何分类</h2></td>
+                </tr>
+            }
+            else
+            {
+                foreach (var category in Model)
+                {
+                    <tr class="level-1">
+                        <td class="td-choose"><input type="checkbox" name="" /></td>
+                        <td>
+                            <span class="glyphicon glyphicon-plus-sign"></span><input type="hidden" class="hidden_id" value="@category.Id" /><input class="text-name" type="text" value="@category.Name" />
+                            <input class="text-order" type="text" value="@category.DisplaySequence" />
+                        </td>
+                        <td class="td-operate">
+                            <span class="btn-a">
+                                <a href="./AddByParent?Id=@category.Id">新增下级</a><a href="./Edit?Id=@category.Id">编辑</a><a class="delete-classify">删除</a>
+                            </span>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div class="table-bt clearfix">
+        <div class="tabel-operate">
+            <label><input class="check-all" type="checkbox" name="" />全选</label>
+            <button type="submit" id="deleteBatch" class="btn btn-danger btn-ssm">批量删除</button>
+        </div>
+
+
+    </div>
+</div>

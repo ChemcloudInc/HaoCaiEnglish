@@ -1,0 +1,36 @@
+﻿<script src="~/Scripts/jquery.hiMallDatagrid.js"></script>
+<script src="~/Scripts/jquery.himallLinkage.nocreate.js"></script>
+<script src="~/Areas/Admin/Scripts/GiftManagement.js"></script>
+<style type="text/css">
+    span.salesstate0 { color:#808080;}
+    span.salesstate1 { color:green; }
+    span.salesstate2 { color:red}
+</style>
+
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>积分礼品</strong>
+        <li class="active"><a>管理</a></li>
+        <li><a href="@Url.Action("Add")">新增</a></li>
+    </ul>
+    <div class="search-box only-line">
+        <form class="custom-inline" role="form">
+            <div class="form-group">
+                <label class="label-inline" for="">名称</label>
+                <input class="form-control input-ssm" type="text" id="title">
+            </div>
+            <div class="form-group">
+                <label class="label-inline" for="">状态</label>
+                <select class="form-control input-ssm" id="status">
+                    <option value="">全部</option>
+                    <option value="1">可兑换</option>
+                    <option value="2">己过期</option>
+                    <option value="0">己下架</option>
+                </select>
+            </div>
+            <button type="button" id="search" class="btn btn-primary btn-sm">搜索</button>
+        </form>
+    </div>
+
+    <table class="table" id="list"></table>
+</div>

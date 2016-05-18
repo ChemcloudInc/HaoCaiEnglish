@@ -1,0 +1,105 @@
+﻿@model Himall.Model.TopicInfo
+
+@{
+    Layout = "../Shared/_Base.cshtml";
+    ViewBag.Title = "专题-" + Model.Name;
+}
+
+<div class="container">
+    <div class="banner">
+        <a href="#"><img src="@Model.TopImage" alt=""></a>
+    </div>
+    <div class="fixed-box" name="fixedbox" id="fixedbox">
+        <div class="tab-hd row">
+            @foreach (var module in Model.TopicModuleInfo)
+            {
+                <div class="col-md-3 col-xs-3 " module="@module.Id" name="module"><a href="#fixedbox" name="moduleTab" moduleid="@module.Id">@module.Name</a></div>
+            }
+
+        </div>
+    </div>
+    <ul class="goods-list clearfix" id="productList"></ul>
+    <div class="loading" id="autoLoad" style="display:none"><span></span></div>
+    @{Html.RenderPartial("~/Areas/Mobile/Templates/Default/Views/Shared/_4ButtonsFoot.cshtml");}
+</div>
+<input type="hidden" id="topicId" value="@Model.Id" />
+<script type="text/javascript">
+
+    function autoSizeImage() {
+        //高度控制
+        var w = $('.container').width();
+        $('.recom-topic li').height(w * 15 / 32);
+        $('.goods-list li').height(w / 16 * 11);
+        $('.goods-list .p-img').height($('.p-img').width() * 5 / 8);
+
+        square($('.p-img'));
+    }
+    var page = 0;
+    var topicId = $('#topicId').val();
+
+    function loadProducts(page) {
+        $('#autoLoad').html('').show();
+        var url = getAreaPath() + '/Topic/LoadProducts';
+        var moduleId = $('div[name="module"].cur').attr('module');
+        $.post(url, { topicId: topicId, moduleId: moduleId, page: page, pageSize: 8 }, function (result) {
+            $('#autoLoad').hide();
+            if (result.length > 0) {
+                var html = '';
+                $.each(result, function (i, product) {
+                    html += ' <li>\
+                <a class="p-img" href="/'+ areaName + '/product/detail/' + product.id + '"><img src="' + product.image + '" alt=""></a>\
+                <i>' + (((product.price / product.marketPrice) * 10).toFixed("1")) + '折</i>\
+                <h3><a>' + product.name + '</a></h3>\
+                <p><span>￥' + product.price.toFixed("F2") + '</span><s>￥' + product.marketPrice.toFixed("F2") + '</s></p>\
+            </li>';
+                });
+                $('#productList').append(html);
+                autoSizeImage();
+            }
+            else
+                $('#autoLoad').html('没有更多商品了');
+        });
+    }
+
+    function selectTab(moduleId) {
+        $('div[module]').removeClass('cur');
+        $('div[module="' + moduleId + '"]').addClass('cur');
+        page = 1;
+        $('#productList').html('');
+        loadProducts(page);
+    }
+
+    $(function () {
+        $('.fixed-box').height($('.fixed-box').height());
+        $('.tab-hd').width($('.tab-hd').width());
+
+        $(window).scroll(function () {
+            var _scroll = $(window).scrollTop();
+            var top = $('.fixed-box').offset().top;
+            if (_scroll >= top) {
+                $('.tab-hd').addClass('fixed')
+            } else {
+                $('.tab-hd').removeClass('fixed')
+            }
+
+
+            var scrollTop = $(this).scrollTop();
+            var scrollHeight = $(document).height();
+            var windowHeight = $(this).height();
+
+            if (scrollTop + windowHeight >= scrollHeight) {
+                loadProducts(++page);
+            }
+
+
+        });
+
+
+        $('a[name="moduleTab"]').click(function () {
+            selectTab($(this).attr('moduleId'));
+        });
+
+        $('a[name="moduleTab"]').first().click();
+    });
+</script>
+

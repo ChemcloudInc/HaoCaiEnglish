@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ExpressInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>其他运送方式</Name>
+  <DisplayName>其他运送方式</DisplayName>
+  <TaobaoCode>ZJS</TaobaoCode>
+  <Kuaidi100Code>zhaijisong</Kuaidi100Code>
+  <Width>2300</Width>
+  <Height>1270</Height>
+  <BackGroundImage>2010111733136.jpg</BackGroundImage>
+  <Logo>logo.png</Logo>
+  <Elements />
+</ExpressInfo>

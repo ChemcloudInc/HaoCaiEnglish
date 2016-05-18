@@ -1,0 +1,127 @@
+﻿@model IQueryable<Himall.Model.TopicInfo>
+@{
+    ViewBag.Title = "精选专题";
+}
+
+<style type="text/css">
+    .topic-list {
+        padding: 10px;
+    }
+
+        .topic-list li {
+            width: 100%;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+            .topic-list li img {
+                width: 100%;
+            }
+
+            .topic-list li div {
+                position: absolute;
+                top: 50%;
+                margin-top: -10px;
+                text-align: center;
+                width: 100%;
+            }
+
+            .topic-list li p {
+                display: inline-block;
+                padding: 12px 45px;
+                background: rgba(0,0,0,0.5);
+                font-size: 20px;
+                color: #fff;
+                line-height: 36px;
+                position: relative;
+            }
+
+                .topic-list li p:after {
+                    border-bottom: 1px solid #ff2626;
+                    content: '';
+                    width: 100%;
+                    height: 0;
+                    position: absolute;
+                    bottom: 11px;
+                    left: 0;
+                }
+
+                .topic-list li p span {
+                    border-bottom: 1px solid #fff;
+                    margin-bottom: -1px;
+                    display: block;
+                    z-index: 1;
+                    position: relative;
+                }
+
+            .topic-list li:nth-child(2n) p {
+                background: rgba(255,255,255,0.5);
+                color: #020202;
+            }
+
+                .topic-list li:nth-child(2n) p span {
+                    border-color: #020202;
+                }
+</style>
+    <div class="container">
+        <ul class="topic-list">
+            @foreach(var topic in Model)
+            { 
+                <li>
+                    <a href="/m-IOS/Topic/Detail/@topic.Id">
+                        <img class="lazyload" src="@topic.TopImage" width="100%" data-url="@topic.TopImage" alt="">
+                        <div>
+                            <p><span>@topic.Name</span></p>
+                        </div>
+                    </a>
+                </li>
+            }
+        </ul>
+        <div class="loading hide" id="autoLoad"><span></span></div>
+    </div>
+<script>
+    var page = 2;
+
+    $(window).scroll(function () {
+        $('#autoLoad').removeClass('hide');
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+
+        if (scrollTop + windowHeight >= scrollHeight) {
+            //alert('执行加载');
+            loadTopics(page++);
+        }
+    });
+
+    function loadTopics(page) {
+        var areaname = areaName;
+
+        var url = '/' + areaname + '/Topic/TopicList';
+        $.post(url, { pageNo: page, pageSize: 10 }, function (result) {
+            var html = '';
+            if (result.length > 0) {
+                $.each(result, function (i, topic) {
+                    var url = "m-IOS/Topic/Detail/" + topic.Id;
+                    var src = topic.TopImage;
+                    var name = topic.Name;
+
+                    html += '<li>\
+                    <a href="'+ url + '">\
+                        <img class="lazyload" src="'+ src + '" width="100%" data-url="' + src + '" alt="">\
+                        <div>\
+                            <p><span>' + name + '</span></p>\
+                        </div>\
+                    </a>\
+                </li>';
+
+                });
+                $('#autoLoad').addClass('hide');
+                $('.topic-list').append(html);
+            }
+            else {
+                $('#autoLoad').html('没有更多专题了');
+            }
+        });
+    }
+</script>

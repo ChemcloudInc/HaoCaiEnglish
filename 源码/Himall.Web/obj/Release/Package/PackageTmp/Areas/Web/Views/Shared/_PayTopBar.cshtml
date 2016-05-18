@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit|ie-stand" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Areas/Web/Content/common.css" rel="stylesheet" />
+    <link href="~/Areas/Web/Content/inner.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+    <script src="~/Areas/Web/Scripts/userInfo.js"></script>
+    <script src="~/Scripts/CommonJS.js"></script>
+	<script src="~/Scripts/jQuery.mouseDelay.min.js"></script>
+	<script src="~/Scripts/jquery.scrollLoading.min.js"></script>
+	<script src="~/Areas/Web/Scripts/web.js"></script>
+</head>
+<body>
+  @{Html.RenderAction("TopInfo", "ProductPartial");}
+    <div class="w990 w1 cl">
+        <div id="logo"><a href="/"><img src="@ViewBag.Logo" height="60" title="返回商城首页" alt="返回商城首页" /></a></div>
+        <div class="progress cl">
+            <ul class="progress-@ViewBag.Step">
+                <li class="step-1">选择支付方式</li>
+                <li class="step-2">确认支付</li>
+                <li class="step-3">支付结果信息</li>
+            </ul>
+        </div>
+    </div>
+    @RenderBody()
+    <link href="~/Areas/Web/Content/artdilog.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.artDialog.js"></script>
+    <script src="~/Areas/Web/Scripts/artDialog.iframeTools.js"></script>
+</body>
+</html>

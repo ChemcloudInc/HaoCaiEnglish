@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.CopyRight = false;
+}
+@model Himall.Model.InviteRuleInfo
+<div class="container login-00">
+   <div class="img"><img src="@ViewBag.WXLogo"></div>
+    <div class="code">注册即可获得<i class="i-01">@Model.InviteIntegral.Value.ToString()</i>积分</div>
+    <div class="money">无门槛抵扣<i>@ViewBag.Money</i>元订单金额</div>
+    <form id="login-00-form" style="display:none">
+        <div class="option"><input type="text" class="form-control" placeholder="用户名" id="username" /></div>
+        <div class="option"><input type="password" class="form-control" placeholder="密码" id="password" /></div>
+        <div class="option"><input type="password" class="form-control" placeholder="重复密码" id="repeatPassword" /></div>
+        <a class="btn btn-primary btn-block" id="registBtn">注 册</a>
+        <p id="bindInfo"><i class="glyphicon glyphicon-info-sign"></i> </p>
+    </form>
+    <div id="tipInfo" class="registered-00" style="display:none">
+        <p>亲，您已是我们的老顾客</p>
+        <a class="btn btn-primary btn-block" href="/">回去看看</a>
+    </div>
+    <div class="activity-info">
+        @MvcHtmlString.Create(Model.ShareRule)
+    </div>
+
+
+
+</div>
+<input type="hidden" id="introducer" name="introducer" value="@ViewBag.Introducer" />
+<input type="hidden" id="IsRegist" name="introducer" value="@ViewBag.IsRegist" />
+<style>body,html{ height:100%}</style>
+<script type="text/javascript">
+    $(function () {
+        $('.login-00').height($('.container').width()*63/40);
+
+        var openId = QueryString('openId');
+        var serviceProvider = QueryString('serviceProvider');
+        
+        if (!openId || !serviceProvider)
+            $('#bindInfo').hide();
+
+        $('#registBtn').click(function () {
+            regist();
+        });
+        if ($('#IsRegist').val()==1)
+        {
+            $('#tipInfo').show();
+        }
+        else {
+            $('#login-00-form').show();
+        }
+    });
+
+function regist() {
+    var username = $.trim($('#username').val());
+    var password = $.trim($('#password').val());
+    var repeatPassword = $.trim($('#repeatPassword').val());
+    var introducer = $("#introducer").val();
+
+    var openId = QueryString('openId');
+    var serviceProvider = QueryString('serviceProvider');
+    var reg = /^[\u4E00-\u9FA5\@@A-Za-z0-9\_\-]{4,20}$/;
+    if (!openId || !serviceProvider)
+        $.dialog.errorTips('请在微信端打开！');
+    else if (!username)
+        $.dialog.errorTips('请输入用户名');
+    else if(!reg.test(username))
+        $.dialog.errorTips('用户名只能4-20位字符，暂只支持中英文、数字及"-"、"_"的组合');
+    else if (!password)
+        $.dialog.errorTips('请输入密码');
+    else if(password.length < 6 && password.length > 20)
+        $.dialog.errorTips('密码必须6-20位字符');
+    else if (!repeatPassword)
+        $.dialog.errorTips('请再次输入密码');
+    else if (password != repeatPassword)
+        $.dialog.errorTips('两次密码不一致');
+    else {
+        var loading = showLoading('请稍候', 1);
+
+        var headimgurl = QueryString('headimgurl');
+        var nickName = QueryString('nickName');
+        var unionid = QueryString('unionid');
+        $.post('/' + areaName + '/register/InviteRegist',
+        {
+            username: username,
+            password: password,
+            nickName: nickName,
+            serviceProvider: serviceProvider,
+            openId: openId,
+            unionid: unionid,
+            introducer: introducer,
+            headimgurl: headimgurl
+        },
+        function (result) {
+            loading.close();
+            if (result.success) {
+                $.dialog.succeedTips('注册成功!', function () {
+                    var returnUrl = QueryString('returnUrl');
+                    if (!returnUrl)
+                        returnUrl = '/' + areaName;
+                    location.replace(decodeURIComponent(returnUrl));
+                });
+            }
+            else
+                $.dialog.alert('注册失败!' + result.msg);
+        });
+    }
+}
+
+</script>
