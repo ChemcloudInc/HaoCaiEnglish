@@ -363,12 +363,14 @@
 
         </tbody>
     </table>
+    
     <div class="mt20">
         @{
-            if (ViewBag.Status == 3)
+
+           if (ViewBag.Status == 3)
             {
                 @*<input type="button" disabled="disabled" class="btn btn-primary" value="通过审核" />
-                <input type="button" disabled="disabled" class="btn btn-warning refuse-shop" value="拒绝" />*@
+                    <input type="button" disabled="disabled" class="btn btn-warning refuse-shop" value="拒绝" />*@
             }
             else if (ViewBag.Status == 5)
             {
@@ -376,9 +378,12 @@
             }
             else if (ViewBag.Status == 2)
             {
-                <input type="button" class="btn btn-primary statusBtn" status="passShop" value="通过审核" />
+              <input type="button" class="btn btn-primary statusBtn" status="passShop" value="通过审核" />
                 <input type="button" class="btn btn-warning refuse-shop" value="拒绝" />
             }
+            /*<input type="button" class="btn btn-primary statusBtn"value="通过审核" />
+                <input type="button" class="btn btn-warning refuse-shop" value="拒绝" />*/
+            
         }
     </div>
 

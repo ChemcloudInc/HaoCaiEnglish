@@ -91,7 +91,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				}
 				return p.Id == 15;
 			}).ToList();
-			IArticleService articleService = ServiceHelper.Create<IArticleService>();
+			/*IArticleService articleService = ServiceHelper.Create<IArticleService>();
 			dynamic obj1 = base.ViewBag;
 			List<IQueryable<ArticleInfo>> queryables = new List<IQueryable<ArticleInfo>>()
 			{
@@ -101,7 +101,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				articleService.GetTopNArticle<ArticleInfo>(8, 7, null, false)
 			};
 			obj1.ArticleTabs = queryables;
-			foreach (HomeFloorInfo homeFloorInfo in ServiceHelper.Create<IFloorService>().GetHomeFloors().ToList())
+			/*foreach (HomeFloorInfo homeFloorInfo in ServiceHelper.Create<IFloorService>().GetHomeFloors().ToList())    //超链接
 			{
 				HomeFloorModel homeFloorModel = new HomeFloorModel();
 				List<FloorTopicInfo> floorTopicInfos = (
@@ -193,7 +193,7 @@ namespace Himall.Web.Areas.Web.Controllers
 					}).ToList<HomeFloorModel.WebFloorProductLinks>();
 				}
 				homeFloorModels.Add(homeFloorModel);
-			}
+			}*/
 			return View(homeFloorModels);
 		}
 

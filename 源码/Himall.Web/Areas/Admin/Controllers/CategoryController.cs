@@ -53,6 +53,7 @@ namespace Himall.Web.Areas.Admin.Controllers
                 ProcessingDisplaySequence(category, categoryService);
                 ProcessingIcon(category, categoryService);
 				categoryService.AddCategory(category);
+              //  Response.Write(category.EnglishName);
 				return RedirectToAction("Management");
 			}
 			ViewBag.Categories = ServiceHelper.Create<ICategoryService>().GetFirstAndSecondLevelCategories();

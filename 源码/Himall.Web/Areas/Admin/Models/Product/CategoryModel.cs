@@ -66,7 +66,11 @@ namespace Himall.Web.Areas.Admin.Models.Product
 			get;
 			set;
 		}
-
+        public string EnglishName
+        {
+            get;
+            set;
+        }
 		public long ParentCategoryId
 		{
 			get;

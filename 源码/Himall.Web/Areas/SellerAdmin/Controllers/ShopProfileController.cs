@@ -32,6 +32,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 			{
 				return RedirectToAction("EditProfile0");
 			}
+
 			ManagerInfo managerInfo = ServiceHelper.Create<IManagerService>().AddSellerManager(base.CurrentUser.UserName, base.CurrentUser.Password, base.CurrentUser.PasswordSalt);
 			string str = UserCookieEncryptHelper.Encrypt(managerInfo.Id, "SellerAdmin");
 			DateTime now = DateTime.Now;

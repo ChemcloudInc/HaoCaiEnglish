@@ -1,0 +1,440 @@
+
+
+
+ 记录时间：2016-06-16 10:09:23,779 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-06-16 10:09:23,835 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-06-16 10:09:23,881 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-06-16 10:09:23,925 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-06-16 10:09:23,971 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-06-16 11:03:41,952 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:03:42,008 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:03:42,058 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-06-16 11:03:42,099 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:03:42,140 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-06-16 11:13:26,330 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:13:26,417 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:13:26,483 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-06-16 11:13:26,534 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:13:26,592 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-06-16 11:21:11,046 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:21:11,081 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:21:11,125 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-06-16 11:21:11,148 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:21:11,175 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-06-16 11:22:37,683 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:22:37,711 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:22:37,735 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-06-16 11:22:37,752 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:22:37,771 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-06-16 11:24:05,928 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:24:05,971 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:24:06,014 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-06-16 11:24:06,042 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:24:06,071 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-06-16 11:26:00,737 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:26:00,790 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:26:00,818 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-06-16 11:26:00,850 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:26:00,874 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-06-16 11:27:00,747 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:27:00,807 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:27:00,848 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-06-16 11:27:00,880 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:27:00,905 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-06-16 11:27:41,983 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:27:42,028 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:27:42,051 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-06-16 11:27:42,075 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:27:42,100 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-06-16 11:28:33,569 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:28:33,598 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:28:33,620 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-06-16 11:28:33,649 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-06-16 11:28:33,667 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-06-16 14:13:52,327 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-06-16 14:13:52,381 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-06-16 14:13:52,417 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-06-16 14:13:52,464 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-06-16 14:13:52,518 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
