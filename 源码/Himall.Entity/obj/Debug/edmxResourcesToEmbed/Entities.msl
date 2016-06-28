@@ -91,7 +91,7 @@
           <ScalarProperty Name="HasSKU" ColumnName="HasSKU" />
           <ScalarProperty Name="MinSalePrice" ColumnName="MinSalePrice" />
           <ScalarProperty Name="MarketPrice" ColumnName="MarketPrice" />
-          <ScalarProperty Name="imagePath" ColumnName="ImagePath" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
           <ScalarProperty Name="DisplaySequence" ColumnName="DisplaySequence" />
           <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
           <ScalarProperty Name="SaleStatus" ColumnName="SaleStatus" />

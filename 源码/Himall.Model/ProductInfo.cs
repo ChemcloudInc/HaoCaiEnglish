@@ -194,14 +194,19 @@ namespace Himall.Model
 			}
 		}
 
-		private string imagePath
+	/*	private string imagePath
 		{
 			get;
 			set;
-		}
+		}*/
 
 		[NotMapped]
-		public string ImagePath
+        public string ImagePath
+        {
+            get;
+            set;
+        }
+		/*public string ImagePath
 		{
 			get
 			{
@@ -209,14 +214,14 @@ namespace Himall.Model
 			}
 			set
 			{
-				if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(ImageServerUrl))
+			if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(ImageServerUrl))
 				{
                     imagePath = value;
 					return;
 				}
                 imagePath = value.Replace(ImageServerUrl, "");
 			}
-		}
+		}*/
 
 		public decimal MarketPrice
 		{

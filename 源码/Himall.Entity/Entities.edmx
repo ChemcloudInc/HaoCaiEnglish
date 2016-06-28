@@ -3921,7 +3921,7 @@
           <Property Name="SaleStatus" Type="Himall.Model.ProductSaleStatus" Nullable="false" />
           <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DisplaySequence" Type="Int64" Nullable="false" />
-          <Property Name="imagePath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" a:GetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Private" />
+          <Property Name="ImagePath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" a:GetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Private" />
           <Property Name="MarketPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="MinSalePrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="HasSKU" Type="Boolean" Nullable="false" />
@@ -7072,7 +7072,7 @@
                 <ScalarProperty Name="HasSKU" ColumnName="HasSKU" />
                 <ScalarProperty Name="MinSalePrice" ColumnName="MinSalePrice" />
                 <ScalarProperty Name="MarketPrice" ColumnName="MarketPrice" />
-                <ScalarProperty Name="imagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
                 <ScalarProperty Name="DisplaySequence" ColumnName="DisplaySequence" />
                 <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
                 <ScalarProperty Name="SaleStatus" ColumnName="SaleStatus" />
