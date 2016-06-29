@@ -166,7 +166,7 @@ namespace Himall.Service
             context.SaveChanges();
 		}
 
-		public void UpdateHomeCategorySet(int rowNumber, IEnumerable<long> categoryIds)
+		public void UpdateHomeCategorySet(int rowNumber, IEnumerable<long> categoryIds)    //程序有问题
 		{
 			if (rowNumber > 14 || rowNumber < 0)
 			{
@@ -184,8 +184,11 @@ namespace Himall.Service
 					CategoryId = num1,
 					Depth = categoryService.GetCategory(num1).Depth
 				};
+                 
 				homeCategoryInfoArray[i] = homeCategoryInfo;
+
 			}
+            //需要先判断数据库中是否已存在，而不能直接添加
             context.HomeCategoryInfo.OrderBy((HomeCategoryInfo item) => item.RowNumber == rowNumber);
             context.HomeCategoryInfo.AddRange(homeCategoryInfoArray);
             context.SaveChanges();

@@ -108,3 +108,55 @@ System.Data.Entity.Core.EntityException: The underlying provider failed on Open.
    在 Himall.Service.MemberService.Login(String username, String password) 位置 d:\MyGit\源码\Himall.Service\MemberService.cs:行号 504
    在 Himall.Web.Areas.Web.Controllers.LoginController.UserLoginIn(String username, String password, Boolean keep) 位置 D:\MyGit\源码\Himall.Web\Areas\Web\Controllers\LoginController.cs:行号 270
    在 Himall.Web.Areas.Web.Controllers.LoginController.Login(String username, String password, String checkCode, Boolean keep) 位置 D:\MyGit\源码\Himall.Web\Areas\Web\Controllers\LoginController.cs:行号 162
+
+
+
+ 记录时间：2016-06-28 13:13:15,200 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.AsyncProductImportController+<>c__DisplayClass1_0.<ImportProductAsync>b__0  
+错误描述：导入商品异常：An exception has been raised that is likely due to a transient failure. If you are connecting to a SQL Azure database consider using SqlAzureExecutionStrategy. 
+
+
+
+
+ 记录时间：2016-06-28 13:13:27,363 
+日志级别：  ERROR 
+出错类：Himall.Service.OrderService.AutoCloseOrder  
+错误描述：AutoCloseOrder:An exception has been raised that is likely due to a transient failure. If you are connecting to a SQL Azure database consider using SqlAzureExecutionStrategy./r/n   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   在 System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 Himall.Service.OrderService.AutoCloseOrder() 位置 d:\MyGit\源码\Himall.Service\OrderService.cs:行号 91 
+
+
+
+
+ 记录时间：2016-06-28 13:13:28,264 
+日志级别：  ERROR 
+出错类：Himall.Web.Framework.BaseController.OnException  
+错误描述：页面未捕获的异常：Area:SellerAdmin,Controller:ProductImport,Action:GetImportCount 
+
+System.ComponentModel.Win32Exception (0x80004005): 远程主机强迫关闭了一个现有的连接。
+
+
+
+ 记录时间：2016-06-28 13:13:28,295 
+日志级别：  ERROR 
+出错类：Himall.Web.Framework.BaseController.OnException  
+错误描述：页面未捕获的异常：Area:SellerAdmin,Controller:ProductImport,Action:GetImportCount 
+
+System.InvalidOperationException: 此请求已被阻止，因为当用在 GET 请求中时，会将敏感信息透漏给第三方网站。若要允许 GET 请求，请将 JsonRequestBehavior 设置为 AllowGet。
+   在 System.Web.Mvc.JsonResult.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2d.<BeginInvokeAction>b__1d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+
+
+
+ 记录时间：2016-06-28 14:24:13,707 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.AsyncProductImportController+<>c__DisplayClass1_0.<ImportProductAsync>b__0  
+错误描述：导入商品异常：An error occurred while updating the entries. See the inner exception for details. 
+
