@@ -216,6 +216,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 			long nextProductId;
 			long num;
 			decimal num1;
+            decimal num1_min;
 			ProductInfo productInfo;
 			int num2 = 0;
 			string str1 = mainpath;
@@ -251,7 +252,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 							string[] strArrays1 = new string[] { "\t" };
 							strArrays = str3.Split(strArrays1, StringSplitOptions.None);
 							int length = strArrays.Length;
-							if (length == 58)
+							if (length == 58)            //淘宝5.6版本
 							{
 								str = strArrays[0].Replace("\"", "");
 								productQuery = new ProductQuery()
@@ -337,7 +338,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 									Cache.Insert(CacheKeyCollection.UserImportProductCount(_userid), num2);
 								}
 							}
-							else if (length == 63)
+							else if (length == 63)           //淘宝5.7版本
 							{
 								str = strArrays[0].Replace("\"", "");
 								productQuery = new ProductQuery()
@@ -425,9 +426,95 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 									Cache.Insert(CacheKeyCollection.UserImportProductCount(_userid), num2);
 								}
 							}
-                            else  //其他格式
-                            { 
+                            else if(length == 19) //  
+                            {
+                                str = strArrays[0].Replace("\"", "");
+                                productQuery = new ProductQuery()
+                                {
+                                    CategoryId = new long?(category.Id),
+                                    ShopId = new long?(_shopid),
+                                    KeyWords = str
+                                };
+                                productService = ServiceHelper.Create<IProductService>();
+                                if (productService.GetProducts(productQuery).Total <= 0)
+                                {
+                                    nextProductId = productService.GetNextProductId();
+                                    num1 = decimal.Parse((strArrays[1] == string.Empty ? "0" : strArrays[1]));
+                                    num1_min = decimal.Parse((strArrays[2] == string.Empty ? "0" : strArrays[2]));
+                                    ProductInfo productInfo3 = new ProductInfo()
+                                    {
+                                        Id = nextProductId,
+                                        TypeId = category.TypeId, 
+                                        AddedDate = DateTime.Now,
+                                        BrandId = paraBrand,
+                                        CategoryId = category.Id,
+                                        CategoryPath = category.Path,
+                                        MarketPrice = num1,
+                                        ShortDescription = string.Empty,
+                                        ProductCode = strArrays[15].Replace("\"", ""),
+                                        ImagePath = "",
+                                        DisplaySequence = 1,
+                                        ProductName = strArrays[0].Replace("\"", ""),
+                                        MinSalePrice = num1_min,
+                                        ShopId = _shopid,
+                                        HasSKU = true,
+                                        ProductAttributeInfo = new List<ProductAttributeInfo>()
+                                    };
+                                    List<ProductShopCategoryInfo> productShopCategoryInfos1 = new List<ProductShopCategoryInfo>();
+                                    ProductShopCategoryInfo productShopCategoryInfo1 = new ProductShopCategoryInfo()
+                                    {
+                                        ProductId = nextProductId,
+                                        ShopCategoryId = paraShopCategory
+                                    };
+                                    productShopCategoryInfos1.Add(productShopCategoryInfo1);
+                                    productInfo3.Himall_ProductShopCategories = productShopCategoryInfos1;
+                                    ProductDescriptionInfo productDescriptionInfo1 = new ProductDescriptionInfo()
+                                    {
+                                        AuditReason = "",
+                                        Description = strArrays[11].Replace("\"", ""),
+                                        DescriptiondSuffixId = 0,
+                                        DescriptionPrefixId = 0,
+                                        Meta_Description = string.Empty,
+                                        Meta_Keywords = string.Empty,
+                                        Meta_Title = string.Empty,
+                                        ProductId = nextProductId
+                                    };
+                                    productInfo3.ProductDescriptionInfo = productDescriptionInfo1;
+                                    ProductInfo productInfo4 = productInfo3;
+                                    List<SKUInfo> sKUInfos2 = new List<SKUInfo>();
+                                    List<SKUInfo> sKUInfos3 = sKUInfos2;
+                                    SKUInfo sKUInfo1 = new SKUInfo();
+                                    object[] objArray1 = new object[] { nextProductId, "0", "0", "0" };
+                                    sKUInfo1.Id = string.Format("{0}_{1}_{2}_{3}", objArray1);
+                                    sKUInfo1.Stock = (long.TryParse(strArrays[9], out num) ? num : 0);
+                                    sKUInfo1.SalePrice = num1;
+                                    sKUInfo1.CostPrice = num1;
+                                    sKUInfos3.Add(sKUInfo1);
+                                    productInfo4.SKUInfo = sKUInfos2;
+                                    productInfo3.SaleStatus = (paraSaleStatus == 1 ? ProductInfo.ProductSaleStatus.OnSale : ProductInfo.ProductSaleStatus.InStock);
+                                    productInfo3.AuditStatus = ProductInfo.ProductAuditStatus.WaitForAuditing;
+                                    productInfo = productInfo3;
+                                    long id1 = productInfo.Id;
+                                    productInfo.ImagePath = string.Concat(imgpath1, "/", id1.ToString());
+                                    if (strArrays[14] != string.Empty)
+                                    {
+                                        ImportProductImg(productInfo.Id, _shopid, files[i], strArrays[14]);
+                                    }
 
+                                    productInfo.MeasureUnit = strArrays[5].Replace("\"", "");
+                                    productInfo.Volume = null;
+                                    productInfo.Weight = null;
+                                    productService.AddProduct(productInfo);
+                                    num2++;
+                                    Log.Debug(strArrays[0].Replace("\"", ""));
+                                    Cache.Insert(CacheKeyCollection.UserImportProductCount(_userid), num2);
+                                }
+                                else
+                                {
+                                    num2++;
+                                    Log.Debug(string.Concat(strArrays[0].Replace("\"", ""), " : 商品不能重复导入"));
+                                    Cache.Insert(CacheKeyCollection.UserImportProductCount(_userid), num2);
+                                }
                             }
 
 

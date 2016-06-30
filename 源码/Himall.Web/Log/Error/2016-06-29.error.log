@@ -117,3 +117,19 @@ System.Web.HttpException (0x80004005): 尚未对布局页“~/Areas/Web/Views/Shared/_N
    在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
    在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
    在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+
+
+
+ 记录时间：2016-06-29 16:37:54,587 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.AsyncProductImportController+<>c__DisplayClass1_0.<ImportProductAsync>b__0  
+错误描述：导入商品异常：输入字符串的格式不正确。 
+
+
+
+
+ 记录时间：2016-06-29 17:20:24,410 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.AsyncProductImportController+<>c__DisplayClass1_0.<ImportProductAsync>b__0  
+错误描述：导入商品异常：An error occurred while updating the entries. See the inner exception for details. 
+

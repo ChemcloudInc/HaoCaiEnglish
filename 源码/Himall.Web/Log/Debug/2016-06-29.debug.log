@@ -1,0 +1,8 @@
+
+
+
+ 记录时间：2016-06-29 16:30:14,258 
+日志级别：  DEBUG 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.AsyncProductImportController.ProcessProduct  
+错误描述：保健酒 : 商品不能重复导入 
+
