@@ -12,7 +12,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Web.Mvc;
-
+using System.Net.Mail; 
 namespace Himall.Web.Areas.Admin.Controllers
 {
 	public class MessageController : BaseAdminController
@@ -120,8 +120,10 @@ namespace Himall.Web.Areas.Admin.Controllers
 				return Json(result1);
 			}
 			string siteName = ServiceHelper.Create<ISiteSettingService>().GetSiteSettings().SiteName;
-			string str = plugin.Biz.SendTestMessage(destination, string.Concat("该条为测试信息，请勿回复!【", siteName, "】"), "这是一封测试邮件");
-			if (str == "发送成功")
+			//string str = plugin.Biz.SendTestMessage(destination, string.Concat("该条为测试信息，请勿回复!【", siteName, "】"), "这是一封测试邮件");
+			string str= SendTestMessage(destination, string.Concat("该条为测试信息，请勿回复!【", siteName, "】"), "这是一封测试邮件");
+           // string str = SendMail();
+            if (str == "发送成功")
 			{
 				return Json(new { success = true });
 			}
@@ -132,5 +134,85 @@ namespace Himall.Web.Areas.Admin.Controllers
 			};
 			return Json(result2);
 		}
+        public string SendTestMessage(string destination, string content, string title = "")
+        {
+            string str = "发送成功";
+            System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
+            msg.To.Add(destination);
+
+            /*  
+            * msg.To.Add("b@b.com");  
+            * msg.To.Add("b@b.com");  
+            * msg.To.Add("b@b.com");可以发送给多人  
+             */
+
+            msg.From = new MailAddress("15950560518@163.com", "yinzhen", System.Text.Encoding.UTF8);
+            /* 上面3个参数分别是发件人地址（可以随便写），发件人姓名，编码*/
+            msg.Subject = "这是测试邮件";//邮件标题   
+            msg.SubjectEncoding = System.Text.Encoding.UTF8;//邮件标题编码   
+            msg.Body = "邮件内容";//邮件内容   
+            msg.BodyEncoding = System.Text.Encoding.UTF8;//邮件内容编码   
+            msg.IsBodyHtml = false;//是否是HTML邮件   
+            msg.Priority = MailPriority.High;//邮件优先级   
+
+            SmtpClient client = new SmtpClient();
+            client.Credentials = new System.Net.NetworkCredential("15950560518@163.com", "10201116yy");
+            //在71info.com注册的邮箱和密码   
+            client.Host = "smtp.163.com";
+            client.Port = 110;
+            object userState = msg;
+            try
+            {
+               // client.SendAsync(msg, userState);
+                client.Send(msg);   
+                //  MessageBox.Show("发送成功");   
+                str = "发送成功";
+            }
+            catch (System.Net.Mail.SmtpException ex)
+            {
+                // MessageBox.Show(ex.Message, "发送邮件出错");  
+                str = "发送邮件出错";
+            }
+            return str;
+        }
+      /* private string SendMail() 
+       { 
+          try 
+          { 
+           //邮件发送类 
+           MailMessage mail = new MailMessage(); 
+           //是谁发送的邮件 
+           mail.From = new MailAddress("1446878469@qq.com"); 
+           //发送给谁 
+           mail.To.Add("yinzhen931020@163.com"); 
+           //标题 
+           mail.Subject = "Himall"; 
+           mail.SubjectEncoding = System.Text.Encoding.UTF8; 
+           //发送优先级 
+           mail.Priority = MailPriority.High; 
+           //邮件内容 
+           mail.Body = "这是一封测试邮件";
+           mail.BodyEncoding = System.Text.Encoding.UTF8; 
+           //是否HTML形式发送 
+           mail.IsBodyHtml = true; 
+           //邮件服务器和端口 
+           SmtpClient smtp = new SmtpClient("smtp.qq.com", 25); 
+           smtp.UseDefaultCredentials = true; 
+           //指定发送方式 
+           smtp.DeliveryMethod = SmtpDeliveryMethod.Network; 
+           //指定登录名和密码 
+           smtp.Credentials = new System.Net.NetworkCredential("1446878469@qq.com", "10200610yz"); 
+           //超时时间 
+          // smtp.Timeout = 10000;
+           
+           smtp.Send(mail); 
+           return "发送成功"; 
+         } 
+       catch(Exception exp) 
+       { 
+           return "发送邮件失败"; 
+       } 
+      }*/
+
 	}
 }

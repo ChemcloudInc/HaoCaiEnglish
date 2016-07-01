@@ -1,7 +1,8 @@
 using Himall.Core.Plugins;
 using System;
 using System.Collections.Generic;
-
+using System.Net.Mail; 
+//using MailAddress;
 namespace Himall.Core.Plugins.Message
 {
 	public interface IMessagePlugin : IPlugin
@@ -56,7 +57,8 @@ namespace Himall.Core.Plugins.Message
 
 		void SendMessages(string[] destination, string content, string title = "");
 
-		string SendTestMessage(string destination, string content, string title = "");
+        string SendTestMessage(string destination, string content, string title = "");
+        
 
 		void SetAllStatus(Dictionary<MessageTypeEnum, StatusEnum> dic);
 

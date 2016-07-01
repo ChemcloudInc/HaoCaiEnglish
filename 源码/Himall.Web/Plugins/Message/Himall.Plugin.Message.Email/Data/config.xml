@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<MessageStatus xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <OrderCreated>2</OrderCreated>
+<MessageStatus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OrderCreated>1</OrderCreated>
   <OrderPay>2</OrderPay>
   <OrderShipping>2</OrderShipping>
   <OrderRefund>2</OrderRefund>
   <FindPassWord>2</FindPassWord>
-  <ShopAudited>2</ShopAudited>
+  <ShopAudited>1</ShopAudited>
   <ShopSuccess>2</ShopSuccess>
 </MessageStatus>

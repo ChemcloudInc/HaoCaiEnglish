@@ -184,14 +184,40 @@ namespace Himall.Service
 					CategoryId = num1,
 					Depth = categoryService.GetCategory(num1).Depth
 				};
-                 
-				homeCategoryInfoArray[i] = homeCategoryInfo;
+               
+                homeCategoryInfoArray[i] = homeCategoryInfo;
 
 			}
             //需要先判断数据库中是否已存在，而不能直接添加
             context.HomeCategoryInfo.OrderBy((HomeCategoryInfo item) => item.RowNumber == rowNumber);
-            context.HomeCategoryInfo.AddRange(homeCategoryInfoArray);
+
+            int cn = 0;                            //记录需要存储的记录数;
+            Boolean[] sp = new Boolean[num];
+            for (int i = 0; i < num; i++)
+            {
+                sp[i] = true;
+                int k = (int)homeCategoryInfoArray[i].CategoryId;
+                int m= context.HomeCategoryInfo.Where(item => item.CategoryId == k).Count();
+               // int m = ddddd.ToList().Count();
+                if (m == 0)
+                {
+                    cn++;
+                    sp[i] = false;
+                }
+            }
+            HomeCategoryInfo[] NewArray = new HomeCategoryInfo[cn];
+            int cm = 0;
+            for (int i = 0; i < num;i++ )
+            {
+                if (!sp[i])
+                {
+                    NewArray[cm] = homeCategoryInfoArray[i];
+                    cm++;
+                }
+            }
+            context.HomeCategoryInfo.AddRange(NewArray);
             context.SaveChanges();
+          //  context.SaveChanges();
 		}
 
 		public void UpdateHomeCategorySet(int rowNumber, IEnumerable<HomeCategorySet.HomeCategoryTopic> homeCategoryTopics)
