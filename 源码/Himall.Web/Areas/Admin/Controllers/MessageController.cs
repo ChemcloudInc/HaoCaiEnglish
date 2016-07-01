@@ -120,9 +120,10 @@ namespace Himall.Web.Areas.Admin.Controllers
 				return Json(result1);
 			}
 			string siteName = ServiceHelper.Create<ISiteSettingService>().GetSiteSettings().SiteName;
-			//string str = plugin.Biz.SendTestMessage(destination, string.Concat("该条为测试信息，请勿回复!【", siteName, "】"), "这是一封测试邮件");
-			string str= SendTestMessage(destination, string.Concat("该条为测试信息，请勿回复!【", siteName, "】"), "这是一封测试邮件");
+			string str = plugin.Biz.SendTestMessage(destination, string.Concat("该条为测试信息，请勿回复!【", siteName, "】"), "这是一封测试邮件");
+		//	string str= SendTestMessage(destination, string.Concat("该条为测试信息，请勿回复!【", siteName, "】"), "这是一封测试邮件");
            // string str = SendMail();
+           // string str = SendMails();
             if (str == "发送成功")
 			{
 				return Json(new { success = true });
@@ -140,14 +141,9 @@ namespace Himall.Web.Areas.Admin.Controllers
             System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
             msg.To.Add(destination);
 
-            /*  
-            * msg.To.Add("b@b.com");  
-            * msg.To.Add("b@b.com");  
-            * msg.To.Add("b@b.com");可以发送给多人  
-             */
-
+       
             msg.From = new MailAddress("15950560518@163.com", "yinzhen", System.Text.Encoding.UTF8);
-            /* 上面3个参数分别是发件人地址（可以随便写），发件人姓名，编码*/
+           
             msg.Subject = "这是测试邮件";//邮件标题   
             msg.SubjectEncoding = System.Text.Encoding.UTF8;//邮件标题编码   
             msg.Body = "邮件内容";//邮件内容   
@@ -175,6 +171,41 @@ namespace Himall.Web.Areas.Admin.Controllers
             }
             return str;
         }
+        //简单邮件传输协议类
+        /*private string SendMails()
+        {
+            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient();
+            client.Host = "smtp.163.com";//邮件服务器
+            client.Port = 25;//smtp主机上的端口号,默认是25.
+            client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;//邮件发送方式:通过网络发送到SMTP服务器
+            client.Credentials = new System.Net.NetworkCredential("15950560518@163.com", "10201116yy");//凭证,发件人登录邮箱的用户名和密码
+
+            //电子邮件信息类
+            System.Net.Mail.MailAddress fromAddress = new System.Net.Mail.MailAddress("15950560518@163.com", "小明");//发件人Email,在邮箱是这样显示的,[发件人:小明<panthervic@163.com>;]
+            System.Net.Mail.MailAddress toAddress = new System.Net.Mail.MailAddress("yinzhen931020@163.com", "小红");//收件人Email,在邮箱是这样显示的, [收件人:小红<43327681@163.com>;]
+            System.Net.Mail.MailMessage mailMessage = new System.Net.Mail.MailMessage(fromAddress, toAddress);//创建一个电子邮件类
+            mailMessage.Subject = "邮件的主题";
+            string filePath = Server.MapPath("/index.html");//邮件的内容可以是一个html文本.
+            System.IO.StreamReader read = new System.IO.StreamReader(filePath, System.Text.Encoding.GetEncoding("GB2312"));
+            string mailBody = read.ReadToEnd();
+            read.Close();
+            mailMessage.Body = mailBody;//可为html格式文本
+            //mailMessage.Body = "邮件的内容";//可为html格式文本
+            mailMessage.SubjectEncoding = System.Text.Encoding.UTF8;//邮件主题编码
+            mailMessage.BodyEncoding = System.Text.Encoding.GetEncoding("GB2312");//邮件内容编码
+            mailMessage.IsBodyHtml = true;//邮件内容是否为html格式
+            mailMessage.Priority = System.Net.Mail.MailPriority.High;//邮件的优先级,有三个值:高(在邮件主题前有一个红色感叹号,表示紧急),低(在邮件主题前有一个蓝色向下箭头,表示缓慢),正常(无显示).
+            try
+            {
+                client.Send(mailMessage);//发送邮件
+                //client.SendAsync(mailMessage, "ojb");异步方法发送邮件,不会阻塞线程.
+                return "发送成功";
+            }
+            catch (Exception)
+            {
+                return "发送失败";
+            }
+        }*/
       /* private string SendMail() 
        { 
           try 

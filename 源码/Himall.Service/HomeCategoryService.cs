@@ -168,7 +168,7 @@ namespace Himall.Service
 
 		public void UpdateHomeCategorySet(int rowNumber, IEnumerable<long> categoryIds)    //程序有问题
 		{
-			if (rowNumber > 14 || rowNumber < 0)
+			if (rowNumber > 6 || rowNumber < 0)
 			{
 				throw new ArgumentNullException(string.Concat("行号不在取值范围内！取值必须大于0且小于", 14));
 			}
@@ -189,9 +189,10 @@ namespace Himall.Service
 
 			}
             //需要先判断数据库中是否已存在，而不能直接添加
-            context.HomeCategoryInfo.OrderBy((HomeCategoryInfo item) => item.RowNumber == rowNumber);
-
-            int cn = 0;                            //记录需要存储的记录数;
+         //   context.HomeCategoryInfo.OrderBy((HomeCategoryInfo item) => item.RowNumber == rowNumber);
+            context.HomeCategoryInfo.Remove((HomeCategoryInfo item) => item.RowNumber == rowNumber);
+                             
+            /*int cn = 0;                            //记录需要存储的记录数;
             Boolean[] sp = new Boolean[num];
             for (int i = 0; i < num; i++)
             {
@@ -214,8 +215,11 @@ namespace Himall.Service
                     NewArray[cm] = homeCategoryInfoArray[i];
                     cm++;
                 }
-            }
-            context.HomeCategoryInfo.AddRange(NewArray);
+            }*/
+           // context.HomeCategoryInfo.AddRange(NewArray);
+
+            //context.HomeCategoryInfo.
+            context.HomeCategoryInfo.AddRange(homeCategoryInfoArray);
             context.SaveChanges();
           //  context.SaveChanges();
 		}
