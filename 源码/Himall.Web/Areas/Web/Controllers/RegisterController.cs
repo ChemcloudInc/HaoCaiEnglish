@@ -111,7 +111,9 @@ namespace Himall.Web.Areas.Web.Controllers
 					Cache.Remove(CacheKeyCollection.MemberPluginCheck(mobile, "Himall.Plugin.Message.SMS"));
 				}
 			}
-			ServiceHelper.Create<IBonusService>().DepositToRegister(userMemberInfo.Id);
+            long m = 200;
+			ServiceHelper.Create<IBonusService>().DepositToRegister((long)userMemberInfo.Id);
+            //ServiceHelper.Create<IBonusService>().DepositToRegister(m);
 			return Json(new { success = true, memberId = userMemberInfo.Id });
 		}
 

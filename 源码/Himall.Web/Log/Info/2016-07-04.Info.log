@@ -318,3 +318,1375 @@
 出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
 错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
 
+
+
+
+ 记录时间：2016-07-04 14:25:55,348 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:25:55,377 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:25:55,412 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 14:25:55,436 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:25:55,459 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 14:28:25,693 
+日志级别：  INFO  
+出错类：Himall.ServiceProvider.Instance`1[T].get_Create  
+错误描述：IBonusService服务实例创建失败 
+
+Autofac.Core.DependencyResolutionException: An exception was thrown while invoking the constructor 'Void .ctor()' on type 'BonusService'. ---> 微信请求发生错误！错误代码：40125，说明：invalid appsecret, view more at http://t.cn/RAEkdVq hint: [JSy1Na0698szc7] (See inner exception for details.) ---> Senparc.Weixin.Exceptions.ErrorJsonResultException: 微信请求发生错误！错误代码：40125，说明：invalid appsecret, view more at http://t.cn/RAEkdVq hint: [JSy1Na0698szc7]
+   在 Senparc.Weixin.HttpUtility.Get.GetJson[T](String url, Encoding encoding)
+   在 Senparc.Weixin.MP.CommonAPIs.CommonApi.GetToken(String appid, String secret, String grant_type)
+   在 Senparc.Weixin.MP.CommonAPIs.AccessTokenContainer.GetTokenResult(String appId, Boolean getNewToken)
+   在 Senparc.Weixin.MP.CommonAPIs.AccessTokenContainer.GetToken(String appId, Boolean getNewToken)
+   在 Senparc.Weixin.MP.CommonAPIs.AccessTokenContainer.TryGetToken(String appId, String appSecret, Boolean getNewToken)
+   在 Himall.Service.BonusService.init(String appid, String secret) 位置 d:\MyGit\源码\Himall.Service\BonusService.cs:行号 307
+   在 Himall.Service.BonusService..ctor() 位置 d:\MyGit\源码\Himall.Service\BonusService.cs:行号 34
+   在 lambda_method(Closure , Object[] )
+   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   在 Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.InstanceLookup.Execute()
+   在 Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.ResolveOperation.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.ResolveOperation.Execute(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Container.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   在 Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve[TService](IComponentContext context, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve[TService](IComponentContext context)
+   在 Himall.ServiceProvider.Instance`1.get_Create() 位置 d:\MyGit\源码\Himall.ServiceProvider\Instance_T_.cs:行号 66
+
+
+
+ 记录时间：2016-07-04 14:28:46,198 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:28:46,234 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:28:46,259 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 14:28:46,283 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:28:46,307 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 14:31:12,552 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:31:12,585 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:31:12,607 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 14:31:12,629 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:31:12,652 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 14:33:15,680 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:33:15,712 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:33:15,739 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 14:33:15,762 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:33:15,787 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 14:35:39,095 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:35:39,133 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:35:39,162 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 14:35:39,209 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:35:39,239 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 14:37:32,827 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:37:32,858 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:37:32,881 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 14:37:32,903 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:37:32,928 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 14:39:37,108 
+日志级别：  INFO  
+出错类：Himall.ServiceProvider.Instance`1[T].get_Create  
+错误描述：IBonusService服务实例创建失败 
+
+Autofac.Core.DependencyResolutionException: An exception was thrown while invoking the constructor 'Void .ctor()' on type 'BonusService'. ---> 微信请求发生错误！错误代码：40125，说明：invalid appsecret, view more at http://t.cn/RAEkdVq hint: [2YIAFA0329szc7] (See inner exception for details.) ---> Senparc.Weixin.Exceptions.ErrorJsonResultException: 微信请求发生错误！错误代码：40125，说明：invalid appsecret, view more at http://t.cn/RAEkdVq hint: [2YIAFA0329szc7]
+   在 Senparc.Weixin.HttpUtility.Get.GetJson[T](String url, Encoding encoding)
+   在 Senparc.Weixin.MP.CommonAPIs.CommonApi.GetToken(String appid, String secret, String grant_type)
+   在 Senparc.Weixin.MP.CommonAPIs.AccessTokenContainer.GetTokenResult(String appId, Boolean getNewToken)
+   在 Senparc.Weixin.MP.CommonAPIs.AccessTokenContainer.GetToken(String appId, Boolean getNewToken)
+   在 Senparc.Weixin.MP.CommonAPIs.AccessTokenContainer.TryGetToken(String appId, String appSecret, Boolean getNewToken)
+   在 Himall.Service.BonusService.init(String appid, String secret) 位置 d:\MyGit\源码\Himall.Service\BonusService.cs:行号 307
+   在 Himall.Service.BonusService..ctor() 位置 d:\MyGit\源码\Himall.Service\BonusService.cs:行号 34
+   在 lambda_method(Closure , Object[] )
+   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Autofac.Core.Activators.Reflection.ConstructorParameterBinding.Instantiate()
+   在 Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.InstanceLookup.Activate(IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.InstanceLookup.Execute()
+   在 Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.ResolveOperation.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Resolving.ResolveOperation.Execute(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.Core.Container.ResolveComponent(IComponentRegistration registration, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   在 Autofac.ResolutionExtensions.ResolveService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve[TService](IComponentContext context, IEnumerable`1 parameters)
+   在 Autofac.ResolutionExtensions.Resolve[TService](IComponentContext context)
+   在 Himall.ServiceProvider.Instance`1.get_Create() 位置 d:\MyGit\源码\Himall.ServiceProvider\Instance_T_.cs:行号 66
+
+
+
+ 记录时间：2016-07-04 14:40:02,467 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:40:02,492 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:40:02,508 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 14:40:02,526 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:40:02,543 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 14:40:51,465 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 14:40:56,766 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 14:40:59,499 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 14:42:04,296 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:42:04,331 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:42:04,355 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 14:42:04,379 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:42:04,406 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 14:42:29,517 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 14:42:38,330 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 14:42:43,011 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 14:43:06,333 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:43:06,367 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:43:06,392 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 14:43:06,416 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:43:06,441 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 14:45:25,851 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 14:45:31,687 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 14:45:35,414 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 14:47:09,045 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:47:09,076 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:47:09,102 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 14:47:09,126 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:47:09,156 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 14:47:49,143 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 14:47:51,827 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 14:47:54,766 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 14:58:26,616 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:58:26,649 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:58:26,673 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 14:58:26,701 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 14:58:26,728 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 14:58:48,913 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 14:58:54,064 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 14:58:57,450 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 15:04:35,936 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:04:35,972 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:04:35,997 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 15:04:36,023 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:04:36,051 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 15:05:22,343 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 15:05:26,594 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 15:05:29,442 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 15:06:44,905 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:06:44,940 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:06:44,965 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 15:06:44,989 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:06:45,015 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 15:07:12,311 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 15:07:21,564 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 15:07:25,841 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 15:09:27,735 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:09:27,766 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:09:27,790 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 15:09:27,814 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:09:27,839 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 15:09:50,260 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 15:09:59,224 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 15:10:03,313 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 15:28:24,954 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:28:24,980 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:28:24,998 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 15:28:25,016 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:28:25,035 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 15:28:40,810 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 15:28:42,454 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 15:28:45,360 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 15:29:16,552 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:29:16,578 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:29:16,598 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 15:29:16,615 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:29:16,632 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 15:29:31,327 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 15:29:33,016 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 15:29:36,185 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 15:30:17,977 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:30:18,008 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:30:18,032 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 15:30:18,059 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:30:18,083 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 15:31:13,395 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 15:31:22,091 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 15:31:26,346 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 15:33:13,804 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:33:13,837 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:33:13,861 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 15:33:13,884 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:33:13,910 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 15:33:22,875 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:33:22,910 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:33:22,934 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 15:33:22,960 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:33:22,990 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 15:34:22,652 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 15:34:29,878 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 15:34:32,959 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 15:38:21,837 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:38:21,874 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:38:21,899 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 15:38:21,927 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:38:21,956 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 15:41:08,303 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:41:08,344 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:41:08,376 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 15:41:08,409 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:41:08,440 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 15:41:48,893 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 15:41:54,588 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 15:41:56,362 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 15:41:59,894 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 15:46:57,276 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:46:57,318 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:46:57,349 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 15:46:57,377 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 15:46:57,406 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 15:47:27,828 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 15:47:35,236 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 15:47:45,621 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 16:02:34,781 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-04 16:02:34,815 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-04 16:02:34,835 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-04 16:02:34,857 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-04 16:02:34,877 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-04 16:02:53,429 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-04 16:02:59,244 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-04 16:03:02,059 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-04 16:03:03,309 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile1 
+
+
+
+
+ 记录时间：2016-07-04 16:03:04,246 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step1 
+

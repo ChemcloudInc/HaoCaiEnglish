@@ -80,7 +80,7 @@ namespace Himall.Service
 			}
 			using (TransactionScope transactionScope = new TransactionScope())
 			{
-				ShopInfo shopInfo = Instance<IShopService>.Create.CreateEmptyShop();
+				ShopInfo shopInfo = Instance<IShopService>.Create.CreateEmptyShop();         //???
 				ManagerInfo managerInfo2 = new ManagerInfo()
 				{
 					CreateDate = DateTime.Now,

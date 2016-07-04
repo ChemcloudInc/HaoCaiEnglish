@@ -10,6 +10,7 @@ using Himall.ServiceProvider;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -72,7 +73,7 @@ namespace Himall.Service
 			ShopInfo shopInfo = new ShopInfo()
 			{
 				ShopName = "",
-				GradeId = 0,
+				GradeId = 1,
 				IsSelf = false,
 				ShopStatus = ShopInfo.ShopAuditStatus.Unusable,
 				CreateDate = DateTime.Now,
@@ -84,11 +85,15 @@ namespace Himall.Service
 				BankRegionId = 0,
 				FreeFreight = new decimal(0),
 				Freight = new decimal(0),
-				Stage = new ShopInfo.ShopStage?(ShopInfo.ShopStage.CompanyInfo)
+                Stage = new ShopInfo.ShopStage?(ShopInfo.ShopStage.CompanyInfo),
 			};
 			ShopInfo shopInfo1 = shopInfo;
             context.ShopInfo.Add(shopInfo1);
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (Exception ex) { }
 			return shopInfo1;
 		}
 

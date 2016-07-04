@@ -304,7 +304,7 @@ namespace Himall.Service
 
 		private void init(string appid, string secret)
 		{
-            _accessToken = AccessTokenContainer.TryGetToken(appid, secret, false);
+            //_accessToken = AccessTokenContainer.TryGetToken(appid, secret, false);
 		}
 
 		public void Invalid(long id)
