@@ -168,7 +168,7 @@ namespace Himall.Service
 
 		public void UpdateHomeCategorySet(int rowNumber, IEnumerable<long> categoryIds)    //程序有问题
 		{
-			if (rowNumber > 6 || rowNumber < 0)
+			if (rowNumber > 14 || rowNumber < 0)
 			{
 				throw new ArgumentNullException(string.Concat("行号不在取值范围内！取值必须大于0且小于", 14));
 			}

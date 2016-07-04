@@ -79,7 +79,10 @@
                                         var topCategories = cateogry.HomeCategories.Where( item => item.Depth == 1 );}@foreach( var topCateory in topCategories )
                                         {
                                             if( j++ > 0 )
-                                            {@("、")}<a href="@Url.Action("Index", "Search", new{cid=topCateory.CategoryId})">@topCateory.CategoryInfo.Name</a>}
+                                            {@("、")}<a href="@Url.Action("Index", "Search", new{cid=topCateory.CategoryId})">
+                                        @topCateory.CategoryInfo.Name
+                                      
+                                         </a>}
                                     </h3>
                                     <s></s>
                                 </span>
