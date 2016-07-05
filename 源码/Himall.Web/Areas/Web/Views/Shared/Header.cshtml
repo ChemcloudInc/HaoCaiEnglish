@@ -38,12 +38,14 @@
                 {
                     if (i++ == 0)
                     {
-                        <a onclick="location.href=encodeURI( $(this).attr('url'))" style=" cursor:pointer; color:#ff0000" url="/search?keywords=@hotKey">@hotKey</a>
+                        @*<a onclick="location.href=encodeURI( $(this).attr('url'))" style=" cursor:pointer; color:#ff0000" url="/search?keywords=@hotKey">@hotKey</a>*@
+                    <a onclick="location.href=encodeURI( $(this).attr('url'))" style=" cursor:pointer; color:#ff0000" url="/">@hotKey</a>
                     }
                     else
                     {
-                        <a onclick="location.href=encodeURI( $(this).attr('url'))" style=" cursor:pointer; " url="/search?keywords=@hotKey">@hotKey</a>
-                    }
+                        @*<a onclick="location.href=encodeURI( $(this).attr('url'))" style=" cursor:pointer; " url="/search?keywords=@hotKey">@hotKey</a>*@
+                       <a onclick="location.href=encodeURI( $(this).attr('url'))" style=" cursor:pointer; " url="/">@hotKey</a>
+                     }
                 }
             </div>
         </div>
@@ -80,11 +82,16 @@
                                         {
                                             if( j++ > 0 )
                                             {@("、")}<a href="@Url.Action("Index", "Search", new{cid=topCateory.CategoryId})">
+                                           
                                         @topCateory.CategoryInfo.Name
-                                      
-                                         </a>}
-                                    </h3>
-                                    <s></s>
+                                                      
+                                          </a>
+                                        }
+                                       
+						            </h3>
+                                    
+                                  
+                                    
                                 </span>
                                 <div class="category-details">
                                     <div class="subitem">
@@ -93,7 +100,8 @@
                                             {
                                                 if( k++ > 0 )
                                                 {@("、")}<a href="@Url.Action("Index", "Search", new{cid=topCateory.CategoryId})">@topCateory.CategoryInfo.Name</a>}
-                                        </p>
+                                               
+                                             </p>
                                         @{
                                             j = 0;
 

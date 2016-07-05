@@ -1,0 +1,120 @@
+
+
+
+ 记录时间：2016-07-05 09:09:39,400 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-05 09:09:39,478 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-05 09:09:39,508 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-05 09:09:39,535 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-05 09:09:39,553 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-05 09:10:51,024 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-05 09:10:51,702 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-05 09:10:54,532 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-05 09:10:55,716 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile1 
+
+
+
+
+ 记录时间：2016-07-05 09:10:56,693 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step1 
+
+
+
+
+ 记录时间：2016-07-05 09:12:23,454 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile0 
+
+
+
+
+ 记录时间：2016-07-05 09:12:24,183 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step0 
+
+
+
+
+ 记录时间：2016-07-05 09:12:26,858 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:agreement 
+
+
+
+
+ 记录时间：2016-07-05 09:12:28,100 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile1 
+
+
+
+
+ 记录时间：2016-07-05 09:12:28,947 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step1 
+

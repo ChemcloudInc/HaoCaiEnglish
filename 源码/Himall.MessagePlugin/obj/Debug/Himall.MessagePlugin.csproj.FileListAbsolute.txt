@@ -18,3 +18,8 @@ D:\Haocai\源码\Himall.MessagePlugin\bin\Debug\Himall.MessagePlugin.pdb
 D:\Haocai\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.csprojResolveAssemblyReference.cache
 D:\Haocai\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.dll
 D:\Haocai\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.pdb
+D:\MyGit\源码\Himall.MessagePlugin\bin\Debug\Himall.MessagePlugin.dll
+D:\MyGit\源码\Himall.MessagePlugin\bin\Debug\Himall.MessagePlugin.pdb
+D:\MyGit\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.csprojResolveAssemblyReference.cache
+D:\MyGit\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.dll
+D:\MyGit\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.pdb
