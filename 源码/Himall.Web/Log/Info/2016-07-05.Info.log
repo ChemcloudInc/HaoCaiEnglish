@@ -118,3 +118,91 @@
 出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
 错误描述：Executing:step1 
 
+
+
+
+ 记录时间：2016-07-05 09:24:29,774 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile1 
+
+
+
+
+ 记录时间：2016-07-05 09:24:30,742 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step1 
+
+
+
+
+ 记录时间：2016-07-05 09:34:41,554 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile1 
+
+
+
+
+ 记录时间：2016-07-05 09:34:42,418 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step1 
+
+
+
+
+ 记录时间：2016-07-05 09:52:33,416 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay.Service 
+
+
+
+
+ 记录时间：2016-07-05 09:52:33,449 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.Alipay_QRCode.Service 
+
+
+
+
+ 记录时间：2016-07-05 09:52:33,470 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.UnionPay.UnionPay 
+
+
+
+
+ 记录时间：2016-07-05 09:52:33,492 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay.Service 
+
+
+
+
+ 记录时间：2016-07-05 09:52:33,511 
+日志级别：  INFO  
+出错类：Himall.PaymentPlugin.PaymentBase`1[T].set_WorkDirectory  
+错误描述：set WorkDirectory:Himall.Plugin.Payment.WeiXinPay_Native.WeiXinPay 
+
+
+
+
+ 记录时间：2016-07-05 09:52:58,274 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:editprofile1 
+
+
+
+
+ 记录时间：2016-07-05 09:53:04,540 
+日志级别：  INFO  
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ShopProfileController.OnActionExecuting  
+错误描述：Executing:step1 
+

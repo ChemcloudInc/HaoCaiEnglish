@@ -3,7 +3,7 @@
 }
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<head>
+@*<head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit|ie-stand" />
     <meta charset="utf-8" />
@@ -24,8 +24,11 @@
         @RenderSection( "Script" , false )
     </mata></head>
 <body>
+    kobe
     @{Html.RenderAction("Header", "ProductPartial");}
     @RenderBody()
     @{Html.RenderAction("Foot", "ProductPartial");}
+       
 </body>
+    *@
 </html>

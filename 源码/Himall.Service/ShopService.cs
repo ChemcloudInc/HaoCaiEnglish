@@ -89,11 +89,10 @@ namespace Himall.Service
 			};
 			ShopInfo shopInfo1 = shopInfo;
             context.ShopInfo.Add(shopInfo1);
-            try
-            {
-                context.SaveChanges();
-            }
-            catch (Exception ex) { }
+          
+            context.SaveChanges();
+            
+      
 			return shopInfo1;
 		}
 

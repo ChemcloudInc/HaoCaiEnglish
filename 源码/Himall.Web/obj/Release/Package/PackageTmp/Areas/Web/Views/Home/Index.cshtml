@@ -1,16 +1,18 @@
 ﻿@model List<Himall.Web.Areas.Web.Models.HomeFloorModel>
-
 @using Himall.Model
+
 @{
     Layout = "~/Areas/Web/Views/Shared/_HeadAndFoot.cshtml";
     //Layout = null;
     ViewBag.Title = ViewBag.Title;
 }
+
 @section Style{
     <link href="~/Areas/Web/Content/style.css" rel="stylesheet" />
  
 
 }
+
 @section Script
 {
     <script src="~/Areas/Web/Scripts/userInfo.js"></script>}
@@ -54,7 +56,7 @@
             </ul>
         </div>
     </div>
-
+ 
     <!-- 楼层循环-->
     <div class="floors">
 
@@ -236,6 +238,7 @@
 
 
 </div>
+
 <!--楼层定位导航-->
 <div class="floor-nav">
     <ul>
@@ -247,8 +250,9 @@
         }
     </ul>
 </div>
+   
 <script>
-    $(function () {
+   $(function () {
 
 
 
@@ -280,3 +284,4 @@
 
 
 </script>
+  
