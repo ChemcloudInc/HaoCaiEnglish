@@ -413,7 +413,10 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 									}
                                   
                                     productInfo.MeasureUnit = "件";
-                                  
+                                   // productInfo.Weight = 0;
+                                   // productInfo.Volume = 0;
+                                  //  productInfo.EditStatus = 3;
+                                    productInfo.FreightTemplateId = 139;
 									productService.AddProduct(productInfo);
 									num2++;
 									Log.Debug(strArrays[0].Replace("\"", ""));
@@ -502,8 +505,10 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
                                     }
 
                                     productInfo.MeasureUnit = strArrays[5].Replace("\"", "");
-                                    productInfo.Volume = null;
-                                    productInfo.Weight = null;
+                                   // productInfo.Volume = null;
+                                  //  productInfo.Weight = null;
+                                   // productInfo.EditStatus = 3;
+                                    productInfo.FreightTemplateId = 139;
                                     productService.AddProduct(productInfo);
                                     num2++;
                                     Log.Debug(strArrays[0].Replace("\"", ""));
