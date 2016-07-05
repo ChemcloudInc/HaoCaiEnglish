@@ -1,4 +1,7 @@
-﻿@using Himall.Model;
+﻿
+
+
+@using Himall.Model;
 @using Himall.Web.Areas.SellerAdmin.Models;
 
 @model IEnumerable<ProductInfo>
@@ -37,6 +40,7 @@
         });
 
     </script>
+
 <script type="text/javascript">
     $(function () {
         $('.v-option .o-more').click(function () {
@@ -139,11 +143,7 @@
             }
         }
                     }
-                    @*<div class="extra">
-                            <a href="javascript:;" class="more">
-                                <span>显示全部分类</span><b class="open"></b>
-                            </a>
-                        </div>*@
+              
                 </div>
             </div>
         </div>
@@ -270,9 +270,7 @@
                     </div>
                     <div class="clr"></div>
                 </div>
-                @*<div class="mb" id="advanced">
-                        <div class="attr-extra"><div>更多选项（肤质，价格）<b></b></div></div>
-                    </div>*@
+             
             </div>
             @{
                         var count = ((PagingInfo)ViewBag.pageInfo).TotalPages;
@@ -444,3 +442,4 @@
 
     <input type="hidden" id="logined" value="@ViewBag.Logined" />
 </div>
+
