@@ -247,6 +247,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 							}
 						}
 						Cache.Insert(CacheKeyCollection.UserImportProductTotal(_userid), strs.Count);
+                        int rowId = 0;
 						foreach (string str3 in strs)
 						{
 							string[] strArrays1 = new string[] { "\t" };
@@ -406,7 +407,8 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 									productInfo3.AuditStatus = ProductInfo.ProductAuditStatus.WaitForAuditing;
 									productInfo = productInfo3;
 									long id1 = productInfo.Id;
-									productInfo.ImagePath = string.Concat(imgpath1, "/", id1.ToString());
+									//productInfo.ImagePath = string.Concat(imgpath1, "//", rowId.ToString());
+                                    productInfo.ImagePath = string.Concat(imgpath1, "/", id1.ToString());
 									if (strArrays[28] != string.Empty)
 									{
                                         ImportProductImg(productInfo.Id, _shopid, files[i], strArrays[28]);
@@ -498,7 +500,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
                                     productInfo3.AuditStatus = ProductInfo.ProductAuditStatus.WaitForAuditing;
                                     productInfo = productInfo3;
                                     long id1 = productInfo.Id;
-                                    productInfo.ImagePath = string.Concat(imgpath1, "/", id1.ToString());
+                                    productInfo.ImagePath = string.Concat(imgpath1, "/", rowId.ToString());
                                     if (strArrays[14] != string.Empty)
                                     {
                                         ImportProductImg(productInfo.Id, _shopid, files[i], strArrays[14]);
@@ -521,7 +523,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
                                     Cache.Insert(CacheKeyCollection.UserImportProductCount(_userid), num2);
                                 }
                             }
-
+                            rowId++;
 
 
 

@@ -1,0 +1,40 @@
+
+
+
+ 记录时间：2016-07-06 09:44:53,261 
+日志级别：  DEBUG 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.AsyncProductImportController.ProcessProduct  
+错误描述：山地车 
+
+
+
+
+ 记录时间：2016-07-06 09:59:10,957 
+日志级别：  DEBUG 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.AsyncProductImportController.ProcessProduct  
+错误描述：保健酒 
+
+
+
+
+ 记录时间：2016-07-06 13:24:19,172 
+日志级别：  DEBUG 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.AsyncProductImportController.ProcessProduct  
+错误描述：保健酒 
+
+
+
+
+ 记录时间：2016-07-06 13:32:25,822 
+日志级别：  DEBUG 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.AsyncProductImportController.ProcessProduct  
+错误描述：保健酒 : 商品不能重复导入 
+
+
+
+
+ 记录时间：2016-07-06 15:02:13,678 
+日志级别：  DEBUG 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.AsyncProductImportController.ProcessProduct  
+错误描述：保健酒 
+

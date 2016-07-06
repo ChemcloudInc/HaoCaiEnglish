@@ -1,0 +1,48 @@
+
+
+
+ 记录时间：2016-07-06 14:07:19,761 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail  
+错误描述：发布商品时候，没有找到文件 
+
+System.IO.FileNotFoundException: D:\MyGit\源码\Himall.Web\2.png
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail(String productDetail) 位置 D:\MyGit\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductController.cs:行号 1270
+
+
+
+ 记录时间：2016-07-06 14:07:19,793 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail  
+错误描述：发布商品时候，没有找到文件 
+
+System.IO.FileNotFoundException: D:\MyGit\源码\Himall.Web\3.png
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail(String productDetail) 位置 D:\MyGit\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductController.cs:行号 1270
+
+
+
+ 记录时间：2016-07-06 14:07:19,821 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail  
+错误描述：发布商品时候，没有找到文件 
+
+System.IO.FileNotFoundException: D:\MyGit\源码\Himall.Web\4.png
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail(String productDetail) 位置 D:\MyGit\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductController.cs:行号 1270
+
+
+
+ 记录时间：2016-07-06 14:07:19,846 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail  
+错误描述：发布商品时候，没有找到文件 
+
+System.IO.FileNotFoundException: D:\MyGit\源码\Himall.Web\5.png
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail(String productDetail) 位置 D:\MyGit\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductController.cs:行号 1270
