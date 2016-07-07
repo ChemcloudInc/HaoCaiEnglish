@@ -103,7 +103,8 @@ namespace Himall.Service
 
 		public void DeleteCartItem(string skuId, long memberId)
 		{
-            context.ShoppingCartItemInfo.OrderBy((ShoppingCartItemInfo item) => (item.SkuId == skuId) && item.UserId == memberId);
+            //context.ShoppingCartItemInfo.OrderBy((ShoppingCartItemInfo item) => (item.SkuId == skuId) && item.UserId == memberId);
+            context.ShoppingCartItemInfo.Remove((ShoppingCartItemInfo item) => (item.SkuId == skuId) && item.UserId == memberId);
             context.SaveChanges();
 		}
 
