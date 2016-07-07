@@ -231,10 +231,10 @@ namespace Himall.Web.Areas.Web.Controllers
                 }
                 else if ((base.CurrentUser != null) && (defaultUserShippingAddressByUserId != null))
                 {
-                    List<long> productIds = new List<long>();
-                    List<int> counts = new List<int> {
-                (int)result,  1
-            };
+                //    List<long> productIds = new List<long>();
+                    List<long> productIds = new List<long>() { product.Id};
+                    //productIds.Add(product.Id);
+                    List<int> counts = new List<int> { (int)result};
                     num3 = Instance<IProductService>.Create.GetFreight(productIds, counts, cityId);
                     str4 = "运费 ￥" + num3;
                 }
