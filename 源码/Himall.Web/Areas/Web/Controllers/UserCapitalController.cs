@@ -207,7 +207,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			PageModel<CapitalDetailInfo> capitalDetails = memberCapitalService.GetCapitalDetails(capitalDetailQuery);
 			List<CapitalDetailModel> list = (
 				from e in capitalDetails.Models.ToList()
-				select new CapitalDetailModel()
+            select new CapitalDetailModel()
 				{
 					Id = e.Id,
 					Amount = e.Amount,
@@ -218,6 +218,7 @@ namespace Himall.Web.Areas.Web.Controllers
 					Remark = string.Concat(e.SourceType.ToDescription(), ",单号：", e.Id),
 					PayWay = e.Remark
 				}).ToList();
+              
 			DataGridModel<CapitalDetailModel> dataGridModel = new DataGridModel<CapitalDetailModel>()
 			{
 				rows = list,

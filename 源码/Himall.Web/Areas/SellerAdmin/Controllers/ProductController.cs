@@ -1036,6 +1036,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 			string str3 = "0";
 			string str4 = "0";
 			ProductInfo productInfo = new ProductInfo();
+           // productId = productInfo.Id;
 			if (productId != 0)
 			{
 				productInfo = productService.GetProduct(productId);

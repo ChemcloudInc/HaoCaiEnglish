@@ -1,0 +1,44 @@
+
+
+
+ 记录时间：2016-07-08 13:19:39,599 
+日志级别：  ERROR 
+出错类：Himall.Web.Framework.BaseController.OnException  
+错误描述：页面未捕获的异常：Area:Web,Controller:home,Action:Index 
+
+System.Data.SqlClient.SqlException (0x80131904): 在从服务器接收结果时发生传输级错误。 (provider: Session Provider, error: 19 - 物理连接不可用)
+   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   在 System.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   在 System.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   在 System.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   在 System.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   在 System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   在 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   在 System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+ClientConnectionId:5d766e9b-56ec-4425-af4e-3d6301718354
+Error Number:-1,State:0,Class:20
+
+
+
+ 记录时间：2016-07-08 13:20:17,199 
+日志级别：  ERROR 
+出错类：Himall.Web.Framework.BaseController.OnException  
+错误描述：页面未捕获的异常：Area:Web,Controller:home,Action:Index 
+
+System.ComponentModel.Win32Exception (0x80004005): 找不到网络路径。

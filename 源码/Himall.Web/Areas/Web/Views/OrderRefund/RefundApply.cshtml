@@ -2,7 +2,9 @@
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
     ViewBag.Title = "退换货申请";
     long MaxRGDNumber = (long)ViewBag.MaxRGDNumber;
-    decimal MaxRefundAmount = (decimal)ViewBag.MaxRefundAmount;
+    
+    decimal MaxRefundAmount;
+    MaxRefundAmount = (decimal)ViewBag.MaxRefundAmount;
     Himall.Model.OrderInfo OrderData = (Himall.Model.OrderInfo)ViewBag.OrderInfo;
     long? OrderItemId = (long?)ViewBag.OrderItemId;
     int RefundType = 0;

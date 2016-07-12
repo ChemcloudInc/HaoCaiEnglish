@@ -200,7 +200,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				{
 					nullable1 = null;
 				}
-				viewBag.MaxRefundAmount = nullable1;
+				//viewBag.MaxRefundAmount = nullable1;
 			}
 			else
 			{
