@@ -33,7 +33,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				throw new HimallException("未配置公众号参数");
 			}
-			string str = AccessTokenContainer.TryGetToken(siteSettings.WeixinAppId, siteSettings.WeixinAppSecret, false);
+			string str = AccessTokenContainer.TryGetToken(siteSettings.WeixinAppId, siteSettings.WeixinAppSecret, true);
 			SceneModel sceneModel = new SceneModel(QR_SCENE_Type.WithDraw)
 			{
 				Object = base.CurrentUser.Id.ToString()
