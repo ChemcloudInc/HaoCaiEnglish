@@ -431,11 +431,11 @@ namespace Himall.Service
                 {
                     decimal num6 = nums1.Sum((item) =>
                     {
-                        if (!item.Product.Volume.HasValue)
-                        {
+                       // if (!item.Product.Volume.HasValue)
+                       // {
                             return new decimal(0);
-                        }
-                        return item.Product.Volume.Value * item.Quantity;
+                       // }
+                       // return item.Product.Volume.Value * item.Quantity;
                     });
                     int value6 = freightAreaContentInfo.FirstUnit.Value;
                     decimal value7 = (decimal)freightAreaContentInfo.FirstUnitMonry.Value;
