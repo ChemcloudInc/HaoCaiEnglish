@@ -1025,6 +1025,7 @@
   <ItemGroup>
     <Compile Include="API\DefaultController.cs" />
     <Compile Include="API\ExpressDataController.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\WithDrawModel.cs" />
     <Compile Include="UEditor\Config.cs" />
     <Compile Include="UEditor\ConfigHandler.cs" />
     <Compile Include="UEditor\IUEditorHandle.cs" />

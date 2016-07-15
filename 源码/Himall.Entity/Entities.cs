@@ -131,7 +131,7 @@ namespace Himall.Entity
         public virtual DbSet<Himall.Model.WXCardCodeLogInfo> WXCardCodeLogInfo { get; set; }
         public virtual DbSet<Himall.Model.WXCardLogInfo> WXCardLogInfo { get; set; }
         public virtual DbSet<Himall.Model.WXShopInfo> WXShopInfo { get; set; }
-
+        public virtual DbSet<Himall.Model.WithDrawInfo> WithDrawInfo { get; set; }
         public Entities() : base("name=Entities")
         {
             ShoppingCartItemInfo = base.Set<Himall.Model.ShoppingCartItemInfo>();

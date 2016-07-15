@@ -37,9 +37,11 @@
     <Reference Include="Senparc.Weixin.MP">
       <HintPath>..\DLL\Senparc.Weixin.MP.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IWithDrawService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <AutoGen>false</AutoGen>
       <DesignTimeSharedInput>false</DesignTimeSharedInput>

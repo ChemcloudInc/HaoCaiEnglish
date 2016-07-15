@@ -25,7 +25,10 @@ namespace Himall.Web.Areas.Web.Controllers
 		public UserCapitalController()
 		{
 		}
-
+        public ActionResult WithDrawType()
+        {
+            return View();
+        }
 		public ActionResult ApplyWithDraw()
 		{
 			SiteSettingsInfo siteSettings = ServiceHelper.Create<ISiteSettingService>().GetSiteSettings();
