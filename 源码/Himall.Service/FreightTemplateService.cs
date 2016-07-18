@@ -21,8 +21,8 @@ namespace Himall.Service
 		{
 			using (TransactionScope transactionScope = new TransactionScope())
 			{
-                context.FreightTemplateInfo.OrderBy((FreightTemplateInfo e) => e.Id == TemplateId);
-                context.FreightAreaContentInfo.OrderBy((FreightAreaContentInfo e) => e.FreightTemplateId == TemplateId);
+                context.FreightTemplateInfo.Remove((FreightTemplateInfo e) => e.Id == TemplateId);
+                context.FreightAreaContentInfo.Remove((FreightAreaContentInfo e) => e.FreightTemplateId == TemplateId);
                 context.SaveChanges();
 				transactionScope.Complete();
 			}

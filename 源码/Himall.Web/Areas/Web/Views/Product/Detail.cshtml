@@ -166,7 +166,7 @@
                     <li id="summary-price">
                         <div class="t">
                             <div class="dt dt01">价格</div>
-                            <strong class="p-price dt" id="jd-price">￥@ViewBag.Price</strong><span class="dt dt02">￥128</span>
+                            <strong class="p-price dt" id="jd-price">￥@ViewBag.Price</strong><span class="dt dt02">￥@ViewBag.Price</span>
 							@if (!string.IsNullOrEmpty(Model.Product.Himall_FreightTemplate.SendTime))
                             {
                                 <i class="dt" style="width:auto;margin-right:20px;color:#737b9e; float:right;">@(Model.Product.Himall_FreightTemplate.SendTime)h内发货</i>
