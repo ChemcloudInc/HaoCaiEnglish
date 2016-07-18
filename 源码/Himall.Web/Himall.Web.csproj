@@ -1026,6 +1026,8 @@
     <Compile Include="API\DefaultController.cs" />
     <Compile Include="API\ExpressDataController.cs" />
     <Compile Include="Areas\SellerAdmin\Models\WithDrawModel.cs" />
+    <Compile Include="Areas\Web\Controllers\stirng.cs" />
+    <Compile Include="Areas\Web\Controllers\WithDrawController.cs" />
     <Compile Include="UEditor\Config.cs" />
     <Compile Include="UEditor\ConfigHandler.cs" />
     <Compile Include="UEditor\IUEditorHandle.cs" />
@@ -1867,6 +1869,7 @@
     <Content Include="Views\Site\Close.cshtml" />
     <Content Include="Views\Site\State.cshtml" />
     <Content Include="Views\Site\Version.cshtml" />
+    <Content Include="Areas\Web\Views\WithDraw\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

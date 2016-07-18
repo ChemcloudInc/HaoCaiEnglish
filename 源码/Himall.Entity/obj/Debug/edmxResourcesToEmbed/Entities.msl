@@ -332,9 +332,9 @@
     <EntitySetMapping Name="Himall_HandSlideAds">
       <EntityTypeMapping TypeName="Himall.Model.HandSlideAdInfo">
         <MappingFragment StoreEntitySet="Himall_HandSlideAds">
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
           <ScalarProperty Name="DisplaySequence" ColumnName="DisplaySequence" />
           <ScalarProperty Name="Url" ColumnName="Url" />
-          <ScalarProperty Name="imageUrl" ColumnName="ImageUrl" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -365,8 +365,8 @@
     <EntitySetMapping Name="Himall_ImageAds">
       <EntityTypeMapping TypeName="Himall.Model.ImageAdInfo">
         <MappingFragment StoreEntitySet="Himall_ImageAds">
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
           <ScalarProperty Name="Url" ColumnName="Url" />
-          <ScalarProperty Name="imageUrl" ColumnName="ImageUrl" />
           <ScalarProperty Name="ShopId" ColumnName="ShopId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
@@ -741,11 +741,11 @@
     <EntitySetMapping Name="Himall_SlideAds">
       <EntityTypeMapping TypeName="Himall.Model.SlideAdInfo">
         <MappingFragment StoreEntitySet="Himall_SlideAds">
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="TypeId" ColumnName="TypeId" />
           <ScalarProperty Name="DisplaySequence" ColumnName="DisplaySequence" />
           <ScalarProperty Name="Url" ColumnName="Url" />
-          <ScalarProperty Name="imageUrl" ColumnName="ImageUrl" />
           <ScalarProperty Name="ShopId" ColumnName="ShopId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
@@ -763,14 +763,14 @@
     <EntitySetMapping Name="Himall_Topics">
       <EntityTypeMapping TypeName="Himall.Model.TopicInfo">
         <MappingFragment StoreEntitySet="Himall_Topics">
+          <ScalarProperty Name="frontCoverImage" ColumnName="frontCoverImage" />
+          <ScalarProperty Name="backgroundImage" ColumnName="backgroundImage" />
+          <ScalarProperty Name="topImage" ColumnName="topImage" />
           <ScalarProperty Name="SelfDefineText" ColumnName="SelfDefineText" />
           <ScalarProperty Name="IsRecommend" ColumnName="IsRecommend" />
           <ScalarProperty Name="ShopId" ColumnName="ShopId" />
           <ScalarProperty Name="Tags" ColumnName="Tags" />
-          <ScalarProperty Name="frontCoverImage" ColumnName="FrontCoverImage" />
           <ScalarProperty Name="PlatForm" ColumnName="PlatForm" />
-          <ScalarProperty Name="backgroundImage" ColumnName="BackgroundImage" />
-          <ScalarProperty Name="topImage" ColumnName="TopImage" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
@@ -843,10 +843,10 @@
     <EntitySetMapping Name="Himall_HomeCategoryRows">
       <EntityTypeMapping TypeName="Himall.Model.HomeCategoryRowInfo">
         <MappingFragment StoreEntitySet="Himall_HomeCategoryRows">
+          <ScalarProperty Name="image2" ColumnName="image2" />
+          <ScalarProperty Name="image1" ColumnName="image1" />
           <ScalarProperty Name="Url2" ColumnName="Url2" />
-          <ScalarProperty Name="image2" ColumnName="Image2" />
           <ScalarProperty Name="Url1" ColumnName="Url1" />
-          <ScalarProperty Name="image1" ColumnName="Image1" />
           <ScalarProperty Name="RowId" ColumnName="RowId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
@@ -1193,12 +1193,12 @@
     <EntitySetMapping Name="Himall_VShop">
       <EntityTypeMapping TypeName="Himall.Model.VShopInfo">
         <MappingFragment StoreEntitySet="Himall_VShop">
+          <ScalarProperty Name="backgroundImage" ColumnName="backgroundImage" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
           <ScalarProperty Name="WXLogo" ColumnName="WXLogo" />
           <ScalarProperty Name="HomePageTitle" ColumnName="HomePageTitle" />
           <ScalarProperty Name="Tags" ColumnName="Tags" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="backgroundImage" ColumnName="BackgroundImage" />
-          <ScalarProperty Name="logo" ColumnName="Logo" />
           <ScalarProperty Name="State" ColumnName="State" />
           <ScalarProperty Name="buyNum" ColumnName="buyNum" />
           <ScalarProperty Name="VisitNum" ColumnName="VisitNum" />
@@ -1725,6 +1725,19 @@
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="OpenId" ColumnName="OpenId" />
           <ScalarProperty Name="BonusGrantId" ColumnName="BonusGrantId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Himall_WithDraw">
+      <EntityTypeMapping TypeName="Himall.Model.WithDrawInfo">
+        <MappingFragment StoreEntitySet="Himall_WithDraw">
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="IdNo" ColumnName="IdNo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="WithdrawType" ColumnName="WithdrawType" />
+          <ScalarProperty Name="MembersId" ColumnName="MembersId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

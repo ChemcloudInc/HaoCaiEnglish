@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "提现方式管理";
+    Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
+}
+@model IEnumerable<Himall.Model.WithDrawInfo>
+<link href="~/Areas/Web/Content/base.css" rel="stylesheet" />
+<link href="~/Areas/Web/Content/myjd.easebuy.css" rel="stylesheet" />
+<div class="box1 lh24">
+    <div class="title bot-border">
+        <h3 class="title_txt cur">提现方式管理</h3>
+    </div>
+
+    <div class="border-box">
+        <div class="mod lh24">
+            <div class="pd10">
+                <a href="javascript:;" class="e-btn add-btn btn-5">新增提现方式</a>
+            </div>
+            <div class="border-box">
+                <table class="tb-void tb-goods" id="list">
+                    <thead style="height:20px;">
+                        <tr>
+                            <th>提现方式</th>
+                            <th>账号信息</th>
+                            <th>姓名</th>
+                            <th>身份证号</th>
+                            <th>手机号码</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var withDrawInfo in Model)
+                        {
+                             <tr>
+                                 <td>@withDrawInfo.WithdrawType</td>
+                                 <td>@withDrawInfo.AccountNumber</td>
+                                 <td>@withDrawInfo.Name</td>
+                                 <td>@withDrawInfo.IdNo</td>
+                                 <td>@withDrawInfo.Mobile</td>
+                                 <td><a class="btn-9 id_edit" href="javascript:;" data="@withDrawInfo.Id">编辑</a>
+                                     <a class="btn-9 del" href="javascript:;" data-tag="@withDrawInfo.Id">删除</a></td>
+                             </tr>
+                        }
+                    </tbody>
+                    </table>
+            </div>
+            </div>
+        </div>
+    </div>

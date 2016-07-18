@@ -523,6 +523,7 @@
       <End Role="Himall_ShopBonusGrant" EntitySet="Himall_ShopBonusGrant" />
       <End Role="Himall_ShopBonusReceive" EntitySet="Himall_ShopBonusReceive" />
     </AssociationSet>
+    <EntitySet Name="Himall_WithDraw" EntityType="Himall.Model.WithDrawInfo" />
   </EntityContainer>
   <EntityType Name="CategoryInfo">
     <Key>
@@ -646,8 +647,8 @@
     <NavigationProperty Name="Himall_ProductVistis" Relationship="Himall.Model.FK_Product_ProductVisti" FromRole="ProductInfo" ToRole="Himall_ProductVistis" />
     <NavigationProperty Name="Himall_BrowsingHistory" Relationship="Himall.Model.FK_Himall_BrowsingHistory_Himall_Products" FromRole="ProductInfo" ToRole="Himall_BrowsingHistory" />
     <Property Name="FreightTemplateId" Type="Int64" Nullable="false" />
-    <Property Name="Weight" Type="Decimal" />
-    <Property Name="Volume" Type="Decimal" />
+    <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Volume" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Quantity" Type="Int32" />
     <NavigationProperty Name="Himall_FreightTemplate" Relationship="Himall.Model.fk_products_freighttemplate" FromRole="ProductInfo" ToRole="Himall_FreightTemplate" />
     <Property Name="MeasureUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
@@ -841,7 +842,7 @@
     <Property Name="Meta_Keywords" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ProductInfo" Relationship="Himall.Model.FK_Product_ProductDescription" FromRole="Himall_ProductDescriptions" ToRole="Products" />
     <Property Name="AuditReason" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="MobileDescription" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="MobileDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="ProductDescriptionTemplateInfo">
     <Key>
@@ -943,13 +944,13 @@
     <Property Name="CommissionAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
     <Property Name="RefundAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
     <Property Name="Remark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="FreightAmount" Type="Decimal" Nullable="false" />
-    <Property Name="RefundCommissionAmount" Type="Decimal" Nullable="false" />
-    <Property Name="AdvancePaymentAmount" Type="Decimal" Nullable="false" />
-    <Property Name="PeriodSettlement" Type="Decimal" Nullable="false" />
+    <Property Name="FreightAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="RefundCommissionAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="AdvancePaymentAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="PeriodSettlement" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <NavigationProperty Name="Himall_AccountPurchaseAgreement" Relationship="Himall.Model.himall_accountpurchaseagreement_ibfk_1" FromRole="AccountInfo" ToRole="Himall_AccountPurchaseAgreement" />
     <NavigationProperty Name="Himall_AccountDetails" Relationship="Himall.Model.himall_accountdetails_ibfk_1" FromRole="AccountInfo" ToRole="AccountDetailInfo" />
-    <Property Name="ProductActualPaidAmount" Type="Decimal" Nullable="false" />
+    <Property Name="ProductActualPaidAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="ArticleCategoryInfo">
     <Key>
@@ -1241,7 +1242,7 @@
     <NavigationProperty Name="OrderInfo" Relationship="Himall.Model.FK_Order_OrderItem" FromRole="Himall_OrderItems" ToRole="Himall_Orders" />
     <NavigationProperty Name="OrderRefundInfo" Relationship="Himall.Model.FK_OrderItem_OrderRefund" FromRole="Himall_OrderItems" ToRole="Himall_OrderRefunds" />
     <NavigationProperty Name="Himall_ProductComments" Relationship="Himall.Model.himall_productcomments_ibfk_1" FromRole="OrderItemInfo" ToRole="ProductCommentInfo" />
-    <Property Name="EnabledRefundAmount" Type="Decimal" Precision="8" />
+    <Property Name="EnabledRefundAmount" Type="Decimal" Precision="8" Scale="0" />
     <Property Name="IsLimitBuy" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="OrderOperationLogInfo">
@@ -1285,8 +1286,8 @@
     <Property Name="Payee" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="PayeeAccount" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="RefundMode" Type="Himall.Model.OrderRefundMode" Nullable="false" />
-    <Property Name="BuyerDeliverDate" Type="DateTime" />
-    <Property Name="SellerConfirmArrivalDate" Type="DateTime" />
+    <Property Name="BuyerDeliverDate" Type="DateTime" Precision="3" />
+    <Property Name="SellerConfirmArrivalDate" Type="DateTime" Precision="3" />
     <Property Name="RefundPayStatus" Type="Himall.Model.OrderRefundPayStatus" />
     <Property Name="RefundPayType" Type="Himall.Model.OrderRefundPayType" />
   </EntityType>
@@ -1337,7 +1338,7 @@
     <Property Name="Platform" Type="Himall.Model.PlatformType" Nullable="false" />
     <Property Name="DiscountAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="InvoiceType" Type="Himall.Model.InvoiceType" Nullable="false" />
-    <Property Name="IntegralDiscount" Type="Decimal" Nullable="false" />
+    <Property Name="IntegralDiscount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="InvoiceContext" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="OrderType" Type="Himall.Model.OrderTypes" />
   </EntityType>
@@ -1483,7 +1484,7 @@
     <NavigationProperty Name="Himall_ShopBrandApplys" Relationship="Himall.Model.FK_ShopApplysId" FromRole="ShopInfo" ToRole="Himall_ShopBrandApplys" />
     <NavigationProperty Name="Himall_ShopBrands" Relationship="Himall.Model.ShopId" FromRole="ShopInfo" ToRole="Himall_ShopBrands" />
     <Property Name="legalPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CompanyFoundingDate" Type="DateTime" />
+    <Property Name="CompanyFoundingDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Himall_StatisticOrderComments" Relationship="Himall.Model.himall_statisticordercomments_ibfk_1" FromRole="ShopInfo" ToRole="Himall_StatisticOrderComments" />
     <NavigationProperty Name="Himall_ProductComments" Relationship="Himall.Model.himall_productcomments_ibfk_3" FromRole="ShopInfo" ToRole="ProductCommentInfo" />
     <NavigationProperty Name="Himall_Coupon" Relationship="Himall.Model.himall_coupon_ibfk_1" FromRole="ShopInfo" ToRole="Himall_Coupon" />
@@ -1537,7 +1538,7 @@
     <Property Name="ShopId" Type="Int64" Nullable="false" />
     <NavigationProperty Name="Himall_MobileHomeTopics" Relationship="Himall.Model.FK__Himall_Mo__Topic__02C769E9" FromRole="TopicInfo" ToRole="MobileHomeTopicsInfo" />
     <Property Name="IsRecommend" Type="Boolean" Nullable="false" />
-    <Property Name="SelfDefineText" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="SelfDefineText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_ArticleCategory_Article">
     <End Type="Himall.Model.ArticleCategoryInfo" Role="Himall_ArticleCategories" Multiplicity="1" />
@@ -2008,11 +2009,11 @@
     <Property Name="RefundTotalAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
     <Property Name="RefundCommisAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
     <Property Name="OrderType" Type="Himall.Model.EnumOrderType" Nullable="false" />
-    <Property Name="FreightAmount" Type="Decimal" Nullable="false" />
-    <Property Name="ProductActualPaidAmount" Type="Decimal" Nullable="false" />
+    <Property Name="FreightAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ProductActualPaidAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="AccountId" Type="Int64" Nullable="false" />
     <NavigationProperty Name="Himall_Accounts" Relationship="Himall.Model.himall_accountdetails_ibfk_1" FromRole="AccountDetailInfo" ToRole="AccountInfo" />
-    <Property Name="OrderDate" Type="DateTime" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="OrderRefundsDates" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="HomeCategoryRowInfo">
@@ -2331,8 +2332,8 @@
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="AgreementType" Type="Int32" Nullable="false" />
-    <Property Name="AgreementContent" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
-    <Property Name="LastUpdateTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="AgreementContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LastUpdateTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" Precision="3" />
   </EntityType>
   <EntityType Name="CashDepositInfo">
     <Key>
@@ -2340,11 +2341,11 @@
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ShopId" Type="Int64" Nullable="false" />
-    <Property Name="CurrentBalance" Type="Decimal" Nullable="false" />
-    <Property Name="TotalBalance" Type="Decimal" Nullable="false" />
+    <Property Name="CurrentBalance" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="TotalBalance" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <NavigationProperty Name="Himall_Shops" Relationship="Himall.Model.FK_Himall_CashDeposit_Himall_Shops" FromRole="Himall_CashDeposit" ToRole="ShopInfo" />
     <NavigationProperty Name="Himall_CashDepositDetail" Relationship="Himall.Model.KF_Himall_CashDeposit_Himall_CashDepositDetail" FromRole="Himall_CashDeposit" ToRole="Himall_CashDepositDetail" />
-    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="EnableLabels" Type="Boolean" Nullable="false" />
   </EntityType>
   <Association Name="FK_Himall_CashDeposit_Himall_Shops">
@@ -2365,8 +2366,8 @@
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CashDepositId" Type="Int64" Nullable="false" />
-    <Property Name="AddDate" Type="DateTime" Nullable="false" />
-    <Property Name="Balance" Type="Decimal" Nullable="false" />
+    <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Balance" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="Operator" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="RechargeWay" Type="Int32" />
@@ -2399,7 +2400,7 @@
     <Property Name="ApplyMode" Type="Int32" Nullable="false" />
     <Property Name="Remark" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="AuditStatus" Type="Int32" Nullable="false" />
-    <Property Name="ApplyTime" Type="DateTime" Nullable="false" />
+    <Property Name="ApplyTime" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Himall_Brands" Relationship="Himall.Model.FK_BrandId" FromRole="Himall_ShopBrandApplys" ToRole="BrandInfo" />
     <NavigationProperty Name="Himall_Shops" Relationship="Himall.Model.FK_ShopApplysId" FromRole="Himall_ShopBrandApplys" ToRole="ShopInfo" />
   </EntityType>
@@ -2469,7 +2470,7 @@
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ShopId" Type="Int64" Nullable="false" />
     <Property Name="CommentKey" Type="Himall.Model.EnumCommentKey" Nullable="false" />
-    <Property Name="CommentValue" Type="Decimal" Nullable="false" />
+    <Property Name="CommentValue" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <NavigationProperty Name="Himall_Shops" Relationship="Himall.Model.himall_statisticordercomments_ibfk_1" FromRole="Himall_StatisticOrderComments" ToRole="ShopInfo" />
   </EntityType>
   <Association Name="himall_statisticordercomments_ibfk_1">
@@ -2491,11 +2492,11 @@
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="AccountId" Type="Int64" />
     <Property Name="ShopId" Type="Int64" Nullable="false" />
-    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="PurchaseAgreementId" Type="Int64" Nullable="false" />
-    <Property Name="AdvancePayment" Type="Decimal" Nullable="false" />
-    <Property Name="FinishDate" Type="DateTime" Nullable="false" />
-    <Property Name="ApplyDate" Type="DateTime" />
+    <Property Name="AdvancePayment" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="FinishDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ApplyDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Himall_Accounts" Relationship="Himall.Model.himall_accountpurchaseagreement_ibfk_1" FromRole="Himall_AccountPurchaseAgreement" ToRole="AccountInfo" />
   </EntityType>
   <Association Name="himall_accountpurchaseagreement_ibfk_1">
@@ -2580,20 +2581,20 @@
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ShopId" Type="Int64" Nullable="false" />
     <Property Name="ShopName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Price" Type="Decimal" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="PerMax" Type="Int32" Nullable="false" />
-    <Property Name="OrderAmount" Type="Decimal" Nullable="false" />
+    <Property Name="OrderAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="Num" Type="Int32" Nullable="false" />
-    <Property Name="StartTime" Type="DateTime" Nullable="false" />
-    <Property Name="EndTime" Type="DateTime" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="CouponName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Himall_Shops" Relationship="Himall.Model.himall_coupon_ibfk_1" FromRole="Himall_Coupon" ToRole="ShopInfo" />
     <NavigationProperty Name="Himall_CouponRecord" Relationship="Himall.Model.himall_couponrecord_ibfk_2" FromRole="Himall_Coupon" ToRole="Himall_CouponRecord" />
     <NavigationProperty Name="Himall_CouponSetting" Relationship="Himall.Model.fk_Himall_CouponSetting" FromRole="CouponInfo" ToRole="CouponSettingInfo" />
     <Property Name="ReceiveType" Type="Himall.Model.CouponReceiveType" Nullable="false" />
     <Property Name="NeedIntegral" Type="Int32" Nullable="false" />
-    <Property Name="EndIntegralExchange" Type="DateTime" />
+    <Property Name="EndIntegralExchange" Type="DateTime" Precision="3" />
     <Property Name="IntegralCover" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="IsSyncWeiXin" Type="Int32" Nullable="false" />
     <Property Name="WXAuditStatus" Type="Int32" Nullable="false" />
@@ -2606,10 +2607,10 @@
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CouponId" Type="Int64" Nullable="false" />
     <Property Name="CounponSN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="CounponTime" Type="DateTime" Nullable="false" />
+    <Property Name="CounponTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="UserId" Type="Int64" Nullable="false" />
-    <Property Name="UsedTime" Type="DateTime" />
+    <Property Name="UsedTime" Type="DateTime" Precision="3" />
     <Property Name="OrderId" Type="Int64" />
     <Property Name="ShopId" Type="Int64" Nullable="false" />
     <Property Name="ShopName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
@@ -2665,7 +2666,7 @@
     <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="TypeId" Type="Himall.Model.IntegralType" Nullable="false" />
     <Property Name="Integral" Type="Int32" Nullable="false" />
-    <Property Name="RecordDate" Type="DateTime" />
+    <Property Name="RecordDate" Type="DateTime" Precision="3" />
     <Property Name="ReMark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Himall_Members" Relationship="Himall.Model.himall_memberintegralrecord_ibfk_1" FromRole="Himall_MemberIntegralRecord" ToRole="UserMemberInfo" />
     <NavigationProperty Name="Himall_MemberIntegralRecordAction" Relationship="Himall.Model.himall_memberintegralrecordaction_ibfk_1" FromRole="Himall_MemberIntegralRecord" ToRole="Himall_MemberIntegralRecordAction" />
@@ -2695,7 +2696,7 @@
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="ShopId" Type="Int64" Nullable="false" />
-    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="VisitNum" Type="Int32" Nullable="false" />
     <Property Name="buyNum" Type="Int32" Nullable="false" />
     <Property Name="State" Type="Himall.Model.VshopStates" Nullable="false" />
@@ -2716,7 +2717,7 @@
     <Property Name="VShopId" Type="Int64" Nullable="false" />
     <Property Name="Sequence" Type="Int32" />
     <Property Name="Type" Type="Himall.Model.VShopExtendType" Nullable="false" />
-    <Property Name="AddTime" Type="DateTime" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="State" Type="Int32" Nullable="false" />
     <NavigationProperty Name="VShopInfo" Relationship="Himall.Model.himall_vshopextend_ibfk_1" FromRole="VShopExtendInfo" ToRole="VShopInfo" />
   </EntityType>
@@ -2832,9 +2833,9 @@
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="AccountId" Type="Int64" Nullable="false" />
     <Property Name="MetaKey" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="MetaValue" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
-    <Property Name="ServiceStartTime" Type="DateTime" Nullable="false" />
-    <Property Name="ServiceEndTime" Type="DateTime" Nullable="false" />
+    <Property Name="MetaValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ServiceStartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ServiceEndTime" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="LimitTimeMarketInfo">
     <Key>
@@ -2846,19 +2847,19 @@
     <Property Name="ProductName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="AuditStatus" Type="Himall.Model.LimitTimeMarketAuditStatus" Nullable="false" />
-    <Property Name="AuditTime" Type="DateTime" Nullable="false" />
+    <Property Name="AuditTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ShopId" Type="Int64" Nullable="false" />
     <Property Name="ShopName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Price" Type="Decimal" Nullable="false" />
-    <Property Name="RecentMonthPrice" Type="Decimal" Nullable="false" />
-    <Property Name="StartTime" Type="DateTime" Nullable="false" />
-    <Property Name="EndTime" Type="DateTime" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="RecentMonthPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Stock" Type="Int32" Nullable="false" />
     <Property Name="SaleCount" Type="Int32" Nullable="false" />
-    <Property Name="CancelReson" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="CancelReson" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="MaxSaleCount" Type="Int32" Nullable="false" />
     <Property Name="ProductAd" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="MinPrice" Type="Decimal" Nullable="false" />
+    <Property Name="MinPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="ImagePath" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="MarketServiceRecordInfo">
@@ -2867,8 +2868,8 @@
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MarketServiceId" Type="Int64" Nullable="false" />
-    <Property Name="StartTime" Type="DateTime" Nullable="false" />
-    <Property Name="EndTime" Type="DateTime" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="ActiveMarketServiceInfo" Relationship="Himall.Model.FK_Himall_MarketServiceRecord_Himall_ActiveMarketService" FromRole="MarketServiceRecordInfo" ToRole="ActiveMarketServiceInfo" />
     <Property Name="SettlementFlag" Type="Int64" Nullable="false" />
   </EntityType>
@@ -2878,7 +2879,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TypeId" Type="Himall.Model.MarketType" Nullable="false" />
-    <Property Name="Price" Type="Decimal" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <NavigationProperty Name="Himall_MarketSettingMeta" Relationship="Himall.Model.FK_Hiamll_MarketSettingMeta_ToSetting" FromRole="MarketSettingInfo" ToRole="MarketSettingMetaInfo" />
   </EntityType>
   <EntityType Name="MarketSettingMetaInfo">
@@ -2888,7 +2889,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MarketId" Type="Int32" Nullable="false" />
     <Property Name="MetaKey" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="MetaValue" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="MetaValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Himall_MarketSetting" Relationship="Himall.Model.FK_Hiamll_MarketSettingMeta_ToSetting" FromRole="MarketSettingMetaInfo" ToRole="MarketSettingInfo" />
   </EntityType>
   <EntityType Name="MobileHomeProductsInfo">
@@ -3069,7 +3070,7 @@
     <Property Name="OrderId" Type="Int64" Nullable="false" />
     <Property Name="PayId" Type="Int64" Nullable="false" />
     <Property Name="PayState" Type="Boolean" Nullable="false" />
-    <Property Name="PayTime" Type="DateTime" />
+    <Property Name="PayTime" Type="DateTime" Precision="3" />
   </EntityType>
   <Association Name="FK_SHOPID1">
     <End Type="Himall.Model.ShopInfo" Role="ShopInfo" Multiplicity="1" />
@@ -3120,7 +3121,7 @@
     <Property Name="NeedIntegral" Type="Int32" Nullable="false" />
     <Property Name="LimtQuantity" Type="Int32" Nullable="false" />
     <Property Name="StockQuantity" Type="Int32" Nullable="false" />
-    <Property Name="EndDate" Type="DateTime" Nullable="false" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="NeedGrade" Type="Int32" Nullable="false" />
     <Property Name="VirtualSales" Type="Int32" Nullable="false" />
     <Property Name="RealSales" Type="Int32" Nullable="false" />
@@ -3128,8 +3129,8 @@
     <Property Name="ImagePath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Sequence" Type="Int32" Nullable="false" />
     <Property Name="GiftValue" Type="Decimal" Precision="8" Scale="2" />
-    <Property Name="Description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-    <Property Name="AddDate" Type="DateTime" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AddDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="GiftOrderInfo">
     <Key>
@@ -3147,9 +3148,9 @@
     <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="ExpressCompanyName" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
     <Property Name="ShipOrderNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-    <Property Name="ShippingDate" Type="DateTime" />
-    <Property Name="OrderDate" Type="DateTime" Nullable="false" />
-    <Property Name="FinishDate" Type="DateTime" />
+    <Property Name="ShippingDate" Type="DateTime" Precision="3" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FinishDate" Type="DateTime" Precision="3" />
     <Property Name="TotalIntegral" Type="Int32" />
     <Property Name="CloseReason" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Himall_GiftOrderItem" Relationship="Himall.Model.FK_Himall_Gitem_OrderId" FromRole="Himall_GiftsOrder" ToRole="Himall_GiftOrderItem" />
@@ -3182,20 +3183,20 @@
     <Property Name="MerchantsName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="Blessing" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="TotalPrice" Type="Decimal" Nullable="false" />
-    <Property Name="StartTime" Type="DateTime" Nullable="false" />
-    <Property Name="EndTime" Type="DateTime" Nullable="false" />
+    <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="QRPath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="FixedAmount" Type="Decimal" />
-    <Property Name="RandomAmountStart" Type="Decimal" />
-    <Property Name="RandomAmountEnd" Type="Decimal" />
+    <Property Name="FixedAmount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="RandomAmountStart" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="RandomAmountEnd" Type="Decimal" Precision="18" Scale="0" />
     <NavigationProperty Name="Himall_BonusReceive" Relationship="Himall.Model.FK_Reference_1" FromRole="Himall_Bonus" ToRole="Himall_BonusReceive" />
     <Property Name="ReceiveCount" Type="Int32" Nullable="false" />
     <Property Name="ImagePath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="IsInvalid" Type="Boolean" Nullable="false" />
     <Property Name="PriceType" Type="Himall.Model.BonusPriceType" />
-    <Property Name="ReceivePrice" Type="Decimal" Nullable="false" />
+    <Property Name="ReceivePrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="ReceiveHref" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="BonusReceiveInfo">
@@ -3205,8 +3206,8 @@
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="BonusId" Type="Int64" Nullable="false" />
     <Property Name="OpenId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="ReceiveTime" Type="DateTime" Nullable="true" />
-    <Property Name="Price" Type="Decimal" Nullable="false" />
+    <Property Name="ReceiveTime" Type="DateTime" Nullable="true" Precision="3" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <NavigationProperty Name="Himall_Bonus" Relationship="Himall.Model.FK_Reference_1" FromRole="Himall_BonusReceive" ToRole="Himall_Bonus" />
     <Property Name="IsShare" Type="Boolean" />
     <Property Name="IsTransformedDeposit" Type="Boolean" Nullable="false" />
@@ -3236,10 +3237,10 @@
     <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="OpenId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ApplyStatus" Type="Himall.Model.ApplyWithDrawStatus" Nullable="false" />
-    <Property Name="ApplyAmount" Type="Decimal" Nullable="false" />
-    <Property Name="ApplyTime" Type="DateTime" Nullable="false" />
-    <Property Name="ConfirmTime" Type="DateTime" />
-    <Property Name="PayTime" Type="DateTime" />
+    <Property Name="ApplyAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ApplyTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ConfirmTime" Type="DateTime" Precision="3" />
+    <Property Name="PayTime" Type="DateTime" Precision="3" />
     <Property Name="PayNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="OpUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
@@ -3250,9 +3251,9 @@
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MemId" Type="Int64" Nullable="false" />
-    <Property Name="Balance" Type="Decimal" />
-    <Property Name="FreezeAmount" Type="Decimal" />
-    <Property Name="ChargeAmount" Type="Decimal" />
+    <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="FreezeAmount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ChargeAmount" Type="Decimal" Precision="18" Scale="0" />
     <NavigationProperty Name="Himall_CapitalDetail" Relationship="Himall.Model.FK_Reference_Himall_CapitalDetail" FromRole="Himall_Capital" ToRole="Himall_CapitalDetail" />
   </EntityType>
   <EntityType Name="CapitalDetailInfo">
@@ -3262,9 +3263,9 @@
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="None" />
     <Property Name="CapitalID" Type="Int64" Nullable="false" />
     <Property Name="SourceType" Type="Himall.Model.CapitalDetailType" Nullable="false" />
-    <Property Name="Amount" Type="Decimal" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="SourceData" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Himall_Capital" Relationship="Himall.Model.FK_Reference_Himall_CapitalDetail" FromRole="Himall_CapitalDetail" ToRole="Himall_Capital" />
     <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
@@ -3290,7 +3291,7 @@
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="None" />
     <Property Name="CategoryId" Type="Int64" Nullable="false" />
-    <Property Name="NeedPayCashDeposit" Type="Decimal" Nullable="false" />
+    <Property Name="NeedPayCashDeposit" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="EnableNoReasonReturn" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="CategoriesInfo" Relationship="Himall.Model.FK_Himall_CategoriesObligation_Categories" FromRole="CategoryCashDepositInfo" ToRole="CategoryInfo" />
   </EntityType>
@@ -3315,10 +3316,10 @@
     <Property Name="RegName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="InviteIntegral" Type="Int32" Nullable="false" />
     <Property Name="RegIntegral" Type="Int32" />
-    <Property Name="RegTime" Type="DateTime" />
+    <Property Name="RegTime" Type="DateTime" Precision="3" />
     <Property Name="UserId" Type="Int64" />
     <Property Name="RegUserId" Type="Int64" />
-    <Property Name="RecordTime" Type="DateTime" />
+    <Property Name="RecordTime" Type="DateTime" Precision="3" />
     <NavigationProperty Name="InviteMember" Relationship="Himall.Model.InviteMember" FromRole="Himall_InviteRecord" ToRole="UserMemberInfo" />
     <NavigationProperty Name="RegMember" Relationship="Himall.Model.RegMember" FromRole="Himall_InviteRecord" ToRole="UserMemberInfo" />
   </EntityType>
@@ -3368,7 +3369,7 @@
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="OpenId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="SubscribeTime" Type="DateTime" Nullable="false" />
+    <Property Name="SubscribeTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="IsSubscribe" Type="Boolean" Nullable="false" />
   </EntityType>
   <Association Name="FK_UserId">
@@ -3389,11 +3390,11 @@
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="None" />
     <Property Name="MemId" Type="Int64" Nullable="false" />
-    <Property Name="ChargeTime" Type="DateTime" />
-    <Property Name="ChargeAmount" Type="Decimal" Nullable="false" />
+    <Property Name="ChargeTime" Type="DateTime" Precision="3" />
+    <Property Name="ChargeAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="ChargeWay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ChargeStatus" Type="Himall.Model.ChargeDetailStatus" Nullable="false" />
-    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
   </EntityType>
   <EnumType Name="ChargeDetailStatus" a:ExternalTypeName="Model.ChargeDetailInfo.ChargeDetailStatus" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
   <EntityType Name="WeiXinBasicInfo">
@@ -3401,10 +3402,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Ticket" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="TicketOutTime" Type="DateTime" Nullable="false" />
+    <Property Name="Ticket" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="TicketOutTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="AppId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="AccessToken" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AccessToken" Type="String" Nullable="false" MaxLength="160" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="WXCardCodeLogInfo">
     <Key>
@@ -3414,9 +3415,9 @@
     <Property Name="CardLogId" Type="Int64" />
     <Property Name="CardId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="SendTime" Type="DateTime" />
+    <Property Name="SendTime" Type="DateTime" Precision="3" />
     <Property Name="CodeStatus" Type="Int32" Nullable="false" />
-    <Property Name="UsedTime" Type="DateTime" />
+    <Property Name="UsedTime" Type="DateTime" Precision="3" />
     <Property Name="CouponType" Type="Himall.Model.CouponTypeEnum" />
     <Property Name="CouponCodeId" Type="Int64" />
     <Property Name="OpenId" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
@@ -3458,11 +3459,11 @@
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="StartTime" Type="DateTime" Nullable="false" />
-    <Property Name="EndTime" Type="DateTime" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ShortDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="ShopId" Type="Int64" Nullable="false" />
-    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Himall_CollocationPoruducts" Relationship="Himall.Model.FK_Collocation_CollPoruducts" FromRole="Himall_Collocation" ToRole="Himall_CollocationPoruducts" />
   </EntityType>
   <EntityType Name="CollocationPoruductInfo">
@@ -3486,8 +3487,8 @@
     <Property Name="ProductId" Type="Int64" Nullable="false" />
     <Property Name="SkuID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="ColloProductId" Type="Int64" Nullable="false" />
-    <Property Name="Price" Type="Decimal" Nullable="false" />
-    <Property Name="SkuPirce" Type="Decimal" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="SkuPirce" Type="Decimal" Precision="18" Scale="0" />
     <NavigationProperty Name="Himall_CollocationPoruducts" Relationship="Himall.Model.FK_ColloProuducts_Skus" FromRole="Himall_CollocationSkus" ToRole="Himall_CollocationPoruducts" />
     <NavigationProperty Name="Himall_Products" Relationship="Himall.Model.FK_Product_ColloSkus" FromRole="Himall_CollocationSkus" ToRole="ProductInfo" />
   </EntityType>
@@ -3556,7 +3557,7 @@
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="AppId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="AccessToken" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="TokenOutTime" Type="DateTime" Nullable="false" />
+    <Property Name="TokenOutTime" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="ShopBonusInfo">
     <Key>
@@ -3566,21 +3567,21 @@
     <Property Name="ShopId" Type="Int64" Nullable="false" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
     <Property Name="Count" Type="Int32" Nullable="false" />
-    <Property Name="RandomAmountStart" Type="Decimal" Nullable="false" />
-    <Property Name="RandomAmountEnd" Type="Decimal" Nullable="false" />
+    <Property Name="RandomAmountStart" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="RandomAmountEnd" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="UseState" Type="Himall.Model.UseStateType" Nullable="false" />
-    <Property Name="UsrStatePrice" Type="Decimal" Nullable="false" />
-    <Property Name="GrantPrice" Type="Decimal" Nullable="false" />
-    <Property Name="DateStart" Type="DateTime" Nullable="false" />
-    <Property Name="DateEnd" Type="DateTime" Nullable="false" />
-    <Property Name="BonusDateStart" Type="DateTime" Nullable="false" />
-    <Property Name="BonusDateEnd" Type="DateTime" Nullable="false" />
+    <Property Name="UsrStatePrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="GrantPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BonusDateStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BonusDateEnd" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ShareTitle" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="ShareDetail" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="ShareImg" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="SynchronizeCard" Type="Boolean" Nullable="false" />
-    <Property Name="CardTitle" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Name="CardColor" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="CardTitle" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="CardColor" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
     <Property Name="CardSubtitle" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="IsInvalid" Type="Boolean" Nullable="false" />
     <Property Name="ReceiveCount" Type="Int32" />
@@ -3609,10 +3610,10 @@
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="BonusGrantId" Type="Int64" Nullable="false" />
     <Property Name="OpenId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Price" Type="Decimal" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="State" Type="Himall.Model.ReceiveState" Nullable="false" />
-    <Property Name="ReceiveTime" Type="DateTime" />
-    <Property Name="UsedTime" Type="DateTime" />
+    <Property Name="ReceiveTime" Type="DateTime" Precision="3" />
+    <Property Name="UsedTime" Type="DateTime" Precision="3" />
     <Property Name="UserId" Type="Int64" />
     <Property Name="UsedOrderId" Type="Int64" />
     <NavigationProperty Name="Himall_Members" Relationship="Himall.Model.FK_useUserID" FromRole="Himall_ShopBonusReceive" ToRole="UserMemberInfo" />
@@ -3680,4 +3681,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="WithDrawInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="MembersId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="WithdrawType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AccountNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IdNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

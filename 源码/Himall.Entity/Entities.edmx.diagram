@@ -226,6 +226,7 @@
         <EntityTypeShape EntityType="Himall.Model.WXCardLogInfo" Width="1.5" PointX="5.75" PointY="2" />
         <AssociationConnector Association="Himall.Model.FK_Himall_WXLog_CardLogId" />
         <EntityTypeShape EntityType="Himall.Model.WXShopInfo" Width="1.5" PointX="23.75" PointY="1.75" />
+        <EntityTypeShape EntityType="Himall.Model.WithDrawInfo" Width="1.5" PointX="24.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,21 +1,22 @@
 
 
 
- 记录时间：2016-07-15 15:12:43,662 
+ 记录时间：2016-07-17 23:06:19,894 
 日志级别：  ERROR 
 出错类：Himall.Web.Framework.BaseController.OnException  
-错误描述：页面未捕获的异常：Area:Web,Controller:withdraw,Action:Index 
+错误描述：页面未捕获的异常：Area:Web,Controller:UserCapital,Action:ApplyWithDraw 
 
-System.InvalidOperationException: The entity type WithDrawInfo is not part of the model for the current context.
-   在 System.Data.Entity.Internal.InternalContext.UpdateEntitySetMappingsForType(Type entityType)
-   在 System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
-   在 System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
-   在 System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
-   在 System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
-   在 System.Linq.Queryable.Where[TSource](IQueryable`1 source, Expression`1 predicate)
-   在 Himall.Entity.DbSetExtend.FindBy[TEntity](DbSet`1 dbSet, Expression`1 where) 位置 c:\Project\Haicainew\源码\Himall.Entity\DbSetExtend.cs:行号 44
-   在 Himall.Service.WithDrawService.GetWithDrawByMembersId(String membersid) 位置 c:\Project\Haicainew\源码\Himall.Service\WithDrawService.cs:行号 48
-   在 Himall.Web.Areas.Web.Controllers.WithDrawController.Index() 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\Web\Controllers\WithDrawController.cs:行号 20
+System.Net.WebException: 未能解析此远程名称: 'api.weixin.qq.com'
+   在 System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)
+   在 System.Net.WebClient.DownloadString(Uri address)
+   在 System.Net.WebClient.DownloadString(String address)
+   在 Senparc.Weixin.HttpUtility.RequestUtility.HttpGet(String url, Encoding encoding)
+   在 Senparc.Weixin.HttpUtility.Get.GetJson[T](String url, Encoding encoding)
+   在 Senparc.Weixin.MP.CommonAPIs.CommonApi.GetToken(String appid, String secret, String grant_type)
+   在 Senparc.Weixin.MP.CommonAPIs.AccessTokenContainer.GetTokenResult(String appId, Boolean getNewToken)
+   在 Senparc.Weixin.MP.CommonAPIs.AccessTokenContainer.GetToken(String appId, Boolean getNewToken)
+   在 Senparc.Weixin.MP.CommonAPIs.AccessTokenContainer.TryGetToken(String appId, String appSecret, Boolean getNewToken)
+   在 Himall.Web.Areas.Web.Controllers.UserCapitalController.ApplyWithDraw() 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\Web\Controllers\UserCapitalController.cs:行号 39
    在 lambda_method(Closure , ControllerBase , Object[] )
    在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
    在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
