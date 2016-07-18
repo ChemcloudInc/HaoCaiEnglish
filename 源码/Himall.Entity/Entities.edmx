@@ -101,6 +101,7 @@
           <Property Name="PayNo" Type="varchar" MaxLength="50" />
           <Property Name="OpUser" Type="varchar" MaxLength="50" />
           <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="AccountId" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="Himall_ArticleCategories">
           <Key>
@@ -6646,6 +6647,7 @@
           <Property Name="PayNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="OpUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AccountId" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="CapitalInfo">
           <Key>
@@ -8594,6 +8596,7 @@
                 <ScalarProperty Name="NickName" ColumnName="NickName" />
                 <ScalarProperty Name="MemId" ColumnName="MemId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

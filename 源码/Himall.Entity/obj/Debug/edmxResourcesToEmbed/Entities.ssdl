@@ -96,6 +96,7 @@
     <Property Name="PayNo" Type="varchar" MaxLength="50" />
     <Property Name="OpUser" Type="varchar" MaxLength="50" />
     <Property Name="Remark" Type="varchar" MaxLength="200" />
+    <Property Name="AccountId" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="Himall_ArticleCategories">
     <Key>

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9cd12d4554e3478488d1af9adc6a5059" Name="Himall v2.1" ZoomLevel="73" ShowGrid="true" >
+      <Diagram DiagramId="9cd12d4554e3478488d1af9adc6a5059" Name="Himall v2.1" ZoomLevel="65" ShowGrid="true" >
         <EntityTypeShape EntityType="Himall.Model.AccountDetailInfo" Width="1.5" PointX="3" PointY="2.25" />
         <EntityTypeShape EntityType="Himall.Model.AccountInfo" Width="1.5" PointX="0.75" PointY="3.5" />
         <AssociationConnector Association="Himall.Model.himall_accountdetails_ibfk_1" />

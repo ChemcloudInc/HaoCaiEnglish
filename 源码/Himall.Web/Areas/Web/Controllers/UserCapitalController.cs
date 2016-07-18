@@ -103,7 +103,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			return Json(dataGridModel);
 		}
 
-		public JsonResult ApplyWithDrawSubmit(string openid, string nickname, decimal amount, string pwd)
+	/*	public JsonResult ApplyWithDrawSubmit(string openid, string nickname, decimal amount, string pwd)   //仅仅支持微信支付
 		{
 			if (ServiceHelper.Create<IMemberCapitalService>().GetMemberInfoByPayPwd(base.CurrentUser.Id, pwd) == null)
 			{
@@ -127,8 +127,33 @@ namespace Himall.Web.Areas.Web.Controllers
 			};
 			ServiceHelper.Create<IMemberCapitalService>().AddWithDrawApply(applyWithDrawInfo);
 			return Json(new { success = true });
-		}
+		}*/
 
+        public JsonResult ApplyWithDrawSubmit(long accountid, decimal amount, string pwd)   //扩展版本
+        {
+            if (ServiceHelper.Create<IMemberCapitalService>().GetMemberInfoByPayPwd(base.CurrentUser.Id, pwd) == null)
+            {
+                throw new HimallException("支付密码不对，请重新输入！");
+            }
+            CapitalInfo capitalInfo = ServiceHelper.Create<IMemberCapitalService>().GetCapitalInfo(base.CurrentUser.Id);
+            decimal num = amount;
+            decimal? balance = capitalInfo.Balance;
+            if ((num <= balance.GetValueOrDefault() ? false : balance.HasValue))
+            {
+                throw new HimallException("提现金额不能超出可用金额！");
+            }
+            ApplyWithDrawInfo applyWithDrawInfo = new ApplyWithDrawInfo()
+            {
+                ApplyAmount = amount,
+                ApplyStatus = ApplyWithDrawInfo.ApplyWithDrawStatus.WaitConfirm,
+                ApplyTime = DateTime.Now,
+                MemId = base.CurrentUser.Id,
+                AccountId = accountid,                                 //账号id    
+             // AccountId  =1,
+            };
+            ServiceHelper.Create<IMemberCapitalService>().AddWithDrawApply(applyWithDrawInfo);
+            return Json(new { success = true });
+        }
 		public ActionResult CapitalCharge()
 		{
 			IMemberCapitalService memberCapitalService = ServiceHelper.Create<IMemberCapitalService>();
@@ -291,6 +316,10 @@ namespace Himall.Web.Areas.Web.Controllers
 			ServiceHelper.Create<IMemberCapitalService>().SetPayPwd(base.CurrentUser.Id, pwd);
 			return Json(new { success = true, msg = "设置成功" });
 		}
+        public JsonResult SelectAccount(string account)
+        {
+            return Json(new { success = true, msg = "设置成功" });
+        }
 
 		public ActionResult SetPayPwd()
 		{

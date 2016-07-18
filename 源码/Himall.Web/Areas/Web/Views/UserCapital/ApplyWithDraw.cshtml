@@ -9,11 +9,11 @@
     <div class="step-list">
         <div name="step2" class="step-u active">
             <em>1</em>
-            用收款微信扫描二维码
+            选择支付方式
             <span class="tail tail2"></span>
             <span class="tail"></span>
         </div>
-
+          
         <div name="step3" class="step-u todo">
             <em>2</em>
             输入提现金额，提交提现申请
@@ -59,7 +59,7 @@
     </div>
 </div>
 
-<div class="box1 lh24" style="display:none;" id="step2" name="stepname">
+@*<div class="box1 lh24" style="display:none;" id="step2" name="stepname">
     <div class="title bot-border">
         <h3 class="title_txt cur">扫码提现</h3>
     </div>
@@ -78,7 +78,30 @@
 		</div>
     </div>
 </div>
-
+    *@
+<div class="box1 lh24" style="display:none;" id="step2" name="stepname">
+    <div class="title bot-border">
+        <h3 class="title_txt cur">选择账户</h3>
+    </div>
+    <div class="border-box">
+        <div class="user-set userset-lcol">
+            <div class="form">
+                <div class="item">
+                    <span class="label">我的账户：</span>
+                    <div class="fl">
+                        <input value="" id="account" name="userVo.realName" maxlength="20" class="itxt fl">
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="label">&nbsp;</span>
+                    <div class="fl">
+                        <a id="submitAccount" class="btn-5">提交</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="box1 lh24" style="display:none;" id="step3" name="stepname">
     <div class="border-box">
         <div class="user-set userset-lcol">
@@ -91,7 +114,7 @@
                 </div>
 
                 <div class="item">
-                    <span class="label">收款微信昵称：</span>
+                    <span class="label">收款人：</span>
                     <div class="fl">
                         <span id="nikename"></span>
                     </div>
@@ -130,71 +153,83 @@
 </div>
 
 <script>
-        var sceneid = '@ViewBag.Sceneid';
+    var sceneid = '@ViewBag.Sceneid';
     var pwdflag = '@ViewBag.IsSetPwd';
     var balance = '@ViewBag.ApplyWithMoney';
-        (function ($) {
-            $("#old").focus();
-            var stae1, stae2, stae3,
-                handle = function (dom, data, msg, d) {
-                    if (data) {
-                        stae1 = $('#' + dom).val();
-                    } else {
-                        $('#' + dom).css({ borderColor: '#f60' });
-                        $('#' + dom + '_msg').css({ color: '#f60' }).html(msg);
-                        stae1 = '';
-                    }
-                };
-
-            $('#new').blur(function () {
-                var d = $(this).val();
-                if (d.length < 6) {
-                    $('#new').css({ borderColor: '#f60' });
-                    $('#new_msg').css({ color: '#f60' }).html('密码不能少于6位!');
-                    stae2 = '';
+    (function ($) {
+        $("#old").focus();
+        var stae1, stae2, stae3, stae4
+            handle = function (dom, data, msg, d) {
+                if (data) {
+                    stae1 = $('#' + dom).val();
                 } else {
-                    $('#new').css({ borderColor: '#ccc' });
-                    $('#new_msg').css({ color: '#ccc' }).html('');
-                    stae2 = d;
-                    if ($('#confirm').val() != '' && $('#confirm').val() == $('#new').val()) {
-                        $('#confirm').css({ borderColor: '#ccc' });
-                        $('#confirm_msg').css({ color: '#ccc' }).html('');
-                        stae3 = d;
-                    }
+                    $('#' + dom).css({ borderColor: '#f60' });
+                    $('#' + dom + '_msg').css({ color: '#f60' }).html(msg);
+                    stae1 = '';
                 }
-            });
-            $('#confirm').blur(function () {
-                var d = $(this).val();
-                if (d == $('#new').val()) {
+            };
+
+        $('#new').blur(function () {
+            var d = $(this).val();
+            if (d.length < 6) {
+                $('#new').css({ borderColor: '#f60' });
+                $('#new_msg').css({ color: '#f60' }).html('密码不能少于6位!');
+                stae2 = '';
+            } else {
+                $('#new').css({ borderColor: '#ccc' });
+                $('#new_msg').css({ color: '#ccc' }).html('');
+                stae2 = d;
+                if ($('#confirm').val() != '' && $('#confirm').val() == $('#new').val()) {
                     $('#confirm').css({ borderColor: '#ccc' });
                     $('#confirm_msg').css({ color: '#ccc' }).html('');
                     stae3 = d;
-                } else {
-                    $('#confirm').css({ borderColor: '#f60' });
-                    $('#confirm_msg').css({ color: '#f60' }).html('两次密码不一致!');
-                    stae3 = '';
                 }
-            });
-            $('#submitPwd').bind('click', function () {
-                //console.log(stae1)
-                if (!stae2) {
-                    $('#new').css({ borderColor: '#f60' });
-                    $('#new_msg').css({ color: '#f60' }).html('密码不能少于6位!');
-                }
-                if (!stae3) {
-                    $('#confirm').css({ borderColor: '#f60' });
-                    $('#confirm_msg').css({ color: '#f60' }).html('两次密码不一致!');
-                }
-                if (stae2 && stae3) {
-                    var loading = showLoading();
-                    $.ajax({
-                        type: 'post',
-                        url: '@Url.Action("SavePayPwd")',
+            }
+        });
+        $('#confirm').blur(function () {
+            var d = $(this).val();
+            if (d == $('#new').val()) {
+                $('#confirm').css({ borderColor: '#ccc' });
+                $('#confirm_msg').css({ color: '#ccc' }).html('');
+                stae3 = d;
+            } else {
+                $('#confirm').css({ borderColor: '#f60' });
+                $('#confirm_msg').css({ color: '#f60' }).html('两次密码不一致!');
+                stae3 = '';
+            }
+        });
+        $('#account').blur(function () {                                           //账户信息
+            var d = $(this).val();
+           /* if (d.length < 1) {
+                $('#account').css({ borderColor: '#f60' });
+                $('#account').css({ color: '#f60' }).html('请!');
+                stae4 = '';
+            } else {
+                $('#account').css({ borderColor: '#ccc' }).html('合法');
+                stae4 = d;
+            }*/
+            stae4 = d;
+        });
+        $('#submitPwd').bind('click', function () {
+            //console.log(stae1)
+            if (!stae2) {
+                $('#new').css({ borderColor: '#f60' });
+                $('#new_msg').css({ color: '#f60' }).html('密码不能少于6位!');
+            }
+            if (!stae3) {
+                $('#confirm').css({ borderColor: '#f60' });
+                $('#confirm_msg').css({ color: '#f60' }).html('两次密码不一致!');
+            }
+            if (stae2 && stae3) {
+                var loading = showLoading();
+                $.ajax({
+                    type: 'post',
+                    url: '@Url.Action("SavePayPwd")',
                         data: { "pwd": stae3 },
                         dataType: "json",
-                        success: function (data) {
+                        success: function (data1) {
                             loading.close();
-                            if (data.success) {
+                            if (data1.success) {
                                 $.dialog.succeedTips('设置成功！');
                                 JumpStep(2);
                                 checkScanState();
@@ -202,6 +237,26 @@
                         }
                     });
                 }
+            });
+            $('#submitAccount').bind('click', function () {
+                var acc = $('#account').val();
+           //     $.dialog.succeedTips(acc);
+                $.ajax({
+                    type: 'post',
+                    url: '@Url.Action("SelectAccount")',
+                       data: { "account": acc },
+                       dataType: "json",
+                       success: function (data) {
+                           /*loading.close();*/
+                           if (data.success) {
+                               $.dialog.succeedTips('选择成功！');
+                               JumpStep(3);
+                               checkScanState();
+                           }
+                          // $.dialog.succeedTips('HERE！');
+                    }
+                });
+               
             });
         }(jQuery))
     </script>
