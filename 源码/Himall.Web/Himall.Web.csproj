@@ -524,6 +524,7 @@
     <Content Include="Areas\Web\Scripts\UserCapital.js" />
     <Content Include="Areas\Web\Scripts\userInfo.js" />
     <Content Include="Areas\Web\Scripts\web.js" />
+    <Content Include="Areas\Web\Scripts\WithDraw.js" />
     <Content Include="Content\artdialog.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-switch.min.css" />
@@ -1870,6 +1871,7 @@
     <Content Include="Views\Site\State.cshtml" />
     <Content Include="Views\Site\Version.cshtml" />
     <Content Include="Areas\Web\Views\WithDraw\Index.cshtml" />
+    <Content Include="Areas\Web\Views\WithDraw\AddWithDraw.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

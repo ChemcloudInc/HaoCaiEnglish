@@ -41,7 +41,11 @@ namespace Himall.IServices
         /// <returns></returns>
         WithDrawInfo GetWithDrawById(long id);
 
-
+        /// <summary>
+        /// 获取下一个提现方式的Id
+        /// </summary>
+        /// <returns></returns>
+        long GetNextWithDrawId();
 
     }
 }

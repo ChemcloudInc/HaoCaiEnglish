@@ -16,7 +16,19 @@ namespace Himall.Service
         {
         }
 
-
+       
+        public long GetNextWithDrawId()
+        {
+            if (context.WithDrawInfo.Count() == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return context.WithDrawInfo.Max<WithDrawInfo, long>((WithDrawInfo p) => p.Id) + 1;
+            }
+            
+        }
 
         public void AddWithDraw(WithDrawInfo model)
         {
@@ -33,6 +45,10 @@ namespace Himall.Service
         {
             WithDrawInfo name = context.WithDrawInfo.FindById<WithDrawInfo>(model.Id);
             name.WithdrawType = model.WithdrawType;
+            name.AccountNumber = model.AccountNumber;
+            name.Name = model.Name;
+            name.IdNo = model.IdNo;
+            name.Mobile = model.Mobile;
             context.SaveChanges();
             Cache.Remove("Cache-WithDraw");
         }

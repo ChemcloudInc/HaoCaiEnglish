@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace Himall.Model
         /// <summary>
         /// 用户账号
         /// </summary>
+       
         public string MembersId
         {
             get;
@@ -32,6 +34,7 @@ namespace Himall.Model
         /// <summary>
         /// 提现类型：支付宝，微信，银联
         /// </summary>
+       [Required(ErrorMessage = "请选择提现类型")]
         public string WithdrawType
         {
             get;
@@ -40,6 +43,7 @@ namespace Himall.Model
         /// <summary>
         /// 账号信息
         /// </summary>
+        [Required(ErrorMessage = "请输入账号信息")]
         public string AccountNumber
         {
             get;
@@ -48,6 +52,7 @@ namespace Himall.Model
         /// <summary>
         /// 姓名
         /// </summary>
+        [Required(ErrorMessage = "请输入姓名")]
         public string Name
         {
             get;
@@ -56,6 +61,7 @@ namespace Himall.Model
         /// <summary>
         /// 身份证号
         /// </summary>
+        [Required(ErrorMessage = "请输入身份证号")]
         public string IdNo
         {
             get;
@@ -64,6 +70,7 @@ namespace Himall.Model
         /// <summary>
         /// 手机号
         /// </summary>
+       [Required(ErrorMessage = "请输入手机号")]
         public string Mobile
         {
             get;

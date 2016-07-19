@@ -1,22 +1,24 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "提现方式管理";
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
 }
 @model IEnumerable<Himall.Model.WithDrawInfo>
 <link href="~/Areas/Web/Content/base.css" rel="stylesheet" />
 <link href="~/Areas/Web/Content/myjd.easebuy.css" rel="stylesheet" />
+<script src="~/Areas/Web/Scripts/WithDraw.js"></script>
+
 <div class="box1 lh24">
     <div class="title bot-border">
         <h3 class="title_txt cur">提现方式管理</h3>
-    </div>
-
+         </div>
+    
     <div class="border-box">
         <div class="mod lh24">
             <div class="pd10">
-                <a href="javascript:;" class="e-btn add-btn btn-5">新增提现方式</a>
+                <a href="/withdraw/AddWithDraw" class="e-btn add-btn btn-5">新增提现方式</a>
             </div>
             <div class="border-box">
+
                 <table class="tb-void tb-goods" id="list">
                     <thead style="height:20px;">
                         <tr>
@@ -37,8 +39,11 @@
                                  <td>@withDrawInfo.Name</td>
                                  <td>@withDrawInfo.IdNo</td>
                                  <td>@withDrawInfo.Mobile</td>
-                                 <td><a class="btn-9 id_edit" href="javascript:;" data="@withDrawInfo.Id">编辑</a>
-                                     <a class="btn-9 del" href="javascript:;" data-tag="@withDrawInfo.Id">删除</a></td>
+                                 <td>
+                                     <span class="btn-a">
+                                         <a href="/withdraw/addwithdraw?id=@withDrawInfo.Id">编辑</a>
+                                         <a onclick="del(@withDrawInfo.Id,'该提现方式')">删除</a>
+                                     </span></td>
                              </tr>
                         }
                     </tbody>
@@ -47,3 +52,19 @@
             </div>
         </div>
     </div>
+<script>
+
+    function del(id, name) {
+        $.dialog.confirm('确定要删除客服 ' + name + ' 吗？', function () {
+            var loading = showLoading();
+            $.post('/withdraw/DeleteWithDraw', { id: id }, function (result) {
+                loading.close();
+                if (result.success)
+                    $.dialog.succeedTips('删除成功!', function () { location.href = location.href });
+                else
+                    $.dialog.errorTips('删除失败！' + result.msg);
+            });
+        });
+    }
+
+</script>
