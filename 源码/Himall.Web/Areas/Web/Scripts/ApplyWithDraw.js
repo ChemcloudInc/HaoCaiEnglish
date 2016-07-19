@@ -21,7 +21,7 @@
             return;
         }
         var loading = showLoading();
-        $.post('ApplyWithDrawSubmit', { openid: opid, nickname: $('#nikename').text(), amount: parseFloat($('#inputMoney').val()),pwd:$('#payPwd').val() },
+        $.post('ApplyWithDrawSubmit', { accountid:1, amount: parseFloat($('#inputMoney').val()),pwd:$('#payPwd').val() },
             function (result) {
                 loading.close();
                 if (result.success)

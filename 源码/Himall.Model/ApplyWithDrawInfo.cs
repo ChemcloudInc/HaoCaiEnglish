@@ -102,5 +102,13 @@ namespace Himall.Model
 			[Description("已拒绝")]
 			Refuse = 4
 		}
+
+
+        public long AccountId                                   //账号id;
+        {
+            get;
+            set;
+        }
+
 	}
 }

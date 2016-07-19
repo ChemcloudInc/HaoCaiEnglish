@@ -1494,6 +1494,7 @@
           <ScalarProperty Name="NickName" ColumnName="NickName" />
           <ScalarProperty Name="MemId" ColumnName="MemId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

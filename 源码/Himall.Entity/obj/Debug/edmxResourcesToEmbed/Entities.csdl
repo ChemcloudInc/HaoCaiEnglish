@@ -3244,6 +3244,7 @@
     <Property Name="PayNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="OpUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AccountId" Type="Int64" Nullable="false" />
   </EntityType>
   <EntityType Name="CapitalInfo">
     <Key>
