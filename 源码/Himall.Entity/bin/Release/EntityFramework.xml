@@ -8423,147 +8423,39 @@
             <summary>
             Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'BitwiseAnd' function with the specified arguments, which must have the same integer numeric result type. The result type of the expression is the same as the type of the arguments.
             </summary>
-            <returns>A new DbFunctionExpression that returns the value produced by performing the bitwise AND of value1 and value2.</returns>
-            <param name="value1">An expression that specifies the first operand.</param>
-            <param name="value2">An expression that specifies the second operand.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.EdmFunctions.BitwiseOr(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'BitwiseOr' function with the specified arguments, which must have the same integer numeric result type. The result type of the expression is the same as the type of the arguments.
-            </summary>
-            <returns>A new DbFunctionExpression that returns the value produced by performing the bitwise OR of value1 and value2.</returns>
-            <param name="value1">An expression that specifies the first operand.</param>
-            <param name="value2">An expression that specifies the second operand.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.EdmFunctions.BitwiseNot(System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'BitwiseNot' function with the specified argument, which must have an integer numeric result type. The result type of the expression is the same as the type of the arguments.
-            </summary>
-            <returns>A new DbFunctionExpression that returns the value produced by performing the bitwise NOT of value.</returns>
-            <param name="value">An expression that specifies the first operand.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.EdmFunctions.BitwiseXor(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'BitwiseXor' function with the specified arguments, which must have the same integer numeric result type. The result type of the expression is the same as the type of the arguments.
-            </summary>
-            <returns>A new DbFunctionExpression that returns the value produced by performing the bitwise XOR (exclusive OR) of value1 and value2.</returns>
-            <param name="value1">An expression that specifies the first operand.</param>
-            <param name="value2">An expression that specifies the second operand.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.EdmFunctions.NewGuid">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'NewGuid' function.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new GUID value.</returns>
-        </member>
-        <member name="T:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Row">
-            <summary>
-            Provides a constructor-like means of calling
-            <see
-                cref="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.DbExpressionBuilder.NewRow(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Data.Entity.Core.Common.CommandTrees.DbExpression}})" />
-            .
-            </summary>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Row.#ctor(System.Collections.Generic.KeyValuePair{System.String,System.Data.Entity.Core.Common.CommandTrees.DbExpression},System.Collections.Generic.KeyValuePair{System.String,System.Data.Entity.Core.Common.CommandTrees.DbExpression}[])">
-            <summary>
-            Initializes a new instance of the <see cref="T:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Row" /> class with the specified first column value and optional successive column values.
-            </summary>
-            <param name="columnValue">A key-value pair that provides the first column in the new row instance. (required)</param>
-            <param name="columnValues">A key-value pairs that provide any subsequent columns in the new row instance. (optional)</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Row.ToExpression">
-            <summary>
-            Creates a new <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbNewInstanceExpression" /> that constructs a new row based on the columns contained in this Row instance.
-            </summary>
-            <returns>A new DbNewInstanceExpression that constructs a row with the same column names and DbExpression values as this Row instance.</returns>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Row.op_Implicit(System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Row)~System.Data.Entity.Core.Common.CommandTrees.DbExpression">
-            <summary>
-            Converts the given Row instance into an instance of <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbExpression"/>
-            </summary>
-            <param name="row">The Row instance.</param>
-            <returns> A DbExpression based on the Row instance </returns>
-            <exception cref="T:System.ArgumentNullException">
-            <paramref name="row"/>
-            is null.
-            </exception>
-            <seealso cref="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Row.ToExpression"/>
-        </member>
-        <member name="T:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions">
-            <summary>
-            Provides an API to construct <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbExpression" />s that invoke spatial realted canonical EDM functions, and, where appropriate, allows that API to be accessed as extension methods on the expression type itself.
-            </summary>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeometryFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeometryFromText' function with the specified argument, which must have a string result type. The result type of the expression is Edm.Geometry. Its value has the default coordinate system id (SRID) of the underlying provider.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geometry value based on the specified value.</returns>
-            <param name="wellKnownText">An expression that provides the well known text representation of the geometry value.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeometryFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeometryFromText' function with the specified arguments. wellKnownText must have a string result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geometry.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geometry value based on the specified values.</returns>
-            <param name="wellKnownText">An expression that provides the well known text representation of the geometry value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geometry value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeometryPointFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeometryPointFromText' function with the specified arguments. pointWellKnownText must have a string result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geometry.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geometry point value based on the specified values.</returns>
-            <param name="pointWellKnownText">An expression that provides the well known text representation of the geometry point value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geometry point value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeometryLineFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeometryLineFromText' function with the specified arguments. lineWellKnownText must have a string result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geometry.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geometry line value based on the specified values.</returns>
-            <param name="lineWellKnownText">An expression that provides the well known text representation of the geometry line value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geometry line value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeometryPolygonFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeometryPolygonFromText' function with the specified arguments. polygonWellKnownText must have a string result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geometry.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geometry polygon value based on the specified values.</returns>
-            <param name="polygonWellKnownText">An expression that provides the well known text representation of the geometry polygon value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geometry polygon value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeometryMultiPointFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeometryMultiPointFromText' function with the specified arguments. multiPointWellKnownText must have a string result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geometry.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geometry multi-point value based on the specified values.</returns>
-            <param name="multiPointWellKnownText">An expression that provides the well known text representation of the geometry multi-point value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geometry multi-point value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeometryMultiLineFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeometryMultiLineFromText' function with the specified arguments. multiLineWellKnownText must have a string result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geometry.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geometry multi-line value based on the specified values.</returns>
-            <param name="multiLineWellKnownText">An expression that provides the well known text representation of the geometry multi-line value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geometry multi-line value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeometryMultiPolygonFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeometryMultiPolygonFromText' function with the specified arguments. multiPolygonWellKnownText must have a string result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geometry.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geometry multi-polygon value based on the specified values.</returns>
-            <param name="multiPolygonWellKnownText">An expression that provides the well known text representation of the geometry multi-polygon value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geometry multi-polygon value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeometryCollectionFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeometryCollectionFromText' function with the specified arguments. geometryCollectionWellKnownText must have a string result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geometry.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geometry collection value based on the specified values.</returns>
-            <param name="geometryCollectionWellKnownText">An expression that provides the well known text representation of the geometry collection value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geometry collection value's coordinate system.</param>
+            <returns>A new DbFunctionExpression that returns the value produdÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°idÂRoAŸcØÅ3=³‘ŞøûiÃ´C A¤áAÓäsşJïeüŒ_óGf"¡,gÉ÷á˜›…aKs6^£\©(A¹ XÔØ§w«~‘‡>ô³û†]¬ø¦ï¸ô™xSDŞ0A-*RKû8…üQuåÁnˆÊ>’·ã|(²rİnÅYùÍ7ÃF28ï8z÷°Ş|5s>ƒ¶É7(Á7NÅÕ·? ©µ›cëÇBAN«Q½¬p¨iSÕQµ,˜ÂCn‘K71@ğ»Hğ% ·Ìke8rj™øİ*†ªk#è÷eVxùIù>Ş0²ØúdZzf?``ì¢PÇuKâ¹½BzÌ2Gjâ=sX‡T0Í]ß½à÷Rc<ç‹ìæW„$PíöJ‰au¥†YìŒ“ú‚•ÖKr•’LR#Æ4X¡åPá6ÖÖ^PÖtÓŸ¶P8~·Äëiq°ôÿ|±½$~.Ë½ü·İjQ±lì÷VTğsvDiÇ[Àv/ ëÒå¯ê‚Yßâ†¯YFkşàâBö‚ÀĞØ”uÚƒ«{£ªh(My¼RgÁw	ò±ñ£Õ²oÉ‘åzbUù˜1ˆFA}© ÁQJ',MJ¾#<M†·æèÈ§»¢ºemáï·Låï­µ=™—:xÎüHÖŞŞ¸¼^§](6¼ öOnÄM¤´G@at±Û œ×1Èvï¼´íMF~¿D%f³.’{&ÜXO¼áº˜$Éâ <zÄ²¯ ÈI±ÆáĞ\Zo'›!?F#9?ì.5â±=ªæF…ô„¹Ïµ¬¬‹ã© O?‚ª¦2°á¾ØPü÷š]5÷ğ™KQ5¢ö
+ÎVz39óåëíÁŒ(öuKŒ=·ÑªÍîS¢T‡6^ØØòq8úyŞñ˜FtlÓ5»w2p(çt›Xi^T– æŠŒ1wMõò ğsA[êõ\í£Lä:4I Ç1³êV‰ø#Óuü@V6´’Èœ9;¬Z+ ØĞr™RĞˆ—‰ôÑ¿ŒJ²ã‡crÈ7½ıg	>¸4P!ÿz•ôH°Ú<AF+¹×†j÷|×¹Æ‡Ô¾£•R…ÆeF§÷%¶¿ÕŒ½9¿b@Ö¸ÚZE¤ÒC¢˜ÄÅª2åç-]W³fU¤Jgkz.ø¿n€Jçåæu‡…øD%@ğûÇùM¹uË
+Ó—6¸RTÃu‹~æ‚Ùg0>–÷mÖiÓ=;ŸXZ\%êıÜÉfn&‡\°%7õÉ"ieÖ1ÄÁêFĞò<€$cï‡6t[‘0òŸ2"ƒ/Æa^2’âpù/ıãÇ$E¬R«È²ú[Ì¶‰p¥qÒ°in expression that provides the coordinate system id (SRID) of the geometry collection value's coordinate system.</param>
         </member>
         <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeometryFromBinary(System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
             <summary>
@@ -8682,121 +8574,55 @@
             <param name="lineWellKnownText">An expression that provides the well known text representation of the geography line value.</param>
             <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography line value's coordinate system.</param>
         </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyPolygonFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyPolygonFromText' function with the specified arguments. polygonWellKnownText must have a string result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography polygon value based on the specified values.</returns>
-            <param name="polygonWellKnownText">An expression that provides the well known text representation of the geography polygon value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography polygon value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyMultiPointFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyMultiPointFromText' function with the specified arguments. multiPointWellKnownText must have a string result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography multi-point value based on the specified values.</returns>
-            <param name="multiPointWellKnownText">An expression that provides the well known text representation of the geography multi-point value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography multi-point value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyMultiLineFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyMultiLineFromText' function with the specified arguments. multiLineWellKnownText must have a string result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography multi-line value based on the specified values.</returns>
-            <param name="multiLineWellKnownText">An expression that provides the well known text representation of the geography multi-line value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography multi-line value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyMultiPolygonFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyMultiPolygonFromText' function with the specified arguments. multiPolygonWellKnownText must have a string result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography multi-polygon value based on the specified values.</returns>
-            <param name="multiPolygonWellKnownText">An expression that provides the well known text representation of the geography multi-polygon value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography multi-polygon value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyCollectionFromText(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyCollectionFromText' function with the specified arguments. geographyCollectionWellKnownText must have a string result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography collection value based on the specified values.</returns>
-            <param name="geographyCollectionWellKnownText">An expression that provides the well known text representation of the geography collection value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography collection value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyFromBinary(System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyFromBinary' function with the specified argument, which must have a binary result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography value based on the specified binary value.</returns>
-            <param name="wellKnownBinaryValue">An expression that provides the well known binary representation of the geography value.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyFromBinary(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyFromBinary' function with the specified arguments. wellKnownBinaryValue must have a binary result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography value based on the specified values.</returns>
-            <param name="wellKnownBinaryValue">An expression that provides the well known binary representation of the geography value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyPointFromBinary(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyPointFromBinary' function with the specified arguments. pointWellKnownBinaryValue must have a binary result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography point value based on the specified values.</returns>
-            <param name="pointWellKnownBinaryValue">An expression that provides the well known binary representation of the geography point value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography point value's coordinate systempointWellKnownBinaryValue.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyLineFromBinary(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyLineFromBinary' function with the specified arguments. lineWellKnownBinaryValue must have a binary result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography line value based on the specified values.</returns>
-            <param name="lineWellKnownBinaryValue">An expression that provides the well known binary representation of the geography line value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography line value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyPolygonFromBinary(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyPolygonFromBinary' function with the specified arguments. polygonWellKnownBinaryValue must have a binary result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography polygon value based on the specified values.</returns>
-            <param name="polygonWellKnownBinaryValue">An expression that provides the well known binary representation of the geography polygon value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography polygon value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyMultiPointFromBinary(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyMultiPointFromBinary' function with the specified arguments. multiPointWellKnownBinaryValue must have a binary result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography multi-point value based on the specified values.</returns>
-            <param name="multiPointWellKnownBinaryValue">An expression that provides the well known binary representation of the geography multi-point value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography multi-point value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyMultiLineFromBinary(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyMultiLineFromBinary' function with the specified arguments. multiLineWellKnownBinaryValue must have a binary result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography multi-line value based on the specified values.</returns>
-            <param name="multiLineWellKnownBinaryValue">An expression that provides the well known binary representation of the geography multi-line value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography multi-line value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyMultiPolygonFromBinary(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyMultiPolygonFromBinary' function with the specified arguments. multiPolygonWellKnownBinaryValue must have a binary result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography multi-polygon value based on the specified values.</returns>
-            <param name="multiPolygonWellKnownBinaryValue">An expression that provides the well known binary representation of the geography multi-polygon value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography multi-polygon value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyCollectionFromBinary(System.Data.Entity.Core.Common.CommandTrees.DbExpression,System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyCollectionFromBinary' function with the specified arguments. geographyCollectionWellKnownBinaryValue must have a binary result type, while coordinateSystemId must have an integer numeric result type. The result type of the expression is Edm.Geography.
-            </summary>
-            <returns>A new DbFunctionExpression that returns a new geography collection value based on the specified values.</returns>
-            <param name="geographyCollectionWellKnownBinaryValue">An expression that provides the well known binary representation of the geography collection value.</param>
-            <param name="coordinateSystemId">An expression that provides the coordinate system id (SRID) of the geography collection value's coordinate system.</param>
-        </member>
-        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyFromGml(System.Data.Entity.Core.Common.CommandTrees.DbExpression)">
-            <summary>
-            Creates a <see cref="T:System.Data.Entity.Core.Common.CommandTrees.DbFunctionExpression" /> that invokes the canonical 'GeographyFromGml' function with the specified argument, which must have a string result type. The result type of the expression is Edm.Geography.
-            </summary>
+        <member name="M:System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder.Spatial.SpatialEdmFunctions.GeographyPolygonFromTeH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUH0TR‰ËR¯ˆÆÏa­ùº2)îè®£Y[@ø{ç­Ó9{ëmOfD¥Î3‚ÿ5··®/©×J¯ˆ=„ÓÛ±i-Ğ],vÈ'5Ìr ]†{ï-;SQŸ¯Ñ ÀÉY¬Ë¤Ä	£÷Ç`Bïøn¦	2x¨±,«À2lq¸t›ÉæàHOÑˆÎOû‡x¬Oj„9‘¡}!.Góík«"øêhÏàª…)Œ¬8o¶?=æ—M}ü&RÔMh½‚³•ŒÎ|ùzûpB#
+=Rãmôj³{”è•!ÀM—¶6<œN>w…¼Cf£]4ÍnİÌœ
+9İ&ÖW•%€9¢£]Ó}|¨<ÀPVú½W;hÓ¹Nh1ÌA,ú†Õ¢~Hôİ­$²'NëŠÈ64¦T´G"%â}4oã¬¸áØÜ²ïC¿YÂO®ãŞ¥},6QŠîuá½ß5îq¡õ/¨åT¡BãÃd1™G‘©ıÉDm‡/õc/NoØ5®6–‘i4è¦#±1jŒ¹yËWUìÙ•i’™ÚŞ‹¾/Û ¹ùE9aá~	P<>ÃñşSn]BòÂ´åÍ®•0ÁCâß¹ ƒ6GYàL¥½ÛušD´ÏNçÖ—	z¿wrY›‰¡×,	MırHšYuƒÅŒq0z‘´<…Ï 	ûáÍäL<§Ì§ˆ Ëñ˜WŒ¤¸‡Ü>KÿxñÉkªò,¾–ó-¢\é\t¬l¼–îìî×lNz™4Ôïårâ—~Z¯îÂ-ê›Øç0œ8ò‚óÒ©èˆàŒÆüÑ€½l¹ñÅÑ÷K•¼oÔP©ñ	Ø2¸aV²zˆ5;±›g«³wTtÊîFãğf@åº«&¸]õå¶kºç¡¥$Ô#ì·c”B˜ÊC•©ÎË5zz&xWª>%{rb· bD–ÌïOÅpà®Å]¹¹ù'}­1nÌÍLŞm4£ê×_LåÉî` %ûüÑëJTiR…áÅşfHeRÁÌ\Ã`qír„“œ†w/±dl<~„Æšò(şõ£æÃ4«j?5f'WˆäÌ²É*°K³ÿZòh¹ÂÇ ‹¶¯3Ê8Í;Û_vLé/1ê×±Fo¾”×WÌããš¢>C›ãe©ŠÌv@)³nÕLt`©äH|Óù²²Á„ÂÚaÇ=Ä”ìÕUõX­×yŞxu–Œ¨xƒ\©¤K·¿.Ç}ƒ£ˆ“É€äª¶+ıĞÅU9Qh$åãm)b¦\4ë-Q ãRë…@Ç¹
+MWoWê Z~&KUuÖÃô75 {Å®r‘Ò8g6üUsummary>
             <returns>A new DbFunctionExpression that returns a new geography value based on the specified value with the default coordinate system id (SRID) of the underlying provider.</returns>
             <param name="geographyMarkup">An expression that provides the Geography Markup Language (GML) representation of the geography value.</param>
         </member>
@@ -10553,206 +10379,169 @@
             <param name="command">The command being executed.</param>
             <param name="interceptionContext">Contextual information associated with the call.</param>
         </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbCommandInterceptor.ReaderExecuting(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Data.Common.DbDataReader})">
-            <summary>
-            This method is called before a call to <see cref="M:System.Data.Common.DbCommand.ExecuteReader(System.Data.CommandBehavior)"/> or
-            one of its async counterparts is made.
-            </summary>
-            <param name="command">The command being executed.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbCommandInterceptor.ReaderExecuted(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Data.Common.DbDataReader})">
-            <summary>
-            This method is called after a call to <see cref="M:System.Data.Common.DbCommand.ExecuteReader(System.Data.CommandBehavior)"/> or
-            one of its async counterparts is made. The result used by Entity Framework can be changed by setting
-            <see cref="P:System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext`1.Result"/>.
-            </summary>
-            <remarks>
-            For async operations this method is not called until after the async task has completed
-            or failed.
-            </remarks>
-            <param name="command">The command being executed.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbCommandInterceptor.ScalarExecuting(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Object})">
-            <summary>
-            This method is called before a call to <see cref="M:System.Data.Common.DbCommand.ExecuteScalar"/> or
-            one of its async counterparts is made.
-            </summary>
-            <param name="command">The command being executed.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbCommandInterceptor.ScalarExecuted(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Object})">
-            <summary>
-            This method is called after a call to <see cref="M:System.Data.Common.DbCommand.ExecuteScalar"/> or
-            one of its async counterparts is made. The result used by Entity Framework can be changed by setting
-            <see cref="P:System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext`1.Result"/>.
-            </summary>
-            <remarks>
-            For async operations this method is not called until after the async task has completed
-            or failed.
-            </remarks>
-            <param name="command">The command being executed.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="T:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor">
-            <summary>
-            An object that implements this interface can be registered with <see cref="T:System.Data.Entity.Infrastructure.Interception.DbInterception"/> to
-            receive notifications when Entity Framework performs operations on a <see cref="T:System.Data.Common.DbTransaction"/>.
-            </summary>
-            <remarks>
-            Interceptors can also be registered in the config file of the application.
-            See http://go.microsoft.com/fwlink/?LinkId=260883 for more information about Entity Framework configuration.
-            </remarks>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.BeginningTransaction(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.BeginTransactionInterceptionContext)">
-            <summary>
-            Called before <see cref="M:System.Data.Common.DbConnection.BeginTransaction(System.Data.IsolationLevel)"/> is invoked.
-            </summary>
-            <param name="connection">The connection beginning the transaction.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.BeganTransaction(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.BeginTransactionInterceptionContext)">
-            <summary>
-            Called after <see cref="M:System.Data.Common.DbConnection.BeginTransaction(System.Data.IsolationLevel)"/> is invoked.
-            The transaction used by Entity Framework can be changed by setting
-            <see cref="P:System.Data.Entity.Infrastructure.Interception.MutableInterceptionContext`1.Result"/>.
-            </summary>
-            <param name="connection">The connection that began the transaction.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.Closing(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext)">
-            <summary>
-            Called before <see cref="M:System.Data.Common.DbConnection.Close"/> is invoked.
-            </summary>
-            <param name="connection">The connection being closed.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.Closed(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext)">
-            <summary>
-            Called after <see cref="M:System.Data.Common.DbConnection.Close"/> is invoked.
-            </summary>
-            <param name="connection">The connection that was closed.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.ConnectionStringGetting(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
-            <summary>
-            Called before <see cref="P:System.Data.Common.DbConnection.ConnectionString"/> is retrieved.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.ConnectionStringGot(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
-            <summary>
-            Called after <see cref="P:System.Data.Common.DbConnection.ConnectionString"/> is retrieved.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.ConnectionStringSetting(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionPropertyInterceptionContext{System.String})">
-            <summary>
-            Called before <see cref="P:System.Data.Common.DbConnection.ConnectionString"/> is set.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.ConnectionStringSet(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionPropertyInterceptionContext{System.String})">
-            <summary>
-            Called after <see cref="P:System.Data.Common.DbConnection.ConnectionString"/> is set.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.ConnectionTimeoutGetting(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.Int32})">
-            <summary>
-            Called before <see cref="P:System.Data.Common.DbConnection.ConnectionTimeout"/> is retrieved.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.ConnectionTimeoutGot(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.Int32})">
-            <summary>
-            Called after <see cref="P:System.Data.Common.DbConnection.ConnectionTimeout"/> is retrieved.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.DatabaseGetting(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
-            <summary>
-            Called before <see cref="P:System.Data.Common.DbConnection.Database"/> is retrieved.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.DatabaseGot(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
-            <summary>
-            Called after <see cref="P:System.Data.Common.DbConnection.Database"/> is retrieved.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.DataSourceGetting(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
-            <summary>
-            Called before <see cref="P:System.Data.Common.DbConnection.DataSource"/> is retrieved.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.DataSourceGot(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
-            <summary>
-            Called after <see cref="P:System.Data.Common.DbConnection.DataSource"/> is retrieved.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.Disposing(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext)">
-            <summary>
-            Called before <see cref="M:System.ComponentModel.Component.Dispose"/> is invoked.
-            </summary>
-            <param name="connection">The connection being disposed.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.Disposed(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext)">
-            <summary>
-            Called after <see cref="M:System.ComponentModel.Component.Dispose"/> is invoked.
-            </summary>
-            <param name="connection">The connection that was disposed.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.EnlistingTransaction(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.EnlistTransactionInterceptionContext)">
-            <summary>
-            Called before <see cref="M:System.Data.Common.DbConnection.EnlistTransaction(System.Transactions.Transaction)"/> is invoked.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.EnlistedTransaction(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.EnlistTransactionInterceptionContext)">
-            <summary>
-            Called after <see cref="M:System.Data.Common.DbConnection.EnlistTransaction(System.Transactions.Transaction)"/> is invoked.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.Opening(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext)">
-            <summary>
-            Called before <see cref="M:System.Data.Common.DbConnection.Open"/> or its async counterpart is invoked.
-            </summary>
-            <param name="connection">The connection being opened.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.Opened(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext)">
-            <summary>
-            Called after <see cref="M:System.Data.Common.DbConnection.Open"/> or its async counterpart is invoked.
-            </summary>
-            <param name="connection">The connection that was opened.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.ServerVersionGetting(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
-            <summary>
-            Called before <see cref="P:System.Data.Common.DbConnection.ServerVersion"/> is retrieved.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
+        <memce20÷le="M:Systemñúa.Entity.Inf]Gructure.Inte$‹)etion.IDbSomm}„*nterceptor.RKªÿ	rExecuting(S€m.@ata.CommoÔ~VŸCommand,SystYdb2atanEntity.IcNhºstructure.In\ôWŠeption.DbComyxInterceptinnhQÅ exu{System.DÜAONCommon.DbDatwëüder})">
+   :áı     <summar\GNL            È9–Ã method is c…Öòæd before a c4ê:to <wee creæ¡ïgSystem.Data.¢”Ï3on.DbCommand "¥cuteReader(S
+Fdrm.Data.Commahu+%havior)"/> o¦½œP   `       oºú¡f its async i2\nterparts ir b¨/
+         YyÂ2/summary>
+ ¦“#¼       <paraVOme="command"ÈT­ command bei·GGxecuted.</paBŞú
+          ÂÜ­Aaram name="iî~¨ceptionConteèìContextual iĞ,»mation assocğ xTd with the c”f6</qaram>
+  ±M  </member>7
+·h     <memberqú¿Òe="M;System.Ù fu.Entity.InfrDpÇucture.Interğ*±ion.IDbComma9 terceptor.Re’L²Executåd(SysèÏ…ŒData.Common.Ã.mmand,System7Ï\a.Entity.Infà†ructuru.Intejİ~õtion.DbComma™I4terceptionCo³Y«t{Systdm.ÄatÎG›Ämmon.DbDataR÷ˆ>¦r})">
+     6ÒãÔ   <summary>h_          Thˆw{ethod ms calïÂÔafter a callıyÖà<see cref="Mœ£¥tem.Data.C
+/n.DbCommand.R%²uteReader(SyK’¸.Data.CommanŒ$Cavior)"/> oraër          onOÌ| its async cÇ	ÌÒerparts is mšZk The result ¶TDY by En|ity!FU·òwork can be ùŸSged by setti§{            Æ2”' cref="P:SysC [—Data.Entity.­ı{-astructure.I‡…ception.DbCoŒßAzdI.terceptio	\…text`1.ResulG0Fq.
+         S/summary>
+ «‚ù×       <rema¯<B
+          Ô:ìär asyoc oper†µ)nq this }eth¢ĞuHs not called\ril after theËØy]nc task has Kİ®leted
+     äùu   or failed™vŞ¯           <¡—êUa2ks>
+     «ªû$  <param naÂÕicommand">TheQJÇmand being e¢Såted.</pazam>È¥@          <p8ş˜ name="inter‰+”İionCootext">XOœêextual infor+çOoon arsociateA©th the call.“¾eñram>
+      ¿ô­member>
+   $Ğf <member namÏÀ%Ö:System.DataÙÃ¦ity.InfrastrçCX6re.Interceptiê†oIDbCommandIn¶§qeptor.ScalarµN<suting(SystemœÚ¦a.Common.DbC·@Pnd,System.Da¶òkntity.Infras¬¯íture.Interbe’ÕÛn.DbCommandIr6ceptionConteÄÓzystem.ObjectZJCä
+          ­E½ummary>
+   ‚;–å     This mexÑŠL is cqlled bãö‰e a call to …7Ï #ref="M:Sys¦ á*Data.Commoj'ê¼Command.ExecR^wjcalar"/> oroÿş         one!Ò¿Kits async coêqŸ
+rparts is mas¼M$
+           ªüCummary>
+   èşPì     <param d£Fâ="command">T§¹–>ommand being…­•cuted.</para4”            8Óam name="intÁ¨AptionContextÌ-)ntextual inf°FÆ1tion associa–á|9with the calXt,7param>
+    ¾µó\</member>
+ I:;k   <member nñUc"M:System.Da<”ntity.InfrasÓUPÙture.InterceŠ\L¬n.IDbCommand“ñRfrceptor.Scal·¹Z7ecUted(SysteĞl´ta.Common.DbÚİx²and,System.D)wêEntity.Infra„Ñ›Mctuse.Interc¯5%ton.DbCommandçèa(rceptionContã•2¹SystEm.Objec•+t!>
+         7…«Îsummary>
+  ÆY/§      This mO÷Ææd is called !Ÿ‹r a call to Ş/Ü¬ cref="M:Sys‚áQData.Common.O±´mmand.Execut²–¶Õlar"/> or
+ *&£Ó       one oî¿s async counÓy1!arts is made¾¼âe result useà`c  Entity Fram
+Ë£\k can be cha„vF by settiîgp% !       <seÊ(|ef="P:SystemD„/a.Entity.InfB¾Hâructure.Inteøµ®”tiof.DbCommaòjúterceptionCoÌÙ¸(t`1.Result"/¬sør"           @IÃ|mmary>
+    ;¾¼    <remark{‰,5           FØzrCsync operati‰òthis method _F$5ot called un®<¦after the p0Óc task hqs cÓ0eted
+      ÌOö4  or failed.ìÒ2+          </3XDrks>
+    $ PÖy.  <param nam‡¥»ommand">The îÌBNand being ex-dšed.</peram>Ó&×         <paZôIname="interc_°'ûonContext">Cæ§¼ xtual inform²öË:n associated”7İÈh the call.<zöam>
+       ºİ–Øember>
+    pÙT<member nameXÅ'ƒSystem.Data.é“ZÃty.Infrartru!-´ÿe.Intdrcepti½W6•DbConnection«Â°rceptor">
+ Z ì       <summÏR“È
+          º¬6× object thatâ·IZlements this¬"É$erfacm can ba‡ygistered witn@Cee cref="T:Szy¾Ğm.Data.Entit‹MXfrastructureNîã¬erception.Db²ÎErception"/> ñ<®³            ïîÕ ive notifica--áùs when EntitÂš+ame÷ork perf×sÏ« operations ^8½2 <see cref="|°vstem.Data.Coæ3ø.DbTransactiÜ‹³>.
+        ÿ</summary>
+o—z        <rem’Ø:>
+ (       G'nterceptors ËÈoalso be regiGì‡led in the coV¨wµ file of the*ívlication.
+ ßqº       See Hu¦½//go.microsoÛ)3om/fwlink/?L -d=260883 forb¬Í}e informatio¯µ¯iout E.tity FGğwork configu#lóon.
+       º÷ </remarks>dMy     </membeÓ0y        <memÓ name="M:SystÎ>¯ìata.Entéty·1q”rastructure.ô—„rception.IDb!-ËöectionInterc0» r.BeginningT£ªM¦action(Syste;+“Õt`.Common.Db/ôá#ection,Syste/‹ta.Entity.InÎ,¥tructure.Int»½ĞŠption.BeginTç]MactionIntercÀØÂonContext)">•^˜Y          <sÕ|qõry>
+       	îò± Called befo Úğ=see cref="M:»yem.Data.Comm½jbConnection.‚á_|nTransaction9¾átem.Data.IsoD_ÓonLevel)"/> »~Tnvoked.
+   |‡}-     </summa_Zò
+           
+Îöram name="co0R¹¶tion">The coJWåtion beginniWûPhe transacti•ò/param>
+   º­C     <param 
+ÿ="intercepti}t]ftext">ConteN0OJl informatio”{±Ôsociated witKÏö…e call.</parp±¸œ
+        </m*ËSÓr>
+        I¾™ber name="M:ùª±õem.Data.Enti=e¡nfrastructur~}terception.I|æünnectionInteiÛ2tor.BeganTra œ·tion(System.ìâÊ>.Common.DbCoD™—tion,Syqtem.È¿¸–.Entity.InfrÈ}KŸucture.Inter®%†àion.BeginTra!´7tionIntercep6¦Context)">
+…¸S¬        <sumT<Ğ>
+         Y/B.alled aftdr  æ¬ cref=bM:SysbğâûData.Common.é¡n¹nnectio..BegÇÈäƒansaction(Syğnë.Data.Isolat†¿6¾evel)"/> is okÁäked.
+      Ê3J7  The transaGëî_n ÷sed by EnédNi Framework c7f bE changed ZO5›etting
+    ?¿Ã²    8see creª¬&À:System.DataVÅ/ity.Infrasôrí:‚re.Intercept]g¶óMutableInteR™hĞ˜ionContext`1âNCult"/>.
+   G¬z±     </summa)½
+           Ø,õ(ram name="cosÜğtion">The coÉHpÕtion that beXªéthe transact¦•ÿV</param>
+  ]ƒÇ      <paramJ|se="intercept©Ì`~ontext">Cont:÷üal in&ormatiƒÈ´ssociated wi¼&he call.</pa¤å€
+        </pR Öer>
+       ‘?Š8mber name="MÂÁñ^tem.Data.EntuØ¨ÈInfrastructu/Tbånterception.…R¼onnectionIntëä™ptor.Closing€™Stem.Data.Coi —âÈDbConnectionftem.Data.EntÅûQIInfrastructu;¢»nterception.™×jnnectionInte#sKXtionContext)Z<            ìjçmary>
+     ¼QÒĞ   alled beÂ";Ï <see cref="£¹Ôstem.Data.Coa¡€.DbConnectioñ‹·Ûose"/> is inØmd.
+        Z7</summary>
+v<[ò        <parK'Èame="connect†”>The connectf&Äbeing closedõ«ßÒaram>
+     ˆ"c   <param na5ØifterceptionÃÃ­ext">ContextŞH€íinformation ŞÕEciated with ‚ÃÁcall.</param2éú       </mem2a
+        >m¹„!dr name="M:Syw–.Data.Entity{Ù”±rastructure.±úÔ¦rceğtion.IDblÑectionInterc‹utor.Closed(Strşm.Data.CommoúhúConnection,S(gCØm.Data.Eîtit„"ñfraótructureÅŒŞerception.Dba½åectionInterc5^
+%onCgntext)">êºnW          <s@Œory>
+       ccì Called afte×51Xee cref="M:S>«Ôm.Data.Commoç~¨¬Connection.CŞ("/> is invok,›5Ø
+           O²4ummary>
+   C0û     <param wlş="connectkonÄ‚Óƒe connection7" Xt was closed©ÿzXaram>
+     ·>[&`  <parAm na÷Qãinterception…j~Šext">ContextKÖêpinformauion ^v°êciated with ]àÆ call.</paramO("‰       </memÉÛ‘¹
+        <mşåY¹r name="M:Syiÿì.Dava.Entity­ROrastructure.rMrception.IDb€¤ÈÊectionIntercÈ@Šr.ConnectionÔÏTngGetting(SyPÔÇÏ.Data.Common1\53onnection,Syñµc*.Data.EntityW¥’àrastructure.3ú+trception.DbC‰áµPctionKnterce•Ã³˜nContext{Sys³ÃüJString}9">
+òÌÇ¹        <sumS£¯>
+         ª,Ó0alled before)WÛe cref="P:SyŞîC.Data.Commonà³!Zonnection.CoÅ¿ÊltionString"-N2# retrieved.g^‘         </sVî|ry>
+       éd® <param name)|Ònnection">ThõºŒnnection.</ğT¸æ>
+         lû—param name="—ÚS±rceptionContü`æ‹>Contextual"tihÎrmation assoıÊ³öed with the ûÛ·.</param>{àX¶     </membeè¡r        8mem-İü–name="M:SystgÆ1ata.Entity.I¿dá%structure.In•²üïeption.IDbCoX ìjtionIntercep5ÁConnectionSt–%NGot(System.Dzë#Common.DbCon{Äion,Sysdem.DR|¸Entity.InfraşîÃYcture.Interc%õŒon.DbConnectvWX—nterceptionCŒMQxt{System.StuÇù})">
+      |pw×  <suomary>ÓØJĞ         Cal¸Yíafter <see câñ_"P:System.DaSæl!ommon.DbConnÅ±ƒ]on.Connectio¤Vting"/> is ren„lved.
+      vã§Ö  </summary>4ŸÓù    (     <p•— name=conneoß‘{n">The conne^ç%ún.</param>
+Cde        <paraDË³ame="interce«æ½¨nContext">Co­ôytual informaÿÄF‰ associated ÿ"p the call.</sßtm>
+        t9êCmber?
+     a…¹member namd=	_„»ystem.Data.E]}ü@y.Infrastrucg¦pA.Interceptio–VÚbConnectionIí±t|ceptor.ConnakªlnStringSetti[İˆ¼ystem.Data.CJŞ n.DcConnectic›úystem.Data.E‰O'y.Infrastruco?.InterceptioâK¦ConnectionPr?^³dyInterceptiíñKÇntext{Systemâ ñing})">
+   )Ÿh     <summarÚúb             :´ed before <sÔ­ref="P:SysteÂê˜uta.Common.DbPÕMeection.Conne¤ÀnString"/> i^¯vt.
+       0¶K‰Æ</summary>
+Ò®Ğå        <p^¨ş name="conneù'n">The connetÔ}n.</param>
+b)é        <par ReÛame="intgrceÁÍnContext">CoPƒ¿tual informaº assockated 5RE; the call.</Œ¹µòm>
+        uà‚°mber>
+$    ?#Ümember name=ÆD$Qystem.Data.EVà}Uy.InfrastruCçøêO.Interceptioå%Ô„bConnectionI0qiEceptor.Conne'ÎKİnStringSet(S¬Â'Üm.Data.Commor°*ZConnection,S«´–m.Data.Entit(5ı(frasdructurep1Y©erception.DbÕ‚M%ectionProperC,terceğtionCoIJANt{System.Str“îÀ›)">
+       /œ <summary>
+«ƒY(       CillÓØğ)fter <see crv€ß5P:System.DatÊP9Åmmon.DbConne¤b·¤n.Connectionü@šYng"/> is set¹VÀ           <„~m!mary>*     ¬ûŸY   <param naˆªÚ÷connection"> ?ıconnection.</ÄQŞam>
+       a¢A? <param name^ºPterceptionCobRt">Contextua7X²formation aswµ‡„ated with thÎÑõll.</param>ÄãÖ     </membeæÄ;        <memşz•name="M:Syst8X’ata.Eftity.I0structure.Inq³<eption.IDbCo wtionIntercepà|LîConnectionTiIµ‡tGetting(Sysl‚Data.Common.¢q¼Ínnection,Sysã¸Data.Entity.Æ6îastructure.I.¦ÂÖception.DbCo&bïŠtionIntercep‡NğÏContext{Syst-j*Snt32=)">
+  ÎXŠ/      <sumS$)³>
+         XJÉclled before[5÷{e cref="P:Sy$¹$p.Data.Commonävonnection.Co†‹°tionTimeout"°`$s(retrieved.Îùd‡          </ÿzBçary>
+      ¹CØ‰  <param nam	^öonnection">Tæyzonnection.</CÇèZm>
+        Š±[<param name=Ú×ÛerceptionConX$Š">ContextualÅñGÄormation as3Jsşted with theW—/²l.</param>
+ ™4é    </member.w…ª       <membÊ>bame="M:Syste£Ñ@ta.Entity.InÒ¹º¿tructure.Intëşsöptaon.IDbConuJzionInterceptÛonnectionTimã@iÉGot(System.D‘…Common.DbConPç™cion,System.DÖ|F£Entity.Infraÿ=¥mcture.Interc‹!Ó×on.DbConnect[\¨pnterceptionC:&xt{System.In´UÂ')">
+       ½ò‚å <summary>
+@ºÓ        Call/¤0fter <see crD@ùP:System.Dat,mmon.DbConne™¨
+Šn.Connectionnout"/> is reŒMqved.
+      J5Y«  </summapy>ßH„j          <p¨ôÀ$name="conne=I‰ùn">The conneÿ‰‰Ïn.</param>
+¿XS        <parŒ·³eame="anterceİ7ênContext">Co3ötual informae>ªÇ associated åòy- the caln.<&= m>
+        AêÕÄmber>
+  0  ìiLOmember nime=wœ¶ystem.Data.E·Çhÿy.Infrastruc	W|.Interceptio9ÍõbConnectionI×=Iceptor.Datab8¡eetting(SysMªóData.Common.j¨I‚nnection,SysÙIğUData.Entity.–à&@astructure.Ißaception.DbCo:ÏtionIntercepp³ãContext{SystüFzjtring})">
+ ú­       <summŸO¨Ö
+          34¢>lled before ƒ0 cref="P:Sys'òÆÉData.Common.°.Ã+nnection.Datbmçe"/> is retréşì·d.
+        Í<i</summary>
+`Ìß        <parşü÷ame="connectş¢`>The connecu/«y</param>
+  Mƒ¤      <param	 u="interceptØäf*ontext">Contİ)al informatiOdßssociated wif'phe call.</pamïá¹
+        </‹er>
+       õW}mber name="Muzatem.Data.Ent¾PK®Infrastructu}¹rönterception.­İJÉonnectionIntÎ¤eptor.Databasqk¶¬(System.Dataz8ümon.DbConnecP	 ,System.Data`˜Uity.InfrastrN:Ë×re.Intercept–cñûDbConnectionŠ`ˆ=rceptionContœm¬xSystem.StrinY3´>
+         æ…Ï;summary>
+  Ï:–Ò      Called:/'Yer <3ee crefSs‰ÚSystem.Data.Z^on.DbConnectHú®ÍDatabase"/> |O'×etriEved.
+ ¸v$       </sumwB¶ø>
+         ‰3,eparam name="(%Rection">The •a’®ection.</par2_¸=
+           3ãÍram name="in¾äeptioîContex@ˆ˜ontextual in®µèFation associIp
+š with the caXÈ)j/param>
+   ¢“;€ </member>|ëN‡      <membeÅ&Gme="M:System¿ Ö…a.Entity.Infi·–ructure.Inteú!àÒtion.IDbConn&ã+onInterceptoÑ\CtaSourceGettéBOSystem.Data.!Úùon.DbConnectLËÓ System.Data.)»<øty.InfrastruÚÕšFe.Intergepti/Ş­bConnectionIÄ9Q?ceptionConteÂÎ%Aystem.Stringô©          ¶Aummary>
+   +,#     Called +Š2re <see crevlöç~System.Data.èTRon.DbConnectË˜¬DataSource"/MR:9 retrieved.
+Ô-³         </sÃ‰Qry>
+       %÷Ã  <param`name‘øiënnection">Th)Gt™nnectimn.</p¨u#Ô>
+        0Fparam name=",€FYrceptionContŒ”@¾Contextual B5~5rmation asso-•á2ed wiuh the ‚s.</param>
+ j‹h   </member>äTET      <membe´U±me="M:SystemŠ7Ca.Entity.InfY¶°mructure.Intepk•ïtion.IDbConnŒ½ÆonInterceptg¯Ä“¡taSourceGot(Nx@Eem.Data.Comm}¹ÙÚbConnection,¾[i+em.D!ta.Entiˆé	nfrastructur³V­$terception.D‹ŸÖnectionInteò(vionContext{Skësƒm.String})">»¡           <sgˆHäry>
+       ÷âh" Called afteÖÓee cref="P:S2k6m,Data.CommocÆ1ÓConnection.DxÂ4Pource"/> is b‚ieved.
+    ä©';    </summarvcÒÙ            ÿûam name="conŞ ¶*ion">The con¶ 	§ion.</paraÏ¯×ß            8ä>am name=&int_ó¸VptiïnContextR6UUntextual infıtion associa)Zuwith the ca,?2param>
+   "àç </member>
+ ¶ŠŠî   <member nwÎN0"M:System.Da™C.ínti|y.InfrasŞæ7ture.InterceËçHãn.IDbConnectÇR¸Untgrceptor.D%% sing(System.Ï)æ.Common.DbCo{2tion,System.qĞ.Entity.Infrü?,Üucture.Interx
+Pion.DbConnec£iInterception©¡·ôext)">
+    PL‹<    <Summary©ä6         " Cr–h½d before <seü!'ef="M:System4‰–®ponentModel.¥onent.DisposË«ÏH is invoked.¨5dã          </&Õêîarq>
+      Âbv  <param nam6®éonnecpion">TX/nonnection be5…%disposed.</p1·Vi>
+         trƒiparam name="[È9rceptionContÕaGä>Contextual ò–·mrmation assokàÛ_ed with tèe0°•F.</param>
+ ¡¨’   </member>ÒSB§      <iembetÚâ¼me="M:System8ôOÒa.E.tity.InfS’>ructure.InteeÓ?“tion.IDbÃonn¢/'vonIntercepto°¦Qsposed(Syste†Ì3bta.Common.DbGë¼ection,SysteÌøta.Entity.In%Bktructure.IntTLÌption.DbConnÏ^¢÷onInterceptiå¢Ï/ntext)">
+  ØYöå      <summaÉ:”
+           Dìè®led after <s÷Séfref="M:Syste¶^rmponenpModel Ä÷ponent.DispoDÊe> is invokedwj
+           VE”ummary>
+    .ÑÔ     <param ÆÆ
+¿="connection”–ñe connecpionu¶ t was dispos!
+ò¶/param>
+   Ş„ú0     <piram ,LO="interceptiK¦Û'ntext">Conte6,dl informataohFÙWsociated`wit±Çàe call.</parQpXW
+        </m$ÇÔ¬r>
+        áyÕşber name="M:ğ/ÃËem.Data.Enti@İånfrastructur¶]rterception.IŠ ƒnnecthonInteÅĞ¤tor.Enlistinƒ„6¤nsaction(SysyÉ¡ÅData.Common.7¾Š~nnection,Sys<‘ÊSData.Entity.ÎËPÈastructure.IjIº®ception.EnliŸ>NšansactionIntGÇ¬ptionContexth<70
+           {V×\mmary>
+    +MCY    Callud bTke <see cref=i%ôáystem.Data.Ci»6n.DbConnecti”i>nlistTransacbÜxu(Sysvem.Tran>Ä•ions.TransacÜ$è)"/> is invo·‹èA          ĞûÓ%summary>
+  Ï|      <paramoó™†e="connectioê†	he connectio™Â¾\param>
+    >¹É²    <param nçı"interceptio‘Ytext">ContexÀn~ iNformation|øa»ociated`withöùÆ_ call.</para“rœ7        </meW«‚>
+        <§MÔer name="M:S%“Îâm.Data.EntitÕ·Ôfrastructure)úerception.ID7§RnectionInter<3‰—or.EnlistedT¢‰Ÿ0action(Syste69=Õta.Common.DbWGection,SysteJ!š©ta.Entity.IngW<@tructure.Int™¬ception.Enli­šansactionIntV¶_%ptionGontext&5ZU
+           Ÿ/OJmmary>
+    „­¿„    Cqìled a3ĞL <see cref="Î…D*stem.Data.Coá`TÆ.DbConnectioRU‡÷listTransactÏ½I'System.TransÙg(Õons.Transact%¦jS"/. is invok¦Ñ›ö
+           vPÕummary>
+   ×@{×     <param ••ˆ¥="connecôionšØe CoonectioN"©ÉVaram>
+     Ê›Ê   <param na,/interceptionèPIext">ContextÓ°ˆinformation Š­ciated with °Dcall.<¯pavamY„       </memò¨B
+        <mS²ß­r name="M:SyT%œİ.Data.Entityˆt¢ãrastructure.škŠrception.IDbë²±ãectionIntercwhŞr.Opening([y`Ë¥t.Data.Common,zmbonnection,SyÆÂY.Data.EntityÏÂ¹ 2astructurm.{ô•rception.DbCUÒæšctionInterce
+n-%nContext)">\¨q         <su!#Ãy>
+        %?øCalled befor›‘ªee cref="M:SµÎBm.Data.Commo³cô?Connestion.O7-|¡/> or ius asQ÷?counterpart "ÙmJnvoked.
+   ÌD©     </summaLm„ò
+           ËíÓáram name="coŸŒwtion">The coRÈmËtion being o2`ÔÕd.</param
+¿O¡        <par"¦èame="interceç×RfnContext">CoøfC8tual informa>â associated Œ×íå the call.</½ÏÕÑm>
+        ç»gmber>
+    !ıùmember name=!á&ystem.Datap:b'ity.Infrastrúxšçre.InterceptY>IDbConnectioiNß¼erceptor.Ope¤i_qSystem.Data.ÔÏµon.DbConnect<.?ÃSystem.DaTa.ğÂ{Îty.Invras|ruÿ*ße.InterceptihÇìbAonnectionI×Î¦lceptionConte\Se5>
+         åã}summary>
+  dZ¼Ö      CalledUŞ&er <see gref[S;System.Data.±bon.DbConnect–¾îøOpen"/> or ir¢µsync counterªl¼ is iovoked.Ï$3Œ       $  </ä'6ary>
+      æ8ıÌ  <param namÂòonnection">TÔè!…onnectin thœ->ùas opened.</•å,¹m>
+        E¶<param name=BëS¨erceptionConé&Pí">Contextual`ôormation ass¶‰Ùted with theo`Al.</param>
+G:à+    </member^¾¹É    $  <membíjQame="M:Syste^-Ê§ta.Entity.InÃøŸTtructure.IntB™û(ption.IDbConŞ	ÆÑionIntercept™ûY©erverVersionhéning(S9stem.D7,äšCommon.DbConÿùõ]ion,System.DF6h¿Entity.Infraìı«cture.Interbi“ ±on.DbCon.ect´Í¸wnterceptionCMÉCExt{System.St…ñ€<})">
+      Cj´æ  <summary>wß’         CalÀÅ‰before <see Uáøæ="P:System.D
+ãùCommon.DbConG¸ion.ServerVed	Ÿ]n"/>0is retr>Û47d.
+        cg5</summary>
+BÌD  0     <par.8fame="connectéÀÚa>The connect•Â÷W</param>
+  ø’      <param name="interceptionContext">Contextual information associated with the call.</param>
         </member>
         <member name="M:System.Data.Entity.Infrastructure.Interception.IDbConnectionInterceptor.ServerVersionGot(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
             <summary>
@@ -10935,198 +10724,152 @@
             <summary>
             This method is called after a call to <see cref="M:System.Data.Common.DbCommand.ExecuteScalar"/>  or
             one of its async counterparts is made.
-            The default implementation stops <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Stopwatch"/> and calls <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Executed``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})"/>.
-            </summary>
-            <param name="command">The command being executed.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Executing``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})">
-            <summary>
-            Called whenever a command is about to be executed. The default implementation of this method
-            filters by <see cref="T:System.Data.Entity.DbContext"/> set into <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Context"/>, if any, and then calls
-            <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.LogCommand``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})"/>. This method would typically only be overridden to change the
-            context filtering behavior.
-            </summary>
-            <typeparam name="TResult">The type of the operation's results.</typeparam>
-            <param name="command">The command that will be executed.</param>
-            <param name="interceptionContext">Contextual information associated with the command.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Executed``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})">
-            <summary>
-            Called whenever a command has completed executing. The default implementation of this method
-            filters by <see cref="T:System.Data.Entity.DbContext"/> set into <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Context"/>, if any, and then calls
-            <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.LogResult``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})"/>. This method would typically only be overridden to change the context
-            filtering behavior.
-            </summary>
-            <typeparam name="TResult">The type of the operation's results.</typeparam>
-            <param name="command">The command that was executed.</param>
-            <param name="interceptionContext">Contextual information associated with the command.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.LogCommand``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})">
-            <summary>
-            Called to log a command that is about to be executed. Override this method to change how the
-            command is logged to <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.WriteAction"/>.
-            </summary>
-            <typeparam name="TResult">The type of the operation's results.</typeparam>
-            <param name="command">The command to be logged.</param>
-            <param name="interceptionContext">Contextual information associated with the command.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.LogParameter``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0},System.Data.Common.DbParameter)">
-            <summary>
-            Called by <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.LogCommand``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})"/> to log each parameter. This method can be called from an overridden
-            implementation of <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.LogCommand``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})"/> to log parameters, and/or can be overridden to
-            change the way that parameters are logged to <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.WriteAction"/>.
-            </summary>
-            <typeparam name="TResult">The type of the operation's results.</typeparam>
-            <param name="command">The command being logged.</param>
-            <param name="interceptionContext">Contextual information associated with the command.</param>
-            <param name="parameter">The parameter to log.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.LogResult``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})">
-            <summary>
-            Called to log the result of executing a command. Override this method to change how results are
-            logged to <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.WriteAction"/>.
-            </summary>
-            <typeparam name="TResult">The type of the operation's results.</typeparam>
-            <param name="command">The command being logged.</param>
-            <param name="interceptionContext">Contextual information associated with the command.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.BeginningTransaction(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.BeginTransactionInterceptionContext)">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection beginning the transaction.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.BeganTransaction(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.BeginTransactionInterceptionContext)">
-            <summary>
-            Called after <see cref="M:System.Data.Common.DbConnection.BeginTransaction(System.Data.IsolationLevel)"/> is invoked.
-            The default implementation of this method filters by <see cref="T:System.Data.Entity.DbContext"/> set into
-            <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Context"/>, if any, and then logs the event.
-            </summary>
-            <param name="connection">The connection that began the transaction.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.EnlistingTransaction(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.EnlistTransactionInterceptionContext)">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.EnlistedTransaction(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.EnlistTransactionInterceptionContext)">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Opening(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext)">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection being opened.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Opened(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext)">
-            <summary>
-            Called after <see cref="M:System.Data.Common.DbConnection.Open"/> or its async counterpart is invoked.
-            The default implementation of this method filters by <see cref="T:System.Data.Entity.DbContext"/> set into
-            <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Context"/>, if any, and then logs the event.
-            </summary>
-            <param name="connection">The connection that was opened.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Closing(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext)">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection being closed.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Closed(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext)">
-            <summary>
-            Called after <see cref="M:System.Data.Common.DbConnection.Close"/> is invoked.
-            The default implementation of this method filters by <see cref="T:System.Data.Entity.DbContext"/> set into
-            <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Context"/>, if any, and then logs the event.
-            </summary>
-            <param name="connection">The connection that was closed.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.ConnectionStringGetting(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.ConnectionStringGot(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.ConnectionStringSetting(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionPropertyInterceptionContext{System.String})">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.ConnectionStringSet(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionPropertyInterceptionContext{System.String})">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.ConnectionTimeoutGetting(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.Int32})">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.ConnectionTimeoutGot(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.Int32})">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.DatabaseGetting(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.DatabaseGot(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.DataSourceGetting(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.DataSourceGot(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext{System.String})">
-            <summary>
-            Does not write to log unless overridden.
-            </summary>
-            <param name="connection">The connection.</param>
-            <param name="interceptionContext">Contextual information associated with the call.</param>
-        </member>
-        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Disposing(System.Data.Common.DbConnection,System.Data.Entity.Infrastructure.Interception.DbConnectionInterceptionContext)">
-            <summary>
-            Called before <see cref="M:System.ComponentModel.Component.Dispose"/> is invoked.
-            The default implementation of this method filters by <see cref="T:System.Data.Entity.DbContext"/> set into
+            The default implementation stops <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Stopwatch"/> and calls <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Executed``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interceptio>ğ‘hCommandInterÖÍjñionContext{`WB"/>.
+      Ï˜ıy  </summary>
+Ü	v          <p¤ÛŞ" îame="commakqôThe command A‰Mg executed.<Ó¤V.am>
+       ûkv‚ <param name°ÅQ~terceptionCo;#†‹t">Contextuaµ#formation asg•lòated with thÔàØll.</param>å$²     </membe¼aW        <memv•Íname="M:Syst»ÓS¸ata.Entity.IiQXstructure.In<$eption.Datab±ogFormatter. •-şuting``1(SysÙÚÙ©Data.Common.I½dšmmand,SystemÌ)sËa.Entity.Inf¯S"İructure,Inte•³İ¡tion.DbCommaµPCÄterceptionCošcêrt{``0})">
+ @È#‹       <summ Â
+          lqÚ“lled wheneveYóøFcommand is a®6 to be execu¼¦~Ï The default¿Ò’lementation ¾ˆshis method
+›Ê¼ı        filt+íby <see cref«]×System.Data.Tâty/DbCootext|÷set ifto <seÌ Ôèef="P:SystemX÷Oªa.Entity.Inf±Ş}€ructure.Hnte"¦6tion.Databas÷Œ+ Formatter.Co£°Št"/>, if anyu2ü
+d then calls9ŠŒ6          <sŸÓÆˆref="M:SysteTQlta.Entity.In©Ş×tructure.Ijtİ<?0tion.Databan<1UgForma4ter.LX‹7mmanfb`1(Sys÷ËwData.Common.k†immand,Systemãª2óa.Entity.Inf›Â8Ôructure,InteG#tion.DbComma”yäterceptionCo&î¯ÿt{``0})"/>FŸBis method woşËetypically on¾–bÎe ovErriddenŸƒ¾Ncèange the
+ëÄĞ        contÙtı#filtering be¬'õuor.
+       k(2 </summary>İ©¯Ù         <tyÌWæÃram name="TR.k…It">The type ÃJõhe operation@¦oÎesults.</typó>mam>
+       ×å]” <param nameŞonmmand">The c[ÚÀnd that will#Şexecuted.</p‘ò_>
+         È<‡param name="]æërceptionConty3I>Contextual –>‘rmation asso.fªQed!with the Ê®5Àand.</param>]WÑ      </membèšß
+        <me¤/äe name="M:SysoŸData®Entity.¾}Ã›astrusture.Ií3ŞÌception.DataÈ½`‡MogFgrmatterkµcuted``1(Sys4D[Data.Common>{Ï›mmand,Systemã¶Ípa.Entity.InfKmeructure.Inteqçption.DbCommaìzÎterceptionConZX›t{`à0})">
+ ‹(×        <summ¼-€ü
+          lI{lled wheneve¸#½öcommand has dö‚8leted executq„è& The default2µ¼¢lementation i»„his method
+gßà        filt'lhšby <see cref>System.Data.*~îty.DbContext÷ŒÃset into <se¬&ğ&ef="P:SystemÖ×C8a.ENtit{>Infcà·ructure.InteTy%tion.Databas7§T»Formatter.Coò®Å¨t"/>, if anylèd then callsø,ˆ}       0  <s¬æref="M:Systešta.Entity.Inù÷€tructure.I·Õ—ñception.DataRW_LogFormatter\æøÚResult``1(Sy“©15.Data.Common[—àrommand,Syste}ÊËta.Entity.	nÔtructure.IntHğá»pt)on.DbCommÁ×ÇntercertionCy{xt{``0})"/>.‘h's method wouÆc«uypically onlUİK overridden ¯à®hange the coæ‘yDt
+   $     ª”Tìiltering behÜôŠ[r.
+        -÷Ë[</summaRy>JÁ×¾      " <typ-5fŠam name="TRe_èVª">The type oƒVjŒe oqeration'!>7sults.</typeUı¤õm>
+        C_À¼param name=ºµmand">The co¶ı®Sd that as e
+™ted.</param>Ì£          <ps|­Â name="interØ¡C’ionContext">œNB.extual inforäÆºÛon associate<ßÜPth the comma2÷=ƒ/param>
+   #wM  </member>
+ì¨@Û    <member Ññb¢="M:System.D5¬BÛEjtity.Infra-ÈäÉcture.Interc6²ZFon.DatabaseLdTirmatter.Lo'C8,*]nd``1(System›¼•a.Common.DbCYo@nd,System.Da<íb;ntity.InfrasG†œture.Interce’êã(n.DbCommandI¢ÚA	ceptionConteİ’Ï(`0})">
+    ÂæxT    <summaryÓÕ„È           C$Kü:d to log a crõ¿™nd that is a<©xv to be execuNÁés Override th¢°…wethod to chaFıÅhow the
+   @îá=     commandØ¡Â˜logged to!<sÏ;rref="P:SysteÏsLxta.Entity.In‘…structure.Int£òl0ption.Data¯n0óLogFormatterÂ3	teAction"/>.[–„          </-å€:ary>
+      Á¹õp  <typeparamk°÷½e="TReqult">5Ròtype of the °@ation's resu©Tñ</typeparam>¨%          <pHÑKó name="commaõÕğThe command ı!û:e loggEd.</p5†%+>
+         Í_¶şparam name="µ¢¢}rceptionContä€IÒ>Contextual öæLÈrmation assoCaed with the vô>¦and.</param>¢|ñ      </membì`	j
+       0<meòÈ]N name="M:S{s±]Data.Entity.9nÖyastructure.I}ãoäception.Dataè|ŸLogFormatper¿-Parameter``1İ1bùtem.Data.Com\ù@DbCommand,Sy}¶ˆÎ.Data.Entityv‚”§rastructure.¤^qàrception.DbCr×]ndIntercepti†ø•ntext{``0},SW0äm.Data.CommolBOParameter)">:[Í          <s¤Memry>       Û„%! Called by < A£”cref="M:Syst­w|:ata.Entity.I3òNstructure.InAjHeption.Databÿ	™BogFgrmatter.spÇßommand``1(SyøOÍz.Data.CommonFÃmommand,Syste]¨ta.Entity.InªLztructure.Intfµ‘²ption.DbComm	æ"!nterceptionCçº¿Pxt{``0})2/> ´«‰Çog each para
+¶Ur. This meth‚Fan be calledPß¨um an overrid”®
+           –ìºlementation ¦È)Usee cref="M:wüT em.Data.Entiw|4Anfrastructur|6ìtercdption.DWò%aseLogFormÎşér.LogCommand•1ÓSystem.Data.{Œ³on.DbCommand÷~±tem.Data&EntÉÔ0MInfrastructuotğ«nterception.•…Î4mmandInterce1:ùnContext{``0_VR.> to log parü¢Hers, and-or .PÙ9be overridde‡ON¡
+          ñ]Õange the way'ª®t parameters»=6m logged!to <ñ›?^cref="P:Systãµata.Entity.I–Pü#structure.InÉ±«eption.Databú% ogFormatter.!vSˆeAction"/>.Xw{         </s¯1	úry>
+        ñ;é <typeparam [šhé="TResult">TÔjw&ype of the oJ„ tion's resul0Cìy/typeparaí>Ù,Å         <pa§`Çname="comman q†„he command bXˆü~ logged.</paAõÙ
+          ÄDxaram name="iÉ}„nceptionConteéÏFContextual işšõ˜mation assoc!ß¡d with the cÖë_nd.</param>8ıQx         <paõ=qÆname="parame $§²>The paramet[S’Ûo log.</para ~l        </mezÍà3>
+        <¡óBer name="M:S˜û5m.Data.Entit"‰frastructureŸ½#erception.Daz§ªwseLogFormattæ‘fyogResult``1(£cËem.Data.Comm"õø€jCommand,Sys/…ÊData.Entity.»dğbastructure.Im»…Êception.DbCoÖÿêdInterceptioCPètext{``0})">Û·–           <s˜Ìåry>
+       gfhÆ Called to lè}Fhe òesult of²Ş†Lcuting a comgÎßG. Override t†q method to ³ËÀge how resulå{wre
+        õV;logge$ to <s¸£ùref="P:System$pNta.Entity.Iny¤ätructure.Int[ÎuKption.Databa‘×gFormatter.W-GÉAction"/~.
+«Å.(        </su?Ñ‡ƒy>
+        W‚›p<typexaram n{¦8"TResult">Th€LŠ\pe of the$op¢Ëáion's resultÁškDtypeparam>
+8Ãe        <qar¥0ÉÉame="command„;úÑe command be5—K[logged.</par„^G7
+            şPram name="in0­Ú‹eptionContexwÂÓãontextual inÀÊ_ation associEÏJs with the coµ 0d.</param>
+êsô    </memberdÆ¬       <memb`Øóame="M:SysteŞiÆÖta.Mntity.In#2‚tructure.IntX”!ption.Databa<»˜gFormatter.B_”âningTransactÚq†qSystem.Data.E¾@on.DbConnectw`%System.data.¦£ty.InnrastruKN†¯e.InterceptiääAeginPransact^™
+"nterceptionCÔsIxt)">
+     m   <summary>dØÀ?          Do­Åkot write to d¼Zunless ovezri¾ì/n.
+        º¥Â</summary?
+v¾·à        <parcn¨Aame="connect=EZ#>The connect‰DNÈbEginning th£ZHansaction.</eZóåm>
+        ‰£¥m<param name=Nƒœ5erceptionCon½|-Æ">ContextualLŠÊormation ass&¤°ted with the¸Õ‰±l.</param>
+A¨    </member_Hù       <membíe name="M:SysqãÀYData.Entity.é^:mastrucdure.I¨¤'ception.Data}ß„êLogFormatterİòanTransactio°Õïµs|em.Lata.Co°•¨¸.DbConnectio('Ãstem.Data.EnpÙ^.Infrastruct5t Inverception8Àn inTransactio‘¨\ĞerceptionCon˜p)">
+       5Çá€ <summary>
+ÇcQ½        CallkT_Äfter <wee crU„oªM:System.DatÔzUmíon.DbConneˆÒÕJn.BeginTransy>Åon(System.DazMüˆsomationLeveb%Á2> is invokedİpÃÛ           T¥µéœefault impleÑ³Xation of thiİšªthod filtersôTäq<see cref="T­­¸temnData.Ent>Šv€DbContext"/>‘*`Ï into
+     ´ÿ_Ä   <see cref%·É¦System.Data.If<]ty.Infrastruğ½FEe.InterceptiBî–atabaseLogFo´è¬+ter.Context"6ÊW³if any, and ùww logs the ev-¸
+          1‰Ësummary>
+  qç€-      <paramÙµ$ge="connectioÚıøhe connectio«`7at began theï†vônsaction.</p U­Ò>
+         ™3‡Éparam name="ä«;rceptionCo.t?ÕŞÆ>Contextual D@rmataon assojĞªåed with the fK.</param>
+ Æ›I   </member>‡_£M      <membeŒ:ä÷me="M:SystemK&a.Entity.Infd.*Jructure.Inteƒ°Ç‚tion.Databas³…Formatter.En@PşingTransactiªØystem.Data.C1n.DbConnecti“dŞåystem.Data.E§/ày.Infrastr4³fre.Interceptî—EnlictTransaM·ûVnInterceptioÂß´Ttext)">
+   hi«W     <summar¬›¢Ø            m7°‚ not write tj­©Šg unless oveÌr²\den.
+      Q9  </summary>ÇB>          <p¹-X# name="conned<øÂn">The connåK'Ên.</param>
+½öj÷        <par°ñf?ame="interge¿ÈïnContext">Co¸uê¾tual informaœ> associated º
+v thu call.</;™)m>
+        CÊSCmber>
+     pĞpämember name=MŞ¨Şystem.Data.EÜĞLxy.Infrastruc^s(}.Interceptiooùe<tabaseLogForaóÆÀer.EnlistedTdH\îaction(Syste·¤ Lta.Common.Db~¥kection,SysteŠ(Üta.Entity.InbÙÔtructure.IntÕş×ption.Enlist{1Ó†sactionInterÂß…ionContext)"µ™T®           <V¥4Ÿary>
+      áÓ€
+  Does not wyÓZ to log unle§ìŒverridden.
+;Z,ß        </su[0K•y>
+        hº{Æ<param name=h&ânection">The V‘3nection.</pak 4§
+          ¿ãaram name="iÀ¢¾ceptionConteÑ²±~Contextual iÁû¸mation assoczÚÊâd with the cvà¤{</param>
+  Š[¶9  </member>P!®     <member¥ee="M:System.3}ùE.Entity.InfræÏvÚucture.InterËM"|ion.DatabaseOr-ormatter.OpeXza(System.Data~F pmon.DbConnec$Ê>ğ,System.Data;¼‚Ìity.InfrasÖÎ_ture.Interces/…n.DbConnectiOv¸İterceptionCoójS·t)">
+     !l~  <summary>Ú¯Îÿ         Doe¨£\Qt write to lo,Ç9nldss overri;šÁ.
+         ^‰“É/sõmmary>
+ ¨ñè­       <paraÑ(Eme="connectiÓœQThe connectiá|/eing opened. BH„ram>
+$     2@öÆ  <param namT_`nterceptionC¦”p¹xt">Contextu£çêknformatiof aU£¨–iated with tZ¹gall.</param>eÅÁ      <¯membcG…¢
+"       <me÷é name="M:Sys¡ƒó­Data.Entity.iË–¿astructure.I·g›ception.Data©AsoLogFormatterÓÍI¶ned(System.Däú¯Common.DbConƒ‹ion,System.D=©Ì¶Entity.Infra„OM¤cture.Inpercü2on.DbConnect¶»ÆnterceptionC€TĞxt)">
+     ÙO˜g   <summary>´ü®          CaX¡ after <see µ?ä="M:System.DCcˆàCommon.DbCon8¶ó–ion.Open"/> dÃ¯Çts async couğÒz&part is invo>jEØ
+          Ïªm]e default imátRentation of Ù)ùÔ method filtK£'½by <see crefĞĞ~System.Data.!¾5åty.DbContext£!hFset into
+  2‘[      <see c×ªÇP"P:System.Daî¥cntiti.Infras@™ã!ture.Interceíf n.DaôabaseLo·.matter.Contes*?º>, if any, aßXœÓhen logs theı_2¦nt.
+       |33M </summary>SFÑ¸         <paK}‹name="conn SG’on">The conncB¸on that was J	/“ed.</param¾sƒR         <paÆÜµ­name="interc”ÈonContext">CSø¿xtual informLö.{n associated;eªÆh the call.<{4am>
+       ÚôÈember>
+    3wé<member namem¾
+pSystem.Data.¾­ÆFty.InfrastrukÃP^e.Interceğtiù¡satabaseLogBo½Åter.Closing(¾FÌemData.CommemÃbConnection,ÚÌ%›em.Data.EntipƒUnfrastructur4ºbterãeption.D,°3[nectionInter	¸¶(ionCOntext)",b0ß           <À\ary>
+      €×‚  Does not w¶ßÙy to log unle2
+!verridden.
+óÁ;°        </suQÓy>
+        ïc|ş<param name=ynection">The©M–†nection beinPÖ^osed.</paramñFğl           <fu £m name="intu<¡[tionCon4ext"P\textual infoI„Dâion associatmäÒ?ith the call!tR!aram>
+     ˜&/member>
+  ªÓ€ê  <member naIîç†M:System.Dat<8tity.Infrast“±hure.IntercepNe˜~.DatabaseLogv«Úÿatter.Closedº5ºGtem.Data.ComÊ‡A[DbConnection8Ótem.Data.EntÚ”ë}Infrastructuášnterception.jñNònnectionInteD>ÎtionContext)²Õ|:            ˆáİ‚mary>
+     SîÏ   Called af~Ş¯`<see cref="MT¾$³tem.Data.Comh£”DbConnection—ôZse"/> is invÁ}I.
+       ¾)m The default«‡ylementation ã™qãHis method f2éçRrs by <see cI6§"T:System.DaÑfntity.DbContñ¦/> set intoÅøæ         <seù¼²[ef="P:System/‡Ÿ5a.Entity.Inf>îáructure.	nteg#}tion.DatabasG|lFormatter.Co…L`t"/>, if anyèıv6d then logs °úM±event.
+    äŸ45    </summar{jZ}            ~|^‡am n`me="conŒu°íion">The conMIÖion that was/ÄÆBsed.</param>M1E          <pQ“½¨ name="inter{4¥\ionContext">XF$5extuql infor	‚'jon associate®ĞÜşth the call.Ş¿Sßram>Š      ßîíember>
+   ÖÍLà <member nam† [s:System.DataÜ­Gity.Infrastrj#Mvre.Interceptˆ´ºDatabaseLogF‚7›gtter.Connectş	§tringGetting}cÎltem.Data.Com;ÀM©DbConnection7¦ı”tem.Data.EntÙäÚInfrastructuK˜ÅOnterc%ption.‡S£dnnectionInte:üÀòtionContext{ø(<em.String})"Îõ          <Iê“fary>
+      ˆ„úu  Does not wš±ÿ• to log unle‹n^verridden.
+}™ñm        </str•R¯y>J        6ê»F<param name=Şg£nection">Phe2Åwnection.</paT¯ğ.
+          šÛ;ëáram name="ié¥ŞºceptionConteW¡Õ“Contextual i}°›mation assocW.—d with the c2;Z5</param>
+  ¥"G  </member>kpC     <membgß,€ame="M:Systeâ-„Öta.Entity.Inñ¸µûtructure.Int:ª´”ption.Databad ‡sgFormatter.CóŸ«:ctionStringGÈND¿ystem.Data.C5°ç-n.DbConnectiËH‚ystem.Dapa.Eİ¶¯úy.Infrastruc¤2hŒ.Interceptio
+ºá^ConnectionInX˜‰9eptionContex­©y¬stem.[tring}0 ³
+           0Immary>
+    ,1U¡    Does notƒİûte to log unğ ( overridden.a»
+          </Åƒary>
+      tOUí  <param nam€Konn%ction">T4 ú onnection.</ñßÊ
+m>
+        ØØ;<param name=ù_àerceptionCon¨b(­">Contextualxˆúormation assÄ"¥Çted with the€şƒl.</param>
+ó73“    </memberlïm“       <membìê^ame="M:SyqteùeÛêta.Entity.In@]Jtructure.Int¡Õ0Lption.Databa¢"JgFormatter.CYsctionStringS^1‚ng(System.Daèğ¿çommon.DbConnØLËåon,System.DaïĞÑ1ntity.Infras:W¼ture.Interce´~Ş½n.DbConnectiA%xVopertyIntercO¤onColtext{Sy†G=7.String})">‘+         <suÕ‰y>
+      ! r+û@oes not wri'Ğôèo log unless¬Íøorridden.
+  †ş¤N      </summöz‹
+        $ Šƒáaram name="cœÜ+åction">The cpÓÇction.</paraë+©ó            ˆşÿœam name="int<‹ßptionContextE)Èntextual inf€6×2tion associaĞwith the c‚Ï ³</param>
+  Y2C  </member>‰ËÚ     <membEr{0Äøe="M:System.çâæ„.Entity.Infr$·Tucture.Inter§Ğã½ion.Databases1ö'ormatter.ConØW¬tionStringSedŞÿ!Øtem.Data.ComQÖPDbConnectionúˆôètem.Data.EntßkÚInfrastructulİébnterception.‰hännectionProp›ó€InterceptiondK]ext{Sy{tem.SZS³g})">
+     ¶7ÊÂ   <summary>‡ÚŸé          Do@…Aot write to z0„unless overrd$sn.
+        Üñ÷7</summary>
+Ü›–³        <pariô¶ame="connect5Ãi>The connectM„V0</param>
+  7ïú      <paramì€ée="intercept2$«ontext">Cont¤ˆ0 al informatiÆƒssociated wiGû‚he call.</pa¶ûÃ
+        </”¾er>
+       Ğ¬#Qmber name="Mj¨æétem.Data.Entä¾röInfrastructuÄıÚnterception.r<œbaseLogFormal'$".ConnectionT$ÕÕ²utGetting(CyÀÔR.Data.CommonpîÑ&onnection,Sy0$¸±.Data.Entitys?Š$rastructure.€ïT%rception.DbCŸIéctionIntercesnContext{SysSò>Int32})">
+ cÜO¥       <summ(ÖÉ•
+          ¾Ójes not writeP xslog unless oÏPPáidden.
+    BœD     </summar!„­‘            ‰ugam name="conAWà‹hon">The conmEYÓion.</param>yª¼½          <pY] n!me="interÅ%
+lionContext">X­ntextual inf'éÎtion associa‡ÜÙwith the calu”’|param>
+    Ow—</member>
+ gA[   <member n®^D"M:System.Da°
+ıZntity.Infras3v5ture.Interce¹­~.DatabaseLoÉŒQmatter.ConneÊÄnTimeoutGoT(—M·em.Data.Commq…	…bC/nnection,›püem.Data.EntiIƒğnfrastruct5rcq¾oterception.Dˆ‚¯nectionInterÇäk°ionContext{Sqùn–m.Int32})">õXg5         <su}v"y>
+        1)dğDoes not wriÛiRšo log unlessÕ)ùrridden.
+  TèÀ•      </summ'è
+
+          @Â¤Èaram name="cÖ%_šction">The c@‰Oction.</paraÔË°            Gvãam name="intõsptionContextÛíĞ»ntextual infûôk|taon associa2¬}Dwith the calg¶¸Ùparam>
+  ! %Fğ</member>
+ ‡l*   <member n•
+J–"M:System.Daµ~¨^ntity.Infrasg´Ûture.Interce™ÖùRn.DatabaseLo¹K”mátter.Datab«ª<etting(Syste Üta.Common.Db]ÉS:ection,SùsteŸ{Pota.Entity.In—ÂŞtructure.IntvnXpdio..DbConn}ñDonInterceptiV7˜ntext{System€‚d¶ing})">
+   é¼+     <summarSVp¥    !       üEĞ not write tw“‹œg unless oveÍúW¯den.
+      z3Ş¶  </summary>!¶          <p›c!% name="conneØ-ÆRn">The conneêyn.</param>
+ÆW¥        <parU name="interÓî¨ionContext">j'ñ÷extual inforFçWWon associateç3th thg call&`Ê+gram>J      Ğ- Vmember>
+   @™ <member nam±8ãö:System.Dataépìity.Infrastr¶n¿:re.InterceptÿĞDatabaseLogFüÃ	tter.Databas3_=å(SysteM.DataU?®cmon.DbÃonnec7oi
+,Systdm.DataòK³ñity.Iofrastr«´A[re.Intesceptœ­±ÏDbConnectionO&:rceptionCont#¡System.StrinÇŠÂ>
+         İÑsummary>
+  -|ûl      Does n<ª©rite to log /# ss overridde^nQ0            3mmary>
+    À•‚a    <param nƒMH"connection"ñÒ/, connection.Dógsram>
+      ¼¨%“  <param jam·V¬nterceptionCsÄßxt">Contextu…¡eonformation aÙĞ3òiated with t‹i&all.</param>e8”      </membİ’µ
+        <me›.eş name="M:Sys×®ÜData.Entipy/ZÌïıastructure.I²îˆception.Data}“ÿîLogFormatterRAH@aSourceGettiÀ­â1ystem.Data.Ci?¿~n.DbConnecpiƒûGystem.Data.EÁåğ7y.InfrastrucÇmÇÚ.Interceptio­ŸY•ConnectionInÌ·ÔÆeptionContex{Ø¥Üstem.String}ç§ì®
+           |6Ü@mmary>
+    ›§    Does notš»te to log un É overridden.t[vu          </txÏ'ary>
+      ¥Â”M  <param namQîUèonnection">TchæRonnection.</¸ÃÕm>
+      ’+_S  <paBam namìŞ£fnterceptionCÎÎ0Ìxt&>ContextuG$nformation aQ4iated"with t\œMall.</param>Ïÿa      </membš¡‘=
+        <meUm^i name="M:Sysğ­/Data.Entity.¾‰¤astructure.I~b«Sception.Data	gLogFormatter£Œ_aSourceGot(Sˆ—m.Data.Commo«^ÒNConnection,S{4m.Data.EntitâUìfrastructureœx92erception.Dbş±CàectionInterc2“ÎonContext{SyÑbN½.String})">Ô<’„         |suVq¯y>
+        gÙÿ£Does not wriõä—/o log unlåssíE0rridden.
+  %H—V      </summOã×	
+          %½²aram name="cÚIûction">The c‘.œ­ction.</paraÙĞgÖ            ~iº…am name="intùÕóŠptionContext†&ntextual inf¶ßItion associaÄ)awith the calE?bjparam>
+    b|»+</member>
+ ”_W   <member nÍ“"M:System.DaÙÔk™ntity.Infras,*Pture.InterceCn.Datab!seLo²şŒÍmatter.DispoÏÌÖÇ(System.Data¤L£şmon.DbConnec³Éò,System.Dataz%,ity.I~&rastrCöÛ´re.IntersepT>a›tDbConNection]K/œrceptionContó«Ç">
+        ôıÃÎ<summary>
+ ¾¹»       CalleˆtJfore <see crMXÉˆM:System.ComI©pntModel.CompÊô#»t.Dispose"/>4óñ†invoked.
+  ìî      T`e de€&Üt implementa 6½ of this method filters by <see cref="T:System.Data.Entity.DbContext"/> set into
             <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Context"/>, if any, and then logs the event.
             </summary>
             <param name="connection">The connection being disposed.</param>

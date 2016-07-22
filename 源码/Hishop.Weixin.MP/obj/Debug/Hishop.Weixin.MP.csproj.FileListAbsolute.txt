@@ -8,3 +8,13 @@ C:\Users\thinkpad\Desktop\耗材商城\6.12\haocai-master\源码\Hishop.Weixin.M
 C:\Users\thinkpad\Desktop\耗材商城\6.12\haocai-master\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.csprojResolveAssemblyReference.cache
 C:\Users\thinkpad\Desktop\耗材商城\6.12\haocai-master\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.dll
 C:\Users\thinkpad\Desktop\耗材商城\6.12\haocai-master\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.pdb
+C:\Project\Haicainew\源码\Hishop.Weixin.MP\bin\Debug\Hishop.Weixin.MP.dll
+C:\Project\Haicainew\源码\Hishop.Weixin.MP\bin\Debug\Hishop.Weixin.MP.pdb
+C:\Project\Haicainew\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.csprojResolveAssemblyReference.cache
+C:\Project\Haicainew\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.dll
+C:\Project\Haicainew\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.pdb
+D:\Hocai\源码\Hishop.Weixin.MP\bin\Debug\Hishop.Weixin.MP.dll
+D:\Hocai\源码\Hishop.Weixin.MP\bin\Debug\Hishop.Weixin.MP.pdb
+D:\Hocai\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.csprojResolveAssemblyReference.cache
+D:\Hocai\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.dll
+D:\Hocai\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.pdb

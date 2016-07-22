@@ -102,6 +102,9 @@
           <Property Name="OpUser" Type="varchar" MaxLength="50" />
           <Property Name="Remark" Type="varchar" MaxLength="200" />
           <Property Name="AccountId" Type="bigint" Nullable="false" />
+          <Property Name="WithdrawType" Type="varchar" MaxLength="50" />
+          <Property Name="Myaccount" Type="varchar" MaxLength="50" />
+          
         </EntityType>
         <EntityType Name="Himall_ArticleCategories">
           <Key>
@@ -6648,6 +6651,8 @@
           <Property Name="OpUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="AccountId" Type="Int64" Nullable="false" />
+          <Property Name="WithdrawType" Type="String" Nullable="false" />
+          <Property Name="Myaccount" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="CapitalInfo">
           <Key>
@@ -8597,6 +8602,8 @@
                 <ScalarProperty Name="MemId" ColumnName="MemId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="WithdrawType" ColumnName="WithdrawType" />
+                <ScalarProperty Name="Myaccount" ColumnName="Myaccount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

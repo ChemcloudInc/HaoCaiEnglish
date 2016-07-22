@@ -55,8 +55,22 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				dynamic viewBag = base.ViewBag;
 				decimal? balance = capitalInfo.Balance;
-				viewBag.ApplyWithMoney = balance.Value;
+				ViewBag.ApplyWithMoney = balance.Value;
 			}
+            string membersId = this.CurrentUser.UserName;
+            IEnumerable<WithDrawInfo> WithDraws  = ServiceHelper.Create<IWithDrawService>().GetWithDrawByMembersId(membersId);//因为UserName值唯一，所以没有登录账号ID去获取信息
+            
+            String[] Array = new String[WithDraws.Count()];
+            int i = 0;
+            foreach (var item in WithDraws)
+            {
+                Array[i] = item.WithdrawType+"【"+item.AccountNumber+","+item.Name+"】";
+                i++;
+            }
+            ViewBag.List = Array;
+            ViewBag.Num = Array.Length;
+
+
 			base.ViewBag.IsSetPwd = (string.IsNullOrWhiteSpace(base.CurrentUser.PayPwd) ? false : true);
 			return View();
 		}
@@ -129,9 +143,12 @@ namespace Himall.Web.Areas.Web.Controllers
 			return Json(new { success = true });
 		}*/
 
-        public JsonResult ApplyWithDrawSubmit(long accountid, decimal amount, string pwd)   //扩展版本
-        {
-            if (ServiceHelper.Create<IMemberCapitalService>().GetMemberInfoByPayPwd(base.CurrentUser.Id, pwd) == null)
+        public JsonResult ApplyWithDrawSubmit(string withdrawtype,string myaccount,string nickname, decimal amount, string pwd)   //扩展版本(提现方式、账号、人名)       
+         {
+            if(withdrawtype == null)
+                return Json(new { success = true });
+
+           if (ServiceHelper.Create<IMemberCapitalService>().GetMemberInfoByPayPwd(base.CurrentUser.Id, pwd) == null)
             {
                 throw new HimallException("支付密码不对，请重新输入！");
             }
@@ -140,7 +157,7 @@ namespace Himall.Web.Areas.Web.Controllers
             decimal? balance = capitalInfo.Balance;
             if ((num <= balance.GetValueOrDefault() ? false : balance.HasValue))
             {
-                throw new HimallException("提现金额不能超出可用金额！");
+                throw new HimallException("提现金额不可超出可用金额！");
             }
             ApplyWithDrawInfo applyWithDrawInfo = new ApplyWithDrawInfo()
             {
@@ -148,8 +165,11 @@ namespace Himall.Web.Areas.Web.Controllers
                 ApplyStatus = ApplyWithDrawInfo.ApplyWithDrawStatus.WaitConfirm,
                 ApplyTime = DateTime.Now,
                 MemId = base.CurrentUser.Id,
-                AccountId = accountid,                                 //账号id    
-             // AccountId  =1,
+                AccountId = 0,
+                WithdrawType = withdrawtype,
+                Myaccount = myaccount,
+                NickName = nickname,
+
             };
             ServiceHelper.Create<IMemberCapitalService>().AddWithDrawApply(applyWithDrawInfo);
             return Json(new { success = true });
@@ -318,7 +338,8 @@ namespace Himall.Web.Areas.Web.Controllers
 		}
         public JsonResult SelectAccount(string account)
         {
-            return Json(new { success = true, msg = "设置成功" });
+            string[] array = account.Split('[',']',',','【','】','，');      
+            return Json(new { success = true,type = array[0],myaccount = array[1],nikename = array[2] });
         }
 
 		public ActionResult SetPayPwd()

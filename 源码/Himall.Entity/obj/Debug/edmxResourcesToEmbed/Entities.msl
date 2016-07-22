@@ -1495,6 +1495,8 @@
           <ScalarProperty Name="MemId" ColumnName="MemId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="WithdrawType" ColumnName="WithdrawType" />
+          <ScalarProperty Name="Myaccount" ColumnName="Myaccount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

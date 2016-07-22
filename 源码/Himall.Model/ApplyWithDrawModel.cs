@@ -92,5 +92,17 @@ namespace Himall.Model
 		public ApplyWithDrawModel()
 		{
 		}
+
+        public long AccountId
+        {
+            get;
+            set;
+        }
+
+        public string WithdrawType
+        {
+            get;
+            set;
+        }
 	}
 }

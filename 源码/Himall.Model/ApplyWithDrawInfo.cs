@@ -110,5 +110,17 @@ namespace Himall.Model
             set;
         }
 
+
+        public string WithdrawType
+        {
+            get;
+            set;
+        }
+
+        public string Myaccount
+        {
+            get;
+            set;
+        }
 	}
 }

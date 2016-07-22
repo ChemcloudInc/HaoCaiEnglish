@@ -101,6 +101,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 			IEnumerable<KeyValuePair<long, string>> keyValuePair = 
 				from item in categoryByParentId
 				select new KeyValuePair<long, string>(item.Id, item.Name);
+            
 			return Json(keyValuePair);
 		}
 

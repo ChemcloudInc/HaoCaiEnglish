@@ -85,39 +85,7 @@ $(function () {
         $(this).parent().hide();
         $("#covered").removeClass("cover");
     });
-    $('#submitApply').click(function () {
-        var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;
-        if (!reg.test($('#inputMoney').val())) {
-            $.dialog.alert("提现金额不能为非数字字符");
-            return;
-        }
-        var applyWithDrawAmount = parseFloat($('#inputMoney').val());
-        var userBalance = parseFloat($('#balanceValue').text());
-        if (parseFloat(applyWithDrawAmount) > userBalance) {
-            $.dialog.alert("提现金额不能超出可用金额");
-            return;
-        }
-        if (parseFloat(applyWithDrawAmount) < 1) {
-            $.dialog.alert("提现金额不能小于1");
-            return;
-        }
-        var loading = showLoading();
-        $.post('ApplyWithDrawSubmit', { nickname: '', amount: parseFloat($('#inputMoney').val()), pwd: $('#payPwd').val() },
-            function (result) {
-                loading.close();
-                if (result.success) {
-                    $.dialog.succeedTips('提交成功!', function () {
-                        $('#steptwo').hide();
-                        $('#stepone').hide();
-                        window.location.reload();
-                    });
-                }
-                else {
-                    $.dialog.errorTips(result.msg);
-                }
-            }
-        );
-    });
+   
 
     var page = 1;
 

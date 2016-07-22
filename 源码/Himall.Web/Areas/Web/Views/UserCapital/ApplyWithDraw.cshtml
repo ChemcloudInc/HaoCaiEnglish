@@ -2,6 +2,7 @@
 @{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
     ViewBag.Title = "提现";
+    String[] LS = @ViewBag.List;
 }
 <link href="~/Areas/Web/Content/register.css" rel="stylesheet" />
 <script src="~/Areas/Web/Scripts/ApplyWithDraw.js"></script>
@@ -89,7 +90,14 @@
                 <div class="item">
                     <span class="label">我的账户：</span>
                     <div class="fl">
-                        <input value="" id="account" name="userVo.realName" maxlength="20" class="itxt fl">
+                        <select id="account" class="sele">
+                          @for (int i = 0; i < @ViewBag.Num;i++ )
+                          { 
+                            <option>@LS[i]</option>
+                          }
+                           
+
+                        </select>
                     </div>
                 </div>
                 <div class="item">
@@ -112,7 +120,18 @@
                         <span>@ViewBag.ApplyWithMoney</span>
                     </div>
                 </div>
-
+                <div class="item">
+                    <span class="label">提现方式：</span>
+                    <div class="fl">
+                        <span id="withdrawtype"></span>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="label">收款账号：</span>
+                    <div class="fl">
+                        <span id="myaccount"></span>
+                    </div>
+                </div>
                 <div class="item">
                     <span class="label">收款人：</span>
                     <div class="fl">
@@ -249,7 +268,12 @@
                        success: function (data) {
                            /*loading.close();*/
                            if (data.success) {
-                               $.dialog.succeedTips('选择成功！');
+                             //  $.dialog.succeedTips('选择成功！');
+                               //    $('#nikename').val = 's1';
+                               document.getElementById("withdrawtype").innerHTML = data.type;
+                               document.getElementById("myaccount").innerHTML = data.myaccount;
+                               document.getElementById("nikename").innerHTML = data.nikename;
+                      
                                JumpStep(3);
                                checkScanState();
                            }
@@ -258,5 +282,94 @@
                 });
                
             });
+        $('#submitApply').bind('click', function () {
+            var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;
+
+            if (!reg.test($('#inputMoney').val())) {
+                $.dialog.alert("提现金额不能为非数字字符");
+                return;
+            }
+            var applyWithDrawAmount = parseFloat($('#inputMoney').val());
+            var userBalance = parseFloat($('#balanceValue').text());
+            if (parseFloat(applyWithDrawAmount) > userBalance) {
+                $.dialog.alert("提现金额不可超出可用金额");
+                return;
+            }
+            if (parseFloat(applyWithDrawAmount) < 1) {
+                $.dialog.alert("提现金额不能小于1");
+                return;
+            }
+            var s1 = document.getElementById("withdrawtype").innerHTML;
+            var s2 = document.getElementById("myaccount").innerHTML;
+            var s3 = document.getElementById("nikename").innerHTML;
+            //     $.dialog.succeedTips(acc);
+            $.ajax({
+                type: 'post',
+                url: '@Url.Action("ApplyWithDrawSubmit")',
+                data: { "withdrawtype": s1, myaccount: s2, nickname: s3, amount: parseFloat($('#inputMoney').val()), pwd: $('#payPwd').val() },
+                dataType: "json",
+                success: function (data) {
+                    /*loading.close();*/
+                    if (data.success) {
+                          $.dialog.succeedTips('选择成功！');
+                        //    $('#nikename').val = 's1';
+                       
+
+                        JumpStep(4);
+                        checkScanState();
+                    }
+                    // $.dialog.succeedTips('HERE！');
+                }
+            });
+
+        });
+        /*$('#submitApply').click(function () {
+            var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;
+
+            if (!reg.test($('#inputMoney').val())) {
+                $.dialog.alert("提现金额不能为非数字字符");
+                return;
+            }
+            var applyWithDrawAmount = parseFloat($('#inputMoney').val());
+            var userBalance = parseFloat($('#balanceValue').text());
+            if (parseFloat(applyWithDrawAmount) > userBalance) {
+                $.dialog.alert("提现金额不可超出可用金额");
+                return;
+            }
+            if (parseFloat(applyWithDrawAmount) < 1) {
+                $.dialog.alert("提现金额不能小于1");
+                return;
+            }
+            var loading = showLoading();
+            var s1 = document.getElementById("withdrawtype").innerHTML;
+            var s2 = document.getElementById("myaccount").innerHTML;
+            var s3 = document.getElementById("nikename").innerHTML;
+            $.dialog.succeedTips('选择成功！');
+       
+            $.post('ApplyWithDrawSubmit', { "withdrawtype":s1, myaccount: s2, nikename: s3, amount: parseFloat($('#inputMoney').val()), pwd: $('#payPwd').val() },
+                function (result) {
+                 //   loading.close();
+                    if (result.success) {
+                        $.dialog.succeedTips('提交成功!', function () {
+                            $('#steptwo').hide();
+                            $('#stepone').hide();
+                            window.location.reload();
+                        });
+                    }
+                    else {
+                        $.dialog.errorTips(result.msg);
+                    }
+                }
+            );
+        });*/
+        $('#acocount').himallLinkage({
+            url: '../Category/getCategory',
+            enableDefaultItem: true,
+            defaultItemsText: '',
+            onChange: function (level, value, text) {
+                categoryId = value;
+            }
+        });
+
         }(jQuery))
     </script>

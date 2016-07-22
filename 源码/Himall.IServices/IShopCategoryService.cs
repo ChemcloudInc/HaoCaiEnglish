@@ -19,6 +19,8 @@ namespace Himall.IServices
 
 		IEnumerable<ShopCategoryInfo> GetCategoryByParentId(long id, long shopId);
 
+        IEnumerable<WithDrawInfo> GetWithDrawType(string name);
+
 		ShopCategoryInfo GetCategoryByProductId(long id);
 
 		IEnumerable<ShopCategoryInfo> GetMainCategory(long shop);

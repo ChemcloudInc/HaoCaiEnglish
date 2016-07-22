@@ -21,6 +21,16 @@ namespace Himall.Web.Areas.Mobile.Controllers
 		{
 		}
 
+        public JsonResult GetWithDrawType(long? key = null, int? level = -1)
+        {
+            IEnumerable<WithDrawInfo> withdrawtype = ServiceHelper.Create<IShopCategoryService>().GetWithDrawType(base.CurrentUser.UserName);  
+            IEnumerable<KeyValuePair<long, string>> keyValuePair =
+                from item in withdrawtype
+                select new KeyValuePair<long, string>(item.Id, item.WithdrawType);
+            return Json(keyValuePair);
+
+        }
+      
 		public JsonResult ApplyWithDrawSubmit(string nickname, decimal amount, string pwd)
 		{
 			if (ServiceHelper.Create<IMemberCapitalService>().GetMemberInfoByPayPwd(base.CurrentUser.Id, pwd) == null)

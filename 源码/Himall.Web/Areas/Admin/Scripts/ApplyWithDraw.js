@@ -89,19 +89,21 @@ function ConfirmPay(id, status, msg) {
     });
 }
 
-
 function LoadData(status, withdrawno, username) {
 
     var dataColumn = [];
-    dataColumn.push({ field: "Id", title: '提现单号', width: 100 });
+    dataColumn.push({ field: "Id", title: '提现单号', width: 80 });
     dataColumn.push({
-        field: "ApplyStatusDesc", title: '状态', width: 100, align: 'center'
+        field: "ApplyStatusDesc", title: '状态', width: 80, align: 'center'
     });
     dataColumn.push({
-        field: "MemberName", title: '提现会员帐号', width: 100, align: 'center'
+        field: "WithdrawType", title: '支付方式', width: 80, align: 'center'
     });
     dataColumn.push({
-        field: "NickName", title: "微信昵称", width: 100, align: "center"
+        field: "MemberName", title: '提现会员账号', width: 100, align: 'center'
+    });
+    dataColumn.push({
+        field: "NickName", title: "名称", width: 80, align: "center"
     });
     dataColumn.push({
         field: "ApplyAmount", title: "提现金额", width: 100, align: "center"
@@ -116,7 +118,7 @@ function LoadData(status, withdrawno, username) {
         field: "PayTime", title: "付款时间", width: 100, align: "center"
     });
     dataColumn.push({
-        field: "PayNo", title: "付款流水号", width: 100, align: "center"
+        field: "PayNo", title: "付款流水号", width: 80, align: "center"
     });
     dataColumn.push({
         field: "Operate", title: "操作", width: 100, align: "center",

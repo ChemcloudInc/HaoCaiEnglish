@@ -74,6 +74,11 @@ namespace Himall.Service
 			return array;
 		}
 
+        public IEnumerable<WithDrawInfo> GetWithDrawType(string name)
+        {
+            IEnumerable<WithDrawInfo> array = context.WithDrawInfo.Where(x=>x.MembersId==name).ToArray();
+            return array;
+        }
 		public ShopCategoryInfo GetCategory(long id)
 		{
 			if (id <= 0)
