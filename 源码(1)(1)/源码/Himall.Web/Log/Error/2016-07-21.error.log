@@ -1,0 +1,354 @@
+
+
+
+ 记录时间：2016-07-21 01:43:00,022 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail  
+错误描述：发布商品时候，没有找到文件 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\3.png
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail(String productDetail) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductController.cs:行号 1271
+
+
+
+ 记录时间：2016-07-21 01:43:06,644 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail  
+错误描述：发布商品时候，没有找到文件 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\4.png
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail(String productDetail) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductController.cs:行号 1271
+
+
+
+ 记录时间：2016-07-21 01:43:12,365 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail  
+错误描述：发布商品时候，没有找到文件 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\5.png
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail(String productDetail) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductController.cs:行号 1271
+
+
+
+ 记录时间：2016-07-21 11:38:47,314 
+日志级别：  ERROR 
+出错类：Himall.Web.Framework.BaseController.OnException  
+错误描述：页面未捕获的异常：Area:SellerAdmin,Controller:ProductImport,Action:ImportProductsFromExcel 
+
+System.ArgumentException: 对于“Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController”中方法“System.Web.Mvc.JsonResult ImportProductsFromExcel(Int64, System.String)”的不可以为 null 的类型“System.Int64”的参数“shopCategoyId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+
+
+
+ 记录时间：2016-07-21 11:42:13,678 
+日志级别：  ERROR 
+出错类：Himall.Web.Framework.BaseController.OnException  
+错误描述：页面未捕获的异常：Area:SellerAdmin,Controller:ProductImport,Action:ImportProductsFromExcel 
+
+System.ArgumentException: 对于“Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController”中方法“System.Web.Mvc.JsonResult ImportProductsFromExcel(Int64, System.String)”的不可以为 null 的类型“System.Int64”的参数“shopCategoyId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+
+
+
+ 记录时间：2016-07-21 12:18:05,447 
+日志级别：  ERROR 
+出错类：Himall.Web.Framework.BaseController.OnException  
+错误描述：页面未捕获的异常：Area:SellerAdmin,Controller:ProductImport,Action:ImportProductsFromExcel 
+
+System.ArgumentException: 对于“Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController”中方法“System.Web.Mvc.JsonResult ImportProductsFromExcel(Int64, System.String)”的不可以为 null 的类型“System.Int64”的参数“shopCategoyId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+
+
+
+ 记录时间：2016-07-21 12:20:41,436 
+日志级别：  ERROR 
+出错类：Himall.Web.Framework.BaseController.OnException  
+错误描述：页面未捕获的异常：Area:SellerAdmin,Controller:ProductImport,Action:ImportProductsFromExcel 
+
+System.ArgumentException: 对于“Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController”中方法“System.Web.Mvc.JsonResult ImportProductsFromExcel(Int64, System.String)”的不可以为 null 的类型“System.Int64”的参数“shopCategoyId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+
+
+
+ 记录时间：2016-07-21 12:26:42,347 
+日志级别：  ERROR 
+出错类：Himall.Web.Framework.BaseController.OnException  
+错误描述：页面未捕获的异常：Area:SellerAdmin,Controller:ProductImport,Action:ImportProductsFromExcel 
+
+System.ArgumentException: 对于“Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController”中方法“System.Web.Mvc.JsonResult ImportProductsFromExcel(Int64, System.String)”的不可以为 null 的类型“System.Int64”的参数“shopCategoyId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+
+
+
+ 记录时间：2016-07-21 12:35:47,143 
+日志级别：  ERROR 
+出错类：Himall.Web.Framework.BaseController.OnException  
+错误描述：页面未捕获的异常：Area:SellerAdmin,Controller:ProductImport,Action:ImportProductsFromExcel 
+
+System.ArgumentException: 对于“Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController”中方法“System.Web.Mvc.JsonResult ImportProductsFromExcel(Int64, System.String)”的不可以为 null 的类型“System.Int64”的参数“shopCategoyId”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+
+
+
+ 记录时间：2016-07-21 16:15:20,505 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel  
+错误描述：·￠2?éì?·ê±oò￡???óD?òμ????t 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\temp\22-2.jpg
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel(Int64 shopCategoyId, String filename) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductImportController.cs:行号 426
+
+
+
+ 记录时间：2016-07-21 16:15:20,915 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel  
+错误描述：·￠2?éì?·ê±oò￡???óD?òμ????t 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\temp\23-1.jpg
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel(Int64 shopCategoyId, String filename) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductImportController.cs:行号 426
+
+
+
+ 记录时间：2016-07-21 16:15:20,955 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel  
+错误描述：·￠2?éì?·ê±oò￡???óD?òμ????t 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\temp\23-2.jpg
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel(Int64 shopCategoyId, String filename) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductImportController.cs:行号 426
+
+
+
+ 记录时间：2016-07-21 16:15:21,404 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel  
+错误描述：·￠2?éì?·ê±oò￡???óD?òμ????t 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\temp\24-1.jpg
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel(Int64 shopCategoyId, String filename) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductImportController.cs:行号 426
+
+
+
+ 记录时间：2016-07-21 16:15:21,436 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel  
+错误描述：·￠2?éì?·ê±oò￡???óD?òμ????t 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\temp\24-2.jpg
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel(Int64 shopCategoyId, String filename) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductImportController.cs:行号 426
+
+
+
+ 记录时间：2016-07-21 16:15:21,838 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel  
+错误描述：·￠2?éì?·ê±oò￡???óD?òμ????t 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\temp\25-1.jpg
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel(Int64 shopCategoyId, String filename) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductImportController.cs:行号 426
+
+
+
+ 记录时间：2016-07-21 16:15:21,867 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel  
+错误描述：·￠2?éì?·ê±oò￡???óD?òμ????t 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\temp\25-2.jpg
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel(Int64 shopCategoyId, String filename) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductImportController.cs:行号 426
+
+
+
+ 记录时间：2016-07-21 16:15:22,252 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel  
+错误描述：·￠2?éì?·ê±oò￡???óD?òμ????t 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\temp\26-1.jpg
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel(Int64 shopCategoyId, String filename) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductImportController.cs:行号 426
+
+
+
+ 记录时间：2016-07-21 16:15:22,993 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel  
+错误描述：·￠2?éì?·ê±oò￡???óD?òμ????t 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\temp\26-1.jpg
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductImportController.ImportProductsFromExcel(Int64 shopCategoyId, String filename) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductImportController.cs:行号 426
+
+
+
+ 记录时间：2016-07-21 16:33:15,576 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail  
+错误描述：发布商品时候，没有找到文件 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\3.png
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail(String productDetail) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductController.cs:行号 1271
+
+
+
+ 记录时间：2016-07-21 16:33:18,596 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail  
+错误描述：发布商品时候，没有找到文件 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\4.png
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail(String productDetail) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductController.cs:行号 1271
+
+
+
+ 记录时间：2016-07-21 16:33:22,439 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail  
+错误描述：发布商品时候，没有找到文件 
+
+System.IO.FileNotFoundException: C:\Project\Haicainew\源码\Himall.Web\5.png
+   在 System.Drawing.Image.FromFile(String filename, Boolean useEmbeddedColorManagement)
+   在 System.Drawing.Image.FromFile(String filename)
+   在 Himall.Web.Areas.SellerAdmin.Controllers.ProductController.SaveProductDetail(String productDetail) 位置 C:\Project\Haicainew\源码\Himall.Web\Areas\SellerAdmin\Controllers\ProductController.cs:行号 1271
