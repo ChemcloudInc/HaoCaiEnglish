@@ -187,7 +187,7 @@ select.input-ssm { line-height: 24px; padding: 0 3px; }
 .vis-view-area .nav-area { margin-top: 10px; height: 36px; padding-left: 183px; }
 .vis-view-area .first-screen-area { float: left; height: 407px; width: 100%; }
 .vis-view-area .categorys-area { width: 178px; }
-.vis-view-area .scroll-area { width: 625px; height: 406px; margin: 0 5px; float: left; }
+.vis-view-area .scroll-area { width: 819px; height: 406px;float: left; margin-left: 5px;}
 .vis-view-area .auto-scroll-area { margin: 1px 0 0; }
 .vis-view-area .hand-scroll-area { height: 150px; }
 .vis-view-area .first-right-area { float: right; width: 185px; }
