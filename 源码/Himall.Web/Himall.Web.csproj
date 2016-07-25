@@ -568,11 +568,11 @@
     <Content Include="Images\loading2.gif" />
     <Content Include="Images\loading3.gif" />
     <Content Include="Images\login-logo.png" />
-    <Content Include="Images\logo.png" />
     <Content Include="Images\logo2.png" />
     <Content Include="Images\logo3.png" />
     <Content Include="Images\mobile.png" />
     <Content Include="Images\myorder_bonus.jpg" />
+    <Content Include="Images\logo.png" />
     <Content Include="Images\ok.png" />
     <Content Include="Images\pc.png" />
     <Content Include="Images\progress.gif" />
