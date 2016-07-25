@@ -122,10 +122,12 @@ namespace Himall.Web.Areas.Admin.Controllers
 
         public JsonResult ConfirmPay(long id, ApplyWithDrawInfo.ApplyWithDrawStatus status, string remark)
         {
-            JsonResult jsonResult;
+       //     JsonResult jsonResult;
             IMemberCapitalService memberCapitalService = ServiceHelper.Create<IMemberCapitalService>();
+            
             if (status == ApplyWithDrawInfo.ApplyWithDrawStatus.Refuse)
             {
+             //   memberCapitalService.RefuseApplyWithDraw(id, status, base.CurrentManager.UserName, remark);
                 memberCapitalService.RefuseApplyWithDraw(id, status, base.CurrentManager.UserName, remark);
                 return Json(new { success = true, msg = "审核成功！" });
             }
@@ -137,16 +139,16 @@ namespace Himall.Web.Areas.Admin.Controllers
             };
             ApplyWithDrawQuery applyWithDrawQuery1 = applyWithDrawQuery;
             ApplyWithDrawInfo applyWithDrawInfo = memberCapitalService.GetApplyWithDraw(applyWithDrawQuery1).Models.FirstOrDefault();
-            Plugin<IPaymentPlugin> plugin = (
+         /*   Plugin<IPaymentPlugin> plugin = (
                 from e in PluginsManagement.GetPlugins<IPaymentPlugin>(true)
                 where e.PluginInfo.PluginId.ToLower().Contains("weixin")
-                select e).FirstOrDefault<Plugin<IPaymentPlugin>>();
-            if (plugin == null)
+                select e).FirstOrDefault<Plugin<IPaymentPlugin>>();*/
+       /*     if (plugin == null)
             {
                 return Json(new { success = false, msg = "未找到支付插件" });
             }
             try
-            {
+            {*/
                 EnterprisePayPara enterprisePayPara = new EnterprisePayPara()
                 {
                     amount = applyWithDrawInfo.ApplyAmount,
@@ -155,13 +157,14 @@ namespace Himall.Web.Areas.Admin.Controllers
                     out_trade_no = applyWithDrawInfo.Id.ToString(),
                     desc = "提现"
                 };
-                PaymentInfo paymentInfo = plugin.Biz.EnterprisePay(enterprisePayPara);
+           //     PaymentInfo paymentInfo = plugin.Biz.EnterprisePay(enterprisePayPara);
                 ApplyWithDrawInfo applyWithDrawInfo1 = new ApplyWithDrawInfo()
                 {
-                    PayNo = paymentInfo.TradNo,
+                    //PayNo = paymentInfo.TradNo,
                     ApplyStatus = ApplyWithDrawInfo.ApplyWithDrawStatus.WithDrawSuccess,
-                    Remark = plugin.PluginInfo.Description,
-                    PayTime = new DateTime?((paymentInfo.TradeTime.HasValue ? paymentInfo.TradeTime.Value : DateTime.Now)),
+                  //  Remark = plugin.PluginInfo.Description,
+                  //  PayTime = new DateTime?((paymentInfo.TradeTime.HasValue ? paymentInfo.TradeTime.Value : DateTime.Now)),
+                    PayTime = new DateTime?(DateTime.Now),
                     ConfirmTime = new DateTime?(DateTime.Now),
                     OpUser = base.CurrentManager.UserName,
                     ApplyAmount = applyWithDrawInfo.ApplyAmount,
@@ -169,8 +172,8 @@ namespace Himall.Web.Areas.Admin.Controllers
                 };
                 memberCapitalService.ConfirmApplyWithDraw(applyWithDrawInfo1);
                 return Json(new { success = true, msg = "付款成功" });
-            }
-            catch (Exception exception)
+         //   }
+         /*   catch (Exception exception)
             {
                 Log.Error(string.Concat("调用企业付款接口异常：", exception.Message));
                 ApplyWithDrawInfo applyWithDrawInfo2 = new ApplyWithDrawInfo()
@@ -185,7 +188,9 @@ namespace Himall.Web.Areas.Admin.Controllers
                 memberCapitalService.ConfirmApplyWithDraw(applyWithDrawInfo2);
                 jsonResult = Json(new { success = false, msg = "付款接口异常" });
             }
-            return jsonResult;
+            return jsonResult;*/
+           
+          //  return Json(new { success = true, msg = "付款成功" });
         }
 
         public ActionResult Detail(long id)
