@@ -96,7 +96,7 @@ namespace Himall.Service
         {
             return
                 from a in context.HomeFloorInfo.Include("FloorTopicInfo").Include("FloorBrandInfo").Include("FloorBrandInfo.BrandInfo")
-                where a.IsShow
+               // where a.IsShow
                 orderby a.DisplaySequence
                 select a;
         }

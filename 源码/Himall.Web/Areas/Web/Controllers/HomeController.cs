@@ -103,96 +103,103 @@ namespace Himall.Web.Areas.Web.Controllers
 			obj1.ArticleTabs = queryables;
 			foreach (HomeFloorInfo homeFloorInfo in ServiceHelper.Create<IFloorService>().GetHomeFloors().ToList())    //超链接
 			{
-				HomeFloorModel homeFloorModel = new HomeFloorModel();
-				List<FloorTopicInfo> floorTopicInfos = (
-					from a in homeFloorInfo.FloorTopicInfo
-					where a.TopicType == Position.Top
-					select a).ToList();
-				List<FloorTopicInfo> list1 = (
-					from a in homeFloorInfo.FloorTopicInfo
-					where a.TopicType != Position.Top
-					select a).ToList();
-				List<FloorBrandInfo> floorBrandInfos = homeFloorInfo.FloorBrandInfo.Take(10).ToList();
-				homeFloorModel.Name = homeFloorInfo.FloorName;
-				homeFloorModel.SubName = homeFloorInfo.SubName;
-				homeFloorModel.StyleLevel = homeFloorInfo.StyleLevel;
-				homeFloorModel.DefaultTabName = homeFloorInfo.DefaultTabName;
-				foreach (FloorTopicInfo floorTopicInfo in floorTopicInfos)
-				{
-					List<HomeFloorModel.WebFloorTextLink> textLinks = homeFloorModel.TextLinks;
-					HomeFloorModel.WebFloorTextLink webFloorTextLink = new HomeFloorModel.WebFloorTextLink()
-					{
-						Id = floorTopicInfo.Id,
-						Name = floorTopicInfo.TopicName,
-						Url = floorTopicInfo.Url
-					};
-					textLinks.Add(webFloorTextLink);
-				}
-				foreach (FloorTopicInfo floorTopicInfo1 in list1)
-				{
-					List<HomeFloorModel.WebFloorProductLinks> products = homeFloorModel.Products;
-					HomeFloorModel.WebFloorProductLinks webFloorProductLink = new HomeFloorModel.WebFloorProductLinks()
-					{
-						Id = floorTopicInfo1.Id,
-						ImageUrl = floorTopicInfo1.TopicImage,
-						Url = floorTopicInfo1.Url,
-						Type = floorTopicInfo1.TopicType
-					};
-					products.Add(webFloorProductLink);
-				}
-				foreach (FloorBrandInfo floorBrandInfo in floorBrandInfos)
-				{
-					List<HomeFloorModel.WebFloorBrand> brands = homeFloorModel.Brands;
-					HomeFloorModel.WebFloorBrand webFloorBrand = new HomeFloorModel.WebFloorBrand()
-					{
-						Id = floorBrandInfo.BrandInfo.Id,
-						Img = floorBrandInfo.BrandInfo.Logo,
-						Url = "",
-						Name = floorBrandInfo.BrandInfo.Name
-					};
-					brands.Add(webFloorBrand);
-				}
-				if (homeFloorModel.StyleLevel == 1)
-				{
-					homeFloorModel.Tabs = (
-						from p in homeFloorInfo.Himall_FloorTabls
-						orderby p.Id
-						select new HomeFloorModel.Tab()
-						{
-							Name = p.Name,
-							Detail = (
-								from d in p.Himall_FloorTablDetails
-								select new HomeFloorModel.ProductDetail()
-								{
-									ProductId = d.Himall_Products.Id,
-									ImagePath = d.Himall_Products.ImagePath,
-									Price = d.Himall_Products.MinSalePrice,
-									Name = d.Himall_Products.ProductName
-								}).ToList<HomeFloorModel.ProductDetail>()
-						}).ToList<HomeFloorModel.Tab>();
-					homeFloorModel.Scrolls = homeFloorModel.Products.Where<HomeFloorModel.WebFloorProductLinks>((HomeFloorModel.WebFloorProductLinks p) => {
-						if (p.Type == Position.ScrollOne || p.Type == Position.ScrollTwo || p.Type == Position.ScrollThree)
-						{
-							return true;
-						}
-						return p.Type == Position.ScrollFour;
-					}).ToList<HomeFloorModel.WebFloorProductLinks>();
-					homeFloorModel.RightTops = homeFloorModel.Products.Where<HomeFloorModel.WebFloorProductLinks>((HomeFloorModel.WebFloorProductLinks p) => {
-						if (p.Type == Position.ROne || p.Type == Position.RTwo || p.Type == Position.RThree)
-						{
-							return true;
-						}
-						return p.Type == Position.RFour;
-					}).ToList<HomeFloorModel.WebFloorProductLinks>();
-					homeFloorModel.RightBottons = homeFloorModel.Products.Where<HomeFloorModel.WebFloorProductLinks>((HomeFloorModel.WebFloorProductLinks p) => {
-						if (p.Type == Position.RFive || p.Type == Position.RSix || p.Type == Position.RSeven)
-						{
-							return true;
-						}
-						return p.Type == Position.REight;
-					}).ToList<HomeFloorModel.WebFloorProductLinks>();
-				}
-				homeFloorModels.Add(homeFloorModel);
+                if (homeFloorInfo.IsShow)//过滤关闭的楼层
+                {
+                    HomeFloorModel homeFloorModel = new HomeFloorModel();
+                    List<FloorTopicInfo> floorTopicInfos = (
+                        from a in homeFloorInfo.FloorTopicInfo
+                        where a.TopicType == Position.Top
+                        select a).ToList();
+                    List<FloorTopicInfo> list1 = (
+                        from a in homeFloorInfo.FloorTopicInfo
+                        where a.TopicType != Position.Top
+                        select a).ToList();
+                    List<FloorBrandInfo> floorBrandInfos = homeFloorInfo.FloorBrandInfo.Take(10).ToList();
+                    homeFloorModel.Name = homeFloorInfo.FloorName;
+                    homeFloorModel.SubName = homeFloorInfo.SubName;
+                    homeFloorModel.StyleLevel = homeFloorInfo.StyleLevel;
+                    homeFloorModel.DefaultTabName = homeFloorInfo.DefaultTabName;
+                    foreach (FloorTopicInfo floorTopicInfo in floorTopicInfos)
+                    {
+                        List<HomeFloorModel.WebFloorTextLink> textLinks = homeFloorModel.TextLinks;
+                        HomeFloorModel.WebFloorTextLink webFloorTextLink = new HomeFloorModel.WebFloorTextLink()
+                        {
+                            Id = floorTopicInfo.Id,
+                            Name = floorTopicInfo.TopicName,
+                            Url = floorTopicInfo.Url
+                        };
+                        textLinks.Add(webFloorTextLink);
+                    }
+                    foreach (FloorTopicInfo floorTopicInfo1 in list1)
+                    {
+                        List<HomeFloorModel.WebFloorProductLinks> products = homeFloorModel.Products;
+                        HomeFloorModel.WebFloorProductLinks webFloorProductLink = new HomeFloorModel.WebFloorProductLinks()
+                        {
+                            Id = floorTopicInfo1.Id,
+                            ImageUrl = floorTopicInfo1.TopicImage,
+                            Url = floorTopicInfo1.Url,
+                            Type = floorTopicInfo1.TopicType
+                        };
+                        products.Add(webFloorProductLink);
+                    }
+                    foreach (FloorBrandInfo floorBrandInfo in floorBrandInfos)
+                    {
+                        List<HomeFloorModel.WebFloorBrand> brands = homeFloorModel.Brands;
+                        HomeFloorModel.WebFloorBrand webFloorBrand = new HomeFloorModel.WebFloorBrand()
+                        {
+                            Id = floorBrandInfo.BrandInfo.Id,
+                            Img = floorBrandInfo.BrandInfo.Logo,
+                            Url = "",
+                            Name = floorBrandInfo.BrandInfo.Name
+                        };
+                        brands.Add(webFloorBrand);
+                    }
+                    if (homeFloorModel.StyleLevel == 1)
+                    {
+                        homeFloorModel.Tabs = (
+                            from p in homeFloorInfo.Himall_FloorTabls
+                            orderby p.Id
+                            select new HomeFloorModel.Tab()
+                            {
+                                Name = p.Name,
+                                Detail = (
+                                    from d in p.Himall_FloorTablDetails
+                                    select new HomeFloorModel.ProductDetail()
+                                    {
+                                        ProductId = d.Himall_Products.Id,
+                                        ImagePath = d.Himall_Products.ImagePath,
+                                        Price = d.Himall_Products.MinSalePrice,
+                                        Name = d.Himall_Products.ProductName
+                                    }).ToList<HomeFloorModel.ProductDetail>()
+                            }).ToList<HomeFloorModel.Tab>();
+                        homeFloorModel.Scrolls = homeFloorModel.Products.Where<HomeFloorModel.WebFloorProductLinks>((HomeFloorModel.WebFloorProductLinks p) =>
+                        {
+                            if (p.Type == Position.ScrollOne || p.Type == Position.ScrollTwo || p.Type == Position.ScrollThree)
+                            {
+                                return true;
+                            }
+                            return p.Type == Position.ScrollFour;
+                        }).ToList<HomeFloorModel.WebFloorProductLinks>();
+                        homeFloorModel.RightTops = homeFloorModel.Products.Where<HomeFloorModel.WebFloorProductLinks>((HomeFloorModel.WebFloorProductLinks p) =>
+                        {
+                            if (p.Type == Position.ROne || p.Type == Position.RTwo || p.Type == Position.RThree)
+                            {
+                                return true;
+                            }
+                            return p.Type == Position.RFour;
+                        }).ToList<HomeFloorModel.WebFloorProductLinks>();
+                        homeFloorModel.RightBottons = homeFloorModel.Products.Where<HomeFloorModel.WebFloorProductLinks>((HomeFloorModel.WebFloorProductLinks p) =>
+                        {
+                            if (p.Type == Position.RFive || p.Type == Position.RSix || p.Type == Position.RSeven)
+                            {
+                                return true;
+                            }
+                            return p.Type == Position.REight;
+                        }).ToList<HomeFloorModel.WebFloorProductLinks>();
+                    }
+
+                    homeFloorModels.Add(homeFloorModel);
+                }
 			}
 			return View(homeFloorModels);
 		}
