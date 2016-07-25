@@ -33,3 +33,8 @@ D:\Git1\源码(1)(1)\源码\Himall.MessagePlugin\bin\Debug\Himall.MessagePlugin.
 D:\Git1\源码(1)(1)\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.csprojResolveAssemblyReference.cache
 D:\Git1\源码(1)(1)\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.dll
 D:\Git1\源码(1)(1)\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.pdb
+E:\MyGit\源码\Himall.MessagePlugin\bin\Debug\Himall.MessagePlugin.dll
+E:\MyGit\源码\Himall.MessagePlugin\bin\Debug\Himall.MessagePlugin.pdb
+E:\MyGit\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.csprojResolveAssemblyReference.cache
+E:\MyGit\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.dll
+E:\MyGit\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.pdb
