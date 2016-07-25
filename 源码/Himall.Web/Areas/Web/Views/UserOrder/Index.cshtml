@@ -134,7 +134,7 @@
                                         <a target="_blank" class="img-box" href="@Url.Action("Detail", "Product", new { id = @item.ProductId})" style="float:none;">
                                             <img width="50" height="50" title="@item.ProductName 【@spc.TrimStart('，')】" src="@item.ThumbnailsUrl" class="err-product" />
                                         </a>
-                                        <span class="ftx-04">@item.SalePrice</span>
+                                        <span class="ftx-04">@item.SalePrice.ToString("F2")</span>
                                         <span>x @item.Quantity</span>
                                         <div class="icon-img">
                                             @if( item.CashDepositsObligation.IsCustomerSecurity )
