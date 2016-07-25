@@ -13,3 +13,7 @@ C:\Project\Haicainew\源码\Hishop.Weixin.MP\bin\Debug\Hishop.Weixin.MP.pdb
 C:\Project\Haicainew\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.csprojResolveAssemblyReference.cache
 C:\Project\Haicainew\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.dll
 C:\Project\Haicainew\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.pdb
+C:\Project\Hao\haocai\源码\Hishop.Weixin.MP\bin\Debug\Hishop.Weixin.MP.dll
+C:\Project\Hao\haocai\源码\Hishop.Weixin.MP\bin\Debug\Hishop.Weixin.MP.pdb
+C:\Project\Hao\haocai\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.dll
+C:\Project\Hao\haocai\源码\Hishop.Weixin.MP\obj\Debug\Hishop.Weixin.MP.pdb

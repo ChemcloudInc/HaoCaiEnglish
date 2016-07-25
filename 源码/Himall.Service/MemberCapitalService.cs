@@ -387,8 +387,9 @@ namespace Himall.Service
 		{
 			decimal? nullable;
 			ApplyWithDrawInfo applyWithDrawInfo = context.ApplyWithDrawInfo.FirstOrDefault((ApplyWithDrawInfo e) => e.Id == id);
+            
 			applyWithDrawInfo.ApplyStatus = status;
-			applyWithDrawInfo.OpUser = opuser;
+            applyWithDrawInfo.OpUser = applyWithDrawInfo.OpUser;
 			applyWithDrawInfo.Remark = remark;
 			applyWithDrawInfo.ConfirmTime = new DateTime?(DateTime.Now);
 			CapitalInfo capitalInfo = context.CapitalInfo.FirstOrDefault((CapitalInfo e) => e.MemId == applyWithDrawInfo.MemId);

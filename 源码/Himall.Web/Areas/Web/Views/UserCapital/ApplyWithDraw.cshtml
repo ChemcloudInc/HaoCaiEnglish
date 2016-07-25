@@ -89,7 +89,7 @@
                 <div class="item">
                     <span class="label">我的账户：</span>
                     <div class="fl">
-                        <select id="account" class="sele">
+                        <select id="account" class="sele" style="width:200px">
                             @for (int i = 0; i < @ViewBag.Num; i++)
                             {
                                 <option>@LS[i]</option>
@@ -275,6 +275,9 @@
 
                         JumpStep(3);
                         checkScanState();
+                    }
+                    else {
+                        $.dialog.succeedTips('请选择提现账号！');
                     }
                     // $.dialog.succeedTips('HERE！');
                 }
