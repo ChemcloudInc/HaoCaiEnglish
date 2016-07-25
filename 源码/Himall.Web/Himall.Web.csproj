@@ -1,0 +1,1963 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EDFF9560-EAD1-4A12-BBC6-647DCB3134C6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Himall.Web</RootNamespace>
+    <AssemblyName>Himall.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\DLL\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\DLL\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\DLL\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\DLL\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\DLL\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="Senparc.Weixin, Version=3.3.8.30701, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Senparc.Weixin.dll</HintPath>
+    </Reference>
+    <Reference Include="Senparc.Weixin.MP, Version=12.1.0.30701, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Senparc.Weixin.MP.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Content\Images\bag.png" />
+    <Content Include="Areas\Admin\Content\Images\dollar.png" />
+    <Content Include="Areas\Admin\Content\Images\order.png" />
+    <Content Include="Areas\Admin\Scripts\accountDetail.js" />
+    <Content Include="Areas\Admin\Scripts\accountManagement.js" />
+    <Content Include="Areas\Admin\Scripts\ApplyWithDraw.js" />
+    <Content Include="Areas\Admin\Scripts\appShopProductSetting.js" />
+    <Content Include="Areas\Admin\Scripts\APPShopSlideImage.js" />
+    <Content Include="Areas\Admin\Scripts\articleAdd.js" />
+    <Content Include="Areas\Admin\Scripts\articleCategoryManagement.js" />
+    <Content Include="Areas\Admin\Scripts\articleManagement.js" />
+    <Content Include="Areas\Admin\Scripts\brandManagement.js" />
+    <Content Include="Areas\Admin\Scripts\Capital.js" />
+    <Content Include="Areas\Admin\Scripts\CapitalDetail.js" />
+    <Content Include="Areas\Admin\Scripts\categoryJS.js" />
+    <Content Include="Areas\Admin\Scripts\expressTemplateEdit.js" />
+    <Content Include="Areas\Admin\Scripts\GiftEdit.js" />
+    <Content Include="Areas\Admin\Scripts\GiftManagement.js" />
+    <Content Include="Areas\Admin\Scripts\GiftOrderManagement.js" />
+    <Content Include="Areas\Admin\Scripts\HotVShop.js" />
+    <Content Include="Areas\Admin\Scripts\InviteManagement.js" />
+    <Content Include="Areas\Admin\Scripts\LimitTimeBuy.js" />
+    <Content Include="Areas\Admin\Scripts\managerManagement.js" />
+    <Content Include="Areas\Admin\Scripts\MemberGradeManagement.js" />
+    <Content Include="Areas\Admin\Scripts\MemberIntegral.js" />
+    <Content Include="Areas\Admin\Scripts\MemberIntegralRecord.js" />
+    <Content Include="Areas\Admin\Scripts\memberManagement.js" />
+    <Content Include="Areas\Admin\Scripts\mobileHomeTopic.js" />
+    <Content Include="Areas\Admin\Scripts\mobileTopicManagement.js" />
+    <Content Include="Areas\Admin\Scripts\mobileTopicSave.js" />
+    <Content Include="Areas\Admin\Scripts\navigationManagement.js" />
+    <Content Include="Areas\Admin\Scripts\operationLogManagement.js" />
+    <Content Include="Areas\Admin\Scripts\OrderAreaMap.js" />
+    <Content Include="Areas\Admin\Scripts\orderCommentManagement.js" />
+    <Content Include="Areas\Admin\Scripts\orderComplaintManagement.js" />
+    <Content Include="Areas\Admin\Scripts\orderManagement.js" />
+    <Content Include="Areas\Admin\Scripts\orderRefundManagement.js" />
+    <Content Include="Areas\Admin\Scripts\pageSettings-category.js" />
+    <Content Include="Areas\Admin\Scripts\pageSettings-floor.js" />
+    <Content Include="Areas\Admin\Scripts\pageSettings-floorDetail.js" />
+    <Content Include="Areas\Admin\Scripts\pageSettings-floorDetail2.js" />
+    <Content Include="Areas\Admin\Scripts\pageSettings-index.js" />
+    <Content Include="Areas\Admin\Scripts\privilegeManagement.js" />
+    <Content Include="Areas\Admin\Scripts\ProductComment.js" />
+    <Content Include="Areas\Admin\Scripts\ProductConsultation.js" />
+    <Content Include="Areas\Admin\Scripts\productManagement.js" />
+    <Content Include="Areas\Admin\Scripts\ProductRanking.js" />
+    <Content Include="Areas\Admin\Scripts\ProductRecentMonthSaleRank.js" />
+    <Content Include="Areas\Admin\Scripts\ProductType.js" />
+    <Content Include="Areas\Admin\Scripts\RoleAdd.js" />
+    <Content Include="Areas\Admin\Scripts\RoleEdit.js" />
+    <Content Include="Areas\Admin\Scripts\sensitivewordManagement.js" />
+    <Content Include="Areas\Admin\Scripts\ShopEdit.js" />
+    <Content Include="Areas\Admin\Scripts\ShopRanking.js" />
+    <Content Include="Areas\Admin\Scripts\ShopRecentMonthSaleRank.js" />
+    <Content Include="Areas\Admin\Scripts\topicAdd.js" />
+    <Content Include="Areas\Admin\Scripts\topicManagement.js" />
+    <Content Include="Areas\Admin\Scripts\vshopManagemengt.js" />
+    <Content Include="Areas\Admin\Scripts\weixinMenuAdd.js" />
+    <Content Include="Areas\Admin\Scripts\weixinSlideImage.js" />
+    <Content Include="Areas\Admin\Scripts\wxProductSettings.js" />
+    <Content Include="Areas\Admin\Scripts\wxSlideImages.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Content\artdialog.css" />
+    <Content Include="Areas\Mobile\Templates\APP\Content\custom.css" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\blank.gif" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\c.png" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\coupon-no.jpg" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\coupon.jpg" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\default.png" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\error.png" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\footer-icon-hover.png" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\footer-icon.png" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\icon.png" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\index-title-1.png" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\index-title-2.png" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\loading.gif" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\loading2.gif" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\logo.png" />
+    <Content Include="Areas\Mobile\Templates\APP\Images\progress.gif" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\app.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\appMember.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\cartSettleAccounts.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\category.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\coupon.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\custom.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\EditShippingAddr.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\home.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\memberOrders.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\orderComment.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\ProductComment.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\ProductConcern.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\ProductDetail.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\productSearch.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\ShopConcern.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\submiteByCart.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\submitOrder.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\topicList.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\vshop.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\vshopDetail.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\vshopIntroduce.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\vshopMain.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\vshopProductSearch.js" />
+    <Content Include="Areas\Mobile\Templates\APP\Scripts\WeiXinJSSDK.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Content\artdialog.css" />
+    <Content Include="Areas\Mobile\Templates\Default\Content\custom.css" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\blank.gif" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\bonus-bg.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\bonus-btn.gif" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\bonus-btn.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\bonus-c-bg.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\btn-4_03.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\bunus01.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\bunus02.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\c.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\coupon-no.jpg" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\coupon.jpg" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\cupon_g.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\default.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\detailHB_03.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\dialog.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\error.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\footer-icon-hover.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\footer-icon-hover01.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\footer-icon.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\footer-icon01.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\gift01-bg.jpg" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\gift02-bg_02.jpg" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\gift02.1-bg_02.jpg" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\gift03-bg.jpg" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\gift03-bg_04.jpg" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\gift04-bg.jpg" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\gift05-bg.jpg" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\icon.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\index-title-1.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\index-title-2.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\loading.gif" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\loading2.gif" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\logo.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\progress.gif" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\register_bg.jpg" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\share-guide.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\user-center.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\user-center02.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\UserInvite_01.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\UserInvite_02.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Images\userInvite_bg.png" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\ApplyWithDraw.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\cartSettleAccounts.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\category.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\coupon.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\custom.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\EditShippingAddr.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\home.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\memberOrders.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\orderComment.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\ProductComment.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\ProductConcern.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\ProductDetail.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\productSearch.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\shopBonusOther.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\ShopConcern.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\submiteByCart.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\submitOrder.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\vshop.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\vshopDetail.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\vshopIntroduce.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\vshopMain.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\vshopProductSearch.js" />
+    <Content Include="Areas\Mobile\Templates\Default\Scripts\WeiXinJSSDK.js" />
+    <Content Include="Areas\SellerAdmin\Content\business.css" />
+    <Content Include="Areas\SellerAdmin\Scripts\accountDetail.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\accountManagement.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\addProductDesctiptionTemplate.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\Article.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\brandManagement.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\Category.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\Collocation.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\editVshop.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\FreightTemplate.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\FreightTemplateAdd.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\HomeSellerAdminPie.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\managerManagement.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\mobileTopicManagement.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\mobileTopicSave.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\navigationManagement.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\operationLogManagement.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\orderComplaintManagement.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\orderManagement.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\orderPrint.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\orderRefundManagement.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\pageSettings.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\privilegeManagement.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\ProductComment.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\ProductConsultation.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\productDescriptionTemplateManagement.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\ProductImport.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\productManagement.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\ProductRecentMonthSaleRank.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\ProductRecentMonthSaleRankNew.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\ProductSaleRanking.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\ProductVisitRank.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\RoleAdd.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\RoleEdit.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\shopHomeModule.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\slideAds.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\vshopHomeSite.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\weixinSlideImage.js" />
+    <Content Include="Areas\Web\Content\artdilog.css" />
+    <Content Include="Areas\Web\Content\base.css" />
+    <Content Include="Areas\Web\Content\business.css" />
+    <Content Include="Areas\Web\Content\common.css" />
+    <Content Include="Areas\Web\Content\findpassword1.css" />
+    <Content Include="Areas\Web\Content\home.css" />
+    <Content Include="Areas\Web\Content\inner.css" />
+    <Content Include="Areas\Web\Content\login.css" />
+    <Content Include="Areas\Web\Content\myjd.common.css" />
+    <Content Include="Areas\Web\Content\myjd.easebuy.css" />
+    <Content Include="Areas\Web\Content\order-detail.css" />
+    <Content Include="Areas\Web\Content\register.css" />
+    <Content Include="Areas\Web\Content\shop.css" />
+    <Content Include="Areas\Web\Content\style.css" />
+    <Content Include="Areas\Web\Content\user-center.css" />
+    <Content Include="Areas\Web\Content\WebAlertPlug.css" />
+    <Content Include="Areas\Web\Content\WebLoginPlug.css" />
+    <Content Include="Areas\Web\Images\15.png" />
+    <Content Include="Areas\Web\Images\20130330A_2.png" />
+    <Content Include="Areas\Web\Images\20130330B_1.png" />
+    <Content Include="Areas\Web\Images\20130415i.png" />
+    <Content Include="Areas\Web\Images\20130423A.jpg" />
+    <Content Include="Areas\Web\Images\20130425D.png" />
+    <Content Include="Areas\Web\Images\20130603A.png" />
+    <Content Include="Areas\Web\Images\20130606B.png" />
+    <Content Include="Areas\Web\Images\20130725.png" />
+    <Content Include="Areas\Web\Images\2013100702.gif" />
+    <Content Include="Areas\Web\Images\2013100703.gif" />
+    <Content Include="Areas\Web\Images\arrow.png" />
+    <Content Include="Areas\Web\Images\avatar.png" />
+    <Content Include="Areas\Web\Images\bg-date.png" />
+    <Content Include="Areas\Web\Images\bg.png" />
+    <Content Include="Areas\Web\Images\bg_hotsale.gif" />
+    <Content Include="Areas\Web\Images\bg_state.jpg" />
+    <Content Include="Areas\Web\Images\blank.gif" />
+    <Content Include="Areas\Web\Images\btn-111.jpg" />
+    <Content Include="Areas\Web\Images\btn-20130725.png" />
+    <Content Include="Areas\Web\Images\btn-check-20140627.png" />
+    <Content Include="Areas\Web\Images\btn-disabled.png" />
+    <Content Include="Areas\Web\Images\btn-next01.png" />
+    <Content Include="Areas\Web\Images\btn-submit.jpg" />
+    <Content Include="Areas\Web\Images\btn.png" />
+    <Content Include="Areas\Web\Images\buy-bg.png" />
+    <Content Include="Areas\Web\Images\cart-empty-bg.png" />
+    <Content Include="Areas\Web\Images\checkout-title.gif" />
+    <Content Include="Areas\Web\Images\cicon.png" />
+    <Content Include="Areas\Web\Images\commstar.jpg" />
+    <Content Include="Areas\Web\Images\control-icon-20140521.png" />
+    <Content Include="Areas\Web\Images\empty-evaluation.png" />
+    <Content Include="Areas\Web\Images\empty-favor.png" />
+    <Content Include="Areas\Web\Images\empty-favorShop.png" />
+    <Content Include="Areas\Web\Images\empty-order.png" />
+    <Content Include="Areas\Web\Images\empty-shoppingCart.png" />
+    <Content Include="Areas\Web\Images\empty.png" />
+    <Content Include="Areas\Web\Images\error-jd.gif" />
+    <Content Include="Areas\Web\Images\error.jpg" />
+    <Content Include="Areas\Web\Images\floor.png" />
+    <Content Include="Areas\Web\Images\footprint-arr.png" />
+    <Content Include="Areas\Web\Images\fovbg.png" />
+    <Content Include="Areas\Web\Images\grade.png" />
+    <Content Include="Areas\Web\Images\h-icon.png" />
+    <Content Include="Areas\Web\Images\help_leftsz.gif" />
+    <Content Include="Areas\Web\Images\hover-btn.jpg" />
+    <Content Include="Areas\Web\Images\icon-nameInfo.png" />
+    <Content Include="Areas\Web\Images\icon-progress.jpg" />
+    <Content Include="Areas\Web\Images\icon-red.png" />
+    <Content Include="Areas\Web\Images\icon-succ.png" />
+    <Content Include="Areas\Web\Images\icon2.png" />
+    <Content Include="Areas\Web\Images\icon48.png" />
+    <Content Include="Areas\Web\Images\icon_c.png" />
+    <Content Include="Areas\Web\Images\ident.png" />
+    <Content Include="Areas\Web\Images\inte-icon.png" />
+    <Content Include="Areas\Web\Images\inte-line.png" />
+    <Content Include="Areas\Web\Images\integra-bg.png" />
+    <Content Include="Areas\Web\Images\IntegralMall.jpg" />
+    <Content Include="Areas\Web\Images\len.png" />
+    <Content Include="Areas\Web\Images\live-box.png" />
+    <Content Include="Areas\Web\Images\loading.gif" />
+    <Content Include="Areas\Web\Images\loading2.gif" />
+    <Content Include="Areas\Web\Images\login-all-bg.png" />
+    <Content Include="Areas\Web\Images\login-banner.png" />
+    <Content Include="Areas\Web\Images\login-bg.png" />
+    <Content Include="Areas\Web\Images\logo2.png" />
+    <Content Include="Areas\Web\Images\manage-bg.png" />
+    <Content Include="Areas\Web\Images\manage-icon.png" />
+    <Content Include="Areas\Web\Images\myjd-bg.png" />
+    <Content Include="Areas\Web\Images\my_cart_title.png" />
+    <Content Include="Areas\Web\Images\newicon20121210.png" />
+    <Content Include="Areas\Web\Images\newicon20140417.png" />
+    <Content Include="Areas\Web\Images\newpp.png" />
+    <Content Include="Areas\Web\Images\no-img_mid_.jpg" />
+    <Content Include="Areas\Web\Images\notice.png" />
+    <Content Include="Areas\Web\Images\order-icon-20140811.png" />
+    <Content Include="Areas\Web\Images\p-btns-20140611.png" />
+    <Content Include="Areas\Web\Images\plus.gif" />
+    <Content Include="Areas\Web\Images\pop-m.png" />
+    <Content Include="Areas\Web\Images\price-info_bg.jpg" />
+    <Content Include="Areas\Web\Images\product-details-icon.png" />
+    <Content Include="Areas\Web\Images\progress-logo.png" />
+    <Content Include="Areas\Web\Images\regist-btn.jpg" />
+    <Content Include="Areas\Web\Images\regist-word.png" />
+    <Content Include="Areas\Web\Images\right.png" />
+    <Content Include="Areas\Web\Images\safe-rank2014.png" />
+    <Content Include="Areas\Web\Images\search.png" />
+    <Content Include="Areas\Web\Images\starts.png" />
+    <Content Include="Areas\Web\Images\state1.png" />
+    <Content Include="Areas\Web\Images\state2.png" />
+    <Content Include="Areas\Web\Images\state3.png" />
+    <Content Include="Areas\Web\Images\step1.png" />
+    <Content Include="Areas\Web\Images\step2.jpg" />
+    <Content Include="Areas\Web\Images\step2.png" />
+    <Content Include="Areas\Web\Images\step2013.png" />
+    <Content Include="Areas\Web\Images\step3.png" />
+    <Content Include="Areas\Web\Images\sucess.png" />
+    <Content Include="Areas\Web\Images\tab.gif" />
+    <Content Include="Areas\Web\Images\tab.png" />
+    <Content Include="Areas\Web\Images\tb-th.2011.gif" />
+    <Content Include="Areas\Web\Images\thickbox_close.png" />
+    <Content Include="Areas\Web\Images\time-bg.png" />
+    <Content Include="Areas\Web\Images\usecenter_l.png" />
+    <Content Include="Areas\Web\Images\user-icon.png" />
+    <Content Include="Areas\Web\Images\verification1.jpg" />
+    <Content Include="Areas\Web\Images\verification2.jpg" />
+    <Content Include="Areas\Web\Images\verification3.jpg" />
+    <Content Include="Areas\Web\Images\verification4.jpg" />
+    <Content Include="Areas\Web\Images\verification5.jpg" />
+    <Content Include="Areas\Web\Images\yanzhengshouji.jpg" />
+    <Content Include="Areas\Web\Images\yanzhengshouji2.jpg" />
+    <Content Include="Areas\Web\Images\yxyanzheng_07.jpg" />
+    <Content Include="Areas\Web\Images\yxyanzheng_10.jpg" />
+    <Content Include="Areas\Web\Images\yxyanzheng_11.jpg" />
+    <Content Include="Areas\Web\Images\yxyanzheng_12.jpg" />
+    <Content Include="Areas\Web\Scripts\ApplyWithDraw.js" />
+    <Content Include="Areas\Web\Scripts\artDialog.iframeTools.js" />
+    <Content Include="Areas\Web\Scripts\businessRegister.js" />
+    <Content Include="Areas\Web\Scripts\cartSettleAccounts.js" />
+    <Content Include="Areas\Web\Scripts\cloud-zoom.1.0.2.min.js" />
+    <Content Include="Areas\Web\Scripts\custom.js" />
+    <Content Include="Areas\Web\Scripts\GiftDetail.js" />
+    <Content Include="Areas\Web\Scripts\jQuery.mouseDelay.min.js" />
+    <Content Include="Areas\Web\Scripts\jQuery.Web.Alert.js" />
+    <Content Include="Areas\Web\Scripts\jQuery.Web.Login.js" />
+    <Content Include="Areas\Web\Scripts\lazyload.js" />
+    <Content Include="Areas\Web\Scripts\LimitTimeBuyDetail.js" />
+    <Content Include="Areas\Web\Scripts\login.js" />
+    <Content Include="Areas\Web\Scripts\ProductChoose.js" />
+    <Content Include="Areas\Web\Scripts\ProductComment.js" />
+    <Content Include="Areas\Web\Scripts\ProductConsultation.js" />
+    <Content Include="Areas\Web\Scripts\ProductDetail.js" />
+    <Content Include="Areas\Web\Scripts\QRPay.js" />
+    <Content Include="Areas\Web\Scripts\register.js" />
+    <Content Include="Areas\Web\Scripts\seller.js" />
+    <Content Include="Areas\Web\Scripts\ShippingAddress.js" />
+    <Content Include="Areas\Web\Scripts\SKU.js" />
+    <Content Include="Areas\Web\Scripts\submitGiftOrder.js" />
+    <Content Include="Areas\Web\Scripts\submitOrder.js" />
+    <Content Include="Areas\Web\Scripts\submitPurchaseOrder.js" />
+    <Content Include="Areas\Web\Scripts\SupplierManagement.js" />
+    <Content Include="Areas\Web\Scripts\thickbox.js" />
+    <Content Include="Areas\Web\Scripts\UserCapital.js" />
+    <Content Include="Areas\Web\Scripts\userInfo.js" />
+    <Content Include="Areas\Web\Scripts\web.js" />
+    <Content Include="Areas\Web\Scripts\WithDraw.js" />
+    <Content Include="Content\artdialog.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-switch.min.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom.css" />
+    <Content Include="Content\inner-custom.css" />
+    <Content Include="Content\installStyle.css" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\simpletooltip.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\v.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\app-index.jpg" />
+    <Content Include="Images\app-topic.jpg" />
+    <Content Include="Images\app.png" />
+    <Content Include="Images\bg.png" />
+    <Content Include="Images\CashDeposit.png" />
+    <Content Include="Images\choose.png" />
+    <Content Include="Images\close_01.png" />
+    <Content Include="Images\close_01_13.jpg" />
+    <Content Include="Images\comuserheadpic.jpg" />
+    <Content Include="Images\defaultwxlogo.png" />
+    <Content Include="Images\del.png" />
+    <Content Include="Images\dg_loading.gif" />
+    <Content Include="Images\error.jpg" />
+    <Content Include="Images\error.png" />
+    <Content Include="Images\face-sad.png" />
+    <Content Include="Images\floor-img.jpg" />
+    <Content Include="Images\floor-img2.jpg" />
+    <Content Include="Images\icon-c.png" />
+    <Content Include="Images\icon.png" />
+    <Content Include="Images\iconfont-tui.png" />
+    <Content Include="Images\index.jpg" />
+    <Content Include="Images\installLogo.png" />
+    <Content Include="Images\iPhone5.png" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\loading2.gif" />
+    <Content Include="Images\loading3.gif" />
+    <Content Include="Images\login-logo.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logo2.png" />
+    <Content Include="Images\logo3.png" />
+    <Content Include="Images\mobile.png" />
+    <Content Include="Images\myorder_bonus.jpg" />
+    <Content Include="Images\ok.png" />
+    <Content Include="Images\pc.png" />
+    <Content Include="Images\progress.gif" />
+    <Content Include="Images\question.png" />
+    <Content Include="Images\qzone.png" />
+    <Content Include="Images\Security.jpg" />
+    <Content Include="Images\SevenDay.jpg" />
+    <Content Include="Images\shop-rang.png" />
+    <Content Include="Images\shop.jpg" />
+    <Content Include="Images\step2013.png" />
+    <Content Include="Images\succeed.png" />
+    <Content Include="Images\succeedg.png" />
+    <Content Include="Images\success.jpg" />
+    <Content Include="Images\TimelyDelivery.jpg" />
+    <Content Include="Images\usecenter_l.png" />
+    <Content Include="Images\user-icon.png" />
+    <Content Include="Images\user.png" />
+    <Content Include="Images\vshop.jpg" />
+    <Content Include="Images\wap.png" />
+    <Content Include="Images\warning.png" />
+    <Content Include="Images\weibo.png" />
+    <Content Include="Images\weixin.png" />
+    <Content Include="Images\wx.jpg" />
+    <Content Include="Images\wx.png" />
+    <Content Include="Plugins\Express\Himall.ExpressPlugin.dll" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.EMS\2010111734679.jpg" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.EMS\config.xml" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.EMS\Himall.Plugin.Express.EMS.dll" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.EMS\logo.jpg" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Shentong\2010111771175.jpg" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Shentong\config.xml" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Shentong\Himall.Plugin.Express.Shentong.dll" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Shentong\logo.png" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Shunfeng\config.xml" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Shunfeng\express.jpg" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Shunfeng\Himall.Plugin.Express.Shunfeng.dll" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Shunfeng\logo.png" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Tiantian\2010111718098.jpg" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Tiantian\config.xml" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Tiantian\Himall.Plugin.Express.Tiantian.dll" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Tiantian\logo.png" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Yuantong\background.jpg" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Yuantong\config.xml" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Yuantong\Himall.Plugin.Express.Yuantong.dll" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Yuantong\logo.png" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Yunda\2010111741205.jpg" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Yunda\config.xml" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Yunda\Himall.Plugin.Express.Yunda.dll" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Yunda\logo.jpg" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhaijisong\2010111733136.jpg" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhaijisong\config.xml" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhaijisong\Himall.Plugin.Express.Zhaijisong.dll" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhaijisong\Logo.png" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongtong\2010111758806.jpg" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongtong\config.xml" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongtong\Himall.Plugin.Express.Zhongtong.dll" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongtong\Logo.png" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongyouwuliu\2010111727247.jpg" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongyouwuliu\config.xml" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongyouwuliu\Himall.Plugin.Express.Zhongyouwuliu.dll" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongyouwuliu\Logo.jpg" />
+    <Content Include="Plugins\Message\Himall.MessagePlugin.dll" />
+    <Content Include="Plugins\Message\Himall.Plugin.Message.Email\Data\config.xml" />
+    <Content Include="Plugins\Message\Himall.Plugin.Message.Email\Data\logo.png" />
+    <Content Include="Plugins\Message\Himall.Plugin.Message.Email\Data\MessageContent.xml" />
+    <Content Include="Plugins\Message\Himall.Plugin.Message.Email\Himall.Plugin.Message.Email.dll" />
+    <Content Include="Plugins\Message\Himall.Plugin.Message.SMS\Data\config.xml" />
+    <Content Include="Plugins\Message\Himall.Plugin.Message.SMS\Data\MessageContent.xml" />
+    <Content Include="Plugins\Message\Himall.Plugin.Message.SMS\Himall.Plugin.Message.SMS.dll" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.QQ\Himall.Plugin.OAuth.QQ.dll" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.QQ\logo.png" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.QQ\QConnectSDK.dll" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.QQ\qq1.png" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.QQ\qq2.png" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.QQ\RestSharp.dll" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.Weibo\Himall.Plugin.OAuth.Weibo.dll" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.Weibo\logo.ico" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.Weibo\NetDimension.Weibo.dll" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.Weibo\weibo1.png" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.Weibo\weibo2.png" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.WeiXin\Himall.Plugin.OAuth.WeiXin.dll" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.WeiXin\Resource\icon64_wx_logo.png" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.WeiXin\Resource\weixin1.png" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.WeiXin\Resource\weixin2.png" />
+    <Content Include="Plugins\Payment\Himall.PaymentPlugin.dll" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.Alipay\Himall.Plugin.Payment.Alipay.dll" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.Alipay\logo.gif" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.Alipay_QRCode\alipay.gif" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.Alipay_QRCode\alipay_help.jpg" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.Alipay_QRCode\Himall.Plugin.Payment.Alipay_QRCode.dll" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.UnionPay\Himall.Plugin.Payment.UnionPay.dll" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.UnionPay\index_logo.gif" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.WeiXinPay\Himall.Plugin.Payment.WeiXinPay.dll" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.WeiXinPay\wx_logo.png" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.WeiXinPay_Native\Himall.Plugin.Payment.WeiXinPay_Native.dll" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.WeiXinPay_Native\phone-bg.png" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.WeiXinPay_Native\wx_logo.png" />
+    <Content Include="Plugins\Payment\Himall.WeixinPaymentBase.dll" />
+    <Content Include="Printer\install_lodop32.exe" />
+    <Content Include="Printer\install_lodop64.exe" />
+    <Content Include="quartz_jobs.xml" />
+    <Content Include="Scripts\artDialog.iframeTools.js" />
+    <Content Include="Scripts\autoNumeric.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Scripts\bootstrap-switch.min.js" />
+    <Content Include="Scripts\bootstrap.autocomplete.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chart\bar.js" />
+    <Content Include="Scripts\chart\chord.js" />
+    <Content Include="Scripts\chart\eventRiver.js" />
+    <Content Include="Scripts\chart\force.js" />
+    <Content Include="Scripts\chart\funnel.js" />
+    <Content Include="Scripts\chart\gauge.js" />
+    <Content Include="Scripts\chart\k.js" />
+    <Content Include="Scripts\chart\line.js" />
+    <Content Include="Scripts\chart\map.js" />
+    <Content Include="Scripts\chart\pie.js" />
+    <Content Include="Scripts\chart\radar.js" />
+    <Content Include="Scripts\chart\scatter.js" />
+    <Content Include="Scripts\CommonJS.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\datetimeCustom.js" />
+    <Content Include="Scripts\echarts-all.js" />
+    <Content Include="Scripts\echarts-plain-map.js" />
+    <Content Include="Scripts\echarts.js" />
+    <Content Include="Scripts\inner-custom.js" />
+    <Content Include="Scripts\iscroll.js" />
+    <Content Include="Scripts\jqeury.himallLinkage.js" />
+    <Content Include="Scripts\jquery-1.11.1.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery-regionSelector.min.js" />
+    <Content Include="Scripts\jquery.artDialog.js" />
+    <Content Include="Scripts\jquery.ColloproductSelector.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.fly.js" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.himallCategoryTree.js" />
+    <Content Include="Scripts\jquery.hiMallDatagrid.js" />
+    <Content Include="Scripts\jquery.himallDistrict.js" />
+    <Content Include="Scripts\jquery.himallLinkage.nocreate.js" />
+    <Content Include="Scripts\jquery.himallUpload.js" />
+    <Content Include="Scripts\jquery.himallUploadFile.js" />
+    <Content Include="Scripts\jquery.hishopUpload.js" />
+    <Content Include="Scripts\jquery.json.js" />
+    <Content Include="Scripts\jQuery.mouseDelay.min.js" />
+    <Content Include="Scripts\jquery.nicescroll.min.js" />
+    <Content Include="Scripts\jquery.nicescroll.plus.js" />
+    <Content Include="Scripts\jquery.placeholder.min.js" />
+    <Content Include="Scripts\jquery.productSelector.js" />
+    <Content Include="Scripts\jquery.scrollLoading.min.js" />
+    <Content Include="Scripts\jquery.sellerSelector.js" />
+    <Content Include="Scripts\jquery.shopProductSelector.js" />
+    <Content Include="Scripts\jquery.slides.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.zclip.js" />
+    <Content Include="Scripts\JumpPlatForm.js" />
+    <Content Include="Scripts\lazyload.js" />
+    <Content Include="Scripts\LodopFuncs.js" />
+    <Content Include="Scripts\print.js" />
+    <Content Include="Scripts\Region.js" />
+    <Content Include="Scripts\RegionBind.js" />
+    <Content Include="Scripts\requestAnimationFrame.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\simpletooltip.min.js" />
+    <Content Include="Scripts\ueditor\dialogs\anchor\anchor.html" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\attachment.css" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\attachment.html" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\attachment.js" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\fileTypeImages\icon_chm.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\fileTypeImages\icon_default.png" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\fileTypeImages\icon_doc.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\fileTypeImages\icon_exe.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\fileTypeImages\icon_jpg.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\fileTypeImages\icon_mp3.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\fileTypeImages\icon_mv.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\fileTypeImages\icon_pdf.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\fileTypeImages\icon_ppt.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\fileTypeImages\icon_psd.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\fileTypeImages\icon_rar.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\fileTypeImages\icon_txt.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\fileTypeImages\icon_xls.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\images\alignicon.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\images\alignicon.png" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\images\bg.png" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\images\file-icons.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\images\file-icons.png" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\images\icons.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\images\icons.png" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\images\image.png" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\images\progress.png" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\images\success.gif" />
+    <Content Include="Scripts\ueditor\dialogs\attachment\images\success.png" />
+    <Content Include="Scripts\ueditor\dialogs\background\background.css" />
+    <Content Include="Scripts\ueditor\dialogs\background\background.html" />
+    <Content Include="Scripts\ueditor\dialogs\background\background.js" />
+    <Content Include="Scripts\ueditor\dialogs\background\images\bg.png" />
+    <Content Include="Scripts\ueditor\dialogs\background\images\success.png" />
+    <Content Include="Scripts\ueditor\dialogs\charts\chart.config.js" />
+    <Content Include="Scripts\ueditor\dialogs\charts\charts.css" />
+    <Content Include="Scripts\ueditor\dialogs\charts\charts.html" />
+    <Content Include="Scripts\ueditor\dialogs\charts\charts.js" />
+    <Content Include="Scripts\ueditor\dialogs\charts\images\charts0.png" />
+    <Content Include="Scripts\ueditor\dialogs\charts\images\charts1.png" />
+    <Content Include="Scripts\ueditor\dialogs\charts\images\charts2.png" />
+    <Content Include="Scripts\ueditor\dialogs\charts\images\charts3.png" />
+    <Content Include="Scripts\ueditor\dialogs\charts\images\charts4.png" />
+    <Content Include="Scripts\ueditor\dialogs\charts\images\charts5.png" />
+    <Content Include="Scripts\ueditor\dialogs\emotion\emotion.css" />
+    <Content Include="Scripts\ueditor\dialogs\emotion\emotion.html" />
+    <Content Include="Scripts\ueditor\dialogs\emotion\emotion.js" />
+    <Content Include="Scripts\ueditor\dialogs\emotion\images\0.gif" />
+    <Content Include="Scripts\ueditor\dialogs\emotion\images\bface.gif" />
+    <Content Include="Scripts\ueditor\dialogs\emotion\images\cface.gif" />
+    <Content Include="Scripts\ueditor\dialogs\emotion\images\fface.gif" />
+    <Content Include="Scripts\ueditor\dialogs\emotion\images\jxface2.gif" />
+    <Content Include="Scripts\ueditor\dialogs\emotion\images\neweditor-tab-bg.png" />
+    <Content Include="Scripts\ueditor\dialogs\emotion\images\tface.gif" />
+    <Content Include="Scripts\ueditor\dialogs\emotion\images\wface.gif" />
+    <Content Include="Scripts\ueditor\dialogs\emotion\images\yface.gif" />
+    <Content Include="Scripts\ueditor\dialogs\gmap\gmap.html" />
+    <Content Include="Scripts\ueditor\dialogs\help\help.css" />
+    <Content Include="Scripts\ueditor\dialogs\help\help.html" />
+    <Content Include="Scripts\ueditor\dialogs\help\help.js" />
+    <Content Include="Scripts\ueditor\dialogs\image\image.css" />
+    <Content Include="Scripts\ueditor\dialogs\image\image.html" />
+    <Content Include="Scripts\ueditor\dialogs\image\image.js" />
+    <Content Include="Scripts\ueditor\dialogs\image\images\alignicon.jpg" />
+    <Content Include="Scripts\ueditor\dialogs\image\images\bg.png" />
+    <Content Include="Scripts\ueditor\dialogs\image\images\icons.gif" />
+    <Content Include="Scripts\ueditor\dialogs\image\images\icons.png" />
+    <Content Include="Scripts\ueditor\dialogs\image\images\image.png" />
+    <Content Include="Scripts\ueditor\dialogs\image\images\progress.png" />
+    <Content Include="Scripts\ueditor\dialogs\image\images\success.gif" />
+    <Content Include="Scripts\ueditor\dialogs\image\images\success.png" />
+    <Content Include="Scripts\ueditor\dialogs\insertframe\insertframe.html" />
+    <Content Include="Scripts\ueditor\dialogs\internal.js" />
+    <Content Include="Scripts\ueditor\dialogs\link\link.html" />
+    <Content Include="Scripts\ueditor\dialogs\map\map.html" />
+    <Content Include="Scripts\ueditor\dialogs\map\show.html" />
+    <Content Include="Scripts\ueditor\dialogs\music\music.css" />
+    <Content Include="Scripts\ueditor\dialogs\music\music.html" />
+    <Content Include="Scripts\ueditor\dialogs\music\music.js" />
+    <Content Include="Scripts\ueditor\dialogs\preview\preview.html" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\addimg.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\brush.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\delimg.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\delimgH.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\empty.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\emptyH.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\eraser.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\redo.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\redoH.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\scale.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\scaleH.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\size.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\undo.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\images\undoH.png" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\scrawl.css" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\scrawl.html" />
+    <Content Include="Scripts\ueditor\dialogs\scrawl\scrawl.js" />
+    <Content Include="Scripts\ueditor\dialogs\searchreplace\searchreplace.html" />
+    <Content Include="Scripts\ueditor\dialogs\searchreplace\searchreplace.js" />
+    <Content Include="Scripts\ueditor\dialogs\snapscreen\snapscreen.html" />
+    <Content Include="Scripts\ueditor\dialogs\spechars\spechars.html" />
+    <Content Include="Scripts\ueditor\dialogs\spechars\spechars.js" />
+    <Content Include="Scripts\ueditor\dialogs\table\dragicon.png" />
+    <Content Include="Scripts\ueditor\dialogs\table\edittable.css" />
+    <Content Include="Scripts\ueditor\dialogs\table\edittable.html" />
+    <Content Include="Scripts\ueditor\dialogs\table\edittable.js" />
+    <Content Include="Scripts\ueditor\dialogs\table\edittd.html" />
+    <Content Include="Scripts\ueditor\dialogs\table\edittip.html" />
+    <Content Include="Scripts\ueditor\dialogs\template\config.js" />
+    <Content Include="Scripts\ueditor\dialogs\template\images\bg.gif" />
+    <Content Include="Scripts\ueditor\dialogs\template\images\pre0.png" />
+    <Content Include="Scripts\ueditor\dialogs\template\images\pre1.png" />
+    <Content Include="Scripts\ueditor\dialogs\template\images\pre2.png" />
+    <Content Include="Scripts\ueditor\dialogs\template\images\pre3.png" />
+    <Content Include="Scripts\ueditor\dialogs\template\images\pre4.png" />
+    <Content Include="Scripts\ueditor\dialogs\template\template.css" />
+    <Content Include="Scripts\ueditor\dialogs\template\template.html" />
+    <Content Include="Scripts\ueditor\dialogs\template\template.js" />
+    <Content Include="Scripts\ueditor\dialogs\video\images\bg.png" />
+    <Content Include="Scripts\ueditor\dialogs\video\images\center_focus.jpg" />
+    <Content Include="Scripts\ueditor\dialogs\video\images\file-icons.gif" />
+    <Content Include="Scripts\ueditor\dialogs\video\images\file-icons.png" />
+    <Content Include="Scripts\ueditor\dialogs\video\images\icons.gif" />
+    <Content Include="Scripts\ueditor\dialogs\video\images\icons.png" />
+    <Content Include="Scripts\ueditor\dialogs\video\images\image.png" />
+    <Content Include="Scripts\ueditor\dialogs\video\images\left_focus.jpg" />
+    <Content Include="Scripts\ueditor\dialogs\video\images\none_focus.jpg" />
+    <Content Include="Scripts\ueditor\dialogs\video\images\progress.png" />
+    <Content Include="Scripts\ueditor\dialogs\video\images\right_focus.jpg" />
+    <Content Include="Scripts\ueditor\dialogs\video\images\success.gif" />
+    <Content Include="Scripts\ueditor\dialogs\video\images\success.png" />
+    <Content Include="Scripts\ueditor\dialogs\video\video.css" />
+    <Content Include="Scripts\ueditor\dialogs\video\video.html" />
+    <Content Include="Scripts\ueditor\dialogs\video\video.js" />
+    <Content Include="Scripts\ueditor\dialogs\webapp\webapp.html" />
+    <Content Include="Scripts\ueditor\dialogs\wordimage\fClipboard_ueditor.swf" />
+    <Content Include="Scripts\ueditor\dialogs\wordimage\imageUploader.swf" />
+    <Content Include="Scripts\ueditor\dialogs\wordimage\tangram.js" />
+    <Content Include="Scripts\ueditor\dialogs\wordimage\wordimage.html" />
+    <Content Include="Scripts\ueditor\dialogs\wordimage\wordimage.js" />
+    <Content Include="Scripts\ueditor\lang\en\en.js" />
+    <Content Include="Scripts\ueditor\lang\en\images\addimage.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\alldeletebtnhoverskin.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\alldeletebtnupskin.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\background.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\button.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\copy.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\deletedisable.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\deleteenable.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\listbackground.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\localimage.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\music.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\rotateleftdisable.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\rotateleftenable.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\rotaterightdisable.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\rotaterightenable.png" />
+    <Content Include="Scripts\ueditor\lang\en\images\upload.png" />
+    <Content Include="Scripts\ueditor\lang\zh-cn\images\copy.png" />
+    <Content Include="Scripts\ueditor\lang\zh-cn\images\localimage.png" />
+    <Content Include="Scripts\ueditor\lang\zh-cn\images\music.png" />
+    <Content Include="Scripts\ueditor\lang\zh-cn\images\upload.png" />
+    <Content Include="Scripts\ueditor\lang\zh-cn\zh-cn.js" />
+    <Content Include="Scripts\ueditor\themes\default\css\ueditor.css" />
+    <Content Include="Scripts\ueditor\themes\default\css\ueditor.min.css" />
+    <Content Include="Scripts\ueditor\themes\default\dialogbase.css" />
+    <Content Include="Scripts\ueditor\themes\default\images\anchor.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\arrow.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\arrow_down.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\arrow_up.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\button-bg.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\cancelbutton.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\charts.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\cursor_h.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\cursor_h.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\cursor_v.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\cursor_v.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\dialog-title-bg.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\filescan.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\highlighted.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\icons-all.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\icons.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\icons.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\loaderror.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\loading.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\lock.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\neweditor-tab-bg.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\pagebreak.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\scale.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\sortable.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\spacer.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\sparator_v.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\table-cell-align.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\tangram-colorpicker.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\toolbar_bg.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\unhighlighted.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\upload.png" />
+    <Content Include="Scripts\ueditor\themes\default\images\videologo.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\word.gif" />
+    <Content Include="Scripts\ueditor\themes\default\images\wordpaste.png" />
+    <Content Include="Scripts\ueditor\themes\iframe.css" />
+    <Content Include="Scripts\ueditor\third-party\codemirror\codemirror.css" />
+    <Content Include="Scripts\ueditor\third-party\codemirror\codemirror.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\adapters\mootools-adapter.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\adapters\prototype-adapter.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\adapters\standalone-framework.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\highcharts-more.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\highcharts-more.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\highcharts.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\highcharts.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\annotations.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\annotations.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\canvas-tools.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\data.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\data.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\drilldown.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\drilldown.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\exporting.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\exporting.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\funnel.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\funnel.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\heatmap.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\heatmap.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\map.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\map.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\no-data-to-display.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\themes\dark-blue.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\themes\dark-green.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\themes\gray.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\themes\grid.js" />
+    <Content Include="Scripts\ueditor\third-party\highcharts\themes\skies.js" />
+    <Content Include="Scripts\ueditor\third-party\jquery-1.10.2.js" />
+    <Content Include="Scripts\ueditor\third-party\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\ueditor\third-party\snapscreen\UEditorSnapscreen.exe" />
+    <Content Include="Scripts\ueditor\third-party\SyntaxHighlighter\shCore.js" />
+    <Content Include="Scripts\ueditor\third-party\SyntaxHighlighter\shCoreDefault.css" />
+    <Content Include="Scripts\ueditor\third-party\video-js\font\vjs.svg" />
+    <Content Include="Scripts\ueditor\third-party\video-js\video-js.css" />
+    <Content Include="Scripts\ueditor\third-party\video-js\video-js.min.css" />
+    <Content Include="Scripts\ueditor\third-party\video-js\video-js.swf" />
+    <Content Include="Scripts\ueditor\third-party\video-js\video.dev.js" />
+    <Content Include="Scripts\ueditor\third-party\video-js\video.js" />
+    <Content Include="Scripts\ueditor\third-party\webuploader\Uploader.swf" />
+    <Content Include="Scripts\ueditor\third-party\webuploader\webuploader.css" />
+    <Content Include="Scripts\ueditor\third-party\webuploader\webuploader.custom.js" />
+    <Content Include="Scripts\ueditor\third-party\webuploader\webuploader.custom.min.js" />
+    <Content Include="Scripts\ueditor\third-party\webuploader\webuploader.flashonly.js" />
+    <Content Include="Scripts\ueditor\third-party\webuploader\webuploader.flashonly.min.js" />
+    <Content Include="Scripts\ueditor\third-party\webuploader\webuploader.html5only.js" />
+    <Content Include="Scripts\ueditor\third-party\webuploader\webuploader.html5only.min.js" />
+    <Content Include="Scripts\ueditor\third-party\webuploader\webuploader.js" />
+    <Content Include="Scripts\ueditor\third-party\webuploader\webuploader.min.js" />
+    <Content Include="Scripts\ueditor\third-party\webuploader\webuploader.withoutimage.js" />
+    <Content Include="Scripts\ueditor\third-party\webuploader\webuploader.withoutimage.min.js" />
+    <Content Include="Scripts\ueditor\third-party\zeroclipboard\ZeroClipboard.js" />
+    <Content Include="Scripts\ueditor\third-party\zeroclipboard\ZeroClipboard.min.js" />
+    <Content Include="Scripts\ueditor\third-party\zeroclipboard\ZeroClipboard.swf" />
+    <Content Include="Scripts\ueditor\ueditor.all.js" />
+    <Content Include="Scripts\ueditor\ueditor.all.min.js" />
+    <Content Include="Scripts\ueditor\ueditor.config.js" />
+    <Content Include="Scripts\ueditor\ueditor.parse.js" />
+    <Content Include="Scripts\ueditor\ueditor.parse.min.js" />
+    <Content Include="Scripts\v-min.js" />
+    <Content Include="Scripts\v.js" />
+    <Content Include="Scripts\weixinApi.js" />
+    <Content Include="Scripts\ZeroClipboard.js" />
+    <Content Include="Scripts\ZeroClipboard.swf" />
+    <Content Include="SqlScripts\Schema.sql" />
+    <Content Include="SqlScripts\SiteDemo.zh-CN.sql" />
+    <Content Include="SqlScripts\SiteInitData.zh-CN.Sql" />
+    <Content Include="Strategies\AspNetCache\Himall.Strategy.AspNetCache.dll" />
+    <Content Include="Strategies\Memecached\Enyim.Caching.dll" />
+    <Content Include="Strategies\Memecached\Himall.Strategy.Memecached.dll" />
+    <Content Include="Views\web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\DefaultController.cs" />
+    <Compile Include="API\ExpressDataController.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\WithDrawModel.cs" />
+    <Compile Include="Areas\Web\Controllers\stirng.cs" />
+    <Compile Include="Areas\Web\Controllers\WithDrawController.cs" />
+    <Compile Include="UEditor\Config.cs" />
+    <Compile Include="UEditor\ConfigHandler.cs" />
+    <Compile Include="UEditor\IUEditorHandle.cs" />
+    <Compile Include="UEditor\NotSupportedHandler.cs" />
+    <Compile Include="UEditor\PathFormatter.cs" />
+    <Compile Include="UEditor\UploadConfig.cs" />
+    <Compile Include="UEditor\UploadHandle.cs" />
+    <Compile Include="UEditor\UploadResult.cs" />
+    <Compile Include="UEditor\UploadState.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdvancePaymentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AgreementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AjaxReturnData.cs" />
+    <Compile Include="Areas\Admin\Controllers\APPShopController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticleCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BonusController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CapitalController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CashDepositController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CollocationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CouponController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ExpressTemplateController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GiftController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\IntegralRuleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LimitTimeBuyController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManagerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MemberController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MemberGradeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MemberIntegralController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MemberInviteController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MessageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MobileHomeProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MobileTopicController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NavigationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OAuthController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OperationLogController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderCommentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderComplaintController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderRefundController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PageSettingsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PaymentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PrivilegeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductCommentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductConsultationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductTypeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SensitiveWordController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ShopBonusController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ShopController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ShopGradeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SiteSettingController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SlideAdController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StatisticsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TopicController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VShopController.cs" />
+    <Compile Include="Areas\Admin\Controllers\WeiXinController.cs" />
+    <Compile Include="Areas\Admin\Helper\SpecificationHelper.cs" />
+    <Compile Include="Areas\Admin\Models\AccountModel.cs" />
+    <Compile Include="Areas\Admin\Models\ArticleCategoryModel.cs" />
+    <Compile Include="Areas\Admin\Models\ArticleModel.cs" />
+    <Compile Include="Areas\Admin\Models\Element.cs" />
+    <Compile Include="Areas\Admin\Models\ExpressElement.cs" />
+    <Compile Include="Areas\Admin\Models\ExpressTemplateConfig.cs" />
+    <Compile Include="Areas\Admin\Models\GiftOrderPageModel.cs" />
+    <Compile Include="Areas\Admin\Models\GiftViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\HomeCategory.cs" />
+    <Compile Include="Areas\Admin\Models\HomeFloor.cs" />
+    <Compile Include="Areas\Admin\Models\HomeFloorDetail.cs" />
+    <Compile Include="Areas\Admin\Models\IntegralRule.cs" />
+    <Compile Include="Areas\Admin\Models\LimitTimeBuyModel.cs" />
+    <Compile Include="Areas\Admin\Models\Market\BonusModel.cs" />
+    <Compile Include="Areas\Admin\Models\Market\BonusReceiveModel.cs" />
+    <Compile Include="Areas\Admin\Models\MenuManageModel.cs" />
+    <Compile Include="Areas\Admin\Models\Product\BrandInfoModel.cs" />
+    <Compile Include="Areas\Admin\Models\Product\BrandViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Product\CategoryDropListModel.cs" />
+    <Compile Include="Areas\Admin\Models\Product\CategoryModel.cs" />
+    <Compile Include="Areas\Admin\Models\Product\CategoryTreeModel.cs" />
+    <Compile Include="Areas\Admin\Models\Product\ProductModel.cs" />
+    <Compile Include="Areas\Admin\Models\Product\TypeAttribute.cs" />
+    <Compile Include="Areas\Admin\Models\Product\TypeInfoModel.cs" />
+    <Compile Include="Areas\Admin\Models\RoleInfoModel.cs" />
+    <Compile Include="Areas\Admin\Models\SlideAdModel.cs" />
+    <Compile Include="Areas\Admin\Models\TopicModel.cs" />
+    <Compile Include="Areas\Admin\Models\WeekSettlementModel.cs" />
+    <Compile Include="Areas\Mobile\CategoryModel.cs" />
+    <Compile Include="Areas\Mobile\Controllers\BonusController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\CapitalController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\CartController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\CommentController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\CouponController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\DebugController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\ErrorController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\LimitTimeBuyController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\MemberController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\PaymentController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\RedirectController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\RegisterController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\SearchController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\ShopBonusController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\TopicController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\UserInviteController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\VShopController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\WXApiController.cs" />
+    <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
+    <Compile Include="Areas\Mobile\Models\CartItemModel.cs" />
+    <Compile Include="Areas\Mobile\Models\CouponModel.cs" />
+    <Compile Include="Areas\Mobile\Models\HomeSlideAdsModel.cs" />
+    <Compile Include="Areas\Mobile\Models\HomeTopicModel.cs" />
+    <Compile Include="Areas\Mobile\Models\ProductItem.cs" />
+    <Compile Include="Areas\Mobile\Models\ShopBonusOtherReceiveModel.cs" />
+    <Compile Include="Areas\Mobile\Models\ShopCartItemModel.cs" />
+    <Compile Include="Areas\Mobile\Models\VshopCouponInfoModel.cs" />
+    <Compile Include="Areas\Mobile\Models\WeixinPassiveReply.cs" />
+    <Compile Include="Areas\Mobile\OrderCommentModel.cs" />
+    <Compile Include="Areas\Mobile\OrderDetail.cs" />
+    <Compile Include="Areas\Mobile\OrderItem.cs" />
+    <Compile Include="Areas\Mobile\ProductCommentModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\AsyncProductImportController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\BindRelationshipModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\BrandController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\CashDepositController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\CollocationController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\CouponController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\CustomerServiceController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\DeviceEditModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\DeviceShowModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\FreightTemplateController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\LimitTimeBuyController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\ManagerController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\MobileHomeProductsController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\MobileTopicController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\NavigationController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\OperationLogController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\OrderComplaintController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\OrderController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\OrderRefundController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\PageEditModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\PageSettingsController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\PoiController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\PoiEditModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\PrivilegeController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\ProductCommentController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\ProductConsultationController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\ProductImportController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\RemoveRelationshipModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\ShakeAroundController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\ShopBonusController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\ShopController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\ShopHomeModuleController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\ShopProfileController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\StatisticsController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\VShopController.cs" />
+    <Compile Include="Areas\SellerAdmin\Controllers\WeiXinController.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ArticleJsonModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\AttrSelectData.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\BrandApplyModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\CategoryJsonModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\CustomerServiceModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\EchartsData.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\FreightAreaContentInfoExtend.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\FreightTemplateInfoExtend.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\FreightTemplateInfoModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\HomeModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\InquirysheetModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\LimitTimeMarketModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\MenuManageModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ProductDescriptionTemplateController.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ProductDescriptionTemplateModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ProductDetailModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ProductModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\SecondLevelCategory.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\SelectedCategory.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ShopBonusModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ShopBonusReceiveModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ShopCategoryModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ShopFreightModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ShopHomeModuleBasicModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ShopProductCategoryModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ShopProfileStep1.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ShopProfileStep2.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ShopProfileStep3.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\SKUSpecModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\Specification.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\Specifications.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\SpecificationsValue.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\SpecJosnModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\tableDataModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\ThirdLevelCategoty.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\TopicModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\TypeAttributesModel.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\TypeAttrValue.cs" />
+    <Compile Include="Areas\SellerAdmin\Models\TypeSpecificationModel.cs" />
+    <Compile Include="Areas\SellerAdmin\SellerAdminAreaRegistration.cs" />
+    <Compile Include="Areas\Web\BizAfterLogin.cs" />
+    <Compile Include="Areas\Web\BrowseHistrory.cs" />
+    <Compile Include="Areas\Web\CollocationOrderController.cs" />
+    <Compile Include="Areas\Web\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Web\Controllers\CartController.cs" />
+    <Compile Include="Areas\Web\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Web\Controllers\ErrorController.cs" />
+    <Compile Include="Areas\Web\Controllers\FindPassWordController.cs" />
+    <Compile Include="Areas\Web\Controllers\GiftController.cs" />
+    <Compile Include="Areas\Web\Controllers\GiftOrderController.cs" />
+    <Compile Include="Areas\Web\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Web\Controllers\InstallerController.cs" />
+    <Compile Include="Areas\Web\Controllers\IntegralMallController.cs" />
+    <Compile Include="Areas\Web\Controllers\InviteController.cs" />
+    <Compile Include="Areas\Web\Controllers\LimitTimeBuyController.cs" />
+    <Compile Include="Areas\Web\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Web\Controllers\OrderComplaintController.cs" />
+    <Compile Include="Areas\Web\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Web\Controllers\OrderEvaluationController.cs" />
+    <Compile Include="Areas\Web\Controllers\OrderPartialController.cs" />
+    <Compile Include="Areas\Web\Controllers\OrderRefundController.cs" />
+    <Compile Include="Areas\Web\Controllers\PayController.cs" />
+    <Compile Include="Areas\Web\Controllers\PayStateController.cs" />
+    <Compile Include="Areas\Web\Controllers\ProductCommentController.cs" />
+    <Compile Include="Areas\Web\Controllers\ProductConcernController.cs" />
+    <Compile Include="Areas\Web\Controllers\ProductConsultationController.cs" />
+    <Compile Include="Areas\Web\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Web\Controllers\ProductPartialController.cs" />
+    <Compile Include="Areas\Web\Controllers\PublicInfrastructureController.cs" />
+    <Compile Include="Areas\Web\Controllers\RegisterController.cs" />
+    <Compile Include="Areas\Web\Controllers\ScanStateController.cs" />
+    <Compile Include="Areas\Web\Controllers\SearchController.cs" />
+    <Compile Include="Areas\Web\Controllers\ShopConcernController.cs" />
+    <Compile Include="Areas\Web\Controllers\ShopController.cs" />
+    <Compile Include="Areas\Web\Controllers\ShopSearchController.cs" />
+    <Compile Include="Areas\Web\Controllers\SideController.cs" />
+    <Compile Include="Areas\Web\Controllers\TopicController.cs" />
+    <Compile Include="Areas\Web\Controllers\UserAddressController.cs" />
+    <Compile Include="Areas\Web\Controllers\UserCapitalController.cs" />
+    <Compile Include="Areas\Web\Controllers\UserCenterController.cs" />
+    <Compile Include="Areas\Web\Controllers\UserCommentController.cs" />
+    <Compile Include="Areas\Web\Controllers\UserConsultationController.cs" />
+    <Compile Include="Areas\Web\Controllers\UserCouponController.cs" />
+    <Compile Include="Areas\Web\Controllers\UserInfoController.cs" />
+    <Compile Include="Areas\Web\Controllers\UserIntegralController.cs" />
+    <Compile Include="Areas\Web\Controllers\UserInviteController.cs" />
+    <Compile Include="Areas\Web\Controllers\UserOrderController.cs" />
+    <Compile Include="Areas\Web\Helper\ShopServiceMark.cs" />
+    <Compile Include="Areas\Web\LoginException.cs" />
+    <Compile Include="Areas\Web\Models\AgreementItemModel.cs" />
+    <Compile Include="Areas\Web\Models\AmountModel.cs" />
+    <Compile Include="Areas\Web\Models\CartItemModel.cs" />
+    <Compile Include="Areas\Web\Models\CollectionSKU.cs" />
+    <Compile Include="Areas\Web\Models\CollocationSkusModel.cs" />
+    <Compile Include="Areas\Web\Models\ConcernShopInfo.cs" />
+    <Compile Include="Areas\Web\Models\GiftDetailPageModel.cs" />
+    <Compile Include="Areas\Web\Models\GiftOrderConfirmPageModel.cs" />
+    <Compile Include="Areas\Web\Models\HomeFloorModel.cs" />
+    <Compile Include="Areas\Web\Models\HotProductInfo.cs" />
+    <Compile Include="Areas\Web\Models\InquirySheetModel.cs" />
+    <Compile Include="Areas\Web\Models\IntegralMallPageModel.cs" />
+    <Compile Include="Areas\Web\Models\MyAssetViewModel.cs" />
+    <Compile Include="Areas\Web\Models\OAuthInfo.cs" />
+    <Compile Include="Areas\Web\Models\OrderItemListModel.cs" />
+    <Compile Include="Areas\Web\Models\OrderListModel.cs" />
+    <Compile Include="Areas\Web\Models\OrderModel.cs" />
+    <Compile Include="Areas\Web\Models\PageFootServiceModel.cs" />
+    <Compile Include="Areas\Web\Models\PaymentModel.cs" />
+    <Compile Include="Areas\Web\Models\PluginsInfo.cs" />
+    <Compile Include="Areas\Web\Models\ProductBonusLableModel.cs" />
+    <Compile Include="Areas\Web\Models\ProductBrowsedHistoryModel.cs" />
+    <Compile Include="Areas\Web\Models\ProductCommentsModel.cs" />
+    <Compile Include="Areas\Web\Models\ProductDetailModelForMobie.cs" />
+    <Compile Include="Areas\Web\Models\ProductDetailModelForWeb.cs" />
+    <Compile Include="Areas\Web\Models\ProductInfoModel.cs" />
+    <Compile Include="Areas\Web\Models\ProductSKU.cs" />
+    <Compile Include="Areas\Web\Models\ProductSKUModel.cs" />
+    <Compile Include="Areas\Web\Models\ReceiveBonusModel.cs" />
+    <Compile Include="Areas\Web\Models\ShopCartItemModel.cs" />
+    <Compile Include="Areas\Web\Models\ShopConcernModel.cs" />
+    <Compile Include="Areas\Web\Models\ShopHomeFloor.cs" />
+    <Compile Include="Areas\Web\Models\ShopHomeFloorProduct.cs" />
+    <Compile Include="Areas\Web\Models\ShopHomeModel.cs" />
+    <Compile Include="Areas\Web\Models\ShopInfoModel.cs" />
+    <Compile Include="Areas\Web\Models\ShopServiceMarkModel.cs" />
+    <Compile Include="Areas\Web\Models\WebFloorProduct.cs" />
+    <Compile Include="Areas\Web\WebAreaRegistration.cs" />
+    <Compile Include="Helper\CartHelper.cs" />
+    <Compile Include="Helper\ConstValues.cs" />
+    <Compile Include="Controllers\PublicOperationController.cs" />
+    <Compile Include="Controllers\RegionAPIController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Controllers\UEditorController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\CategoryHelper.cs" />
+    <Compile Include="Helper\MVCHelpers.cs" />
+    <Compile Include="Helper\PagingInfo.cs" />
+    <Compile Include="Helper\MobileHomeProducts.cs" />
+    <Compile Include="Models\AgreementModel.cs" />
+    <Compile Include="Models\BrandModel.cs" />
+    <Compile Include="Models\CategoryKeyVal.cs" />
+    <Compile Include="Models\ChartDataViewModel.cs" />
+    <Compile Include="Models\DataGridModel_T_.cs" />
+    <Compile Include="Models\HandSlideModel.cs" />
+    <Compile Include="Models\ManagerInfoModel.cs" />
+    <Compile Include="Models\MemberModel.cs" />
+    <Compile Include="Models\OrderModel.cs" />
+    <Compile Include="Models\OrderRefundModel.cs" />
+    <Compile Include="Models\PrintModel.cs" />
+    <Compile Include="Models\ProductCommentModel.cs" />
+    <Compile Include="Models\ProductConsultationModel.cs" />
+    <Compile Include="Models\Result.cs" />
+    <Compile Include="Models\SeriesViewModel.cs" />
+    <Compile Include="Models\ShopGradeModel.cs" />
+    <Compile Include="Models\ShopModel.cs" />
+    <Compile Include="Models\SiteSettingModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helper\SceneHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Areas\Admin\Views\Account\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\SetSettlementWeek.cshtml" />
+    <Content Include="Areas\Admin\Views\AdvancePayment\edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Agreement\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\APPShop\HomePageSetting.cshtml" />
+    <Content Include="Areas\Admin\Views\ArticleCategory\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Bonus\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Bonus\Apportion.cshtml" />
+    <Content Include="Areas\Admin\Views\Bonus\Config.cshtml" />
+    <Content Include="Areas\Admin\Views\Bonus\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Bonus\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Bonus\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Bonus\UnConfig.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Show.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Verify.cshtml" />
+    <Content Include="Areas\Admin\Views\Capital\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Capital\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Capital\WithDraw.cshtml" />
+    <Content Include="Areas\Admin\Views\CashDeposit\CashDepositDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\CashDeposit\CashDepositRule.cshtml" />
+    <Content Include="Areas\Admin\Views\CashDeposit\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Collocation\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Collocation\ServiceSetting.cshtml" />
+    <Content Include="Areas\Admin\Views\Coupon\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Coupon\ServiceSetting.cshtml" />
+    <Content Include="Areas\Admin\Views\ExpressTemplate\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ExpressTemplate\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Gift\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Gift\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Gift\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Gift\Order.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\About.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Console.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Copyright.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\IntegralRule\Change.cshtml" />
+    <Content Include="Areas\Admin\Views\IntegralRule\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\LimitTimeBuy\BoughtList.cshtml" />
+    <Content Include="Areas\Admin\Views\LimitTimeBuy\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\LimitTimeBuy\MarketCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\LimitTimeBuy\ServiceSetting.cshtml" />
+    <Content Include="Areas\Admin\Views\LimitTimeBuy\SetSlide.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Manager\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\MemberGrade\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\MemberGrade\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\MemberGrade\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\MemberIntegral\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\MemberIntegral\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\MemberIntegral\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\MemberInvite\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\MemberInvite\Setting.cshtml" />
+    <Content Include="Areas\Admin\Views\Member\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Member\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\MobileTopic\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\MobileTopic\Save.cshtml" />
+    <Content Include="Areas\Admin\Views\Navigation\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\OAuth\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\OAuth\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\OperationLog\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderComment\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderComplaint\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderRefund\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\InvoiceContext.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\PageSettings\AddHomeFloor.cshtml" />
+    <Content Include="Areas\Admin\Views\PageSettings\AddHomeFloorDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\PageSettings\AddHomeFloorDetail2.cshtml" />
+    <Content Include="Areas\Admin\Views\PageSettings\HomeCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\PageSettings\HomeFloor.cshtml" />
+    <Content Include="Areas\Admin\Views\PageSettings\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PageSettings\SetPageFoot.cshtml" />
+    <Content Include="Areas\Admin\Views\Payment\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Payment\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Privilege\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Privilege\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Privilege\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductComment\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductConsultation\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductType\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductType\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\SensitiveWord\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\ShopBonus\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\ShopBonus\ServiceSetting.cshtml" />
+    <Content Include="Areas\Admin\Views\ShopGrade\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\ShopGrade\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ShopGrade\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\Shop\Auditing.cshtml" />
+    <Content Include="Areas\Admin\Views\Shop\BusinessCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Shop\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Shop\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Shop\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\SiteSetting\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SlideAd\HandSlideManagement.cshtml" />
+    <Content Include="Areas\Admin\Views\SlideAd\SlideManagement.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistics\Member.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistics\NewShop.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistics\OrderAreaMap.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistics\ProductSaleRanking.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistics\ShopRanking.cshtml" />
+    <Content Include="Areas\Admin\Views\Topic\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Topic\Management.cshtml" />
+    <Content Include="Areas\Admin\Views\VShop\HotVShop.cshtml" />
+    <Content Include="Areas\Admin\Views\VShop\TopShop.cshtml" />
+    <Content Include="Areas\Admin\Views\VShop\VShopManagement.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\WeiXin\BasicSettings.cshtml" />
+    <Content Include="Areas\Admin\Views\WeiXin\EditMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\WeiXin\HomePageSetting.cshtml" />
+    <Content Include="Areas\Admin\Views\WeiXin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\WeiXin\MenuManage.cshtml" />
+    <Content Include="Areas\Admin\Views\WeiXin\ProductSettings.cshtml" />
+    <Content Include="Areas\Admin\Views\WeiXin\SaveSlideImage.cshtml" />
+    <Content Include="Areas\Admin\Views\WeiXin\SlideImageSettings.cshtml" />
+    <Content Include="Areas\Admin\Views\WeiXin\TopicSettings.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Content\iconfont.ttf" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Cart\Cart.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Comment\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Coupon\Management.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Coupon\ShopCouponList.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Debug\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Error\Error.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Home\About.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Home\Protocol.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\LimitTimeBuy\Detail.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Login\BindUser.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Login\Entrance.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Member\Center.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Member\CollectionProduct.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Member\CollectionShop.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Member\Orders.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Order\ChooseShippingAddress.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Order\Detail.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Order\EditShippingAddress.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Order\ExpressInfo.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Order\Submit.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Order\SubmiteByCart.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Payment\Return.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Product\Detail.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Product\HistoryVisite.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Product\ProductComment.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Register\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Search\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Shared\_4ButtonsFoot.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Shared\_4ButtonsFoot_fav.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Shared\_Base.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Shared\_LeftNavi.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Shared\_SearchBox.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Topic\Detail.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\Topic\List.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\VShop\Category.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\VShop\CouponInfo.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\VShop\Detail.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\VShop\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\VShop\Introduce.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\VShop\List.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\VShop\Search.cshtml" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\web.config" />
+    <Content Include="Areas\Mobile\Templates\APP\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Content\iconfont.ttf" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Bonus\Completed.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Bonus\HasReceive.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Bonus\HaveNot.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Bonus\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Bonus\Invalid.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Bonus\Invalidtwo.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Bonus\NotAttention.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Bonus\NotStart.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Capital\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Cart\Cart.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Comment\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Coupon\Management.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Coupon\ShopCouponList.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Debug\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Error\Error.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\LimitTimeBuy\Detail.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Login\BindUser.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Login\Entrance.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Member\AccountManagement.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Member\Center.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Member\CollectionProduct.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Member\CollectionShop.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Member\Orders.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Order\ChooseShippingAddress.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Order\Detail.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Order\EditShippingAddress.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Order\ExpressInfo.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Order\Submit.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Order\SubmiteByCart.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Payment\Return.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Product\Detail.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Product\ProductComment.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Register\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Register\InviteRegist.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Search\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Shared\_4ButtonsFoot.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Shared\_4ButtonsFoot_fav.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Shared\_Base.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Shared\_LeftNavi.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Shared\_SearchBox.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\ShopBonus\Completed.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\ShopBonus\CompletedNotUser.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\ShopBonus\Expired.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\ShopBonus\HasReceive.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\ShopBonus\HaveNot.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\ShopBonus\Invalidtwo.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\ShopBonus\NotStart.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\Topic\Detail.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\UserInvite\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\VShop\Category.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\VShop\CouponInfo.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\VShop\Detail.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\VShop\GetCouponSuccess.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\VShop\Index.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\VShop\Introduce.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\VShop\List.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\VShop\Search.cshtml" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\web.config" />
+    <Content Include="Areas\Mobile\Templates\Default\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Account\AccountDetail.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Account\Detail.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Account\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Article\Details.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Article\Index.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Brand\Add.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Brand\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Brand\Show.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\CashDeposit\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\CashDeposit\Return.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Category\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Collocation\Add.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Collocation\BuyService.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Collocation\Edit.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Collocation\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Coupon\Add.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Coupon\BuyService.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Coupon\Detail.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Coupon\Edit.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Coupon\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Coupon\Receivers.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\CustomerService\Add.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\CustomerService\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\FreightTemplate\Add.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\FreightTemplate\Index.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Home\Console.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\LimitTimeBuy\AddLimitItem.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\LimitTimeBuy\BuyService.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\LimitTimeBuy\EditLimitItem.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\LimitTimeBuy\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Manager\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\MobileTopic\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\MobileTopic\Save.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Navigation\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\OperationLog\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\OrderComplaint\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\OrderRefund\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Order\Detail.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Order\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Order\Print.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Order\SendGood.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\PageSettings\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\PageSettings\SlideAds.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Poi\AddPage.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Poi\Detail.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Poi\EditPage.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Poi\Index.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Poi\Unauthorized.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Poi\UnConfig.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Privilege\Add.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Privilege\Edit.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Privilege\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ProductComment\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ProductConsultation\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ProductDescriptionTemplate\Add.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ProductDescriptionTemplate\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ProductImport\ImportManage.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Product\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Product\PublicStepOne.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Product\PublicStepTwo.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShakeAround\AddPage.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShakeAround\AddSa.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShakeAround\EditPage.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShakeAround\Index.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShakeAround\PageIndex.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShakeAround\Relationship.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Shared\NoSetting.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Shared\_SellerAdminLayout.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Shared\_ShopProfile.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopBonus\Add.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopBonus\BuyService.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopBonus\Detail.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopBonus\Edit.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopBonus\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopBonus\UnConfig.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopHomeModule\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopProfile\EditProfile.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopProfile\Finish.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopProfile\Step0.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopProfile\Step1.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopProfile\Step2.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopProfile\Step3.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopProfile\Step4.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\ShopProfile\Step5.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Shop\FreightSetting.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Shop\ShopDetail.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Statistics\DealConversionRate.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Statistics\ProductSaleRanking.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Statistics\ProductVisitRanking.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Statistics\ShopFlow.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Statistics\ShopSale.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\VShop\EditVShop.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\VShop\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\VShop\VshopHomeSite.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\web.config" />
+    <Content Include="Areas\SellerAdmin\Views\WeiXin\BasicVShopSettings.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\WeiXin\MenuManage.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Web\Views\Article\Category.cshtml" />
+    <Content Include="Areas\Web\Views\Article\Details.cshtml" />
+    <Content Include="Areas\Web\Views\Cart\AddToCart.cshtml" />
+    <Content Include="Areas\Web\Views\Cart\Cart.cshtml" />
+    <Content Include="Areas\Web\Views\CollocationOrder\Index.cshtml" />
+    <Content Include="Areas\Web\Views\Error\Error404.cshtml" />
+    <Content Include="Areas\Web\Views\FindPassWord\Error.cshtml" />
+    <Content Include="Areas\Web\Views\FindPassWord\Index.cshtml" />
+    <Content Include="Areas\Web\Views\FindPassWord\Step2.cshtml" />
+    <Content Include="Areas\Web\Views\FindPassWord\Step3.cshtml" />
+    <Content Include="Areas\Web\Views\FindPassWord\Step4.cshtml" />
+    <Content Include="Areas\Web\Views\GiftOrder\OrderSuccess.cshtml" />
+    <Content Include="Areas\Web\Views\GiftOrder\SubmitOrder.cshtml" />
+    <Content Include="Areas\Web\Views\Gift\Detail.cshtml" />
+    <Content Include="Areas\Web\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Web\Views\Home\TestLogin.cshtml" />
+    <Content Include="Areas\Web\Views\Installer\Agreement.cshtml" />
+    <Content Include="Areas\Web\Views\Installer\Completed.cshtml" />
+    <Content Include="Areas\Web\Views\Installer\Configuration.cshtml" />
+    <Content Include="Areas\Web\Views\IntegralMall\Coupon.cshtml" />
+    <Content Include="Areas\Web\Views\IntegralMall\Index.cshtml" />
+    <Content Include="Areas\Web\Views\Invite\Index.cshtml" />
+    <Content Include="Areas\Web\Views\LimitTimeBuy\Detail.cshtml" />
+    <Content Include="Areas\Web\Views\LimitTimeBuy\Home.cshtml" />
+    <Content Include="Areas\Web\Views\Login\BindUser.cshtml" />
+    <Content Include="Areas\Web\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Web\Views\Login\OauthCallBack.cshtml" />
+    <Content Include="Areas\Web\Views\OrderComplaint\Index.cshtml" />
+    <Content Include="Areas\Web\Views\OrderComplaint\Record.cshtml" />
+    <Content Include="Areas\Web\Views\OrderEvaluation\Details.cshtml" />
+    <Content Include="Areas\Web\Views\OrderEvaluation\Index.cshtml" />
+    <Content Include="Areas\Web\Views\OrderEvaluation\Satisfied.cshtml" />
+    <Content Include="Areas\Web\Views\OrderRefund\Detail.cshtml" />
+    <Content Include="Areas\Web\Views\OrderRefund\Index.cshtml" />
+    <Content Include="Areas\Web\Views\OrderRefund\List.cshtml" />
+    <Content Include="Areas\Web\Views\OrderRefund\RefundApply.cshtml" />
+    <Content Include="Areas\Web\Views\Order\ChargePay.cshtml" />
+    <Content Include="Areas\Web\Views\Order\Pay.cshtml" />
+    <Content Include="Areas\Web\Views\Order\PayConfirm.cshtml" />
+    <Content Include="Areas\Web\Views\Order\Submit.cshtml" />
+    <Content Include="Areas\Web\Views\Pay\CapitalChargeReturn.cshtml" />
+    <Content Include="Areas\Web\Views\Pay\QRPay.cshtml" />
+    <Content Include="Areas\Web\Views\Pay\Return.cshtml" />
+    <Content Include="Areas\Web\Views\ProductComment\Index.cshtml" />
+    <Content Include="Areas\Web\Views\ProductConcern\Index.cshtml" />
+    <Content Include="Areas\Web\Views\ProductConsultation\Index.cshtml" />
+    <Content Include="Areas\Web\Views\Product\Detail.cshtml" />
+    <Content Include="Areas\Web\Views\Product\GetCollocationProducts.cshtml" />
+    <Content Include="Areas\Web\Views\Product\ProductCollocation.cshtml" />
+    <Content Include="Areas\Web\Views\PublicInfrastructure\AllCategory.cshtml" />
+    <Content Include="Areas\Web\Views\Register\Agreement.cshtml" />
+    <Content Include="Areas\Web\Views\Register\Index.cshtml" />
+    <Content Include="Areas\Web\Views\Register\RegBusiness.cshtml" />
+    <Content Include="Areas\Web\Views\Register\RegisterAgreement.cshtml" />
+    <Content Include="Areas\Web\Views\Register\step3.cshtml" />
+    <Content Include="Areas\Web\Views\Search\Index.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\CustmerServices.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\Foot.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\Header.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\ShopHeader.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\ShopLayout.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\_HeadAndFoot.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\_Normal.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\_OrderTopBar.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\_PayTopBar.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\_ProductBrowsedHistory.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\_ShopCoupon.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\_SimpeHeadAndFoot.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\_TopInfo.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\_UserCenter.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\_UserCenterLeft.cshtml" />
+    <Content Include="Areas\Web\Views\ShopConcern\Index.cshtml" />
+    <Content Include="Areas\Web\Views\ShopSearch\Index.cshtml" />
+    <Content Include="Areas\Web\Views\Shop\Home.cshtml" />
+    <Content Include="Areas\Web\Views\Shop\Search.cshtml" />
+    <Content Include="Areas\Web\Views\Side\MyAsset.cshtml" />
+    <Content Include="Areas\Web\Views\Topic\Detail.cshtml" />
+    <Content Include="Areas\Web\Views\Topic\List.cshtml" />
+    <Content Include="Areas\Web\Views\UserAddress\Index.cshtml" />
+    <Content Include="Areas\Web\Views\UserCapital\ApplyWithDraw.cshtml" />
+    <Content Include="Areas\Web\Views\UserCapital\CapitalCharge.cshtml" />
+    <Content Include="Areas\Web\Views\UserCapital\Index.cshtml" />
+    <Content Include="Areas\Web\Views\UserCapital\SetPayPwd.cshtml" />
+    <Content Include="Areas\Web\Views\UserCenter\AccountSafety.cshtml" />
+    <Content Include="Areas\Web\Views\UserCenter\Bind.cshtml" />
+    <Content Include="Areas\Web\Views\UserCenter\Finished.cshtml" />
+    <Content Include="Areas\Web\Views\UserCenter\Home.cshtml" />
+    <Content Include="Areas\Web\Views\UserCenter\Index.cshtml" />
+    <Content Include="Areas\Web\Views\UserComment\Index.cshtml" />
+    <Content Include="Areas\Web\Views\UserConsultation\Index.cshtml" />
+    <Content Include="Areas\Web\Views\UserCoupon\Index.cshtml" />
+    <Content Include="Areas\Web\Views\UserInfo\ChangePassword.cshtml" />
+    <Content Include="Areas\Web\Views\UserInfo\Index.cshtml" />
+    <Content Include="Areas\Web\Views\UserInfo\ReBind.cshtml" />
+    <Content Include="Areas\Web\Views\UserInfo\ReBindStep2.cshtml" />
+    <Content Include="Areas\Web\Views\UserInfo\ReBindStep3.cshtml" />
+    <Content Include="Areas\Web\Views\UserIntegral\Index.cshtml" />
+    <Content Include="Areas\Web\Views\UserIntegral\IntegralRule.cshtml" />
+    <Content Include="Areas\Web\Views\UserIntegral\OrderList.cshtml" />
+    <Content Include="Areas\Web\Views\UserInvite\Index.cshtml" />
+    <Content Include="Areas\Web\Views\UserOrder\Detail.cshtml" />
+    <Content Include="Areas\Web\Views\UserOrder\Index.cshtml" />
+    <Content Include="Areas\Web\Views\web.config" />
+    <Content Include="Areas\Web\Views\_ViewStart.cshtml" />
+    <Content Include="fonts\checkCode.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.EMS\plugin.config" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.EMS\Thumbs.db" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Shentong\plugin.config" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Shentong\Thumbs.db" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Shunfeng\plugin.config" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Shunfeng\Thumbs.db" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Tiantian\plugin.config" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Tiantian\Thumbs.db" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Yuantong\plugin.config" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Yuantong\Thumbs.db" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Yunda\plugin.config" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Yunda\Thumbs.db" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhaijisong\plugin.config" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongtong\plugin.config" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongtong\Thumbs.db" />
+    <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongyouwuliu\plugin.config" />
+    <Content Include="Plugins\Message\Himall.Plugin.Message.Email\Data\Email.config" />
+    <Content Include="Plugins\Message\Himall.Plugin.Message.Email\plugin.config" />
+    <Content Include="Plugins\Message\Himall.Plugin.Message.SMS\Data\SMS.config" />
+    <Content Include="Plugins\Message\Himall.Plugin.Message.SMS\plugin.config" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.QQ\plugin.config" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.QQ\QQ.config" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.Weibo\plugin.config" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.Weibo\Weibo.config" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.WeiXin\Config\OAuthUrl.config" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.WeiXin\Config\OAuthWXConfig.config" />
+    <Content Include="Plugins\OAuth\Himall.Plugin.OAuth.WeiXin\plugin.config" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.Alipay\Alipay.config" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.Alipay\data.config" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.Alipay\plugin.config" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.Alipay_QRCode\data.config" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.Alipay_QRCode\plugin.config" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.UnionPay\Cert\700000000000001_acp.pfx" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.UnionPay\Cert\encrypt.cer" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.UnionPay\Cert\PM_700000000000001_acp.pfx" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.UnionPay\Cert\UpopRsaCert.cer" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.UnionPay\Cert\verify_sign_acp.cer" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.UnionPay\data.config" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.UnionPay\plugin.config" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.WeiXinPay\data.config" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.WeiXinPay\plugin.config" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.WeiXinPay_Native\data.config" />
+    <Content Include="Plugins\Payment\Himall.Plugin.Payment.WeiXinPay_Native\plugin.config" />
+    <Content Include="Scripts\ueditor\config.json" />
+    <Content Include="Scripts\ueditor\third-party\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\ueditor\third-party\video-js\font\vjs.eot" />
+    <Content Include="Scripts\ueditor\third-party\video-js\font\vjs.ttf" />
+    <Content Include="Scripts\ueditor\third-party\video-js\font\vjs.woff" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\IsExpired.cshtml" />
+    <Content Include="Views\Shared\NoAccess.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Site\Close.cshtml" />
+    <Content Include="Views\Site\State.cshtml" />
+    <Content Include="Views\Site\Version.cshtml" />
+    <Content Include="Areas\Web\Views\WithDraw\Index.cshtml" />
+    <Content Include="Areas\Web\Views\WithDraw\AddWithDraw.cshtml" />
+    <None Include="Properties\PublishProfiles\Release.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
+    <Folder Include="Plugins\configs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Himall.AOPProxy\Himall.AOPProxy.csproj">
+      <Project>{875a5349-dc48-4451-a471-2ea821df1b18}</Project>
+      <Name>Himall.AOPProxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Core\Himall.Core.csproj">
+      <Project>{5007c583-f3c7-4323-a7ad-0b6bbaa1b3cf}</Project>
+      <Name>Himall.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.IServices\Himall.IServices.csproj">
+      <Project>{31825b09-0897-47e3-8d3c-48e9ca13291b}</Project>
+      <Name>Himall.IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Model\Himall.Model.csproj">
+      <Project>{493bad11-a977-4516-9297-f5fd28c4f5e4}</Project>
+      <Name>Himall.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.ServiceProvider\Himall.ServiceProvider.csproj">
+      <Project>{c07a22ca-fed8-4dda-affa-af2134b04577}</Project>
+      <Name>Himall.ServiceProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Service\Himall.Service.csproj">
+      <Project>{772d636b-85a0-4aae-9cb4-01392870881d}</Project>
+      <Name>Himall.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Himall.Web.Framework\Himall.Web.Framework.csproj">
+      <Project>{5d77987d-aaee-49c9-9429-ad1b7b5b7b9b}</Project>
+      <Name>Himall.Web.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hishop.Weixin.MP\Hishop.Weixin.MP.csproj">
+      <Project>{0e0acc82-1aa0-405f-86b2-35c4a0bbf341}</Project>
+      <Name>Hishop.Weixin.MP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>32662</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:15006/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此项目引用这台计算机上缺少的 NuGet 程序包。使用 NuGet 程序包还原可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
