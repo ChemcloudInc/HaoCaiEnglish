@@ -65,7 +65,9 @@ namespace Himall.Web.Areas.Admin.Controllers
                     PayNo = e.PayNo,
                     PayTime = e.PayTime.ToString(),
                     Remark = e.Remark,
-                    WithdrawType = e.WithdrawType
+                    WithdrawType = e.WithdrawType,
+                    Myaccount = e.Myaccount,
+                    UserInfo = e.Myaccount+'('+e.NickName+')'
                 };
             });
             DataGridModel<ApplyWithDrawModel> dataGridModel = new DataGridModel<ApplyWithDrawModel>()

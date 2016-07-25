@@ -339,6 +339,8 @@ namespace Himall.Web.Areas.Web.Controllers
         public JsonResult SelectAccount(string account)
         {
             string[] array = account.Split('[', ']', ',', '【', '】', '，');
+            if (array.Length < 3)                                                   //可在此添加账号判断
+                return Json(new { success = false });
             return Json(new { success = true, type = array[0], myaccount = array[1], nikename = array[2] });
         }
 

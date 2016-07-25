@@ -98,5 +98,16 @@ namespace Himall.Model
             get;
             set;
         }
+
+        public string Myaccount
+        {
+            set;
+            get;
+        }
+        public string UserInfo
+        {
+            set;
+            get;
+        }
 	}
 }

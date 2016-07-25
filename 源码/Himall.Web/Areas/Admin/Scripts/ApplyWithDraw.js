@@ -92,17 +92,18 @@ function LoadData(status, withdrawno, username) {
     var dataColumn = [];
     dataColumn.push({ field: "Id", title: '提现单号', width: 80 });
     dataColumn.push({
-        field: "ApplyStatusDesc", title: '状态', width: 80, align: 'center'
+        field: "ApplyStatusDesc", title: '状态', width: 70, align: 'center'
     });
     dataColumn.push({
-        field: "WithdrawType", title: '支付方式', width: 80, align: 'center'
+        field: "WithdrawType", title: '支付方式', width: 70, align: 'center'
     });
     dataColumn.push({
-        field: "MemberName", title: '提现会员账号', width: 100, align: 'center'
+        field: "UserInfo", title: "提现账号", width: 100, align: "center"
     });
     dataColumn.push({
-        field: "NickName", title: "名称", width: 80, align: "center"
+        field: "MemberName", title: '会员账号', width: 100, align: 'center'
     });
+    
     dataColumn.push({
         field: "ApplyAmount", title: "提现金额", width: 100, align: "center"
     });
