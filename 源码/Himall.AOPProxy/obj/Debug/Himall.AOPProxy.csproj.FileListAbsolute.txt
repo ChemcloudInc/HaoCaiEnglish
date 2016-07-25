@@ -1,5 +1,0 @@
-C:\Project\Hao\haocai\源码\Himall.AOPProxy\bin\Debug\Himall.AOPProxy.dll
-C:\Project\Hao\haocai\源码\Himall.AOPProxy\bin\Debug\Himall.AOPProxy.pdb
-C:\Project\Hao\haocai\源码\Himall.AOPProxy\bin\Debug\Newtonsoft.Json.dll
-C:\Project\Hao\haocai\源码\Himall.AOPProxy\obj\Debug\Himall.AOPProxy.dll
-C:\Project\Hao\haocai\源码\Himall.AOPProxy\obj\Debug\Himall.AOPProxy.pdb

@@ -118,7 +118,7 @@ a.save-btn { height: 28px; line-height: 28px; padding: 0 14px; font-size: 14px; 
 .op-order-method a.order-method-selected .i1 { top: -3px; background-position: 0 -54px; }
 .op-order-method a.order-method-selected .i2 { top: -3px; background-position: -24px -54px; }
 .op-order-method a.order-method-selected .i3 { display: block; position: absolute; z-index: 2; width: 20px; height: 20px; overflow: hidden; top: -2px; right: -2px; background: url(http://misc.360buyimg.com/jd2008/skin/df/i/eshop-20140109B.png) 0 0 no-repeat; }
-.btn-5, .btn-6, .btn-7, .btn-8 { padding: 0 20px; line-height: 32px; background-color: #e3393c; border: 1px solid #e3393c; border-radius: 2px; color: #fff; display: inline-block; cursor: pointer; }
+.btn-5, .btn-6, .btn-7, .btn-8 { padding: 0 20px; line-height: 32px; background-color: #3480eb; border: 1px solid #3480eb; border-radius: 2px; color: #fff; display: inline-block; cursor: pointer; }
 .btn-5:hover, .btn-6:hover, .btn-7:hover, .btn-8:hover { background-color: #E42125; color: #fff; text-decoration: none;}
 a.save-btn { height: 28px; line-height: 28px; padding: 0 14px; font-size: 14px;}
 
