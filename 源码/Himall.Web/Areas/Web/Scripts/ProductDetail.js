@@ -28,6 +28,7 @@ function chooseResult() {
         for (var i = 0; i < skuId.length; i++) {
             newSKU += ((skuId[i] == undefined ? '_' + 0 : '_' + skuId[i]));
         }
+     
         getStock(newSKU);
         if (sku.length === 0) { sku = "0_0_0_"; }
     }

@@ -127,6 +127,7 @@
                        {"cols","60"},
                        {"rows","5"},
                        { "data-check", "0" } })
+                        
                         </div>
                     </div>
                     <div class="item">
@@ -224,6 +225,7 @@
         {
             target: 'Reason',
             ruleType: 'required',
+            'tips': '该信息为必填项，退款原因:6-500字！',
             beforeBlur: function () {
                 var a = $('#Reason').val();
                 if (a.length < 6 || a.length>500) {

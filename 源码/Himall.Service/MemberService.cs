@@ -335,8 +335,8 @@ namespace Himall.Service
 			}
 			disabled = disabled.GetPage(out num, query.PageNo, query.PageSize, (IQueryable<UserMemberInfo> d) => 
 				from o in d
-				orderby o.Id
-				select o);
+                orderby o.LastLoginDate descending, o.CreateDate descending
+                select o);
 			return new PageModel<UserMemberInfo>()
 			{
 				Models = disabled,
