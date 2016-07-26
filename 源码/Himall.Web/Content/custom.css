@@ -28,7 +28,7 @@ a:focus, a:hover { color: #3480eb; text-decoration: none; }
 .navbar-custom .navbar-nav>.open>a, .navbar-custom .navbar-nav>.open>a:hover, .navbar-custom .navbar-nav>.open>a:focus { color: #fff; background-color: #3480eb; }
 .navbar-custom .nav>li>a:hover, .navbar-custom .nav>li>a:focus { text-decoration: none; color: #fff; background-color: #3480eb; }
 .navbar-custom .navbar-nav>li>a { padding:16px 20px; color: #fff }
-.logo { width: 180px; height: 40px; display: block; background: url(/Images/logo.png) no-repeat 0 center;  background-size: auto 40px; margin-top: 8px; }
+.logo { width: 180px; height: 40px; display: block; background: url(/Images/logo.png) no-repeat 10px center;  background-size: auto 40px;}
 .navbar-nav { font-size: 16px }
 .dropdown-menu { min-width: 80px; font-size: 12px; border-radius: 0; top: 51px; left: 50%; }
 .dropdown-menu:before { position: absolute; content: ''; display: inline-block; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 6px solid #ccc; border-bottom: 6px solid rgba(0,0,0,.15); position: absolute; top: -6px; left: 50%; margin-left: -6px }
