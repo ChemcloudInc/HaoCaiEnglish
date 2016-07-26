@@ -18,7 +18,7 @@ a:link, a:visited { color: #333; text-decoration: none; }
 .w { width: 900px; padding: 0; margin: 0 auto; zoom: 1; }
 .w1 { width: 890px; margin: 0 auto; }
 #logo { padding: 10px 0; float: none; margin: 0; position: relative; }
-#logo b { position: absolute; background: url(../images/login-all-bg.png) 0 -131px no-repeat; width: 111px; height: 46px; top: 18px; margin-left: 20px;}
+#logo b { position: absolute; background: url(../images/login-all-bg.png) 0 -131px no-repeat; width: 111px; height: 46px; top: 28px; margin-left: 20px;}
 #entry { background: #e8e8e8; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; padding: 5px; margin: 60px auto 55px; position: relative; }
 #entry .mc { border: 1px solid #e1e1e1; background: #ffffff; height: 355px; }
 #entry-bg { width: 460px; height: 355px; position: absolute; left: 5px; top: 5px; background: url(../images/login-banner.png) no-repeat; }
@@ -69,10 +69,13 @@ a:link, a:visited { color: #333; text-decoration: none; }
 #entry .coagent .g3:hover{ background-position:0 -125px;} */
 
 #entry .coagent a { display:block; text-indent:-999em; }
-.free-regist { position: absolute; right: 42px; bottom: -31px; background: #e8e8e8; width: 115px; height: 32px; text-align: center; line-height: 32px; -moz-border-radius: 0 0 3px 3px; -webkit-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px; padding: 0px 5px 5px; }
-.free-regist span { text-align: center; font-size: 14px; background: #7cbe56; width: 115px; height: 32px; display: block; color: #FFF; -moz-border-radius: 0 0 3px 3px; -webkit-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px; }
+/*.free-regist { position: absolute; right: 42px; bottom: -31px; background: #e8e8e8; width: 115px; height: 32px; text-align: center; line-height: 32px; -moz-border-radius: 0 0 3px 3px; -webkit-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px; padding: 0px 5px 5px; }
+.free-regist span { text-align: center; font-size: 14px; background: #3480eb; width: 115px; height: 32px; display: block; color: #FFF; -moz-border-radius: 0 0 3px 3px; -webkit-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px; }
 .free-regist span:hover { background: #89c964; }
-.free-regist a { color: #ffffff; text-decoration: none }
+.free-regist a { color: #ffffff; text-decoration: none }*/
+.free-regist { position: absolute;right: 46px;top: 186px;}
+.free-regist span { }
+.free-regist a { color:#545454; text-decoration: none }
 #mb-bg { background: url(../images/login-all-bg.png) no-repeat; height: 59px; width: 853px; }
 .mb { margin-bottom: 24px; overflow: hidden; }
 #footer { padding-bottom: 30px; text-align: center; }

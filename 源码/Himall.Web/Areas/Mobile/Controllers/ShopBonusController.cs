@@ -53,6 +53,7 @@ namespace Himall.Web.Areas.Mobile.Controllers
             ViewBag.ShopAddress = GetShopAddress(shopBonusModel.ShopId);
             ViewBag.UserName = user;
             ViewBag.Price = price;
+            ViewBag.HighPrice = price + 60;
             ViewBag.OpenId = openId;
             ViewBag.ShopName = ServiceHelper.Create<IShopService>().GetShopName(shopBonusModel.ShopId);
             shopBonusModel.ShareImg = string.Concat("http://", host, shopBonusModel.ShareImg);

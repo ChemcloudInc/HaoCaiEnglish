@@ -58,7 +58,7 @@ select.search_order { width: 202px; }
 .btn-5, .btn-6, .btn-7, .btn-8 { padding: 0 20px; line-height: 32px; background-color: #3480eb; border: 1px solid #3480eb; border-radius: 2px; color: #fff; display: inline-block; cursor: pointer; }
 .btn-8 { padding: 0 15px; line-height: 26px; }
 .form .btn-5 { font-size: 14px; font-family: 'microsoft yahei'; }
-.btn-5:hover, .btn-6:hover, .btn-7:hover, .btn-8:hover { background-color: #E74347; color: #fff; text-decoration: none; }
+.btn-5:hover, .btn-6:hover, .btn-7:hover, .btn-8:hover { background-color: #3480eb; color: #fff; text-decoration: none; }
 .pd10 { padding: 10px; }
 .btn-pre { background-color: #666; border: 1px solid #666; margin-right: 10px; }
 .btn-pre:hover { background-color: #333; }

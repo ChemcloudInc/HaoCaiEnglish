@@ -47,6 +47,7 @@ namespace Himall.Web.Areas.Mobile.Controllers
             ViewBag.Signature = signature;
             ViewBag.AppId = _siteSetting.WeixinAppId;
             ViewBag.Price = price;
+        
             BonusModel bonusModel = new BonusModel(_bonusService.Get(id))
             {
             };
