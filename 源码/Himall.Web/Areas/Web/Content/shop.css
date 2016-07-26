@@ -61,7 +61,7 @@ a.btn-5:link, a.btn-6:link, a.btn-7:link, a.btn-8:link, a.btn-10:link, a.btn-11:
 .tab { overflow: hidden; }
 .tab li { float: left; height: 27px; line-height: 29px; margin-right: 3px; overflow: hidden; padding: 0 10px; position: relative; text-align: center; }
 .tab li, .tab a, .tab-item { float: left; text-align: center; }
-.i-st .tab li.curr { background: #fff; color: #e3393c; }
+.i-st .tab li.curr { background: #fff; color: #3480eb; }
 .i-st .tab li {  color: #333; cursor: pointer; height: 33px; line-height: 32px; margin-right: 0; }
 .tab li.curr, .tab li.curr a:link, .tab li.curr a:visited { color: #e3393c; font-weight: bold; }
 .tab li.curr { background-position: 0 -85px; }

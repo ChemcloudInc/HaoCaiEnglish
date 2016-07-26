@@ -1,0 +1,11 @@
+
+
+
+ 记录时间：2016-07-26 10:38:33,504 
+日志级别：  ERROR 
+出错类：Himall.Web.Areas.Web.Controllers.OrderController+<>c__DisplayClass12_0.<Pay>b__6  
+错误描述：支付页面加载支付插件出错 
+
+Himall.Core.PluginConfigException: 生成二维码出现异常:生成二维码出现异常:ILLEGAL_PARTNER_EXTERFACE
+   在 Himall.Plugin.Payment.Alipay_QRCode.Service.GetRequestUrl(String returnUrl, String notifyUrl, String orderId, Decimal totalFee, String productInfo, String openId)
+   在 Himall.Web.Areas.Web.Controllers.OrderController.<>c__DisplayClass12_0.<Pay>b__6(Plugin`1 item) 位置 E:\MyGit\源码\Himall.Web\Areas\Web\Controllers\OrderController.cs:行号 482
