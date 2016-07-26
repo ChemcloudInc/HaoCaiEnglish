@@ -70,7 +70,7 @@ a:link, a:visited { color: #333; text-decoration: none; }
 
 #entry .coagent a { display:block; text-indent:-999em; }
 .free-regist { position: absolute; right: 42px; bottom: -31px; background: #e8e8e8; width: 115px; height: 32px; text-align: center; line-height: 32px; -moz-border-radius: 0 0 3px 3px; -webkit-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px; padding: 0px 5px 5px; }
-.free-regist span { text-align: center; font-size: 14px; background: #7cbe56; width: 115px; height: 32px; display: block; color: #FFF; -moz-border-radius: 0 0 3px 3px; -webkit-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px; }
+.free-regist span { text-align: center; font-size: 14px; background: #3480eb; width: 115px; height: 32px; display: block; color: #FFF; -moz-border-radius: 0 0 3px 3px; -webkit-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px; }
 .free-regist span:hover { background: #89c964; }
 .free-regist a { color: #ffffff; text-decoration: none }
 #mb-bg { background: url(../images/login-all-bg.png) no-repeat; height: 59px; width: 853px; }
