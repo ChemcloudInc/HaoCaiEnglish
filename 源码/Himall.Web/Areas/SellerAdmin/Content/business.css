@@ -118,7 +118,7 @@
 .shop-score{ float:left; height:80px; border-right:1px solid #e3e4e4; font-size:14px; padding-right:20px; margin:10px 20px 0 0; }
 .shop-score li{ width:100%; padding-top:10px; line-height:14px;}
 .shop-score li p{ background-color:#fff; height:6px; display:inline-block; width:100px;vertical-align: middle; margin-right:10px;}
-.shop-score li p i{ display:block; background-color:#e3393c; height:6px;}
+.shop-score li p i{ display:block; background-color:#3480eb; height:6px;}
 .shop-score li p.s1 i{ width:10%}
 .shop-score li p.s2 i{ width:20%}
 .shop-score li p.s3 i{ width:30%}

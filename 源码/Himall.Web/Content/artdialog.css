@@ -28,7 +28,7 @@ table.aui_border, table.aui_dialog { border:0; margin:0; border-collapse:collaps
 .aui_buttons button:hover, .aui_buttons button:active{background-color: #e6e6e6;border-color: #adadad;}
 .aui_buttons button:active{box-shadow: inset 0 3px 5px rgba(0,0,0,.125);}
 .aui_buttons button[disabled] { cursor:default; color:#666; background:#DDD; border: solid 1px #999; }
-button.aui_state_highlight {color: #fff;background-color: #e3393c;border-color: #EA2A2D;}
+button.aui_state_highlight {color: #fff;background-color: #3480eb;border-color:#3480eb ;}
 button.aui_state_highlight:hover,button.aui_state_highlight:active {color: #fff;background-color: #EA2A2D;border-color: #EA2A2D;}
 /* common end */
 
