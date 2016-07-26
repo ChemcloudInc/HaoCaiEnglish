@@ -438,7 +438,7 @@ a.d-offline b { color: #ccc; }
 .choose a { display: block; white-space: nowrap; text-decoration: none; }
 #choose-color .dd a { float: left; }
 .choose .item a { border: 1px solid #ccc; padding: 1px; }
-.choose .item a:hover, .choose .item a:active, .choose .selected a, .choose .selected a:visited { border: 2px solid #ff3300; padding: 0; }
+.choose .item a:hover, .choose .item a:active, .choose .selected a, .choose .selected a:visited { border: 2px solid #3480eb; padding: 0; }
 .choose .item img { float: left; width: 25px; height: 25px; }
 #choose-color .item a img { margin: 1px 3px 1px 1px; }
 #choose-color i { display: inline-block; padding-top: 4px; font-style: normal; margin-right: 3px; cursor: pointer; }
@@ -889,7 +889,7 @@ a.css3-btn, a.css3-btn:hover, a.css3-btn:visited { color: #fff; }
 .cart-dibu .cart-button a.checkout, .cart-dibu .cart-button a.checkout-jd, .cart-dibu .cart-button a.checkout-jdInt { float: none; height: 50px; line-height: 50px; top: -1px; font-size: 18px; font-weight: bold; background: url(../Images/btn-check-20140627.png) no-repeat #e43f42; text-indent: -999em; }
 .cart-button a.checkout { width: 135px; display: block; overflow: hidden; text-indent: 33px; color: #fff; position: relative; font-family: "\5FAE\8F6F\96C5\9ED1"; }
 
-#toSettlement{background-color:#ff4d50;background-image: none;border-radius: 4px;font-size: 16px;font-weight: normal;height: 36px;left: -10px;line-height: 36px;text-align: center;text-indent: 0;top: 6px;width: 120px;}
+#toSettlement{background-color:#3480eb;background-image: none;border-radius: 4px;font-size: 16px;font-weight: normal;height: 36px;left: -10px;line-height: 36px;text-align: center;text-indent: 0;top: 6px;width: 120px;}
 
 
 .cart-total-2014 .total { margin-right: 20px; }
@@ -962,6 +962,7 @@ a.css3-btn, a.css3-btn:hover, a.css3-btn:visited { color: #fff; }
 .dialog-form #consignee .item label { margin-right: 100px; }
 .dialog-form #consignee .item .hookbox { margin-top: 0; }
 .dialog-form #consignee-list .item-action { position: absolute; right: 10px; padding: 0; }
+#addressListArea { padding:8px;background-color: #f7f7f7; }
 #consignee .item label b { font-weight: normal; }
 #consignee-list .item-action { padding-left: 20px; color: #999; display: none; }
 #consignee .item:hover { background-color: #fff4d3; }
@@ -972,14 +973,14 @@ a.css3-btn, a.css3-btn:hover, a.css3-btn:visited { color: #fff; }
 #checkout .form-tip { color: #999; }
 #consignee .item, #part-invoice .item { height: 28px; margin-bottom: 5px; overflow: hidden; zoom: 1; line-height: 28px; }
 #consignee .item-selected, #part-invoice .item-selected { background-color: #fff4d3; }
-.consignee-form { padding-left: 12px; }
+.consignee-form { padding-left: 12px;border: 1px solid #3480eb; background-color: #eff6ff; }
 #consignee .list, .invoice-form .list { padding: 5px 0; overflow: hidden; zoom: 1; }
 #consignee .list .label, .invoice-form .list .label { width: 85px; height: 26px; margin-right: 5px; float: left; color: #666; line-height: 26px; text-align: right; }
 #consignee .phone span, #consignee .phone em, .invoice-form .phone span, .invoice-form .phone em { float: left; }
 #consignee .list .label em, .invoice-form .list .label em { margin-right: 5px; color: #f60; font-family: sans-serif; }
 #consignee .list .field { height: 26px; float: left; line-height: 26px; }
 #consignee .textbox, .invoice-form .textbox { width: 138px; height: 16px; border: 1px solid #ccc; padding: 4px 3px; font-family: Arial, "\5b8b\4f53", sans-serif; }
-#consignee .message, .invoice-form .message { border: 1px solid #db9a9a; padding: 4px 0; background-color: #ffe8e8; }
+#consignee .message, .invoice-form .message { padding: 4px 0;  }
 #consignee .message .error, .invoice-form .error { height: 26px; padding-left: 6px; float: left; color: #c00; line-height: 26px; }
 #consignee .select-address select, .invoice-form .select-address select { height: 26px; margin: 2px 5px 0 0; border: 1px solid #ccc; line-height: 24px; }
 .selected-address { float: left; margin-right: 5px; }
@@ -987,9 +988,9 @@ a.css3-btn, a.css3-btn:hover, a.css3-btn:visited { color: #fff; }
 #consignee .phone, .invoice-form .phone { float: left; }
 #consignee .phone em, .invoice-form .phone em { padding: 0 20px 0 5px; color: #999; }
 #consignee .form-btn { height: 30px; padding-top: 4px; }
-#checkout .btn-submit { height: 30px; margin-right: 10px; padding-left: 20px; float: left; line-height: 30px; font-size: 14px; font-weight: 700; background: url(../Images/btn-20130725.png) no-repeat; }
+#checkout .btn-submit { height: 30px; margin-right: 10px; padding-left: 20px; float: left; line-height: 30px; font-size: 14px; font-weight: 700;  }
 #checkout a.btn-submit, #checkout a.btn-submit:visited, #checkout a.btn-submit:hover { color: #fff; text-decoration: none; }
-#checkout .btn-submit span { height: 30px;  float: left; cursor: pointer;background-color: #ff4d50;background-image: none;border-radius: 4px;cursor: pointer;float: left;height: 30px;left:-20px;position: relative;text-align: center;width: 140px;}
+#checkout .btn-submit span { height: 30px;  float: left; cursor: pointer;background-color: #3480eb;background-image: none;border-radius: 4px;cursor: pointer;float: left;height: 30px;left:-20px;position: relative;text-align: center;width: 140px;}
 .loading, .checkout-state { background: #fff; }
 .loading-1, .checkout-state { height: 28px; border: 1px solid #edd28b; padding: 0 10px; float: left; line-height: 28px; }
 .loading b, .checkout-state b { width: 28px; height: 28px; float: left; background: url(../Images/loading2.gif) no-repeat center center; }
@@ -1032,7 +1033,7 @@ zoom: 1; }
 .checkout-buttons .checkout-submit, .checkout-buttons .checkout-submit2, .checkout-buttons .checkout-submit-disabled { margin-top: 7px; border: 0; float: right; cursor: pointer; }
 .checkout-buttons .inner { padding-right: 18px; }
 .checkout-buttons .checkout-submit-disabled { background-color: #ccc; position: relative; line-height: 36px; font-weight: bold; font-size: 16px; cursor: not-allowed; }
-.checkout-buttons .checkout-submit {background-color: #ff4d50;border-radius: 4px;color: #fff;font-size: 15px;font-weight: bold;line-height: 36px;overflow: hidden;position: relative;width: 110px; }
+.checkout-buttons .checkout-submit {background-color: #3480eb;border-radius: 4px;color: #fff;font-size: 15px;font-weight: bold;line-height: 36px;overflow: hidden;position: relative;width: 110px; }
 .checkout-buttons .checkout-submit b { position: absolute; left: 0; top: 0; width: 135px; height: 36px;cursor: pointer; overflow: hidden; }
 .checkout-buttons .checkout-submit:hover { background-color: #EF494D; }
 .checkout-buttons .checkout-submit:hover b { background-position: 0 -36px; }
@@ -1042,7 +1043,7 @@ zoom: 1; }
 .checkout-buttons .total { padding-right: 18px; float: right; line-height: 50px; font-size: 14px; font-weight: 700; color: #6a7c86; }
 .checkout-submit-tip { background-color: rgb(255, 253, 238); border: 1px solid rgb(237, 210, 139); color: rgb(255, 102, 0); float: right; padding: 0pt 3px; height: 30px; line-height: 30px; margin: 10px 10px 0 0; }
 .checkout-buttons .total strong { color: #3480eb; font-size:18px; vertical-align: middle; font-weight: normal;padding-right:5px; }
-#checkout .s-content p { line-height: 22px;}
+#checkout .s-content p { line-height: 22px;font-weight: bold;}
 .invoice-tit-list{width:100%}
 .invoice-tit-list .invoice-item { width: 300px; }
 #btnAddInvoice{ color: #005ea6;display: block;margin-bottom: 20px;}
