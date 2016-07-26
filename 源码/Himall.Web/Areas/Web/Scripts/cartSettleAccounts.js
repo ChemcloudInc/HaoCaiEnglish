@@ -243,8 +243,10 @@ function removeFromCart(skuId) {
     var loading = showLoading();
     $.post('/cart/RemoveFromCart', { skuId: skuId }, function (result) {
         loading.close();
-        if (result.success)
+        if (result.success) {
             loadCartInfo();
+            refreshCartProducts();
+        }
         else
             $.dialog.errorTips(result.msg);
     });
@@ -328,8 +330,10 @@ function bindBatchRemove() {
         var loading = showLoading();
         $.post('/cart/BatchRemoveFromCart', { skuIds: skuIds.toString() }, function (result) {
             loading.close();
-            if (result.success)
+            if (result.success) {
                 loadCartInfo();
+                refreshCartProducts();
+            }
             else
                 $.dialog.errorTips(result.msg);
         });
