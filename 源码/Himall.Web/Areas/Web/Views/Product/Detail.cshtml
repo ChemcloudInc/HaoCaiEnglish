@@ -49,7 +49,7 @@
         var dowmImage = "down";
         var red = "red";
         var green = "green";
-
+       
         var productAndDescription = parseFloat("@ViewBag.ProductAndDescription").toFixed(2);
         var productAndDescriptionPeer = parseFloat("@ViewBag.ProductAndDescriptionPeer").toFixed(2);
         var productAndDescriptionMax = parseFloat("@ViewBag.ProductAndDescriptionMax").toFixed(2);
@@ -146,6 +146,7 @@
 <input type="hidden" id="gid" value="@Model.Product.Id" />
 <input type="hidden" id="shopid" value="@Model.Product.ShopId" />
 <input type="hidden" id="has" value="@(Model.Product.SKUInfo.Count()==0?0:1)" />
+ 
 @{
     var hdFreightType = Model.Product.Himall_FreightTemplate == null ? 0 : Model.Product.Himall_FreightTemplate.IsFree.GetHashCode();
 }
@@ -166,7 +167,8 @@
                     <li id="summary-price">
                         <div class="t">
                             <div class="dt dt01">价格</div>
-                            <strong class="p-price dt" id="jd-price">￥@ViewBag.Price</strong><span class="dt dt02">￥@ViewBag.Price*1.5</span>
+                            <strong class="p-price dt" id="jd-price">￥@ViewBag.Price</strong><span class="dt dt02">￥120</span>
+
 							@if (!string.IsNullOrEmpty(Model.Product.Himall_FreightTemplate.SendTime))
                             {
                                 <i class="dt" style="width:auto;margin-right:20px;color:#737b9e; float:right;">@(Model.Product.Himall_FreightTemplate.SendTime)h内发货</i>
