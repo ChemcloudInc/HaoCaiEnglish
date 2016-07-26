@@ -3,11 +3,12 @@ body { background-color: #f2f2f2; overflow-x: hidden; min-height: 400px; font-si
 .container { width:1210px; position: relative; padding:20px 0 30px 200px;margin: 0 auto; overflow:hidden; }
 input[type="radio"], input[type="checkbox"] { margin: 2px 0 0; line-height: normal; vertical-align: top; }
 .btn { outline: 0 !important; transition: all linear .2s; border-radius: 0 }
-.table { margin: 0; background-color:#fff; }
+.table { margin: 0; background-color:#fff;border:1px solid #ddd }
 .table#list,.table.category_table,.table#applyList,.table#HandSlideDatagrid{ margin-top:16px;}
 .table>thead>tr>th, .table>tbody>tr>td {vertical-align: middle; }
-.table>tbody>tr>td{ border-bottom: 1px dashed #f4f4f4; border-top:0;}
-.table>tbody>tr:nth-child(2n+1){ background-color:#fafbfb;}
+.table>tbody>tr>td{ border-bottom: 1px dashed #f4f4f4; border-top:0;border-right: 1px solid #ddd;}
+.table>tbody>tr:nth-child(2n){ background-color:#f2f2f2;}
+.table>tbody>tr:nth-child(2n)>td{ border-right: 1px solid #ddd;}
 .table thead tr th{ background-color:#e6e6e6; border:0; height:40px;}
 .table img { margin-right: 5px; max-width:600px }
 .input-sm, .form-control { border-radius: 0 }
