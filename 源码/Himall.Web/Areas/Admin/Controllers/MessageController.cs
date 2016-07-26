@@ -120,8 +120,8 @@ namespace Himall.Web.Areas.Admin.Controllers
 				return Json(result1);
 			}
 			string siteName = ServiceHelper.Create<ISiteSettingService>().GetSiteSettings().SiteName;
-			string str = plugin.Biz.SendTestMessage(destination, string.Concat("该条为测试信息，请勿回复!【", siteName, "】"), "这是一封测试邮件");
-		//	string str= SendTestMessage(destination, string.Concat("该条为测试信息，请勿回复!【", siteName, "】"), "这是一封测试邮件");
+		//	string str = plugin.Biz.SendTestMessage(destination, string.Concat("该条为测试信息，请勿回复!【", siteName, "】"), "这是一封测试邮件");
+			string str= SendTestMessage(destination, string.Concat("该条为测试信息，请勿回复!【", siteName, "】"), "这是一封测试邮件");
            // string str = SendMail();
            // string str = SendMails();
             if (str == "发送成功")

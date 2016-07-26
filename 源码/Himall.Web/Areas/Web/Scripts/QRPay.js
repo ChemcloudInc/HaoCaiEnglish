@@ -9,6 +9,7 @@ function checkPayDone() {
         $.getJSON('/PayState/CheckCharge', { orderIds: orderIds }, function (result) {
             if (result.success) {
                 $.dialog.succeedTips('支付成功!', function () {
+               
                     location.href = "/userCenter?url=/usercapital/&tar=usercapital";
                 });
             }
@@ -21,6 +22,7 @@ function checkPayDone() {
         $.getJSON('/PayState/Check', { orderIds: orderIds }, function (result) {
             if (result.success) {
                 $.dialog.succeedTips('支付成功!', function () {
+          
                     location.href = "/userCenter?url=/userorder?orderids="+orderIds+"&tar=userorder";
                 });
             }
