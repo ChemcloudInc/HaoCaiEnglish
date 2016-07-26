@@ -31,7 +31,7 @@ a:focus, a:hover{ color: #1b7ccd; }
 .datetimepicker { border-radius: 0 !important; }
 .datetimepicker table tr td.active:active, .datetimepicker table tr td.active:hover:active, .datetimepicker table tr td.active.disabled:active, .datetimepicker table tr td.active.disabled:hover:active, .datetimepicker table tr td.active.active, .datetimepicker table tr td.active:hover.active, .datetimepicker table tr td.active.disabled.active, .datetimepicker table tr td.active.disabled:hover.active, .datetimepicker table tr td span.active:active, .datetimepicker table tr td span.active:hover:active, .datetimepicker table tr td span.active.disabled:active, .datetimepicker table tr td span.active.disabled:hover:active, .datetimepicker table tr td span.active.active, .datetimepicker table tr td span.active:hover.active, .datetimepicker table tr td span.active.disabled.active, .datetimepicker table tr td span.active.disabled:hover.active { background: #3480eb !important }
 .btn-primary { background-color: #3480eb; border-color: #3480eb; }
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active { background-color: #EA2A2D; border-color: #EA2A2D; }
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active { background-color: #3480eb; border-color: #3480eb; }
 .btn-back { background-color: #929292; border-color: #636363; color:#fff;}
 .btn-back:hover, .btn-back:focus, .btn-back:active, .btn-back.active { color:#fff; background-color: #636363; border-color: #636363; }
 .search-box { position: relative }
