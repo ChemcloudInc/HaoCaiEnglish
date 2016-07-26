@@ -5,12 +5,12 @@ body{ color:#fff}
 .login-box .form-option{ margin-top:10px; position:relative;}
 .login-box .form-option .tipic-dialog{ top:-48px; right:89px; padding:5px}
 .login-box .form-option .tipic-dialog img{ cursor: pointer;}
-.login-box .text{ width:290px; height:36px; padding:8px; border:0 none; line-height:20px; outline:none; color:#666; margin-right:5px; font-size: 14px; border-left:4px solid #e3393c;}
+.login-box .text{ width:290px; height:36px; padding:8px; border:0 none; line-height:20px; outline:none; color:#666; margin-right:5px; font-size: 14px; border-left:4px solid #3480eb;}
 .login-box .text.text-code{ width:95px; border:0}
 .login-logo{ background:url(../Images/login-logo.png) no-repeat; padding: 30px 0 25px 210px; font-size:18px;}
-.login-box .login-btn{ background-color:#e3393c; border:0 none; height:36px; width:80px; outline:none;font-size: 14px; color:#fff}
-.login-box .login-btn:hover{ background-color:#ee614d;
-background-image: -webkit-gradient(radial,50% 10%,10,50% 0%,50,from(#F96366),to(#e3393c));}
+.login-box .login-btn{ background-color:#3480eb; border:0 none; height:36px; width:80px; outline:none;font-size: 14px; color:#fff}
+.login-box .login-btn:hover{ background-color:#3480eb;
+background-image: -webkit-gradient(radial,50% 10%,10,50% 0%,50,from(#5492ea),to(#3480eb));}
 .business-login .login-btn{ background-color:#00a1e9}
 .business-login .login-btn:hover{ background-color:#04aaf4;
 background-image: -webkit-gradient(radial,50% 10%,10,50% 0%,50,from(#24bbfe),to(#00a1e9));}
@@ -23,7 +23,7 @@ background-image: -webkit-gradient(radial,50% 10%,10,50% 0%,50,from(#24bbfe),to(
 .form-option .glyphicon{ position: absolute;}
 .glyphicon-ok-circle,.glyphicon-remove-circle{ position: absolute;top: 10px;right: 95px; font-size:14px}
 .glyphicon-ok-circle{color:#393;}
-.glyphicon-remove-circle{color:#e3393c;}
+.glyphicon-remove-circle{color:#3480eb;}
 .glyphicon-user,.glyphicon-lock{ top:12px; font-size:16px; color:#bbbaba;}
 .glyphicon-user{ left:260px;}
 .glyphicon-lock{ left:560px;}
