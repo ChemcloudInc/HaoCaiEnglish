@@ -58,8 +58,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\Email.config" />
+    <None Include="plugin.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Himall.Core\Himall.Core.csproj">
-      <Project>{8f903bd5-82d0-4b25-bec6-9b8ca8bbae1c}</Project>
+      <Project>{5007c583-f3c7-4323-a7ad-0b6bbaa1b3cf}</Project>
       <Name>Himall.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Himall.MessagePlugin\Himall.MessagePlugin.csproj">
@@ -67,11 +71,6 @@
       <Name>Himall.MessagePlugin</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Data\Email.config" />
-    <None Include="plugin.config" />
-  </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Data\config.xml" />
     <Content Include="Data\logo.png" />
