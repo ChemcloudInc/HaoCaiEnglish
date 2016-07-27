@@ -49,7 +49,7 @@ function getStock(skuId) {
             var isshoweasybt = false;
             if (stock > 0 && Status == 1) {
                 isshoweasybt = true;
-                $("#stockProductImage").text("有货，下单后立即发货");
+                $("#stockProductImage").text("有货");
                 $('#choose-btn-buy').show();
                 $("#choose-btn-append").removeClass("disabled");
             } else {

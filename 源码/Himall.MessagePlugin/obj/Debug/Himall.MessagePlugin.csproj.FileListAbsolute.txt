@@ -1,0 +1,4 @@
+E:\MyGit\源码\Himall.MessagePlugin\bin\Debug\Himall.MessagePlugin.dll
+E:\MyGit\源码\Himall.MessagePlugin\bin\Debug\Himall.MessagePlugin.pdb
+E:\MyGit\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.dll
+E:\MyGit\源码\Himall.MessagePlugin\obj\Debug\Himall.MessagePlugin.pdb

@@ -1035,7 +1035,7 @@ zoom: 1; }
 .checkout-buttons .checkout-submit-disabled { background-color: #ccc; position: relative; line-height: 36px; font-weight: bold; font-size: 16px; cursor: not-allowed; }
 .checkout-buttons .checkout-submit {background-color: #3480eb;border-radius: 4px;color: #fff;font-size: 15px;font-weight: bold;line-height: 36px;overflow: hidden;position: relative;width: 110px; }
 .checkout-buttons .checkout-submit b { position: absolute; left: 0; top: 0; width: 135px; height: 36px;cursor: pointer; overflow: hidden; }
-.checkout-buttons .checkout-submit:hover { background-color: #EF494D; }
+.checkout-buttons .checkout-submit:hover { background-color: #5f98e8; }
 .checkout-buttons .checkout-submit:hover b { background-position: 0 -36px; }
 .checkout-buttons .checkout-submit-disabled { background-color: #ccc; position: relative; line-height: 36px; font-weight: bold; font-size: 16px; cursor: not-allowed; }
 .checkout-buttons .checkout-submit-disabled { width: 135px; height: 36px; background: url(../Images/btn-disabled.png) no-repeat; overflow: hidden; margin-top: 8px; }
@@ -1081,7 +1081,7 @@ zoom: 1; }
 .pay-box .mt .extra, .mainlist .mt .extra { float: right; padding-right: 20px; }
 .pay-box .mc { border: 1px solid #b8c1c8;padding:20px;}
 .pay-box .mc label span{font-size: 14px;color:#929fa6;padding-left:15px;}
-.w990 #nextBtn{margin-top:10px;background-color: #ff4d50;border-radius: 4px;color: #fff;float: right;font-size: 16px;height: 40px;line-height: 40px;margin-top: 10px;text-align: center;width: 132px;}
+.w990 #nextBtn{margin-top:10px;background-color: #3480eb;border-radius: 4px;color: #fff;float: right;font-size: 16px;height: 40px;line-height: 40px;margin-top: 10px;text-align: center;width: 132px;}
 .pay-box .mc label #capitalAmount{padding:0;color:#ff4d50;font-weight: bold;}
 .pay-box .mc label a{display:inline-block;width:74px;height:32px;border:1px solid #6a7c86;background-color:#eff2f5;color:#6a7c86; float: right;font-size: 14px;line-height: 32px;text-align: center;border-radius: 3px;margin-right:10px;}
 .subtit { font-weight: normal; margin-bottom: 17px;color:#6a7c86;font-size: 14px; }
@@ -1116,7 +1116,7 @@ zoom: 1; }
 .p-w-sidebar { float: left; width: 379px; height: 421px; padding-left: 50px; margin-top: -20px; background: url(../Images/phone-bg.png) 50px 0 no-repeat; }
 .qrpay { padding: 20px 0 0 20px; }
 .btn-5 { padding: 0 20px; line-height: 32px; background-color: #3480eb; border: 1px solid #3480eb; border-radius: 2px; color: #fff; display: inline-block; cursor: pointer; }
-.btn-5:hover { background-color: #E74347; color: #fff; text-decoration: none; }
+.btn-5:hover { background-color: #5f98e8; color: #fff; text-decoration: none; }
 .bg-gray { background-color: #F1F2F7; }
 
 .main .btns{float:right;}

@@ -1,0 +1,17 @@
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\Himall.Plugin.Express.Tiantian.dll
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\Himall.Plugin.Express.Tiantian.pdb
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\Himall.Core.dll
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\Himall.ExpressPlugin.dll
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\log4net.dll
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\Newtonsoft.Json.dll
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\Autofac.dll
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\Autofac.Configuration.dll
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\ZipLib.dll
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\zxing.dll
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\Quartz.dll
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\Common.Logging.dll
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\Himall.Core.pdb
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\bin\Debug\Himall.ExpressPlugin.pdb
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\obj\Debug\Himall.Plugin.Express.Tiantian.csprojResolveAssemblyReference.cache
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\obj\Debug\Himall.Plugin.Express.Tiantian.dll
+E:\MyGit\源码\Himall.Plugin.Express.Tiantian\obj\Debug\Himall.Plugin.Express.Tiantian.pdb

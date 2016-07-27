@@ -1,0 +1,17 @@
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\Himall.Plugin.Express.Yuantong.dll
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\Himall.Plugin.Express.Yuantong.pdb
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\Himall.Core.dll
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\Himall.ExpressPlugin.dll
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\log4net.dll
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\Newtonsoft.Json.dll
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\Autofac.dll
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\Autofac.Configuration.dll
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\ZipLib.dll
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\zxing.dll
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\Quartz.dll
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\Common.Logging.dll
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\Himall.Core.pdb
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\bin\Debug\Himall.ExpressPlugin.pdb
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\obj\Debug\Himall.Plugin.Express.Yuantong.csprojResolveAssemblyReference.cache
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\obj\Debug\Himall.Plugin.Express.Yuantong.dll
+E:\MyGit\源码\Himall.Plugin.Express.Yuantong\obj\Debug\Himall.Plugin.Express.Yuantong.pdb

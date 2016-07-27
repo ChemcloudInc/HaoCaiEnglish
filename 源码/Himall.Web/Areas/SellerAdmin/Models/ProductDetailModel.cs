@@ -171,7 +171,11 @@ namespace Himall.Web.Areas.SellerAdmin.Models
 			get;
 			set;
 		}
-
+        public Boolean DisableBuy
+        {
+            get;
+            set;
+        }
 		public ProductDetailModel()
 		{
 		}
@@ -208,6 +212,7 @@ namespace Himall.Web.Areas.SellerAdmin.Models
 				MinSalePrice = num,
 				ShopId = 1,
 				HasSKU = true,
+                DisableBuy = m.DisableBuy,
                 Quantity=Convert.ToInt32(m.stock),//¿â´æ
 				ProductAttributeInfo = new List<ProductAttributeInfo>(),
 				Himall_ProductShopCategories = new List<ProductShopCategoryInfo>()

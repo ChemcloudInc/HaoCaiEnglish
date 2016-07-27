@@ -1,0 +1,17 @@
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\Himall.WeixinPaymentBase.dll
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\Himall.WeixinPaymentBase.pdb
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\Himall.Core.dll
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\Himall.PaymentPlugin.dll
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\log4net.dll
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\Newtonsoft.Json.dll
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\Autofac.dll
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\Autofac.Configuration.dll
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\ZipLib.dll
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\zxing.dll
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\Quartz.dll
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\Common.Logging.dll
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\Himall.Core.pdb
+E:\MyGit\源码\Himall.WeixinPaymentBase\bin\Debug\Himall.PaymentPlugin.pdb
+E:\MyGit\源码\Himall.WeixinPaymentBase\obj\Debug\Himall.WeixinPaymentBase.csprojResolveAssemblyReference.cache
+E:\MyGit\源码\Himall.WeixinPaymentBase\obj\Debug\Himall.WeixinPaymentBase.dll
+E:\MyGit\源码\Himall.WeixinPaymentBase\obj\Debug\Himall.WeixinPaymentBase.pdb

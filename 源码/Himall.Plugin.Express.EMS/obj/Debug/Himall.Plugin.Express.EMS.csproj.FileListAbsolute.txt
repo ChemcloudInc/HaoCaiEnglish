@@ -1,0 +1,17 @@
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\Himall.Plugin.Express.EMS.dll
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\Himall.Plugin.Express.EMS.pdb
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\Himall.Core.dll
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\Himall.ExpressPlugin.dll
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\log4net.dll
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\Newtonsoft.Json.dll
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\Autofac.dll
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\Autofac.Configuration.dll
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\ZipLib.dll
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\zxing.dll
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\Quartz.dll
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\Common.Logging.dll
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\Himall.Core.pdb
+E:\MyGit\源码\Himall.Plugin.Express.EMS\bin\Debug\Himall.ExpressPlugin.pdb
+E:\MyGit\源码\Himall.Plugin.Express.EMS\obj\Debug\Himall.Plugin.Express.EMS.csprojResolveAssemblyReference.cache
+E:\MyGit\源码\Himall.Plugin.Express.EMS\obj\Debug\Himall.Plugin.Express.EMS.dll
+E:\MyGit\源码\Himall.Plugin.Express.EMS\obj\Debug\Himall.Plugin.Express.EMS.pdb

@@ -1,0 +1,16 @@
+E:\MyGit\源码\Himall.Strategy.Memecached\bin\Debug\Himall.Strategy.Memecached.dll
+E:\MyGit\源码\Himall.Strategy.Memecached\bin\Debug\Himall.Strategy.Memecached.pdb
+E:\MyGit\源码\Himall.Strategy.Memecached\bin\Debug\Enyim.Caching.dll
+E:\MyGit\源码\Himall.Strategy.Memecached\bin\Debug\Himall.Core.dll
+E:\MyGit\源码\Himall.Strategy.Memecached\bin\Debug\log4net.dll
+E:\MyGit\源码\Himall.Strategy.Memecached\bin\Debug\Newtonsoft.Json.dll
+E:\MyGit\源码\Himall.Strategy.Memecached\bin\Debug\Autofac.dll
+E:\MyGit\源码\Himall.Strategy.Memecached\bin\Debug\Autofac.Configuration.dll
+E:\MyGit\源码\Himall.Strategy.Memecached\bin\Debug\ZipLib.dll
+E:\MyGit\源码\Himall.Strategy.Memecached\bin\Debug\zxing.dll
+E:\MyGit\源码\Himall.Strategy.Memecached\bin\Debug\Quartz.dll
+E:\MyGit\源码\Himall.Strategy.Memecached\bin\Debug\Common.Logging.dll
+E:\MyGit\源码\Himall.Strategy.Memecached\bin\Debug\Himall.Core.pdb
+E:\MyGit\源码\Himall.Strategy.Memecached\obj\Debug\Himall.Strategy.Memecached.csprojResolveAssemblyReference.cache
+E:\MyGit\源码\Himall.Strategy.Memecached\obj\Debug\Himall.Strategy.Memecached.dll
+E:\MyGit\源码\Himall.Strategy.Memecached\obj\Debug\Himall.Strategy.Memecached.pdb

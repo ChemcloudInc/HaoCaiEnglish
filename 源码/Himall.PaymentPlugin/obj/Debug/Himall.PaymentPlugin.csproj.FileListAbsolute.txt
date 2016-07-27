@@ -1,0 +1,15 @@
+E:\MyGit\源码\Himall.PaymentPlugin\bin\Debug\Himall.PaymentPlugin.dll
+E:\MyGit\源码\Himall.PaymentPlugin\bin\Debug\Himall.PaymentPlugin.pdb
+E:\MyGit\源码\Himall.PaymentPlugin\bin\Debug\Himall.Core.dll
+E:\MyGit\源码\Himall.PaymentPlugin\bin\Debug\log4net.dll
+E:\MyGit\源码\Himall.PaymentPlugin\bin\Debug\Newtonsoft.Json.dll
+E:\MyGit\源码\Himall.PaymentPlugin\bin\Debug\Autofac.dll
+E:\MyGit\源码\Himall.PaymentPlugin\bin\Debug\Autofac.Configuration.dll
+E:\MyGit\源码\Himall.PaymentPlugin\bin\Debug\ZipLib.dll
+E:\MyGit\源码\Himall.PaymentPlugin\bin\Debug\zxing.dll
+E:\MyGit\源码\Himall.PaymentPlugin\bin\Debug\Quartz.dll
+E:\MyGit\源码\Himall.PaymentPlugin\bin\Debug\Common.Logging.dll
+E:\MyGit\源码\Himall.PaymentPlugin\bin\Debug\Himall.Core.pdb
+E:\MyGit\源码\Himall.PaymentPlugin\obj\Debug\Himall.PaymentPlugin.csprojResolveAssemblyReference.cache
+E:\MyGit\源码\Himall.PaymentPlugin\obj\Debug\Himall.PaymentPlugin.dll
+E:\MyGit\源码\Himall.PaymentPlugin\obj\Debug\Himall.PaymentPlugin.pdb
