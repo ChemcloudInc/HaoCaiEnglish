@@ -122,7 +122,7 @@ namespace Himall.Web.Areas.Admin.Controllers
 			string siteName = ServiceHelper.Create<ISiteSettingService>().GetSiteSettings().SiteName;
 		//	string str = plugin.Biz.SendTestMessage(destination, string.Concat("该条为测试信息，请勿回复!【", siteName, "】"), "这是一封测试邮件");
 			string str= SendTestMessage(destination, string.Concat("该条为测试信息，请勿回复!【", siteName, "】"), "这是一封测试邮件");
-           // string str = SendMail();
+        //    string str = SendMail();
            // string str = SendMails();
             if (str == "发送成功")
 			{
@@ -142,7 +142,7 @@ namespace Himall.Web.Areas.Admin.Controllers
             msg.To.Add(destination);
 
        
-            msg.From = new MailAddress("15950560518@163.com", "yinzhen", System.Text.Encoding.UTF8);
+            msg.From = new MailAddress("15950560518@163.com", "15950560518@163.com", System.Text.Encoding.UTF8);
            
             msg.Subject = "这是测试邮件";//邮件标题   
             msg.SubjectEncoding = System.Text.Encoding.UTF8;//邮件标题编码   
@@ -155,7 +155,7 @@ namespace Himall.Web.Areas.Admin.Controllers
             client.Credentials = new System.Net.NetworkCredential("15950560518@163.com", "10201116yy");
             //在71info.com注册的邮箱和密码   
             client.Host = "smtp.163.com";
-            client.Port = 110;
+            client.Port = 25;
             object userState = msg;
             try
             {
@@ -206,44 +206,37 @@ namespace Himall.Web.Areas.Admin.Controllers
                 return "发送失败";
             }
         }*/
-      /* private string SendMail() 
-       { 
-          try 
-          { 
-           //邮件发送类 
-           MailMessage mail = new MailMessage(); 
-           //是谁发送的邮件 
-           mail.From = new MailAddress("1446878469@qq.com"); 
-           //发送给谁 
-           mail.To.Add("yinzhen931020@163.com"); 
-           //标题 
-           mail.Subject = "Himall"; 
-           mail.SubjectEncoding = System.Text.Encoding.UTF8; 
-           //发送优先级 
-           mail.Priority = MailPriority.High; 
-           //邮件内容 
-           mail.Body = "这是一封测试邮件";
-           mail.BodyEncoding = System.Text.Encoding.UTF8; 
-           //是否HTML形式发送 
-           mail.IsBodyHtml = true; 
-           //邮件服务器和端口 
-           SmtpClient smtp = new SmtpClient("smtp.qq.com", 25); 
-           smtp.UseDefaultCredentials = true; 
-           //指定发送方式 
-           smtp.DeliveryMethod = SmtpDeliveryMethod.Network; 
-           //指定登录名和密码 
-           smtp.Credentials = new System.Net.NetworkCredential("1446878469@qq.com", "10200610yz"); 
-           //超时时间 
-          // smtp.Timeout = 10000;
-           
-           smtp.Send(mail); 
-           return "发送成功"; 
-         } 
-       catch(Exception exp) 
-       { 
-           return "发送邮件失败"; 
-       } 
-      }*/
+        public string SendMail()
+        {
+            string str;
+            MailMessage objMailMessage = new MailMessage();
+            string fromAddress = "15950560518@163.com";//你在web.config中配置的发件人地址，就是你的邮箱地址。
+            string mailHost = "smtp.163.com";//邮件服务器，如mail.qq.com
+
+            objMailMessage.From = new MailAddress(fromAddress);//发送方地址
+            objMailMessage.To.Add(new MailAddress("1446878469@qq.com"));//收信人地址
+            objMailMessage.BodyEncoding = System.Text.Encoding.UTF8;//邮件编码
+            objMailMessage.Subject = "kobe";//邮件标题
+            objMailMessage.Body = "sss";//邮件内容
+            objMailMessage.IsBodyHtml = true;//邮件正文是否为html格式
+
+            SmtpClient objSmtpClient = new SmtpClient();
+            objSmtpClient.Host = mailHost;//邮件服务器地址
+            objSmtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;//通过网络发送到stmp邮件服务器
+            objSmtpClient.Credentials = new System.Net.NetworkCredential("15950560518@163.com", "10200610yz");//发送方的邮件地址，密码
+            //objSmtpClient.EnableSsl = true;//SMTP 服务器要求安全连接需要设置此属性
+
+            try
+            {
+                objSmtpClient.Send(objMailMessage);
+                str = "发送成功";
+            }
+            catch (Exception ex)
+            {
+                str = "发送失败";
+            }
+            return str;
+        }
 
 	}
 }
