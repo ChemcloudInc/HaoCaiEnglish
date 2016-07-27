@@ -25,7 +25,7 @@ label { font-weight: normal; max-width: none;}
 .btn-sm { vertical-align: baseline; }
 a { color: #1b7ccd; }
 a:focus, a:hover{ color: #1b7ccd; }
-.col-sm-2 .red { color: #3480eb; margin-right: 3px; font-size: 12px; vertical-align: middle; }
+.col-sm-2 .red { color: #e3393c; margin-right: 3px; font-size: 12px; vertical-align: middle; }
 /*内页重写样式-------*/
 .dropdown-menu { box-shadow: 0 0 4px #b6b6b6; -webkit-box-shadow: 0 0 4px #b6b6b6; border: 1px solid #cdcdcd; border-radius: 0 }
 .datetimepicker { border-radius: 0 !important; }

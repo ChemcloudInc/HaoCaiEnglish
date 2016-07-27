@@ -64,7 +64,7 @@ q::before, q::after { content: ''; }
 /*header
 ---------------------*/
 .header{ width:100%; background-color:#fff;}
-.search-bar { height: 60px; padding: 30px 0 35px;  width: 1190px; margin: 0 auto;}
+.search-bar { height: 60px; padding: 15px 0 20px;  width: 1190px; margin: 0 auto;}
 .logo { float: left; width: 330px; }
 .logo img{  display: inline-block;}
 .search { float: right; padding-right:280px;margin-top: 5px; }
@@ -77,7 +77,7 @@ q::before, q::after { content: ''; }
 .hot-search a { margin-right: 10px; }
 .search-form ul{ position:absolute; top:1px; left:1px; background-color:#fff;  width: 56px;line-height: 32px; font-size: 14px; box-shadow:0 2px 4px #ddd; border:1px solid #ddd; z-index:2; display:none;}
 .search-form ul li{ cursor:pointer; text-indent:12px;}
-.search-form ul li:hover{ color: #e3393c;}
+.search-form ul li:hover{ color: #3480eb;}
 .search-form label{ position:absolute; left:2px; width:56px; text-indent:12px; font-size:14px; line-height:36px; cursor:pointer; color:#666;}
 .search-form label:after{ content:''; position:absolute; top:16px; right:0; border-top:5px solid #3480eb; border-left:5px dashed transparent; border-right:5px dashed transparent; font-size:0; width:0; height:0;}
 

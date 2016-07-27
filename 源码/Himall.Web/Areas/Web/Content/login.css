@@ -11,7 +11,7 @@ body {color:#545454;background:#f2f2f2; font: 12px/1.5 Arial,Verdana,'SimSun';_b
 .clr {display: block;overflow: hidden;clear: both;height: 0;line-height: 0;font-size: 0;}
 .fl{float:left;}
 .fr{float:right}
-a{text-decoration: none; color:#333;}
+a{text-decoration: none; color:#333333;}
 a:hover{color:#e4393c; text-decoration:underline}
 
 a:link, a:visited { color: #333; text-decoration: none; }
@@ -21,8 +21,8 @@ a:link, a:visited { color: #333; text-decoration: none; }
 #logo b { position: absolute; background: url(../images/login-all-bg.png) 0 -131px no-repeat; width: 111px; height: 46px; top: 28px; margin-left: 20px;}
 #entry { background: #e8e8e8; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; padding: 5px; margin: 60px auto 55px; position: relative; }
 #entry .mc { border: 1px solid #e1e1e1; background: #ffffff; height: 355px; }
-#entry-bg { width: 460px; height: 355px; position: absolute; left: 5px; top: 5px; background: url(../images/login-banner.png) no-repeat; }
-#entry .form { position: absolute; top: 18px; right: 32px;/* width: 320px;*/ overflow: hidden; height: 354px; }
+#entry-bg { width: 460px; height: 355px; position: absolute; left: 5px; top: 6px; background: url(../images/login-banner.png) no-repeat; }
+#entry .form { position: absolute; top: 43px; right: 82px;/* width: 320px;*/ overflow: hidden; height: 354px; }
 #entry .item { height: 64px; line-height: 26px; overflow: visible; position: relative; width: 320px; z-index: 1; }
 #entry .fore1 { z-index: 10; }
 #entry .fore2 { z-index: 8; }
@@ -37,7 +37,7 @@ a:link, a:visited { color: #333; text-decoration: none; }
 .form .hline { line-height: 16px; }
 .login-prm{ color:#33cc00; border:1px solid #33cc00; padding:0 10px; line-height:24px; background-color:#e1ffe9; width:350px; margin:20px 0}
 .ftx13, .flk13 a:link, .flk13 a:visited, a.flk13:link, a.flk13:visited { color: #005AA0; }
-#entry .item-ifo .ico { position: absolute; right: 12px; top: 8px; z-index: 5; background: url(../images/login-all-bg.png) no-repeat #fff; }
+#entry .item-ifo .ico { position: absolute; right: 12px; top: 8px; z-index: 5; background: url(../images/login-all-bg.png) no-repeat; }
 #entry .item-ifo .ico.i-name { background-position: -373px -111px; width: 16px; height: 16px; }
 #entry .item-ifo .ico.i-pass { background-position: -346px -108px; width: 14px; height: 19px; }
 .form label, .form input, .form select, .form textarea, .form button, .form .label { float: left; font-size: 12px; }
@@ -73,7 +73,7 @@ a:link, a:visited { color: #333; text-decoration: none; }
 .free-regist span { text-align: center; font-size: 14px; background: #3480eb; width: 115px; height: 32px; display: block; color: #FFF; -moz-border-radius: 0 0 3px 3px; -webkit-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px; }
 .free-regist span:hover { background: #89c964; }
 .free-regist a { color: #ffffff; text-decoration: none }*/
-.free-regist { position: absolute;right: 46px;top: 186px;z-index: 1000;}
+.free-regist { position: absolute;right: 95px;top: 210px;z-index: 1000;}
 .free-regist span { }
 .free-regist a { color:#545454; text-decoration: none }
 #mb-bg { background: url(../images/login-all-bg.png) no-repeat; height: 59px; width: 853px; }
