@@ -73,7 +73,7 @@ a:link, a:visited { color: #333; text-decoration: none; }
 .free-regist span { text-align: center; font-size: 14px; background: #3480eb; width: 115px; height: 32px; display: block; color: #FFF; -moz-border-radius: 0 0 3px 3px; -webkit-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px; }
 .free-regist span:hover { background: #89c964; }
 .free-regist a { color: #ffffff; text-decoration: none }*/
-.free-regist { position: absolute;right: 46px;top: 186px;}
+.free-regist { position: absolute;right: 46px;top: 186px;z-index: 1000;}
 .free-regist span { }
 .free-regist a { color:#545454; text-decoration: none }
 #mb-bg { background: url(../images/login-all-bg.png) no-repeat; height: 59px; width: 853px; }
