@@ -216,7 +216,7 @@
             }
             <a style="line-height:30px;" href="./PublicStepOne?@que">编辑</a>
         </div>
-        <div class="form-group">
+        <div class="form-group" style="display: none">
             <label class="col-sm-2 control-label" for="">商品品牌：</label>
             <div class="col-sm-2">
                 @Html.DropDownList("brand", (IEnumerable<SelectListItem>)ViewBag.BrandDrop, new
@@ -234,13 +234,7 @@
             </div>
             <div class="col-sm-4"><span class="help-default">最多50个字</span></div>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label" for="">广告词：</label>
-            <div class="col-sm-4">
-                <textarea rows="4" cols="50" class="form-control" maxlength="100" id="ad">@(Model.ShortDescription ?? "")</textarea>
-            </div>
-            <div class="col-sm-3"><span class="help-default">最多100个字</span></div>
-        </div>
+       
         <div class="form-group">
             <label class="col-sm-2 control-label" for=""><span class="red">*</span>商城价：</label>
             <div class="col-sm-2">
@@ -520,6 +514,13 @@
                 </span>
                 <div style="padding-top:10px; float:left; color:#999;">上传图片尽量保持为<span style="color:#e3393c">正方形</span>，默认第一张为商品预览图（必填）。请上传最大图，系统会自动生成各比例商品图。</div>
             </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">广告词：</label>
+            <div class="col-sm-4">
+                <textarea rows="4" cols="50" class="form-control" maxlength="100" id="ad">@(Model.ShortDescription ?? "")</textarea>
+            </div>
+            <div class="col-sm-3"><span class="help-default">最多100个字</span></div>
         </div>
         <div class="form-group">
             <label for="" class="col-sm-2 control-label">商品描述：</label>
@@ -1064,7 +1065,7 @@
                         $('#id-table-box').append('<div class="col-sm-0" style="padding-top:10px;"><label><input type="checkbox" value="" checked="true" id="show-spec" />  隐藏未使用规格</label><span style="display:inline-block;float:right;cursor:pointer;color: #e3393c;" id="del-spec">关闭规格</span></div>');
                         // 点击关闭规格
                         $('#del-spec').bind('click', function () {
-                            $("#inventory").removeAttr("readonly").val(1);
+                            $("#inventory").removeAttr("readonly").val(parseInt(@Model.Quantity));
                             $('#id-table-box').html('');
 
                         });
@@ -1078,7 +1079,7 @@
                             if (that.UUID < 1) { submitType() }
                         });
                         $('#del-spec').bind('click', function () {
-                            $("#inventory").removeAttr("readonly").val(1);
+                            $("#inventory").removeAttr("readonly").val(parseInt(@Model.Quantity));
                             $('#id-table-box').html('');
                         });
                         //$('#id-table-box').append('<div class="col-sm-0" style="padding-top:10px;"><label><input type="checkbox" value="" checked="true" id="show-spec" />  隐藏未使用规格</label><span style="display:inline-block;float:right;cursor:pointer;" id="del-spec">关闭规格</span></div>');
