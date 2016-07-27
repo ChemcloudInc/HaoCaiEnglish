@@ -22,8 +22,8 @@ table.aui_dialog{background-color: #fff; width:100%;}
 .aui_buttons button:hover, .aui_buttons button:active{background-color: #e6e6e6;border-color: #adadad;}
 .aui_buttons button:active{box-shadow: inset 0 3px 5px rgba(0,0,0,.125);}
 .aui_buttons button[disabled] { cursor:default; color:#666; background:#DDD; border: solid 1px #999; }
-button.aui_state_highlight {color: #fff;background-color: #e3393c;border-color: #EA2A2D;}
-button.aui_state_highlight:hover,button.aui_state_highlight:active {color: #fff;background-color: #EA2A2D;border-color: #EA2A2D;}
+button.aui_state_highlight {color: #fff;background-color: #3480e8;border-color: #3480e8;}
+button.aui_state_highlight:hover,button.aui_state_highlight:active {color: #fff;background-color: #3480e8;border-color: #3480e8;}
 /* common end */
 
 .aui_nw, .aui_ne, .aui_sw, .aui_se { width:0; height:0; }
