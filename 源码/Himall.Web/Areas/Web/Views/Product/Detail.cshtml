@@ -162,12 +162,18 @@
                 <h1>@Model.Product.ProductName</h1>
                 <strong>@Model.Product.ShortDescription</strong>
             </div>
-            <div class="cl">
+            <v class="cl">
                 <ul id="summary">
                     <li id="summary-price">
                         <div class="t">
-                            <div class="dt dt01">价格</div>
-                            <strong class="p-price dt" id="jd-price">￥@ViewBag.Price</strong><span class="dt dt02">￥120</span>
+                            @if (ViewBag.DisableBuy)
+                            { <div class="p-price dt">暂无报价</div> }
+                               
+                            else
+                            { 
+                                <div class="dt dt01">价格</div>
+                               <strong class="p-price dt" id="jd-price">￥@ViewBag.Price</strong>
+                            }
 
 							@if (!string.IsNullOrEmpty(Model.Product.Himall_FreightTemplate.SendTime))
                             {
@@ -199,6 +205,7 @@
                     <li id="summary-service">
                         <div class="dt l">库存</div>
                         <div class="dd d03">
+                          
                             <span id="stockProductImage" style="float:left;">有货，下单后立即领取</span>
                         </div>
                     </li>
@@ -266,6 +273,11 @@
                             </div>
                         </li>
                     }
+                    @if (ViewBag.DisableBuy)
+                    {
+                        <span id="stockProductImage" style="float:left;">请进入店铺联系我们</span>
+                    }
+                    else { 
                     <li id="choose-amount" style="line-height: 26px;">
                         <div class="dt l">数量</div>
                         <div class="dd">
@@ -293,6 +305,7 @@
                         </div>
 
                     </li>
+                    }
                     
                 </ul>
 

@@ -4,6 +4,12 @@
 @{
     ViewBag.Title = "PublicStepTwo";
     long? proid = (long?)ViewBag.ProductId;
+    Boolean TF = false;
+    if (Model.DisableBuy)
+    { 
+        TF = true;
+    }
+   
 }
 <script src="~/Scripts/jquery.himallUpload.js"></script>
 <script src="~/Scripts/ueditor/ueditor.config.js"></script>
@@ -234,7 +240,24 @@
             </div>
             <div class="col-sm-4"><span class="help-default">最多50个字</span></div>
         </div>
-       
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for=""><span class="red">*</span>商品性质：</label>
+            @if (!TF) { 
+            <div class="col-sm-2" style="margin-top:8px">
+                <input type="radio" id="radio1" name ="DisableBuy" value="true"> 仅展示
+                <input type="radio" id="radio2" name ="DisableBuy" checked="checked" value="false"> 可出售
+            </div>
+            }
+            else
+            {
+                <div class="col-sm-2" style="margin-top:8px">
+                 <input type="radio" id="radio1" name="DisableBuy" value="true" checked="checked"> 仅展示
+                <input type="radio" id="radio2" name ="DisableBuy" value="false"> 可出售
+            </div>
+            }
+        </div>
+
         <div class="form-group">
             <label class="col-sm-2 control-label" for=""><span class="red">*</span>商城价：</label>
             <div class="col-sm-2">
@@ -616,6 +639,8 @@
 
 <script>
     var eidtor, mpEditor;
+    var Dbuy = false;
+    
     $(function () {
         (function initRichTextEditor() {
             eidtor = UE.getEditor('des');
@@ -1120,7 +1145,15 @@
                             }
                         });
                     });
+                    $("#radio1").click(function () {                                //设置不可输入
+                        Dbuy = true;
+                  //      $("#price_a").random = false;
 
+
+                    });
+                    $("#radio2").click(function () {
+                        Dbuy = false;
+                    });
                     function submitType(check) {
                         measureUnit = getMeasureUnit();
                         that.colorArr = [];
@@ -1705,17 +1738,19 @@
         } else {
             $('#cost').css({ border: '1px solid #ccc' });
         }
-        if (!price_b || parseFloat($('#price_b').attr('value')) <= 0) {
-            $('#price_b').css({ border: '1px solid #f60' });
-            $('#price_b').focus();
-        } else {
-            $('#price_b').css({ border: '1px solid #ccc' });
-        }
-        if (!price_a || parseFloat($('#price_a').attr('value')) <= 0) {
-            $('#price_a').css({ border: '1px solid #f60' });
-            $('#price_a').focus();
-        } else {
-            $('#price_a').css({ border: '1px solid #ccc' });
+        if (!Dbuy) {
+            if (!price_b || parseFloat($('#price_b').attr('value')) <= 0) {
+                $('#price_b').css({ border: '1px solid #f60' });
+                $('#price_b').focus();
+            } else {
+                $('#price_b').css({ border: '1px solid #ccc' });
+            }
+            if (!price_a || parseFloat($('#price_a').attr('value')) <= 0) {
+                $('#price_a').css({ border: '1px solid #f60' });
+                $('#price_a').focus();
+            } else {
+                $('#price_a').css({ border: '1px solid #ccc' });
+            }
         }
         if (!goods_name) {
             $('#goods_name').css({ border: '1px solid #f60' });
@@ -1964,7 +1999,8 @@
             measureUnit = '"MeasureUnit":"' + ($('#inputMeasureUnit').attr('value').replace(/\\/g, "\\\\")) + '"',
             volume = '"Volume":"' + ($('#inputVolume').attr('value')) + '"',
             weight = '"Weight":"' + ($('#inputWeight').attr('value')) + '"',
-            data = '{' + saleStatus + ',' + productId + ',' + (tableData || '"specificationsValue":[]') + ',' + specifications + ',' + category + ',' + brand + ',' + goods_name + ',' + ad + ',' + mallPrce + ',' + marketPrice + ',' + cost + ',' + rebate + ',' + stock + ',' + productCode + ',' + goodsCategory + ',' + attrSelect + ',' + pic + ',' + des + ',' + mpdes + ',' + styleTemplateId + ',' + seoTitle + ',' + seoKey + ',' + seoDes + ',' + measureUnit + ',' + volume + ',' + weight + ',' + freightTemplateId + '}';
+            disablebuy = '"DisableBuy":"'+Dbuy + '"',
+            data = '{' + saleStatus + ',' + productId + ',' + (tableData || '"specificationsValue":[]') + ',' + specifications + ',' + category + ',' + brand + ',' + goods_name + ',' + ad + ',' + mallPrce + ',' + marketPrice + ',' + cost + ',' + rebate + ',' + stock + ',' + productCode + ',' + goodsCategory + ',' + attrSelect + ',' + pic + ',' + des + ',' + mpdes + ',' + styleTemplateId + ',' + seoTitle + ',' + seoKey + ',' + seoDes + ',' + measureUnit + ',' + volume + ',' + weight + ',' + freightTemplateId + ',' + disablebuy +'}';
 
 
 
@@ -1978,6 +2014,7 @@
                     data: d,
                     dataType: "json",
                     success: function (data) {
+         
                         if (data.successful == true) {
                             window.location.href = "@Url.Action("Management", "Product")";//数据提交成功页面跳转
                         } else {
@@ -1990,7 +2027,7 @@
             send('../Product/SaveProductDetail', { productDetail: data });
         } else {
             categoryFn();
-            //$.dialog.errorTips('必填属性没有填写完成!');
+            $.dialog.errorTips('必填属性没有填写完成!');
         }
     });
     // --------------- 折扣算法

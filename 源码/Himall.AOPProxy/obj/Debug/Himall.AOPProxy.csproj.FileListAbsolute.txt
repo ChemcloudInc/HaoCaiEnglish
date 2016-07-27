@@ -46,3 +46,8 @@ D:\web\haocai\源码\Himall.AOPProxy\bin\Debug\Newtonsoft.Json.dll
 D:\web\haocai\源码\Himall.AOPProxy\obj\Debug\Himall.AOPProxy.csprojResolveAssemblyReference.cache
 D:\web\haocai\源码\Himall.AOPProxy\obj\Debug\Himall.AOPProxy.dll
 D:\web\haocai\源码\Himall.AOPProxy\obj\Debug\Himall.AOPProxy.pdb
+E:\MyGit\源码\Himall.AOPProxy\bin\Debug\Himall.AOPProxy.dll
+E:\MyGit\源码\Himall.AOPProxy\bin\Debug\Himall.AOPProxy.pdb
+E:\MyGit\源码\Himall.AOPProxy\bin\Debug\Newtonsoft.Json.dll
+E:\MyGit\源码\Himall.AOPProxy\obj\Debug\Himall.AOPProxy.dll
+E:\MyGit\源码\Himall.AOPProxy\obj\Debug\Himall.AOPProxy.pdb

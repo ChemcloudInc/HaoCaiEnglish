@@ -372,7 +372,11 @@ namespace Himall.Model
 			get;
 			set;
 		}
-
+        public bool DisableBuy
+        {
+            get;
+            set;
+        }
 		public ProductInfo()
 		{
             ProductConsultationInfo = new HashSet<Himall.Model.ProductConsultationInfo>();

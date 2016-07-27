@@ -1164,6 +1164,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 		[ValidateInput(false)]
 		public JsonResult SaveProductDetail(string productDetail)
 		{
+         //   productDetail = "{\"saleStatus\":1,\"productId\":0,\"specificationsValue\":[],\"specifications\":[],\"categoryId\":\"48\",\"brandId\":\"0\",\"goodsName\":\"大风车\",\"adWord\":\"\",\"mallPrce\":\"12\",\"marketPrice\":\"13\",\"cost\":\"0.00\",\"rebate\":\"92.31\",\"stock\":\"555\",\"productCode\":\"\",\"goodsCategory\":[334],\"attrSelectData\":[{\"isPlatform\":false,\"AttrId\":10,\"valueId\":\"\"},{\"isPlatform\":false,\"AttrId\":11,\"valueId\":\"\"},{\"isPlatform\":false,\"AttrId\":12,\"valueId\":\"\"},{\"isPlatform\":false,\"AttrId\":70,\"valueId\":\"\"}],\"pic\":[\"/temp/201607271334267704210.jpg\",\"/2.png\",\"/3.png\",\"/4.png\",\"/5.png\"],\"des\":\"<p>22<br/></p>\",\"mdes\":\"\",\"styleTemplateId\":[0,0],\"seoTitle\":\" \",\"seoKey\":\" \",\"seoDes\":\" \",\"MeasureUnit\":\"个\",\"Volume\":\"0\",\"Weight\":\"0\",\"FreightTemplateId\":\"148\",\"DisableBuy\":\"False\"}";
 			IProductService productService = ServiceHelper.Create<IProductService>();
 			ICategoryService categoryService = ServiceHelper.Create<ICategoryService>();
 			ProductDetailModel productDetailModel = JsonConvert.DeserializeObject<ProductDetailModel>(productDetail);

@@ -135,7 +135,7 @@
                             $.post('PayByCapital', { orderIds: $('#orderIds').val(), pwd: $('#payPwd').val(), payid: $('#payid').val() }, function (result) {
                                 if (result.success) {
                                     $.dialog.succeedTips(result.msg, function () {
-                                        $.dialog.alert("kobe");
+                                        
                                         location.href = "/userCenter?url=/userorder&tar=userorder";
                                     });
                                 }

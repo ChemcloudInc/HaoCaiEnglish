@@ -1165,6 +1165,7 @@
           <Property Name="Quantity" Type="int" />
           <Property Name="MeasureUnit" Type="varchar" MaxLength="20" />
           <Property Name="EditStatus" Type="int" Nullable="false" />
+          <Property Name="DisableBuy" Type="bit" Nullable="true" />
         </EntityType>
         <EntityType Name="Himall_ProductShopCategories">
           <Key>
@@ -4039,6 +4040,7 @@
           <Property Name="HasSKU" Type="Boolean" Nullable="false" />
           <Property Name="VistiCounts" Type="Int64" Nullable="false" />
           <Property Name="SaleCounts" Type="Int64" Nullable="false" />
+          <Property Name="DisableBuy" Type="Boolean" Nullable="true" />
           <NavigationProperty Name="ProductConsultationInfo" Relationship="Himall.Model.FK_Product_ProductConsultation" FromRole="Himall_Products" ToRole="Himall_ProductConsultations" />
           <NavigationProperty Name="ProductAttributeInfo" Relationship="Himall.Model.FK_Product_ProductAttribute" FromRole="Products" ToRole="Himall_ProductAttributes" />
           <NavigationProperty Name="ProductDescriptionInfo" Relationship="Himall.Model.FK_Product_ProductDescription" FromRole="Products" ToRole="Himall_ProductDescriptions" />
@@ -7212,6 +7214,7 @@
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="ShopId" ColumnName="ShopId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DisableBuy" ColumnName="DisableBuy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

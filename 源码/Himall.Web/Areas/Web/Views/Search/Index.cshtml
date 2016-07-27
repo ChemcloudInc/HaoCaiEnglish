@@ -325,10 +325,17 @@
                                     </a>
                                     <div shop_id="0"></div>
                                 </div>
+                                @if (product.DisableBuy) {
+                                    <div class="p-price">
+                                       <strong>暂无网上报价</strong>
+                                    <label style="float:right" id="lblOrderCount_@product.Id">成交 <b> @product.SaleCounts </b>笔</label>
+                                </div> }
+                                else { 
                                 <div class="p-price">
                                     <strong>￥@product.MinSalePrice.ToString("f2")</strong>
                                     <label style="float:right" id="lblOrderCount_@product.Id">成交 <b> @product.SaleCounts </b>笔</label>
                                 </div>
+                                }
                                 <div class="p-name">
                                     <a target="_blank" href="@Url.Action("Detail", "Product", new { id = product.Id })">
                                         @if (!string.IsNullOrWhiteSpace(ViewBag.keywords))

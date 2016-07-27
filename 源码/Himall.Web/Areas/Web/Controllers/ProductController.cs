@@ -376,7 +376,9 @@ namespace Himall.Web.Areas.Web.Controllers
                 }
             }
             ViewBag.Price = string.IsNullOrWhiteSpace(str) ? product.MinSalePrice.ToString("f2") : str;
+            ViewBag.DisableBuy = product.DisableBuy;
             web.Product = product;
+
             ViewBag.IsSellerAdminProdcut = product.Himall_Shops.IsSelf;
             ViewBag.CouponCount = ServiceHelper.Create<ICouponService>().GetTopCoupon(product.ShopId, 5, PlatformType.PC).Count();
             ViewBag.IsExpiredShop = ServiceHelper.Create<IShopService>().IsExpiredShop(product.ShopId);
