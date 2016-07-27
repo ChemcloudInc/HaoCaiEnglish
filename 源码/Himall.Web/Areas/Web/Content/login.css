@@ -11,7 +11,7 @@ body {color:#545454;background:#f2f2f2; font: 12px/1.5 Arial,Verdana,'SimSun';_b
 .clr {display: block;overflow: hidden;clear: both;height: 0;line-height: 0;font-size: 0;}
 .fl{float:left;}
 .fr{float:right}
-a{text-decoration: none; color:#333333;}
+a{text-decoration: none; color:#333;}
 a:hover{color:#e4393c; text-decoration:underline}
 
 a:link, a:visited { color: #333; text-decoration: none; }
