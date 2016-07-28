@@ -184,12 +184,19 @@ namespace Himall.Web.Areas.Admin.Controllers
 		{
 			string empty = string.Empty;
 			long[] numArray = array;
-			for (int i = 0; i < numArray.Length; i++)
-			{
-				long num = numArray[i];
-				empty = string.Concat(empty, num, ",");
-			}
-			return empty.Substring(0, empty.Length - 1);
+            if (numArray.Length > 0)
+            {
+                for (int i = 0; i < numArray.Length; i++)
+                {
+                    long num = numArray[i];
+                    empty = string.Concat(empty, num, ",");
+                }
+                return empty.Substring(0, empty.Length - 1);
+            }
+            else
+            {
+                return empty;
+            }
 		}
 
 		[HttpPost]
