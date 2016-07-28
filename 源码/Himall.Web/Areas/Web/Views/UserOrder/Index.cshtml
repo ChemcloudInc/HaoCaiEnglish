@@ -130,12 +130,16 @@
                                     if( !string.IsNullOrWhiteSpace( item.Size ) ) { spc += "，尺寸：" + item.Size; }
                                     if( !string.IsNullOrWhiteSpace( item.Version ) ) { spc += "，版本：" + item.Version; }
                                     <div>
-                                        <a target="_blank" class="img-box" href="@Url.Action("Detail", "Product", new { id = @item.ProductId})" style="float:none;">
+                                        <a target="_blank" class="img-box" href="@Url.Action("Detail", "Product", new { id = @item.ProductId})" style="float:left;">
                                             <img width="50" height="50" title="@item.ProductName 【@spc.TrimStart('，')】" src="@item.ThumbnailsUrl" class="err-product" />
                                         </a>
-                                        <span>@item.ProductName 【@spc.TrimStart('，')】</span>
-                                        <span class="ftx-04">@item.SalePrice.ToString("F2")</span>
-                                        <span>x @item.Quantity</span>
+                                        <div style="float:left;margin-left: 20px;margin-top:5px;">
+                                            <p>@item.ProductName 【@spc.TrimStart('，')】</p>
+                                            <p>
+                                                <span class="ftx-04"> ￥@item.SalePrice.ToString("F2")</span>
+                                                <span>x @item.Quantity</span>
+                                            </p>
+                                        </div>
                                         <div class="icon-img">
                                             @if( item.CashDepositsObligation.IsCustomerSecurity )
                                             {
