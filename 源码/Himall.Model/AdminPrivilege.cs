@@ -8,7 +8,7 @@ namespace Himall.Model
 		ProductManage = 2001,
 		[Privilege("商品", "分类管理", 2002, "category/management", "category", "")]
 		CategoryManage = 2002,
-		[Privilege("商品", "品牌管理", 2003, "brand/Verify", "brand", "")]
+        [Privilege("商品", "品牌管理", 2003, "brand/management", "brand", "")]
 		BrandManage = 2003,
 		[Privilege("商品", "类型管理", 2004, "ProductType/management", "ProductType", "")]
 		ProductTypeManage = 2004,
