@@ -36,8 +36,8 @@
         <table class="tb-void">
             <colgroup>
                 <col width="1" />
-                <col width="330" />
-                <col width="90" />
+                <col width="420" />
+
                 <col width="120" />
                 <col width="140" />
                 <col width="120" />
@@ -47,7 +47,6 @@
             <thead>
                 <tr class="tr">
                     <th colspan="2">订单信息</th>
-                    <th>收货人</th>
                     <th>订单金额</th>
                     <th>
                         <select name="" id="submitDate" onchange="Query()">
@@ -93,10 +92,10 @@
                     {
                         child = false;
                     }
-                    <tr class="sep-row"><td colspan="8"></td></tr>
+                    <tr class="sep-row"><td colspan="7"></td></tr>
                     <tr class="tr-th">
                         <td class="sep-col"></td>
-                        <td class="tr-th-text" colspan="6">
+                        <td class="tr-th-text" colspan="5">
                             <span class="tcol1">
                                 订单编号:
                                 <a href="@Url.Action("detail", new { id=@m.Id})">
@@ -134,6 +133,7 @@
                                         <a target="_blank" class="img-box" href="@Url.Action("Detail", "Product", new { id = @item.ProductId})" style="float:none;">
                                             <img width="50" height="50" title="@item.ProductName 【@spc.TrimStart('，')】" src="@item.ThumbnailsUrl" class="err-product" />
                                         </a>
+                                        <span>@item.ProductName 【@spc.TrimStart('，')】</span>
                                         <span class="ftx-04">@item.SalePrice.ToString("F2")</span>
                                         <span>x @item.Quantity</span>
                                         <div class="icon-img">
@@ -154,7 +154,7 @@
                                 }
                             </div>
                         </td>
-                        <td><div class="u-name">@m.ShipTo</div></td>
+             
                         <td>
                             <span class="ftx-04"> ￥@m.OrderTotalAmount.ToString( "F2" ) </span>
 
