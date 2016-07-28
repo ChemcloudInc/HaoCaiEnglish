@@ -1472,6 +1472,7 @@ namespace Himall.Service
             brandId.FreightTemplateId = model.FreightTemplateId;
             brandId.Volume = model.Volume;
             brandId.Weight = model.Weight;
+            brandId.DisableBuy = model.DisableBuy;
             brandId.MeasureUnit = model.MeasureUnit;
             brandId.ImagePath = model.ImagePath;
             brandId.EditStatus = model.EditStatus;
