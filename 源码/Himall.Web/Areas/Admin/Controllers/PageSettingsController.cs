@@ -377,8 +377,8 @@ namespace Himall.Web.Areas.Admin.Controllers
 			string mapPath = IOHelper.GetMapPath(image);
 			string extension = (new FileInfo(mapPath)).Extension;
 			string empty = string.Empty;
-			empty = IOHelper.GetMapPath("/Storage/Plat/ImageAd");
-			string str = "/Storage/Plat/ImageAd/";
+			empty = IOHelper.GetMapPath("/Storage/Plat/Site");
+			string str = "/Storage/Plat/Site/";
 			if (!Directory.Exists(empty))
 			{
 				Directory.CreateDirectory(empty);
