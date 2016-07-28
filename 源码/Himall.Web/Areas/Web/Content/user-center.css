@@ -230,15 +230,16 @@ table { empty-cells: show; }
 .ftx02, .ftx-02 { color: #71b247; }
 .btn-im, .btn-imoff { background: url("../images/order-icon-20140811.png") repeat scroll 0 0; display: inline-block; float: left; height: 16px; line-height: 100px; margin: 4px 0 0; overflow: hidden; width: 16px; }
 .btn-1, .btn-2, .btn-3, .btn-4 { background-color: #E74347; border-radius: 2px; color: #fff; display: inline-block; height: 18px; line-height: 18px; padding: 3px 15px 4px; }
-.img-list { overflow: hidden; width: 280px; }
-.tb-void .img-list { text-align: left; }
+.img-list { overflow: hidden; width: 400px; }
+.tb-void .img-list { text-align: left;margin-top: -20px;}
 .tb-void .img-list .icon-img img{height:24px;}
 
-.img-list .img-box { border: 1px solid #e1e1e1; float: left; }
-.img-list div { width: 80px; text-align: center; margin-bottom: 4px; margin-right: 4px; display: inline-block; }
-.img-list div span { display: block; }
+.img-list .img-box { float: left; }
+.img-list>div { margin-bottom: 4px; margin-right: 4px;  overflow: hidden;border-top:1px dashed #ddd;  padding: 15px 5px 10px; }
+.img-list>div:first-child {border-top:none;}
+.img-list div span { }
 /*.tb-void a { color: #005ea7; }*/
-.tr-td td { padding: 10px; vertical-align: middle; border-bottom: 1px solid #e8e8e8; }
+.tr-td td { padding: 20px 10px 0; vertical-align: top; border-bottom: 1px solid #e8e8e8; }
 .btn-1:link, .btn-1:visited, .btn-2:link, .btn-2:visited, .btn-3:link, .btn-3:visited, .btn-4:link, .btn-4:visited { color: #fff; text-decoration: none; }
 .ftx04, .ftx-04 { color: #ff8a15; }
 .mt10 { margin-top: 10px; }
