@@ -56,6 +56,5 @@ D:\web\haocai\源码\Himall.Plugin.Express.Shunfeng\bin\Debug\Common.Logging.dll
 D:\web\haocai\源码\Himall.Plugin.Express.Shunfeng\bin\Debug\System.Web.WebPages.Deployment.dll
 D:\web\haocai\源码\Himall.Plugin.Express.Shunfeng\bin\Debug\Himall.Core.pdb
 D:\web\haocai\源码\Himall.Plugin.Express.Shunfeng\bin\Debug\Himall.ExpressPlugin.pdb
-D:\web\haocai\源码\Himall.Plugin.Express.Shunfeng\obj\Debug\Himall.Plugin.Express.Shunfeng.csprojResolveAssemblyReference.cache
 D:\web\haocai\源码\Himall.Plugin.Express.Shunfeng\obj\Debug\Himall.Plugin.Express.Shunfeng.dll
 D:\web\haocai\源码\Himall.Plugin.Express.Shunfeng\obj\Debug\Himall.Plugin.Express.Shunfeng.pdb

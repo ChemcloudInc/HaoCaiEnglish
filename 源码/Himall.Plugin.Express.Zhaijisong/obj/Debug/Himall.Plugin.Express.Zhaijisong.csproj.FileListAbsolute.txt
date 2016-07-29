@@ -58,4 +58,3 @@ D:\web\haocai\源码\Himall.Plugin.Express.Zhaijisong\bin\Debug\Himall.Core.pdb
 D:\web\haocai\源码\Himall.Plugin.Express.Zhaijisong\bin\Debug\Himall.ExpressPlugin.pdb
 D:\web\haocai\源码\Himall.Plugin.Express.Zhaijisong\obj\Debug\Himall.Plugin.Express.Zhaijisong.dll
 D:\web\haocai\源码\Himall.Plugin.Express.Zhaijisong\obj\Debug\Himall.Plugin.Express.Zhaijisong.pdb
-D:\web\haocai\源码\Himall.Plugin.Express.Zhaijisong\obj\Debug\Himall.Plugin.Express.Zhaijisong.csprojResolveAssemblyReference.cache

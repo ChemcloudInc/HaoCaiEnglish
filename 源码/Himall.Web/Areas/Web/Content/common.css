@@ -91,7 +91,7 @@ q::before, q::after { content: ''; }
 
 .categorys { position: absolute; top: 0; left: 0; width: 210px; height: 41px; background-color: #3480eb; }
 .cate-all {  font-size: 16px; }
-.cate-all a { color: #fff; margin-left: 12px; line-height: 41px }
+.cate-all a { color: #fff; margin-left: 12px; line-height: 41px;    font: 400 15px/44px "microsoft yahei"; }
 .categorys .mc { position: absolute; top: 41px; left: 0; width: 210px; height: 480px; background-color:#444; background:rgba(56,56,60,0.95);  overflow: visible;border: 0; }
 .categorys .item { width: 209px; height: 34px; }
 .categorys span { display: block; width: 210px; position: absolute; z-index: 1; }
@@ -132,7 +132,7 @@ q::before, q::after { content: ''; }
 .nav { filter: none;  height: 40px; overflow: hidden; }
 .nav li { float: left; position: relative;}
 .nav li.cur a, .nav li:hover a { color: #2964b7; }
-.nav li a { display: block;padding: 0 27px;color: #000; font-size:16px; text-decoration: none; line-height: 40px; transition:all .3s; }
+.nav li a { display: block;padding: 0 27px;color: #000; font-size:16px; text-decoration: none; line-height: 40px; transition:all .3s;     font: 400 15px/44px "microsoft yahei";}
 
 .right-side{ position:fixed; right:0; top:0; height:100%; z-index: 999;}
 .right-side-menu{ height:100%; width:40px; background-color:#2a2a2e; position:relative;  float: left; }
