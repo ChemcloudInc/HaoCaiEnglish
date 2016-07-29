@@ -296,14 +296,14 @@ function checkEmailIsValid() {
     return result;
 }
 
-var delayTime = 120;
+var delayTime = 60;
 var delayFlag = true;
 function countDown() {
     delayTime--;
     $("#sendMobileCode").attr("disabled", "disabled");
     $("#dyMobileButton").html(delayTime + '秒后重新获取');
     if (delayTime == 1) {
-        delayTime = 120;
+        delayTime = 60;
         $("#mobileCodeSucMessage").removeClass().empty();
         $("#dyMobileButton").html("获取邮箱验证码");
         $("#cellPhone_error").addClass("hide");
@@ -360,7 +360,7 @@ function sendMobileCode() {
             
             if (result.success) {
                 $("#cellPhone_error").hide();
-                $("#dyMobileButton").html("120秒后重新获取");
+                $("#dyMobileButton").html("60秒后重新获取");
                 setTimeout(countDown, 1000);
                 $("#sendMobileCode").removeClass().addClass("btn").attr("disabled", "disabled");
                 $("#checkCode").removeAttr("disabled");

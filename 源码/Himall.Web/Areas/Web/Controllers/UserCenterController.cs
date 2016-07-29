@@ -294,7 +294,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = false,
-					msg = "120秒内只允许请求一次，请稍后重试!"
+					msg = "60秒内只允许请求一次，请稍后重试!"
 				};
 				return Json(result);
 			}
