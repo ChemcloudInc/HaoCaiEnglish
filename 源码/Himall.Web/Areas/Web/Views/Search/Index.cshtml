@@ -325,59 +325,61 @@
                                     </a>
                                     <div shop_id="0"></div>
                                 </div>
-                                @if (product.DisableBuy) {
+                                <div class="lh-wrap-bottom">
+                                    @if (product.DisableBuy) {
+                                        <div class="p-price">
+                                           <strong>暂无网上报价</strong>
+                                        <label style="float:right" id="lblOrderCount_@product.Id">成交 <b> @product.SaleCounts </b>笔</label>
+                                    </div> }
+                                    else { 
                                     <div class="p-price">
-                                       <strong>暂无网上报价</strong>
-                                    <label style="float:right" id="lblOrderCount_@product.Id">成交 <b> @product.SaleCounts </b>笔</label>
-                                </div> }
-                                else { 
-                                <div class="p-price">
-                                    <strong>￥@product.MinSalePrice.ToString("f2")</strong>
-                                    <label style="float:right" id="lblOrderCount_@product.Id">成交 <b> @product.SaleCounts </b>笔</label>
-                                </div>
-                                }
-                                <div class="p-name">
-                                    <a target="_blank" href="@Url.Action("Detail", "Product", new { id = product.Id })">
-                                        @if (!string.IsNullOrWhiteSpace(ViewBag.keywords))
-                                        {
-                                            string newProductName = string.Empty;
-                                            string[] keywords = ((string)ViewBag.keywords).Replace("\t", " ").Replace("　", " ").Split(' ');
-                                            bool found = false;
-                                            for (var i = 0; i < product.ProductName.Length; i++)
+                                        <strong>￥@product.MinSalePrice.ToString("f2")</strong>
+                                        <label style="float:right" id="lblOrderCount_@product.Id">成交 <b> @product.SaleCounts </b>笔</label>
+                                    </div>
+                                    }
+                                    <div class="p-name">
+                                        <a target="_blank" href="@Url.Action("Detail", "Product", new { id = product.Id })">
+                                            @if (!string.IsNullOrWhiteSpace(ViewBag.keywords))
                                             {
-                                                found = false;
-                                                foreach (var keyword in keywords)
+                                                string newProductName = string.Empty;
+                                                string[] keywords = ((string)ViewBag.keywords).Replace("\t", " ").Replace("　", " ").Split(' ');
+                                                bool found = false;
+                                                for (var i = 0; i < product.ProductName.Length; i++)
                                                 {
-                                                    if (!string.IsNullOrWhiteSpace(keyword))
+                                                    found = false;
+                                                    foreach (var keyword in keywords)
                                                     {
-                                                        if (product.ProductName.Substring(i).ToUpper().StartsWith(keyword.ToUpper()))
+                                                        if (!string.IsNullOrWhiteSpace(keyword))
                                                         {
-                                                            newProductName += "<font class='keycolor'>" + product.ProductName.Substring(i, keyword.Length) + "</font>";
-                                                            i += keyword.Length-1;
-                                                            found = true;
-                                                            break;
+                                                            if (product.ProductName.Substring(i).ToUpper().StartsWith(keyword.ToUpper()))
+                                                            {
+                                                                newProductName += "<font class='keycolor'>" + product.ProductName.Substring(i, keyword.Length) + "</font>";
+                                                                i += keyword.Length-1;
+                                                                found = true;
+                                                                break;
+                                                            }
                                                         }
                                                     }
+                                                    if (!found)
+                                                    {
+                                                        newProductName += product.ProductName[i];
+                                                    }
                                                 }
-                                                if (!found)
-                                                {
-                                                    newProductName += product.ProductName[i];
-                                                }
+                                                @MvcHtmlString.Create(newProductName);
                                             }
-                                            @MvcHtmlString.Create(newProductName);
-                                        }
-                                        else
-                                        {
-                                            @product.ProductName
-                                        }
-                                    </a>
-                                </div>
+                                            else
+                                            {
+                                                @product.ProductName
+                                            }
+                                        </a>
+                                    </div>
 
-                                <div class="p-price">
-                                    <label style="float:left;width:125px;" id="lblShopName_@product.Id">@product.ShopName</label>
-                                    <label style="float:right;" id="lblShopAddress_@product.Id">@product.Address</label>
-                                </div>
+                                    <div class="p-price">
+                                        <label style="float:left;width:125px;" id="lblShopName_@product.Id">@product.ShopName</label>
+                                        <label style="float:right;" id="lblShopAddress_@product.Id">@product.Address</label>
+                                    </div>
                              
+                                </div>
                             </div>
                         </li>
                     }

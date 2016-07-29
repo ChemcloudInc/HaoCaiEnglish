@@ -133,7 +133,7 @@
                                         <a target="_blank" class="img-box" href="@Url.Action("Detail", "Product", new { id = @item.ProductId})" style="float:left;">
                                             <img width="50" height="50" title="@item.ProductName 【@spc.TrimStart('，')】" src="@item.ThumbnailsUrl" class="err-product" />
                                         </a>
-                                        <div style="float:left;margin-left: 20px;margin-top:5px;">
+                                        <div style="float:left;margin-left: 20px;width:310px">
                                             <p>@item.ProductName 【@spc.TrimStart('，')】</p>
                                             <p>
                                                 <span class="ftx-04"> ￥@item.SalePrice.ToString("F2")</span>
