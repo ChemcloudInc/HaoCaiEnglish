@@ -220,7 +220,7 @@ img { display: inline }
 .p-code { color: #999999; word-wrap: break-word; }
 #plist.plist-n7 .p-name, #plist.plist-n7 .p-info, #plist.plist-n7 .p-price, #plist.plist-n7 .stocklist, #plist.plist-n7 .extra, #plist.plist-n7 .btns { padding-left: 0; text-align: left; }
 .p-price { color: #999; }
-#plist.plist-n7 .list-h .p-price { font-size: 12px; margin-bottom: 10px; }
+#plist.plist-n7 .list-h .p-price { font-size: 12px; padding-bottom: 10px; }
 #plist .p-price { margin-top: 5px; height: 22px; }
 #plist .p-price { height: 20px; overflow: hidden; }
 #plist.plist-n7 .p-price { font-family: verdana; font-size: 14px; }
