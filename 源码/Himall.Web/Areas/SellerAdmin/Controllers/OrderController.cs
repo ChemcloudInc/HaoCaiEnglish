@@ -521,10 +521,10 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 					}
 					Row row1 = CreateRow(hSSFSheet.PhysicalNumberOfRows, hSSFSheet);
 					Cell cell = CreateCell(0, row1);
-					CellStyle format = hSSFWorkbook.CreateCellStyle();
-					format.DataFormat = hSSFWorkbook.CreateDataFormat().GetFormat("####################");
-					cell.CellStyle = format;
-					cell.SetCellValue(list.Id);
+                    //CellStyle format = hSSFWorkbook.CreateCellStyle();
+                    //format.DataFormat = hSSFWorkbook.CreateDataFormat().GetFormat("####################");
+                    //cell.CellStyle = format;
+					cell.SetCellValue(list.Id.ToString());
 					cell = CreateCell(1, row1);
 					cell.SetCellValue(orderItemInfo.ProductName);
 					cell = CreateCell(2, row1);
