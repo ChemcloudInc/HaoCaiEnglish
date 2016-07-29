@@ -1835,7 +1835,9 @@
     <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongtong\plugin.config" />
     <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongtong\Thumbs.db" />
     <Content Include="Plugins\Express\Himall.Plugin.Express.Zhongyouwuliu\plugin.config" />
-    <Content Include="Plugins\Message\Himall.Plugin.Message.Email\Data\Email.config" />
+    <Content Include="Plugins\Message\Himall.Plugin.Message.Email\Data\Email.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Plugins\Message\Himall.Plugin.Message.Email\plugin.config" />
     <Content Include="Plugins\Message\Himall.Plugin.Message.SMS\Data\SMS.config" />
     <Content Include="Plugins\Message\Himall.Plugin.Message.SMS\plugin.config" />

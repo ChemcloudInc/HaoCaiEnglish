@@ -211,7 +211,10 @@ namespace Himall.Service
 		{
 			return context.UserMemberInfo.Any((UserMemberInfo item) => item.CellPhone == mobile);
 		}
-
+        public bool CheckEmailExist(string email)
+        {
+            return context.UserMemberInfo.Any((UserMemberInfo item) => item.Email == email);
+        }
 		private void CheckOpenIdHasBeenUsed(string serviceProvider, string openId, long userId = 0L)
 		{
 			if (context.MemberOpenIdInfo.FirstOrDefault((MemberOpenIdInfo item) => (item.ServiceProvider == serviceProvider) && (item.OpenId == openId)) != null)
@@ -575,7 +578,7 @@ namespace Himall.Service
 			return userMemberInfo1;
 		}
 
-		public UserMemberInfo Register(string username, string password, string mobile = "", long introducer = 0L)
+		public UserMemberInfo Register(string username, string password, string email = "", long introducer = 0L)
 		{
 			UserMemberInfo nullable;
 			if (string.IsNullOrWhiteSpace(username))
@@ -590,9 +593,9 @@ namespace Himall.Service
 			{
 				throw new ArgumentNullException("密码不能为空");
 			}
-			if (!string.IsNullOrEmpty(mobile) && ValidateHelper.IsMobile(mobile) && CheckMobileExist(mobile))
+			if (!string.IsNullOrEmpty(email) &&  CheckEmailExist(email))
 			{
-				throw new HimallException("手机号已经被其它会员注册");
+				throw new HimallException("邮箱已经被其它会员注册");
 			}
 			password = password.Trim();
 			Guid guid = Guid.NewGuid();
@@ -608,7 +611,7 @@ namespace Himall.Service
 					LastLoginDate = DateTime.Now,
 					Nick = username,
 					RealName = username,
-					CellPhone = mobile
+					Email = email
 				};
 				nullable = userMemberInfo;
 				if (introducer != 0)
@@ -618,13 +621,13 @@ namespace Himall.Service
 				nullable.Password = password;
 				nullable = context.UserMemberInfo.Add(nullable);
                 context.SaveChanges();
-				if (!string.IsNullOrEmpty(mobile) && ValidateHelper.IsMobile(mobile))
+				if (!string.IsNullOrEmpty(email))
 				{
 					IMessageService create = Instance<IMessageService>.Create;
 					MemberContactsInfo memberContactsInfo = new MemberContactsInfo()
 					{
-						Contact = mobile,
-						ServiceProvider = "Himall.Plugin.Message.SMS",
+						Contact = email,
+						ServiceProvider = "Himall.Plugin.Message.Email",
 						UserId = nullable.Id,
 						UserType = MemberContactsInfo.UserTypes.General
 					};
@@ -635,7 +638,7 @@ namespace Himall.Service
 						MemberId = nullable.Id,
 						RecordDate = new DateTime?(DateTime.Now),
 						TypeId = MemberIntegral.IntegralType.Reg,
-						ReMark = "绑定手机"
+						ReMark = "绑定邮箱"
 					};
 					IConversionMemberIntegralBase conversionMemberIntegralBase = Instance<IMemberIntegralConversionFactoryService>.Create.Create(MemberIntegral.IntegralType.Reg, 0);
 					Instance<IMemberIntegralService>.Create.AddMemberIntegral(memberIntegralRecord, conversionMemberIntegralBase);

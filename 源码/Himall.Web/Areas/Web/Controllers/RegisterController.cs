@@ -61,7 +61,13 @@ namespace Himall.Web.Areas.Web.Controllers
 			bool flag = ServiceHelper.Create<IMemberService>().CheckMobileExist(mobile);
 			return Json(new { success = true, result = flag });
 		}
+        public JsonResult CheckEmail(string email)
+        {
+            bool flag = ServiceHelper.Create<IMemberService>().CheckEmailExist(email);
 
+            return Json(new { success = true, result = flag });
+        }
+        
 		[HttpPost]
 		public JsonResult CheckUserName(string username)
 		{
@@ -100,15 +106,15 @@ namespace Himall.Web.Areas.Web.Controllers
 		}
 
 		[HttpPost]
-		public JsonResult RegisterUser(string username, string password, string mobile, long introducer = 0L)
+		public JsonResult RegisterUser(string username, string password, string email, long introducer = 0L)
 		{
-			UserMemberInfo userMemberInfo = ServiceHelper.Create<IMemberService>().Register(username, password, mobile, introducer);
+			UserMemberInfo userMemberInfo = ServiceHelper.Create<IMemberService>().Register(username, password, email, introducer);
 			if (userMemberInfo != null)
 			{
 				base.Session.Remove("regist_CheckCode");
-				if (!string.IsNullOrEmpty(mobile))
+				if (!string.IsNullOrEmpty(email))
 				{
-					Cache.Remove(CacheKeyCollection.MemberPluginCheck(mobile, "Himall.Plugin.Message.SMS"));
+					Cache.Remove(CacheKeyCollection.MemberPluginCheck(email, "Himall.Plugin.Message.Email"));
 				}
 			}
             long m = 200;
@@ -120,8 +126,18 @@ namespace Himall.Web.Areas.Web.Controllers
 		[HttpPost]
 		public JsonResult SendCode(string pluginId, string destination)
 		{
-			ServiceHelper.Create<IMemberService>().CheckContactInfoHasBeenUsed(pluginId, destination, MemberContactsInfo.UserTypes.General);
-			if (Cache.Get(CacheKeyCollection.MemberPluginCheckTime(destination, pluginId)) != null)
+			//ServiceHelper.Create<IMemberService>().CheckContactInfoHasBeenUsed(pluginId, destination, MemberContactsInfo.UserTypes.General);
+			if(ServiceHelper.Create<IMemberService>().CheckEmailExist(destination))
+            {
+                Result result0 = new Result()
+                {
+                    success = false,
+                    msg = "邮箱已绑定"
+                };
+                return Json(result0);
+            }
+
+            if (Cache.Get(CacheKeyCollection.MemberPluginCheckTime(destination, pluginId)) != null)
 			{
 				Result result = new Result()
 				{
