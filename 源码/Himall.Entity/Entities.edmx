@@ -1146,7 +1146,7 @@
           <Property Name="CategoryPath" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="TypeId" Type="bigint" Nullable="false" />
           <Property Name="BrandId" Type="bigint" Nullable="false" />
-          <Property Name="ProductName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="1000" Nullable="false" />
           <Property Name="ProductCode" Type="nvarchar" MaxLength="100" />
           <Property Name="ShortDescription" Type="nvarchar" MaxLength="4000" />
           <Property Name="SaleStatus" Type="int" Nullable="false" />
