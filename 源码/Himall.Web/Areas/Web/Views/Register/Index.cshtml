@@ -80,6 +80,7 @@
                             </div>
                         </div>
                     </div>
+                   
                     <div id="o-password">
                         <div class="item">
                             <span class="label"><b class="ftx04">*</b>请设置密码：</span>
@@ -110,15 +111,15 @@
                         @if (Mobile)
                         {
                             <div class="item" id="select-cellPhone">
-                                <span class="label"><b class="ftx04">*</b>手机号码：</span>
+                                <span class="label"><b class="ftx04">*</b>邮箱：</span>
 
                                 <div class="fl item-ifo">
                                     <div class="o-intelligent-cellPhone">
                                         <input type="text" id="cellPhone" name="cellPhone" class="text" tabindex="4" autocomplete="off" onpaste="return false;">
                                         <i class="i-name"></i>
                                         <label id="cellPhone_succeed" class="blank"></label>
-                                        <label id="cellPhone_info" style="display:none;" class="focus">请输入手机号码</label>
-                                        <label id="cellPhone_error" style="display:none;" class="error">请输入手机号码</label>
+                                        <label id="cellPhone_info" style="display:none;" class="focus">请输入邮箱地址</label>
+                                        <label id="cellPhone_error" style="display:none;" class="error">请输入邮箱地址</label>
                                     </div>
                                 </div>
                             </div>
@@ -174,7 +175,44 @@
     <script src="~/Areas/Web/Scripts/artDialog.iframeTools.js"></script>
     <script src="~/Scripts/CommonJS.js"></script>
     <script src="~/Areas/Web/Scripts/register.js"></script>
+    <input type="hidden" id="pluginId" value="@ViewBag.Id" />
 </body>
+
 </html>
 
 
+<script>
+    //$('#sendMobileCode').click(function () {
+    //    $.dialog.errorTips('发送');
+    //    var destination = $("#cellphone").val();
+    //    //var id = Himall.Plugin.Message.SMS;
+    //    var id = 1;
+    //    $.post('SendCode', { pluginId: id, destination: destination }, function (result) {
+    //        if (result.success) {
+    //            setTimeout(countDown1('timeDiv1', ''), 1000);
+    //        } else {
+    //            $.dialog.errorTips('发送验证码失败,' + result.msg);
+    //        }
+    //    });
+    //});
+    //function sendmCode() {
+        
+    //    $("#sendMobileCode").attr("disabled", "disabled");
+    //    jQuery.ajax({
+    //        type: "post",
+    //        url: "/Register/SendCode?pluginId=Himall.Plugin.Message.SMS&destination=" + $("#cellPhone").val(),
+    //        success: function (result) {
+    //            if (result.success == true) {
+    //                $("#cellPhone_error").hide();
+    //                $("#dyMobileButton").html("120秒后重新获取");
+                    
+
+    //                setTimeout(countDown, 1000);
+    //                $("#sendMobileCode").removeClass().addClass("btn").attr("disabled", "disabled");
+    //                $("#checkCode").removeAttr("disabled");
+    //            }
+    //        }
+    //    });
+    //}
+
+</script>

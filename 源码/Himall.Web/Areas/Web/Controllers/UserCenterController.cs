@@ -298,12 +298,13 @@ namespace Himall.Web.Areas.Web.Controllers
 				};
 				return Json(result);
 			}
+            
 			int num = (new Random()).Next(10000, 99999);
 			DateTime dateTime = DateTime.Now.AddMinutes(15);
 			if (pluginId.ToLower().Contains("email"))
 			{
 				dateTime = DateTime.Now.AddHours(24);
-			}
+            }
 			Cache.Insert(CacheKeyCollection.MemberPluginCheck(base.CurrentUser.UserName, pluginId), num, dateTime);
 			MessageUserInfo messageUserInfo = new MessageUserInfo()
 			{
