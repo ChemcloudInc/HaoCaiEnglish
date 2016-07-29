@@ -294,16 +294,17 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = false,
-					msg = "120秒内只允许请求一次，请稍后重试!"
+					msg = "60秒内只允许请求一次，请稍后重试!"
 				};
 				return Json(result);
 			}
+            
 			int num = (new Random()).Next(10000, 99999);
 			DateTime dateTime = DateTime.Now.AddMinutes(15);
 			if (pluginId.ToLower().Contains("email"))
 			{
 				dateTime = DateTime.Now.AddHours(24);
-			}
+            }
 			Cache.Insert(CacheKeyCollection.MemberPluginCheck(base.CurrentUser.UserName, pluginId), num, dateTime);
 			MessageUserInfo messageUserInfo = new MessageUserInfo()
 			{

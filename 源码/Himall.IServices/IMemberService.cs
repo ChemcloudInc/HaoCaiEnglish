@@ -23,6 +23,8 @@ namespace Himall.IServices
 
 		bool CheckMobileExist(string mobile);
 
+        bool CheckEmailExist(string email);
+
 		void DeleteMember(long id);
 
 		void DeleteMemberOpenId(long userid, string openid);

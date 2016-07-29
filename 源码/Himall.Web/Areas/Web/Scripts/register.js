@@ -21,10 +21,10 @@ function bindSubmit() {
         var result = checkValid();
         if (result) {
             var username = $('#regName').val(), password = $('#pwd').val();
-            var mobile = $('#cellPhone').val();
+            var email = $('#cellPhone').val();
             var introducer = $("#introducer").val();
             var loading = showLoading();
-            $.post('/Register/RegisterUser', { username: username, password: password, mobile: mobile, introducer: introducer }, function (data) {
+            $.post('/Register/RegisterUser', { username: username, password: password, email: email, introducer: introducer }, function (data) {
                 loading.close();
                 if (data.success) {
                     $.dialog.succeedTips("注册成功！", function () {
@@ -85,8 +85,8 @@ function bindCheckCode() {
 
 
 function checkValid() {
-    //return checkUsernameIsValid() & checkPasswordIsValid() & checkPasswordIsValid() & checkRepeatPasswordIsValid() & checkCheckCodeIsValid() & checkAgreementIsValid() & checkMobileIsValid();
-    return checkUsernameIsValid() & checkPasswordIsValid() & checkPasswordIsValid() & checkRepeatPasswordIsValid() & checkCheckCodeIsValid() & checkMobileIsValid() & checkAgreementIsValid();
+    
+    return checkUsernameIsValid() & checkPasswordIsValid() & checkRepeatPasswordIsValid() & checkCheckCodeIsValid() & checkEmailIsValid() & checkAgreementIsValid();
 }
 
 
@@ -123,7 +123,7 @@ function checkCheckCodeIsValid() {
         $.ajax({
             type: "post",
             url: "/register/CheckCode",
-            data: { pluginId: "Himall.Plugin.Message.SMS", code: checkCode, destination: $("#cellPhone").val() },
+            data: { pluginId: "Himall.Plugin.Message.Email", code: checkCode, destination: $("#cellPhone").val() },
             dataType: "json",
             async: false,
             success: function (data) {
@@ -258,11 +258,11 @@ function checkMobile() {
         $('#cellPhone_error').hide();
     }).blur(function () {
         $('#cellPhone_info').hide();
-        checkMobileIsValid();
+       // checkMobileIsValid();
     });
 }
 
-function checkMobileIsValid() {
+function checkEmailIsValid() {
 
     if ($('#cellPhone').length == 0) {
         return true;
@@ -272,17 +272,14 @@ function checkMobileIsValid() {
     var errorLabel = $('#cellPhone_error');
     var reg = /^0?(13|15|18|14|17)[0-9]{9}$/;
 
-    if (!cellPhone || cellPhone == '手机号码') {
-        errorLabel.html('请输入手机号码').show();
-    }
-    else if (!reg.test(cellPhone)) {
-        errorLabel.html('请输入正确的手机号码').show();
+    if (!cellPhone || cellPhone == '邮箱') {
+        errorLabel.html('请输入邮箱地址').show();
     }
     else {
         $.ajax({
             type: "post",
-            url: "/register/CheckMobile",
-            data: { mobile: cellPhone },
+            url: "/register/CheckEmail",
+            data: { email: cellPhone },
             dataType: "json",
             async: false,
             success: function (data) {
@@ -291,7 +288,7 @@ function checkMobileIsValid() {
                     result = true;
                 }
                 else {
-                    errorLabel.html('手机号码 ' + cellPhone + ' 已经被占用').show();
+                    errorLabel.html('邮箱 ' + cellPhone + ' 已经被占用').show();
                 }
             }
         });
@@ -299,16 +296,16 @@ function checkMobileIsValid() {
     return result;
 }
 
-var delayTime = 120;
+var delayTime = 60;
 var delayFlag = true;
 function countDown() {
     delayTime--;
     $("#sendMobileCode").attr("disabled", "disabled");
     $("#dyMobileButton").html(delayTime + '秒后重新获取');
     if (delayTime == 1) {
-        delayTime = 120;
+        delayTime = 60;
         $("#mobileCodeSucMessage").removeClass().empty();
-        $("#dyMobileButton").html("获取短信验证码");
+        $("#dyMobileButton").html("获取邮箱验证码");
         $("#cellPhone_error").addClass("hide");
         $("#sendMobileCode").removeClass().addClass("btn").removeAttr("disabled");
         delayFlag = true;
@@ -331,49 +328,47 @@ function sendMobileCode() {
         $("#cellPhone_error").show();
         return;
     }
-    if (!reg.test(mobile)) {
+    /*if (!reg.test(mobile)) {
         $("#cellPhone_error").removeClass().addClass("error").html("手机号码格式有误，请输入正确的手机号");
         $("#cellPhone_error").show();
         return;
-    }
+    }*/
     //$('#checkCode').removeClass("highlight2");
     // 检测手机号码是否存在
-    $.post('/Register/CheckMobile', { mobile: mobile }, function (data) {
-        if (data.result == false) {
-            errorLabel.hide();
-            sendmCode();
-        }
-        else {
-            errorLabel.html('手机号码 ' + mobile + ' 已经被占用').show();
-        }
-    });
+    //$.post('/Register/CheckMobile', { mobile: mobile }, function (data) {
+    //    if (data.result == false) {
+    //        errorLabel.hide();
+    //        sendmCode();
+    //    }
+    //    else {
+    //        errorLabel.html('手机号码 ' + mobile + ' 已经被占用').show();
+    //    }
+    //});
 
 }
-// 手机注册发送验证码target
-function sendmCode() {
+// 邮箱注册发送验证码target
+function sendMobileCode() {
     if ($("#sendMobileCode").attr("disabled") || delayFlag == false) {
         return;
     }
+  //  $("#sendMobileCode").attr("disabled", "disabled");
 
-    $("#sendMobileCode").attr("disabled", "disabled");
     jQuery.ajax({
         type: "post",
-        url: "/Register/SendCode?pluginId=Himall.Plugin.Message.SMS&destination=" + $("#cellPhone").val(),
+        url: "/Register/SendCode?pluginId=Himall.Plugin.Message.Email&destination=" + $("#cellPhone").val(),
         success: function (result) {
-            if (result.success == true) {
+            
+            if (result.success) {
                 $("#cellPhone_error").hide();
-                $("#dyMobileButton").html("120秒后重新获取");
-                //if (obj.remain) {
-                //    $("#mobileCodeSucMessage").empty().html(obj.remain);
-                //} else {
-                //    $("#cellPhone_error").removeClass().empty().html("验证码已发送，请查收短信。");
-                //    $("#cellPhone_error").show();
-                //}
-
+                $("#dyMobileButton").html("60秒后重新获取");
                 setTimeout(countDown, 1000);
                 $("#sendMobileCode").removeClass().addClass("btn").attr("disabled", "disabled");
                 $("#checkCode").removeAttr("disabled");
+            } else {
+                $.dialog.errorTips('发送验证码失败,' + result.msg);
             }
         }
     });
 }
+   
+
