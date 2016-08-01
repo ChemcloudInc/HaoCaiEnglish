@@ -52,3 +52,4 @@ D:\web\haocai\源码\Himall.PaymentPlugin\bin\Debug\System.Web.WebPages.Deployme
 D:\web\haocai\源码\Himall.PaymentPlugin\bin\Debug\Himall.Core.pdb
 D:\web\haocai\源码\Himall.PaymentPlugin\obj\Debug\Himall.PaymentPlugin.dll
 D:\web\haocai\源码\Himall.PaymentPlugin\obj\Debug\Himall.PaymentPlugin.pdb
+D:\web\haocai\源码\Himall.PaymentPlugin\obj\Debug\Himall.PaymentPlugin.csprojResolveAssemblyReference.cache
