@@ -379,6 +379,7 @@ namespace Himall.Model
         }
 		public ProductInfo()
 		{
+            DisableBuy = false;
             ProductConsultationInfo = new HashSet<Himall.Model.ProductConsultationInfo>();
             ProductAttributeInfo = new HashSet<Himall.Model.ProductAttributeInfo>();
             SKUInfo = new HashSet<Himall.Model.SKUInfo>();
