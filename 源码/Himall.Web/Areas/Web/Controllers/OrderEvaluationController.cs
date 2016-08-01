@@ -133,6 +133,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				UserId = new long?(base.CurrentUser.Id)
 			};
 			PageModel<OrderInfo> orders = ServiceHelper.Create<IOrderService>().GetOrders<int>(orderQuery, (OrderInfo item) => item.OrderCommentInfo.Count);
+            
 			PagingInfo pagingInfo = new PagingInfo()
 			{
 				CurrentPage = pageNo,

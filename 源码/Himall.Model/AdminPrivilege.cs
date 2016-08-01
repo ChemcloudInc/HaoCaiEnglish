@@ -70,10 +70,10 @@ namespace Himall.Model
 		ArticleCategoryManage = 7003,
 		[Privilege("系统", "站点设置", 8001, "SiteSetting/Edit", "SiteSetting", "")]
 		SiteSetting = 8001,
-		[Privilege("系统", "管理员", 8002, "Manager/management", "Manager", "")]
-		AdminManage = 8002,
-		[Privilege("系统", "权限组", 8003, "Privilege/management", "privilege", "")]
-		PrivilegesManage = 8003,
+		[Privilege("系统", "权限组", 8002, "Privilege/management", "privilege", "")]
+		PrivilegesManage = 8002,
+        [Privilege("系统", "管理员", 8003, "Manager/management", "Manager", "")]
+        AdminManage = 8003,
 		[Privilege("系统", "操作日志", 8004, "OperationLog/management", "OperationLog", "")]
 		OperationLog = 8004,
 		[Privilege("系统", "消息设置", 8005, "Message/management", "Message", "")]
