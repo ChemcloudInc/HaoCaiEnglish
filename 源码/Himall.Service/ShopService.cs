@@ -198,8 +198,12 @@ namespace Himall.Service
                 select a).Count();
 			platConsoleModel.WaitAuditShops = (
                 from a in shopInfo
-                where (int)a.ShopStatus == 2 || (int)a.ShopStatus == 5
+                where (int)a.ShopStatus == 2 
                 select a).Count();
+            platConsoleModel.WaitPayShops = (
+               from a in shopInfo
+               where  (int)a.ShopStatus == 5
+               select a).Count();
 			platConsoleModel.ExpiredShops = (
                 from a in shopInfo
                 where a.EndDate < (DateTime?)date
