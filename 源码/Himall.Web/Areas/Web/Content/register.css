@@ -43,7 +43,7 @@ a:visited { color: #333; text-decoration: none; }
 .sitemap ul li div span { margin-right: 10px; float: left }
 #logo { padding: 10px 0; float: none; margin: 0; position: relative; }
 #logo img{ display: inline-block;}
-#logo b { position: absolute; background: url(../images/regist-word.png) no-repeat; width: 111px; height: 46px; top: 18px; margin-left:20px; }
+#logo b { position: absolute; background: url(../images/regist-word.png) no-repeat; width: 111px; height: 46px; top: 35px; margin-left:20px; }
 #regist { background: #FFF; margin-bottom: 10px; }
 #regist .mt { padding-right: 10px; position: relative; overflow: visible; margin-bottom: -1px; border-bottom: 1px solid #dddddd; height: 32px; line-height: 32px; background: #f2f2f2 }
 #regist .tab { height: 33px; padding-left: 277px; overflow: hidden; }
@@ -69,7 +69,7 @@ a:visited { color: #333; text-decoration: none; }
 #regist .text:focus { border-color: #7abd54; }
 #regist .text-1 { width: 100px; float: left; }
 #regist .img img { margin: 0 5px; cursor: pointer; height: 36px; display: block; }
-#regist .item-ifo i { position: absolute; right: 12px; top: 8px; z-index: 5; background: url(../images/login-all-bg.png) no-repeat #fff; }
+#regist .item-ifo i { position: absolute; right: 12px; top: 8px; z-index: 5; background: url(../images/login-all-bg.png) no-repeat ; }
 #regist .item-ifo i.i-name { background-position: -373px -111px; width: 16px; height: 16px; }
 #regist .item-ifo i.i-pass { background-position: -346px -108px; width: 14px; height: 19px; }
 #regist .focus, #regist .error { color: #e4393c; line-height: 36px; height: 36px; position: absolute; top: 0px; right: -275px; width: 260px; padding: 0 5px; background: #FFEBEB; border: 1px solid #ffbdbe; }

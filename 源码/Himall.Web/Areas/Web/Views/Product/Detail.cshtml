@@ -168,17 +168,18 @@
                         <div class="t">
                             @if (ViewBag.DisableBuy)
                             { <div class="p-price dt">暂无报价</div> }
-                               
+
                             else
-                            { 
-                                <div class="dt dt01">价格</div>
-                               <strong class="p-price dt" id="jd-price">￥@ViewBag.Price,￥@Model.Product.MarketPrice.ToString("f2")</strong>
+                            {
+                                <div class="p-price-old">价格<span>￥@Model.Product.MarketPrice.ToString("f2")</span></div>
+                                <div class="dt dt01">耗材价</div>
+                                <strong class="p-price dt" id="jd-price">￥@ViewBag.Price</strong>
                                
                             }
 
 							@if (!string.IsNullOrEmpty(Model.Product.Himall_FreightTemplate.SendTime))
                             {
-                                <i class="dt" style="width:auto;margin-right:20px;color:#737b9e; float:right;">@(Model.Product.Himall_FreightTemplate.SendTime)h内发货</i>
+                                <i class="dt" style="width:auto;margin-right:10px;color:#737b9e; float:right; margin-top: -22px;">@(Model.Product.Himall_FreightTemplate.SendTime)h内发货</i>
                             }
                         </div>
                         <div class="b">
