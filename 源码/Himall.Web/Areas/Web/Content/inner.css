@@ -200,7 +200,7 @@ img { display: inline }
 #plist, #plist .list-h { position: relative; overflow: visible; z-index: 2; }
 #plist, #plist .list-h { position: relative; overflow: visible; z-index: 2;     margin-left: -5px;}
 #plist li { width: 230px; padding: 20px 13px 0; font-family: arial, \5b8b\4f53; border-bottom: 1px dotted #ddd; }
-#plist.plist-n7 li { margin-bottom: -5px; }
+#plist.plist-n7 li { margin-bottom: -10px; }
 #plist.plist-n7 .list-h li { width: 224px; padding: 1px 11px 0px 11px; height: 360px; border-bottom: 0; }
 #plist.prebuy .list-h li { position: relative; width: 245px; padding: 0; }
 /*#plist.prebuy .list-h li:hover { border: 3px solid #3480eb; width: 236.5px; margin-bottom: 5px; }*/
