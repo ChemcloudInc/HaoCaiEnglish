@@ -411,10 +411,14 @@ namespace Himall.Model
 			Size_100 = 100,
 			[Description("150×150")]
 			Size_150 = 150,
-			[Description("220×220")]
-			Size_220 = 220,
-			[Description("350×350")]
-			Size_350 = 350
+            [Description("220×220")]
+            Size_220 = 220,
+            [Description("350×350")]
+            Size_350 = 350,
+            [Description("234×234")]
+			Size_234 = 234,
+			[Description("400×400")]
+			Size_400 = 400
 		}
 
 		public enum ProductAuditStatus

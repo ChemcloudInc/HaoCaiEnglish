@@ -7,6 +7,7 @@ ol, ul, li { list-style: none; }
 img { border: 0 none; display: block; font-size: 0; vertical-align: top }
 body { color: #545454; background: #f2f2f2; font: 12px/1.5 Arial, Verdana, 'SimSun'; _background-image: url(about:blank); /* for IE6 */ _background-attachment: fixed; }
 .cl { zoom: 1; }
+body, button, input, txt {font-family: "Microsoft YaHei","Hiragino Sans GB";}
 .cl:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; overflow: hidden }
 .clr { display: block; overflow: hidden; clear: both; height: 0; line-height: 0; font-size: 0; }
 .fl { float: left; }
@@ -43,7 +44,7 @@ a:visited { color: #333; text-decoration: none; }
 .sitemap ul li div span { margin-right: 10px; float: left }
 #logo { padding: 10px 0; float: none; margin: 0; position: relative; }
 #logo img{ display: inline-block;}
-#logo b { position: absolute; background: url(../images/regist-word.png) no-repeat; width: 111px; height: 46px; top: 18px; margin-left:20px; }
+#logo b { position: absolute; background: url(../images/regist-word.png) no-repeat; width: 111px; height: 46px; top: 35px; margin-left:20px; }
 #regist { background: #FFF; margin-bottom: 10px; }
 #regist .mt { padding-right: 10px; position: relative; overflow: visible; margin-bottom: -1px; border-bottom: 1px solid #dddddd; height: 32px; line-height: 32px; background: #f2f2f2 }
 #regist .tab { height: 33px; padding-left: 277px; overflow: hidden; }
@@ -53,26 +54,27 @@ a:visited { color: #333; text-decoration: none; }
 #regist .tab li a { display: block; width: 100px; height: 34px; }
 #regist .tab li a:hover, #regist .tab li a:active { color: #333; text-decoration: none; }
 #regist .tab li.line:hover { height: 31px; line-height: 31px; margin-top: 0; }
-#regist .mt .extra { position: absolute; right: 20px; top: 5px; }
+#regist .mt .extra { position: absolute; right: 20px; top: 5px; font-size: 16px; color: #999;}
+#regist .mt .extra a { color:#333; }
 #regist .mc { padding: 30px 0 20px; border: solid #dddddd; border-width: 0px 1px 1px; }
 .form { float: left; width: 750px; }
-#regist .item { padding-top: 9px; height: 60px; line-height: 34px; position: relative; z-index: 1; }
+#regist .item { padding-top: 10px; height: 60px; line-height: 34px; position: relative; z-index: 1; }
 .form label, .form input, .form select, .form textarea, .form button, .form .label { float: left; font-size: 12px; }
 #regist .label { width: 190px; text-align: right; font-size: 14px; color: #999; padding-right: 10px; }
 #regist .label b { margin-right: 5px; font-weight: normal; font-family: '宋体'; }
 .ftx04, .flk04 a:link, .flk04 a:visited, a.flk04:link, a.flk04:visited { color: #e3393c; }
 .ftx23, .flk23 a:link, .flk23 a:visited, a.flk23:link, a.flk23:visited { color: #999; }
 .ftx13, .flk13 a:link, .flk13 a:visited, a.flk13:link, a.flk13:visited { color: #005AA0; }
-#regist .item .item-ifo { position: relative; width: 270px; }
+#regist .item .item-ifo { position: relative; width: 320px; }
 #regist #authcodeDiv .item-ifo { width: 380px }
-#regist .text { width: 238px; height: 16px; padding: 10px 25px 10px 5px; border: 1px solid #cccccc; float: none; font-size: 14px; font-family: arial, "宋体"; color: #999; }
+#regist .text { width: 288px; height: 16px; padding: 10px 25px 10px 5px; border: 1px solid #cccccc; float: none; font-size: 14px; font-family: arial, "宋体"; color: #999; }
 #regist .text:focus { border-color: #7abd54; }
-#regist .text-1 { width: 100px; float: left; }
+#regist .text-1 { width: 168px; float: left; }
 #regist .img img { margin: 0 5px; cursor: pointer; height: 36px; display: block; }
-#regist .item-ifo i { position: absolute; right: 12px; top: 8px; z-index: 5; background: url(../images/login-all-bg.png) no-repeat #fff; }
+#regist .item-ifo i { position: absolute; right: 12px; top: 8px; z-index: 5; background: url(../images/login-all-bg.png) no-repeat ; }
 #regist .item-ifo i.i-name { background-position: -373px -111px; width: 16px; height: 16px; }
 #regist .item-ifo i.i-pass { background-position: -346px -108px; width: 14px; height: 19px; }
-#regist .focus, #regist .error { color: #e4393c; line-height: 36px; height: 36px; position: absolute; top: 0px; right: -275px; width: 260px; padding: 0 5px; background: #FFEBEB; border: 1px solid #ffbdbe; }
+#regist .focus, #regist .error { color: #e4393c; line-height: 36px; height: 36px; position: absolute; top: 0px; right: -300px; width: 280px; padding: 0 5px; background: #FFEBEB; border: 1px solid #ffbdbe; }
 #regist .null { background: none; border: none; background: none; }
 #regist .error span, .focus span { padding: 5px 0; line-height: 13px; display: block; }
 #regist .focus { color: #666; line-height: 36px; background: #f7f7f7; border: 1px solid #dddddd; }
@@ -81,7 +83,7 @@ a:visited { color: #333; text-decoration: none; }
 #regist .succeed { background: url(../images/sucess.png) no-repeat #ffffff; }
 #pwdstrength { color: #999; line-height: 22px; padding-right: 10px; clear: both; float: none; position: absolute; top: 41px; right: -9px; }
 #regist .checkbox { margin: 10px 3px 3px; }
-#regist .btn-regist { width: 270px; height: 36px; color: #FFF; font-family: "微软雅黑"; font-size: 16px; text-indent: -9999px; font-weight: 800; overflow: hidden; background: url(../images/regist-btn.jpg) no-repeat; border: none 0; }
+#regist .btn-regist { width: 320px; height: 36px; color: #FFF; font-family: "微软雅黑"; font-size: 16px; text-indent: -9999px; font-weight: 800; overflow: hidden; background: url(../images/regist-btn.jpg) no-repeat; border: none 0; }
 #regist .btn-regist:hover { background: url(../images/hover-btn.jpg) no-repeat }
 #footer { padding-bottom: 30px; text-align: center; }
 #footer .links a, #footer .links span { margin: 0 10px; }
