@@ -200,7 +200,7 @@ img { display: inline }
 #plist, #plist .list-h { position: relative; overflow: visible; z-index: 2; }
 #plist, #plist .list-h { position: relative; overflow: visible; z-index: 2;     margin-left: -5px;}
 #plist li { width: 230px; padding: 20px 13px 0; font-family: arial, \5b8b\4f53; border-bottom: 1px dotted #ddd; }
-#plist.plist-n7 li { margin-bottom: -10px; }
+#plist.plist-n7 li { margin-bottom: 10px; }
 #plist.plist-n7 .list-h li { width: 224px; padding: 1px 11px 0px 11px; height: 360px; border-bottom: 0; }
 #plist.prebuy .list-h li { position: relative; width: 245px; padding: 0; }
 /*#plist.prebuy .list-h li:hover { border: 3px solid #3480eb; width: 236.5px; margin-bottom: 5px; }*/
@@ -212,7 +212,7 @@ img { display: inline }
 #plist.prebuy .list-h li:hover .lh-wrap { border: 1px solid #73a8f3;border-radius: 1px;     -webkit-box-shadow: 0 0 10px 5px rgba(52,128,535,.03);-moz-box-shadow: 0 0 10px 5px rgba(52,128,535,.03);box-shadow: 0 0 10px 5px rgba(52,128,535,.03);}
 #plist .p-img { position: relative; height: 160px; border: 1px solid #fff; transition: border 0.3s ease-in 0s; text-align: center; }
 #plist.plist-n7 .p-img { height: 234px;  border: none; border-bottom: 1px solid #ddd;}
-.list-h .p-img img { max-width: 234px; max-height: 234px;    margin-left: -1px; }
+.list-h .p-img img { max-width: 234px; max-height: 234px; }
 .p-img {  }
 .p-img, .p-name, .p-price, .p-market, .p-detail { overflow: hidden; }
 .p-name .keycolor { color: #3480eb }
