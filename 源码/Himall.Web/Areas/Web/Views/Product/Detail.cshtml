@@ -172,7 +172,8 @@
                             else
                             { 
                                 <div class="dt dt01">价格</div>
-                               <strong class="p-price dt" id="jd-price">￥@ViewBag.Price</strong>
+                               <strong class="p-price dt" id="jd-price">￥@ViewBag.Price,￥@Model.Product.MarketPrice.ToString("f2")</strong>
+                               
                             }
 
 							@if (!string.IsNullOrEmpty(Model.Product.Himall_FreightTemplate.SendTime))
@@ -318,7 +319,7 @@
             <div id="preview">
                 <div class="jqzoom" style="position:relative;">
                     <a class="cloud-zoom" id="zoom1" rel="lensOpacity:1,adjustX:10" href="@Model.Product.ImagePath/1.png" style="position: relative; display: block;">
-                        <img src="@Model.Product.ImagePath/1_350.png" alt="@Model.Product.ProductName">
+                        <img src="@Model.Product.ImagePath/1_400.png" alt="@Model.Product.ProductName">
                     </a>
                 </div>
 
@@ -338,7 +339,7 @@
                     <a href="#none" class="btn-coll">收藏商品</a>
 
                 </div>
-                <span class="btn" style="margin-top: 5px; padding-left:10px;float:right; margin-top: 25px;color:#000;">
+                <span class="btn" style=" padding-left:45px;float:left; margin-top: 14px;color:#000;">
                     <span style="float:none;display:inline-block;vertical-align:top;margin-top:3px">分享到：</span>
                     <wb:share-button count="n" addition="simple" type="icon" size="medium" title="@Model.Product.ProductName" pic="http://@Request.Url.Host@Model.Product.ImagePath/1_100.png" url="http://@Request.Url.Host/product/detail/@Model.Product.Id"></wb:share-button>
                     <script type="text/javascript">

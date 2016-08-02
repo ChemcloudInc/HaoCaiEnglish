@@ -43,7 +43,8 @@ $(function(){
                     <p><a href="/admin/product/management?status=1">商品待审核(@Model.WaitForAuditingProducts)</a><a href="/admin/brand/verify">品牌待审核(@Model.WaitForAuditingBrands)</a></p>
                 </dd>
                 <dd class="two-child">
-                    <p><a href="/Admin/shop/management?type=Auditing">入驻审核(@Model.WaitAuditShops)</a>@*<a>待仲裁(@Model.Complaints)</a>*@</p>
+                    <p><a href="/Admin/shop/management?type=Auditing">入驻申请审核(@Model.WaitAuditShops)</a>@*<a>待仲裁(@Model.Complaints)</a>*@</p>
+                    <p><a href="/Admin/shop/management?type=Paying">入驻付款审核(@Model.WaitPayShops)</a>
                     <p><a href="/Admin/Capital/WithDraw?status=1">待处理提现(@Model.Cash)</a></p>
                     <p><a href="/Admin/Gift/Order?status=2">礼品待发货(@Model.GiftSend)</a></p>
                 </dd>

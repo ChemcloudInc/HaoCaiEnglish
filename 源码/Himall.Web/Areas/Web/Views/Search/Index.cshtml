@@ -301,7 +301,7 @@
                             <input class="text-stock-search" id="text-stock-search" type="text" autocomplete="off" title="在结果中搜索" value="@ViewBag.exp_keywords">
                         </dt>
                         <dd>
-                            <input class="btn-stock-search" id="btn-stock-search" type="button" value="确定">
+                            <input class="btn-stock-search" id="btn-stock-search" type="button" value="搜索">
                         </dd>
                     </dl>
                     <div class="pagin pagin-m" id="top_pagi">
@@ -373,11 +373,11 @@
                                             }
                                         </a>
                                     </div>
-
                                     <div class="p-price">
-                                        <label style="float:left;width:125px;" id="lblShopName_@product.Id">@product.ShopName</label>
+                                        <a target="_blank" href="/Shop/Home/@product.ShopId"><label style="float:left;width:125px;" id="lblShopName_@product.Id">@product.ShopName</label></a>
                                         <label style="float:right;" id="lblShopAddress_@product.Id">@product.Address</label>
                                     </div>
+
                              
                                 </div>
                             </div>

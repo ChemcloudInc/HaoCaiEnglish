@@ -101,6 +101,12 @@ namespace Himall.Model
 			set;
 		}
 
+        public long WaitPayShops
+        {
+            get;
+            set;
+        }
+
 		public long WaitDeliveryTrades
 		{
 			get;
