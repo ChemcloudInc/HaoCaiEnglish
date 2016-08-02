@@ -328,10 +328,11 @@
                     <ul class="lh">
                         @for (int i = 1; i < 6; i++)
                         {
-
+                            
                             if (i == 1 || File.Exists(Server.MapPath(Model.Product.ImagePath + string.Format("/{0}.png", i))))
                             {
-                                <li><a href="@(Model.Product.ImagePath+string.Format("/{0}.png",i))" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: '@(Model.Product.ImagePath+string.Format("/{0}_350.png",i))'"><img src="@(Model.Product.ImagePath+string.Format("/{0}_50.png",i))" width="50" height="50"></a></li>
+                                <li><a href="@(Model.Product.ImagePath+string.Format("/{0}.png",i))" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: '@(Model.Product.ImagePath+string.Format("/{0}_400.png",i))'">
+                                    <img src="@(Model.Product.ImagePath+string.Format("/{0}_50.png",i))" width="50" height="50"></a></li>
                             }
                         }
                     </ul>

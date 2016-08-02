@@ -1,3 +1,4 @@
+using Himall.Core.Helper;
 using Himall.IServices;
 using Himall.IServices.QueryModel;
 using Himall.Model;
@@ -167,6 +168,14 @@ namespace Himall.Web.Areas.Web.Controllers
 					select p;
 				foreach (ProductInfo productInfo in productInfos)
 				{
+                    if (System.IO.File.Exists(Server.MapPath(productInfo.ImagePath + string.Format("/{0}.png", 1))))
+                    {
+                        if (!System.IO.File.Exists(Server.MapPath(productInfo.ImagePath + string.Format("/{0}_{1}.png", 1, base.CurrentSiteSetting.CategoryProductPictureSize))))
+                        {
+                            string str8 = Server.MapPath(productInfo.ImagePath + string.Format("/{0}_{1}.png",1, base.CurrentSiteSetting.CategoryProductPictureSize));
+                            ImageHelper.CreateThumbnail(Server.MapPath(productInfo.ImagePath + string.Format("/{0}.png", 1)), str8, int.Parse(base.CurrentSiteSetting.CategoryProductPictureSize), int.Parse(base.CurrentSiteSetting.CategoryProductPictureSize));
+                        }
+                    }
 					ProductAttributeInfo[] productAttributeInfoArray = productService.GetProductAttribute(productInfo.Id).ToArray();
 					ProductAttributeInfo[] productAttributeInfoArray1 = productAttributeInfoArray;
 					for (i = 0; i < productAttributeInfoArray1.Length; i++)

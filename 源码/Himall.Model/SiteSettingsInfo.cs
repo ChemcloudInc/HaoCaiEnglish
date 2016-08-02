@@ -258,7 +258,36 @@ namespace Himall.Model
 			get;
 			set;
 		}
-
+        [NotMapped]
+        public string ProductDetailsPictureSize  //≤˙∆∑œÍœ∏“≥Õº∆¨≥ﬂ¥Á
+        {
+            get;
+            set;
+        }
+        [NotMapped]
+        public string CategoryProductPictureSize  //∑÷¿‡“≥Õº∆¨≥ﬂ¥Á
+        {
+            get;
+            set;
+        }
+        [NotMapped]
+        public string MobilePictureSize  //Mobile∂ÀÕº∆¨≥ﬂ¥Á
+        {
+            get;
+            set;
+        }
+        [NotMapped]
+        public string OrderPictureSize  //∂©µ•¡–±ÌÕº∆¨≥ﬂ¥Á
+        {
+            get;
+            set;
+        }
+        [NotMapped]
+        public string CartPictureSize  //π∫ŒÔ≥µÕº∆¨≥ﬂ¥Á
+        {
+            get;
+            set;
+        }
 		public SiteSettingsInfo()
 		{
 		}

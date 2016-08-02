@@ -172,6 +172,17 @@ namespace Himall.Web.Areas.Web.Controllers
             {
                 return RedirectToAction("Error404", "Error", new { area = "Web" });
             }
+            for (int i = 1; i < 6; i++)
+            {
+                if (System.IO.File.Exists(Server.MapPath(product.ImagePath + string.Format("/{0}.png", i))))
+                {
+                    if (!System.IO.File.Exists(Server.MapPath(product.ImagePath + string.Format("/{0}_{1}.png", i, base.CurrentSiteSetting.ProductDetailsPictureSize))))
+                    {
+                        string str8 = Server.MapPath(product.ImagePath + string.Format("/{0}_{1}.png", i, base.CurrentSiteSetting.ProductDetailsPictureSize));
+                        ImageHelper.CreateThumbnail(Server.MapPath(product.ImagePath + string.Format("/{0}.png", i)), str8, int.Parse(base.CurrentSiteSetting.ProductDetailsPictureSize), int.Parse(base.CurrentSiteSetting.ProductDetailsPictureSize));
+                    }
+                }
+            }
             IQueryable<ProductCommentInfo> commentsByProductId = ServiceHelper.Create<ICommentService>().GetCommentsByProductId(result);
             ShopInfo shop = ServiceHelper.Create<IShopService>().GetShop(product.ShopId, false);
             ShopServiceMarkModel shopComprehensiveMark = ShopServiceMark.GetShopComprehensiveMark(shop.Id);
