@@ -222,7 +222,7 @@
             }
             <a style="line-height:30px;" href="./PublicStepOne?@que">编辑</a>
         </div>
-        <div class="form-group" style="display: none">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="">商品品牌：</label>
             <div class="col-sm-2">
                 @Html.DropDownList("brand", (IEnumerable<SelectListItem>)ViewBag.BrandDrop, new
@@ -539,7 +539,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="">广告词：</label>
+            <label class="col-sm-2 control-label" for="">商品简介：</label>
             <div class="col-sm-4">
                 <textarea rows="4" cols="50" class="form-control" maxlength="100" id="ad">@(Model.ShortDescription ?? "")</textarea>
             </div>
