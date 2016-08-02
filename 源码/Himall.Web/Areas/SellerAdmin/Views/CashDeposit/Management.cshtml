@@ -99,10 +99,10 @@
 </div>
 <style>#payMent ul{ margin-left:20px;}#payMent li{ padding-top:10px;}#payMent input[type="radio"]{ vertical-align:middle; margin-right:10px;}</style>
 
-
+<input type="hidden" id="orderIds" value="0" />
+<input type="hidden" id="payid" value="0" />
 <script>
-    function ShowCashDeposit()
-    {
+    function ShowCashDeposit() {
         $("#cashDeposit").show();
     }
 
@@ -111,12 +111,11 @@
             $.dialog.tips("请输入要充值金额");
             return false;
         }
-        if (parseFloat($("#balance").val())&&parseFloat($("#balance").val()) < 0) {
+        if (parseFloat($("#balance").val()) && parseFloat($("#balance").val()) < 0) {
             $.dialog.errorTips("只能输入正数");
             return false;
         }
-        if (parseFloat($("#balance").val()) < parseFloat($("#needPayCashDeposit").attr("needpay")))
-        {
+        if (parseFloat($("#balance").val()) < parseFloat($("#needPayCashDeposit").attr("needpay"))) {
             $.dialog.errorTips("充值金额不能小于应缴金额");
             return false;
         }
@@ -138,7 +137,7 @@
             $.dialog({
                 title: '缴纳保证金',
                 lock: true,
-				width:300,
+                width: 300,
                 id: 'goodCheck',
                 content: $("#payMent")[0],
                 padding: '20px',
@@ -154,7 +153,11 @@
                                 BuildPostForm('pay_form', url, '_blank').submit();
                             }
                             else
+                                //  window.open($('input[name="requestUrl"]:checked').val());
+                            {
                                 window.open($('input[name="requestUrl"]:checked').val());
+                            }
+
                         }
                         else
                             $.dialog.tips("请选择支付方式");
@@ -166,15 +169,14 @@
 
 
 
-        $('input[name="requestUrl"]').change(function () {
-            var url = $(this).val();
-            if ($(this).attr('urlType') == "1")
-                url = '/pay/QRPay?url=' + url + '&id=' + $(this).attr('id') + '&orderIds=' + orderIds;
-        });
+        //$('input[name="requestUrl"]').change(function () {
+        //    var url = $(this).val();
+        //    if ($(this).attr('urlType') == "1")
+        //        url = '/pay/QRPay?url=' + url + '&id=' + $(this).attr('id') + '&orderIds=' + orderIds;
+        //});
     }
 
-    function PayMessage()
-    {
+    function PayMessage() {
         $.dialog({
             title: '登录平台支付',
             lock: true,
