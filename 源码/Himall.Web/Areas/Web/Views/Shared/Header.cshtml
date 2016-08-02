@@ -74,22 +74,24 @@
 
                         if( cateogry.HomeCategories.Count() > 0 )
                         {
-                            <div class="item">
+                            <div class="item" >
                                 <span>
                                     <h3>
                                         @{int j = 0;
-                                        var topCategories = cateogry.HomeCategories.Where( item => item.Depth == 1 );}@foreach( var topCateory in topCategories )
+                                        var topCategories = cateogry.HomeCategories.Where( item => item.Depth == 1 );}
+                                        @foreach( var topCateory in topCategories )
                                         {
                                             if( j++ > 0 )
                                             {@("、")}<a href="@Url.Action("Index", "Search", new{cid=topCateory.CategoryId})">
                                            
-                                        @topCateory.CategoryInfo.Name
-                                                      
-                                          </a>
+                                            @topCateory.CategoryInfo.Name
+                                              </a>
+                                           
+                                             
                                         }
                                        
 						            </h3>
-                                    
+                                 
                                   
                                     
                                 </span>
@@ -122,30 +124,7 @@
                                             </dl>
                                         }
                                     </div>
-                                    @*<div class="cate-right">
-                                            <dl class="categorys-promotions">
-                                                @if (cateogry.HomeCategoryTopics != null)
-                                                {
-                                                    foreach (var topic in cateogry.HomeCategoryTopics)
-                                                    {
-                                                        <a target="_blank" href="@topic.Url"><img src="@topic.ImageUrl" width="194" height="70" /></a>
-                                                    }
-                                                }
-                                            </dl>
-
-                                            @{Dictionary<int, IEnumerable<Himall.Model.BrandInfo>> categoryBrands = ViewBag.CategoryBrands;}
-
-                                            <dl class="categorys-brands">
-                                                <h5>推荐品牌</h5>
-                                                <ul>
-                                                    @foreach (var brand in categoryBrands[rowNumber])
-                                                    {
-                                                        <li><a href="@Url.Action("Index", "Search", new { b_id = brand.Id })" target="_blank">@brand.Name</a></li>
-                                                    }
-                                                </ul>
-                                            </dl>
-
-                                        </div>*@
+                                
                                 </div>
                             </div>
                         }
