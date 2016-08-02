@@ -74,13 +74,14 @@
                 }
             }
             else {
-                $('#nextBtn').attr('urlType', $(this).attr('urlType'));
-                $('#nextBtn').removeAttr('href');
+                //$('#nextBtn').attr('urlType', $(this).attr('urlType'));
+                //$('#nextBtn').removeAttr('href');
             }
         });
 
-        $('#nextBtn').click(function () {
+        @*$('#nextBtn').click(function () {
             var t = $("input[name='requestUrl']:checked").val();
+     
             if (t == undefined) {
                 $.dialog.tips('请选择支付方式！');
                 return;
@@ -175,7 +176,7 @@
                 }
             }
 
-        });
+        });*@
 
     });
     function BuildPostForm(fm, url, target) {

@@ -216,6 +216,7 @@ namespace Himall.Service
 				where item.ShopId == shopId
 				select item into r
 				select r.BrandId;
+            
 			IQueryable<CategoryInfo> categoryInfo = 
 				from item in context.CategoryInfo
 				where categoryIds.Contains(item.Id)
@@ -226,6 +227,7 @@ namespace Himall.Service
 			IQueryable<IEnumerable<BrandInfo>> enumerables = 
 				from item in productTypeInfo
 				select item.TypeBrandInfo.Select<TypeBrandInfo, BrandInfo>((TypeBrandInfo t) => t.BrandInfo);
+            
 			List<BrandInfo> brandInfos = new List<BrandInfo>();
 			foreach (IEnumerable<BrandInfo> list in enumerables.ToList<IEnumerable<BrandInfo>>())
 			{
