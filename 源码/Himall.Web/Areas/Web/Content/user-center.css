@@ -181,7 +181,7 @@ a { cursor: pointer; }
 .menu_left_box a.b { display: block; height: 26px; line-height: 26px; font-size: 12px; padding: 0 0 0px 30px; }
 .menu_left_box a.b.curr { font-weight: normal; background: url(../images/arrow.png) no-repeat right 3px; }
 .curr { color: #3480eb; }
-.box1 { font-family: 'microsoft yahei'; margin:0 auto 20px; padding: 15px 4px 20px 200px; overflow: hidden;  width: 1006px; }
+.box1 { font-family: 'microsoft yahei'; margin:0 auto 100px; padding: 15px 4px 20px 200px; overflow: hidden;  width: 1006px; }
 .box2 { float: left; }
 .fl { float: left; }
 .name { line-height: 40px; font-size: 14px; width: 100%; }
