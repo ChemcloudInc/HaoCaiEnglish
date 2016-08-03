@@ -120,7 +120,7 @@
                         </div>
                     </div>
                     <ul>
-                        @foreach( var pro in item.Himall_Products.Where( p => p.SaleStatus == ProductInfo.ProductSaleStatus.OnSale ).Take( 4 ) )
+                        @foreach( var pro in item.Himall_Products.Where( p => p.SaleStatus == ProductInfo.ProductSaleStatus.OnSale ).Take( 5 ) )
                         {
                             <li>
                                 <a target="_blank" href="/Product/Detail/@pro.Id"><img src="@pro.ImagePath/1_150.png" /></a>
