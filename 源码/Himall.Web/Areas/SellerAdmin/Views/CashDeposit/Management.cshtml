@@ -153,11 +153,9 @@
                                 BuildPostForm('pay_form', url, '_blank').submit();
                             }
                             else
-                                //  window.open($('input[name="requestUrl"]:checked').val());
                             {
                                 window.open($('input[name="requestUrl"]:checked').val());
                             }
-
                         }
                         else
                             $.dialog.tips("请选择支付方式");
@@ -169,11 +167,11 @@
 
 
 
-        //$('input[name="requestUrl"]').change(function () {
-        //    var url = $(this).val();
-        //    if ($(this).attr('urlType') == "1")
-        //        url = '/pay/QRPay?url=' + url + '&id=' + $(this).attr('id') + '&orderIds=' + orderIds;
-        //});
+        $('input[name="requestUrl"]').change(function () {
+            var url = $(this).val();
+            if ($(this).attr('urlType') == "1")
+                url = '/pay/QRPay?url=' + url + '&id=' + $(this).attr('id') + '&orderIds=' + orderIds;
+        });
     }
 
     function PayMessage() {
