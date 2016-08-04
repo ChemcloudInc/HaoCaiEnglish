@@ -87,7 +87,7 @@
                                     <option value="1">减</option>
                                     <option value="2">增</option>
                                 </select>
-                                <input id="inputDiscount@(orderItem.Id)" onkeyup="(this.v = function () { this.value = this.value.replace(/[^0-9]+/, ''); }).call(this)" onblur="    this.v()" class="text-order no-m" type="text">
+                                <input id="inputDiscount@(orderItem.Id)" onkeyup="(this.v = function () { this.value = this.value.replace(/[^0-9.]+/, ''); }).call(this)" onblur="    this.v()" class="text-order no-m" type="text">
                                 <span class=" btn btn-warning btn-xs ss" itemid="@orderItem.Id">确认改价</span>
                             }
                             else

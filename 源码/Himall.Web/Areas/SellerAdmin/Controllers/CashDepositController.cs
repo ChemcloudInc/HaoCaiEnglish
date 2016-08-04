@@ -1,4 +1,5 @@
 using Himall.Core;
+using Himall.Core.Helper;
 using Himall.Core.Plugins;
 using Himall.Core.Plugins.Payment;
 using Himall.IServices;
@@ -9,6 +10,7 @@ using Himall.Web.Framework;
 using Microsoft.CSharp.RuntimeBinder;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Web;
@@ -21,6 +23,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 		public CashDepositController()
 		{
 		}
+      
 
 		public JsonResult CashDepositDetail(long cashDepositId, int pageNo = 1, int pageSize = 10)
 		{

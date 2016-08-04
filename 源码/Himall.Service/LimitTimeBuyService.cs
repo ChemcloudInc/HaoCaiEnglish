@@ -500,17 +500,19 @@ namespace Himall.Service
 			else
 			{
 				price.Price = model.Price;
-				if (price.Himall_MarketSettingMeta.Count() != 0)
-				{
-					MarketSettingMetaInfo str = price.Himall_MarketSettingMeta.FirstOrDefault((MarketSettingMetaInfo m) => {
-						if (m.MarketId != price.Id)
-						{
-							return false;
-						}
-						return m.MetaKey.ToLower().Equals("revicedays");
-					});
-					str.MetaValue = model.ReviceDays.ToString();
-				}
+                //if (price.Himall_MarketSettingMeta.Count() != 0)
+                //{
+                //    MarketSettingMetaInfo str = price.Himall_MarketSettingMeta.FirstOrDefault((MarketSettingMetaInfo m) =>
+                //    {
+                //        if (m.MarketId != price.Id)
+                //        {
+                //            return false;
+                //        }
+                //        return m.MetaKey.ToLower().Equals("revicedays");
+                //    });
+                //    str.MetaValue = model.ReviceDays.ToString();
+                //}
+                
 			}
             context.SaveChanges();
 		}

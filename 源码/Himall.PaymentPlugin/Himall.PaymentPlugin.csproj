@@ -60,6 +60,7 @@
     <ProjectReference Include="..\Himall.Core\Himall.Core.csproj">
       <Project>{5007c583-f3c7-4323-a7ad-0b6bbaa1b3cf}</Project>
       <Name>Himall.Core</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

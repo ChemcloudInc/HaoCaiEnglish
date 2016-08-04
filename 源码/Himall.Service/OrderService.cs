@@ -407,7 +407,8 @@ namespace Himall.Service
                 throw new HimallException("积分抵扣金额不能超过商品总金额！");
             }
             int count = orderInfos.Count;
-            decimal integralDiscount = new decimal(0);
+            //decimal integralDiscount = new decimal(0);
+            decimal integralDiscount = new decimal();
             for (int i = 0; i < orderInfos.Count; i++)
             {
                 OrderInfo orderInfo = orderInfos[i];

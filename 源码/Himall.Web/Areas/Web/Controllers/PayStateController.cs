@@ -27,47 +27,51 @@ namespace Himall.Web.Areas.Web.Controllers
 			base.AsyncManager.OutstandingOperations.Increment();
 			int num1 = 200;
 			int num2 = 10000;
-			Task.Factory.StartNew(() => {
-				string str = CacheKeyCollection.PaymentState(string.Join(",", new string[] { orderIds }));
-				int num = 0;
-				while (true)
-				{
-					if (Cache.Get(str) == null)
-					{
-						string[] strArrays = orderIds.Split(new char[] { ',' });
-						if (func == null)
-						{
-							func = (string item) => long.Parse(item);
-						}
-						IEnumerable<long> nums = strArrays.Select<string, long>(func);
-						using (IOrderService create = Instance<IOrderService>.Create)
-						{
-							IEnumerable<OrderInfo> orders = create.GetOrders(nums);
-							if (orderStatus == null)
-							{
-								orderStatus = (OrderInfo item) => item.OrderStatus == OrderInfo.OrderOperateStatus.WaitPay;
-							}
-							Cache.Insert(str, !orders.Any(orderStatus), 15);
-						}
-					}
-					if ((bool)Cache.Get(str))
-					{
-                        AsyncManager.Parameters["done"] = true;
-						break;
-					}
-					else if (num <= num2)
-					{
-						num = num + num1;
-						Thread.Sleep(num1);
-					}
-					else
-					{
-                        AsyncManager.Parameters["done"] = false;
-						break;
-					}
-				}
-                AsyncManager.OutstandingOperations.Decrement();
-			});
+            if (orderIds != "")
+            {
+                Task.Factory.StartNew(() =>
+                {
+                    string str = CacheKeyCollection.PaymentState(string.Join(",", new string[] { orderIds }));
+                    int num = 0;
+                    while (true)
+                    {
+                        if (Cache.Get(str) == null)
+                        {
+                            string[] strArrays = orderIds.Split(new char[] { ',' });
+                            if (func == null)
+                            {
+                                func = (string item) => long.Parse(item);
+                            }
+                            IEnumerable<long> nums = strArrays.Select<string, long>(func);
+                            using (IOrderService create = Instance<IOrderService>.Create)
+                            {
+                                IEnumerable<OrderInfo> orders = create.GetOrders(nums);
+                                if (orderStatus == null)
+                                {
+                                    orderStatus = (OrderInfo item) => item.OrderStatus == OrderInfo.OrderOperateStatus.WaitPay;
+                                }
+                                Cache.Insert(str, !orders.Any(orderStatus), 15);
+                            }
+                        }
+                        if ((bool)Cache.Get(str))
+                        {
+                            AsyncManager.Parameters["done"] = true;
+                            break;
+                        }
+                        else if (num <= num2)
+                        {
+                            num = num + num1;
+                            Thread.Sleep(num1);
+                        }
+                        else
+                        {
+                            AsyncManager.Parameters["done"] = false;
+                            break;
+                        }
+                    }
+                    AsyncManager.OutstandingOperations.Decrement();
+                });
+            }
 		}
 
 		public void CheckChargeAsync(string orderIds)
