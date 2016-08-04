@@ -54,7 +54,7 @@
 </div>
 
 <div class="w">
-    <div id="product-intro">
+    <div id="product-intro" style="min-height: 486px;">
         <div id="name">
             <h1>@Model.Product.ProductName , 每个ID限购 @Model.MaxSaleCount 件</h1>
             <strong>@Model.Title</strong>
@@ -64,7 +64,7 @@
                 string outClass = "outsale";
                 string text = "";
                 bool hasSKU = false;
-                if (Model.Product.SKUInfo.Any(s => s.Stock > 0) && ViewBag.Second>0)
+                if (Model.Product.SKUInfo.Any(s => s.Stock > 0) && ViewBag.Second > 0)
                 {
                     outClass = "";
                     hasSKU = true;
@@ -92,15 +92,16 @@
                         <span class="discount" id="rebate"><em>@(((Model.Product.MarketPrice / Model.Product.MinSalePrice) * 10).ToString("f2"))</em>折</span>
                     </span>
                 </div>
-                
+
                 <div style="color:red;" class="qper">@text <!--库存有限，立即下单吧！--></div>
 
                 @if (Model.Product.SaleCounts == 0 && ViewBag.Second > 0)
                 {
                     <div class="buyperson"><i></i>数量有限，快来抢购哦！</div>
                 }
-                else { 
-                <div class="buyperson"><i></i><strong>@Model.Product.SaleCounts</strong>人已购买</div>
+                else
+                {
+                    <div class="buyperson"><i></i><strong>@Model.Product.SaleCounts</strong>人已购买</div>
                 }
                 <em class="angle"></em>
             </div>
@@ -108,7 +109,7 @@
             <div class="block_sub">
                 <!--倒计时-->
                 <div class="countime" style=""><i></i> <span class="hour">0</span><em>天</em> <span class="hour">00</span><em>时</em> <span class="hour">00</span><em>分</em> <span class="hour">00</span><em>秒</em></div>
-               
+
                 <div id="commentbox" class="exe_comment">
                     <div class="com_item">
                         <i></i>
@@ -191,11 +192,11 @@
                 <li>
                     <a class="btn-goshop_in @((ViewBag.Second>60&&ViewBag.EnabledBuy && Model.Product.SKUInfo.Any(s => s.Stock > 0)) ? "" : "disabled")" id="justBuy">立即抢购</a>
                     @*@if (ViewBag.EnabledBuy)
-                    {
-                        <div id="choose-btn-coll" class="btn">
-                            <a href="#none" class="btn-coll">加关注<b></b></a>
-                        </div>
-                    }*@
+                        {
+                            <div id="choose-btn-coll" class="btn">
+                                <a href="#none" class="btn-coll">加关注<b></b></a>
+                            </div>
+                        }*@
                 </li>
             </ul><!--choose end-->
             <span class="clr"></span>
