@@ -308,7 +308,7 @@ img { display: inline }
 .breadcrumb strong, .breadcrumb h1 { display: inline; line-height: 20px; font-size: 14px; }
 .breadcrumb span { font-family: simsun; }
 .breadcrumb span a{ font-family:'microsoft yahei'}
-#product-intro { position: relative; z-index: 1; padding-left: 440px; min-height: 486px; background-color: #fff; padding-top: 20px;border-bottom: 1px solid #ddd;border: 1px solid #cbcab0; margin-bottom: 25px;}
+#product-intro { position: relative; z-index: 1; padding-left: 440px; min-height: 510px; background-color: #fff; padding-top: 20px;border-bottom: 1px solid #ddd;border: 1px solid #cbcab0; margin-bottom: 25px;}
 #product-intro #name { zoom: 1; width: 490px; }
 #product-intro #name h1 { font: 700 16px/1.5em Arial, Verdana, "microsoft yahei"; }
 #product-intro #name h1, #name strong { font-family: arial, "microsoft yahei"; }
