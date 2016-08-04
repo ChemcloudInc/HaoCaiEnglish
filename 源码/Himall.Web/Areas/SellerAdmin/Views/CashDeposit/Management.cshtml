@@ -48,7 +48,7 @@
         <div class="form-group">
             <label for="" class="col-sm-2 control-label"><a onclick="ShowCashDeposit()">去缴纳保证金</a></label>
             <div class="col-sm-3" style="display:none" id="cashDeposit">
-                <input class="form-control input-sm" onkeyup="(this.v = function () { this.value = this.value.replace(/[^0-9-]+/, ''); }).call(this)" onblur="    this.v()" id="balance" type="text" style="display:inline-block; width:100px" /> (元) &nbsp; <button type="button" class="btn btn-primary btn-sm" onclick="Pay()">提交</button>
+                <input class="form-control input-sm" onkeyup="(this.v = function () { this.value = this.value.replace(/[^0-9.]+/, ''); }).call(this)" onblur="    this.v()" id="balance" type="text" style="display:inline-block; width:100px" /> (元) &nbsp; <button type="button" class="btn btn-primary btn-sm" onclick="Pay()">提交</button>
 			</div>
         </div>
 		@if(Model!=null)
@@ -152,11 +152,18 @@
                                 var url = $('input[name="requestUrl"]:checked').val();
                                 BuildPostForm('pay_form', url, '_blank').submit();
                             }
-                            else
+                            else if ($('input[name="requestUrl"]:checked').attr('urlType') == "1")
                                 //  window.open($('input[name="requestUrl"]:checked').val());
                             {
-                                window.open($('input[name="requestUrl"]:checked').val());
-                            }
+                                var id = $('input[name="requestUrl"]:checked').attr('id');
+                                var url = $('input[name="requestUrl"]:checked').val();
+                                  url='/pay/QRPay?url=' + url + '&id=' + id; // + '&orderIds=' + orderIds;
+                                  window.open(url);
+                               
+                        }
+                        else{
+                            window.open($('input[name="requestUrl"]:checked').val());
+                        }
 
                         }
                         else
@@ -169,11 +176,11 @@
 
 
 
-        //$('input[name="requestUrl"]').change(function () {
-        //    var url = $(this).val();
-        //    if ($(this).attr('urlType') == "1")
-        //        url = '/pay/QRPay?url=' + url + '&id=' + $(this).attr('id') + '&orderIds=' + orderIds;
-        //});
+       // $('input[name="requestUrl"]').change(function () {
+       //     var url = $(this).val();
+       //    if ($(this).attr('urlType') == "1")
+       //        url = '/pay/QRPay?url=' + url + '&id=' + $(this).attr('id') + '&orderIds=' + orderIds;
+       //});
     }
 
     function PayMessage() {

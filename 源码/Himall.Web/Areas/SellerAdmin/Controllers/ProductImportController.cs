@@ -301,8 +301,15 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
                             productDetailModel.Volume = volume;
                             productDetailModel.styleTemplateId = new List<long>{0,0};
                             productDetailModel.goodsCategory = new List<long> { shopCategoyId };
-                            string[] picArray = pictures.Split(new char[] { ',' });
-                            productDetailModel.pic = new List<string>(picArray);
+                            if (pictures != null && pictures.Length > 4)
+                            {
+                                string[] picArray = pictures.Split(new char[] { ',' });
+                                productDetailModel.pic = new List<string>(picArray);
+                            }
+                            else
+                            {
+                                productDetailModel.pic = new List<string>();
+                            }
                             List<AttrSelectData> attrSelectDataList = new List<AttrSelectData> { 
                                 new AttrSelectData{attrId=10,valueId=""},
                                 new AttrSelectData{attrId=11, valueId=""}
@@ -381,7 +388,8 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
                             #region …˙≥…Õº∆¨
                             foreach (string str2 in productDetailModel.pic)
                             {
-                                string str3 = Server.MapPath(string.Concat(@"/temp/", str2));//Õº∆¨Œª÷√
+                                //string str3 = Server.MapPath(string.Concat(@"/temp/", str2));//Õº∆¨Œª÷√
+                                string str3 = Server.MapPath(string.Format("/Storage/Original/Shop/{0}/{1}", shopId, str2));
                                 string str4 = Server.MapPath(string.Format("/Storage/Shop/{0}/Products/{1}", shopId, productInfo.Id));
                                 if (string.IsNullOrWhiteSpace(str2))
                                 {

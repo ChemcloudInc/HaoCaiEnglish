@@ -668,22 +668,22 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ProductId" Type="bigint" Nullable="false" />
-          <Property Name="ProductName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="1000" Nullable="false" />
           <Property Name="CategoryName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="AuditStatus" Type="smallint" Nullable="false" />
           <Property Name="AuditTime" Type="datetime" Nullable="false" />
           <Property Name="ShopId" Type="bigint" Nullable="false" />
           <Property Name="ShopName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="RecentMonthPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RecentMonthPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="StartTime" Type="datetime" Nullable="false" />
           <Property Name="EndTime" Type="datetime" Nullable="false" />
           <Property Name="Stock" Type="int" Nullable="false" />
           <Property Name="SaleCount" Type="int" Nullable="false" />
           <Property Name="CancelReson" Type="varchar(max)" Nullable="false" />
           <Property Name="MaxSaleCount" Type="int" Nullable="false" />
-          <Property Name="ProductAd" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="MinPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ProductAd" Type="varchar" MaxLength="4000" Nullable="false" />
+          <Property Name="MinPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="ImagePath" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Himall_Logs">
@@ -6253,22 +6253,22 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ProductId" Type="Int64" Nullable="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="AuditStatus" Type="Himall.Model.LimitTimeMarketAuditStatus" Nullable="false" />
           <Property Name="AuditTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ShopId" Type="Int64" Nullable="false" />
           <Property Name="ShopName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="RecentMonthPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="RecentMonthPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Stock" Type="Int32" Nullable="false" />
           <Property Name="SaleCount" Type="Int32" Nullable="false" />
           <Property Name="CancelReson" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MaxSaleCount" Type="Int32" Nullable="false" />
-          <Property Name="ProductAd" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="MinPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ProductAd" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="MinPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="ImagePath" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MarketServiceRecordInfo">
