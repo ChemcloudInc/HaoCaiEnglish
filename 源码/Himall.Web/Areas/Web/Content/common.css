@@ -179,8 +179,8 @@ q::before, q::after { content: ''; }
 .cart-list-goods:hover i{ display:block;}*/
 .side-cart-c{ position:relative; height:100%; background-color:#e6e6e6;}
 .side-cart-c .side-bt{ bottom:20px; left:0; padding:0 15px; width:190px; position:absolute; background-color:#e6e6e6;}
-.side-cart-c .side-bt input[type="button"]{ width:100%; height:40px; line-height:40px; text-align:center; color:#fff; background-color:#e3393c; border:0 none; cursor:pointer;}
-.side-cart-c .side-bt input[type="button"]:hover{ background-color:#E22226;}
+.side-cart-c .side-bt input[type="button"]{ width:100%; height:40px; line-height:40px; text-align:center; color:#fff; background-color:#3480eb; border:0 none; cursor:pointer;}
+.side-cart-c .side-bt input[type="button"]:hover{ background-color:#538ee2;}
 
 .side-cart-c .cart-total{ color:#333;  line-height: 30px;}
 .side-cart-c .cart-total .total-money{ float:right; color:#e3393c;}
