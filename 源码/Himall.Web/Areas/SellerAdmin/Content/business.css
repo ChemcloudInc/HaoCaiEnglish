@@ -95,6 +95,7 @@
 .ms-goods .icon{ width:30px; height:30px; line-height:14px; padding:15px; border:1px solid #1b7ccd; border-radius:100%; color:#fff;  text-align:center; position:relative; float:left; box-sizing:content-box; margin:15px 30px 25px 0;background:url(/Images/icon-c.png) no-repeat 12px -472px #1b7ccd;}
 .ms-goods .icon:after{ content:''; position:absolute; width:13px; height:13px; right:-6px; top:25px; background:url(/Images/user-icon.png) no-repeat 0 -22px;}
 .ms-goods .icon.icon-2{ background-position:12px -526px;}
+.ms-dynamics { width:27%; float:right;height: 188px; }
 
 .ms-chat{ float:left; width:49%;}
 .ms-chat.chat-shop{ margin-right:2%;}
