@@ -295,17 +295,6 @@ namespace Himall.Web.Areas.Admin.Controllers
 			IEnumerable<SelectListItem> selectListItems;
 			SelectList selectList = ShopInfo.ShopAuditStatus.Open.ToSelectList<ShopInfo.ShopAuditStatus>(true, false);
 			dynamic viewBag = base.ViewBag;
-            //selectListItems = (type == "Auditing" ? selectList.Where((SelectListItem c) => {
-            //    if (c.Value == "2" || c.Value == "3")
-            //    {
-            //        return true;
-            //    }
-            //    return c.Value == "5";
-            //}) : 
-            //    from c in selectList
-            //    where c.Value != "6"
-
-            //    select c);
             if (type == "Auditing")
             {
                 selectListItems = (type == "Auditing" ? selectList.Where((SelectListItem c) =>
@@ -325,10 +314,6 @@ namespace Himall.Web.Areas.Admin.Controllers
 
                 selectListItems = (type == "Paying" ? selectList.Where((SelectListItem c) =>
                 {
-                    //if (c.Value == "2" || c.Value == "3")
-                    //{
-                    //    return true;
-                    //}
                     return c.Value == "5";
                 }) :
                     from c in selectList
