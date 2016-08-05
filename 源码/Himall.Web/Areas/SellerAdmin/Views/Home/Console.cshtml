@@ -60,16 +60,7 @@
             </dl>
         </div>
     </div>
-    <div class="ms-public modle-box">
-        <h3><a>公告</a></h3>
-        <ul>
-            @foreach (var article in @Model.Articles)
-            {
-                <li><a  href="@Url.Action("Details", "Article", new { id = article.Id })">@article.Title</a></li>
-            }
-        </ul>
-    </div>
-
+    
     <div class="ms-goods modle-box">
         <h3><a>商品管理</a></h3>
         <ul class="clearfix">
@@ -84,6 +75,16 @@
                 <p><a href="/SellerAdmin/productconsultation/management">商品咨询(@Model.OrderProductConsultation)</a><a href="/SellerAdmin/ProductComment/management">商品评价<i>(@Model.ProductsEvaluation)</i></a></p>
                 <p><a href="/SellerAdmin/brand/management">授权品牌(@Model.ProductsBrands)</a></p>
             </li>
+        </ul>
+    </div>
+
+    <div class="ms-public modle-box">
+        <h3><a>公告</a></h3>
+        <ul>
+            @foreach (var article in @Model.Articles)
+            {
+                <li><a href="@Url.Action("Details", "Article", new { id = article.Id })">@article.Title</a></li>
+            }
         </ul>
     </div>
 

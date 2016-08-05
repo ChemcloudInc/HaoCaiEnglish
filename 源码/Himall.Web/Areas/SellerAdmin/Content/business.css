@@ -81,11 +81,11 @@
 .ms-chat h3{ background-position:13px -727px;}
 .chat-shop h3{background-position:13px -694px;}
 
-.ms-public{ width:27%; float:right;height: 188px;}
+.ms-public{ width:27%; float:right;height: 157px;}
 .ms-public li{ padding-top:10px; padding-left:15px; line-height:18px;  text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
 .ms-public li a{ color:#333;}
 .ms-public li a:hover{ color:#e3393c;}
-.ms-goods{ width:100%; float:left;}
+.ms-goods{ width: 71%; float:left;}
 .ms-goods li{ width:50%; padding-left:20px; float:left; padding-top:15px;}
 .ms-goods li:first-child{border-right: 1px dashed #e8e8e8;}
 .ms-goods p{ padding:8px 0 2px; color:#333;}
