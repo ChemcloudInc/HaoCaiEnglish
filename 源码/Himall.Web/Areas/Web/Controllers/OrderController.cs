@@ -554,7 +554,7 @@ namespace Himall.Web.Areas.Web.Controllers
         {
             if (string.IsNullOrEmpty(orderIds))
             {
-                return RedirectToAction("index", "userCenter", new { url = "/userOrder", tar = "userOrder" });
+                return RedirectToAction("index","userCenter", new { url = "/userOrder", tar = "userOrder" });
             }
             char[] chrArray = new char[] { ',' };
             IEnumerable<long> nums =
