@@ -96,7 +96,7 @@
 .ms-goods .icon:after{ content:''; position:absolute; width:13px; height:13px; right:-6px; top:25px; background:url(/Images/user-icon.png) no-repeat 0 -22px;}
 .ms-goods .icon.icon-2{ background-position:12px -526px;}
 .ms-dynamics { width:27%; float:right;height: 188px; }
-.ms-dynamics h3 { background-position: 12px -769px; }
+.ms-dynamics h3 { background-position: 15px -769px; }
 .ms-dynamics li{ padding-top:10px; padding-left:15px; line-height:18px;  text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
 .ms-dynamics li a{ color:#333;}
 .ms-dynamics li a:hover{ color:#e3393c;}
