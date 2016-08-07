@@ -344,6 +344,7 @@
     <Content Include="Areas\SellerAdmin\Scripts\mobileTopicSave.js" />
     <Content Include="Areas\SellerAdmin\Scripts\navigationManagement.js" />
     <Content Include="Areas\SellerAdmin\Scripts\operationLogManagement.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\orderAccountType.js" />
     <Content Include="Areas\SellerAdmin\Scripts\orderComplaintManagement.js" />
     <Content Include="Areas\SellerAdmin\Scripts\orderManagement.js" />
     <Content Include="Areas\SellerAdmin\Scripts\orderPrint.js" />
@@ -501,6 +502,7 @@
     <Content Include="Areas\Web\Scripts\artDialog.iframeTools.js" />
     <Content Include="Areas\Web\Scripts\businessRegister.js" />
     <Content Include="Areas\Web\Scripts\cartSettleAccounts.js" />
+    <Content Include="Areas\Web\Scripts\CashDepositWeiXinPay.js" />
     <Content Include="Areas\Web\Scripts\cloud-zoom.1.0.2.min.js" />
     <Content Include="Areas\Web\Scripts\custom.js" />
     <Content Include="Areas\Web\Scripts\GiftDetail.js" />
@@ -1878,6 +1880,8 @@
     <Content Include="Views\Site\Version.cshtml" />
     <Content Include="Areas\Web\Views\WithDraw\Index.cshtml" />
     <Content Include="Areas\Web\Views\WithDraw\AddWithDraw.cshtml" />
+    <Content Include="Areas\Web\Views\Pay\CashDepositWeiXinPay.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Order\AccountTypeList.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

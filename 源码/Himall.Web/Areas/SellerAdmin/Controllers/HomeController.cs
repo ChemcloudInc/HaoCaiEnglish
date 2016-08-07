@@ -2,6 +2,7 @@ using Himall.Core.Helper;
 using Himall.IServices;
 using Himall.IServices.QueryModel;
 using Himall.Model;
+using Himall.Web.Areas.Admin.Models;
 using Himall.Web.Areas.SellerAdmin.Models;
 using Himall.Web.Framework;
 using Microsoft.CSharp.RuntimeBinder;
@@ -172,6 +173,13 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 				homeModel.OrderCounts = homeModel.SellerConsoleModel.OrderCounts.ToString();
 				homeModel.OrderWaitPay = homeModel.SellerConsoleModel.WaitPayTrades.ToString();
 				homeModel.OrderWaitDelivery = homeModel.SellerConsoleModel.WaitDeliveryTrades.ToString();
+                homeModel.NoAccount = homeModel.SellerConsoleModel.NoAccount;//未结款
+                homeModel.WaitAccount = getTotalWaitAccout();//待结款
+                if(getLastestFinishAccount()!=null)
+                {
+                    homeModel.LastestAccount = getLastestFinishAccount().PeriodSettlement;
+                    homeModel.LastestFinishData = getLastestFinishAccount().FinishDate.ToString("yyyy-MM-dd");
+                }
 				ICommentService commentService = ServiceHelper.Create<ICommentService>();
 				CommentQuery commentQuery = new CommentQuery()
 				{
@@ -226,6 +234,56 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 			}
 			return View(homeModel);
 		}
+        /// <summary>
+        /// 待结款总金额
+        /// 说明：该值有有2中方法可获取
+        /// 方法一：从Orders表中 根据AccountType=WaitAccount条件筛求和
+        /// 方法二：直接从Account表中，根据AccountStatus=UnAccount条件筛选求和(因为Order表AccountType=WaitAccount值就是由Account表数据生成而生成的)
+        /// 该函数用的是第二种方法
+        /// </summary>
+        /// <returns></returns>
+        public decimal getTotalWaitAccout()
+        {
+            decimal totalPeriodSettlement=0;
+            AccountQuery accountQuery = new AccountQuery()
+            {
+                	Status = new AccountInfo.AccountStatus?((AccountInfo.AccountStatus)0),//待结款
+                    PageSize = 100,
+                    PageNo = 1,
+                ShopId = new long?(base.CurrentSellerManager.ShopId)
+            };
+            PageModel<AccountInfo> accounts = ServiceHelper.Create<IAccountService>().GetAccounts(accountQuery);
+            if (accounts != null)
+            {
+                AccountInfo[] array = accounts.Models.ToArray();
+                totalPeriodSettlement = (from a in array select a).Sum(a => a.PeriodSettlement);
+            }
+              
+             return totalPeriodSettlement;
+           
+        }
+
+        public AccountInfo getLastestFinishAccount()
+        {
+            AccountInfo lastestFinisheAccount = null;
+            AccountQuery accountQuery = new AccountQuery()
+            {
+                Status = new AccountInfo.AccountStatus?((AccountInfo.AccountStatus)1),//已结款
+                PageSize = 100,
+                PageNo = 1,
+                ShopId = new long?(base.CurrentSellerManager.ShopId)
+            };
+            PageModel<AccountInfo> accounts = ServiceHelper.Create<IAccountService>().GetAccounts(accountQuery);
+            if (accounts != null)
+            {
+                lastestFinisheAccount = (from a in accounts.Models select a).OrderByDescending(a => a.FinishDate).FirstOrDefault();
+            }
+
+            return lastestFinisheAccount;
+
+        }
+
+
 
 		[UnAuthorize]
 		public JsonResult GetsellerAdminMessage()

@@ -13,6 +13,7 @@ namespace Himall.Service
 {
 	public class AccountService : ServiceBase, IAccountService, IService, IDisposable
 	{
+        private OrderService orderService = new OrderService();
 		public AccountService()
 		{
 		}
@@ -22,7 +23,18 @@ namespace Himall.Service
 			AccountInfo accountInfo = context.AccountInfo.FindById<AccountInfo>(id);
 			accountInfo.Status = AccountInfo.AccountStatus.Accounted;
 			accountInfo.Remark = managerRemark;
+            accountInfo.FinishDate = DateTime.Now;
             context.SaveChanges();
+            foreach (AccountDetailInfo accDetail in GetAccountDetail(accountInfo.Id))
+            {
+                OrderInfo orderInfo = orderService.GetOrder(accDetail.OrderId);
+                if(orderInfo!=null)
+                {
+                    orderInfo.AccountType = OrderInfo.AccountTypes.FinishAccount;
+                    orderService.UpdateOrderInfo(orderInfo);
+                }
+            }
+           
 		}
 
 		public AccountInfo GetAccount(long id)
@@ -30,6 +42,11 @@ namespace Himall.Service
 			return context.AccountInfo.FindById<AccountInfo>(id);
 		}
 
+        public IQueryable<AccountDetailInfo> GetAccountDetail(long accountid)
+        {
+            IQueryable<AccountDetailInfo> accountDetailInfos = context.AccountDetailInfo.FindBy((AccountDetailInfo b) => b.AccountId.Equals(accountid));
+            return accountDetailInfos;
+        }
 		public PageModel<AccountDetailInfo> GetAccountDetails(AccountQuery query)
 		{
 			int num;

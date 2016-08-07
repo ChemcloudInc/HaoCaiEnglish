@@ -244,6 +244,26 @@ namespace Himall.Web.Areas.Web.Controllers
 			return View();
 		}
 
+        public ActionResult CashDepositWeiXinPay(string url, string id)
+        {
+            ViewBag.Logo = ServiceHelper.Create<ISiteSettingService>().GetSiteSettings().Logo;
+            Plugin<IPaymentPlugin> plugin = PluginsManagement.GetPlugin<IPaymentPlugin>(id);
+            ViewBag.Title = string.Concat(plugin.PluginInfo.DisplayName, "支付");
+            ViewBag.Name = plugin.PluginInfo.DisplayName;
+            Bitmap bitmap = QRCodeHelper.Create(url);
+            DateTime now = DateTime.Now;
+            string str = string.Concat(now.ToString("yyMMddHHmmssffffff"), ".jpg");
+            string str1 = string.Concat("/temp/", str);
+            bitmap.Save(string.Concat(Server.MapPath("~/temp/"), str));
+            ViewBag.QRCode = str1;
+            dynamic viewBag = base.ViewBag;
+            string classFullName = plugin.PluginInfo.ClassFullName;
+            char[] chrArray = new char[] { ',' };
+            viewBag.HelpImage = string.Concat("/Plugins/Payment/", classFullName.Split(chrArray)[1], "/", plugin.Biz.HelpImage);
+            ViewBag.Step = 2;
+            return View();
+        }
+
 		public ActionResult Return(string id)
 		{
 			id = DecodePaymentId(id);
@@ -270,17 +290,20 @@ namespace Himall.Web.Areas.Web.Controllers
 				{
 					Log.Info(string.Concat("ShopID = ", order.ShopId));
 					ShopBonusInfo byShopId = shopBonusService.GetByShopId(order.ShopId);
-					Log.Info(string.Concat("商家活动价格：", byShopId.GrantPrice));
-					Log.Info(string.Concat("买家支付价格：", order.OrderTotalAmount));
-					if (byShopId.GrantPrice > order.OrderTotalAmount)
-					{
-						continue;
-					}
-					object[] objArray = new object[] { byShopId.Id, order.UserId, order.Id, str1 };
-					Log.Info(string.Format("{0} , {1} , {2} , {3} ", objArray));
-					long num1 = shopBonusService.GenerateBonusDetail(byShopId, order.UserId, order.Id, str1);
-					Log.Info(string.Concat("生成红包组，红包Grantid = ", num1));
-					nums.Add(num1, byShopId);
+                    if (byShopId != null)
+                    {
+                        Log.Info(string.Concat("商家活动价格：", byShopId.GrantPrice));
+                        Log.Info(string.Concat("买家支付价格：", order.OrderTotalAmount));
+                        if (byShopId.GrantPrice > order.OrderTotalAmount)
+                        {
+                            continue;
+                        }
+                        object[] objArray = new object[] { byShopId.Id, order.UserId, order.Id, str1 };
+                        Log.Info(string.Format("{0} , {1} , {2} , {3} ", objArray));
+                        long num1 = shopBonusService.GenerateBonusDetail(byShopId, order.UserId, order.Id, str1);
+                        Log.Info(string.Concat("生成红包组，红包Grantid = ", num1));
+                        nums.Add(num1, byShopId);
+                    }
 				}
 			}
 			catch (Exception exception)

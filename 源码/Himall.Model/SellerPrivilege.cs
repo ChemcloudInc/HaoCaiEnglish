@@ -22,6 +22,8 @@ namespace Himall.Model
 		ProductImportManage = 2008,
 		[Privilege("交易", "订单管理", 3001, "order/management", "order", "")]
 		OrderManage = 3001,
+        [Privilege("交易", "订单结算状态", 3010, "Order/AccountTypeList", "order", "")]
+        OrderAccountTypeList = 3010,
 		[Privilege("交易", "退款处理", 3002, "orderrefund/management?showtype=2", "orderrefund", "")]
 		OrderRefund = 3002,
 		[Privilege("交易", "退货处理", 3003, "orderrefund/management?showtype=3", "orderrefund", "")]

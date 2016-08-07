@@ -27,8 +27,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			base.AsyncManager.OutstandingOperations.Increment();
 			int num1 = 200;
 			int num2 = 10000;
-            if (orderIds != "")
-            {
+            
                 Task.Factory.StartNew(() =>
                 {
                     string str = CacheKeyCollection.PaymentState(string.Join(",", new string[] { orderIds }));
@@ -71,7 +70,7 @@ namespace Himall.Web.Areas.Web.Controllers
                     }
                     AsyncManager.OutstandingOperations.Decrement();
                 });
-            }
+            
 		}
 
 		public void CheckChargeAsync(string orderIds)

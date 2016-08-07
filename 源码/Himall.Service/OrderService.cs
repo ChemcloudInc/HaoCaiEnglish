@@ -76,6 +76,7 @@ namespace Himall.Service
                 throw new HimallException("只可以关闭待发货订单！");
             }
             orderInfo.OrderStatus = OrderInfo.OrderOperateStatus.Close;
+            
             orderInfo.CloseReason = "商家同意退款，取消订单";
             ReturnStock(orderInfo);
             context.SaveChanges();
@@ -351,6 +352,7 @@ namespace Himall.Service
                 if (nullable.OrderTotalAmount == new decimal(0))
                 {
                     nullable.OrderStatus = OrderInfo.OrderOperateStatus.WaitDelivery;
+                    nullable.AccountType = OrderInfo.AccountTypes.NoAccount;//付款成功修改结算状态
                 }
                 nullable.PayDate = new DateTime?(DateTime.Now);
             }
@@ -694,6 +696,13 @@ namespace Himall.Service
             return context.OrderInfo.FindById<OrderInfo>(orderId);
         }
 
+        public void UpdateOrderInfo(OrderInfo orderInfo)
+        {
+            OrderInfo name = context.OrderInfo.FindById<OrderInfo>(orderInfo.Id);
+            name.AccountType = orderInfo.AccountType;
+            context.SaveChanges();
+        }
+
         public OrderItemInfo GetOrderItem(long orderItemId)
         {
             return context.OrderItemInfo.FindById<OrderItemInfo>(orderItemId);
@@ -765,6 +774,31 @@ namespace Himall.Service
                     foreach (OrderInfo.OrderOperateStatus moreStatu in orderQuery.MoreStatus)
                     {
                         defaultPredicate = defaultPredicate.Or<OrderInfo>((OrderInfo d) => (int)d.OrderStatus == (int)moreStatu);
+                    }
+                }
+                platform = platform.FindBy(defaultPredicate);
+            }
+            //if (orderQuery.MoreStatus != null)
+            //{
+            //    Expression<Func<OrderInfo, bool>> defaultPredicate = platform.GetDefaultPredicate<OrderInfo>(false);
+            //    defaultPredicate = defaultPredicate.Or<OrderInfo>((OrderInfo d) => (int?)d.OrderStatus == (int?)orderQuery.Status);
+               
+            //        foreach (OrderInfo.OrderOperateStatus moreStatu in orderQuery.MoreStatus)
+            //        {
+            //            defaultPredicate = defaultPredicate.Or<OrderInfo>((OrderInfo d) => (int)d.OrderStatus == (int)moreStatu);
+            //        }
+                
+            //    platform = platform.FindBy(defaultPredicate);
+            //}
+            if (orderQuery.AccountTypeStatus.HasValue)
+            {
+                Expression<Func<OrderInfo, bool>> defaultPredicate = platform.GetDefaultPredicate<OrderInfo>(false);
+                defaultPredicate = defaultPredicate.Or<OrderInfo>((OrderInfo d) => (int?)d.AccountType == (int?)orderQuery.AccountTypeStatus);
+                if (orderQuery.MoreAccountTypeStatus != null)
+                {
+                    foreach (OrderInfo.AccountTypes moreStatu in orderQuery.MoreAccountTypeStatus)
+                    {
+                        defaultPredicate = defaultPredicate.Or<OrderInfo>((OrderInfo d) => (int)d.AccountType == (int)moreStatu);
                     }
                 }
                 platform = platform.FindBy(defaultPredicate);
@@ -1045,10 +1079,12 @@ namespace Himall.Service
                         empty.PaymentTypeGateway = string.Empty;
                         empty.PaymentTypeName = "预付款支付";
                         empty.OrderStatus = OrderInfo.OrderOperateStatus.WaitDelivery;
+                       
                         if (orderPayInfo != null)
                         {
                             orderPayInfo.PayState = true;
                             orderPayInfo.PayTime = new DateTime?(DateTime.Now);
+                            empty.AccountType = OrderInfo.AccountTypes.NoAccount;//付款成功修改结算状态
                         }
                         CapitalInfo capitalInfo1 = capitalInfo;
                         decimal? balance1 = capitalInfo1.Balance;
@@ -1104,6 +1140,7 @@ namespace Himall.Service
                         {
                             orderPayInfo.PayState = true;
                             orderPayInfo.PayTime = new DateTime?(payTime);
+                            nullable.AccountType = OrderInfo.AccountTypes.NoAccount;//付款成功修改结算状态
                         }
                         UpdateShopVisti(nullable);
                         UpdateProductVisti(nullable);
@@ -1150,6 +1187,7 @@ namespace Himall.Service
                 throw new HimallException("只有待付款状态的订单才能进行付款操作");
             }
             nullable.OrderStatus = OrderInfo.OrderOperateStatus.WaitDelivery;
+            nullable.AccountType = OrderInfo.AccountTypes.NoAccount;//付款成功修改结算状态
             nullable.PayRemark = payRemark;
             nullable.PaymentTypeName = string.Format("平台线下收款", managerName);
             nullable.PayDate = new DateTime?(DateTime.Now);

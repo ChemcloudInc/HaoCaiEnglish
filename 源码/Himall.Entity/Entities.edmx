@@ -66,6 +66,7 @@
           <Property Name="AdvancePaymentAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="PeriodSettlement" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="ProductActualPaidAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FinishDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Himall_ActiveMarketService">
           <Key>
@@ -1067,6 +1068,7 @@
           <Property Name="IntegralDiscount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="InvoiceContext" Type="varchar" MaxLength="50" />
           <Property Name="OrderType" Type="int" />
+          <Property Name="AccountType" Type="int" />
         </EntityType>
         <EntityType Name="Himall_ProductAttributes">
           <Key>
@@ -4360,6 +4362,7 @@
           <NavigationProperty Name="Himall_AccountPurchaseAgreement" Relationship="Himall.Model.himall_accountpurchaseagreement_ibfk_1" FromRole="AccountInfo" ToRole="Himall_AccountPurchaseAgreement" />
           <NavigationProperty Name="Himall_AccountDetails" Relationship="Himall.Model.himall_accountdetails_ibfk_1" FromRole="AccountInfo" ToRole="AccountDetailInfo" />
           <Property Name="ProductActualPaidAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FinishDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ArticleCategoryInfo">
           <Key>
@@ -4750,6 +4753,7 @@
           <Property Name="IntegralDiscount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="InvoiceContext" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="OrderType" Type="Himall.Model.OrderTypes" />
+          <Property Name="AccountType" Type="Himall.Model.AccountTypes" />
         </EntityType>
         <EntityType Name="ProductShopCategoryInfo">
           <Key>
@@ -6865,6 +6869,8 @@
         </Association>
         <EnumType Name="CouponTypeEnum" a:ExternalTypeName="WXCardLogInfo.CouponTypeEnum" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
         <EnumType Name="OrderTypes" a:ExternalTypeName="Himall.Model.OrderInfo.OrderTypes" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+        <EnumType Name="AccountTypes" a:ExternalTypeName="Himall.Model.OrderInfo.AccountTypes" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+
         <EntityType Name="CollocationInfo">
           <Key>
             <PropertyRef Name="Id" />
@@ -7316,6 +7322,7 @@
           <EntitySetMapping Name="Himall_Accounts">
             <EntityTypeMapping TypeName="Himall.Model.AccountInfo">
               <MappingFragment StoreEntitySet="Himall_Accounts">
+                <ScalarProperty Name="FinishDate" ColumnName="FinishDate" />
                 <ScalarProperty Name="ProductActualPaidAmount" ColumnName="ProductActualPaidAmount" />
                 <ScalarProperty Name="PeriodSettlement" ColumnName="PeriodSettlement" />
                 <ScalarProperty Name="AdvancePaymentAmount" ColumnName="AdvancePaymentAmount" />
@@ -7658,6 +7665,7 @@
           <EntitySetMapping Name="Himall_Orders">
             <EntityTypeMapping TypeName="Himall.Model.OrderInfo">
               <MappingFragment StoreEntitySet="Himall_Orders">
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
                 <ScalarProperty Name="OrderType" ColumnName="OrderType" />
                 <ScalarProperty Name="InvoiceContext" ColumnName="InvoiceContext" />
                 <ScalarProperty Name="IntegralDiscount" ColumnName="IntegralDiscount" />

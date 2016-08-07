@@ -157,7 +157,8 @@
                             {
                                 var id = $('input[name="requestUrl"]:checked').attr('id');
                                 var url = $('input[name="requestUrl"]:checked').val();
-                                  url='/pay/QRPay?url=' + url + '&id=' + id; // + '&orderIds=' + orderIds;
+                                
+                                url = '/pay/CashDepositWeiXinPay?url=' + url + '&id=' + id + '&balance=' + parseFloat($("#balance").val());
                                   window.open(url);
                                
                         }

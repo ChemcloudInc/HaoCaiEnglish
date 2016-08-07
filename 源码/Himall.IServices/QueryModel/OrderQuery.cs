@@ -25,6 +25,12 @@ namespace Himall.IServices.QueryModel
 			set;
 		}
 
+        public List<OrderInfo.AccountTypes> MoreAccountTypeStatus
+        {
+            get;
+            set;
+        }
+
 		public long? OrderId
 		{
 			get;
@@ -78,6 +84,11 @@ namespace Himall.IServices.QueryModel
 			get;
 			set;
 		}
+        public OrderInfo.AccountTypes? AccountTypeStatus
+        {
+            get;
+            set;
+        }
 
 		public long? UserId
 		{

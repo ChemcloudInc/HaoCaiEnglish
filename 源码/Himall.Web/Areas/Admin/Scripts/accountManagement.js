@@ -94,6 +94,7 @@ function Query(status) {
             { field: "RefundCommissionAmount", title: "退还佣金", width: 80, align: "center" },
             { field: "AdvancePaymentAmount", title: "营销费用总额", width: 80, align: "center" },
             { field: "PeriodSettlement", title: "本期应结", width: 80, align: "center" },
+        
             { field: "AccountDate", title: "出账日期", width: 100, align: "center" },
             {
                 field: "operation", width: 150, operation: true, title: "操作",

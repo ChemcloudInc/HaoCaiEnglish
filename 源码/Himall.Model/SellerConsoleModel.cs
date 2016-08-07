@@ -160,6 +160,31 @@ namespace Himall.Model
 			get;
 			set;
 		}
+        /// <summary>
+        /// 待结款金额
+        /// </summary>
+        public decimal WaitAccount
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// 未结款金额
+        /// </summary>
+        public decimal NoAccount
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// 最近结款金额
+        /// </summary>
+        public decimal LastestAccount
+        {
+            get;
+            set;
+        }
+
 
 		public int WaitForAuditingProducts
 		{
