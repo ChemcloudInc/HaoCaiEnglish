@@ -237,6 +237,7 @@ namespace Himall.Service
                 from a in orderInfo
                 where (int)a.OrderStatus == 2
                 select a).Count();
+
 			platConsoleModel.Complaints = orderComplaintInfo.Count((OrderComplaintInfo a) => (int)a.Status == 3);
 			platConsoleModel.OrderCounts = (
 				from a in orderInfo
@@ -347,7 +348,24 @@ namespace Himall.Service
 				from a in orderInfo
 				where (int)a.OrderStatus == 2
 				select a).Count();
-			sellerConsoleModel.RefundTrades = orderRefundInfo.Count();
+            #region 账户动态
+            if ((from a in orderInfo
+                 where (int)a.AccountType == 1
+                 select a).Count() > 0)
+            {
+               
+                sellerConsoleModel.NoAccount = (
+                   from a in orderInfo
+                   where (int)a.AccountType == 1
+                   select a).Sum(a => a.ProductTotalAmount + a.Freight + a.RefundCommisAmount - a.RefundTotalAmount - a.CommisTotalAmount - a.DiscountAmount);
+            }
+            else
+            {
+                sellerConsoleModel.NoAccount = 0;
+            }
+                
+            #endregion
+            sellerConsoleModel.RefundTrades = orderRefundInfo.Count();
 			sellerConsoleModel.RefundAndRGoodsTrades = orderRefundInfos.Count();
 			sellerConsoleModel.Complaints = orderComplaintInfo.Count();
 			sellerConsoleModel.OrderCounts = orderInfo.Count();

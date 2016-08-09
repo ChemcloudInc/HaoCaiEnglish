@@ -18,6 +18,7 @@ namespace Himall.Model
 		CommentManage = 2007,
 		[Privilege("交易", "订单管理", 3001, "Order/management", "order", "")]
 		OrderManage = 3001,
+        
 		[Privilege("交易", "退款处理", 3002, "OrderRefund/management?showtype=2", "orderrefund", "")]
 		ReturnRefundManage = 3002,
 		[Privilege("交易", "交易评价", 3003, "OrderComment/management", "ordercomment", "")]

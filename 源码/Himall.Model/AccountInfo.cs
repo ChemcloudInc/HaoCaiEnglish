@@ -42,6 +42,14 @@ namespace Himall.Model
 			get;
 			set;
 		}
+        /// <summary>
+        /// 确认结款时间
+        /// </summary>
+        public DateTime FinishDate
+        {
+            get;
+            set;
+        }
 
 		public decimal FreightAmount
 		{
@@ -136,7 +144,7 @@ namespace Himall.Model
 
 		public enum AccountStatus
 		{
-			[Description("未结算")]
+			[Description("待结算")]
 			UnAccount,
 			[Description("已结算")]
 			Accounted

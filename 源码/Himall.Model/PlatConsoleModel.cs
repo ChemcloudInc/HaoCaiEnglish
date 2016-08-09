@@ -112,6 +112,7 @@ namespace Himall.Model
 			get;
 			set;
 		}
+       
 
 		public int WaitForAuditingBrands
 		{

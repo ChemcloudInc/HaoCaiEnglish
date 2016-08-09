@@ -35,7 +35,7 @@ $(function () {
                 {
                     checkbox: true, witdh: 35, formatter: function ( value, row, index )
                     {
-                        if ( row.OrderStatus == "代付款" || row.OrderStatus == "已关闭" )
+                        if ( row.OrderStatus == "待付款" || row.OrderStatus == "已关闭" )
                         {
                             return '<input type="checkbox" disabled>';
                         }

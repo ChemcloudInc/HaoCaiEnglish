@@ -354,6 +354,101 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 			return View();
 		}
 
+        [HttpPost]
+        [UnAuthorize]
+        public JsonResult ListAccountType(DateTime? startDate, DateTime? endDate, long? orderId, int? accountType, string userName, int page, int rows, int? orderType)
+        {
+          
+            OrderInfo.AccountTypes? nullable;
+            List<OrderInfo.OrderOperateStatus> a =new List<OrderInfo.OrderOperateStatus> { OrderInfo.OrderOperateStatus.WaitReceiving,OrderInfo.OrderOperateStatus.WaitDelivery };
+            OrderQuery orderQuery = new OrderQuery()
+            {
+                StartDate = startDate,
+                EndDate = endDate,
+                OrderId = orderId
+            };
+            OrderQuery orderQuery1 = orderQuery;
+            int? nullable1 = accountType;
+            if (nullable1.HasValue)
+            {
+                nullable = new OrderInfo.AccountTypes?((OrderInfo.AccountTypes)nullable1.GetValueOrDefault());
+            }
+            else
+            {
+                nullable = null;
+            }
+
+            orderQuery1.AccountTypeStatus = nullable;
+            orderQuery.MoreStatus = a;
+            orderQuery.Status = OrderInfo.OrderOperateStatus.Finish;
+            orderQuery.ShopId = new long?(base.CurrentSellerManager.ShopId);
+            orderQuery.UserName = userName;
+            orderQuery.OrderType = orderType;
+            orderQuery.PageSize = rows;
+            orderQuery.PageNo = page;
+            PageModel<OrderInfo> orders = ServiceHelper.Create<IOrderService>().GetOrders<OrderInfo>(orderQuery, null);
+            IEnumerable<OrderModel> array =
+                from item in orders.Models.ToArray()
+               // where (item.OrderStatus == OrderInfo.OrderOperateStatus.WaitDelivery || item.OrderStatus == OrderInfo.OrderOperateStatus.WaitReceiving || item.OrderStatus == OrderInfo.OrderOperateStatus.Finish)
+                select new OrderModel()
+                {
+                    OrderId = item.Id,
+                    OrderStatus = item.OrderStatus.ToDescription(),
+                    OrderDate = item.OrderDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                    ShopId = item.ShopId,
+                    ShopName = item.ShopName,
+                    UserId = item.UserId,
+                    UserName = item.UserName,
+                    TotalPrice = item.OrderTotalAmount,
+                    PaymentTypeName = item.PaymentTypeName,
+                    IconSrc = GetIconSrc(item.Platform),
+                    PlatForm = (int)item.Platform,
+                    PlatformText = item.Platform.ToDescription(),
+                    AccountType = item.AccountType.ToDescription()
+                };
+            array = array.ToList();
+            List<long> list = (
+                from d in array
+                select d.OrderId).ToList();
+            if (list.Count > 0)
+            {
+                RefundQuery refundQuery = new RefundQuery()
+                {
+                    OrderId = new long?(list[0]),
+                    MoreOrderId = list,
+                    PageNo = 1,
+                    PageSize = array.Count()
+                };
+                List<OrderRefundInfo> orderRefundInfos = (
+                    from d in ServiceHelper.Create<IRefundService>().GetOrderRefunds(refundQuery).Models
+                    where (int)d.RefundMode == 1 && (int)d.SellerAuditStatus != 4
+                    select d).ToList();
+                if (orderRefundInfos.Count > 0)
+                {
+                    foreach (OrderRefundInfo orderRefundInfo in orderRefundInfos)
+                    {
+                        OrderModel orderModel = array.FirstOrDefault((OrderModel d) => d.OrderId == orderRefundInfo.OrderId);
+                        if (orderModel == null || !(orderModel.OrderStatus != OrderInfo.OrderOperateStatus.Close.ToDescription()) || orderRefundInfo.SellerAuditStatus == OrderRefundInfo.OrderRefundAuditStatus.UnAudit)
+                        {
+                            continue;
+                        }
+                        orderModel.RefundStats = (int)orderRefundInfo.SellerAuditStatus;
+                    }
+                }
+            }
+            DataGridModel<OrderModel> dataGridModel = new DataGridModel<OrderModel>()
+            {
+                rows = array,
+                total = orders.Total
+                //total=array.Count()
+            };
+            return Json(dataGridModel);
+        }
+        public ActionResult AccountTypeList()
+        {
+            return View();
+        }
+
 		public ActionResult Print(string orderIds)
 		{
 			char[] chrArray = new char[] { ',' };

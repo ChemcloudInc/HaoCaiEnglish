@@ -240,6 +240,12 @@ namespace Himall.Model
 			set;
 		}
 
+        public OrderInfo.AccountTypes? AccountType
+        {
+            get;
+            set;
+        }
+
 		public DateTime? PayDate
 		{
 			get;
@@ -443,5 +449,14 @@ namespace Himall.Model
 			[Description("限时购")]
 			LimitBuy = 2
 		}
+        public enum AccountTypes
+        {
+            [Description("未结算")]
+            NoAccount=1,
+            [Description("待结算")]
+            WaitAccout=2,
+            [Description("已结算")]
+            FinishAccount=3
+        }
 	}
 }

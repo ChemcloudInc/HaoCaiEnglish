@@ -28,6 +28,11 @@ namespace Himall.Web.Models
 			get;
 			set;
 		}
+        public string AccountType
+        {
+            get;
+            set;
+        }
 
 		public string PaymentTypeName
 		{

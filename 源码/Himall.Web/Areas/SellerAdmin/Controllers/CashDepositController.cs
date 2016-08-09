@@ -23,7 +23,26 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 		public CashDepositController()
 		{
 		}
-      
+
+        public ActionResult QRPay(string url, string id)
+        {
+            ViewBag.Logo = ServiceHelper.Create<ISiteSettingService>().GetSiteSettings().Logo;
+            Plugin<IPaymentPlugin> plugin = PluginsManagement.GetPlugin<IPaymentPlugin>(id);
+            ViewBag.Title = string.Concat(plugin.PluginInfo.DisplayName, "支付");
+            ViewBag.Name = plugin.PluginInfo.DisplayName;
+            Bitmap bitmap = QRCodeHelper.Create(url);
+            DateTime now = DateTime.Now;
+            string str = string.Concat(now.ToString("yyMMddHHmmssffffff"), ".jpg");
+            string str1 = string.Concat("/temp/", str);
+            bitmap.Save(string.Concat(Server.MapPath("~/temp/"), str));
+            ViewBag.QRCode = str1;
+            dynamic viewBag = base.ViewBag;
+            string classFullName = plugin.PluginInfo.ClassFullName;
+            char[] chrArray = new char[] { ',' };
+            viewBag.HelpImage = string.Concat("/Plugins/Payment/", classFullName.Split(chrArray)[1], "/", plugin.Biz.HelpImage);
+            ViewBag.Step = 2;
+            return View();
+        }
 
 		public JsonResult CashDepositDetail(long cashDepositId, int pageNo = 1, int pageSize = 10)
 		{
@@ -64,7 +83,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 					{
 						AddDate = DateTime.Now,
 						Balance = num,
-						Description = "充值",
+						Description = "保证金充值",
 						Operator = str1
 					};
 					List<CashDepositDetailInfo> cashDepositDetailInfos = new List<CashDepositDetailInfo>()
@@ -139,7 +158,8 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 			}
 			string str1 = string.Concat(scheme, "://", host, str);
 			string str2 = string.Concat(str1, "/SellerAdmin/CashDeposit/Return/{0}?balance={1}");
-			string str3 = string.Concat(str1, "/pay/CashNotify/{0}?str={1}");
+			//string str3 = string.Concat(str1, "/pay/CashNotify/{0}?str={1}");
+            string str3 = string.Concat(str1, "/SellerAdmin/CashDeposit/CashNotify/{0}?str={1}");
 			IEnumerable<Plugin<IPaymentPlugin>> plugins = 
 				from item in PluginsManagement.GetPlugins<IPaymentPlugin>(true)
 				where item.Biz.SupportPlatforms.Contains<PlatformType>(PlatformType.PC)
@@ -174,7 +194,53 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 			});
 			return Json(paymentModels);
 		}
+        
+        public JsonResult WeiXinPayReturn(decimal balance)
+        {
+            Result result = new Result();
+            try
+            {
+                
+                ICashDepositsService cashDepositsService = ServiceHelper.Create<ICashDepositsService>();
+                CashDepositDetailInfo cashDepositDetailInfo = new CashDepositDetailInfo();
+                
+                    cashDepositDetailInfo.AddDate = DateTime.Now;
+                    cashDepositDetailInfo.Balance = balance;
+                    cashDepositDetailInfo.Description = "保证金充值";
+                    cashDepositDetailInfo.Operator = base.CurrentSellerManager.UserName;
+                    List<CashDepositDetailInfo> cashDepositDetailInfos = new List<CashDepositDetailInfo>()
+					{
+						cashDepositDetailInfo
+					};
+                    if (cashDepositsService.GetCashDepositByShopId(base.CurrentSellerManager.ShopId) != null)
+                    {
+                        cashDepositDetailInfo.CashDepositId = cashDepositsService.GetCashDepositByShopId(base.CurrentSellerManager.ShopId).Id;
+                        ServiceHelper.Create<ICashDepositsService>().AddCashDepositDetails(cashDepositDetailInfo);
+                    }
+                    else
+                    {
+                        CashDepositInfo cashDepositInfo = new CashDepositInfo()
+                        {
+                            CurrentBalance = balance,
+                            Date = DateTime.Now,
+                            ShopId = base.CurrentSellerManager.ShopId,
+                            TotalBalance = balance,
+                            EnableLabels = true,
+                            Himall_CashDepositDetail = cashDepositDetailInfos
+                        };
+                        cashDepositsService.AddCashDeposit(cashDepositInfo);
+                    }
 
+                    result.success = false;
+            }
+            catch (Exception exception)
+            {
+                result.msg = exception.Message;
+               
+            }
+            return Json(result);
+          
+        }
 		public ActionResult Return(string id, decimal balance)
 		{
 			id = DecodePaymentId(id);
@@ -189,7 +255,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 				{
 					cashDepositDetailInfo.AddDate = DateTime.Now;
 					cashDepositDetailInfo.Balance = balance;
-					cashDepositDetailInfo.Description = "充值";
+					cashDepositDetailInfo.Description = "保证金充值";
 					cashDepositDetailInfo.Operator = base.CurrentSellerManager.UserName;
 					List<CashDepositDetailInfo> cashDepositDetailInfos = new List<CashDepositDetailInfo>()
 					{

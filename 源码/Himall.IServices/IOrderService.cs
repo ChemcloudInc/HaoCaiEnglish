@@ -35,6 +35,7 @@ namespace Himall.IServices
 
 		OrderInfo GetOrder(long orderId);
 
+        void UpdateOrderInfo(OrderInfo orderInfo);
 		OrderItemInfo GetOrderItem(long orderItemId);
 
 		Dictionary<long, OrderItemInfo> GetOrderItems(IEnumerable<long> ids);

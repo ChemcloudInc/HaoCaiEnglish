@@ -17,6 +17,7 @@ namespace Himall.Service.Job
 {
 	public class AccountJob : IJob
 	{
+        private OrderService orderService = new OrderService();
 		public AccountJob()
 		{
 		}
@@ -78,6 +79,7 @@ namespace Himall.Service.Job
 								where c.Id == num
 								select c).FirstOrDefault().ShopName,
 							AccountDate = DateTime.Now,
+                            FinishDate=DateTime.Now,
 							StartDate = startDate,
 							EndDate = endDate.AddSeconds(-1),
 							Status = AccountInfo.AccountStatus.UnAccount,
@@ -124,6 +126,7 @@ namespace Himall.Service.Job
 								where c.OrderRefund.OrderId == orderInfo.Id
 								select c.OrderRefund.ManagerConfirmDate).Distinct<DateTime>());
 							entity.AccountDetailInfo.Add(accountDetailInfo);
+                            UpateAccountType(orderInfo.Id);
 						}
 						foreach (OrderInfo orderInfo1 in orderInfos)
 						{
@@ -147,6 +150,7 @@ namespace Himall.Service.Job
 							value.OrderDate = orderInfo1.OrderDate;
 							value.OrderRefundsDates = string.Empty;
 							entity.AccountDetailInfo.Add(value);
+                            UpateAccountType(orderInfo1.Id);
 						}
 					}
 					entity.SaveChanges();
@@ -217,6 +221,19 @@ namespace Himall.Service.Job
 				Log.Error(string.Concat(str));
 			}
 		}
+        /// <summary>
+        /// 更新Order状态为待结款
+        /// </summary>
+        /// <param name="orderId"></param>
+        public void UpateAccountType(long orderId)
+        {
+            OrderInfo orderInfo = orderService.GetOrder(orderId);
+            if (orderInfo != null)
+            {
+                orderInfo.AccountType = OrderInfo.AccountTypes.WaitAccout;
+                orderService.UpdateOrderInfo(orderInfo);
+            }
+        }
 
 		private decimal CalculationTotalCommission(IList<OrderItemInfo> orderItems)
 		{

@@ -1,6 +1,7 @@
 using Himall.IServices.QueryModel;
 using Himall.Model;
 using System;
+using System.Linq;
 
 namespace Himall.IServices
 {
@@ -9,6 +10,8 @@ namespace Himall.IServices
 		void ConfirmAccount(long id, string managerRemark);
 
 		AccountInfo GetAccount(long id);
+
+        IQueryable<AccountDetailInfo> GetAccountDetail(long accountid);
 
 		PageModel<AccountDetailInfo> GetAccountDetails(AccountQuery query);
 

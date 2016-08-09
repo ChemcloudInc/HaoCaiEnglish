@@ -35,6 +35,10 @@ namespace Himall.Core
 			PluginInfo fullName;
 			string str = dllFile.Name.Replace(".dll", "");
 			string str1 = string.Concat(IOHelper.GetMapPath("/plugins/configs/"), str, ".config");
+            if (!Directory.Exists(IOHelper.GetMapPath("/plugins/configs/")))
+            {
+                Directory.CreateDirectory(IOHelper.GetMapPath("/plugins/configs/"));
+            }
 			if (File.Exists(str1))
 			{
 				fullName = (PluginInfo)XmlHelper.DeserializeFromXML(typeof(PluginInfo), str1);
