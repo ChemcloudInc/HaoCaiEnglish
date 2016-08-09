@@ -1,0 +1,287 @@
+﻿@model List<Himall.Web.Areas.Web.Models.HomeFloorModel>
+@using Himall.Model
+
+@{
+    Layout = "~/Areas/Web/Views/Shared/_HeadAndFoot.cshtml";
+    //Layout = null;
+    ViewBag.Title = ViewBag.Title;
+}
+
+@section Style{
+    <link href="~/Areas/Web/Content/style.css" rel="stylesheet" />
+ 
+
+}
+
+@section Script
+{
+    <script src="~/Areas/Web/Scripts/userInfo.js"></script>}
+    
+<!--content start-->
+<div class="first-screen cl">
+	<div class="slide-box">
+		<!-- 自动轮播图片-->
+		<div id="slide">
+			<ul class="slide-items">
+				@foreach (var silder in (List<SlideAdInfo>)ViewBag.slideImage)
+				{
+                    
+					<li>
+						<a href="@(silder.Url)" target="_blank" style="background-image:url(@silder.ImageUrl)"></a>						
+					</li>
+
+				}
+			</ul>
+		</div>
+		<div class="small-banner">
+
+			<a href="@ViewBag.imageAdsTop[0].Url" target="_blank"><img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@ViewBag.imageAdsTop[0].ImageUrl" /></a>
+			<div class="banner-separator"></div>
+            <a href="@ViewBag.imageAdsTop[1].Url" target="_blank"><img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@ViewBag.imageAdsTop[1].ImageUrl" /></a>
+		</div>
+	</div>
+
+</div>
+
+<div class="content">
+
+    <!--生活橱窗-->
+    <div class="content_re">
+        <div class="content_recont">
+            <ul>
+                @foreach (var item in (List<ImageAdInfo>)ViewBag.imageAds)
+                {
+                    <li><a href="@item.Url" target="_blank"><img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@item.ImageUrl"></a></li>
+                }
+            </ul>
+        </div>
+    </div>
+ 
+    <!-- 楼层循环-->
+    <div class="floors">
+
+@{int floorIndex = 0;}
+@foreach( var floor in Model )
+{
+    floorIndex++;
+    if( floor.StyleLevel == 1 )
+    {
+        
+    <div class="floor">
+        <div class="floor-hd">
+            <i><s>@floorIndex</s>F</i><span>@floor.Name</span>
+            <ul>
+                <li class="active">@floor.DefaultTabName</li>
+                @foreach( var tab in floor.Tabs )
+                {
+                    <li>@tab.Name</li>
+                }
+            </ul>
+        </div>
+
+        <div class="floor-bd">
+            <div class="floor-content cl">
+                <div class="content-left">
+                    <div class="slide">
+                        <ul class="cl">
+                            @foreach( var scroll in floor.Scrolls )
+                            {
+                                <li><a target="_blank" href="@scroll.Url"><img class="lazyload"  src="~/Areas/Web/images/blank.gif" data-url="@scroll.ImageUrl"  /></a></li>    
+                            }
+                        </ul>
+                    </div>
+                    <table>
+                        <tr>
+                            @{ 
+                                    int txtCount = floor.TextLinks.Count , firstIndex = 0,endFirst = 0;
+                                    if( txtCount >= 8 )
+                                    {
+                                        firstIndex = 4;
+                                        endFirst = 8;
+                                    }
+                                    else if( txtCount > 4 && txtCount < 8 )
+                                    {
+                                        firstIndex = 4;
+                                        endFirst = txtCount;
+                                    }
+                                    else
+                                    {
+                                        firstIndex = txtCount;
+                                    }
+                               }
+                            @for( int i = 0 ; i < firstIndex ; i++ )
+                            {
+                                <td><a href="@floor.TextLinks[i].Url" target="_blank">@floor.TextLinks[ i ].Name</a></td>
+                            }
+                        </tr>
+                        @if( txtCount > 4 )
+                        {
+                            <tr>
+                                @for( int i = 4 ; i < endFirst ; i++ )
+                                {
+                                    <td><a href="@floor.TextLinks[i].Url" target="_blank">@floor.TextLinks[ i ].Name</a></td>
+                                }
+                            </tr>
+                        }
+                    </table>
+                </div>
+
+                <div class="content-right-box">
+                    <ul class="content-right-img">
+                        @{int fore = 0;}
+                        @foreach( var righttop in floor.RightTops )
+                        {
+                            fore ++;
+                            <li class="fore@(fore)"><a target="_blank" href="@righttop.Url"><img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@righttop.ImageUrl"  /></a></li>
+                        }
+                        @foreach( var rightbottons in floor.RightBottons )
+                        {
+                            fore++;
+                            <li class="fore@(fore)"><a target="_blank" href="@rightbottons.Url"><img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@rightbottons.ImageUrl"  /></a></li>
+                        }
+                    </ul>
+                    
+                    @foreach( var tab in floor.Tabs )
+                    {
+                        <ul class="content-right-goods">
+                            @{fore = 0;}
+                            @foreach( var product in tab.Detail )
+                            {
+                                fore++;
+                                <li class="fore@(fore)">
+                                    <div class="p-img">
+                                        <a target="_blank" href="/Product/Detail/@product.ProductId" title="">
+                                            <img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@product.ImagePath/1_220.png">
+                                        </a> 
+                                    </div>
+                                    <h3><a target="_blank" href="/Product/Detail/@product.ProductId" title="">@product.Name</a></h3>
+                                    <p>￥<span>@product.Price</span></p>
+                                </li>
+                                if( fore == 8 )
+                                {
+                                    break;
+                                }
+                            }
+                        </ul>
+                    }
+                    
+                        
+                           
+                </div>
+
+                <div class="content-brand">
+                    <ul class="cl">
+                        @foreach( var c in floor.Brands )
+                        {
+                            <li><a target="_blank" title="@c.Name" href="/Search?b_id=@c.Id"><img alt="@c.Name" class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@c.Img" /></a></li>
+                        }
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    
+    }
+    else
+    {
+            <div class="content_m floor">
+                <div class="content_mtop">
+                    <b>@floor.Name</b><em>@floor.SubName</em><span></span>
+                    <ul class="goods_class_list">
+                        @foreach (var link in floor.TextLinks)
+                        {
+                            <li><a target="_blank" href="@link.Url">@link.Name</a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="content_mcont">
+
+                    @{var top2 = floor.Products.Take(2);
+
+                    var others = floor.Products.Skip(2).Take(8);
+                    }
+                    <div class="content_mcontl">
+
+                        @foreach (var p in top2)
+                        {
+                            <div><a target="_blank" href="@p.Url"><img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@p.ImageUrl" /></a></div>
+                        }
+                    </div>
+
+                    <div class="content_mcontc">
+                        @foreach (var p in others)
+                        {
+                            <div><a target="_blank" href="@p.Url"><img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@p.ImageUrl" /></a></div>
+                        }
+                    </div>
+                    <div class="content_mcontr">
+                        <div class="content_mcontrtop">推荐品牌</div>
+                        <ul>
+                            @foreach (var c in floor.Brands.Take(8))
+                            {
+                                <li><a target="_blank" title="@c.Name" href="/Search?b_id=@c.Id"><img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@c.Img" /></a></li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    }
+    
+}
+
+    
+    </div>
+
+
+</div>
+
+<!--楼层定位导航-->
+<div class="floor-nav">
+    <ul>
+        @{var m = @Model.Count();}
+        @for (var t = 0; t < m; t++)
+        {
+            var s = t == 0 ? "class='cur'" : "";
+            <li @s><a><span>@Model[t].Name.Substring(0, 2)</span><em>@(t + 1)F</em></a></li>
+        }
+    </ul>
+</div>
+   
+<script>
+   $(function () {
+
+
+
+        //左侧导航
+		if($(".floors").children().length>0){
+			$(".floor-nav li").click(function () {
+				var currentE = $(".floor").eq($(this).index());
+				$("html,body").stop().animate({ scrollTop: currentE.offset().top-1 }, 600);
+			});
+	
+			$(window).scroll(function () {
+				if ($(document).scrollTop() > ($('.floor').first().offset().top - $(window).height() / 2 - 100)&&$(document).scrollTop()+$(window).height()<$(document).height()-200 ) {
+					$('.floor-nav').fadeIn()
+				} else {
+					$('.floor-nav').fadeOut()
+				}
+				
+				$(".floor").each(function () {
+					if ($(this).offset().top <= $(document).scrollTop() + $(window).height() / 2) {
+						$(".floor-nav li").delay(300).eq($(this).index()).addClass("cur").siblings().removeClass();
+					}
+				})
+			});
+		}
+
+
+    })
+
+
+
+</script>
+  

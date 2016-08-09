@@ -1,0 +1,59 @@
+﻿<link href="~/Content/bootstrap-switch.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-switch.min.js"></script>
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>信任登录</strong>
+		<li class="active"><a>信任登录</a></li>
+        <em class="primary-btn">
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <div class="primary">
+                <h3>温馨提示：</h3>
+                <span>*</span><p>信任登录指买家用相关账号进行登录即可注册成为网站会员，这样能简化用户购物流程 ，提升网站下单率</p>
+            </div>
+        </em>
+    </ul>
+    <table class="table mt20">
+        <thead>
+            <tr>
+                <th>信任登录</th>
+                <th></th>
+                <th class="td-operate">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (var oauthPlugin in Model)
+                {
+                <tr>
+                    <td>@oauthPlugin.name</td>
+                    <td width="100px">
+                        <div class="switch switch-mini"><input class="bootstrapSwitch" pluginid="@oauthPlugin.pluginId" type="checkbox" data-size="mini" data-on-text="开启" data-off-text="关闭" @(oauthPlugin.enable ? "checked" : "")  /></div>
+                    </td>
+                    <td class="td-operate"><span class="btn-a"><a href="edit?pluginId=@(oauthPlugin.pluginId)">编辑</a></span></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(function () {
+            $(".bootstrapSwitch").bootstrapSwitch({
+                onSwitchChange:function(event,state){
+                    var pluginId=$(this).attr('pluginid');
+                    var switcher = $(this);
+                    var loading = showLoading();
+                    $.post('./Enable', { pluginId: pluginId, enable: state }, function (result) {
+                        loading.close();
+                        if (result.success) {
+                            switcher.bootstrapSwitch('state', state);
+                        }
+                        else{
+                            switcher.bootstrapSwitch('state', !state); 
+                            $.dialog.errorTips('操作失败!失败原因：'+result.msg);
+                        }
+                    }, "json");
+                }
+            });
+        });
+    </script>

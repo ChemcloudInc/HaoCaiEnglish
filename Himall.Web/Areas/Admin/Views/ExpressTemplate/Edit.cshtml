@@ -1,0 +1,83 @@
+﻿@model Himall.Core.Plugins.IExpress
+
+<script>
+    var expressTemplateName = '@Model.Name'
+
+</script>
+
+<style>
+    .box1 {
+        display: block;
+        width: 868px;
+        height: 474px;
+        background: url(@Model.BackGroundImage) no-repeat;
+        position: absolute;
+        margin: 0 auto;
+    }
+
+    .box2 {
+        display: block;
+        border: 1px solid;
+        width: 100px;
+        height: 30px;
+        position: absolute;
+        -moz-user-select: none;
+    }
+
+    .box3 {
+        display: block;
+        border: 1px solid #000;
+        width: 100px;
+        height: 30px;
+        position: absolute;
+        cursor: move;
+        -moz-user-select: none;
+        background: #fff;
+        color: #666;
+        font-size: 12px;
+    }
+
+    .move {
+        display: block;
+        border: 1px dashed #f69;
+        width: 100px;
+        height: 30px;
+        position: absolute;
+        cursor: move;
+        -moz-user-select: none;
+        background: #fff;
+        color: #666;
+        font-size: 12px;
+    }
+    .box-print{
+		background-color:#fff;
+		padding:10px;
+		margin-top: 16px;
+    height:80px;
+    }
+</style>
+
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+		<li><a>管理</a></li>
+		<li class="active"><a>编辑</a></li>
+    </ul>
+
+    <div class="clearfix box-print">
+        <div id="widgetBox"></div>
+    </div>
+    <img src="@Model.BackGroundImage" width="868" style="display:block;position:absolute;left:-999999px;" id="id_img">
+    <div style="position:relative;display:block;height:500px;padding:15px; background: #fff;" id="id_parent">
+        <div class="box1" id="canvas">
+        </div>
+
+    </div>
+    <div style="display:inline-block;width:100%;padding:20px; background: #fff;">
+        <span id="ids" class="btn btn-primary fr">确认</span>
+        @*<span class="btn btn-default fr" style="margin-right:15px;">打印</span>*@
+    </div>
+    
+</div>
+
+
+<script src="~/Areas/Admin/Scripts/expressTemplateEdit.js"></script>

@@ -1,0 +1,142 @@
+﻿@model Himall.Model.MarketSettingInfo
+@{
+    ViewBag.Title = "优惠券设置";
+}
+<style>
+    /*表单验证提示信息样式*/
+    .input-item {
+        border: 1px solid #ccc;
+        float: left;
+        margin-right: 8px;
+        line-height: 18px;
+        padding: 5px;
+        height: 18px;
+        width: 167px;
+    }
+
+    .textarea-item {
+        border: 1px solid #ccc;
+        float: none;
+        line-height: 18px;
+        padding: 5px;
+        margin-right: 8px;
+        font-size: 12px;
+        outline: 0 none;
+    }
+
+    .tip {
+        position: relative;
+        width: 10px;
+        height: 20px;
+        display: block;
+        display: inline;
+        *zoom: 1;
+        vertical-align: top;
+        margin: 0px 20px;
+    }
+
+        .tip span {
+            position: absolute;
+            z-index: 99;
+            width: 270px;
+            font-size: 12px;
+            color: #00be00;
+            padding: 5px 5px 5px 0;
+            line-height: 20px;
+            text-align: left;
+            overflow: hidden;
+            height: auto;
+        }
+
+            .tip span a {
+                font-weight: bold;
+                padding: 0 5px;
+                cursor: pointer;
+                color: #039;
+            }
+
+    .tip-error span {
+        color: #f60;
+    }
+
+    .item-error {
+        border: 1px solid #F60;
+    }
+
+    .tip-error span {
+        background-position: 5px 7px;
+    }
+
+    .item-pass {
+        border: 1px solid #00BE00;
+    }
+
+    .tip-pass span {
+        border: none;
+        text-indent: -99999px;
+        width: 50px;
+        height: 20px;
+    }
+</style>
+<script src="~/Scripts/v.js"></script>
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>优惠券</strong>
+        <li><a href="./Management">服务购买列表</a></li>
+        <li class="active"><a href="./ServiceSetting">服务费用设置</a></li>
+        <em class="primary-btn">
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <div class="primary">
+                <h3>温馨提示：</h3>
+                <span>1、</span><p>设置优惠券服务的价格</p>
+            </div>
+        </em>
+    </ul>
+    @using (Html.BeginForm("SaveServiceSetting", "Coupon", FormMethod.Post, new { id = "form1" }))
+    {
+		
+		<div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="">服务价格：</label>
+                 <div class="col-sm-3">@Html.EditorFor(item => item.Price, new { htmlAttributes = new { @class = "form-control input-sm" } })</div>
+                 <div class="col-sm-5"><span class="help-default">设置优惠券服务的价格（按照每月计算）.</span></div>
+            </div>
+            <div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">保存</button>
+				</div>
+			</div>
+        </div>
+    }
+</div>
+<script>
+    $(function () {
+        $("#Price").focus();
+    });
+    var a = v({
+        form: 'form1',
+        ajaxSubmit: true,
+        beforeSubmit: function () {
+            loadingobj = showLoading();
+        },
+        afterSubmit: function (data) {// 表单提交成功回调
+            loadingobj.close();
+            if (data.success) {
+                $.dialog.succeedTips("保存成功！", function () {
+                    window.location.reload();
+                }, 0.5);
+            } else {
+                $.dialog.errorTips(data.msg, '', 0.5);
+            }
+        }
+    });
+    a.add(
+       {
+           target: 'Price',
+           empty: true,
+           ruleType: 'money&&(value>0)',// v.js规则验证
+           error: '只能为数字，  且大于0!'
+       });
+</script>
+
+

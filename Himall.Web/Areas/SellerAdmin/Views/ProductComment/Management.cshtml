@@ -1,0 +1,26 @@
+﻿<script src="~/Scripts/jquery.hiMallDatagrid.js"></script>
+<script src="~/Scripts/jqeury.himallLinkage.js"></script>
+<script src="~/Areas/SellerAdmin/Scripts/ProductComment.js"></script>
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>评论管理</strong>
+        <li flag="" onclick="query('')"><a>全部</a></li>
+        <li flag="false" onclick="query('false')"><a id="notReply">未处理</a></li>
+        <em class="primary-btn">
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <div class="primary">
+                <h3>温馨提示：</h3>
+                <span>*</span><p>管理会员提交的商品评论消息，可以对评论进行回复</p>
+            </div>
+        </em>
+    </ul>
+    <table class="table" id="list">
+    </table>
+</div>
+
+<div class="dialog-form" id="reply-form" style="display:none">
+    <div class="form-group">
+        <textarea id="replyContent" name="replyContent" class="form-control" cols="50" rows="3" ></textarea>
+        <span class="field-validation-error" id="commentCotentTip"></span>
+    </div>
+</div>

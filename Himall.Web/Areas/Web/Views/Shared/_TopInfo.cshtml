@@ -1,0 +1,125 @@
+﻿@{
+    Layout = null;
+}
+@model Himall.Model.UserMemberInfo
+<div class="top">
+    <div class="warp cl">
+        <span class="top-link">
+            您好，欢迎来到 @ViewBag.SiteName！
+            @if (Request.Path == "/")
+            {
+                <a href="/userCenter">去买家中心</a>
+            }
+            else
+            {
+                <a href="/">去首页</a>
+            }
+            @*@if (Model != null)
+            {
+                <a href="/UserCenter?url=/userinvite&tar=userinvite">推广返利</a>
+            }
+            else
+            {
+                <a href="@Url.Action("index","invite")">推广返利</a>
+            }*@
+        </span>
+
+      
+
+        <ul class="quick_list">
+            @if (Model != null)
+            {
+                <li> <a href="/userCenter">@(string.IsNullOrEmpty(Model.Nick) ? @Model.UserName : @Model.Nick)</a> &nbsp; <a href="javascript:logout()">[退出]</a></li>
+            }
+            else
+            {
+                <li> <a href="/Login">[登录]</a></li>
+                <li> <a href="/Register">[注册]</a></li>
+            }
+            <li class="sitemap dropdown">
+                <span class="outline"></span>
+                <span class="blank"></span>
+                <s></s>
+                <a href="/UserCenter">我的@(ViewBag.SiteName)</a>
+                <b></b>
+                <div class="dropdown-menu">
+                    <ol>
+                        <li><a href="/UserCenter?url=/UserOrder&tar=UserOrder">已买到的商品</a></li>
+						<li><a href="/UserCenter?url=/productConcern&tar=productConcern">我关注的商品</a></li>
+						<li><a href="/UserCenter?url=/shopConcern&tar=shopConcern">我关注的店铺</a></li>
+                    </ol>
+                </div>
+            </li>
+            <li><s></s><a target="_blank" href="/cart/cart">购物车<em>(<span id="shopping-amount"></span>)</em></a></li>
+
+
+            <li class="service dropdown">
+                <s></s>
+                <span class="outline"></span>
+                <span class="blank"></span>
+                <a href="/SellerAdmin">卖家中心</a>
+                <b></b>
+                <div class="dropdown-menu">
+                    <ol>
+                        <li><a href="/SellerAdmin">商家入驻</a></li>
+                        <li><a href="/SellerAdmin?url=/SellerAdmin/order/management&tar=order/management">已卖出商品</a></li>
+                        <li><a href="/SellerAdmin?url=/SellerAdmin/product/PublicStepOne&tar=PublicStepOne">发布商品</a></li>
+                        <li><a href="/SellerAdmin?url=/SellerAdmin/product/management&tar=product/management">管理商品</a></li>
+
+                    </ol>
+                </div>
+            </li>
+
+
+            <li class="moblie-qrcode dropdown">
+                <s></s>
+                <span class="outline"></span>
+                <span class="blank"></span>
+                <a href="javascript:void(0)">移动端</a>
+                <b></b>
+                @if (!string.IsNullOrEmpty(ViewBag.QR))
+                {
+                    <div class="dropdown-menu">
+                        <img src="@ViewBag.QR" width="90" height="90" />
+                    </div>
+                }
+            </li>
+
+            <li class="service dropdown">
+                <s></s>
+                <span class="outline"></span>
+                <span class="blank"></span>
+                <a href="javascript:void(0)">客户中心</a>
+                <b></b>
+                <div class="dropdown-menu">
+                    <ol>
+                        <li><a href="/Article/Category">帮助中心</a></li>
+                        <li><a href="/UserCenter?url=/OrderRefund&tar=OrderRefund">售后服务</a></li>
+                        <li><a href="/UserCenter?url=/OrderComplaint&tar=OrderComplaint">投诉中心</a></li>
+                    </ol>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+
+    $(function () {
+
+        refreshCartProducts();
+    });
+    function refreshCartProducts() {
+        $.post('/cart/GetCartProducts', {}, function (cart) {
+            var products = cart.products;
+            var count = cart.totalCount;
+            $('#shopping-amount,#right_cart em').html(count);
+        });
+    }
+
+    function logout() {
+        $.removeCookie('Himall-User', { path: '/' });
+        $.removeCookie('Himall-SellerManager', { path: "/" });
+        location.reload();
+    }
+</script>
+

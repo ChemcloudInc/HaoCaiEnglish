@@ -1,0 +1,31 @@
+﻿@{
+     Layout = null;
+}
+
+@model Himall.Web.Models.MemberModel
+<div class="dialog-form">
+    <div class="form-group">
+        <label class="label-inline" for="">用户名：</label>@Model.UserName
+    </div>
+    <div class="form-group">
+        <label class="label-inline" for="">真实姓名：</label>@Model.RealName
+    </div>
+    @*<div class="form-group">
+        <label class="label-inline" for="">地址：</label>@ViewBag.Region @Model.Address
+    </div>*@
+    <div class="form-group">
+        <label class="label-inline" for="">QQ：</label>@Model.QQ
+    </div>
+    <div class="form-group">
+        <label class="label-inline" for="">Email：</label>@Model.Email
+    </div>
+    <div class="form-group">
+        <label class="label-inline" for="">最后登录：</label>@Model.LastLoginDate
+    </div>
+    @*<div class="form-group">
+        <label class="label-inline" for="">订单总数量：</label>@Model.OrderNumber
+    </div>
+    <div class="form-group">
+        <label class="label-inline" for="">订单总金额：</label>@Model.Expenditure.ToString("F2")
+    </div>*@
+</div>

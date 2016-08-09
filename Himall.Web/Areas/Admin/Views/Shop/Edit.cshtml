@@ -1,0 +1,234 @@
+﻿@model Himall.Web.Models.ShopModel
+@using Himall.Core;
+@{
+    ViewBag.Title = "Edit";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap-datetimepicker.min.css">
+<style>
+    .table-hd {
+        margin-top: 0px;
+    }
+</style>
+<script src="~/Scripts/Region.js"></script>
+<script src="~/Scripts/jquery.himallUpload.js"></script>
+<script src="~/Areas/Admin/Scripts/ShopEdit.js"></script>
+<script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.zh-CN.js"></script>
+
+<script type="text/javascript">
+    var bankRegionIds = "@ViewBag.BankRegionIds";
+    var companyRegionIds = "@ViewBag.CompanyRegionIds";
+
+    $(function () {
+        $("#Name").focus();
+        var oldStatus = "@((int)ViewBag.Status)";
+        $('input[name="Status"]').val(oldStatus);
+        $("input#statusCheckbox").click(function () {
+
+            //var status = $(this).attr('status');
+
+            //if ($(this).attr('checked') == 'checked') {
+            //    $(this).val(status);
+            //    $('input[name="Status"]').val(status);
+            //} else {
+            //    $(this).val(oldStatus);
+            //    $('input[name="Status"]').val(oldStatus);
+            //}
+            if ($(this).attr('checked') == 'checked') {
+                $(this).val(7);
+                $('input[name="Status"]').val(7);
+            } else {
+                $(this).val(oldStatus == 7 ? 6 : oldStatus);
+                $('input[name="Status"]').val($(this).val());
+            }
+        });
+
+        $(".form_datetime").datetimepicker({
+            language: 'zh-CN',
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            weekStart: 1,
+            minView: 2
+        });
+        $('#bankPhoto').himallUpload({
+            title: '<b>*</b>开户银行许可证电子版：',
+            imageDescript: '请确保图片清晰，文字可辨并有清晰的红色公章。',
+            displayImgSrc: '@Model.BankPhoto',
+            imgFieldName: "BankPhoto",
+            dataWidth: 6
+        });
+
+
+    });
+</script>
+
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>店铺</strong>
+        <li><a href="./Management">管理</a></li>
+        <li><a href="./Management?type=Auditing">开店审核</a></li>
+        <li class="active"><a>修改</a></li>
+        <em class="primary-btn">
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <div class="primary">
+                <h3>温馨提示：</h3>
+                <span>*</span><p>修改店铺的基本信息</p>
+            </div>
+        </em>
+    </ul>
+    @using (Html.BeginForm("Edit", "Shop", new { Area = "Admin" }, FormMethod.Post, new { @id = "shopEditForm" }))
+    {
+        @Html.HiddenFor(s => s.Id)
+
+
+        <h3 class="table-hd">公司及联系人信息</h3>
+        <table class="table table-bordered table-striped">
+            <colgroup>
+                <col class="col-xs-1">
+                <col class="col-xs-7">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td>公司名称</td>
+                    <td>@Html.TextBoxFor(c => c.CompanyName, new { @class = "form-control input-sm" })</td>
+                </tr>
+                <tr>
+                    <td>公司所在地</td>
+                    <td>
+
+                        <div class="field">
+                            <span id="span_area">
+                                <span id="span_province"><select id="consignee_province"><option value="">请选择：</option></select></span>
+                                <span id="span_city"><select id="consignee_city"><option value="">请选择：</option></select></span>
+                                <span id="span_county"><select id="consignee_county"><option value="">请选择：</option></select></span>
+                                <input type="hidden" name="NewCompanyRegionId" />
+                            </span>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>公司详细地址</td>
+                    <td>@Html.TextBoxFor(c => c.CompanyAddress, new { @class = "form-control input-sm" })</td>
+                </tr>
+                <tr>
+                    <td>公司电话</td>
+                    <td>@Html.TextBoxFor(c => c.CompanyPhone, new { @class = "form-control input-sm" })</td>
+                </tr>
+                <tr>
+                    <td>员工总数</td>
+                    <td>@Html.DropDownListFor(item => item.CompanyEmployeeCount, (IEnumerable<SelectListItem>)Himall.Model.CompanyEmployeeCount.LessThanFive.ToSelectList(), new { @class = "form-control input-sm" })</td>
+                </tr>
+                <tr>
+                    <td>注册资金</td>
+                    <td>@Html.TextBoxFor(c => c.CompanyRegisteredCapital, new { @class = "form-control input-sm" })</td>
+                </tr>
+                <tr>
+                    <td>法定代表人</td>
+                    <td>@Html.TextBoxFor(c => c.legalPerson, new { @class = "form-control input-sm" })</td>
+                </tr>
+                <tr>
+                    <td>联系人姓名</td>
+                    <td>@Html.TextBoxFor(c => c.ContactsName, new { @class = "form-control input-sm" })</td>
+                </tr>
+                <tr>
+                    <td>联系人电话</td>
+                    <td>@Html.TextBoxFor(c => c.ContactsPhone, new { @class = "form-control input-sm" })</td>
+                </tr>
+                <tr>
+                    <td>电子邮箱</td>
+                    <td>@Html.TextBoxFor(c => c.ContactsEmail, new { @class = "form-control input-sm" })</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="table-hd">结算账号信息</h3>
+        <table class="table table-bordered table-striped">
+            <colgroup>
+                <col class="col-xs-1">
+                <col class="col-xs-7">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td>银行开户名</td>
+                    <td>@Html.TextBoxFor(c => c.BankAccountName, new { @class = "form-control input-sm" })</td>
+                </tr>
+                <tr>
+                    <td>公司银行账号</td>
+                    <td>@Html.TextBoxFor(c => c.BankAccountNumber, new { @class = "form-control input-sm" })</td>
+                </tr>
+                <tr>
+                    <td>开户银行支行名称</td>
+                    <td>@Html.TextBoxFor(c => c.BankName, new { @class = "form-control input-sm" })</td>
+                </tr>
+                <tr>
+                    <td>支行联行号</td>
+                    <td>@Html.TextBoxFor(c => c.BankCode, new { @class = "form-control input-sm" })</td>
+                </tr>
+                <tr>
+                    <td>开户银行所在地</td>
+                    <td>
+                        <div class="field">
+                            <span id="span_area">
+                                <span id="bank_span_province"><select id="bank_consignee_province"><option value="">请选择：</option></select></span>
+                                <span id="bank_span_city"><select id="bank_consignee_city"><option value="">请选择：</option></select></span>
+                                <span id="bank_span_county"><select id="bank_consignee_county" ><option value="">请选择：</option></select></span>
+                                <input type="hidden" name="NewBankRegionId" />
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>开户银行许可证<br>电子版</td>
+                    <td><div class="form-group upload-img" id="bankPhoto"></div></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+        <h3 class="table-hd">店铺经营信息</h3>
+        <table class="table table-bordered table-striped">
+            <colgroup>
+                <col class="col-xs-1">
+                <col class="col-xs-7">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td>卖家帐号</td>
+                    <td>@Model.Account</td>
+                </tr>
+                <tr>
+                    <td>店铺名称</td>
+                    <td>@Html.EditorFor(s => s.Name, new { htmlAttributes = new { @class = "form-control input-sm" } })</td>
+                </tr>
+                <tr>
+                    <td>店铺等级</td>
+                    <td>
+                        @{
+        var list = ((List<SelectListItem>)ViewBag.ShopGrade);
+                        }
+                        @Html.GenerateSelectHtml(list, "ShopGrade")
+                    </td>
+                </tr>
+                <tr>
+                    <td>店铺有效期</td>
+                    <td>@Html.EditorFor(s => s.EndDate, new { htmlAttributes = new { @class = "form-control input-sm form_datetime" } })</td>
+                </tr>
+                <tr>
+                    <td>店铺状态</td>
+                        <td>
+                   
+                            @Html.CheckBox("Status", (int)ViewBag.Status == 7, new { status = (int)ViewBag.Status, id = "statusCheckbox", value = (int)ViewBag.Status }) 开启     </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="button" id="submit" class="btn btn-primary">保 存</button></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+
+    }
+</div>

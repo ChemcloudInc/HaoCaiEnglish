@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "订单评价";
+    ViewBag.CopyRight = false;
+}
+
+<input id="isValid" type="hidden" value="@((bool)ViewBag.Valid)" />
+@if ((bool)ViewBag.Valid) {
+
+    var products = (IEnumerable<Himall.Model.ProductEvaluation>)ViewBag.Products;
+    var orderItemIds = (IEnumerable<long>)ViewBag.OrderItemIds;
+    var i = 0;
+    <div class="container">
+        <div class="comment">
+            <div class="comment-hd">
+                <strong>订单评价</strong>
+            </div>
+            @foreach (var product in products)
+            {
+                <div class="comment-goods">
+                    <div class="comment-bar">
+                        <a class="clearfix" href="@Url.Action("detail", "product", new {id=product.ProductId })">
+                            <img class="lazyload" src="@product.ThumbnailsUrl" width="50" height="50" alt="" />
+                            <p class="two-overflow">@product.ProductName</p>
+                        </a>
+                    </div>
+                    <div class="comment-content" name="productComment" orderItemId ="@orderItemIds.ElementAt(i++)">
+                        <p>
+                            <label for="">评分：</label>
+                            <span class="star-score">
+                                <i class="glyphicon glyphicon-star-empty"></i>
+                                <i class="glyphicon glyphicon-star-empty"></i>
+                                <i class="glyphicon glyphicon-star-empty"></i>
+                                <i class="glyphicon glyphicon-star-empty"></i>
+                                <i class="glyphicon glyphicon-star-empty"></i>
+                                <input type="hidden" value="" name="mark" />
+                            </span>
+                        </p>
+                        <textarea class="form-control" placeholder="请输入评价内容" name="content"></textarea>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        <div class="comment-shop">
+            <h5>店铺评分</h5>
+            <p>
+                <label for="">商品包装</label>
+                <span class="star-score">
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <input type="hidden" id="packMark" value="">
+                </span>
+            </p>
+            <p>
+                <label for="">送货速度</label>
+                <span class="star-score">
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <input type="hidden" value="" id="deliveryMark">
+                </span>
+            </p>
+            <p>
+                <label for="">配送服务</label>
+                <span class="star-score">
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                    <input type="hidden" value="" id="serviceMark">
+                </span>
+            </p>
+        </div>
+
+        <footer class="footer-buy"><a class="btn btn-primary" href="javascript:;" id="submit"> 提交评价 </a></footer>
+    </div>
+    
+}
+<script src="~/Areas/Mobile/Templates/APP/Scripts/orderComment.js"></script>

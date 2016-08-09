@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "全部微店";
+}
+    <div class="container">
+        <section class="vshop-section vshop-list"  id="shopList">
+            <h5>微店社区</h5>
+        </section>
+
+        @{Html.RenderPartial("~/Areas/Mobile/Templates/Default/Views/Shared/_4ButtonsFoot.cshtml");}
+    </div>
+   <div class="loading hide" id="autoLoad"><span></span></div>
+    <a class="WX-backtop" href="#"></a>
+<script src="~/Areas/Mobile/Templates/Default/Scripts/vshop.js"></script>

@@ -1,0 +1,2153 @@
+﻿@model Himall.Model.ProductInfo
+
+@using System.Linq
+@{
+    ViewBag.Title = "PublicStepTwo";
+    long? proid = (long?)ViewBag.ProductId;
+    Boolean TF = false;
+    if (Model.DisableBuy)
+    { 
+        TF = true;
+    }
+   
+}
+<script src="~/Scripts/jquery.himallUpload.js"></script>
+<script src="~/Scripts/ueditor/ueditor.config.js"></script>
+<script src="~/Scripts/ueditor/ueditor.all.min.js"></script>
+
+<style>
+    .table-input { border: 1px solid #e4e4e4; padding: 0; width: 100px; line-height: 28px; margin-right: 10px; padding-left: 10px; }
+
+    .g-tag { display: block; float: left; width: 60px; height: 100%; }
+
+    .g-select-box { display: block; float: right; width: 100%; position: relative; }
+
+    .g-select-box1 { display: block; float: right; width: 500px; height: 100%; position: relative; }
+
+    .checkbox-row { display: block; float: left; margin-right: 20px; width: 80px; height: 30px; }
+
+    .red { color: red; }
+
+    .mr15 { margin-right: 15px; }
+
+    .fileBox { display: inline-block; width: 80px; height: 30px; line-height: 30px; text-align: center; overflow: hidden; position: relative; z-index: 3; cursor: pointer; }
+
+    .fileLabel { background: blue; }
+
+    .uploadFile { opacity: 0; filter: alpha(opacity=0); font-size: 100px; position: absolute; top: 0; right: 0; cursor: pointer; }
+
+    .view img, .view1 img, .view2 img, .view3 img, .view4 img { width: 100px; height: 100px; }
+
+    .checkbox-inline { margin-right: 35px; }
+</style>
+
+<iframe name="iframeUpload" src="" width="350" height="35" frameborder="0" scrolling="no" style="display:none" id="iframe"></iframe>
+<form></form>
+<script>
+    var _salePrice_ = 0, _costPrice_ = 0, _inventory_ = 0;
+    var measureUnit = "";
+    var isSellerAdmin = "@ViewBag.IsSellerAdmin".toLowerCase();
+    var freightType = "@(Model.Himall_FreightTemplate==null?string.Empty:((int)Model.Himall_FreightTemplate.ValuationMethod).ToString())";
+    var MaxFileSize = 1048576;//1M
+    $(function () {
+        if (isSellerAdmin == "true") {
+            //隐藏 分类管理 页面设置
+            window.onload = function () {
+                $("#productCa").hide();
+            };
+        }
+
+        $('.uploadFile').each(function (i, e) {
+            var string = $(e).parent().attr('data-del'),
+                isHide = string >> 0;
+            $(e).parent().html('<form action="/common/PublicOperation/UploadPic" enctype="multipart/form-data" method="post" target="iframeUpload" id="from' + i + '"><input id="test_file' + i + '" name="test_file' + i + '" type="file" class="uploadFile" style="display:' + (isHide ? 'none;' : 'block;') + '"></form>');
+            $('#test_file' + i).bind('change', function (e) {
+                //图片大小限制
+                var dom_btnFile = document.getElementById('test_file' + i);
+                if (typeof (dom_btnFile.files) == 'undefined') {
+                    try {
+                        var fso = new ActiveXObject('Scripting.FileSystemObject');
+                        var f = fso.GetFile($("#btnFile").val());
+                        if (f.Size > MaxFileSize) {
+                            $.dialog.tips('选择的图片不能大于' + MaxFileSize / 1048576 + 'M');
+                            $('#from' + i).trigger('reset');
+                            return;
+                        }
+                    }
+                    catch (e) {
+                        //$.dialog.tips(e);
+                        //$('#from' + i).trigger('reset');
+                    }
+                }
+                else {
+                    if (dom_btnFile.files.length > 0 && dom_btnFile.files[0].size > MaxFileSize) {
+                        $.dialog.tips('选择的图片不能大于' + MaxFileSize / 1048576 + 'M');
+                        $('#from' + i).trigger('reset');
+                        return;
+                    }
+                }//end
+                $('#from' + i).submit();
+                document.getElementById('iframe').onload = function () {
+                    var str = (document.getElementById('iframe').contentWindow.document.body.innerHTML);
+                    $('#up_pic' + (i + 1)).html('<img src="' + str + '" width="99" height="99">');
+                    $('#test_file' + i).parent().parent().removeClass('glyphicon glyphicon-open').addClass('glyphicon glyphicon-remove').attr('data-del', '1');
+                    $('#up_pic' + (i + 1)).attr('data-url', str);
+                    $('#test_file' + i).hide();
+                    return;
+                };
+                document.getElementById('iframe').onreadystatechange = function () {
+                    if (this.readyState == "complete") {
+                        var str = (this.contentWindow.document.body.innerHTML);
+                        $('#up_pic' + (i + 1)).html('<img src="' + str + '" width="99" height="99">');
+                        $('#test_file' + i).parent().parent().removeClass('glyphicon glyphicon-open').addClass('glyphicon glyphicon-remove').attr('data-del', '1');
+                        $('#up_pic' + (i + 1)).attr('data-url', str);
+                        $('#test_file' + i).hide();
+                        this.onreadystatechange = null;
+                        return;
+                    }
+                };
+            });
+        });
+        $('#id_upload').bind('click', function (e) {
+            var str = $(e.target).attr('data-del'),
+                del = str >> 0;
+            if (del) {
+                $(e.target).next().attr('data-url', '').html('');
+                $(e.target).find('input').show();
+                $(e.target).removeClass('glyphicon glyphicon-remove').addClass('glyphicon glyphicon-open');
+                return;
+            }
+        });
+        SetFreightType();
+        $('#freightTemplate').bind('change', function () {
+            var selectText = $('#freightTemplate').find('option:selected').text();
+            if (selectText.indexOf('【按体积】') > 0) {
+                freightType = '2';
+            }
+            else {
+                if (selectText.indexOf('【按重量】') > 0) {
+                    freightType = '1';
+                }
+                else {
+                    freightType = '0';
+                }
+            }
+            SetFreightType();
+        });
+        $('#btnAddTemplate').bind('click', function () {
+            window.open('/SellerAdmin?url=/SellerAdmin/freighttemplate/add&tar=FreightTemplate');
+        });
+    });
+    function SetFreightType() {
+        if (freightType == "1") {
+            $('#divWeight').show();
+            $('#divVolume').hide();
+        }
+        else {
+            if (freightType == "2") {
+                $('#divWeight').hide();
+                $('#divVolume').show();
+            }
+            else {
+                $('#divWeight').hide();
+                $('#divVolume').hide();
+            }
+        }
+    };
+    function BindfreightTemplate() {
+        $.post('GetFreightTemplate', {}, function (result) {
+            if (result.success) {
+                for (var i = 0 ; i < result.model.length; i++) {
+                    var opt = $('#freightTemplate').find('option[value=' + result.model[i].Value + ']');
+                    if (opt.length == 0) {
+                        $('#freightTemplate').append('<option value="' + result.model[i].Value + '">' + result.model[i].Text + '</option>');
+                    }
+                }
+            }
+        });
+    }
+</script>
+<div class="ajax-loading" style="display:none">
+    <table height="100%" width="100%">
+        <tr>
+            <td align="center">
+                <p></p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div style="display:none" id="id_spec">
+    <div style="padding:0 15px;" id="id-g" class="clearfix">
+        <div class="g-select-box">
+            <div class="col-sm-6" style="padding:0;">
+                <label>
+                    <input type="checkbox" value="0" id="save_spe" name="">   保存修改过的规格
+                </label>
+            </div>
+            <div id="spe_w">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <input type="hidden" id="productId" value="@(proid)" />
+    <ul class="nav nav-tabs-custom clearfix">
+        <li class="active"><a>商品发布</a></li>
+        <em class="primary-btn">
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <div class="primary">
+                <h3>温馨提示：</h3>
+                <span>*</span><p>商品可以发布，也可以放入仓库，等待平台审核后即可在平台商城销售</p>
+                <span>*</span><p>商品发布,分为2步</p>
+                <span>1、</span><p>首先选择商品所属分类</p>
+                <span>2、</span><p>填写商品基本信息，包括名称、价格、SKU、展示图片等</p>
+            </div>
+        </em>
+    </ul>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" categoryid="@ViewBag.CategoryId" id="category">平台分类：</label>
+            <div class="col-sm-4" style="height:30px;line-height:30px;">@ViewBag.CategoryNames</div>
+            @{
+                string url = ((string)ViewBag.CategoryNames).Replace(" > ", "|");
+                var urlArray = url.Split('|');
+
+                var que = string.Format("a={0}&b={1}&c={2}&p={3}",
+                    urlArray.Count() > 0 ? urlArray[0].Trim() : "",
+                    urlArray.Count() > 1 ? urlArray[1].Trim() : "",
+                    urlArray.Count() > 2 ? urlArray[2].Trim() : "", ViewBag.ProductId);
+            }
+            <a style="line-height:30px;" href="./PublicStepOne?@que">编辑</a>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">商品品牌：</label>
+            <div class="col-sm-2">
+                @Html.DropDownList("brand", (IEnumerable<SelectListItem>)ViewBag.BrandDrop, new
+           {
+               @class = "form-control input-sm",
+               id = "brandId"
+           })
+            </div>
+            <div class="col-sm-4"><a href="javascript:void(0)" id="id_open_band" style="line-height:30px;">品牌申请</a></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for=""><span class="red">*</span>商品名称：</label>
+            <div class="col-sm-4">
+                <input class="form-control input-sm" value="@(Model.ProductName??"")" maxlength="400" type="text" id="goods_name">
+            </div>
+            <div class="col-sm-4"><span class="help-default">最多200个字</span></div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for=""><span class="red">*</span>商品性质：</label>
+            @if (!TF) { 
+            <div class="col-sm-2" style="margin-top:8px">
+                <input type="radio" id="radio1" name ="DisableBuy" value="true"> 仅展示
+                <input type="radio" id="radio2" name ="DisableBuy" checked="checked" value="false"> 可出售
+            </div>
+            }
+            else
+            {
+                <div class="col-sm-2" style="margin-top:8px">
+                 <input type="radio" id="radio1" name="DisableBuy" value="true" checked="checked"> 仅展示
+                <input type="radio" id="radio2" name ="DisableBuy" value="false"> 可出售
+            </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for=""><span class="red">*</span>商城价：</label>
+            <div class="col-sm-2">
+                <input class="form-control input-sm" type="text" value="@decimal.Parse(ViewBag.SalePrice).ToString("f2")" id="price_a">
+            </div>
+            <div class="col-sm-2"><span class="help-default">元 (精确到0.01)</span></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"><span class="red">*</span>市场价：</label>
+            <div class="col-sm-2">
+                <input class="form-control input-sm" type="text" value="@Model.MarketPrice.ToString("f2")" id="price_b" />
+            </div>
+            <div class="col-sm-2"><span class="help-default">元 (精确到0.01)</span></div>
+        </div>
+        @*@if (null == Model || Model.Id == 0)
+            {*@
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">成本价：</label>
+            <div class="col-sm-2">
+                <input class="form-control input-sm" type="text" value="@decimal.Parse(ViewBag.CostPrice).ToString("f2")" id="cost">
+            </div>
+            <div class="col-sm-5"><span class="help-default">元 (精确到0.01，利润统计时会使用到，买家不可见。)</span></div>
+        </div>
+        @* } *@
+        @*else
+            {
+                <input type="hidden" value="0" id="cost">
+            }*@
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">折扣：</label>
+            <div class="col-sm-2">
+                <input id="disabledInput" class="form-control" type="text" disabled="" placeholder="0.00%" value="">
+            </div>
+            <div class="col-sm-5"><span class="help-default">根据销售价与市场价比例自动生成</span></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for=""><span class="red">*</span>库存：</label>
+            <div class="col-sm-2">
+                <input class="form-control input-sm" type="text" value="@ViewBag.Stock" id="inventory" onkeyup=" value = value.replace(/[^\d\.]/g, '')">
+            </div>
+            <div class="col-sm-5">@*<span class="help-default">measureUnit</span>*@</div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">商品货号：</label>
+            <div class="col-sm-2">
+                <input class="form-control input-sm" value="@(Model.ProductCode??"")" type="text" id="item">
+            </div>
+            <div class="col-sm-5"><span class="help-default"></span></div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for=""><span class="red">*</span>计量单位：</label>
+            <div class="col-sm-2">
+                <input class="form-control input-sm" type="text" value="@(Model.MeasureUnit??string.Empty)" id="inputMeasureUnit">
+            </div>
+            <div class="col-sm-5"><span class="help-default">例如：件，个，本，盒......</span></div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <span type="submit" class="btn btn-sm btn-primary" id="id_open">开启规格</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">商品规格：</label><div class="col-sm-10" id="id-table-box">
+                @if (Model.SKUInfo != null && Model.SKUInfo.Count() > 0)
+                {
+                    Dictionary<string, long> MAP = new Dictionary<string, long>();
+                    if (Model.SKUInfo.Count() == 1 && Model.SKUInfo.ElementAt(0).Id.Contains("_0_0_0"))
+                    {
+                    }
+                    else
+                    {
+
+                        int color = 0, size = 0;
+                        var sku = Model.SKUInfo.OrderBy(s => s.Color).ThenBy(s => s.Size).ThenBy(s => s.Version);
+                        var hasColor = Model.SKUInfo.Any(s => (!string.IsNullOrWhiteSpace(s.Color)));
+                        var hasSize = Model.SKUInfo.Any(s => (!string.IsNullOrWhiteSpace(s.Size)));
+                        var hasVersion = Model.SKUInfo.Any(s => (!string.IsNullOrWhiteSpace(s.Version)));
+                        <table id="id_table" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    @if (hasColor)
+                                    {
+                                        <th>颜色</th>
+                                    }
+                                    @if (hasSize)
+                                    {
+                                        <th>尺码</th>
+                                    }
+                                    @if (hasVersion)
+                                    {
+                                        <th>版本</th>
+                                    }
+                                    <th>商城价</th>
+                                    <th>成本价</th>
+                                    <th>库存</th>
+                                    <th>货号</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in sku.OrderBy(s=>s.AutoId))
+                                {
+                                    var arrayId = string.IsNullOrWhiteSpace(item.Id) ? new string[1] { "" } : item.Id.Split('_');
+                                    var colorId = arrayId.Count() >= 2 ? arrayId[1] : "0";
+                                    var sizeId = arrayId.Count() >= 3 ? arrayId[2] : "0";
+                                    var versionId = arrayId.Count() >= 4 ? arrayId[3] : "0";
+                                    if (item.CostPrice == 0 && item.SalePrice == 0 && string.IsNullOrWhiteSpace(item.Sku) && item.Stock == 0)
+                                    {
+                                        continue;
+                                    }
+                                    if (!MAP.ContainsKey(item.Color) && hasColor)
+                                    {
+                                        MAP.Add(item.Color,
+                                            Model.SKUInfo.Where(s => (s.Color == item.Color) &&
+                                                (s.CostPrice != 0 || s.SalePrice != 0 || !string.IsNullOrWhiteSpace(s.Sku) || s.Stock != 0)).Count());
+                                    }
+
+                                    if (!MAP.ContainsKey(item.Size + item.Color) && hasSize)
+                                    {
+                                        MAP.Add(item.Size + item.Color,
+                                            Model.SKUInfo.Where(s => s.Size == item.Size && s.Color == item.Color &&
+                                                (s.CostPrice != 0 || s.SalePrice != 0 || !string.IsNullOrWhiteSpace(s.Sku) || s.Stock != 0)).Count());
+                                    }
+
+
+                                    <tr>
+                                        @if (color == 0 && hasColor && MAP[item.Color] != null)
+                                        {
+                                            if (MAP[item.Color] > 1)
+                                            {
+                                                color = 1;
+                                            }
+                                            if (MAP[item.Color] > 0)
+                                            {
+                                                <td rowspan="@MAP[item.Color]">@item.Color</td>
+                                            }
+                                        }
+                                        else if (MAP.ContainsKey(item.Color))
+                                        {
+                                            MAP[item.Color]--;
+                                            if (0 == MAP[item.Color] || 1 == MAP[item.Color])
+                                            {
+                                                color = 0;
+                                            }
+
+                                        }
+
+                                        @if (size == 0 && hasSize && MAP[item.Size + item.Color] != null)
+                                        {
+                                            if (MAP[item.Size + item.Color] > 1)
+                                            {
+                                                size = 1;
+                                            }
+                                            if (MAP[item.Size + item.Color] > 0)
+                                            {
+                                                <td rowspan="@MAP[item.Size + item.Color ]">@item.Size</td>
+                                            }
+                                        }
+                                        else if (MAP.ContainsKey(item.Size + item.Color))
+                                        {
+                                            MAP[item.Size + item.Color]--;
+                                            if (1 == MAP[item.Size + item.Color])
+                                            {
+                                                size = 0;
+                                            }
+                                        }
+                                        @if (hasVersion)
+                                        {
+                                            <td rowspan="1">@item.Version</td>
+                                        }
+                                        <td><input class="table-input" data-tag="@item.Color&amp;@item.Size&amp;@item.Version&amp;@colorId&amp;@sizeId&amp;@versionId" value="@item.SalePrice.ToString("f2")">元</td>
+                                        <td><input class="table-input" data-tag="@item.Color&amp;@item.Size&amp;@item.Version&amp;@colorId&amp;@sizeId&amp;@versionId" value="@item.CostPrice.ToString("f2")">元</td>
+                                        <td><input class="table-input input-stock" data-tag="@item.Color&amp;@item.Size&amp;@item.Version&amp;@colorId&amp;@sizeId&amp;@versionId" value="@item.Stock">@Model.MeasureUnit</td>
+                                        <td><input class="table-input" data-tag="@item.Color&amp;@item.Size&amp;@item.Version&amp;@colorId&amp;@sizeId&amp;@versionId" value="@item.Sku"></td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                        <div class="col-sm-0" style="padding-top:10px;"><label><input type="checkbox" value="" checked="true" id="show-spec">  隐藏未使用规格</label><span style="display:inline-block;float:right;cursor:pointer;color:#e3393c;" id="del-spec">关闭规格</span></div>
+                    }
+                    <script>
+                        $("#id_table input").blur(function () {
+                            var CALCULATE_INVENTORY = 0;
+                            for (var inin = 0; inin < $("#id_table tbody tr").length; inin++) {
+                                var tr_self = $("#id_table tbody tr")[inin];
+                                var kc = $(tr_self).find("td").eq($(tr_self).find("td").size() - 2).find("input").val();
+                                CALCULATE_INVENTORY += parseInt(kc);
+                            }
+
+                            $("#inventory").val(CALCULATE_INVENTORY);//计算库存
+                        })
+                    </script>
+                }
+
+            </div>
+
+        </div>
+        <div class="form-group" id="productCa">
+            <label class="col-sm-2 control-label" for="">商家分类：</label>
+            <div class="col-sm-10" id="id-select-box"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">商品属性：</label>
+            <div class="col-sm-10" id="goodsAttr"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">商品图片：</label>
+            <div class="col-sm-10" id="id_upload">
+                <span style="display:inline-block;height:100px;width:100px;border:1px solid #ccc;float:left;line-height:100px;text-align:center;">
+                    @{
+                        var isEdit = ((int)(ViewBag.ProductId)) != 0;
+                        var attr = isEdit ? "data-del=\"1\"" : "";
+                        var className = isEdit ? "glyphicon-remove" : "glyphicon-open";
+                        var path = (string)Server.MapPath(string.Format(@"/Storage/Shop/{0}/Products/{1}", ViewBag.ShopId, ViewBag.ProductId));
+                        var picCount = isEdit && Directory.Exists(path) ? ((string[])Directory.GetFiles(path, "?.png")) : new string[1] { "" };
+                    }
+                    <div class="fileBox glyphicon @(picCount.Contains(path + "\\1.png") && isEdit ? "glyphicon-remove" : "glyphicon-open")"
+                         data-del="@(picCount.Contains(path + "\\1.png") && isEdit ? "1" : "0")">
+                        <input type="file" id="uploadFile" name="" class="file uploadFile" style="@(picCount.Contains(path + "\\1.png") && isEdit ? "display:none;" : "")" accept="image/*">
+                    </div>
+                    <div class="view" style="width:100px;height:100px;position:absolute;top:0px;z-index:0" id="up_pic1" data-url="@(Model.ImagePath??"")/1.png">
+                        @if (((int)(ViewBag.ProductId)) != 0)
+                        {
+                            <img src="@(Model.ImagePath ?? "")/1.png">
+                        }
+                    </div>
+                </span>
+                <span style="display:inline-block;height:100px;width:100px;border:1px solid #ccc;float:left;line-height:100px;text-align:center;margin-left:15px;">
+                    <div class="fileBox glyphicon @(picCount.Contains(path + "\\2.png") && isEdit ? "glyphicon-remove" : "glyphicon-open")"
+                         data-del="@(picCount.Contains(path + "\\2.png") && isEdit ? "1" : "0")">
+                        <input type="file" style="@(picCount.Contains(path + "\\2.png") && isEdit ? "display:none;" : "")" id="uploadFile1" name="" class="file uploadFile" accept="image/*">
+                    </div>
+                    <div class="view1" style="width:100px;height:100px;position:absolute;top:0px;z-index:0" id="up_pic2" data-url="@(Model.ImagePath ?? "")/2.png">
+                        @if (((int)(ViewBag.ProductId)) != 0)
+                        {
+                            <img src="@(Model.ImagePath ?? "")/2.png">
+                        }
+                    </div>
+                </span>
+                <span style="display:inline-block;height:100px;width:100px;border:1px solid #ccc;float:left;line-height:100px;text-align:center;margin-left:15px;">
+                    <div class="fileBox glyphicon @(picCount.Contains(path + "\\3.png")  && isEdit ? "glyphicon-remove" : "glyphicon-open")"
+                         data-del="@(picCount.Contains(path + "\\3.png")  && isEdit ? "1" : "0")">
+                        <input type="file" style="@(picCount.Contains(path + "\\3.png")  && isEdit ? "display:none;" : "")" id="uploadFile2" name="" class="file uploadFile" accept="image/*">
+                    </div>
+                    <div class="view2" style="width:100px;height:100px;position:absolute;top:0px;z-index:0" id="up_pic3" data-url="@(Model.ImagePath ?? "")/3.png">
+                        @if (((int)(ViewBag.ProductId)) != 0)
+                        {
+                            <img src="@(Model.ImagePath ?? "")/3.png">
+                        }
+                    </div>
+                </span>
+                <span style="display:inline-block;height:100px;width:100px;border:1px solid #ccc;float:left;line-height:100px;text-align:center;margin-left:15px;" id="id_up_file4">
+                    <div class="fileBox glyphicon @(picCount.Contains(path + "\\4.png") && isEdit ? "glyphicon-remove" : "glyphicon-open")"
+                         data-del="@(picCount.Contains(path + "\\4.png")  && isEdit ? "1" : "0")">
+                        <input type="file" style="@(picCount.Contains(path + "\\4.png")  && isEdit ? "display:none;" : "")" id="uploadFile3" name="" class="file uploadFile" accept="image/*">
+                    </div>
+                    <div class="view3" style="width:100px;height:100px;position:absolute;top:0px;z-index:0" id="up_pic4" data-url="@(Model.ImagePath ?? "")/4.png">
+                        @if (((int)(ViewBag.ProductId)) != 0)
+                        {
+                            <img src="@Model.ImagePath/4.png">
+                        }
+                    </div>
+                </span>
+                <span style="display:inline-block;height:100px;width:100px;border:1px solid #ccc;float:left;line-height:100px;text-align:center;margin-left:15px;" id="id_up_file5">
+                    <div class="fileBox glyphicon @(picCount.Contains(path + "\\5.png")  && isEdit ? "glyphicon-remove" : "glyphicon-open")"
+                         data-del="@(picCount.Contains(path + "\\5.png")  && isEdit ? "1" : "0")">
+                        <input type="file" style="@(picCount.Contains(path + "\\5.png") && isEdit ? "display:none;" : "")" id="uploadFile4" name="" class="file uploadFile" accept="image/*">
+                    </div>
+                    <div class="view4" style="width:100px;height:100px;position:absolute;top:0px;z-index:0" id="up_pic5" data-url="@Model.ImagePath/5.png">
+                        @if (((int)(ViewBag.ProductId)) != 0)
+                        {
+                            <img src="@(Model.ImagePath ?? "")/5.png">
+                        }
+                    </div>
+                </span>
+                <div style="padding-top:10px; float:left; color:#999;">上传图片尽量保持为<span style="color:#e3393c">正方形</span>，默认第一张为商品预览图（必填）。请上传最大图，系统会自动生成各比例商品图。</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">商品简介：</label>
+            <div class="col-sm-4">
+                <textarea rows="4" cols="50" class="form-control" maxlength="4000" id="ad">@(Model.ShortDescription ?? "")</textarea>
+            </div>
+            <div class="col-sm-3"><span class="help-default">最多500个字</span></div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">商品描述：</label>
+            <div class="col-sm-10">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#pcdes" aria-controls="home" role="tab" data-toggle="tab">电脑端<span>(*)</span></a></li>
+                    <li role="presentation"><a href="#mpdes" aria-controls="profile" role="tab" data-toggle="tab">移动端</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="pcdes">
+                        <textarea id="des">
+                            @(Model.ProductDescriptionInfo == null ? " " : Model.ProductDescriptionInfo.Description)
+                        </textarea>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="mpdes">
+                        <textarea id="mdes">
+                            @(Model.ProductDescriptionInfo == null ? " " : Model.ProductDescriptionInfo.MobileDescription)
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" id="style">
+            <label for="" class="col-sm-2 control-label">关联版式：</label>
+            <div class="col-sm-2">
+                <select class="form-control input-sm" id="top"></select>
+            </div>
+            <div class="col-sm-2">
+                <select class="form-control input-sm" id="bottom"></select>
+            </div>
+            <div class="col-sm-4"><span class="help-default">关联版式将展示在商品描述的顶部与底部。</span></div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">运费：</label>
+            <div class="col-sm-2">
+                @Html.DropDownList("freightTemp", (IEnumerable<SelectListItem>)ViewBag.FreightTemplates, new
+           {
+               @class = "form-control input-sm",
+               id = "freightTemplate"
+           })
+            </div>
+            <div class="col-sm-4"><input type="button" value="新增运费模板" id="btnAddTemplate" /> </div>
+        </div>
+        <div class="form-group" id="divVolume">
+            <label for="" class="col-sm-2 control-label">物流体积(M<sup>3</sup>)：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control input-sm" value="@(Model.Volume.HasValue ? Model.Volume.Value : 0)" id="inputVolume">
+            </div>
+        </div>
+        <div class="form-group" id="divWeight">
+            <label for="" class="col-sm-2 control-label">物流重量(KG)：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control input-sm" value="@(Model.Weight.HasValue?Model.Weight.Value:0)" id="inputWeight">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">SEO标题：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control input-sm" value="@(Model.ProductDescriptionInfo==null?" ":Model.ProductDescriptionInfo.Meta_Title)" id="seo_title">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">SEO关键字：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control input-sm" value="@(Model.ProductDescriptionInfo==null?" ":Model.ProductDescriptionInfo.Meta_Keywords)" id="seo_key">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">SEO描述：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control input-sm" value="@(Model.ProductDescriptionInfo==null?" ":Model.ProductDescriptionInfo.Meta_Description)" id="seo_des">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                @*<button type="button" class="btn btn-default" salestatus="2" style="margin-right:10px;" id="warehouse">放入仓库</button>*@
+                @if ((proid == null || proid <= 0))
+                {<button type="button" class="btn btn-default" salestatus="3" style="margin-right:10px;" id="intoDraft">放入草稿箱</button>}
+                <button type="button" class="btn btn-primary" salestatus="1" id="publish"> 保存@((Model.AuditStatus == Himall.Model.ProductInfo.ProductAuditStatus.WaitForAuditing && Model.SaleStatus == Himall.Model.ProductInfo.ProductSaleStatus.OnSale) ? "" : "并发布") </button>
+                @if (proid > 0 &&
+                    ((Model.AuditStatus != Himall.Model.ProductInfo.ProductAuditStatus.Audited && Model.AuditStatus != Himall.Model.ProductInfo.ProductAuditStatus.WaitForAuditing)
+                    || (Model.SaleStatus != Himall.Model.ProductInfo.ProductSaleStatus.OnSale)))
+                {<button type="button" class="btn btn-default" salestatus="0" id="OnlySave"> 仅保存 </button>}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var eidtor, mpEditor;
+    var Dbuy = false;
+    
+    $(function () {
+        (function initRichTextEditor() {
+            eidtor = UE.getEditor('des');
+
+            eidtor.addListener('contentChange', function () {
+                $('#contentError').hide();
+            });
+
+            mpEditor = UE.getEditor('mdes');
+        })();
+    });
+    $.post('../ProductDescriptionTemplate/getAll', {}, function (result) {
+        var topId = "@ViewBag.TopId";
+        var bottomId = "@ViewBag.BottomId";
+        var top = $('#top');
+        var bottom = $('#bottom');
+        top.append('<option value="0">顶部版本(请选择)</option>');
+        bottom.append('<option value="0">底部版本(请选择)</option>');
+        $.each(result, function () {
+            if (this.Position == 1) {
+                var selected = topId == this.Id ? " selected " : "";
+                top.append('<option ' + selected + ' value="' + this.Id + '">' + this.Name + '</option>');
+            }
+            else {
+                var selected = bottomId == this.Id ? " selected " : "";
+                bottom.append('<option ' + selected + ' value="' + this.Id + '">' + this.Name + '</option>');
+            }
+        });
+
+    });
+
+    // 全局变量 用于规格数据 表格数据 商品属性 等部分数据格式
+    specificationsData = null;
+    attrSelectData = null;
+    globalData = null;
+    ; ({
+        data: {
+            "json": [
+              {
+                  "Name": "颜色",
+                  "values": [
+                    {
+                        "Name": "红色",
+                        "selected": true,
+                        "Id": "3"
+                    },
+                    {
+                        "Name": "蓝色",
+                        "selected": false,
+                        "Id": "5"
+                    },
+                    {
+                        "Name": "紫色",
+                        "selected": true,
+                        "Id": "6"
+                    },
+                    {
+                        "Name": "橘色",
+                        "selected": false,
+                        "Id": "7"
+                    }
+                  ]
+              },
+              {
+                  "Name": "尺码",
+                  "values": [
+                    {
+                        "Name": "X",
+                        "selected": true,
+                        "Id": "13"
+                    },
+                    {
+                        "Name": "SX",
+                        "selected": false,
+                        "Id": "15"
+                    },
+                    {
+                        "Name": "M",
+                        "selected": true,
+                        "Id": "26"
+                    },
+                    {
+                        "Name": "L",
+                        "selected": false,
+                        "Id": "37"
+                    }
+                  ]
+              },
+              {
+                  "Name": "版本",
+                  "values": [
+                    {
+                        "Name": "版本一",
+                        "selected": true,
+                        "Id": "43"
+                    },
+                    {
+                        "Name": "版本二",
+                        "selected": false,
+                        "Id": "55"
+                    }
+                  ]
+              }
+            ],
+            "tableData": {
+                "productId": "167",
+                "cost": [],
+                "stock": [],
+                "sku": [],
+                "mallPrice": []
+            }
+        },// 从后端取回来的总数据
+        colorArr: [],
+        speArr: [],
+        editionArr: [],
+        colorIdArr: [],
+        speIdArr: [],
+        editionIdArr: [],
+        UUID: 0,
+        init: function ($) {
+            var that = this,
+                ajaxGet = function (url, d, fn) {
+
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        data: d,
+                        dataType: "json",
+                        cache: false,
+                        success: function (data) {
+                            if (data) {
+                                //var json = (new Function("", "return " + data))();
+                                that.globalData = data.data;
+                                fn(data.data.json);
+                            } else {
+                                //alert('数据获取失败!')
+                            }
+                        }
+                    });
+                },
+                callback = function (data) {
+                    //console.log('******', data);
+                    var i, k, l, s,
+                        arr = [],
+                        len,
+                        colorArr = [],
+                        colorIdArr = [],
+                        colorSelectArr = [],
+                        colorPlat = [],
+
+                        speArr = [],
+                        speIdArr = [],
+                        speSelectArr = [],
+                        specPlat = [],
+
+                        editionArr = [],
+                        editionIdArr = [],
+                        editionSelectArr = [],
+                        editionPlat = [],
+
+                        color = '',
+                        spe = '',
+                        edition = '',
+                        str = '';
+                    // 进行数据拆分 生成多选框 绑定事件获取选取状态里面的数据 生成单选输入框
+                    //console.log(data);
+                    for (i = 0, k = data.length; i < k; i++) {
+                        arr.push(data[i].Name);
+                    }
+                    len = arr.length;
+                    for (i = 0; i < len; i++) {
+                        if (arr[i] == 'Color') {
+                            str += '<div class="g-select-box"><div class="g-tag">' + '颜色' + '：</div><div id="id_color" class="g-select-box1"></div></div>';
+                            for (k = 0, l = data[i].Values.length; k < l; k++) {
+                                colorArr.push(data[i].Values[k].Name);
+                                colorIdArr.push(data[i].Values[k].Id);
+                                colorSelectArr.push(data[i].Values[k].Selected);
+                                colorPlat.push(data[i].Values[k].isPlatform);
+                            }
+                        }
+                        if (arr[i] == 'Size') {
+                            str += '<div class="g-select-box"><div class="g-tag">' + '尺寸' + '：</div><div id="id_spe" class="g-select-box1"></div></div>';
+                            for (k = 0, l = data[i].Values.length; k < l; k++) {
+                                speArr.push(data[i].Values[k].Name);
+                                speIdArr.push(data[i].Values[k].Id);
+                                speSelectArr.push(data[i].Values[k].Selected);
+                                specPlat.push(data[i].Values[k].isPlatform);
+                            }
+                        }
+                        if (arr[i] == 'Version') {
+                            str += '<div class="g-select-box"><div class="g-tag">' + '规格' + '：</div><div id="id_edition" class="g-select-box1"></div></div>';
+                            for (k = 0, l = data[i].Values.length; k < l; k++) {
+                                editionArr.push(data[i].Values[k].Name);
+                                editionIdArr.push(data[i].Values[k].Id);
+                                editionSelectArr.push(data[i].Values[k].Selected);
+                                editionPlat.push(data[i].Values[k].isPlatform);
+                            }
+                        }
+                    }
+                    $('#id-g').prepend(str);
+
+                    var createElem = function (data, elem, tag, id, select, platData) {
+                        var len = data.length,
+                            str = '',
+                            i;
+                        for (i = 0; i < len; i++) {
+                            str += '<label class="checkbox-row"><input class="in_box" name="" plat_data="' + platData[i] + '" type="checkbox" value="' + data[i] + '" data_tag="' + tag + '" style=" margin-right:10px;margin-top:4px;" ' + (select[i] ? 'checked="true"' : '') + ' /><input  type="text" value="' + data[i] + '" style="width:50px;display:inline-block;border:1px solid #ccc;padding:0 2px" ' + (select[i] ? '' : 'disabled="disabled"') + ' data_id="' + id[i] + '"/></label>';
+                        }
+                        $(elem).append(str);
+                    }
+                    createElem(colorArr, '#id_color', 1, colorIdArr, colorSelectArr, colorPlat);
+                    createElem(speArr, '#id_spe', 2, speIdArr, speSelectArr, specPlat);
+                    createElem(editionArr, '#id_edition', 3, editionIdArr, editionSelectArr, editionPlat);
+                    var createSelect = function (create) {
+                        var arr1 = that.colorArr,
+                            arr2 = that.speArr,
+                            arr3 = that.editionArr,
+                            arr1Id = that.colorIdArr,
+                            arr2Id = that.speIdArr,
+                            arr3Id = that.editionIdArr,
+                            len1 = arr1.length,
+                            len2 = arr2.length,
+                            len3 = arr3.length,
+                            productId = parseInt($('#productId').val()),
+                            // ==========
+                            price = that.globalData.tableData.mallPrice,
+                            cost = that.globalData.tableData.cost,
+                            inventory = that.globalData.tableData.stock,
+                            item = that.globalData.tableData.sku,
+                            // ==============
+
+                            i, k, l, n, m, j, arr = [], str = '', optstr = '', uid = 0, num = [];
+
+                        var CONST_PRICEA = $("#price_a").val();
+                        var CONST_COST = $("#cost").val();
+                        var CONST_INVENTORY = $("#inventory").val();
+
+                        var sort = function (arr, data) {
+                            var Arr = [];
+                            for (var x = 0, v = data.length; x < v; x++) {
+                                for (var h = 0, f = arr.length; h < f; h++) {
+                                    if (data[x].index == arr[h]) {
+                                        Arr.push(data[x]);
+                                    } else {
+                                        Arr.push('');
+                                    }
+                                }
+                            }
+                            return Arr;
+                        };
+
+                        if (len1 && len2 && len3) {
+                            // 这个分支判断是否编辑还是新建
+                            if (create) {//1 编辑  还原数据
+                                str = '<thead><tr><th>颜色</th><th>尺码</th><th>版本</th><th>商城价</th><th>成本价</th><th>库存</th><th>货号</th></tr></thead><tbody>';
+                                for (i = 0; i < len1; i++) {
+                                    num.push((len2 * len3 * (i + 1)))// 用来合并生成的表格数据
+                                    for (k = 0; k < len2; k++) {
+                                        for (l = 0; l < len3; l++) {
+                                            //console.log(arr1[i],arr2[k],arr3[l])
+                                            ; (function (uid) {
+                                                str += '<tr><td id="' + arr1[i] + '">' + arr1[i] + '</td><td id="' + arr2[k] + '">' + arr2[k] + '</td><td id="' + arr3[l] + '">' + arr3[l] + '</td><td><input class="table-input" data-tag="' + arr1[i] + '&' + arr2[k] + '&' + arr3[l] + '&' + arr1Id[i] + '&' + arr2Id[k] + '&' + arr3Id[l] + '" value="' + CONST_PRICEA + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&' + arr2[k] + '&' + arr3[l] + '&' + arr1Id[i] + '&' + arr2Id[k] + '&' + arr3Id[l] + '" value="' + CONST_COST + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&' + arr2[k] + '&' + arr3[l] + '&' + arr1Id[i] + '&' + arr2Id[k] + '&' + arr3Id[l] + '"  value="' + CONST_INVENTORY + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="' + arr1[i] + '&' + arr2[k] + '&' + arr3[l] + '&' + arr1Id[i] + '&' + arr2Id[k] + '&' + arr3Id[l] + '" ></input></td></tr>';
+                                            }(uid));
+                                            uid++;
+                                        }
+                                    }
+                                }
+                                str += '</tbody>';
+                            } else {// 显示隐藏
+                                str = '<thead><tr><th>颜色</th><th>尺码</th><th>版本</th><th>商城价</th><th>成本价</th><th>库存</th><th>货号</th></tr></thead><tbody>';
+
+                                for (i = 0; i < len1; i++) {
+                                    num.push((len2 * len3 * (i + 1)))// 用来合并生成的表格数据
+                                    for (k = 0; k < len2; k++) {
+                                        for (l = 0; l < len3; l++) {
+                                            //console.log(arr1[i],arr2[k],arr3[l])
+                                            ; (function (uid) {
+                                                console.log(i, price[i].ValueSet[uid], len3, '-', uid)
+                                                str += '<tr><td id="' + arr1[i] + '">' + arr1[i] + '</td><td id="' + arr2[k] + '">' + arr2[k] + '</td><td id="' + arr3[l] + '">' + arr3[l] + '</td><td><input class="table-input" data-tag="' + arr1[i] + '&' + arr2[k] + '&' + arr3[l] + '&' + arr1Id[i] + '&' + arr2Id[k] + '&' + arr3Id[l] + '" value="' + (((price[i].index) == arr1[i] && price[i].ValueSet[uid]) ? price[i].ValueSet[uid] : '') + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&' + arr2[k] + '&' + arr3[l] + '&' + arr1Id[i] + '&' + arr2Id[k] + '&' + arr3Id[l] + '" value="' + (((cost[i].index) == arr1[i] && cost[i].ValueSet[uid]) ? cost[i].ValueSet[uid] : '') + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&' + arr2[k] + '&' + arr3[l] + '&' + arr1Id[i] + '&' + arr2Id[k] + '&' + arr3Id[l] + '" value="' + (((inventory[i].index) == arr1[i] && inventory[i].ValueSet[uid]) ? inventory[i].ValueSet[uid] : '') + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="' + arr1[i] + '&' + arr2[k] + '&' + arr3[l] + '&' + arr1Id[i] + '&' + arr2Id[k] + '&' + arr3Id[l] + '" value="' + (((item[i].index) == arr1[i] && item[i].ValueSet[uid]) ? item[i].ValueSet[uid] : '') + '"></input></td></tr>';
+
+                                            }(uid));
+                                            uid++;
+                                        }
+                                        console.log(uid);
+                                        if (uid == price[i].ValueSet.length) {
+                                            uid = 0;
+                                        }
+                                    }
+                                }
+                                str += '</tbody>';
+
+                            }
+                        } else if (len1 && len2) {
+                            var __stock = 0;
+                            str = '<thead><tr><th>颜色</th><th>尺码</th><th>商城价</th><th>成本价</th><th>库存</th><th>货号</th></tr></thead><tbody>';
+                            if (create) {
+                                for (i = 0; i < len1; i++) {
+                                    for (k = 0; k < len2; k++) {
+                                        ; (function (uid) {
+                                            str += '<tr><td id="' + arr1[i] + '">' + arr1[i] + '</td><td id="' + arr2[k] + '">' + arr2[k] + '</td><td><input class="table-input" value="' + _salePrice_ + '" data-tag="' + arr1[i] + '&' + arr2[k] + '&&' + arr1Id[i] + '&' + arr2Id[k] + '&"  value="' + CONST_PRICEA + '"></input>元</td><td><input class="table-input"  value="' + _costPrice_ + '"  data-tag="' + arr1[i] + '&' + arr2[k] + '&&' + arr1Id[i] + '&' + arr2Id[k] + '&"  value="' + CONST_COST + '"></input>元</td><td><input class="table-input"  value="' + _inventory_ + '"  data-tag="' + arr1[i] + '&' + arr2[k] + '&&' + arr1Id[i] + '&' + arr2Id[k] + '&" value="' + CONST_INVENTORY + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="' + arr1[i] + '&' + arr2[k] + '&&' + arr1Id[i] + '&' + arr2Id[k] + '&" ></input></td></tr>';
+                                        }(uid));
+                                        uid++;
+                                        __stock += parseInt(_inventory_);
+                                    }
+                                }
+                                str += '</tbody>';
+                            } else {
+                                for (i = 0; i < len1; i++) {
+                                    for (k = 0; k < len2; k++) {
+                                        ; (function (uid) {
+                                            str += '<tr><td id="' + arr1[i] + '">' + arr1[i] + '</td><td id="' + arr2[k] + '">' + arr2[k] + '</td><td><input class="table-input" data-tag="' + arr1[i] + '&' + arr2[k] + '&&' + arr1Id[i] + '&' + arr2Id[k] + '&" value="' + ((price[i].index) == arr1[i] ? price[i].ValueSet[k] : '') + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&' + arr2[k] + '&&' + arr1Id[i] + '&' + arr2Id[k] + '&" value="' + ((cost[i].index) == arr1[i] ? cost[i].ValueSet[k] : '') + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&' + arr2[k] + '&&' + arr1Id[i] + '&' + arr2Id[k] + '&" value="' + ((inventory[i].index) == arr1[i] ? inventory[i].ValueSet[k] : '') + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="' + arr1[i] + '&' + arr2[k] + '&&' + arr1Id[i] + '&' + arr2Id[k] + '&" value="' + ((item[i].index) == arr1[i] ? item[i].ValueSet[k] : '') + '"></input></td></tr>';
+
+                                        }(uid));
+                                        uid++;
+                                    }
+                                }
+                                str += '</tbody>';
+
+                            }
+                            $("#inventory").val(__stock);
+                        } else if (len2 && len3) {
+                            str = '<thead><tr><th>尺码</th><th>版本</th><th>商城价</th><th>成本价</th><th>库存</th><th>货号</th></tr></thead><tbody>';
+                            if (create) {
+                                for (k = 0; k < len2; k++) {
+                                    for (l = 0; l < len3; l++) {
+                                        ; (function (uid) {
+                                            str += '<tr><td id="' + arr2[k] + '">' + arr2[k] + '</td><td id="' + arr3[l] + '">' + arr3[l] + '</td><td><input class="table-input"  data-tag="&' + arr2[k] + '&' + arr3[l] + '&&' + arr2Id[k] + '&' + arr3Id[l] + '" value="' + CONST_PRICEA + '"></input>元</td><td><input class="table-input" data-tag="&' + arr2[k] + '&' + arr3[l] + '&&' + arr2Id[k] + '&' + arr3Id[l] + '" value="' + CONST_COST + '"></input>元</td><td><input class="table-input" data-tag="&' + arr2[k] + '&' + arr3[l] + '&&' + arr2Id[k] + '&' + arr3Id[l] + '" value="' + CONST_INVENTORY + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="&' + arr2[k] + '&' + arr3[l] + '&&' + arr2Id[k] + '&' + arr3Id[l] + '" ></input></td></tr>';
+                                        }(uid));
+                                        uid++;
+                                    }
+                                }
+                                str += '</tbody>';
+                            } else {
+                                for (k = 0; k < len2; k++) {
+                                    for (l = 0; l < len3; l++) {
+                                        ; (function (uid) {
+                                            str += '<tr><td id="' + arr2[k] + '">' + arr2[k] + '</td><td id="' + arr3[l] + '">' + arr3[l] + '</td><td><input class="table-input"  data-tag="&' + arr2[k] + '&' + arr3[l] + '&&' + arr2Id[k] + '&' + arr3Id[l] + '" value="' + (price[k].ValueSet[l] ? price[k].ValueSet[l] : '') + '"></input>元</td><td><input class="table-input" data-tag="&' + arr2[k] + '&' + arr3[l] + '&&' + arr2Id[k] + '&' + arr3Id[l] + '" value="' + (cost[k].ValueSet[l] ? cost[k].ValueSet[l] : '') + '"></input>元</td><td><input class="table-input" data-tag="&' + arr2[k] + '&' + arr3[l] + '&&' + arr2Id[k] + '&' + arr3Id[l] + '" value="' + (inventory[k].ValueSet[l] ? inventory[k].ValueSet[l] : '') + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="&' + arr2[k] + '&' + arr3[l] + '&&' + arr2Id[k] + '&' + arr3Id[l] + '" value="' + (item[k].ValueSet[l] ? item[k].ValueSet[l] : '') + '"></input></td></tr>';
+                                        }(uid));
+                                        uid++;
+                                    }
+                                }
+                                str += '</tbody>';
+                            }
+                        } else if (len1 && len3) {
+                            str = '<thead><tr><th>颜色</th><th>版本</th><th>商城价</th><th>成本价</th><th>库存</th><th>货号</th></tr></thead><tbody>';
+                            if (create) {
+                                for (i = 0; i < len1; i++) {
+                                    for (l = 0; l < len3; l++) {
+                                        ; (function (uid) {
+                                            str += '<tr><td id="' + arr1[i] + '">' + arr1[i] + '</td><td id="' + arr3[l] + '">' + arr3[l] + '</td><td><input class="table-input"   data-tag="' + arr1[i] + '&&' + arr3[l] + '&' + arr1Id[i] + '&&' + arr3Id[l] + '" value="' + CONST_PRICEA + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&&' + arr3[l] + '&' + arr1Id[i] + '&&' + arr3Id[l] + '" value="' + CONST_COST + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&&' + arr3[l] + '&' + arr1Id[i] + '&&' + arr3Id[l] + '" value="' + CONST_INVENTORY + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="' + arr1[i] + '&&' + arr3[l] + '&' + arr1Id[i] + '&&' + arr3Id[l] + '" ></input></td></tr>';
+                                        }(uid));
+                                        uid++;
+                                    }
+                                }
+                                str += '</tbody>';
+                            } else {
+                                for (i = 0; i < len1; i++) {
+                                    for (l = 0; l < len3; l++) {
+                                        ; (function (uid) {
+                                            str += '<tr><td id="' + arr1[i] + '">' + arr1[i] + '</td><td id="' + arr3[l] + '">' + arr3[l] + '</td><td><input class="table-input"   data-tag="' + arr1[i] + '&&' + arr3[l] + '&' + arr1Id[i] + '&&' + arr3Id[l] + '" value="' + ((price[i].index) == arr1[i] ? price[i].ValueSet[l] : '') + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&&' + arr3[l] + '&' + arr1Id[i] + '&&' + arr3Id[l] + '" value="' + ((cost[i].index) == arr1[i] ? cost[i].ValueSet[l] : '') + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&&' + arr3[l] + '&' + arr1Id[i] + '&&' + arr3Id[l] + '" value="' + ((inventory[i].index) == arr1[i] ? inventory[i].ValueSet[l] : '') + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="' + arr1[i] + '&&' + arr3[l] + '&' + arr1Id[i] + '&&' + arr3Id[l] + '" value="' + ((item[i].index) == arr1[i] ? item[i].ValueSet[l] : '') + '"></input></td></tr>';
+                                        }(uid));
+                                        uid++;
+                                    }
+                                }
+                                str += '</tbody>';
+
+                            }
+                        } else if (len1) {
+                            str = '<thead><tr><th>颜色</th><th>商城价</th><th>成本价</th><th>库存</th><th>货号</th></tr></thead><tbody>';
+                            if (create) {
+                                for (i = 0; i < len1; i++) {
+                                    ; (function (uid) {
+                                        str += '<tr><td id="' + arr1[i] + '">' + arr1[i] + '</td><td><input class="table-input"  data-tag="' + arr1[i] + '&&&' + arr1Id[i] + '&&" value="' + CONST_PRICEA + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&&&' + arr1Id[i] + '&&" value="' + CONST_COST + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&&&' + arr1Id[i] + '&&" value="' + CONST_INVENTORY + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="' + arr1[i] + '&&&' + arr1Id[i] + '&&" ></input></td></tr>';
+                                    }(uid));
+                                    uid++;
+                                }
+                                str += '</tbody>';
+                            } else {
+                                for (i = 0; i < len1; i++) {
+                                    ; (function (uid) {
+                                        str += '<tr><td id="' + arr1[i] + '">' + arr1[i] + '</td><td><input class="table-input"  data-tag="' + arr1[i] + '&&&' + arr1Id[i] + '&&" value="' + ((price[i].index) == arr1[i] ? price[i].ValueSet[0] : '') + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&&&' + arr1Id[i] + '&&" value="' + ((cost[i].index) == arr1[i] ? cost[i].ValueSet[0] : '') + '"></input>元</td><td><input class="table-input" data-tag="' + arr1[i] + '&&&' + arr1Id[i] + '&&" value="' + ((inventory[i].index) == arr1[i] ? inventory[i].ValueSet[0] : '') + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="' + arr1[i] + '&&&' + arr1Id[i] + '&&" value="' + ((item[i].index) == arr1[i] ? item[i].ValueSet[0] : '') + '"></input></td></tr>';
+                                    }(uid));
+                                    uid++;
+                                }
+                                str += '</tbody>';
+
+                            }
+                        } else if (len2) {
+                            str = '<thead><tr><th>规格</th><th>商城价</th><th>成本价</th><th>库存</th><th>货号</th></tr></thead><tbody>';
+                            if (create) {
+                                for (i = 0; i < len2; i++) {
+                                    ; (function (uid) {
+                                        str += '<tr><td id="' + arr2[i] + '">' + arr2[i] + '</td><td><input class="table-input"   data-tag="&' + arr2[i] + '&&&' + arr2Id[i] + '&" value="' + CONST_PRICEA + '"></input>元</td><td><input class="table-input" data-tag="&' + arr2[i] + '&&&' + arr2Id[i] + '&" value="' + CONST_COST + '"></input>元</td><td><input class="table-input" data-tag="&' + arr2[i] + '&&&' + arr2Id[i] + '&" value="' + CONST_INVENTORY + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="&' + arr2[i] + '&&&' + arr2Id[i] + '&" ></input></td></tr>';
+                                    }(uid));
+                                    uid++;
+                                }
+                                str += '</tbody>';
+
+                            } else {
+                                for (i = 0; i < len2; i++) {
+                                    ; (function (uid) {
+                                        str += '<tr><td id="' + arr2[i] + '">' + arr2[i] + '</td><td><input class="table-input" data-tag="&' + arr2[i] + '&&&' + arr2Id[i] + '&" value="' + ((price[i].index) == arr2[i] ? price[i].ValueSet[0] : '') + '"></input>元</td><td><input class="table-input" data-tag="&' + arr2[i] + '&&&' + arr2Id[i] + '&" value="' + ((cost[i].index) == arr2[i] ? cost[i].ValueSet[0] : '') + '"></input>元</td><td><input class="table-input" data-tag="&' + arr2[i] + '&&&' + arr2Id[i] + '&" value="' + ((inventory[i].index) == arr2[i] ? inventory[i].ValueSet[0] : '') + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="&' + arr2[i] + '&&&' + arr2Id[i] + '&" value="' + ((item[i].index) == arr2[i] ? item[i].ValueSet[0] : '') + '"></input></td></tr>';
+                                    }(uid));
+                                    uid++;
+                                }
+                                str += '</tbody>';
+
+                            }
+                        } else if (len3) {
+                            str = '<thead><tr><th>尺码</th><th>商城价</th><th>成本价</th><th>库存</th><th>货号</th></tr></thead><tbody>';
+                            if (create) {
+                                for (i = 0; i < len3; i++) {
+                                    ; (function (uid) {
+                                        str += '<tr><td id="' + arr3[i] + '">' + arr3[i] + '</td><td><input class="table-input"   data-tag="&&' + arr3[i] + '&&&' + arr3Id[i] + '" value="' + CONST_PRICEA + '"></input>元</td><td><input class="table-input" data-tag="&&' + arr3[i] + '&&&' + arr3Id[i] + '" value="' + CONST_COST + '"></input>元</td><td><input class="table-input" data-tag="&&' + arr3[i] + '&&&' + arr3Id[i] + '" value="' + CONST_INVENTORY + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="&&' + arr3[i] + '&&&' + arr3Id[i] + '" ></input></td></tr>';
+                                    }(uid));
+                                    uid++;
+                                }
+                                str += '</tbody>';
+                            } else {
+                                for (i = 0; i < len3; i++) {
+                                    ; (function (uid) {
+                                        str += '<tr><td id="' + arr3[i] + '">' + arr3[i] + '</td><td><input class="table-input"  data-tag="&&' + arr3[i] + '&&&' + arr3Id[i] + '" value="' + ((price[i].index) == arr3[i] ? price[i].ValueSet[0] : '') + '"></input>元</td><td><input class="table-input" data-tag="&&' + arr3[i] + '&&&' + arr3Id[i] + '" value="' + ((cost[i].index) == arr3[i] ? cost[i].ValueSet[0] : '') + '"></input>元</td><td><input class="table-input" data-tag="&&' + arr3[i] + '&&&' + arr3Id[i] + '" value="' + ((inventory[i].index) == arr3[i] ? inventory[i].ValueSet[0] : '') + '"></input>' + measureUnit + '</td><td><input class="table-input" data-tag="&&' + arr3[i] + '&&&' + arr3Id[i] + '" value="' + ((item[i].index) == arr3[i] ? item[i].ValueSet[0] : '') + '"></input></td></tr>';
+                                    }(uid));
+                                    uid++;
+                                }
+                                str += '</tbody>';
+
+                            }
+                        }
+                        $('#id-table-box').html('<table id="id_table" class="table table-bordered">' + str + '</table>');
+                        str = '';
+                        TableRowsSpan('id_table', '0,1');
+
+                        $("#inventory").val($("#id_table tbody tr").length * parseInt(CONST_INVENTORY));
+                        $("#id_table input").blur(function () {
+                            var CALCULATE_INVENTORY = 0;
+                            for (var inin = 0; inin < $("#id_table tbody tr").length; inin++) {
+                                var tr_self = $("#id_table tbody tr")[inin];
+                                var kc = $(tr_self).find("td").eq($(tr_self).find("td").size() - 2).find("input").val();
+                                CALCULATE_INVENTORY += parseInt(kc);
+                            }
+
+                            $("#inventory").val(CALCULATE_INVENTORY);
+                        })
+
+                        // $('#id_table').prepend('<thead><tr><th>颜色</th><th>尺码</th><th>版本</th><th>商城价</th><th>成本价</th><th>库存</th><th>货号</th></tr></thead>');
+                        $('#id-table-box').append('<div class="col-sm-0" style="padding-top:10px;"><label><input type="checkbox" value="" checked="true" id="show-spec" />  隐藏未使用规格</label><span style="display:inline-block;float:right;cursor:pointer;color: #e3393c;" id="del-spec">关闭规格</span></div>');
+                        // 点击关闭规格
+                        $('#del-spec').bind('click', function () {
+                            $("#inventory").removeAttr("readonly").val(parseInt(@Model.Quantity));
+                            $('#id-table-box').html('');
+
+                        });
+                        $('#show-spec').one('click', function () {
+                            if (that.UUID < 2) { submitType() }
+                        });
+                        that.UUID += 1;
+                    };
+                    if (1) {
+                        $('#show-spec').one('click', function () {
+                            if (that.UUID < 1) { submitType() }
+                        });
+                        $('#del-spec').bind('click', function () {
+                            $("#inventory").removeAttr("readonly").val(parseInt(@Model.Quantity));
+                            $('#id-table-box').html('');
+                        });
+                        //$('#id-table-box').append('<div class="col-sm-0" style="padding-top:10px;"><label><input type="checkbox" value="" checked="true" id="show-spec" />  隐藏未使用规格</label><span style="display:inline-block;float:right;cursor:pointer;" id="del-spec">关闭规格</span></div>');
+                    }
+                    $('#id-g').bind('click', function (e) {
+                        var obj = $(e.target),
+                            tag = obj.attr('data_tag'),
+                            prev = obj.next(),
+                            checkStatus = function (tag) {
+                                if (obj[0].checked == true) {
+                                    prev.attr('disabled', false);
+                                } else {
+                                    prev.attr('disabled', true);
+                                }
+                            };
+                        if (tag) {
+                            checkStatus(tag);
+                        }
+                    });
+                    $('#id_open').click(function () {
+                        $.dialog({
+                            title: '开启规格',
+                            id: 'addSpec',
+                            width: 620,
+                            content: $('#id_spec')[0],
+                            lock: true,
+                            padding: '20px 10px 15px',
+                            init: function () {
+                                //
+                            },
+                            okVal: '确认生成',
+                            ok: function () {
+                                $("#inventory").attr("readonly", "readonly");
+                                _inventory_ = $("#inventory").val();
+                                _salePrice_ = $("#price_a").val();
+                                _costPrice_ = $("#cost").val();
+                                submitType(1);
+                            }
+                        });
+                    });
+                    $("#radio1").click(function () {                                //设置不可输入
+                        Dbuy = true;
+                  //      $("#price_a").random = false;
+
+
+                    });
+                    $("#radio2").click(function () {
+                        Dbuy = false;
+                    });
+                    function submitType(check) {
+                        measureUnit = getMeasureUnit();
+                        that.colorArr = [];
+                        that.speArr = [];
+                        that.editionArr = [];
+                        that.colorIdArr = [];
+                        that.speIdArr = [];
+                        that.editionIdArr = [];
+                        var tag, id, val, select, oldVal, specifications = [], plat = false;
+                        $('.in_box').each(function (i, e) {// ------------------------------------获取用户操作数据进行生成
+                            if (e.checked == true) {
+                                tag = e.getAttribute('data_tag');
+                                val = $(e).next().val();
+                                id = $(e).next().attr('data_id');
+                                if (tag == 1) {
+                                    that.colorArr.push(val);
+                                    that.colorIdArr.push(id);
+                                } else if (tag == 2) {
+                                    that.speArr.push(val);
+                                    that.speIdArr.push(id);
+                                } else if (tag == 3) {
+                                    that.editionArr.push(val);
+                                    that.editionIdArr.push(id);
+                                }
+                            } else {
+                                val = $(e).next().val();
+                            }
+                            oldVal = e.value;
+                            id = $(e).next().attr('data_id');
+                            select = ($(e).attr('checked') ? 'true' : 'false');
+                            specifications.push('{"Id":"' + id + '","selected":' + select + ',"oldValue":"' + oldVal + '","newValue":"' + val + '"}');
+                        });
+                        if ($('#save_spe')[0].checked == true) {
+                            specificationsData = '"specifications":[' + specifications.join(',') + ']';
+                        }
+                        //console.log(that.colorArr,that.speArr,that.editionArr);
+                        if (check) {
+                            createSelect(1);
+                        } else {
+                            createSelect(0);
+                        }
+                        artDialog({ id: 'addSpec' }).close()
+                    }
+                };
+
+
+            ajaxGet('../Product/GetSpecifications', {
+                categoryId: "@ViewBag.CategoryId",
+                productId: "@ViewBag.ProductId",
+                isCategoryId: "@ViewBag.IsCategory"
+            }, callback);
+        }
+    }).init(jQuery);
+
+
+    function oneMergers(tableId, startRow, endRow, col) {
+        var tb = document.getElementById(tableId);
+        if (col >= tb.rows[0].cells.length) {
+            return;
+        }
+        if (col == 0) {
+            endRow = tb.rows.length - 1;
+        }
+        for (var i = startRow; i < endRow; i++) {
+            if (tb.rows[i].cells[col].innerHTML == tb.rows[i + 1].cells[0].innerHTML) {
+                tb.rows[i + 1].removeChild(tb.rows[i + 1].cells[0]);
+                tb.rows[i].cells[col].rowSpan = (tb.rows[i].cells[col].rowSpan | 0) + 1;
+
+                if (i == endRow - 1 && startRow != endRow) {
+                    oneMergers(tableId, startRow, endRow, col + 1);
+                }
+            } else {
+                oneMergers(tableId, startRow, i + 0, col + 1);
+                startRow = i + 1;
+            }
+        }
+    }
+
+    // ============= 表格合并函数
+    function TableRowsSpan(tableID, ColList) {
+        var ColArray = ColList.split(",");
+        var TableName = document.getElementById(tableID);
+        var TableRowsCount = TableName.rows.length;
+        for (j = ColArray.length - 1; j >= 0; j--) {
+            PreId = "";
+            CurId = "";
+            TempCount = 1;
+            for (i = 0; i <= TableRowsCount; i++) {
+                if (i != TableRowsCount) {
+                    CurId = TableName.rows[i].cells[ColArray[j]].id;
+                    if (CurId != "") {
+                        if (CurId == PreId) {
+                            TempCount += 1;
+                        }
+                        else {
+                            if (TempCount > 1) {
+                                SpanRows(TableName, i, j, TempCount, ColArray[j]);
+                            }
+                            PreId = CurId;
+                            TempCount = 1;
+                        }
+                    }
+                    else {
+                        if (TempCount > 1) {
+                            SpanRows(TableName, i, j, TempCount, ColArray[j]);
+                        }
+                        PreId = CurId;
+                        TempCount = 1;
+                    }
+                }
+                else {
+                    if (TempCount > 1) {
+                        SpanRows(TableName, i, j, TempCount, ColArray[j]);
+                    }
+                    PreId = CurId;
+                    TempCount = 1;
+                }
+            }
+        }
+    }
+    function SpanRows(TableName, i, j, TempCount, ColArrayj) {
+        TableName.rows[i - TempCount].cells[ColArrayj].rowSpan = TempCount;
+        for (m = i - TempCount + 1; m <= i - 1; m++) {
+            TableName.rows[m].deleteCell(ColArrayj);
+        }
+    }
+
+    function twoWergers(tableId, startRow, endRow, col, num) {
+        var tb = document.getElementById(tableId), n, len;
+        if (col >= tb.rows[0].cells.length) {
+            return;
+        }
+        if (col == 0) {
+            endRow = tb.rows.length - 1;
+        }
+        for (var i = startRow; i < endRow; i++) {
+            //console.log(startRow, i + 2)
+            if (tb.rows[startRow].cells[col].innerHTML == (tb.rows[i + 2] || tb.rows[i + 1]).cells[0].innerHTML) {
+                //console.log('-----', startRow, i + 2)
+                //console.log(tb.rows[startRow].cells[col].innerHTML,tb.rows[i + 2].cells[0].innerHTML);
+                tb.rows[i + 2].removeChild(tb.rows[i + 2].cells[0]);
+                tb.rows[startRow].cells[col].rowSpan = (tb.rows[startRow].cells[col].rowSpan | 0) + 2;
+            } else {
+                len = num.length;
+                for (n = 0; n < len; n++) {
+                    if (num[n] == (i + 2)) {
+                        twoWergers(tableId, startRow, i + 0, col + 1, num);
+                        startRow = i + 2;
+                    }
+                }
+            }
+        }
+    }
+
+    function oneMerger(tableId, startRow, endRow, col) {
+        var tb = document.getElementById(tableId);
+        if (col >= tb.rows[0].cells.length) {
+            return;
+        }
+        if (col == 0) {
+            endRow = tb.rows.length - 1;
+        }
+        for (var i = startRow; i < endRow; i++) {
+            //console.log('循环的次数:',i);
+
+            if (tb.rows[startRow].cells[col].innerHTML == tb.rows[i + 1].cells[0].innerHTML) {
+                tb.rows[i + 1].removeChild(tb.rows[i + 1].cells[0]);
+                tb.rows[startRow].cells[col].rowSpan = (tb.rows[startRow].cells[col].rowSpan | 0) + 1;
+
+                if (i == endRow - 1 && startRow != endRow) {
+                    oneMerger(tableId, startRow, endRow, col + 1);
+                }
+            } else {
+                oneMerger(tableId, startRow, i + 0, col + 1);
+                startRow = i + 1;
+            }
+        }
+    }
+    // $('#id_open').bind('click',function(){
+    //   $('.ajax-loading').show();
+    // });
+
+
+    $('#id_open_band').click(function () {
+        window.location.href = "../Brand/Add";
+    });
+
+
+    // -------------------------------------------- 商品分类
+    ; ({
+        init: function ($, opt) {
+            var that = this,
+                callback = function ($, opt, data) {
+                    //console.log('-------', data)
+                    var number,
+                        obj = data,
+                        len = obj.SelectedCategory.length,
+                        len2 = obj.Data.length,
+                        i;
+
+                    ; (function (data) {
+                        var check = true,
+                            uid = 0,// 分类创建计数
+                            fn = function (data) {
+                                var i = 0, str = '', n, l, number, oldNumber;
+                                $('#id-select-box').html('<table class="table table-bordered" id="tableCategory"><tbody id="subCategory"><tr><th>需要关联的分类</th><th class="td-operate">操作</th></tr></tbody></table><a style="cursor: pointer;display: inline-block;margin: 5px 0;text-decoration: underline;" id="createCategory"><span class="glyphicon glyphicon-plus-sign"></span>新增一个分类</a>');
+                                // 当selectedCategory存在的时候进行数据还原
+                                if (len) {
+                                    for (; i < len; i++) {
+                                        ; (function (id, level) {
+                                            var n, l, str = '', i, len;
+                                            if (level == 1) {
+                                                for (i = 0, len = data.Data.length; i < len; i++) {
+                                                    if (id == data.Data[i].Id) {
+                                                        str += '<option selected="true" value="' + data.Data[i].Id + '">' + data.Data[i].Name + '</option>';// 选中状态
+                                                    } else {
+                                                        str += '<option value="' + data.Data[i].Id + '">' + data.Data[i].Name + '</option>';
+                                                    }
+                                                    for (n = 0, l = data.Data[i].SubCategory.length; n < l; n++) {
+                                                        str += '<option value="' + data.Data[i].SubCategory[n].Id + '">&nbsp;&nbsp;&nbsp;&nbsp;' + data.Data[i].SubCategory[n].Name + '</option>';
+                                                    }
+                                                }
+                                            } else if (level == 2) {
+                                                str = '';
+                                                for (i = 0, len = data.Data.length; i < len; i++) {
+                                                    str += '<option value="' + data.Data[i].Id + '">' + data.Data[i].Name + '</option>';
+                                                    for (n = 0, l = data.Data[i].SubCategory.length; n < l; n++) {
+                                                        if (id == data.Data[i].SubCategory[n].Id) {
+                                                            // 选中状态
+                                                            str += '<option selected="true" value="' + data.Data[i].SubCategory[n].Id + '">&nbsp;&nbsp;&nbsp;&nbsp;' + data.Data[i].SubCategory[n].Name + '</option>';
+                                                        } else {
+                                                            str += '<option value="' + data.Data[i].SubCategory[n].Id + '">&nbsp;&nbsp;&nbsp;&nbsp;' + data.Data[i].SubCategory[n].Name + '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            $('#subCategory').append('<tr><td><select>' + str + '</select></td><td><span data-tag="del" style="cursor: pointer;">删除</span></td></tr>');
+
+                                        }(data.SelectedCategory[i].Id, data.SelectedCategory[i].Level));
+                                    }
+                                    oldNumber = parseInt($('#subCategory').children().length, 10);
+                                    number = parseInt($($('#subCategory select')[0]).children().length, 10) - oldNumber;
+                                    //alert(oldNumber + '' + number);
+                                } else {
+                                    // 新建页面的时候
+                                    str = '';
+                                    for (i = 0; i < len2; i++) {
+                                        str += '<option value="' + data.Data[i].Id + '">' + data.Data[i].Name + '</option>';
+                                        for (n = 0, l = data.Data[i].SubCategory.length; n < l; n++) {
+                                            str += '<option value="' + data.Data[i].SubCategory[n].Id + '">&nbsp;&nbsp;&nbsp;&nbsp;' + data.Data[i].SubCategory[n].Name + '</option>';
+                                        }
+                                    }
+                                    $('#subCategory').append('<tr><td><select>' + str + '</select></td><td><span data-tag="del" style=" cursor:pointer">删除</span></td></tr>');
+                                    oldNumber = parseInt($('#subCategory').children().length, 10);
+                                    number = parseInt($($('#subCategory select')[0]).children().length, 10) - oldNumber;
+                                }
+                                $('#createCategory').bind('click', function (e) {
+                                    //alert(uid + '' + number);
+                                    if (check && uid <= number) {
+                                        var obj = data.Data, i, len = obj.length, str = '', num = ($('#subCategory').children().length - 1);
+                                        for (i = 0, len = data.Data.length; i < len; i++) {
+                                            str += '<option value="' + data.Data[i].Id + '">' + data.Data[i].Name + '</option>';
+                                            for (n = 0, l = data.Data[i].SubCategory.length; n < l; n++) {
+                                                str += '<option value="' + data.Data[i].SubCategory[n].Id + '">&nbsp;&nbsp;&nbsp;&nbsp;' + data.Data[i].SubCategory[n].Name + '</option>';
+                                            }
+                                        }
+                                        $('#subCategory').append('<tr><td><select>' + str + '</select></td><td><span data-tag="del" style=" cursor:pointer">删除</span></td></tr>');
+                                        $('#subCategory').children('tr:last-child').change(function (e) {
+                                            if (parseInt(e.target.value, 10) > 0) {
+                                                check = true;
+                                            }
+                                        });
+                                        uid += 1;
+                                    } else {
+                                        if (uid == number) {
+                                            alert('超出创建分类的限制!')
+                                        } else {
+                                            alert('选择当前分类才能创建新的分类');
+                                        }
+                                    }
+                                    check = false;
+                                });
+                                // 删除
+                                $('#id-select-box').bind('click', function (e) {
+                                    var elem = $(e.target);
+                                    if (elem.attr('data-tag') == 'del') {
+                                        var del = function (o) {
+                                            var oTB = document.getElementById("tableCategory");
+                                            var oDel = o.parentNode.parentNode.sectionRowIndex;
+                                            oTB.deleteRow(oDel);
+                                        };
+                                        del(elem[0]);
+                                        check = true;
+                                        uid -= 1;
+                                    }
+                                });
+                                $('#id-select-box').append('<div style="padding-top:10px;" class="col-sm-0"><label>可将商品关联到多个分类下，分类通常作为客户筛选本店商品时使用，仅关联至二级分类下有效。例如红酒行业店铺可分原产地、年份、品种、价格段等。</label><span id="del-spec" style="display:inline-block;float:right;"></span></div>');
+                            };
+                        fn(data);
+                    }(obj));
+                },
+                ajax = function (types, url, d, test) {
+                    if (test) {// test==1 开启测试数据
+                        var json = {
+                            "data": [
+                              {
+                                  "Name": "4",
+                                  "Id": "1",
+                                  "SubCategory": [
+                                    {
+                                        "Name": "45",
+                                        "Id": "3"
+                                    },
+                                    {
+                                        "Name": "李宁1",
+                                        "Id": "5"
+                                    },
+                                    {
+                                        "Name": "999",
+                                        "Id": "6"
+                                    },
+                                    {
+                                        "Name": "4",
+                                        "Id": "7"
+                                    }
+                                  ]
+                              },
+                              {
+                                  "Name": "987",
+                                  "Id": "8",
+                                  "SubCategory": [
+                                    {
+                                        "Name": "111",
+                                        "Id": "9"
+                                    },
+                                    {
+                                        "Name": "112",
+                                        "Id": "1"
+                                    }
+                                  ]
+                              },
+                              {
+                                  "Name": "分类",
+                                  "Id": "11",
+                                  "SubCategory": [
+                                    {
+                                        "Name": "qweqw",
+                                        "Id": "9"
+                                    },
+                                    {
+                                        "Name": "sdfsdfs",
+                                        "Id": "1"
+                                    }
+                                  ]
+                              }
+                            ],
+                            "selectedCategory": [
+                              {
+                                  "Id": "8",
+                                  "level": "1"
+                              },
+                              {
+                                  "Id": "3",
+                                  "level": "2"
+                              },
+                              {
+                                  "Id": "11",
+                                  "level": "1"
+                              }
+                            ]
+                        };
+                        callback($, opt, json);
+                        return;
+                    }
+                    $.ajax({
+                        type: types,
+                        url: url,
+                        data: d,
+                        dataType: "json",
+                        success: function (data) {
+                            //var json = (new Function("", "return " + data))();
+                            callback($, opt, data.json);
+                        }
+                    });
+                };
+            ajax('get', '../Product/GetShopProductCategory?random=' + Math.random(), { productId: "@ViewBag.ProductId" }, 0);
+        }
+    }).init(jQuery, {
+        url: './json.php'// 后台取数据的地址
+    });
+
+    //------------------------------ 商品属性
+    ; (function ($) {
+        var data = {
+            "json": [
+              {
+                  "Name": "产地",
+                  "attrId": 1,
+                  "isPlatform": true,
+                  "IsMulti": true,
+                  "selected": '1,4',
+                  "AttrValues": [
+                    {
+                        "Id": "1",
+                        "Name": "日本"
+                    },
+                    {
+                        "Id": "2",
+                        "Name": "德国"
+                    },
+                    {
+                        "Id": "4",
+                        "Name": "法国"
+                    }
+                  ]
+              },
+              {
+                  "Name": "年份",
+                  "attrId": 2,
+                  "IsMulti": false,
+                  "isPlatform": true,
+                  "selected": '55',
+                  "AttrValues": [
+                    {
+                        "Id": "50",
+                        "Name": "1942"
+                    },
+                    {
+                        "Id": "55",
+                        "Name": "1972"
+                    }
+                  ]
+              },
+              {
+                  "Name": "类型",
+                  "attrId": 3,
+                  "IsMulti": false,
+                  "isPlatform": true,
+                  "selected": '50',
+                  "AttrValues": [
+                    {
+                        "Id": "50",
+                        "Name": "高端"
+                    },
+                    {
+                        "Id": "55",
+                        "Name": "低端"
+                    }
+                  ]
+              }
+            ]
+        },
+        ajaxGet = function (url, d, fn) {
+
+            $.ajax({
+                type: "GET",
+                url: url,
+                data: d,
+                dataType: "json",
+                success: function (data) {
+                    if (data) {
+                        //var json = (new Function("", "return " + data))();
+                        fn(data);
+                    } else {
+                        //alert('数据获取失败!')
+                    }
+                }
+            });
+        },
+          callback = function (data) {
+              //console.log(data);
+              var i = 0, len = data.json.length, str = '', obj = $('#goodsAttr'), data = data.json, elem, k, l, n, elemTemp, objTemp;
+              if (len) {
+                  obj.append('<table class="table table-bordered"><tbody id="attr"></tbody></table>');
+                  elem = $('#attr');
+                  for (; i < len; i++) {
+                      if (data[i].IsMulti) {
+                          str += '<tr><td><label style="padding:5px;" class="control-label fl" data_id="' + data[i].AttrId + '" data_plat="' + data[i].isPlatform + '">' + data[i].Name + '：</label>';
+                          for (k = 0, l = data[i].AttrValues.length; k < l; k++) {
+                              str += '<label class="checkbox-inline"><input type="checkbox" value="' + data[i].AttrValues[k].Id + '">' + data[i].AttrValues[k].Name + '</label>';
+                          }
+                          str += '</td></tr>';
+                          elem.append(str);
+                          str = '';
+                          elemTemp = elem.children();
+                          n = elemTemp.length;
+                          objTemp = data[i]['Selected'].split(',');
+
+                          for (k = 0, l = objTemp.length; k < l; k++) {
+                              $(elemTemp[(n - 1)]).find('input').each(function (i, e) {
+                                  if (e.value == objTemp[k]) {
+                                      e.checked = true;
+                                  }
+                              })
+                          }
+                      } else {
+                          str += '<tr><td><label style="padding:5px;" class="control-label fl"  data_id="' + data[i].AttrId + '" data_plat="' + data[i].isPlatform + '">' + data[i].Name + '：</label><div class="col-sm-3 fl"><select class="form-control input-ssm"><option value="0">请选择</option>';
+                          for (k = 0, l = data[i].AttrValues.length; k < l; k++) {
+                              str += '<option value="' + data[i].AttrValues[k].Id + '">' + data[i].AttrValues[k].Name + '</option>';
+                          }
+                          str += '</div></td></tr>';
+                          elem.append(str);
+                          str = '';
+                          elemTemp = elem.children();
+                          n = elemTemp.length;
+                          objTemp = data[i]['Selected'].split(',');
+                          for (k = 0, l = objTemp.length; k < l; k++) {
+                              $(elemTemp[(n - 1)]).find('option').each(function (i, e) {
+                                  if (e.value == objTemp[k]) {
+                                      e.selected = true;
+                                  }
+                              })
+                          }
+                      }
+                  }
+              }
+          };
+        ajaxGet('../Product/GetAttributes', {
+            categoryId: "@ViewBag.CategoryId",
+            productId: "@ViewBag.ProductId",
+            isCategoryId: "@ViewBag.IsCategory"
+        }, callback);
+    }(jQuery));
+
+    var IsSelectCategory = function () {
+        //自营店无需分类
+        if (isSellerAdmin == "true") {
+            return true;
+        }
+        var string = [];
+        result = false;
+        $('#subCategory select').each(function (i, e) {
+            $(e).children().each(function (n, m) {
+                var a = m.selected;
+                if (a) {
+                    result = true;
+                }
+            });
+        });
+        return result;
+    };
+
+    // ----------------------------- 验证必填选项是否已经填写
+    var verify = function () {
+        var reg = /^[0-9]+([.]{1}[0-9]{1,3})?$/,
+            goods_name = $('#goods_name').attr('value'),
+            price_a = reg.test($('#price_a').attr('value')),
+            price_b = reg.test($('#price_b').attr('value')),
+            inventory = reg.test($('#inventory').attr('value')),
+            cost = reg.test($('#cost').attr('value')),
+            up_pic1 = $('#up_pic1').find('img'),
+            volume = reg.test($('#inputVolume').val()),
+            weight = reg.test($('#inputWeight').val());
+        var regInt = /^[0-9]+$/;
+        var isVerify = true;
+
+        //if (!IsSelectCategory())
+        //{
+        //    isVerify = false;
+        //    $('#subCategory th').css({ border: '1px solid #f60' });
+        //}
+        //else {
+        //    $('#subCategory th').css({ border: '1px solid #ccc' });
+        //}
+
+        if (!inventory || parseFloat($('#inventory').attr('value')) <= 0) {
+            $('#inventory').css({ border: '1px solid #f60' });
+            $('#inventory').focus();
+        } else {
+            $('#inventory').css({ border: '1px solid #ccc' });
+        }
+
+        if (!cost) {
+            if ($('#cost').attr('value') != '') {
+                $('#cost').css({ border: '1px solid #f60' });
+                $('#cost').focus();
+            }
+            else {
+                cost = true;
+                $('#cost').val('0');
+            }
+        } else {
+            $('#cost').css({ border: '1px solid #ccc' });
+        }
+        if (!Dbuy) {
+            if (!price_b || parseFloat($('#price_b').attr('value')) <= 0) {
+                $('#price_b').css({ border: '1px solid #f60' });
+                $('#price_b').focus();
+            } else {
+                $('#price_b').css({ border: '1px solid #ccc' });
+            }
+            if (!price_a || parseFloat($('#price_a').attr('value')) <= 0) {
+                $('#price_a').css({ border: '1px solid #f60' });
+                $('#price_a').focus();
+            } else {
+                $('#price_a').css({ border: '1px solid #ccc' });
+            }
+        }
+        if (!goods_name) {
+            $('#goods_name').css({ border: '1px solid #f60' });
+            $('#goods_name').focus();
+        } else {
+            $('#goods_name').css({ border: '1px solid #ccc' });
+        }
+        //计measureUnit单位
+        var measureUnit = $('#inputMeasureUnit').val();
+        var regm = /^[\u4e00-\u9fa5a-zA-Z]+$/;
+        if (measureUnit == '' || !regm.test(measureUnit)) {
+            isVerify = false;
+            $('#inputMeasureUnit').css({ border: '1px solid #f60' });
+            $('#inputMeasureUnit').focus();
+        } else {
+            $('#inputMeasureUnit').css({ border: '1px solid #ccc' });
+        }
+        if ($('#divVolume').css('display') != 'none' && (!volume || parseFloat($('#inputVolume').attr('value')) <= 0)) {
+            isVerify = false;
+            $('#inputVolume').css({ border: '1px solid #f60' });
+            $('#inputVolume').focus();
+        }
+        else {
+            $('#inputVolume').css({ border: '1px solid #ccc' });
+        }
+
+        if ($('#divWeight').css('display') != 'none' && (!weight || parseFloat($('#inputWeight').attr('value')) <= 0)) {
+            $('#inputWeight').css({ border: '1px solid #f60' });
+            $('#inputWeight').focus();
+            isVerify = false;
+        }
+        else {
+            $('#inputWeight').css({ border: '1px solid #ccc' });
+        }
+        if (parseInt($('#freightTemplate').attr('value')) <= 0) {
+            isVerify = false;
+            $('#freightTemplate').css({ border: '1px solid #f60' });
+            $('#freightTemplate').focus();
+        }
+        else {
+            $('#freightTemplate').css({ border: '1px solid #ccc' });
+        }
+
+        //console.log(up_pic1);
+        if (up_pic1.length == 0) {
+            $('#up_pic1').css({ border: '1px solid #f60' });
+            $('#up_pic1').focus();
+        } else {
+            $('#up_pic1').css({ border: '1px solid #ccc' });
+        }
+
+        $('#id-table-box .table-bordered').find('tr').each(function (idx, el) {
+            var verifyValue = 0;
+            $(el).find('.table-input').each(function (i, input) {
+                verifyValue = $(input).val();
+                if (0 == i) {//商城价
+                    if (!(reg.test(verifyValue) && parseFloat(verifyValue) > 0)) {
+                        $(input).css({ border: '1px solid #f60' });
+                        isVerify = false;
+                    }
+                    else {
+                        $(input).css({ border: '1px solid #ccc' });
+                    }
+                } else
+                    if (i == 1) {//成本价可以为空，但不能非数字
+                        if (verifyValue != '' && !(reg.test(verifyValue) && parseFloat(verifyValue) >= 0)) {
+                            $(input).css({ border: '1px solid #f60' });
+                            isVerify = false;
+                        }
+                        else {
+                            $(input).css({ border: '1px solid #ccc' });
+                        }
+                    }
+                    else if (i == 2) {//库存
+                        if (!(regInt.test(verifyValue) && parseFloat(verifyValue) > 0)) {
+                            $(input).css({ border: '1px solid #f60' });
+                            isVerify = false;
+                        }
+                        else {
+                            $(input).css({ border: '1px solid #ccc' });
+                        }
+                    }
+            });
+
+        });
+
+        if (isVerify && measureUnit && goods_name && cost && price_a && price_b && inventory && up_pic1.length > 0 &&
+            parseFloat($('#price_a').attr('value')) > 0
+            && parseFloat($('#price_b').attr('value'))
+            && parseFloat($('#inventory').attr('value')) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    // ---------------------------- 搜集填写数据准备post
+    /*
+    发送的数据格式
+    {
+      "name":"value"
+    }
+    */
+    var inputDataFn = function () {
+        var temp = '', temp1 = '', string = '', arr = [], elem = $('.table-input'), len = elem.length;
+        //----- 如果开启规格取得表格数据
+        $('.table-input').each(function (i, e) {
+            var obj = $(e), str, val;
+            val = obj.attr('value') || '';
+            str = obj.attr('data-tag') || '';
+            if (string == '') {
+                temp = str;
+                string = temp + '&' + val;
+                return;
+            }
+
+            if (str == temp) {
+                string += '&' + val;
+            } else {
+                arr.push(string);
+                temp = str;
+                string = temp + '&' + val;
+            }
+            if ((i + 1) == len) {
+                arr.push(string);
+            }
+        });
+        len = arr.length;
+        var tagArr = ['colorName', 'sizeName', 'versionName', 'colorId', 'sizeId', 'versionId', 'mallPrice', 'cost', 'stock', 'sku'], s = [];
+        temp1 = [];
+        string = '"specificationsValue":[';
+        if (!len) {
+            return false;
+        }
+        for (var i = 0; i < len; i++) {
+            temp = arr[i].split('&');
+            for (var n = 0, l = temp.length; n < l; n++) {
+                temp1.push('"' + tagArr[n] + '":"' + temp[n] + '"');
+            }
+            s.push('{' + temp1.join(',') + '}');
+            temp1 = [];
+        }
+        string += (s.join(',')) + ']';
+        return string;
+    },
+        getAttr = function () {
+            var obj = $('#attr').children(), len = obj.length, str = '', i = 0, s = 'false', t = '', o = [], h = [];
+            str += '"attrSelectData":[';
+            for (; i < len; i++) {
+                $(obj[i]).children().each(function (i, e) {
+                    $(e).children().each(function (n, k) {
+                        if (n == 0) {
+                            s = $(k).attr('data_plat');
+                            t = $(k).attr('data_id');
+                        } else {
+                            if (((k.nodeName).toLowerCase()) == 'label') {
+                                if ($(k).find('input')[0].checked) {
+                                    o.push($(k).children().val());
+                                }
+                            } else if (((k.nodeName).toLowerCase()) == 'div') {
+                                o.push($(k).children().val());
+                            }
+                        }
+                    });
+                    h.push('{"isPlatform":false,"AttrId":' + t + ',"valueId":"' + (o.join(',') || '') + '"}');
+                    // alert('{"isPlatform":false,"AttrId":' + t + ',"valueId":' + (o.join(',') || '') + '}');
+                    o = [];
+                });
+            }
+            str += h.join(',');
+            str += ']';
+            return str;
+        },
+    categoryFn = function () {
+        //自营店无需分类
+        if (isSellerAdmin == "true") {
+            return '"goodsCategory":[0]';
+        }
+        var string = [];
+        $('#subCategory select').each(function (i, e) {
+            $(e).children().each(function (n, m) {
+                var a = m.selected, str;
+                if (a) {
+                    str = m.value;
+                    string.push(str);
+                }
+            });
+        });
+        var goodsCategory = '"goodsCategory":[' + string.join(',') + ']';
+        return goodsCategory;
+    },
+
+    // 关联版式里面的数据获取
+    styleFn = function () {
+        var string = [];
+        $('#style select').each(function (i, e) {
+            var id = e.id, str = $('#' + id + ' option:selected').val();
+            string.push(str);
+        });
+        return (string.join(','));
+    };
+
+    $('#warehouse,#publish,#intoDraft,#OnlySave').bind('click', function () {
+
+        var bool = verify();
+        if (bool) {
+            //------ 表格数据
+            var tableData = inputDataFn(),// 返回数组jQuery("#select1  option:selected").text();
+                category = '"categoryId":"' + ($('#category').attr('categoryId')) + '"',// 分类数据
+                specifications = specificationsData || '"specifications":[]',
+                brand = '"brandId":"' + ($("#brandId option:selected").val()) + '"',// 品牌选择
+                goods_name = '"goodsName":"' + ($('#goods_name').attr('value').replace(/'/g, "‘").replace(/\\/g, "\\\\")) + '"',// 商品名称
+                ad = '"adWord":"' + ($('#ad').val().replace(/\\/g, "\\\\")) + '"',// 广告词
+                mallPrce = '"mallPrce":"' + ($('#price_a').attr('value')) + '"',// 商城价
+                marketPrice = '"marketPrice":"' + ($('#price_b').attr('value')) + '"',// 市场价
+                cost = '"cost":"' + ($('#cost').attr('value')) + '"',// 成本价
+                rebate = '"rebate":"' + parseFloat(($('#disabledInput').attr('value'))) + '"',// 折扣
+                stock = '"stock":"' + ($('#inventory').attr('value')) + '"',// 库存
+                productCode = '"productCode":"' + ($('#item').attr('value')) + '"',
+                goodsCategory = categoryFn(),// 商品分类
+            productId = '"productId":' + $("#productId").val(),
+            saleStatus = '"saleStatus":' + $(this).attr("salestatus"),
+            attrSelect = getAttr(),// 商品属性选择
+            up_pic1 = ('"' + ($('#up_pic1').attr('data-url')) + '"'),// 商品图片1
+            up_pic2 = ('"' + ($('#up_pic2').attr('data-url')) + '"'),// 商品图片1
+            up_pic3 = ('"' + ($('#up_pic3').attr('data-url')) + '"'),// 商品图片1
+            up_pic4 = ('"' + ($('#up_pic4').attr('data-url')) + '"'),// 商品图片1
+            up_pic5 = ('"' + ($('#up_pic5').attr('data-url')) + '"'),// 商品图片1
+            pic = ('"pic":[' + up_pic1 + ',' + up_pic2 + ',' + up_pic3 + ',' + up_pic4 + ',' + up_pic5 + ']').replace(/\\/g, "\\\\");
+            //alert(pic);
+            var content = eidtor.getContent();
+            content = $.trim(content).replace(/\"/g, "\\\"");
+            //console.log(content);
+            var des = '"des":"' + (content) + '"';// 商品描述
+
+            var mpcontent = mpEditor.getContent();
+            mpcontent = $.trim(mpcontent).replace(/\"/g, "\\\"");
+            //console.log(content);
+            var mpdes = '"mdes":"' + (mpcontent) + '"';// 移动端商品描述
+
+            var styleTemplateId = '"styleTemplateId":[' + styleFn() + ']',// 关联版式数据
+            seoTitle = '"seoTitle":"' + ($('#seo_title').attr('value').replace(/\\/g, "\\\\")) + '"',
+            seoKey = '"seoKey":"' + ($('#seo_key').attr('value').replace(/\\/g, "\\\\")) + '"',
+            seoDes = '"seoDes":"' + ($('#seo_des').attr('value').replace(/\\/g, "\\\\")) + '"',
+
+            freightTemplateId = '"FreightTemplateId":"' + ($('#freightTemplate').attr('value')) + '"',
+            measureUnit = '"MeasureUnit":"' + ($('#inputMeasureUnit').attr('value').replace(/\\/g, "\\\\")) + '"',
+            volume = '"Volume":"' + ($('#inputVolume').attr('value')) + '"',
+            weight = '"Weight":"' + ($('#inputWeight').attr('value')) + '"',
+            disablebuy = '"DisableBuy":"'+Dbuy + '"',
+            data = '{' + saleStatus + ',' + productId + ',' + (tableData || '"specificationsValue":[]') + ',' + specifications + ',' + category + ',' + brand + ',' + goods_name + ',' + ad + ',' + mallPrce + ',' + marketPrice + ',' + cost + ',' + rebate + ',' + stock + ',' + productCode + ',' + goodsCategory + ',' + attrSelect + ',' + pic + ',' + des + ',' + mpdes + ',' + styleTemplateId + ',' + seoTitle + ',' + seoKey + ',' + seoDes + ',' + measureUnit + ',' + volume + ',' + weight + ',' + freightTemplateId + ',' + disablebuy +'}';
+
+
+
+            //console.log(data);
+            //-------------- 数据发送
+            var send = function (url, d) {
+                $('.ajax-loading').css('display', 'block');
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: d,
+                    dataType: "json",
+                    success: function (data) {
+         
+                        if (data.successful == true) {
+                            window.location.href = "@Url.Action("Management", "Product")";//数据提交成功页面跳转
+                        } else {
+                            $.dialog.errorTips(data.msg);
+                            $('.ajax-loading').css('display', 'none');
+                        }
+                    }
+                });
+            };
+            send('../Product/SaveProductDetail', { productDetail: data });
+        } else {
+            categoryFn();
+            $.dialog.errorTips('必填属性没有填写完成!');
+        }
+    });
+    // --------------- 折扣算法
+    $("#price_a,#price_b").blur(function (e) {
+        var a = parseFloat($('#price_a').attr('value'), 10),
+            b = parseFloat($('#price_b').attr('value'), 10);
+        if (a && b) {
+            var c = (a / b),
+                d = (c * 100).toFixed(2) + '%';
+            $('#disabledInput').attr('value', d);
+        }
+    });
+    ; (function () {
+        var a = parseFloat($('#price_a').attr('value'), 10),
+            b = parseFloat($('#price_b').attr('value'), 10);
+        if (a && b) {
+            var c = (a / b),
+                d = (c * 100).toFixed(2) + '%';
+            $('#disabledInput').attr('value', d);
+        }
+    }());
+
+    $('#band_sub').bind('click', function (e) {
+        //alert();
+        //var name = $('#band_name').val(),
+        //    pic = $("#brandPic").himallUpload('getImgSrc'),
+        //    des = $('#band_des').val(),
+        //    ajaxGet = function (url, d, fn) {
+        //        $.ajax({
+        //            type: "POST",
+        //            url: url,
+        //            data: d,
+        //            dataType: "json",
+        //            success: function (data) {
+        //                if (data) {
+        //                    // var json=(new Function("","return "+data))();
+        //                    // fn(json.json);
+        //                } else {
+        //                    //alert('数据获取失败!')
+        //                }
+        //            }
+        //        });
+        //    };
+        //ajaxGet('提交数据', { "name": name, "pic": pic, "des": des });
+        //artDialog({ id: 'band_close' }).close();
+    });
+
+    //------------------ 查找修改过的规格影响的分类
+    $('#save_spe').change(function (e) {
+        var a = e.target.checked,
+            colorArr = [],
+            speArr = [],
+            editionArr = [],
+            tag, id, val, select, oldVal, specifications = [], specificationsData;
+        fn = function (data) {
+            $('#spe_w').html(data);
+        },
+        ajaxGet = function (url, d, test, fn) {
+            if (test) { fn(test); return; }// 测试
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: d,
+                dataType: "json",
+                success: function (data) {
+                    if (data) {
+                        fn(data.json);
+                    } else {
+                        //alert('数据获取失败!')
+                    }
+                }
+            });
+        };
+
+        if (a) {
+            $('.in_box').each(function (i, e) {// ------------------------------------获取用户操作数据进行生成
+                if (e.checked == true) {
+                    tag = e.getAttribute('data_tag');
+                    val = $(e).next().val();
+                    if (tag == 1) {
+                        colorArr.push(val);
+                    } else if (tag == 2) {
+                        speArr.push(val);
+                    } else if (tag == 3) {
+                        editionArr.push(val);
+                    }
+                } else {
+                    val = $(e).prev().val();
+                }
+                oldVal = e.value;
+                id = $(e).prev().attr('data_id');
+                select = (e.getAttribute('checked') ? 'true' : 'false');
+                if (oldVal == val) { return; }
+                specifications.push('{"Id":"' + id + '","selected":' + select + ',"oldValue":"' + oldVal + '","newValue":"' + val + '"}');
+            });
+            //alert(specifications.length);
+            if (specifications.length == 0) {
+                $('#spe_w').html('');
+            } else {
+                //ajaxGet('../Category/GetEffectCategory', { categoryId: parseInt($('#category').attr('categoryid')) }, 0, fn)
+            }
+        }
+    });
+
+    function getMeasureUnit() {
+        return $("#inputMeasureUnit").val();
+    }
+    //$(function () {
+
+    //    var sum = 0;
+
+    //    $("#id_table tbody tr").each(function () {
+
+    //        var t = $(this).find('input').eq(2);
+    //        t.blur(alert(t.val()));
+    //       sum += parseInt(t);
+    //    });
+
+    //});
+
+
+
+</script>

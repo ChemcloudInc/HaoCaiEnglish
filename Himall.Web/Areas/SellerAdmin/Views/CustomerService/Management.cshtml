@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Himall.Web.Areas.SellerAdmin.Models.CustomerServiceModel>
+@using Himall.Core;
+
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>客服管理</strong>
+        <li class="active"><a>管理</a></li>
+        <li><a href="add">新增</a></li>
+        <em class="primary-btn">
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <div class="primary">
+                <h3>温馨提示：</h3>
+                <span>*</span><p>管理店铺客服，可设置不同的沟通工具及客服类型</p>
+            </div>
+        </em>
+    </ul>
+
+    <table class="table mt20">
+        <thead>
+            <tr>
+                <th>客服名称</th>
+                <th style="text-align:center">沟通工具</th>
+                <th style="text-align:center">账号</th>
+                <th style="text-align:center">客服类型</th>
+                <th class="td-operate">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customerService in Model)
+            {
+                <tr>
+                    <td>@customerService.Name</td>
+                    <td align="center">@customerService.Tool.ToDescription()</td>
+                    <td align="center">@customerService.Account</td>
+                    <td align="center">@customerService.Type.ToDescription()</td>
+                    <td class="td-operate">
+                        <span class="btn-a">
+                             <a href="add?id=@customerService.Id">编辑</a>
+                             <a onclick="del(@customerService.Id,'@customerService.Name')">删除</a>
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+
+    function del(id,name) {
+        $.dialog.confirm('确定要删除客服 '+name+' 吗？',function(){
+            var loading = showLoading();
+            $.post('delete',{id:id},function(result){
+                loading.close();
+                if(result.success)
+                    $.dialog.succeedTips('删除成功!',function(){location.href=location.href});
+                else
+                    $.dialog.errorTips('删除失败！'+result.msg);
+            });
+        });
+    }
+
+</script>

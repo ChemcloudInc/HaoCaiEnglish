@@ -1,0 +1,39 @@
+﻿@using Himall.Model
+@model Himall.Model.ShippingAddressInfo
+@{
+    ViewBag.Title = "收货地址编辑";
+}
+<div class="container">
+    <form class="form-horizontal custom-form">
+        <h4 class="custom-title">收货地址@(ViewBag.addId==0?"新增":"编辑")
+
+        </h4>
+        <div class="form-group">
+            <input type="text" value="@Model.ShipTo" class="form-control" id="shipName" placeholder="收货人姓名">
+        </div>
+        <div class="form-group">
+            <input type="text" value="@Model.Phone" class="form-control" id="phone" placeholder="联系电话">
+        </div>
+        <div class="form-group">
+            <select class="form-control" id="consignee_province"><option>省份</option></select>
+        </div>
+        <div class="form-group">
+            <select class="form-control" id="consignee_city"><option>城市</option></select>
+        </div>
+        <div class="form-group">
+            <select class="form-control" id="consignee_county"><option>区/县</option></select>
+        </div>
+        <div class="form-group">
+            <input type="text" value="@Model.Address" id="address" class="form-control" placeholder="详细地址">
+        </div>
+        <div class="form-group">
+            <a class="btn btn-danger btn-block" id="saveConsigneeTitleDiv"> 确 认</a>
+        </div>
+    </form>
+</div>
+<script>
+    
+</script>
+<script src="~/Scripts/Region.js"></script>
+<script src="~/Scripts/RegionBind.js"></script>
+<script src="~/Areas/Mobile/Templates/Default/Scripts/EditShippingAddr.js"></script>

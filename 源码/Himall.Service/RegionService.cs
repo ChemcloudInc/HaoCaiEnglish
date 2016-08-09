@@ -445,31 +445,36 @@ namespace Himall.Service
 				stringBuilder = stringBuilder.Replace("壮族", "");
 				stringBuilder = stringBuilder.Replace("自治区", "");
 				StringBuilder stringBuilder1 = new StringBuilder();
-				stringBuilder1.Append(strArrays[1]);
-				stringBuilder1 = stringBuilder1.Replace("市", "");
-				stringBuilder1 = stringBuilder1.Replace("盟", "");
-				stringBuilder1 = stringBuilder1.Replace("林区", "");
-				stringBuilder1 = stringBuilder1.Replace("地区", "");
-				stringBuilder1 = stringBuilder1.Replace("土家族", "");
-				stringBuilder1 = stringBuilder1.Replace("苗族", "");
-				stringBuilder1 = stringBuilder1.Replace("回族", "");
-				stringBuilder1 = stringBuilder1.Replace("黎族", "");
-				stringBuilder1 = stringBuilder1.Replace("藏族", "");
-				stringBuilder1 = stringBuilder1.Replace("傣族", "");
-				stringBuilder1 = stringBuilder1.Replace("彝族", "");
-				stringBuilder1 = stringBuilder1.Replace("哈尼族", "");
-				stringBuilder1 = stringBuilder1.Replace("壮族", "");
-				stringBuilder1 = stringBuilder1.Replace("白族", "");
-				stringBuilder1 = stringBuilder1.Replace("景颇族", "");
-				stringBuilder1 = stringBuilder1.Replace("傈僳族", "");
-				stringBuilder1 = stringBuilder1.Replace("朝鲜族", "");
-				stringBuilder1 = stringBuilder1.Replace("蒙古", "");
-				stringBuilder1 = stringBuilder1.Replace("哈萨克", "");
-				stringBuilder1 = stringBuilder1.Replace("柯尔克孜", "");
-				stringBuilder1 = stringBuilder1.Replace("自治州", "");
-				stringBuilder1 = stringBuilder1.Replace("自治县", "");
-				stringBuilder1 = stringBuilder1.Replace("县", "");
-				empty = string.Concat(stringBuilder.ToString(), stringBuilder1.ToString());
+                if (strArrays.Length != 1)
+                {
+                    stringBuilder1.Append(strArrays[1]);
+                    stringBuilder1 = stringBuilder1.Replace("市", "");
+                    stringBuilder1 = stringBuilder1.Replace("盟", "");
+                    stringBuilder1 = stringBuilder1.Replace("林区", "");
+                    stringBuilder1 = stringBuilder1.Replace("地区", "");
+                    stringBuilder1 = stringBuilder1.Replace("土家族", "");
+                    stringBuilder1 = stringBuilder1.Replace("苗族", "");
+                    stringBuilder1 = stringBuilder1.Replace("回族", "");
+                    stringBuilder1 = stringBuilder1.Replace("黎族", "");
+                    stringBuilder1 = stringBuilder1.Replace("藏族", "");
+                    stringBuilder1 = stringBuilder1.Replace("傣族", "");
+                    stringBuilder1 = stringBuilder1.Replace("彝族", "");
+                    stringBuilder1 = stringBuilder1.Replace("哈尼族", "");
+                    stringBuilder1 = stringBuilder1.Replace("壮族", "");
+                    stringBuilder1 = stringBuilder1.Replace("白族", "");
+                    stringBuilder1 = stringBuilder1.Replace("景颇族", "");
+                    stringBuilder1 = stringBuilder1.Replace("傈僳族", "");
+                    stringBuilder1 = stringBuilder1.Replace("朝鲜族", "");
+                    stringBuilder1 = stringBuilder1.Replace("蒙古", "");
+                    stringBuilder1 = stringBuilder1.Replace("哈萨克", "");
+                    stringBuilder1 = stringBuilder1.Replace("柯尔克孜", "");
+                    stringBuilder1 = stringBuilder1.Replace("自治州", "");
+                    stringBuilder1 = stringBuilder1.Replace("自治县", "");
+                    stringBuilder1 = stringBuilder1.Replace("县", "");
+                    empty = string.Concat(stringBuilder.ToString(), stringBuilder1.ToString());
+                }
+                else
+                    empty = stringBuilder.ToString();
 			}
 			else
 			{
