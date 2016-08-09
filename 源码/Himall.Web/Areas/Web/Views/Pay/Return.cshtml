@@ -6,8 +6,15 @@
 <div class="w cl">
     @{
         var errorMsg = ViewBag.Error;
+        var temp = 1;
         var flag = !string.IsNullOrWhiteSpace(errorMsg) ? "fail" : "success";
         var redirectUrl = string.IsNullOrWhiteSpace(errorMsg) ? ("/userCenter?url=/userorder&tar=userorder") : ("/order/pay?orderIds=" + ViewBag.OrderIds);
+        if (string.IsNullOrWhiteSpace(errorMsg))
+        {
+            temp = 0;
+        }
+
+        var ID = ViewBag.OrderIds;
         var htmlPart = string.IsNullOrWhiteSpace(errorMsg) ? ("秒后自动跳至我的订单页面<a  href=\"/userCenter?url=/userorder?orderids=" + ViewBag.OrderIds + "&tar=userorder\" class=\"link_1\"> 我的订单页面</a>") : ("秒后自动跳至支付页面<a  href=\"/order/pay?orderIds=" + ViewBag.OrderIds + "\" class=\"link_1\">支付页面</a>");
 
          }
@@ -39,22 +46,31 @@
     })
 
     var secs = 5; //倒计时的秒数
-    var URL ;
-    function Load(url){
-        URL =url;
-        for(var i=secs;i>=0;i--)
-        {
-            window.setTimeout('doUpdate(' + i + ')', (secs-i) * 1000);
+    var URL;
+    function Load(url) {
+        URL = url;
+        for (var i = secs; i >= 0; i--) {
+            window.setTimeout('doUpdate(' + i + ')', (secs - i) * 1000);
         }
     }
-        
-    function doUpdate(num)
-    {
-        document.getElementById("ShowDiv").innerHTML = '将在<strong><font color=red> '+num+' </font></strong>@Html.Raw(htmlPart)，请稍候...' ;
+
+    function doUpdate(num) {
+        document.getElementById("ShowDiv").innerHTML = '将在<strong><font color=red> ' + num + ' </font></strong>@Html.Raw(htmlPart)，请稍候...';
         if (num == 0) { window.location = URL; }
     }
-    $(function(){
-        Load("@redirectUrl");
+    $(function () {
+
+        // window.location = redirectUrl;
+      //  Load("@redirectUrl");
+        if ("@temp" == 0) {
+           Load("/userCenter?url=/userorder&tar=userorder");
+        }
+        else {
+            Load("/order/pay?orderIds="+"@ID");
+       }
+
+        //     var errorMsg = ViewBag.Error;
+        //    if(string.IsNullOrWhiteSpace(errorMsg))
     })
 
 

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Areas/Mobile/Templates/APP/Content/custom.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/CommonJS.js"></script>
+    <script src="~/Areas/Mobile/Templates/APP/Scripts/custom.js"></script>
+</head>
+<body>
+    <script>
+        var areaName = '@ViewBag.AreaName';
+        var MAppType = '@ViewBag.MAppType';
+    </script>
+    @RenderBody()
+
+    @{
+        if (ViewBag.CopyRight == null || ((bool)ViewBag.CopyRight))
+        {
+            <div class="bottom" style="background-image:url(@ViewBag.Logo);font-size:10px">Copyright &copy; @(ViewBag.SiteName)版权所有</div>
+        }
+    }
+
+    <script src="~/Scripts/jquery.slides.min.js"></script>
+	<script src="~/Scripts/jquery.nicescroll.min.js"></script>
+    <script src="~/Areas/Mobile/Templates/APP/Scripts/app.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            loadIframeURL("hishop://webSetTitle /null/" + encodeURIComponent($("title").html()));
+
+            if ($('#slides').children().length == 0) {
+                $('#slides').hide();
+            }
+            if ($('#slides').children().length > 1) {
+                $('#slides').slidesjs({
+                    width: 640,
+                    height: 300,
+                    navigation: false,
+                    play: {
+                        active: false,
+                        auto: true,
+                        interval: 4000,
+                        swap: true
+                    }
+                });
+            } else {
+                $('#slides').css({ 'height': $(document).width() * 15 / 32 })
+            }
+        });
+
+        function checkLogin(returnHref, callBack, loginshopid) {
+            var memberId = $.cookie('Himall-User');
+            if (memberId) {
+                callBack();
+            }
+            else {
+                loadIframeURL("hishop://webLogin/openLogin/null");
+            }
+        }
+    </script>
+    <link href="~/Areas/Mobile/Templates/APP/Content/artdialog.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.artDialog.js"></script>
+    <script src="~/Scripts/artDialog.iframeTools.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+    <script src="~/Scripts/jquery.scrollLoading.min.js"></script>
+</body>
+</html>

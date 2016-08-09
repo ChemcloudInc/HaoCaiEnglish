@@ -1,0 +1,429 @@
+﻿@model Himall.Web.Areas.Web.Models.ProductDetailModelForWeb
+@{
+    ViewBag.Title = Model.Product.ProductName;
+}
+<link href="~/Areas/Web/Content/WebAlertPlug.css" rel="stylesheet" />
+<link href="~/Areas/Web/Content/WebLoginPlug.css" rel="stylesheet" />
+@section Script{
+    <script src="~/Areas/Web/Scripts/cloud-zoom.1.0.2.min.js"></script>
+<script src="~/Areas/Web/Scripts/LimitTimeBuyDetail.js"></script>
+    <script src="~/Areas/Web/Scripts/SKU.js"></script>
+    <script src="~/Areas/Web/Scripts/ProductComment.js"></script>
+    <script src="~/Areas/Web/Scripts/ProductConsultation.js"></script>
+
+}
+
+<script type="text/javascript">
+    //倒计时
+    var intDiff = parseInt("@ViewBag.Second");//倒计时总秒数量
+    function timer(intDiff) {
+        window.setInterval(function () {
+            var day = 0,
+                hour = 0,
+                minute = 0,
+                second = 0;//时间默认值        
+            if (intDiff > 0) {
+                day = Math.floor(intDiff / (60 * 60 * 24));
+                hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+                minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+                second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+            }
+            if (minute <= 9) minute = '0' + minute;
+            if (second <= 9) second = '0' + second;
+            $('.countime').html('<i></i> <span class="hour">' + day + '</span><em>天</em> <span class="hour">' + hour + '</span><em>时</em> <span class="hour">' + minute + '</span><em>分</em> <span class="hour">' + second + '</span><em>秒</em>');
+            intDiff--;
+        }, 1000);
+    }
+    $(function () {
+        timer(intDiff);
+        if($(".btn-goshop_in").hasClass("disabled"))
+        {
+            $(".btn-goshop_in").attr('disabled', "true");
+        }
+    });
+
+</script>
+
+
+<input type="hidden" id="gid" value="@Model.Product.Id" />
+<input type="hidden" id="shopid" value="@Model.Product.ShopId" />
+<input type="hidden" id="maxSaleCount" value="@Model.MaxSaleCount" />
+<input type="hidden" id="has" value="@(Model.Product.SKUInfo.Count()==0?0:1)" />
+<div class="w">
+    @MVCHelpers.CategoryPath(Model.Product.CategoryPath, Model.Product.ProductName)
+</div>
+
+<div class="w">
+    <div id="product-intro" style="min-height: 486px;">
+        <div id="name">
+            <h1>@Model.Product.ProductName , 每个ID限购 @Model.MaxSaleCount 件</h1>
+            <strong>@Model.Title</strong>
+        </div>
+        <div class="cl">
+            @{
+                string outClass = "outsale";
+                string text = "";
+                bool hasSKU = false;
+                if (Model.Product.SKUInfo.Any(s => s.Stock > 0) && ViewBag.Second > 0)
+                {
+                    outClass = "";
+                    hasSKU = true;
+                }
+                if (!hasSKU && ViewBag.Second > 0)
+                {
+                    text = "来晚了，已被一抢而空！";
+                    outClass = "outsale";
+                }
+                else if (hasSKU && ViewBag.Second == 0)
+                {
+                    text = "限时购已经结束！";
+                }
+                else if (!ViewBag.EnabledBuy)
+                {
+                    text = "限时购暂不可用！";
+                    outClass = "outsale";
+                }
+            }
+            <div class="unit_light clearfix @outClass">
+                <div class="price_box">
+                    <span class="npr" id="pricenow"><sup>¥</sup>@Model.Product.MarketPrice.ToString("f2")</span>
+                    <span class="dpr">
+                        <del id="marketPrice"><em>¥</em>@Model.Product.MinSalePrice.ToString("f2")</del>
+                        <span class="discount" id="rebate"><em>@(((Model.Product.MarketPrice / Model.Product.MinSalePrice) * 10).ToString("f2"))</em>折</span>
+                    </span>
+                </div>
+
+                <div style="color:red;" class="qper">@text <!--库存有限，立即下单吧！--></div>
+
+                @if (Model.Product.SaleCounts == 0 && ViewBag.Second > 0)
+                {
+                    <div class="buyperson"><i></i>数量有限，快来抢购哦！</div>
+                }
+                else
+                {
+                    <div class="buyperson"><i></i><strong>@Model.Product.SaleCounts</strong>人已购买</div>
+                }
+                <em class="angle"></em>
+            </div>
+
+            <div class="block_sub">
+                <!--倒计时-->
+                <div class="countime" style=""><i></i> <span class="hour">0</span><em>天</em> <span class="hour">00</span><em>时</em> <span class="hour">00</span><em>分</em> <span class="hour">00</span><em>秒</em></div>
+
+                <div id="commentbox" class="exe_comment">
+                    <div class="com_item">
+                        <i></i>
+                        <span class="com_rate">好评率<strong id="praiseRate">@((int)Model.Shop.ProductMark == 0 ? "100" : "")%</strong></span>
+                        <a class="com_person desbtn" href="#comment">@ViewBag.CommentCount 人评论</a>
+                    </div>
+                </div>
+                <!--各类标签-->
+                <!--<div class="ser_box">
+                    <ul class="clearfix">
+                        <li><a title="7天无理由退换货" class="tag01" target="_blank" href="javascript:void(0)" style="cursor:default"><ins>7</ins>7天无理由退换货</a></li>
+                    </ul>
+                </div>-->
+            </div>
+
+
+            <ul id="choose" class="choose">
+                @if (Model.Color.Count() > 0)
+                {
+                    <li id="choose-version" class="choose-sku">
+                        <div class="dt">选择颜色：</div>
+                        <div class="dd">
+                            @foreach (var color in Model.Color)
+                            {
+                                <div st="0" cid="@color.SKUId" class="item @color.EnabledClass @color.SelectedClass">
+                                    <b>◆</b>
+                                    <a href="#none" title="@color.Value">
+                                        @*<img src="" alt="黑色(长袖) " />*@<i>@color.Value</i>
+                                    </a>
+                                </div>
+                            }
+
+                        </div>
+                    </li>
+                }
+                @if (Model.Size.Count() > 0)
+                {
+                    <li id="choose-version" class="choose-sku">
+                        <div class="dt">选择尺码：</div>
+                        <div class="dd">
+                            @foreach (var size in Model.Size)
+                            {
+                                <div st="1" cid="@size.SKUId" class="item @size.EnabledClass @size.SelectedClass">
+                                    <b>◆</b>
+                                    <a href="#none" title="@size.Value">@size.Value</a>
+                                </div>
+                            }
+                        </div>
+                    </li>
+                }
+
+                @if (Model.Version.Count() > 0)
+                {
+                    <li id="choose-version" class="choose-sku">
+                        <div class="dt">选择版本：</div>
+                        <div class="dd">
+                            @foreach (var version in Model.Version)
+                            {
+                                <div st="2" cid="@version.SKUId" class="item @version.EnabledClass @version.SelectedClass">
+                                    <b>◆</b>
+                                    <a href="#none" title="@version.Value">@version.Value</a>
+                                </div>
+                            }
+                        </div>
+                    </li>
+                }
+                <li id="choose-amount">
+                    <div class="dt">购买数量：</div>
+                    <div class="dd">
+                        <div class="wrap-input">
+                            <a class="btn-reduce" href="javascript:;">-</a>
+                            <a class="btn-add" href="javascript:;">+</a>
+                            <input class="text" id="buy-num" value="1" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'1'); if(this.value==''){this.value='1'}}).call(this)" onblur="this.v()" />
+                        </div>
+                    </div>
+                </li>
+                <li id="choose-result">
+                    <div class="dt"></div><div class="dd"><strong></strong><strong></strong></div>
+                </li>
+                <li>
+                    <a class="btn-goshop_in @((ViewBag.Second>60&&ViewBag.EnabledBuy && Model.Product.SKUInfo.Any(s => s.Stock > 0)) ? "" : "disabled")" id="justBuy">立即抢购</a>
+                    @*@if (ViewBag.EnabledBuy)
+                        {
+                            <div id="choose-btn-coll" class="btn">
+                                <a href="#none" class="btn-coll">加关注<b></b></a>
+                            </div>
+                        }*@
+                </li>
+            </ul><!--choose end-->
+            <span class="clr"></span>
+        </div>
+
+        <div id="preview">
+            <div class="jqzoom">
+                <a class="cloud-zoom" id="zoom1" rel="adjustX: 10, adjustY:0,lensOpacity:1" href="@Model.Product.ImagePath/1.png" style="position: relative; display: block;">
+                    <img src="@Model.Product.ImagePath/1_350.png" alt="@Model.Product.ProductName" style="display: block;">
+                </a>
+
+            </div>
+
+            <div id="spec-list">
+                <ul class="lh">
+                    @for (int i = 1; i < 6; i++)
+                    {
+                        if (File.Exists(Server.MapPath(Model.Product.ImagePath + string.Format("/{0}.png", i))))
+                        {
+                            <li><a href="@(Model.Product.ImagePath+string.Format("/{0}.png",i))" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: '@(Model.Product.ImagePath+string.Format("/{0}_350.png",i))'"><img src="@(Model.Product.ImagePath+string.Format("/{0}_50.png",i))" width="50" height="50"></a></li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div><!--preview end-->
+    </div><!--product-intro end-->
+</div>
+
+<div class="w">
+    <div class="right">
+        <!--recommend end-->
+        <div id="product-detail" class="m m2">
+            <div class="float-nav-wrap">
+                <div class="mt">
+                    <ul class="tab">
+                        <li class="curr goods-li"><a href="javascript:;" class="toggle-link">商品介绍</a></li>
+                        <li class="comment-li"><a href="javascript:;" class="toggle-link">商品评价<span class="hl_blue"> (@ViewBag.CommentCount) </span></a></li>
+                        <li class="consult-li"><a href="javascript:;" class="toggle-link">商品咨询<span class="hl_blue"> (@ViewBag.Consultations) </span></a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="mc" id="product-detail-1">
+                <ul class="detail-list">
+                    <li title="">商品名称：@Model.Product.ProductName</li>
+                    <li>商品货号：@Model.Product.ProductCode</li>
+                    @if (!string.IsNullOrWhiteSpace(Model.Shop.Name))
+                    {
+                        <li>店铺：<a href="@Url.Action("Home", "Shop", new { id=Model.Shop.Id})" target="_blank">@Model.Shop.Name</a></li>
+                    }
+                    <li>上架时间：@Model.Product.AddedDate.ToString("yyyy-MM-dd:HH:mm:ss")</li>
+                    @foreach (var item in (List<Himall.Web.Areas.SellerAdmin.Models.TypeAttributesModel>)ViewBag.ProductAttrs)
+                    {
+                        string values = "";
+                        foreach (var val in item.AttrValues)
+                        {
+                            values += val.Name + ",";
+                        }
+                        <li>@item.Name : @values.TrimEnd(',')</li>
+                    }
+
+                </ul>
+                @*<div class="detail-correction"> <b></b>如果您发现商品信息不准确，<a target="_blank">欢迎纠错</a> </div>*@
+                @MvcHtmlString.Create(Model.DescriptiondSuffix)
+                @MvcHtmlString.Create(Model.ProductDescription)
+                @MvcHtmlString.Create(Model.DescriptionPrefix)
+            </div>
+
+        </div>
+        <!--product-detail end-->
+        <div id="comment" class="m m1">
+            <div class="mt">
+                <h2>商品评价</h2>
+            </div>
+            <div class="mc">
+                <div id="i-comment">
+                    <div class="rate">
+                        <strong>@((int)Model.Shop.ProductMark == 0 ? "100" : "")%</strong> <br />
+                        <span>好评度</span>
+                    </div>
+                    <div class="percent">
+                        <dl>
+                            <dt>好评<span></span></dt>
+                            <dd>
+                                <div style="width: 100px;"></div>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>中评<span></span></dt>
+                            <dd class="d1">
+                                <div style="width: 0%;"> </div>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>差评<span></span></dt>
+                            <dd class="d1">
+                                <div style="width: 0%;"> </div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--comment end-->
+
+        <div id="comments-list" class="m">
+            <div class="mt">
+                <ul class="tab" id="id_comment_btn">
+                    <li class="curr"><a href="javascript:;">全部评价<em id="totalComment"></em></a></li>
+                    <li><a href="javascript:;">好评<em id="goodComment"></em></a></li>
+                    <li><a href="javascript:;">中评<em id=""></em></a></li>
+                    <li><a href="javascript:;">差评<em id="badComment"></em></a></li>
+                    <li class="tab-last"></li>
+                </ul>
+            </div>
+        </div>
+
+        <!--comment end-->
+        <div id="consult" class="m m2">
+            <div class="mt">
+                <ul class="tab">
+                    <li class="curr"><a href="javascript:;">商品咨询</a></li>
+                </ul>
+                <div class="consult-pub"> <a href="@Url.Action("Index", "ProductConsultation", new { id=Model.Product.Id})" class="css3-btn" target="_blank">发表咨询</a> </div>
+            </div>
+            <div id="consult-search">
+                <div class="prompt"> <strong>温馨提示:</strong>因厂家更改产品包装、产地或者更换随机附件等没有任何提前通知，且每位咨询者购买情况、提问时间等不同，为此以下回复仅对提问者3天内有效，其他网友仅供参考！若由此给您带来不便请多多谅解，谢谢！ </div>
+            </div>
+            <!--consult-search end-->
+            <div id="consult-0" class="mc tabcon" data-widget="tab-content">
+
+
+            </div>
+        </div>
+        <!--consult end-->
+
+    </div>
+    <!--right end-->
+    <div class="left product-left">
+        <div id="sp-search" class="m m2">
+            <div class="mt">
+                <h2>店内搜索</h2>
+            </div>
+            <div class="mc">
+                <p class="sp-form-item1">
+                    <label for="sp-keyword">关键字：</label>
+                    <span>
+                        <input type="text" id="sp-keyword" onkeydown="javascript:if(event.keyCode==13){}" />
+                    </span>
+                </p>
+                <p class="sp-form-item2">
+                    <label for="sp-price">价　格：</label>
+                    <span>
+                        <input type="text" id="sp-price" />
+                        到
+                        <input type="text" id="sp-price1" onkeydown="javascript:if(event.keyCode==13){}" />
+                    </span>
+                </p>
+                <p class="sp-form-item3">
+                    <label for="">　　　</label>
+                    <span>
+                        <input type="submit" id="shopInSearch" value="搜索" />
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div id="sp-category" class="m m2 sp-category">
+            <div class="mt">
+                <h2>店内分类</h2>
+            </div>
+            <div class="mc">
+                @foreach (var cate in Model.ShopCategory)
+                {
+                    <dl>
+                        <dt><a href="@Url.Action("Search", "Shop", new { cid = cate.Id , sid=Model.Product.ShopId,pageNo=1})" target="_blank"><s></s>@cate.Name</a></dt>
+                        @foreach (var item in cate.SubCategory)
+                        {
+
+                            <dd><a href="@Url.Action("Search", "Shop", new { cid = item.Id, sid = Model.Product.ShopId, pageNo = 1 })" target="_blank">@item.Name</a></dd>
+                        }
+                    </dl>
+                }
+            </div>
+        </div>
+        <div id="sp-hot-sale" class="m m2 m3">
+            <div class="mt">
+                <h2>热门销售</h2>
+            </div>
+            <div class="mc">
+                <ul>
+                    @foreach (var item in Model.HotSaleProducts)
+                    {
+                        <li class="fore1">
+                            <div class="p-img"><a href="@Url.Action("Detail", "Product", new { id = item.Id })" target="_blank"><img alt="@item.Name" src="@item.ImgPath/1_220.png" /></a></div>
+                            <div class="p-name"><a href="@Url.Action("Detail", "Product", new { id = item.Id })" target="_blank" title="">@item.Name</a></div>
+                            <div class="p-info p-bfc">
+                                <div class="p-count fl"><s>@(Model.HotSaleProducts.IndexOf(item) + 1)</s><b>热销@(item.SaleCount)件</b></div>
+                                <div class="p-price fr"><strong>￥@item.Price.ToString("f2")</strong></div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div id="sp-hot-fo" class="m m2 m3">
+            <div class="mt">
+                <h2>热门关注</h2>
+            </div>
+            <div class="mc">
+                <ul>
+                    @foreach (var item in Model.HotAttentionProducts)
+                    {
+                        <li class="fore1">
+                            <div class="p-img"><a href="@Url.Action("Detail", "Product", new { id = item.Id })" target="_blank"><img alt="@item.Name" src="@item.ImgPath/1_220.png" /></a></div>
+                            <div class="p-name"><a href="@Url.Action("Detail", "Product", new { id = item.Id })" target="_blank" title="">@item.Name</a></div>
+                            <div class="p-info p-bfc">
+                                <div class="p-count fl"><s>@(Model.HotAttentionProducts.IndexOf(item) + 1)</s><b>@(item.SaleCount)人关注</b></div>
+                                <div class="p-price fr"><strong>￥@item.Price.ToString("f2")</strong></div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div><!--left end-->
+    <span class="clr"></span>
+    <input type="hidden" id="logined" value="@ViewBag.Logined" />
+</div>
+
+

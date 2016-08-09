@@ -1,0 +1,232 @@
+﻿@{
+    ViewBag.Title = "新增";
+}
+@using Himall.Web.Areas.SellerAdmin.Models
+<style type="text/css">
+    .province {
+        width: 670px;
+        display: none;
+    }
+
+        .province li {
+            float: left;
+            width: 160px;
+            padding-bottom: 5px;
+        }
+
+    .city {
+        max-width: 300px;
+        padding: 6px 15px 6px 6px;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 3px #ddd;
+        background-color: #fff;
+        margin-top: -5px;
+    }
+
+    .province li:nth-child(4n) .city {
+        width: 300px;
+    }
+
+    .city li {
+        float: left;
+        width: auto;
+        padding: 5px;
+    }
+
+    .city .colse {
+        position: absolute;
+        top: -4px;
+        right: 1px;
+        font-size: 14px;
+        line-height: 14px;
+        padding: 0 3px;
+        background-color: #333;
+        color: #fff;
+        font-style: normal;
+        cursor: pointer;
+    }
+
+    .province {
+        padding-left: 30px;
+        margin: 0;
+    }
+
+        .province li div {
+            display: none;
+            z-index: 9999;
+            position: absolute;
+            background: #efefef;
+        }
+
+        .province li b {
+            font-weight: normal;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .province li input {
+            margin-right: 3px;
+        }
+
+    .spCount {
+        color: red;
+    }
+
+    .table-area-freight, .table-area-freight th {
+        text-align: center;
+    }
+		.table-area-freight .btn-a{ min-width:50px;text-align: center;}
+        .table-area-freight td span {
+            float: left;  text-align: left;
+        }
+
+            .table-area-freight td span b {
+                font-weight: normal;
+            }
+
+        .table-area-freight td input {
+            width: 50px;
+            text-align: center;
+            display: inline-block;
+        }
+
+    .editArea {
+        cursor: pointer;
+        float: right;
+    }
+</style>
+
+@model FreightTemplateInfoExtend
+
+<script src="~/Scripts/Region.js"></script>
+<script src="~/Scripts/RegionBind.js"></script>
+<script src="~/Areas/SellerAdmin/Scripts/FreightTemplateAdd.js"></script>
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix" id="ulMenu">
+        <strong>运费模版设置</strong>
+        <li><a id="btnManage" href="Index">管理</a></li>
+        <li class="active"><a id="btnAdd">新增</a></li>
+    </ul>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">物流模板名称：</label>
+            <div class="col-sm-4">
+                <input id="inputTempName" type="text" value="@Model.Name" class="form-control input-sm" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">商品地址：</label>
+            <div class="col-sm-10 ">
+                <div class="fl">
+                    <select id="provinceDiv" class="form-control input-sm select-sort">
+                        <option value="0">请选择</option>
+                    </select>
+                    <select id="cityDiv" class="form-control input-sm select-sort">
+                        <option value="0">请选择</option>
+                    </select>
+                    <select id="countyDiv" class="form-control input-sm select-sort">
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+                <div class="clr"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">是否包邮：</label>
+            <div class="col-sm-10 form-control-static">
+                <input name="isfree" @(Model.IsFree ==  Himall.Model.FreightTemplateInfo.FreightTemplateType.Free ? "" : "checked=\"checked\"") status="0"  type="radio" id="radioSelfDef"><label for="radioSelfDef">自定义运费</label>
+                <input name="isfree" @(Model.IsFree == Himall.Model.FreightTemplateInfo.FreightTemplateType.Free ? "checked=\"checked\"" : "") status="1"  type="radio" id="radioSellerDef"><label for="radioSellerDef">卖家承担运费</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">发货时间：</label>
+            <div class="col-sm-4">
+                <select id="selsendtime" class="form-control input-ssm">
+                    <option value="">选择发货时间</option>
+                    @foreach (var item in Enum.GetValues(typeof(Himall.Model.FreightTemplateInfo.SendTimeEnum)))
+                    {
+                        var isselect = (((int)item).ToString() == Model.SendTime);
+                        <option value="@((int)item)" @(isselect?"selected":"")>@(((Himall.Model.FreightTemplateInfo.SendTimeEnum)item).ToDescription())</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="">计价方式：</label>
+            <div class="col-sm-10 form-control-static">
+                <input name="valuationMethod" @(Model.ValuationMethod== Himall.Model.FreightTemplateInfo.ValuationMethodType.Piece ? "checked=\"checked\"" : "") status="0"  type="radio" id="radioPiece"><label for="radioPiece">按件数</label>
+                <input name="valuationMethod" @(Model.ValuationMethod == Himall.Model.FreightTemplateInfo.ValuationMethodType.Weight ? "checked=\"checked\"" : "") status="1"  type="radio" id="radioWeight"><label for="radioWeight">按重量</label>
+                <input name="valuationMethod" @(Model.ValuationMethod == Himall.Model.FreightTemplateInfo.ValuationMethodType.Bulk ? "checked=\"checked\"" : "") status="2"  type="radio" id="radioBulk"><label for="radioBulk">按体积</label>
+                <label id="valuationMethodTip" class="red"></label>
+            </div>
+        </div>
+        <div class="form-group" id="divContent">
+            <label for="" class="col-sm-2 control-label">运送方式：</label>
+            <div class="col-sm-10">
+                <div class="col-sm-10">
+                    <span>默认运费：</span> <input id="inputDefFirstUnit" type="text" class="form-control input-xs" value="" style="width: 80px;display: inline-block;"><span name="ValuationUnit">件</span>内,
+                    <input id="inputDefFirstUnitMonry" type="text" class="form-control input-xs" value="" style="width: 60px;display: inline-block;"><span>元,</span>
+                    <span>每增加</span><input id="inputDefAccumulationUnit" type="text" class="form-control input-xs" value="" style="width: 80px;display: inline-block;"><span name="ValuationUnit">件</span><span>,</span>
+                    <span>增加运费</span><input id="inputDefAccumulationUnitMoney" type="text" class="form-control input-xs" value="" style="width: 80px;display: inline-block;"><span>元</span>
+                </div>
+                <br />
+                <br />
+                <table class="table table-bordered table-area-freight">
+                    <thead>
+                        <tr>
+                            <th>运送到</th>
+                            <th>首<span name="ValuationUnitDesc">件</span>（<span name="ValuationUnit">件</span>）</th>
+                            <th>首费（元）</th>
+                            <th>续<span name="ValuationUnitDesc">件</span>（<span name="ValuationUnit">件</span>）</th>
+                            <th >续费（元）</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (FreightAreaContentInfoExtend content in Model.FreightAreaContent)
+                            {
+                                if (content.IsDefault.HasValue && content.IsDefault.Value == 0)
+                                {
+                                    <tr>
+                                    <td><span class="chooseArea" data-id="@content.AreaContent">@content.AreaContentCN</span><a class="editArea">编辑</a></td>
+                                    <td><input type="text" class="form-control input-xs" value="@content.FirstUnit" /></td>
+                                    <td><input type="text" class="form-control input-xs" value="@content.FirstUnitMonry" /></td>
+                                    <td><input type="text" class="form-control input-xs" value="@content.AccumulationUnit" /></td>
+                                    <td><input type="text" class="form-control input-xs" value="@content.AccumulationUnitMoney" /></td>
+                                    <td ><span class="btn-a"><a name="delContent">删除</a></span></td>
+                                    </tr>
+                                }
+                            }
+                         }
+                    </tbody>
+                </table>
+                <a class="add-atrr" id="addCityFreight"><span class="glyphicon glyphicon-plus-sign"></span>新增指定城市运费</a>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="button" class="btn btn-primary" id="btnSave" value="保 存">
+            </div>
+        </div>
+</div>
+</div>
+
+<script type="text/javascript">
+    var tempid = '@Model.Id';
+    var shopid = '@Model.ShopID';
+    var sourceAdd = '@Model.SourceAddressStr';
+    var IsUsed = '@ViewBag.IsUsed';
+    @{
+        var defFreightContent = Model.FreightAreaContent.Where(e => e.IsDefault == 1).FirstOrDefault() ?? new FreightAreaContentInfoExtend() { AccumulationUnit = 1, AccumulationUnitMoney = 0, FirstUnitMonry = 0, FirstUnit = 1 };
+    }
+
+    var initDefFirst = '@defFreightContent.FirstUnit.Value',
+        initDefFirstMoney = '@defFreightContent.FirstUnitMonry.Value',
+        initDefAccumulationUnit = '@defFreightContent.AccumulationUnit.Value',
+        initDefAccumulationUnitMoney = '@defFreightContent.AccumulationUnitMoney.Value';
+</script>

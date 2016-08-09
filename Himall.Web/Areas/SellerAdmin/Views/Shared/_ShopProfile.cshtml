@@ -1,0 +1,75 @@
+﻿@{
+    Layout = null;
+    
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <title>商家入驻</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/custom.css" />
+    <style>
+		.logo { background-image: url(@ViewBag.Logo);  margin:0;}
+		.aside,.content{ top:40px;}
+    </style>
+</head>
+<body>
+    @{
+        var manager = ViewBag.Manager as Himall.Model.UserMemberInfo;
+    }
+
+    <div class="navbar navbar-static-top navbar-custom">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="logo" href="/" title=""></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                @if (manager != null)
+                {
+                    <p class="login-info">@(manager.UserName)，欢迎来到卖家中心！<a href="javascript:logout()">[ 退出 ]</a></p>
+                }
+            </div>
+        </div>
+    </div>
+        @RenderBody()
+    <script type="text/javascript" src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+    <script src="~/Scripts/CommonJS.js"></script>
+    <!--[if lt IE 9]>
+    <script src="/Scripts/respond.min.js"></script>
+    <![endif]-->
+    <script>
+    $(function () {
+        if (top.location != self.location) {
+            parent.location = self.location;
+        }
+    });
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+        $('.aside-list li').click(function (e) {
+            e ? e.stopPropagation() : event.cancelBubble = true;
+        });
+		
+		$('.content,.aside').height($(window).height()-40);
+		$(window).resize(function() {
+			$('.content,.aside').height($(window).height()-40);
+		});
+    });
+
+
+    function logout() {
+        $.removeCookie('Himall-User', { path: '/' });
+        $.removeCookie('Himall-SellerManager', { path: "/" });
+        location.reload();
+    }
+
+    </script>
+</body>
+</html>

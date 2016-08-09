@@ -1,0 +1,84 @@
+﻿@using Himall.Core;
+<link href="~/Content/bootstrap-switch.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-switch.min.js"></script>
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>消息设置</strong>
+        <li value="" class="active"><a>管理</a></li>
+        @foreach (var messagePlugin in Model)
+        {
+            <li><a href="edit?pluginId=@(messagePlugin.pluginId)">@{@messagePlugin.name}配置</a></li>
+        }
+        <em class="primary-btn">
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <div class="primary">
+                <h3>温馨提示：</h3>
+                <span>*</span><p>你可以在此设置邮件,短信通知消息</p>
+            </div>
+        </em>
+    </ul>
+	<h5><span class="help-default">提示：第一次使用消息提示请先进行相关配置。短信消息需要先<a class="red" href="http://sms.kuaidiantong.cn/Login.aspx">购买短信</a>。</span></h5>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th align="center">消息类型</th>
+                @foreach (var messagePlugin in Model)
+                {
+                    <th> @messagePlugin.name</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var d in Himall.Core.EnumHelper.ToDescriptionDictionary<Himall.Core.Plugins.Message.MessageTypeEnum>())
+            {
+                <tr>
+                    <td>
+                        @d.Value
+                    </td>
+
+                    @{var flag = (Himall.Core.Plugins.Message.MessageTypeEnum)@d.Key;}
+                    @foreach (var messagePlugin in Model)
+                    {
+                        var status = messagePlugin.status as Dictionary<Himall.Core.Plugins.Message.MessageTypeEnum, Himall.Core.Plugins.Message.StatusEnum>;
+                        var check = status.Where(a => a.Key == flag).FirstOrDefault().Value == Himall.Core.Plugins.Message.StatusEnum.Open;
+                        var disable = status.Where(a => a.Key == flag).FirstOrDefault().Value == Himall.Core.Plugins.Message.StatusEnum.Disable;
+                        <td>
+                            <div class="switch switch-mini"><input class="bootstrapSwitch" messagetype="@d.Key" pluginid="@messagePlugin.pluginId" type="checkbox" data-size="mini" @(@disable ? "disabled" : "") data-on-text="开启" @(@check ? "checked" : "") data-off-text="关闭" /></div>
+                        </td>
+                    }
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>
+<script>
+
+    $(function () {
+        $(function () {
+            $(".bootstrapSwitch").bootstrapSwitch({
+                onSwitchChange: function (event, state) {
+                    var pluginId = $(this).attr('pluginid');
+                    var messageType = $(this).attr('messageType');
+                    var switcher = $(this);
+                    var loading = showLoading();
+                    $.post('./Enable', { pluginId: pluginId, messageType: messageType, enable: state }, function (result) {
+                        loading.close();
+                        if (result.success) {
+                            switcher.bootstrapSwitch('state', state);
+                        }
+                        else {
+                            switcher.bootstrapSwitch('state', !state);
+                            $.dialog.errorTips('操作失败!失败原因：' + result.msg);
+                        }
+                    }, "json");
+
+                }
+            });
+        });
+    });
+
+
+</script>

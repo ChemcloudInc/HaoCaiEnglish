@@ -1,0 +1,208 @@
+﻿@{ var memberInfo = ViewBag.Member as Himall.Model.UserMemberInfo;}
+
+@{Html.RenderAction("TopInfo", "ProductPartial");}
+<div class="header">
+    <div class="search-bar cl">
+        <a class="logo" href="/"><img src="@ViewBag.Logo" height="60" alt="Himall" /></a>
+        
+        <div class="search">
+            <div class="search-form">
+				<ul>
+					<li>商品</li>
+					<li>店铺</li>
+				</ul>
+				<label>商品</label>
+				<input type="text" id="searchBox" class="text" name="" value="" placeholder="@ViewBag.Keyword" />
+				<input type="button" id="searchBtn" class="button" value="搜索" />
+            </div>
+        </div>
+	</div>
+
+</div>
+
+
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/CommonJS.js"></script>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+
+    $(function () {
+		//搜索切换
+		$('.search-form label').click(function() {
+			$(this).siblings('ul').show();
+		});
+		$('.search-form ul li').click(function() {
+			$(this).parent().hide().siblings('label').text($(this).text());
+		});
+		
+        //isPCurl();
+        bindCartItemDelete();
+        refreshCartProducts();
+
+        function queryForm(pageNo) {
+            var keyWords = $('#searchBox').val();
+            var exp_keyWords = $("#text-stock-search").val();
+            var cid = getQueryString('cid');
+            var b_id = getQueryString('b_id');
+            var orderType = getQueryString('orderType');
+            var orderKey = getQueryString('orderKey');
+            location.href = "/search?pageNo=" + pageNo + "&keywords=" + encodeURIComponent(keyWords ? keyWords : $('#searchBox').attr('placeholder'))
+                                    + "&exp_keywords=" + exp_keyWords + "&cid=" + cid + "&b_id=" + b_id + "&orderType=" + orderType
+                                    + "&orderKey=" + orderKey;
+        }
+
+        $('#searchBtn').click(function () {
+            var keyWords = $( '#searchBox' ).val();
+            var selected = $( ".search .search-form label" ).html();
+            if ( selected == "店铺" )
+            {
+                location.href = "/shopsearch?keywords=" + encodeURIComponent( keyWords ? keyWords : $( '#searchBox' ).attr( 'placeholder' ) )
+            }
+            else
+            {
+                location.href = "/search?keywords=" + encodeURIComponent( keyWords ? keyWords : $( '#searchBox' ).attr( 'placeholder' ) )
+            }
+            
+        });
+
+        $('#searchBox').keydown(function (e)
+        {
+            if(e.keyCode==13){
+                var keyWords = $('#searchBox').val();
+                location.href = "/search?keywords=" + encodeURIComponent(keyWords ? keyWords : $('#searchBox').attr('placeholder'))
+                }
+        });
+
+        $('#btn-re-search').click(function () {
+            var keyWords = $('#key-re-search').val();
+            location.href = "/search?keywords=" + encodeURIComponent(keyWords);
+        });
+
+        $('#btn-stock-search').click(function () {
+            queryForm(1);
+        });
+
+        $('#pageJump').click(function () {
+            var pageNo = parseInt($("#jumpInput").val());
+            queryForm(pageNo);
+        });
+    });
+
+
+    function refreshCartProducts() {
+        $.post('/cart/GetCartProducts', {}, function (cart) {
+            var products = cart.products;
+            var count = cart.totalCount;
+            $('#shopping-amount,#cartProductsCount').html(count);
+            if (count) {
+                $('#cartEmpty').hide();
+                $('#cartProducts').show();
+                var html = '';
+                $.each(products, function (i, product) {
+                    html += ' <li>\
+                            <div class="p-img fl">\
+                                <a href="/product/detail/' + product.id + '" target="_blank"><img src="' + product.imgUrl + '" width="50" height="50" alt=""></a>\
+                            </div>\
+                            <div class="p-name fl"><a href="/product/detail/' + product.id + '" title="" target="_blank">' + product.name + '</a></div>\
+                            <div class="p-detail fr ar"><span class="p-price"><strong>￥' + product.price.toFixed("2") + '</strong>×' + product.count + '</span><br><a class="delete" skuId="' + product.skuId + '" href="javascript:;">删除</a></div>\
+                        </li>';
+                });
+                $('#productsList').html(html);
+                $('#cartAmount').html(cart.amount.toFixed("2"));
+            }
+            else {
+                $('#cartEmpty').show();
+                $('#cartProducts').hide();
+            }
+        });
+    }
+
+    function bindCartItemDelete() {
+        $('#productsList').on('click', 'a.delete', function () {
+            var skuId = $(this).attr('skuId');
+            removeFromCart(skuId);
+        });
+    }
+
+    function removeFromCart(skuId) {
+        $.post('/cart/RemoveFromCart', { skuId: skuId }, function (result) {
+            if (result.success)
+                refreshCartProducts();
+            else
+                alert(result.msg);
+        });
+    }
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+
+    //function isPCurl() {
+    //    var ua = window.navigator.userAgent.toLowerCase();
+    //    //bIsAndroid = true;
+    //    if ((bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)) {
+    //        if (ua.match(/MicroMessenger/i) == 'micromessenger' && location.href.toLowerCase().indexOf('/m-wap') == -1 && location.href.toLowerCase().indexOf('/m-weixin') == -1) {
+    //        //if (location.href.toLowerCase().indexOf('/m-wap') == -1 && location.href.toLowerCase().indexOf('/m-weixin') == -1) {
+    //            var url='';
+    //            var arr = location.href.toLowerCase().split('/');
+    //            for (var i = 0; i < arr.length; i++) {
+    //                url = url + arr[i] + '/';
+    //                if (i == 2)
+    //                    url = url + 'm-weixin/'
+    //            }
+    //            isErrorURL(arr[arr.length - 1], url, 'm-weixin');
+    //        }
+    //        else if (ua.match(/MicroMessenger/i) != 'micromessenger' && location.href.toLowerCase().indexOf('/m-wap') == -1 && location.href.toLowerCase().indexOf('/m-weixin') == -1) {
+    //            var url='';
+    //            var arr = location.href.toLowerCase().split('/');
+    //            for (var i = 0; i < arr.length; i++) {
+    //                url = url + arr[i] + '/';
+    //                if (i == 2)
+    //                    url = url + 'm-wap/'
+    //            }
+    //            isErrorURL(arr[arr.length - 1], url, 'm-wap');
+    //        }
+    //    }
+    //}
+    //function getVShopIdByShopId(shopId, url,platform) {
+    //    $.post('/'+platform+'/vshop/GetVShopIdByShopId', { shopId: shopId }, function (result) {
+    //        if (result.success == true) {
+    //            var urlStr='';
+    //            var arr = url.split('/');
+    //            for (var i = 0; i < arr.length - 3; i++) {
+    //                urlStr = urlStr + arr[i] + '/'
+    //            }
+    //            location.href = urlStr.replace('/shop', '/vshop') + 'detail/' + result.msg;
+    //        }
+    //    })
+    //}
+
+    //function isErrorURL(shopId,url, platform) {
+    //    $.ajax({
+    //        type: "GET",
+    //        cache: false,
+    //        url: "" + url + "",
+    //        data: "",
+    //        success: function () {
+    //            if (url.indexOf('shop') >= 0) {
+    //                getVShopIdByShopId(shopId, url, 'm-wap');
+    //            }
+    //            else
+    //                location.href = url.substring(0, url.length - 2);
+    //        },
+    //        error: function () {
+    //            location.href = '//' + location.host + '/' + platform;
+    //        }
+    //    });
+    //}
+</script>

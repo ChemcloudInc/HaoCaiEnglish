@@ -1,0 +1,112 @@
+﻿@using Himall.Core;
+@model Himall.Web.Areas.SellerAdmin.Controllers.OrderController.SendGoodMode
+
+
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>订单</strong>
+        <li><a href="./Management">所有订单</a></li>
+        <li class="active">
+            @{var num = Model.Orders.Count();}
+            @if (num > 1)
+            {
+                <a>批量发货</a>
+            }
+            else
+            {
+                 <a>订单发货</a>
+            }
+        </li>
+    </ul>
+
+    <table class="table">
+        <thead>
+            <tr style="text-align:center;">
+                <th>订单号</th>
+                <th>收货人</th>
+                <th>收货地址</th>
+                <th>快递</th>
+                <th>快递单号</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td class="cssOrderId">@order.Id</td>
+                    <td>@order.ShipTo</td>
+                    <td><span class="overflow-ellipsis" style="width:500px">@order.RegionFullName @order.Address</span></td>
+                    <td>
+                        <select class="form-control input-xs cssCompanyName">
+                            <option selected="selected">@order.ShowExpressCompanyName</option>
+                            @foreach (var logisticsCompany in Model.LogisticsCompanies)
+                            {
+                                if (logisticsCompany.Name != order.ExpressCompanyName)
+                                {
+                                    <option>@logisticsCompany.Name</option>
+                                }
+                            }
+                            <option value="-1">其他</option>
+                        </select>
+                    </td>
+                    <td><input class="form-control input-xs cssShipOrderNumber" type="text" value="@order.ShipOrderNumber"></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (num > 1)
+    {
+         <button id="btnSendGood" type="button" class="btn btn-primary mt20">批量发货</button>
+    }
+    else
+    {
+          <button id="btnSendGood" type="button" class="btn btn-primary mt20">订单发货</button>
+    }
+   
+</div>
+
+<script type="text/javascript">
+    $('#btnSendGood').click(function () {
+        var orderIds = "";
+        var companyNames = "";
+        var shipOrderNumbers = "";
+        var invaldat = false;
+
+        $('.cssOrderId').each(function () {
+            orderIds += $(this).html() + ",";
+        });
+        $('.cssCompanyName').each(function (index, item) {
+            if ($(item).val() == "") {
+                $.dialog.errorTips("你有没有填写的快递公司！");
+                invaldat = true;
+                return;
+            }
+            companyNames += $(this).find("option:selected").text() + ",";
+        });
+        $( '.cssShipOrderNumber' ).each( function ( index, item )
+        {
+            var valx = $( this ).parent().parent().find( ".cssCompanyName option:selected" ).val();
+            if ( $( item ).val() == "" && parseInt( valx ) != -1 )
+            {
+                $.dialog.errorTips("你有没有填写的快递单号！");
+                invaldat = true;
+                return;
+            }
+            shipOrderNumbers += $(this).val() + ",";
+        });
+        if (invaldat) { return; }
+        orderIds = orderIds.substring(0, orderIds.length - 1);
+        companyNames = companyNames.substring(0, companyNames.length - 1);
+        shipOrderNumbers = shipOrderNumbers.substring(0, shipOrderNumbers.length - 1);
+
+        var loading = showLoading();
+        $.post('./ConfirmSendGood', { ids: orderIds, companyNames: companyNames, shipOrderNumbers: shipOrderNumbers }, function (result) {
+            loading.close();
+            if (result.success) {
+                $.dialog.succeedTips("操作成功！",function(){window.location.href = "./Management"});
+            }
+            else
+                $.dialog.errorTips("操作失败,"+result.msg);
+        });
+    });
+</script>

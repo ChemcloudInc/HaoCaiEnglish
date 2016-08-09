@@ -1,0 +1,63 @@
+﻿<script src="~/Scripts/jquery.himallUpload.js"></script>
+<script src="~/Scripts/jquery.placeholder.min.js"></script>
+<script src="~/Scripts/bootstrap.autocomplete.js"></script>
+<script src="~/Scripts/jquery.hiMallDatagrid.js"></script>
+<script src="~/Areas/SellerAdmin/Scripts/brandManagement.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>品牌</strong>
+        <li class="active"><a>申请列表</a></li>
+        <li><a href="./Add">新增申请</a></li>
+        <em class="primary-btn">
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <div class="primary">
+                <h3>温馨提示：</h3>
+                <span>*</span><p>商家可申请品牌，待管理员审核后商家才可正常使用</p>
+            </div>
+        </em>
+    </ul>
+    <table class="table" id="list"></table>
+</div>
+<div id="id_band" style="display:none">
+    <div style="padding:0 15px;">
+        <form role="form" class="form-horizontal" id="brandform">
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-6">
+                    
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">品牌名称：</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control input-sm" id="band_name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">品牌Logo：</label>
+                <div class="col-sm-6"></div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">品牌授权证书：</label>
+                <div class="col-sm-6"></div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="">简介：</label>
+                <div class="col-sm-10"><textarea rows="4" cols="50" class="form-control" id="band_des"></textarea></div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="">备注：</label>
+                <div class="col-sm-10"><textarea rows="4" cols="50" class="form-control" id="band_remark"></textarea></div>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        query();
+    });
+</script>
