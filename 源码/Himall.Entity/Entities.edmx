@@ -669,7 +669,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ProductId" Type="bigint" Nullable="false" />
-          <Property Name="ProductName" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="400" Nullable="false" />
           <Property Name="CategoryName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="AuditStatus" Type="smallint" Nullable="false" />
           <Property Name="AuditTime" Type="datetime" Nullable="false" />
@@ -959,7 +959,7 @@
           <Property Name="DiscountAmount" Type="decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="RealTotalPrice" Type="decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="RefundPrice" Type="decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="ProductName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="400" Nullable="false" />
           <Property Name="Color" Type="nvarchar" MaxLength="100" />
           <Property Name="Size" Type="nvarchar" MaxLength="100" />
           <Property Name="Version" Type="nvarchar" MaxLength="100" />
@@ -1148,7 +1148,7 @@
           <Property Name="CategoryPath" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="TypeId" Type="bigint" Nullable="false" />
           <Property Name="BrandId" Type="bigint" Nullable="false" />
-          <Property Name="ProductName" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="400" Nullable="false" />
           <Property Name="ProductCode" Type="nvarchar" MaxLength="100" />
           <Property Name="ShortDescription" Type="nvarchar" MaxLength="4000" />
           <Property Name="SaleStatus" Type="int" Nullable="false" />
@@ -4030,7 +4030,7 @@
           <Property Name="CategoryPath" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TypeId" Type="Int64" Nullable="false" />
           <Property Name="BrandId" Type="Int64" Nullable="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
           <Property Name="ProductCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ShortDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="SaleStatus" Type="Himall.Model.ProductSaleStatus" Nullable="false" />
@@ -4645,7 +4645,7 @@
           <Property Name="DiscountAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="RealTotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="RefundPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
           <Property Name="Color" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Size" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Version" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -6257,7 +6257,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ProductId" Type="Int64" Nullable="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="false" />
           <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="AuditStatus" Type="Himall.Model.LimitTimeMarketAuditStatus" Nullable="false" />
           <Property Name="AuditTime" Type="DateTime" Nullable="false" Precision="3" />
