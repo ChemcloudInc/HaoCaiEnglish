@@ -153,7 +153,7 @@ namespace Himall.Model
 		{
 			get
 			{
-				decimal num = new decimal(0);
+				decimal num = new decimal(2);
 				switch (OrderStatus)
 				{
 					case OrderInfo.OrderOperateStatus.WaitDelivery:

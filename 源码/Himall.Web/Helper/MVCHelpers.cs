@@ -42,6 +42,39 @@ namespace System.Web.Mvc
 			return MvcHtmlString.Create(stringBuilder.ToString());
 		}
 
+        public static MvcHtmlString CategoryCrumb(string path)
+        {
+            StringBuilder stringBuilder = new StringBuilder("<div class=\"breadcrumb\"><strong><a href=\" / \">首页</a></strong>&nbsp;&gt;&nbsp;");
+            try
+            {
+               // pName = (pName.Length > 40 ? string.Concat(pName.Substring(0, 40), " ...") : pName);
+                string name = "";
+                string str = "";
+                string name1 = "";
+                string[] strArrays = path.Split(new char[] { '|' });
+                if (strArrays.Length > 0)
+                {
+                    name = ServiceHelper.Create<ICategoryService>().GetCategory(long.Parse(strArrays[0])).Name;
+                }
+                if (strArrays.Length > 1)
+                {
+                    str = ServiceHelper.Create<ICategoryService>().GetCategory(long.Parse(strArrays[1])).Name;
+                }
+                if (strArrays.Length > 2)
+                {
+                    name1 = ServiceHelper.Create<ICategoryService>().GetCategory(long.Parse(strArrays[2])).Name;
+                }
+                stringBuilder.AppendFormat("<a href=\"/category?cid={0}\">{1}</a>", long.Parse(strArrays[0]), name);
+                stringBuilder.AppendFormat("<span>{0}{1}</span>", (string.IsNullOrWhiteSpace(str) ? "" : string.Format("&nbsp;&gt;&nbsp;<a href=\"/search?cid={0}\">{1}</a>", long.Parse(strArrays[1]), str)), (string.IsNullOrWhiteSpace(name1) ? "" : string.Format("&nbsp;&gt;&nbsp;<a href=\"/search?cid={0}\">{1}</a>", long.Parse(strArrays[2]), name1)));
+                stringBuilder.AppendFormat("</div>", new object[0]);
+            }
+            catch
+            {
+                stringBuilder.AppendFormat("</div>", new object[0]);
+            }
+            return MvcHtmlString.Create(stringBuilder.ToString());
+        }
+
 		public static MvcHtmlString PageLinks(this HtmlHelper html, PagingInfo pagingInfo, Func<int, string> pageUrl)
 		{
 			StringBuilder stringBuilder = new StringBuilder();

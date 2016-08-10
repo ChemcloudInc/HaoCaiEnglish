@@ -82,7 +82,7 @@
                                         @foreach( var topCateory in topCategories )
                                         {
                                             if( j++ > 0 )
-                                            {@("、")}<a href="@Url.Action("Index", "Search", new{cid=topCateory.CategoryId})">
+                                            {@("、")}<a href="@Url.Action("Index", "Category", new{cid=topCateory.CategoryId})">
                                            
                                             @topCateory.CategoryInfo.Name
                                               </a>
@@ -101,7 +101,7 @@
                                             @{int k = 0; }@foreach( var topCateory in topCategories )
                                             {
                                                 if( k++ > 0 )
-                                                {@("、")}<a href="@Url.Action("Index", "Search", new{cid=topCateory.CategoryId})">@topCateory.CategoryInfo.Name</a>}
+                                                {@("、")}<a href="@Url.Action("Index", "Category", new{cid=topCateory.CategoryId})">@topCateory.CategoryInfo.Name</a>}
                                                
                                              </p>
                                         @{
@@ -113,12 +113,12 @@
                                         @foreach( var group in subCategories )
                                         {
                                             <dl class="@(j++ == 0 ? "first" : "")">
-                                                <dt><a href="@Url.Action("Index", "Search", new { cid = secondCategoies.FirstOrDefault(item => item.Id == group.Key).Id})">@secondCategoies.FirstOrDefault( item => item.Id == group.Key ).Name</a></dt>
+                                                <dt><a href="@Url.Action("Index", "Category", new { cid = secondCategoies.FirstOrDefault(item => item.Id == group.Key).Id })">@secondCategoies.FirstOrDefault( item => item.Id == group.Key ).Name</a></dt>
                                                 <dd>
 
                                                     @foreach( var subThirdCategoy in group )
                                                     {
-                                                        <em><a href="@Url.Action("Index", "Search", new { cid = subThirdCategoy.CategoryInfo .Id})">@subThirdCategoy.CategoryInfo.Name</a></em>
+                                                        <em><a href="@Url.Action("Index", "Category", new { cid = subThirdCategoy.CategoryInfo.Id })">@subThirdCategoy.CategoryInfo.Name</a></em>
                                                     }
                                                 </dd>
                                             </dl>
