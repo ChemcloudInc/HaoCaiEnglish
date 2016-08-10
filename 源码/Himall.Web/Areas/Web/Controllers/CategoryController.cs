@@ -326,12 +326,26 @@ namespace Himall.Web.Areas.Web.Controllers
             };
             ViewBag.pageInfo = pagingInfo;
             CategoryInfo categoryInfo = ServiceHelper.Create<ICategoryService>().GetCategory(cid);
+            if(categoryInfo!=null)
+            {
+                if (string.IsNullOrEmpty(categoryInfo.Meta_Title))
+                {
+                    ViewBag.Title = categoryInfo.Name;
+                }
+                else
+                {
+                    ViewBag.Title = categoryInfo.Meta_Title;
+                    ViewBag.SEOKeyword = categoryInfo.Meta_Keywords;
+                    ViewBag.SEODescription = categoryInfo.Meta_Description;
+                }
+            }
             if (categoryInfo != null && categoryInfo.Depth == 3)
             {
                 array = (
                     from p in array
                     where p.CategoryId == cid
                     select p).ToArray();
+              
             }
             return View(array ?? new ProductInfo[0]);
         }
