@@ -239,6 +239,81 @@ namespace Himall.Web.Areas.Web.Controllers
 			return View(orderItemInfo);
 		}
 
+        //public ActionResult RefundApply(long id, long? itemId)
+        //{
+        //    decimal? nullable1;
+        //    IOrderService orderService = ServiceHelper.Create<IOrderService>();
+        //    OrderInfo order = orderService.GetOrder(id, base.CurrentUser.Id);
+        //    if (order == null)
+        //    {
+        //        throw new HimallException("该订单已删除或不属于该用户");
+        //    }
+        //    if (order.OrderStatus < OrderInfo.OrderOperateStatus.WaitDelivery)
+        //    {
+        //        throw new HimallException("错误的售后申请,订单状态有误");
+        //    }
+        //    if (!itemId.HasValue && order.OrderStatus != OrderInfo.OrderOperateStatus.WaitDelivery)
+        //    {
+        //        throw new HimallException("错误的订单退款申请,订单状态有误");
+        //    }
+        //    orderService.CalculateOrderItemRefund(id, false);
+        //    OrderItemInfo orderItemInfo = new OrderItemInfo();
+        //    ViewBag.MaxRGDNumber = 0;
+        //    ViewBag.MaxRefundAmount = order.OrderEnabledRefundAmount;
+        //    if (itemId.HasValue)
+        //    {
+        //        orderItemInfo = (from a in order.OrderItemInfo
+        //                         where a.Id == itemId
+        //                         select a).FirstOrDefault<OrderItemInfo>();
+        //        dynamic viewBag = base.ViewBag;
+        //        decimal? enabledRefundAmount = orderItemInfo.EnabledRefundAmount;
+        //        decimal refundPrice = orderItemInfo.RefundPrice;
+        //        if (enabledRefundAmount.HasValue)
+        //        {
+        //            nullable1 = new decimal?(enabledRefundAmount.GetValueOrDefault() - refundPrice);
+        //            viewBag.MaxRefundAmount = nullable1;
+        //        }
+
+
+        //    }
+        //    else
+        //    {
+        //        orderItemInfo = order.OrderItemInfo.FirstOrDefault();
+        //    }
+        //    bool flag = false;
+        //    IRefundService refundService = ServiceHelper.Create<IRefundService>();
+        //    flag = (order.OrderStatus != OrderInfo.OrderOperateStatus.WaitDelivery ? refundService.CanApplyRefund(id, orderItemInfo.Id, new bool?(false)) : refundService.CanApplyRefund(id, orderItemInfo.Id, null));
+        //    if (!flag)
+        //    {
+        //        throw new HimallException("您己申请过售后，不可重复申请");
+        //    }
+        //    ViewBag.UserName = base.CurrentUser.RealName;
+        //    ViewBag.Phone = base.CurrentUser.CellPhone;
+        //    ViewBag.OrderInfo = order;
+        //    ViewBag.OrderItemId = itemId;
+        //    ViewBag.RefundWay = "";
+        //    List<SelectListItem> selectListItems = new List<SelectListItem>();
+        //    SelectListItem selectListItem = new SelectListItem()
+        //    {
+        //        Text = OrderRefundInfo.OrderRefundPayType.BackCapital.ToDescription(),
+        //        Value = 3.ToString()
+        //    };
+        //    selectListItems.Add(selectListItem);
+        //    List<SelectListItem> selectListItems1 = selectListItems;
+        //    if (!string.IsNullOrWhiteSpace(order.PaymentTypeGateway) && order.PaymentTypeGateway.ToLower().Contains("weixin"))
+        //    {
+        //        SelectListItem selectListItem1 = new SelectListItem()
+        //        {
+        //            Text = OrderRefundInfo.OrderRefundPayType.BackOut.ToDescription(),
+        //            Value = 1.ToString()
+        //        };
+        //        selectListItems1.Add(selectListItem1);
+        //    }
+        //    ViewBag.RefundWay = selectListItems1;
+        //    return View(orderItemInfo);
+        //}
+
+
 		[HttpPost]
 		[ValidateInput(false)]
 		public JsonResult RefundApply(OrderRefundInfo info)

@@ -1,7 +1,4 @@
-﻿
-
-
-@using Himall.Model;
+﻿@using Himall.Model;
 @using Himall.Web.Areas.SellerAdmin.Models;
 
 @model IEnumerable<ProductInfo>
@@ -39,7 +36,7 @@
             });
         });
 
-    </script>
+</script>
 
 <script type="text/javascript">
     $(function () {
@@ -103,9 +100,7 @@
         }
     }
 
-    $(function () {
-        $("#searchBox").val("@ViewBag.keywords");
-    });
+  
 </script>
 
 
@@ -113,8 +108,40 @@
 <div class="w main">
     @if (null != Model && Model.Count() != 0)
     {
-        <div class="crumb">全部结果&nbsp;&gt;&nbsp;<strong>"@ViewBag.keywords"</strong></div>
-    
+         @MVCHelpers.CategoryCrumb(ViewBag.Path)
+        <div class="left">
+            <div class="m" id="refilter">
+                <div class="mt">
+                    <h2>所有类目</h2>
+                </div>
+                <div class="mc">
+                    @{
+        if (null != ViewBag.Category)
+        {
+            foreach (var item in ((List<Himall.Web.Areas.SellerAdmin.Models.CategoryJsonModel>)ViewBag.Category))
+            {
+                <div class="item fore hover">
+                    <h3>
+                        <b></b>
+                        <a href="@Url.Action("Index", "Category", new { pageNo = 1, keywords = ViewBag.keywords, exp_keywords = ViewBag.exp_keywords, cid = item.Id, b_id = ViewBag.b_id, a_id = ViewBag.a_id, orderType = ViewBag.orderType, orderKey = ViewBag.orderKey })" class="@(item.Id == ViewBag.cid.ToString()?"curr":"")">@item.Name</a>
+                    </h3>
+                    <ul>
+                        @foreach (var sub in item.SubCategory)
+                        {
+
+                            <li class="@(sub.Id == ViewBag.cid.ToString() ? "curr" : "")">
+                                <a href="@Url.Action("Index", "Category", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = sub.Id,b_id = ViewBag.b_id,a_id = ViewBag.a_id,orderType = ViewBag.orderType,orderKey = ViewBag.orderKey})">@sub.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        }
+                    }
+
+                </div>
+            </div>
+        </div>
         <div class="right-extra">
             <div class="clr"></div>
             <div class="m" id="select">
@@ -136,7 +163,7 @@
                                             @if (ViewBag.b_id != 0)
                                             {
                                                 <li>
-                                                    <a href="@Url.Action("Index", "Search", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = 0,a_id = ViewBag.a_id,orderType = ViewBag.orderType,orderKey = ViewBag.orderKey})" title="@ViewBag.BrandName">品牌：<strong>@ViewBag.BrandName</strong><b></b></a>
+                                                    <a href="@Url.Action("Index", "Category", new { pageNo = 1, keywords = ViewBag.keywords, exp_keywords = ViewBag.exp_keywords, cid = ViewBag.cid, b_id = 0, a_id = ViewBag.a_id, orderType = ViewBag.orderType, orderKey = ViewBag.orderKey })" title="@ViewBag.BrandName">品牌：<strong>@ViewBag.BrandName</strong><b></b></a>
                                                 </li>
                                             }
                                             @if (!string.IsNullOrWhiteSpace(ViewBag.a_id))
@@ -145,7 +172,7 @@
                                                 {
                                                     var dic = (Dictionary<string, string>)ViewBag.AttrDic;
                                                     <li>
-                                                        <a href="@Url.Action("Index", "Search", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_id,orderType = ViewBag.orderType,orderKey = ViewBag.orderKey})" title="">@dic.ElementAt(0).Key.Split(':')[0]：<strong>@dic.ElementAt(0).Key.Split(':')[1]</strong><b></b></a>
+                                                        <a href="@Url.Action("Index", "Category", new { pageNo = 1, keywords = ViewBag.keywords, exp_keywords = ViewBag.exp_keywords, cid = ViewBag.cid, b_id = ViewBag.b_id, orderType = ViewBag.orderType, orderKey = ViewBag.orderKey })" title="">@dic.ElementAt(0).Key.Split(':')[0]：<strong>@dic.ElementAt(0).Key.Split(':')[1]</strong><b></b></a>
                                                     </li>
                                                 }
                                                 else
@@ -153,7 +180,7 @@
                                                     foreach (var item in (Dictionary<string, string>)ViewBag.AttrDic)
                                                     {
                                                         <li>
-                                                            <a href="@Url.Action("Index", "Search", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_id,a_id = item.Value,orderType = ViewBag.orderType,orderKey = ViewBag.orderKey})" title="">@item.Key.Split(':')[0]：<strong>@item.Key.Split(':')[1]</strong><b></b></a>
+                                                            <a href="@Url.Action("Index", "Category", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_id,a_id = item.Value,orderType = ViewBag.orderType,orderKey = ViewBag.orderKey})" title="">@item.Key.Split(':')[0]：<strong>@item.Key.Split(':')[1]</strong><b></b></a>
                                                         </li>
                                                     }
                                                 }
@@ -163,7 +190,7 @@
                                     </div>
                                     <div class="v-option">
                                         <span id="all-revocation">
-                                            <a href="@Url.Action("Index", "Search", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = 0,a_id = "",orderType = ViewBag.orderType,orderKey = ViewBag.orderKey})">全部撤消</a>
+                                            <a href="@Url.Action("Index", "Category", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = 0,a_id = "",orderType = ViewBag.orderType,orderKey = ViewBag.orderKey})">全部撤消</a>
                                         </span>
                                     </div>
                                 </div>
@@ -184,7 +211,7 @@
                             foreach (var brand in ((List<BrandInfo>)ViewBag.Brands))
                             {
                                 <li>
-                                    <a href="@Url.Action("Index", "Search", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = brand.Id,a_id = ViewBag.a_id,orderType = ViewBag.orderType,orderKey = ViewBag.orderKey})">@brand.Name</a>
+                                    <a href="@Url.Action("Index", "Category", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = brand.Id,a_id = ViewBag.a_id,orderType = ViewBag.orderType,orderKey = ViewBag.orderKey})">@brand.Name</a>
                                 </li>
                             }
                                                 }
@@ -222,7 +249,7 @@
                                                 @foreach (var attrV in attr.AttrValues)
                                                 {
                                                     <li>
-                                                        <a href="@Url.Action("Index", "Search", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_Id,a_id = attr.AttrId+"_"+attrV.Id+"@"+ (string)ViewBag.a_id,orderType = ViewBag.orderType,orderKey = ViewBag.orderKey})">@attrV.Name</a>
+                                                        <a href="@Url.Action("Index", "Category", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_Id,a_id = attr.AttrId+"_"+attrV.Id+"@"+ (string)ViewBag.a_id,orderType = ViewBag.orderType,orderKey = ViewBag.orderKey})">@attrV.Name</a>
                                                     </li>
                                                 }
                                             </ul>
@@ -238,7 +265,7 @@
                     </div>
                     <div class="clr"></div>
                 </div>
-             
+
             </div>
             @{
                         var count = ((PagingInfo)ViewBag.pageInfo).TotalPages;
@@ -250,18 +277,18 @@
                 <div class="fore1">
                     <dl class="order">
                         <dt>排序：</dt>
-                        <dd class="@(ViewBag.orderKey==1?"curr":"")"><a href="@Url.Action("Index", "Search", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_Id,a_id =ViewBag.a_id,orderType = 2,orderKey = 1})" onclick="">相关度</a><b></b></dd>
+                        <dd class="@(ViewBag.orderKey==1?"curr":"")"><a href="@Url.Action("Index", "Category", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_Id,a_id =ViewBag.a_id,orderType = 2,orderKey = 1})" onclick="">相关度</a><b></b></dd>
                         <dd class="@(ViewBag.orderKey==2?"curr":"")">
-                            <a href="@Url.Action("Index", "Search", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_Id,a_id =ViewBag.a_id,orderType = 2,orderKey = 2})">成交量</a><b></b>
+                            <a href="@Url.Action("Index", "Category", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_Id,a_id =ViewBag.a_id,orderType = 2,orderKey = 2})">成交量</a><b></b>
                         </dd>
                         <dd class="@(ViewBag.orderKey==3?"curr":"")">
-                            <a href="@Url.Action("Index", "Search", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_Id,a_id =ViewBag.a_id,orderType = ((int)ViewBag.orderType) == 2 ? 1 : 2,orderKey = 3})">价格</a><b></b>
+                            <a href="@Url.Action("Index", "Category", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_Id,a_id =ViewBag.a_id,orderType = ((int)ViewBag.orderType) == 2 ? 1 : 2,orderKey = 3})">价格</a><b></b>
                         </dd>
                         <dd class="@(ViewBag.orderKey==4?"curr":"")">
-                            <a href="@Url.Action("Index", "Search", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_Id,a_id =ViewBag.a_id,orderType = 2,orderKey = 4})">评论数</a><b></b>
+                            <a href="@Url.Action("Index", "Category", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_Id,a_id =ViewBag.a_id,orderType = 2,orderKey = 4})">评论数</a><b></b>
                         </dd>
                         <dd class="@(ViewBag.orderKey==5?"curr":"")">
-                            <a href="@Url.Action("Index", "Search", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_Id,a_id =ViewBag.a_id,orderType = 2,orderKey = 5})">上架时间</a><b></b>
+                            <a href="@Url.Action("Index", "Category", new{pageNo=1,keywords = ViewBag.keywords,exp_keywords = ViewBag.exp_keywords,cid = ViewBag.cid,b_id = ViewBag.b_Id,a_id =ViewBag.a_id,orderType = 2,orderKey = 5})">上架时间</a><b></b>
                         </dd>
                     </dl>
                     <dl class="stock-search">
@@ -294,16 +321,18 @@
                                     <div shop_id="0"></div>
                                 </div>
                                 <div class="lh-wrap-bottom">
-                                    @if (product.DisableBuy) {
+                                    @if (product.DisableBuy)
+                                    {
                                         <div class="p-price">
-                                           <strong>暂无网上报价</strong>
-                                        <label style="float:right" id="lblOrderCount_@product.Id">成交 <b> @product.SaleCounts </b>笔</label>
-                                    </div> }
-                                    else { 
-                                    <div class="p-price">
-                                        <strong>￥@product.MinSalePrice.ToString("f2")</strong>
-                                        <label style="float:right" id="lblOrderCount_@product.Id">成交 <b> @product.SaleCounts </b>笔</label>
-                                    </div>
+                                            <strong>暂无网上报价</strong>
+                                            <label style="float:right" id="lblOrderCount_@product.Id">成交 <b> @product.SaleCounts </b>笔</label>
+                                        </div> }
+                                    else
+                                    {
+                                        <div class="p-price">
+                                            <strong>￥@product.MinSalePrice.ToString("f2")</strong>
+                                            <label style="float:right" id="lblOrderCount_@product.Id">成交 <b> @product.SaleCounts </b>笔</label>
+                                        </div>
                                     }
                                     <div class="p-name">
                                         <a target="_blank" href="@Url.Action("Detail", "Product", new { id = product.Id })">
@@ -322,7 +351,7 @@
                                                             if (product.ProductName.Substring(i).ToUpper().StartsWith(keyword.ToUpper()))
                                                             {
                                                                 newProductName += "<font class='keycolor'>" + product.ProductName.Substring(i, keyword.Length) + "</font>";
-                                                                i += keyword.Length-1;
+                                                                i += keyword.Length - 1;
                                                                 found = true;
                                                                 break;
                                                             }
@@ -346,7 +375,7 @@
                                         <label style="float:right;" id="lblShopAddress_@product.Id">@product.Address</label>
                                     </div>
 
-                             
+
                                 </div>
                             </div>
                         </li>
@@ -363,15 +392,7 @@
                     </span>
                 </div>
             </div>
-            <div id="re-search" class="m" style="display:none;">
-                <dl>
-                    <dt>重新搜索</dt>
-                    <dd>
-                        <input type="text" class="text" id="key-re-search" value="@ViewBag.keywords">
-                        <input type="button" class="button" id="btn-re-search" value="搜&nbsp;索">
-                    </dd>
-                </dl>
-            </div>
+ 
         </div>
         <span class="clr"></span>
     }
@@ -419,4 +440,3 @@
 
     <input type="hidden" id="logined" value="@ViewBag.Logined" />
 </div>
-

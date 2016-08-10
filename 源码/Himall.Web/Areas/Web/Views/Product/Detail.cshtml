@@ -1,6 +1,16 @@
 ﻿@model Himall.Web.Areas.Web.Models.ProductDetailModelForWeb
 @{
-   ViewBag.Title = Model.Product.ProductName;
+   
+   if (string.IsNullOrWhiteSpace(Model.Product.ProductDescriptionInfo.Meta_Title))
+   {
+       ViewBag.Title = Model.Product.ProductName;
+   }
+   else
+   {
+       ViewBag.Title = Model.Product.ProductDescriptionInfo.Meta_Title;
+   }
+   ViewBag.SEOKeyword = Model.Product.ProductDescriptionInfo.Meta_Keywords;
+   ViewBag.SEODescription = Model.Product.ProductDescriptionInfo.Meta_Description;
 }
 @using Himall.Model
 <meta property="wb:webmaster" content="13b21966c78f011e" />

@@ -1882,6 +1882,7 @@
     <Content Include="Areas\Web\Views\WithDraw\AddWithDraw.cshtml" />
     <Content Include="Areas\Web\Views\Pay\CashDepositWeiXinPay.cshtml" />
     <Content Include="Areas\SellerAdmin\Views\Order\AccountTypeList.cshtml" />
+    <Content Include="Areas\Web\Views\Category\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
