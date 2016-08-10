@@ -1411,3 +1411,10 @@ zoom: 1; }
 .himall-area li.hover .city-ul { display: block; }
 .himall-area li a { display: block; float: left; padding: 0 12px; line-height: 21px; white-space: nowrap; text-decoration: none; height: 22px; color: #333; }
 .himall-area li.cur a.p-a, .himall-area li.hover a.p-a, .himall-area .city-ul li.cur a, .himall-area .city-ul li:hover a { background-color: #3480eb; color: #fff; }
+
+
+/*search product result------*/
+.search-product-result { width:1190px !important; }
+.search-product-result .attr{ width: 1188px !important; }
+.search-product-result .prop-attrs .a-values { width:988px !important; }
+.search-product-result .list-h li { width: 239px !important; margin-bottom: 4px !important;}
