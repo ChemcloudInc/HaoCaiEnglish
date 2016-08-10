@@ -208,7 +208,7 @@ img { display: inline }
 /*#plist.plist-n7 li:hover .p-img { padding-top: 7px; }*/
 #plist.prebuy .list-h li .lh-wrap-bottom {  }
 #plist.prebuy .list-h li:hover .lh-wrap-bottom { background-color:#e2eeff; }
-#plist.prebuy .list-h li .lh-wrap { position: absolute; left: 0; top: 0; z-index: 1;  border: none; background: #fff;    border: 1px solid #ddd; margin-left:10px;}
+#plist.prebuy .list-h li .lh-wrap { position: absolute; left: 0; top: 0; z-index: 1; width:233px; border: none; background: #fff;    border: 1px solid #ddd; margin-left:10px;}
 #plist.prebuy .list-h li:hover .lh-wrap { border: 1px solid #73a8f3;border-radius: 1px;     -webkit-box-shadow: 0 0 10px 2px rgba(52, 128, 235, 0.4); -moz-box-shadow: 0 0 10px 2px rgba(52, 128, 235, 0.4);box-shadow: 0 0 10px 2px rgba(52, 128, 235, 0.4);}
 #plist .p-img { position: relative; height: 160px; border: 1px solid #fff; transition: border 0.3s ease-in 0s; text-align: center; }
 #plist.plist-n7 .p-img { height: 234px;  border: none; border-bottom: 1px solid #ddd;}
@@ -349,7 +349,7 @@ del { text-decoration: line-through; }
 .hl_red span{color:#ff0000;}
 #summary-promotion .dd { line-height:22px;}
 #summary-promotion .dd .ll{margin-left:65px;font-size:12px;}
-#summary-promotion .d02{font-size:12px; margin-top:5px;}
+#summary-promotion .d02{font-size:12px;}
 .spec-control, #store-selector .text b, .choose .selected b, .slogens b, #brand-bar .slogens .fore2, #brand-bar .slogens .fore4, .star, .wrap-input a, #brand-bar .slogens dt, #brand-bar .seller-btn a, .itemover-title button, .topic .icon, #ranklist .tabcon span, #comment .btn-comment, #recomment .master s, .topic-best, .master s, .suits li s, #recommend .infos s, #favorable-suit .infos s, .btn-buy, #product-detail .detail-correction b, div.nav-minicart-buynow a, #consult .btn-search, #comments-list .tl, .item-warnning s, .share-list-item a, .share-ft b, #view-bigimg, #tab-services table td .btn-buy, #evaluate s, #evaluate-detail s, .li-img a b, #store-selector .close, .extra-ico, .f-sercvice-list b, .btn-append-extra, .u-name a b, #more-fitting-link b, #summary-countdown s, .s-item .active b, #product-detail .p-tab s, .m3 .p-info s { background-image: url(../Images/newicon20140417.png); background-repeat: no-repeat; }
 .star { display: inline-block; width: 75px; height: 14px;margin-top:3px; }
 .sa0 { background-position: -184px -239px; }
