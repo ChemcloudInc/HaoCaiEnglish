@@ -32,7 +32,7 @@ q::before, q::after { content: ''; }
 .p-simsun { font-family: simsun; }
 /*top nav
 ------------------*/
-.top { width: 100%; line-height: 32px; background: #f2f2f2; color:#888;  position: relative;z-index: 889; }
+.top { width: 100%; line-height: 32px; background: #f2f2f2; color:#333;  position: relative;z-index: 889; }
 .top span { display: inline }
 .top .top-link{ float:left;}
 .top .top-link a{ margin-left:10px; color:#3480e8;}
