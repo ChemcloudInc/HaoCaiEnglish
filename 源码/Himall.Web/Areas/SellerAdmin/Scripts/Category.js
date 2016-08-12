@@ -135,7 +135,7 @@ function InitialDialog(option) {
         content: ['<div class="dialog-form">',
             '<div class="form-group">',
                 '<label class="label-inline" for="">分类名称</label><input value="' + option.name + '" id="newCategoryName" class="form-control input-sm" type="text" >',
-                '<p id="nameErrorMsg" class="help-block">不能为空且不能多于5个字</p>',
+                '<p id="nameErrorMsg" class="help-block">不能为空且不能多于50个字</p>',
             '</div>',
             '<div class="form-group">',
                 '<label class="label-inline" for="">上级分类</label>',
@@ -168,7 +168,7 @@ function InitialDialog(option) {
         okVal: '保存',
         ok: function () {
             var len = $("#newCategoryName").val().length;
-            if (len > 5 || len <= 0) {
+            if (len > 50 || len <= 0) {
                 $("#nameErrorMsg").css('color', 'red');
                 $("#newCategoryName").focus();
                 return false;

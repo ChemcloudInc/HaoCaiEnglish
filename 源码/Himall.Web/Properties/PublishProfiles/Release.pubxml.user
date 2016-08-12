@@ -22,7 +22,7 @@
       <publishTime>07/25/2016 08:58:47</publishTime>
     </File>
     <File Include="Areas/Admin/Scripts/accountManagement.js">
-      <publishTime>08/05/2016 13:16:04</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/Admin/Scripts/ApplyWithDraw.js">
       <publishTime>07/25/2016 16:05:18</publishTime>
@@ -199,7 +199,7 @@
       <publishTime>07/25/2016 08:58:47</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Account/Management.cshtml">
-      <publishTime>08/08/2016 01:34:05</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Account/SetSettlementWeek.cshtml">
       <publishTime>07/25/2016 08:58:47</publishTime>
@@ -1234,7 +1234,7 @@
       <publishTime>07/25/2016 08:58:54</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Content/business.css">
-      <publishTime>08/05/2016 10:17:57</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Scripts/accountDetail.js">
       <publishTime>07/25/2016 08:58:54</publishTime>
@@ -1285,13 +1285,13 @@
       <publishTime>07/25/2016 08:58:54</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Scripts/orderAccountType.js">
-      <publishTime>08/08/2016 01:04:45</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Scripts/orderComplaintManagement.js">
       <publishTime>07/25/2016 08:58:54</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Scripts/orderManagement.js">
-      <publishTime>08/06/2016 12:16:44</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Scripts/orderPrint.js">
       <publishTime>07/25/2016 08:58:54</publishTime>
@@ -1375,7 +1375,7 @@
       <publishTime>07/25/2016 08:58:54</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Views/CashDeposit/Management.cshtml">
-      <publishTime>08/06/2016 00:35:24</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Views/CashDeposit/Return.cshtml">
       <publishTime>07/25/2016 08:58:54</publishTime>
@@ -1426,7 +1426,7 @@
       <publishTime>07/25/2016 08:58:54</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Views/Home/Console.cshtml">
-      <publishTime>08/08/2016 01:09:57</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Views/Home/Index.cshtml">
       <publishTime>08/02/2016 17:43:25</publishTime>
@@ -1462,7 +1462,7 @@
       <publishTime>07/25/2016 08:58:54</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Views/Order/AccountTypeList.cshtml">
-      <publishTime>08/07/2016 22:55:37</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Views/Order/Detail.cshtml">
       <publishTime>08/04/2016 09:08:14</publishTime>
@@ -1522,7 +1522,7 @@
       <publishTime>07/25/2016 08:58:54</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Views/Product/PublicStepTwo.cshtml">
-      <publishTime>08/02/2016 17:43:25</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Views/ProductComment/Management.cshtml">
       <publishTime>07/25/2016 08:58:54</publishTime>
@@ -1537,7 +1537,7 @@
       <publishTime>07/25/2016 08:58:54</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Views/ProductImport/ImportManage.cshtml">
-      <publishTime>08/08/2016 09:47:48</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/SellerAdmin/Views/ShakeAround/AddPage.cshtml">
       <publishTime>07/25/2016 08:58:54</publishTime>
@@ -1669,13 +1669,13 @@
       <publishTime>08/04/2016 09:08:14</publishTime>
     </File>
     <File Include="Areas/Web/Content/findpassword1.css">
-      <publishTime>08/05/2016 10:17:57</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/Web/Content/home.css">
       <publishTime>07/25/2016 08:58:54</publishTime>
     </File>
     <File Include="Areas/Web/Content/inner.css">
-      <publishTime>08/05/2016 09:32:51</publishTime>
+      <publishTime>08/10/2016 17:59:41</publishTime>
     </File>
     <File Include="Areas/Web/Content/login.css">
       <publishTime>07/27/2016 17:06:41</publishTime>
@@ -2065,7 +2065,7 @@
       <publishTime>07/26/2016 22:16:10</publishTime>
     </File>
     <File Include="Areas/Web/Scripts/CashDepositWeiXinPay.js">
-      <publishTime>08/07/2016 09:26:22</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/Web/Scripts/cloud-zoom.1.0.2.min.js">
       <publishTime>07/25/2016 08:58:55</publishTime>
@@ -2160,6 +2160,9 @@
     <File Include="Areas/Web/Views/Cart/Cart.cshtml">
       <publishTime>07/25/2016 08:58:55</publishTime>
     </File>
+    <File Include="Areas/Web/Views/Category/Index.cshtml">
+      <publishTime>08/12/2016 11:12:21</publishTime>
+    </File>
     <File Include="Areas/Web/Views/CollocationOrder/Index.cshtml">
       <publishTime>07/25/2016 08:58:55</publishTime>
     </File>
@@ -2215,7 +2218,7 @@
       <publishTime>07/25/2016 08:58:55</publishTime>
     </File>
     <File Include="Areas/Web/Views/LimitTimeBuy/Detail.cshtml">
-      <publishTime>08/05/2016 09:32:51</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/Web/Views/LimitTimeBuy/Home.cshtml">
       <publishTime>08/04/2016 09:08:14</publishTime>
@@ -2233,7 +2236,7 @@
       <publishTime>07/25/2016 08:58:55</publishTime>
     </File>
     <File Include="Areas/Web/Views/Order/Pay.cshtml">
-      <publishTime>08/06/2016 00:44:32</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/Web/Views/Order/PayConfirm.cshtml">
       <publishTime>07/25/2016 08:58:55</publishTime>
@@ -2272,16 +2275,16 @@
       <publishTime>07/25/2016 08:58:55</publishTime>
     </File>
     <File Include="Areas/Web/Views/Pay/CashDepositWeiXinPay.cshtml">
-      <publishTime>08/06/2016 00:35:49</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/Web/Views/Pay/QRPay.cshtml">
       <publishTime>07/25/2016 08:58:55</publishTime>
     </File>
     <File Include="Areas/Web/Views/Pay/Return.cshtml">
-      <publishTime>08/08/2016 09:19:28</publishTime>
+      <publishTime>08/09/2016 17:40:46</publishTime>
     </File>
     <File Include="Areas/Web/Views/Product/Detail.cshtml">
-      <publishTime>08/05/2016 16:34:39</publishTime>
+      <publishTime>08/10/2016 10:42:22</publishTime>
     </File>
     <File Include="Areas/Web/Views/Product/GetCollocationProducts.cshtml">
       <publishTime>07/25/2016 08:58:55</publishTime>
@@ -2305,7 +2308,7 @@
       <publishTime>07/25/2016 08:58:55</publishTime>
     </File>
     <File Include="Areas/Web/Views/Register/Index.cshtml">
-      <publishTime>08/05/2016 10:17:57</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Areas/Web/Views/Register/RegBusiness.cshtml">
       <publishTime>07/25/2016 08:58:55</publishTime>
@@ -2317,7 +2320,7 @@
       <publishTime>07/25/2016 08:58:55</publishTime>
     </File>
     <File Include="Areas/Web/Views/Search/Index.cshtml">
-      <publishTime>08/02/2016 17:43:25</publishTime>
+      <publishTime>08/10/2016 17:59:41</publishTime>
     </File>
     <File Include="Areas/Web/Views/Shared/CustmerServices.cshtml">
       <publishTime>07/25/2016 08:58:55</publishTime>
@@ -2326,7 +2329,7 @@
       <publishTime>07/25/2016 08:58:55</publishTime>
     </File>
     <File Include="Areas/Web/Views/Shared/Header.cshtml">
-      <publishTime>08/02/2016 17:43:25</publishTime>
+      <publishTime>08/10/2016 14:57:06</publishTime>
     </File>
     <File Include="Areas/Web/Views/Shared/ShopHeader.cshtml">
       <publishTime>07/25/2016 08:58:55</publishTime>
@@ -2356,7 +2359,7 @@
       <publishTime>07/25/2016 08:58:55</publishTime>
     </File>
     <File Include="Areas/Web/Views/Shared/_TopInfo.cshtml">
-      <publishTime>07/25/2016 08:58:55</publishTime>
+      <publishTime>08/09/2016 18:02:42</publishTime>
     </File>
     <File Include="Areas/Web/Views/Shared/_UserCenter.cshtml">
       <publishTime>07/25/2016 08:58:55</publishTime>
@@ -2413,7 +2416,7 @@
       <publishTime>08/01/2016 16:58:30</publishTime>
     </File>
     <File Include="Areas/Web/Views/UserCenter/Index.cshtml">
-      <publishTime>08/02/2016 17:43:25</publishTime>
+      <publishTime>08/10/2016 17:03:17</publishTime>
     </File>
     <File Include="Areas/Web/Views/UserComment/Index.cshtml">
       <publishTime>07/25/2016 08:58:55</publishTime>
@@ -2497,31 +2500,31 @@
       <publishTime>07/25/2016 08:58:28</publishTime>
     </File>
     <File Include="bin/Himall.AOPProxy.dll">
-      <publishTime>08/08/2016 09:54:58</publishTime>
+      <publishTime>08/12/2016 11:37:27</publishTime>
     </File>
     <File Include="bin/Himall.Core.dll">
-      <publishTime>08/08/2016 09:54:58</publishTime>
+      <publishTime>08/12/2016 11:37:27</publishTime>
     </File>
     <File Include="bin/Himall.Entity.dll">
-      <publishTime>08/08/2016 09:55:00</publishTime>
+      <publishTime>08/12/2016 11:37:29</publishTime>
     </File>
     <File Include="bin/Himall.IServices.dll">
-      <publishTime>08/08/2016 09:54:59</publishTime>
+      <publishTime>08/12/2016 11:37:28</publishTime>
     </File>
     <File Include="bin/Himall.Model.dll">
-      <publishTime>08/08/2016 09:54:59</publishTime>
+      <publishTime>08/12/2016 11:37:28</publishTime>
     </File>
     <File Include="bin/Himall.Service.dll">
-      <publishTime>08/08/2016 09:55:02</publishTime>
+      <publishTime>08/12/2016 11:37:31</publishTime>
     </File>
     <File Include="bin/Himall.ServiceProvider.dll">
-      <publishTime>08/08/2016 09:55:00</publishTime>
+      <publishTime>08/12/2016 11:37:29</publishTime>
     </File>
     <File Include="bin/Himall.Web.dll">
-      <publishTime>08/08/2016 09:55:10</publishTime>
+      <publishTime>08/12/2016 11:37:39</publishTime>
     </File>
     <File Include="bin/Himall.Web.Framework.dll">
-      <publishTime>08/08/2016 09:55:01</publishTime>
+      <publishTime>08/12/2016 11:37:30</publishTime>
     </File>
     <File Include="bin/Hishop.Weixin.MP.dll">
       <publishTime>08/05/2016 10:40:58</publishTime>
@@ -2683,10 +2686,10 @@
       <publishTime>07/25/2016 08:58:59</publishTime>
     </File>
     <File Include="Content/custom.css">
-      <publishTime>07/27/2016 17:06:41</publishTime>
+      <publishTime>08/10/2016 17:03:17</publishTime>
     </File>
     <File Include="Content/inner-custom.css">
-      <publishTime>08/05/2016 09:32:51</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Content/installStyle.css">
       <publishTime>07/25/2016 08:58:59</publishTime>
@@ -2773,7 +2776,7 @@
       <publishTime>07/25/2016 08:59:00</publishTime>
     </File>
     <File Include="Images/icon-c.png">
-      <publishTime>08/05/2016 10:17:57</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Images/icon.png">
       <publishTime>07/25/2016 08:59:00</publishTime>
@@ -2782,7 +2785,7 @@
       <publishTime>07/25/2016 08:59:00</publishTime>
     </File>
     <File Include="Images/index.jpg">
-      <publishTime>07/25/2016 17:06:34</publishTime>
+      <publishTime>08/09/2016 18:02:42</publishTime>
     </File>
     <File Include="Images/installLogo.png">
       <publishTime>07/25/2016 08:59:00</publishTime>
@@ -2845,7 +2848,7 @@
       <publishTime>07/25/2016 08:59:00</publishTime>
     </File>
     <File Include="Images/shop.jpg">
-      <publishTime>07/25/2016 08:59:00</publishTime>
+      <publishTime>08/09/2016 13:11:12</publishTime>
     </File>
     <File Include="Images/step2013.png">
       <publishTime>07/25/2016 08:59:00</publishTime>
@@ -4402,7 +4405,7 @@
       <publishTime>07/25/2016 08:59:46</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/08/2016 09:56:35</publishTime>
+      <publishTime>08/12/2016 11:37:41</publishTime>
     </File>
   </ItemGroup>
 </Project>
