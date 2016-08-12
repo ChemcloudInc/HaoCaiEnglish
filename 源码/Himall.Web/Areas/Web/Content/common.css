@@ -64,7 +64,7 @@ q::before, q::after { content: ''; }
 /*header
 ---------------------*/
 .header{ width:100%; background-color:#fff;}
-.search-bar { height: 60px; padding: 15px 0 20px;  width: 1190px; margin: 0 auto;}
+.search-bar { height: 60px; padding: 20px 0 15px;  width: 1190px; margin: 0 auto;}
 .logo { float: left; width: 330px; }
 .logo img{  display: inline-block;}
 .search { float: right; padding-right:280px;margin-top: 5px; }

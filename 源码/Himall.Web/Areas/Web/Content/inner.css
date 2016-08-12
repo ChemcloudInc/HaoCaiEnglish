@@ -90,7 +90,7 @@ img { display: inline }
 .left { float: left; }
 .product-left{ width:250px;}
 .product-left h2{ font-size:14px }
-#refilter { width: 208px; border: 1px solid #ddd; border-top: 2px solid #999; margin-bottom: 10px; }
+#refilter { width: 208px; border: 1px solid #ddd; border-top: 1px solid #ddd; margin-bottom: 10px; }
 #refilter .mt { height: 31px; padding-left: 8px; background: #F7F7F7; line-height: 31px; }
 #refilter .mt h2, #refilter .mt h2 a { font-size: 15px; color: #333; font-weight: normal }
 #refilter .mc { width: 208px; }
@@ -209,7 +209,7 @@ img { display: inline }
 #plist.prebuy .list-h li .lh-wrap-bottom {  }
 #plist.prebuy .list-h li:hover .lh-wrap-bottom { background-color:#e2eeff; }
 #plist.prebuy .list-h li .lh-wrap { position: absolute; left: 0; top: 0; z-index: 1; width:233px; border: none; background: #fff;    border: 1px solid #ddd; margin-left:10px;}
-#plist.prebuy .list-h li:hover .lh-wrap { border: 1px solid #73a8f3;border-radius: 1px;     -webkit-box-shadow: 0 0 10px 2px rgba(52, 128, 235, 0.4); -moz-box-shadow: 0 0 10px 2px rgba(52, 128, 235, 0.4);box-shadow: 0 0 10px 2px rgba(52, 128, 235, 0.4);}
+#plist.prebuy .list-h li:hover .lh-wrap { border: 1px solid #73a8f3;border-radius: 1px; }
 #plist .p-img { position: relative; height: 160px; border: 1px solid #fff; transition: border 0.3s ease-in 0s; text-align: center; }
 #plist.plist-n7 .p-img { height: 234px;  border: none; border-bottom: 1px solid #ddd;}
 .list-h .p-img img { max-width: 234px; max-height: 234px; }
@@ -338,7 +338,7 @@ img { display: inline }
 #summary-price .dd { line-height: 12px; }
 #summary-service .dd{font-size:14px;color:#2d2d2d;}
 
-#summary-price .p-price { color:#3480eb;padding-left:10px; font-size: 26px; font-family: microsoft yahei;width:auto;height:31px;border-right:1px dotted #a49e9e;line-height:30px;margin-top:10px;    padding-right: 20px;}
+#summary-price .p-price { color:#3480eb;padding-left:10px; font-size: 26px; font-family: microsoft yahei;width:auto;height:31px;line-height:30px;margin-top:10px;    padding-right: 20px;}
 del { text-decoration: line-through; }
 #summary-market del { float: left; }
 .hl_red_bg { color: #fff;height:20px;width:40px;line-height:20px; margin-right: 25px; display: inline-block;text-align: center;font-size:12px;letter-spacing: 2px; }
@@ -556,7 +556,7 @@ a.d-offline b { color: #ccc; }
 .ltcatebox .ltcate a { display: block; padding: 0 10px; }
 .ltcatebox .ltcate .curr a, .ltcatebox .ltcate .curr a:visited { color: #fff; }
 /*商品图片查看放大镜************/
-.cloud-zoom { width: 400px; height: 400px;/* text-align:center;*/ }
+.cloud-zoom { width: 400px; height: 400px;/* text-align:center;*/ border: 1px solid rgba(0,0,0,.05);}
 .cloud-zoom-lens { cursor: move; border-radius: 2px; background: url(../Images/len.png); }
 /*.mousetrap,.cloud-zoom-lens{ left:50% !important; transform:translateX(-50%);}*/
 .cloud-zoom-big { border: 1px solid #ccc; overflow: hidden; border-radius: 2px }
@@ -1159,22 +1159,26 @@ zoom: 1; }
 .shop-focus ol li { width: 22px; height: 22px; line-height: 22px; display: inline-block; margin: 0 3px; background: #999; text-align: center; cursor: default; color: #fff; border-radius: 12px; -moz-border-radius: 12px; -webkit-border-radius: 12px; cursor: pointer; transition: all linear .2s }
 .shop-focus ol li.cur { background: #3480eb; }
 .shop-sort-list { border: 1px solid #ddd; padding: 7px 5px; }
-.shop-sort-list h3 { line-height: 26px; background-color: #f6f6f6; color: #e36679; padding: 0 10px; font-weight: bold; }
+.shop-sort-list h3 { line-height: 26px; color: #e36679; padding: 0 10px; font-weight: bold; border-top: 1px dashed #ddd; }
+.shop-sort-list h3:first-child { border-top:none; }
 .shop-sort-list ul { margin-bottom: 5px; }
 .shop-sort-list li { line-height: 22px; padding-left: 10px; padding-top: 8px; }
 .shop-recommend { margin-top: 10px; }
 .shop-recommend ul { width: 975px; margin-right: -5px; }
 .shop-recommend ul li { width: 320px; height: 320px; float: left; margin-right: 5px; }
 .shop-recommend ul li img { width: 100%; height: 100%; }
-.shop-goods-list { border: 1px solid #ddd; margin-top: 28px; position: relative; }
-.shop-goods-list .list-title { font-size: 18px; font-weight: normal; line-height: 24px; background-color: #fff; top: -12px; left: 10px; padding: 0 10px; color: #3480eb; position: absolute; }
-.shop-goods-list ul { margin: 0 8px 10px; }
-.shop-goods-list li { margin: 20px 10px 5px; float: left; width: 170px; line-height: 20px; height: 280px; }
-.shop-goods-list li a { height: 170px; display: block; text-align: center; }
-.shop-goods-list li img { max-height: 170px; max-width: 170px; }
-.shop-goods-list li h3 { margin-top: 10px; height: 60px; overflow: hidden; }
+.shop-goods-list { margin-top: 28px; position: relative; }
+.shop-goods-list .list-title { font-size: 18px; font-weight: normal; line-height: 24px; background-color: #fff; top: -12px; left: 3px; padding: 0 10px; color: #3480eb; position: absolute; }
+.shop-goods-list ul { padding-top: 19px; }
+.shop-goods-list li { float: left; width: 230px; line-height: 20px; height: 328px;border: 1px solid #ddd;margin-left: 10px;margin-bottom: 11px;}
+.shop-goods-list li div { padding-left: 8px;padding-right: 8px;height: 97px; margin-top: -10px; }
+.shop-goods-list li>a{ height: 230px; display: block; text-align: center; border-bottom: 1px solid #ddd; }
+.shop-goods-list li img { max-height: 230px; max-width: 230px; }
+.shop-goods-list li h3 { margin-top: 10px; height: 60px; overflow: hidden; padding-bottom: 5px; margin-bottom: 5px; border-bottom: 1px dashed #ddd; padding-top: 5px; }
 .shop-goods-list li h3 a { display: inline; height: auto; }
 .shop-goods-list li p span, .shop-ranking li p span { color: #3480eb }
+.shop-goods-list li:hover div {background-color:#e2eeff;}
+.shop-goods-list li:hover { border: 1px solid #73a8f3;border-radius: 1px; }
 .shop-ranking { border: 1px solid #ddd; padding: 7px 5px; margin-top: 10px; }
 .shop-ranking h3 span { line-height: 26px; border: 1px solid #f6f6f6; color: #3480eb; width: 93px; text-align: center; margin: 0 2px; cursor: pointer }
 .shop-ranking h3 span.current, .shop-ranking h3 span:hover { background-color: #f6f6f6; }

@@ -62,22 +62,24 @@
 
 				<li>
 					<a target="_blank" href="@Url.Action("Detail", "Product", new { id = p.Id })">
-						<img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@p.ImagePath/1_220.png" alt="" />
+						<img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@p.ImagePath/1_234.png" alt="" />
 					</a>
-					<h3>
-						<a target="_blank" href="@Url.Action("Detail", "Product", new { id = p.Id })">
-							@if (!string.IsNullOrWhiteSpace(ViewBag.Keyword))
-							{
-								@MvcHtmlString.Create(p.ProductName.Replace((string)ViewBag.Keyword, "<font class='keycolor'>" + (string)ViewBag.Keyword + "</font>"));
-							}
-							else
-							{
-								@p.ProductName
-							}
-						</a>
-					</h3>
-					<p><span>￥@p.MinSalePrice.ToString("f2")</span></p>
-					<p>已售<b>@(p.SaleCounts)</b>件</p>
+                    <div>
+                        <h3>
+                            <a target="_blank" href="@Url.Action("Detail", "Product", new { id = p.Id })">
+                                @if (!string.IsNullOrWhiteSpace(ViewBag.Keyword))
+                                {
+                                    @MvcHtmlString.Create(p.ProductName.Replace((string)ViewBag.Keyword, "<font class='keycolor'>" + (string)ViewBag.Keyword + "</font>"));
+                                }
+                                else
+                                {
+                                    @p.ProductName
+                                }
+                            </a>
+                        </h3>
+                        <p style="float:left"><span>￥@p.MinSalePrice.ToString("f2")</span></p>
+                        <p style="float:right">已售<b>@(p.SaleCounts)</b>件</p>
+                    </div>
 				</li>
 			}
 
