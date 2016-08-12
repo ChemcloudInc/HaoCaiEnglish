@@ -38,7 +38,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 		[UnAuthorize]
 		public JsonResult CreateCategory(string name, long pId)
 		{
-			if (string.IsNullOrWhiteSpace(name) || name.Length > 5)
+			if (string.IsNullOrWhiteSpace(name) || name.Length > 50)
 			{
 				throw new Exception();
 			}

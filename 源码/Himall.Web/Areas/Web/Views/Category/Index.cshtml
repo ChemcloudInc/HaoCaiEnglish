@@ -147,9 +147,9 @@
             <div class="clr"></div>
             <div class="m" id="select">
                 <div class="mt">
-                    <h1>@ViewBag.keywords &nbsp;&nbsp;<strong>商品筛选</strong></h1>
+                    <h1>@ViewBag.CategoryName&nbsp;&nbsp;<strong>商品筛选</strong></h1>
                     <div class="total">
-                        <span>(共<strong id="res_count">@(Model == null ? 0 : Model.Count())</strong>个商品)</span>
+                        <span>(共<strong id="res_count">@(Model == null ? 0 : ViewBag.Total)</strong>个商品)</span>
                     </div>
                 </div>
                 <div class="mc attrs">

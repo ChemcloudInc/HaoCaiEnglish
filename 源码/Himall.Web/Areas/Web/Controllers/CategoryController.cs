@@ -81,6 +81,7 @@ namespace Himall.Web.Areas.Web.Controllers
             }
             IProductService productService = ServiceHelper.Create<IProductService>();
             PageModel<ProductInfo> pageModel = productService.SearchProduct(productSearch1);
+            ViewBag.Total = pageModel.Total;
             int total = pageModel.Total;
             ProductInfo[] array = pageModel.Models.ToArray();
             dynamic viewBag = base.ViewBag;
@@ -92,7 +93,8 @@ namespace Himall.Web.Areas.Web.Controllers
             BrandInfo brand = ServiceHelper.Create<IBrandService>().GetBrand(b_id) ?? new BrandInfo();
             string str4 = (brand == null ? "" : brand.Name);
             string str5 = (string.IsNullOrEmpty(keywords) ? str3 : keywords);
-           // base.ViewBag.keywords = (string.IsNullOrEmpty(str5) ? str4 : str5);
+            //base.ViewBag.keywords = (string.IsNullOrEmpty(str5) ? str4 : str5);
+            ViewBag.CategoryName = str3;
             ViewBag.exp_keywords = exp_keywords;
             if (pageModel.Total == 0)
             {
