@@ -338,7 +338,7 @@ img { display: inline }
 #summary-price .dd { line-height: 12px; }
 #summary-service .dd{font-size:14px;color:#2d2d2d;}
 
-#summary-price .p-price { color:#3480eb;padding-left:10px; font-size: 26px; font-family: microsoft yahei;width:auto;height:31px;line-height:30px;margin-top:10px;    padding-right: 20px;}
+#summary-price .p-price { color:#3480eb; font-size: 22px; font-family: microsoft yahei;width:auto;height:31px;line-height:30px;margin-top:10px;    padding-right: 20px;}
 del { text-decoration: line-through; }
 #summary-market del { float: left; }
 .hl_red_bg { color: #fff;height:20px;width:40px;line-height:20px; margin-right: 25px; display: inline-block;text-align: center;font-size:12px;letter-spacing: 2px; }
