@@ -331,7 +331,7 @@ img { display: inline }
 #summary-price .b .b-01{width:auto;border-right:1px solid #a49e9e;    padding: 0 30px;}
 #summary-price .dt01{font-size:14px;padding-top: 15px;}
 #summary-price .dt02{font-size:16px;text-align: center;text-decoration: line-through;padding-left:20px;}
-#product-intro .dt { float: left; width:85px;}
+#product-intro .dt { float: left; width:50px;}
 #product-intro .l{letter-spacing: 3px;}
 #product-intro .dd { float: left;}
 #product-intro .dd em{font-size:12px;}
@@ -654,7 +654,7 @@ a.d-offline b { color: #ccc; }
 #nav-minicart .p-price em { color: #999; font-weight: 400; }
 #nav-minicart .p-price { line-height: 1.2em; font-weight: 700; color: #3480eb; }
 #product-detail .detail-list { padding: 8px; border: solid #cbcad0; border-width: 0 1px 1px; overflow: hidden; zoom: 1; margin-bottom: 10px; }
-#product-detail .detail-list li { float: left; width: 33%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 2px 0; }
+#product-detail .detail-list li { float: left; width: 30%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 2px 0; }
 #product-detail .detail-correction { padding: 8px 0; zoom: 1; }
 #product-detail .tab a,#comments-list .tab a{height:38px;line-height: 38px;padding:0 26px;color:#000; font-size: 14px;    border-right: 1px solid #cbcad0;border-top: 1px solid #cbcad0;background-color: #F6F4F1;}
 #product-detail .detail-correction b { display: inline-block; width: 18px; height: 15px; background-position: -260px -270px; margin-right: 5px; vertical-align: middle; }
