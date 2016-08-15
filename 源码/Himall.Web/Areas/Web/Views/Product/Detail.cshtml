@@ -11,6 +11,13 @@
    }
    ViewBag.SEOKeyword = Model.Product.ProductDescriptionInfo.Meta_Keywords;
    ViewBag.SEODescription = Model.Product.ProductDescriptionInfo.Meta_Description;
+   Boolean temp = true;
+   String price = ViewBag.Price;
+   if(price.Equals("0"))
+   {
+       temp = false;
+   }
+       
 }
 @using Himall.Model
 <meta property="wb:webmaster" content="13b21966c78f011e" />
@@ -177,7 +184,15 @@
                     <li id="summary-price">
                         <div class="t">
                             @if (ViewBag.DisableBuy)
-                            { <div class="p-price dt">暂无报价</div> }
+                            { 
+                        
+                               // if (ViewBag.Price > 0)
+                               // {
+                                if(temp)
+                                { <div class="p-price-old">参考价<span>￥@ViewBag.Price</span></div>}
+                               // }
+                                  <div class="p-price dt">暂无报价</div>
+                            }
 
                             else
                             {
