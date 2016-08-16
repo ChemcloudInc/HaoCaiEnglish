@@ -81,11 +81,13 @@
 
                     <li>
                         <a target="_blank" href="@Url.Action("Detail", "Product", new { id = p.Id })">
-                            <img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@p.Pic/1_220.png" alt="" />
+                            <img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@p.Pic/1_234.png" alt="" />
                         </a>
-                        <h3><a target="_blank" href="@Url.Action("Detail", "Product", new { id = p.Id })">@p.Name</a></h3>
-                        <p><span>￥@p.Price</span></p>
-                        <p>已售@(p.SaleCount)件</p>
+			<div>
+                            <h3><a target="_blank" href="@Url.Action("Detail", "Product", new { id = p.Id })">@p.Name</a></h3>
+                            <p style="float:left;"><span>￥@p.Price</span></p>
+                            <p style="float:right;">已售@(p.SaleCount)件</p>
+			</div>
                     </li>
                 }
             </ul>
