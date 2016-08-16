@@ -761,7 +761,7 @@ a.css3-btn, a.css3-btn:hover, a.css3-btn:visited { color: #fff; }
 #product-info .dt { color: #999; float: left; }
 #product-info .dd { float: left; }
 #p-num-comment { color: #9C9A9C; }
-.btn-goshop { display: block; margin: 0 auto; width: 120px; height: 32px; overflow: hidden; cursor: pointer; font-size: 18px; line-height: 32px; background-color: #ed4447; color: #fff; text-align: center; text-decoration: none; border-radius: 4px; }
+.btn-goshop { display: block; margin: 0 auto; width: 120px; height: 32px; overflow: hidden; cursor: pointer; font-size: 18px; line-height: 32px; background-color: #3480eb; color: #fff; text-align: center; text-decoration: none; border-radius: 4px; }
 .btn-goshop_in { display: block; width: 200px; height: 50px; overflow: hidden; cursor: pointer; font-size: 18px; line-height: 50px; background-color: #3480eb; color: #fff; text-align: center; text-decoration: none; border-radius: 4px; }
 .btn-goshop:hover, .btn-goshop_in:hover { background-color: #42a4ea; color: #fff }
 .btn-goshop b, .btn-goshop_in b { font-family: 'simsun'; margin-left: 6px }
@@ -773,8 +773,8 @@ a.css3-btn, a.css3-btn:hover, a.css3-btn:visited { color: #fff; }
 .Review_Form li { margin-bottom: 5px; line-height: 25px; }
 .Review_Form span { vertical-align: top; font-weight: bold; }
 .Review_Form .area1 { width: 500px; height: 80px; padding: 5px; }
-.Review_Form li .getRefer { width: 86px; height: 26px; display: block; cursor: pointer; font-size: 14px; line-height: 26px; background-color: #ed4447; color: #fff; text-align: center; text-decoration: none; border-radius: 3px; margin-left: 68px; }
-.Review_Form li .getRefer:hover { background-color: #f05255; }
+.Review_Form li .getRefer { width: 86px; height: 26px; display: block; cursor: pointer; font-size: 14px; line-height: 26px; background-color: #3480eb; color: #fff; text-align: center; text-decoration: none; border-radius: 3px; margin-left: 68px; }
+.Review_Form li .getRefer:hover { background-color: #5294f1; }
 /*购买了还购买 组合购----*/
 .mscoll { border: 1px solid #cbcad0; margin-bottom: 20px; border-top: 0; }
 .mscon .mleft { background-position: 0 -9px; }
@@ -1159,8 +1159,7 @@ zoom: 1; }
 .shop-focus ol li { width: 22px; height: 22px; line-height: 22px; display: inline-block; margin: 0 3px; background: #999; text-align: center; cursor: default; color: #fff; border-radius: 12px; -moz-border-radius: 12px; -webkit-border-radius: 12px; cursor: pointer; transition: all linear .2s }
 .shop-focus ol li.cur { background: #3480eb; }
 .shop-sort-list { border: 1px solid #ddd; padding: 7px 5px; }
-.shop-sort-list h3 { line-height: 26px; color: #e36679; padding: 0 10px; font-weight: bold; border-top: 1px dashed #ddd; }
-.shop-sort-list h3:first-child { border-top:none; }
+.shop-sort-list h3 { line-height: 26px; background-color: #f6f6f6; color: #e36679; padding: 0 10px; font-weight: bold; }
 .shop-sort-list ul { margin-bottom: 5px; }
 .shop-sort-list li { line-height: 22px; padding-left: 10px; padding-top: 8px; }
 .shop-recommend { margin-top: 10px; }
