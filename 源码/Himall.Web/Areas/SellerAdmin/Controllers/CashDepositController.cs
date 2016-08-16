@@ -185,13 +185,16 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 					Id = item.PluginInfo.PluginId
 				};
 			});
-			paymentModels = paymentModels.Where((PaymentModel item) => {
-				if (string.IsNullOrEmpty(item.RequestUrl))
-				{
-					return false;
-				}
-				return item.Id != "Himall.Plugin.Payment.WeiXinPay";
-			});
+            paymentModels = paymentModels.Where((PaymentModel item) =>
+            {
+                if (string.IsNullOrEmpty(item.RequestUrl))
+                {
+                    return false;
+                }
+               return item.Id != "Himall.Plugin.Payment.WeiXinPay";
+             
+            });
+            paymentModels = paymentModels.Where(a => !a.Id.Equals("Himall.Plugin.Payment.WeiXinPay_Native"));//只支持支付宝
 			return Json(paymentModels);
 		}
         

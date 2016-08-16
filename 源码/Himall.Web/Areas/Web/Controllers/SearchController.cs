@@ -88,6 +88,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			IProductService productService = ServiceHelper.Create<IProductService>();
 			PageModel<ProductInfo> pageModel = productService.SearchProduct(productSearch1);
 			int total = pageModel.Total;
+            ViewBag.Total = total;
 			ProductInfo[] array = pageModel.Models.ToArray();
 			dynamic viewBag = base.ViewBag;
 			num = (base.CurrentUser == null ? 0 : base.CurrentUser.Id);

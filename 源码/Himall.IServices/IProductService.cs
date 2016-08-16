@@ -44,11 +44,11 @@ namespace Himall.IServices
 
 		List<decimal> GetFreights(IEnumerable<string> skuIds, IEnumerable<int> counts, int cityId);
 
-		IQueryable<ProductInfo> GetHotConcernedProduct(long shopId, int count = 5);
+		IQueryable<ProductInfo> GetHotConcernedProduct(long shopId, int count = 10);
 
-		IQueryable<ProductInfo> GetHotSaleProduct(long shopId, int count = 5);
+		IQueryable<ProductInfo> GetHotSaleProduct(long shopId, int count = 10);
 
-		IQueryable<ProductInfo> GetNewSaleProduct(long shopId, int count = 5);
+		IQueryable<ProductInfo> GetNewSaleProduct(long shopId, int count = 10);
 
 		long GetNextProductId();
 

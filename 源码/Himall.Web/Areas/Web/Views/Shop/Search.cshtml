@@ -55,7 +55,7 @@
 	else
 	{
 	<div class="shop-goods-list">
-        <strong class="list-title"><b>@(ViewBag.Keyword == string.Empty ? ViewBag.CategoryName : ViewBag.Keyword)</b> 找到 @Model.Products.Count()件相关商品</strong>
+        <strong class="list-title"><b>@(ViewBag.Keyword == string.Empty ? ViewBag.CategoryName : ViewBag.Keyword)</b> 找到 @ViewBag.Total 件相关商品</strong>
 		<ul class="cl">
 			@foreach (var p in Model.Products)
 			{
