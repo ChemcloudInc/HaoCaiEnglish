@@ -345,6 +345,7 @@
     <Content Include="Areas\SellerAdmin\Scripts\navigationManagement.js" />
     <Content Include="Areas\SellerAdmin\Scripts\operationLogManagement.js" />
     <Content Include="Areas\SellerAdmin\Scripts\orderAccountType.js" />
+    <Content Include="Areas\SellerAdmin\Scripts\OrderApplySettlement.js" />
     <Content Include="Areas\SellerAdmin\Scripts\orderComplaintManagement.js" />
     <Content Include="Areas\SellerAdmin\Scripts\orderManagement.js" />
     <Content Include="Areas\SellerAdmin\Scripts\orderPrint.js" />
@@ -676,7 +677,9 @@
     <Content Include="Plugins\Payment\Himall.WeixinPaymentBase.dll" />
     <Content Include="Printer\install_lodop32.exe" />
     <Content Include="Printer\install_lodop64.exe" />
-    <Content Include="quartz_jobs.xml" />
+    <Content Include="quartz_jobs.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\artDialog.iframeTools.js" />
     <Content Include="Scripts\autoNumeric.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
@@ -1883,6 +1886,7 @@
     <Content Include="Areas\Web\Views\Pay\CashDepositWeiXinPay.cshtml" />
     <Content Include="Areas\SellerAdmin\Views\Order\AccountTypeList.cshtml" />
     <Content Include="Areas\Web\Views\Category\Index.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\Order\ApplySettlement.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

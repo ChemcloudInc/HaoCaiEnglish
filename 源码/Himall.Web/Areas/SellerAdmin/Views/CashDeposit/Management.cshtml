@@ -152,6 +152,7 @@
                                 var url = $('input[name="requestUrl"]:checked').val();
                                 BuildPostForm('pay_form', url, '_blank').submit();
                             }
+
                             else if ($('input[name="requestUrl"]:checked').attr('urlType') == "1")
                                 //  window.open($('input[name="requestUrl"]:checked').val());
                             {
@@ -162,9 +163,12 @@
                                   window.open(url);
                                
                         }
-                        else{
-                            window.open($('input[name="requestUrl"]:checked').val());
-                        }
+                       
+
+                            else
+                            {
+                                window.open($('input[name="requestUrl"]:checked').val());
+                            }
 
                         }
                         else
@@ -177,11 +181,13 @@
 
 
 
-       // $('input[name="requestUrl"]').change(function () {
-       //     var url = $(this).val();
-       //    if ($(this).attr('urlType') == "1")
-       //        url = '/pay/QRPay?url=' + url + '&id=' + $(this).attr('id') + '&orderIds=' + orderIds;
-       //});
+
+        $('input[name="requestUrl"]').change(function () {
+            var url = $(this).val();
+            if ($(this).attr('urlType') == "1")
+                url = '/pay/QRPay?url=' + url + '&id=' + $(this).attr('id') + '&orderIds=' + orderIds;
+        });
+
     }
 
     function PayMessage() {

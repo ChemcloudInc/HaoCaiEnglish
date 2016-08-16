@@ -59,7 +59,7 @@
         <job-name>accountJob</job-name>
         <job-group>accountGroup</job-group>
         <misfire-instruction>SmartPolicy</misfire-instruction>
-        <cron-expression>0 30 5 * * ?</cron-expression>
+        <cron-expression>0 54 17 * * ?</cron-expression>
       </cron>
     </trigger>
 
