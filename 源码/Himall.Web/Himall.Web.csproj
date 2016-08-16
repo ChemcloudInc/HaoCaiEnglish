@@ -1908,6 +1908,10 @@
       <Project>{5007c583-f3c7-4323-a7ad-0b6bbaa1b3cf}</Project>
       <Name>Himall.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Himall.Entity\Himall.Entity.csproj">
+      <Project>{7558abe6-aa42-41c5-8126-0fffa73c2a54}</Project>
+      <Name>Himall.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Himall.IServices\Himall.IServices.csproj">
       <Project>{31825b09-0897-47e3-8d3c-48e9ca13291b}</Project>
       <Name>Himall.IServices</Name>
