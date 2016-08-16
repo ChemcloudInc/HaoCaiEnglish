@@ -282,7 +282,7 @@ namespace Himall.Service.Job
                 CalculationMoney(dateTime, dateTime1);
 				accountInfo = (
 					from c in entity.AccountInfo
-					where c.StartDate >= dateTime
+					where c.StartDate >= dateTime && c.EndDate <= dateTime1
 					orderby c.EndDate descending
 					select c).FirstOrDefault();
 				if (accountInfo == null)

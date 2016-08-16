@@ -20,6 +20,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using Himall.Service;
+
+
 
 namespace Himall.Web.Areas.SellerAdmin.Controllers
 {
@@ -358,7 +361,12 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
         [UnAuthorize]
         public JsonResult ListAccountType(DateTime? startDate, DateTime? endDate, long? orderId, int? accountType, string userName, int page, int rows, int? orderType)
         {
-          
+            Boolean IsNowTime = true;
+            if(accountType == 5)
+            {
+                accountType = 1;
+                IsNowTime = false;
+            }
             OrderInfo.AccountTypes? nullable;
             List<OrderInfo.OrderOperateStatus> a =new List<OrderInfo.OrderOperateStatus> { OrderInfo.OrderOperateStatus.WaitReceiving,OrderInfo.OrderOperateStatus.WaitDelivery };
             OrderQuery orderQuery = new OrderQuery()
@@ -386,27 +394,59 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
             orderQuery.OrderType = orderType;
             orderQuery.PageSize = rows;
             orderQuery.PageNo = page;
-            PageModel<OrderInfo> orders = ServiceHelper.Create<IOrderService>().GetOrders<OrderInfo>(orderQuery, null);
-            IEnumerable<OrderModel> array =
-                from item in orders.Models.ToArray()
-               // where (item.OrderStatus == OrderInfo.OrderOperateStatus.WaitDelivery || item.OrderStatus == OrderInfo.OrderOperateStatus.WaitReceiving || item.OrderStatus == OrderInfo.OrderOperateStatus.Finish)
-                select new OrderModel()
-                {
-                    OrderId = item.Id,
-                    OrderStatus = item.OrderStatus.ToDescription(),
-                    OrderDate = item.OrderDate.ToString("yyyy-MM-dd HH:mm:ss"),
-                    ShopId = item.ShopId,
-                    ShopName = item.ShopName,
-                    UserId = item.UserId,
-                    UserName = item.UserName,
-                    TotalPrice = item.OrderTotalAmount,
-                    PaymentTypeName = item.PaymentTypeName,
-                    IconSrc = GetIconSrc(item.Platform),
-                    PlatForm = (int)item.Platform,
-                    PlatformText = item.Platform.ToDescription(),
-                    AccountType = item.AccountType.ToDescription()
-                };
-            array = array.ToList();
+            IEnumerable<OrderModel> array;
+            PageModel<OrderInfo> orders;
+            SiteSettingsInfo siteSettings = (new SiteSettingService()).GetSiteSettings();
+          //  int s = siteSettings.WeekSettlement;
+            if (!IsNowTime)
+            {
+                DateTime time1 = DateTime.Now.Date;
+                orders = ServiceHelper.Create<IOrderService>().GetOrders<OrderInfo>(orderQuery, null);
+                array =
+                    from item in orders.Models.ToArray()
+                    where (item.OrderDate.AddDays(siteSettings.WeekSettlement) < time1)
+                    select new OrderModel()
+                    {
+                        OrderId = item.Id,
+                        OrderStatus = item.OrderStatus.ToDescription(),
+                        OrderDate = item.OrderDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                        ShopId = item.ShopId,
+                        ShopName = item.ShopName,
+                        UserId = item.UserId,
+                        UserName = item.UserName,
+                        TotalPrice = item.OrderTotalAmount,
+                        PaymentTypeName = item.PaymentTypeName,
+                        IconSrc = GetIconSrc(item.Platform),
+                        PlatForm = (int)item.Platform,
+                        PlatformText = item.Platform.ToDescription(),
+                        AccountType = item.AccountType.ToDescription()
+                    };
+                array = array.ToList();
+            }
+            else
+            {
+                orders = ServiceHelper.Create<IOrderService>().GetOrders<OrderInfo>(orderQuery, null);
+                array =
+                    from item in orders.Models.ToArray()
+                   // where (item.OrderDate.AddDays(9) < time1 || IsNowTime)
+                    select new OrderModel()
+                    {
+                        OrderId = item.Id,
+                        OrderStatus = item.OrderStatus.ToDescription(),
+                        OrderDate = item.OrderDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                        ShopId = item.ShopId,
+                        ShopName = item.ShopName,
+                        UserId = item.UserId,
+                        UserName = item.UserName,
+                        TotalPrice = item.OrderTotalAmount,
+                        PaymentTypeName = item.PaymentTypeName,
+                        IconSrc = GetIconSrc(item.Platform),
+                        PlatForm = (int)item.Platform,
+                        PlatformText = item.Platform.ToDescription(),
+                        AccountType = item.AccountType.ToDescription()
+                    };
+                array = array.ToList();
+            }
             List<long> list = (
                 from d in array
                 select d.OrderId).ToList();
@@ -448,7 +488,10 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
         {
             return View();
         }
-
+        public ActionResult ApplySettlement()
+        {
+            return View();
+        }
 		public ActionResult Print(string orderIds)
 		{
 			char[] chrArray = new char[] { ',' };
@@ -522,7 +565,22 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 			ServiceHelper.Create<IOrderService>().SetOrderExpressInfo(base.CurrentSellerManager.ShopId, expressName, startNo, nums);
 			return Json(new { success = true, data = printModels });
 		}
+        public JsonResult submitApply(String ids)                         ///////////////////////////////////
+        {
+            String sd = ids;
+            Result result = new Result();
+            try
+            {
+                //修改数据库
+                result.success = true;
+            }
+            catch (Exception exception)
+            {
+                result.msg = exception.Message;
+            }
+            return Json(result);
 
+        }
 		public ActionResult SendGood(string ids)
 		{
 			char[] chrArray = new char[] { ',' };
