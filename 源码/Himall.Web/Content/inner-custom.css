@@ -90,6 +90,8 @@ select.input-ssm { line-height: 24px; padding: 0 3px; }
 .table-bt .btn { margin-left: 8px ;}
 .table-bt .pager { float: right; margin: 0; position: relative; margin-right: 10px ;}
 .table-bt .pager .active-page { vertical-align: middle; }
+.tabel-operate { position:relative; }
+.tabel-operate a{ position:absolute; left:80px; top:-42px; }
 .pager .tipic-dialog { bottom: 30px; right: 0; }
 .total-account { float: right; }
 .total-account b { color: #3480eb; }

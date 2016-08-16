@@ -50,7 +50,7 @@ $(function () {
                 //    }
                 //},
 				{
-				    field: "OrderId", title: '订单号', width: 150, align: "left",
+				    field: "OrderId", title: '订单号', width: 200, align: "left",
 				    formatter: function (value, row, index) {
 				        return '<img src="' + row.IconSrc + '" title="' + row.PlatformText + '订单" width="16" />' + value;
 				    }
