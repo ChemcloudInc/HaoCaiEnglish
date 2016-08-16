@@ -21,6 +21,8 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Himall.Service;
+using System.Transactions;
+using Himall.Entity;
 
 
 
@@ -28,6 +30,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 {
 	public class OrderController : BaseSellerController
 	{
+        private OrderService orderService = new OrderService();
 		public OrderController()
 		{
 		}
@@ -572,6 +575,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
             try
             {
                 //修改数据库
+                CalculationMoney(ids);
                 result.success = true;
             }
             catch (Exception exception)
@@ -581,6 +585,189 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
             return Json(result);
 
         }
+
+        private void CalculationMoney(string orderIds)
+        {
+            SiteSettingsInfo siteSettings = (new SiteSettingService()).GetSiteSettings();
+            char[] chrArray = new char[] { ',' };
+            IEnumerable<long> numsOrder =
+                from item in orderIds.Split(chrArray)
+                select long.Parse(item);
+            DateTime? finishDate;
+            string[] str;
+            Entities entity = new Entities();
+            var list = (
+                from p in entity.OrderInfo
+                join o in entity.OrderRefundInfo on p.Id equals o.OrderId
+                join x in entity.OrderItemInfo on o.OrderId equals x.OrderId
+                where numsOrder.Contains(p.Id)
+                select new { Order = p, OrderRefund = o, OrderItem = x }).Distinct().ToList();
+            var collection = (
+                from p in entity.OrderInfo
+                join o in entity.OrderItemInfo on p.Id equals o.OrderId
+                where numsOrder.Contains(p.Id)
+                select new { Order = p, OrderItem = o }).ToList();
+            List<long> nums = new List<long>();
+            nums.AddRange(
+                from c in list
+                select c.Order.ShopId);
+            nums.AddRange(
+                from c in collection
+                select c.Order.ShopId);
+            nums = nums.Distinct<long>().ToList();
+            using (TransactionScope transactionScope = new TransactionScope())
+            {
+                try
+                {
+                    foreach (long num in nums)
+                    {
+                        List<OrderInfo> orderInfos = (
+                            from c in collection
+                            where c.Order.ShopId == num
+                            select c.Order).Distinct<OrderInfo>().ToList();
+                        decimal num1 = orderInfos.Sum<OrderInfo>((OrderInfo c) => c.ProductTotalAmount) - orderInfos.Sum<OrderInfo>((OrderInfo c) => c.DiscountAmount);
+                        decimal num2 = orderInfos.Sum<OrderInfo>((OrderInfo c) => c.Freight);
+                        decimal num3 = CalculationTotalCommission((
+                            from c in collection
+                            where c.Order.ShopId == num
+                            select c.OrderItem).Distinct<OrderItemInfo>().ToList());
+                        decimal num4 = CalculationTotalRefundCommission((
+                            from c in list
+                            where c.OrderRefund.ShopId == num
+                            select c.OrderItem).Distinct<OrderItemInfo>().ToList());
+                        decimal num5 = (
+                            from c in list
+                            where c.OrderRefund.ShopId == num
+                            select c.OrderRefund).Distinct<OrderRefundInfo>().Sum<OrderRefundInfo>((OrderRefundInfo c) => c.Amount);
+                        decimal num6 = (((num1 + num2) - num3) - num5) + num4;
+                        AccountInfo accountInfo = new AccountInfo()
+                        {
+                            ShopId = num,
+                            ShopName = (
+                                from c in entity.ShopInfo
+                                where c.Id == num
+                                select c).FirstOrDefault().ShopName,
+                            AccountDate = DateTime.Now,
+                            FinishDate = DateTime.Now,
+                            StartDate = DateTime.Now.Date.AddDays(-siteSettings.WeekSettlement),
+                            EndDate = DateTime.Now.Date,
+                            Status = AccountInfo.AccountStatus.UnAccount,
+                            ProductActualPaidAmount = num1,
+                            FreightAmount = num2,
+                            CommissionAmount = num3,
+                            RefundCommissionAmount = num4,
+                            RefundAmount = num5,
+                            PeriodSettlement = num6,
+                            Remark = string.Empty
+                        };
+                        entity.AccountInfo.Add(accountInfo);
+                        foreach (OrderInfo orderInfo in (
+                            from c in list
+                            where c.Order.ShopId == num
+                            select c.Order).Distinct<OrderInfo>().ToList())
+                        {
+                            AccountDetailInfo accountDetailInfo = new AccountDetailInfo()
+                            {
+                                Himall_Accounts = accountInfo,
+                                ShopId = orderInfo.ShopId
+                            };
+                            finishDate = orderInfo.FinishDate;
+                            accountDetailInfo.Date = finishDate.Value;
+                            accountDetailInfo.OrderType = AccountDetailInfo.EnumOrderType.ReturnOrder;
+                            accountDetailInfo.OrderId = orderInfo.Id;
+                            accountDetailInfo.ProductActualPaidAmount = orderInfo.ProductTotalAmount - orderInfo.DiscountAmount;
+                            accountDetailInfo.FreightAmount = orderInfo.Freight;
+                            accountDetailInfo.CommissionAmount = CalculationTotalCommission((
+                                from c in list
+                                where c.OrderRefund.OrderId == orderInfo.Id
+                                select c.OrderItem).Distinct<OrderItemInfo>().ToList());
+                            accountDetailInfo.RefundCommisAmount = CalculationTotalRefundCommission((
+                                from c in list
+                                where c.OrderRefund.OrderId == orderInfo.Id
+                                select c.OrderItem).Distinct<OrderItemInfo>().ToList());
+                            accountDetailInfo.RefundTotalAmount = (
+                                from c in list
+                                where c.OrderRefund.OrderId == orderInfo.Id
+                                select c.OrderRefund).Distinct<OrderRefundInfo>().Sum<OrderRefundInfo>((OrderRefundInfo c) => c.Amount);
+                            accountDetailInfo.OrderDate = orderInfo.OrderDate;
+                            accountDetailInfo.OrderRefundsDates = string.Join<DateTime>(";", (
+                                from c in list
+                                where c.OrderRefund.OrderId == orderInfo.Id
+                                select c.OrderRefund.ManagerConfirmDate).Distinct<DateTime>());
+                            entity.AccountDetailInfo.Add(accountDetailInfo);
+                            UpateAccountType(orderInfo.Id);
+                        }
+                        foreach (OrderInfo orderInfo1 in orderInfos)
+                        {
+                            AccountDetailInfo value = new AccountDetailInfo()
+                            {
+                                Himall_Accounts = accountInfo,
+                                ShopId = orderInfo1.ShopId
+                            };
+                            finishDate = orderInfo1.FinishDate;
+                            value.Date = finishDate.Value;
+                            value.OrderType = AccountDetailInfo.EnumOrderType.FinishedOrder;
+                            value.OrderId = orderInfo1.Id;
+                            value.ProductActualPaidAmount = orderInfo1.ProductTotalAmount - orderInfo1.DiscountAmount;
+                            value.FreightAmount = orderInfo1.Freight;
+                            value.CommissionAmount = CalculationTotalCommission((
+                                from c in collection
+                                where c.Order.Id == orderInfo1.Id
+                                select c.OrderItem).Distinct<OrderItemInfo>().ToList());
+                            value.RefundCommisAmount = new decimal(0);
+                            value.RefundTotalAmount = new decimal(0);
+                            value.OrderDate = orderInfo1.OrderDate;
+                            value.OrderRefundsDates = string.Empty;
+                            entity.AccountDetailInfo.Add(value);
+                            UpateAccountType(orderInfo1.Id);
+                        }
+                    }
+                    entity.SaveChanges();
+                    transactionScope.Complete();
+                }
+                catch (Exception exception1)
+                {
+                    Exception exception = exception1;
+                    str = new string[] { "CalculationMoney ：startDate=", DateTime.Now.Date.AddDays(-siteSettings.WeekSettlement).ToString(), " endDate=", DateTime.Now.Date.ToString(), "/r/n", exception.Message };
+                    Log.Error(string.Concat(str));
+                }
+            }
+        }
+        /// <summary>
+        /// 更新Order状态为待结款
+        /// </summary>
+        /// <param name="orderId"></param>
+        public void UpateAccountType(long orderId)
+        {
+            OrderInfo orderInfo = orderService.GetOrder(orderId);
+            if (orderInfo != null)
+            {
+                orderInfo.AccountType = OrderInfo.AccountTypes.WaitAccout;
+                orderService.UpdateOrderInfo(orderInfo);
+            }
+        }
+
+        /// <summary>
+        /// 计算总佣金
+        /// </summary>
+        /// <param name="orderItems"></param>
+        /// <returns></returns>
+        private decimal CalculationTotalCommission(IList<OrderItemInfo> orderItems)
+        {
+            decimal num = new decimal(0);
+            return orderItems.Sum<OrderItemInfo>((OrderItemInfo c) => c.RealTotalPrice * c.CommisRate);
+        }
+        /// <summary>
+        /// 计算退还的总佣金
+        /// </summary>
+        /// <param name="orderItems"></param>
+        /// <returns></returns>
+        private decimal CalculationTotalRefundCommission(IList<OrderItemInfo> orderItems)
+        {
+            decimal num = new decimal(0);
+            return orderItems.Sum<OrderItemInfo>((OrderItemInfo c) => c.RefundPrice * c.CommisRate);
+        }
+
 		public ActionResult SendGood(string ids)
 		{
 			char[] chrArray = new char[] { ',' };
