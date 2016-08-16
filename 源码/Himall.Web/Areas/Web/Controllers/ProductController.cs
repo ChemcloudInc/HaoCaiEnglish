@@ -840,7 +840,7 @@ namespace Himall.Web.Areas.Web.Controllers
 		public JsonResult GetHotSaleProduct(long sid)
 		{
 			List<HotProductInfo> hotProductInfos = new List<HotProductInfo>();
-			IQueryable<ProductInfo> hotSaleProduct = ServiceHelper.Create<IProductService>().GetHotSaleProduct(sid, 5);
+			IQueryable<ProductInfo> hotSaleProduct = ServiceHelper.Create<IProductService>().GetHotSaleProduct(sid, 10);
 			if (hotSaleProduct != null)
 			{
 				ProductInfo[] array = hotSaleProduct.ToArray();

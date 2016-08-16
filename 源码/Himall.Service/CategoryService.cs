@@ -266,6 +266,7 @@ namespace Himall.Service
 				select c.Id;
 			if (nums.Count() == 0)
 			{
+                context.CategoryCashDepositInfo.Remove((CategoryCashDepositInfo c) => c.CategoryId == id);
                 context.CategoryInfo.Remove(context.CategoryInfo.FindById<CategoryInfo>(id));
 				return;
 			}

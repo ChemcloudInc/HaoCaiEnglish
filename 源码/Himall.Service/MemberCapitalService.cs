@@ -148,26 +148,40 @@ namespace Himall.Service
 			return model.Id;
 		}
 
-		public void AddWithDrawApply(ApplyWithDrawInfo model)
-		{
-			decimal? nullable;
+        public void AddWithDrawApply(ApplyWithDrawInfo model)
+        {
+            decimal? nullable;
+            decimal value;
             context.ApplyWithDrawInfo.Add(model);
-			CapitalInfo capitalInfo = context.CapitalInfo.FirstOrDefault((CapitalInfo e) => e.MemId == model.MemId);
-			CapitalInfo capitalInfo1 = capitalInfo;
-			decimal? balance = capitalInfo1.Balance;
-			decimal applyAmount = model.ApplyAmount;
-			if (balance.HasValue)
-			{
-				nullable = new decimal?(balance.GetValueOrDefault() - applyAmount);
-			}
-			else
-			{
-				nullable = null;
-			}
-			capitalInfo1.Balance = nullable;
-			capitalInfo.FreezeAmount = new decimal?((capitalInfo.FreezeAmount.HasValue ? capitalInfo.FreezeAmount.Value + model.ApplyAmount : model.ApplyAmount));
-            context.SaveChanges();
-		}
+            CapitalInfo capitalInfo = context.CapitalInfo.FirstOrDefault((CapitalInfo e) => e.MemId == model.MemId);
+            CapitalInfo capitalInfo1 = capitalInfo;
+            decimal? balance = capitalInfo1.Balance;
+            decimal applyAmount = model.ApplyAmount;
+            if (balance.HasValue)
+            {
+                nullable = new decimal?(balance.GetValueOrDefault() - applyAmount);
+            }
+            else
+            {
+                nullable = null;
+            }
+
+            capitalInfo1.Balance = nullable;
+            CapitalInfo nullable1 = capitalInfo;
+            balance = capitalInfo.FreezeAmount;
+            if (balance.HasValue)
+            {
+                balance = capitalInfo.FreezeAmount;
+                value = balance.Value + model.ApplyAmount;
+            }
+            else
+            {
+                value = model.ApplyAmount;
+            }
+            nullable1.FreezeAmount = new decimal?(value);
+            this.context.SaveChanges();
+
+        }
 
 		public void ConfirmApplyWithDraw(ApplyWithDrawInfo info)
 		{

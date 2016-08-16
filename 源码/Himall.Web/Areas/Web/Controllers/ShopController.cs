@@ -216,7 +216,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				};
 				shopName.Floors.Add(shopHomeFloor);
 			}
-			IQueryable<ProductInfo> hotSaleProduct = ServiceHelper.Create<IProductService>().GetHotSaleProduct(shop.Id, 5);
+			IQueryable<ProductInfo> hotSaleProduct = ServiceHelper.Create<IProductService>().GetHotSaleProduct(shop.Id,10);
 			if (hotSaleProduct != null)
 			{
 				ProductInfo[] productInfoArray = hotSaleProduct.ToArray();
@@ -235,7 +235,7 @@ namespace Himall.Web.Areas.Web.Controllers
 					hotSaleProducts.Add(hotProductInfo);
 				}
 			}
-			IQueryable<ProductInfo> hotConcernedProduct = ServiceHelper.Create<IProductService>().GetHotConcernedProduct(shop.Id, 5);
+			IQueryable<ProductInfo> hotConcernedProduct = ServiceHelper.Create<IProductService>().GetHotConcernedProduct(shop.Id, 10);
 			if (hotConcernedProduct != null)
 			{
 				foreach (ProductInfo list1 in hotConcernedProduct.ToList())
@@ -414,6 +414,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			};
 			PageModel<ProductInfo> pageModel = ServiceHelper.Create<IProductService>().SearchProduct(productSearch);
 			int total = pageModel.Total;
+            ViewBag.Total = total;
 			ProductInfo[] productInfoArray = pageModel.Models.ToArray();
 			ProductInfo[] productInfoArray1 = productInfoArray;
 			for (int i = 0; i < productInfoArray1.Length; i++)

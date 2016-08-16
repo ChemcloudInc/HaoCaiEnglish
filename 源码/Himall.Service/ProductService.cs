@@ -662,7 +662,7 @@ namespace Himall.Service
             return nums1;
         }
 
-        public IQueryable<ProductInfo> GetHotConcernedProduct(long shopId, int count = 5)
+        public IQueryable<ProductInfo> GetHotConcernedProduct(long shopId, int count = 10)
         {
             string str = CacheKeyCollection.HotConcernedProduct(shopId);
             if (Cache.Get(str) != null)
@@ -692,7 +692,7 @@ namespace Himall.Service
             return productInfos;
         }
 
-        public IQueryable<ProductInfo> GetHotSaleProduct(long shopId, int count = 5)
+        public IQueryable<ProductInfo> GetHotSaleProduct(long shopId, int count = 10)
         {
             string str = CacheKeyCollection.HotSaleProduct(shopId);
             if (Cache.Get(str) != null)
@@ -715,7 +715,7 @@ namespace Himall.Service
             return list.AsQueryable<ProductInfo>();
         }
 
-        public IQueryable<ProductInfo> GetNewSaleProduct(long shopId, int count = 5)
+        public IQueryable<ProductInfo> GetNewSaleProduct(long shopId, int count = 10)
         {
             string str = CacheKeyCollection.NewSaleProduct(shopId);
             if (Cache.Get(str) != null)
