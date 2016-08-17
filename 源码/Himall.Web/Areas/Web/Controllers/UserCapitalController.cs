@@ -145,12 +145,13 @@ namespace Himall.Web.Areas.Web.Controllers
 
         public JsonResult ApplyWithDrawSubmit(string withdrawtype, string myaccount, string nickname, decimal amount, string pwd)   //扩展版本(提现方式、账号、人名)       
         {
-            if (withdrawtype == null)
-                return Json(new { success = true });
+            //if (withdrawtype == null)
+            //    return Json(new { success = true });
 
             if (ServiceHelper.Create<IMemberCapitalService>().GetMemberInfoByPayPwd(base.CurrentUser.Id, pwd) == null)
             {
-                throw new HimallException("支付密码不对，请重新输入！");
+               // throw new HimallException("支付密码不对，请重新输入！");
+                return Json(new { success = false,msg="支付密码不对，请重新输入！"});
             }
             CapitalInfo capitalInfo = ServiceHelper.Create<IMemberCapitalService>().GetCapitalInfo(base.CurrentUser.Id);
             decimal num = amount;
@@ -172,7 +173,7 @@ namespace Himall.Web.Areas.Web.Controllers
 
             };
             ServiceHelper.Create<IMemberCapitalService>().AddWithDrawApply(applyWithDrawInfo);
-            return Json(new { success = true });
+            return base.Json(new { success = true });
         }
 		public ActionResult CapitalCharge()
 		{
