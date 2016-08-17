@@ -150,36 +150,39 @@ namespace Himall.Service
 
         public void AddWithDrawApply(ApplyWithDrawInfo model)
         {
-            decimal? nullable;
-            decimal value;
-            context.ApplyWithDrawInfo.Add(model);
-            CapitalInfo capitalInfo = context.CapitalInfo.FirstOrDefault((CapitalInfo e) => e.MemId == model.MemId);
-            CapitalInfo capitalInfo1 = capitalInfo;
-            decimal? balance = capitalInfo1.Balance;
-            decimal applyAmount = model.ApplyAmount;
-            if (balance.HasValue)
+            if (model.WithdrawType != null)
             {
-                nullable = new decimal?(balance.GetValueOrDefault() - applyAmount);
-            }
-            else
-            {
-                nullable = null;
-            }
+                decimal? nullable;
+                decimal value;
+                context.ApplyWithDrawInfo.Add(model);
+                CapitalInfo capitalInfo = context.CapitalInfo.FirstOrDefault((CapitalInfo e) => e.MemId == model.MemId);
+                CapitalInfo capitalInfo1 = capitalInfo;
+                decimal? balance = capitalInfo1.Balance;
+                decimal applyAmount = model.ApplyAmount;
+                if (balance.HasValue)
+                {
+                    nullable = new decimal?(balance.GetValueOrDefault() - applyAmount);
+                }
+                else
+                {
+                    nullable = null;
+                }
 
-            capitalInfo1.Balance = nullable;
-            CapitalInfo nullable1 = capitalInfo;
-            balance = capitalInfo.FreezeAmount;
-            if (balance.HasValue)
-            {
+                capitalInfo1.Balance = nullable;
+                CapitalInfo nullable1 = capitalInfo;
                 balance = capitalInfo.FreezeAmount;
-                value = balance.Value + model.ApplyAmount;
+                if (balance.HasValue)
+                {
+                    balance = capitalInfo.FreezeAmount;
+                    value = balance.Value + model.ApplyAmount;
+                }
+                else
+                {
+                    value = model.ApplyAmount;
+                }
+                nullable1.FreezeAmount = new decimal?(value);
+                this.context.SaveChanges();
             }
-            else
-            {
-                value = model.ApplyAmount;
-            }
-            nullable1.FreezeAmount = new decimal?(value);
-            this.context.SaveChanges();
 
         }
 

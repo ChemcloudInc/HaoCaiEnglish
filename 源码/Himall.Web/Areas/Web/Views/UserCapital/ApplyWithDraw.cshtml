@@ -253,7 +253,7 @@
                         if (data1.success) {
                             $.dialog.succeedTips('设置成功！');
                             JumpStep(2);
-                            checkScanState();
+                            //checkScanState();
                         }
                     }
                 });
@@ -277,7 +277,7 @@
                         document.getElementById("nikename").innerHTML = data.nikename;
 
                         JumpStep(3);
-                        checkScanState();
+                       // checkScanState();
                     }
                     else {
                         $.dialog.succeedTips('请选择提现账号！');
@@ -287,6 +287,7 @@
             });
 
         });
+       
         $('#submitApply').bind('click', function () {
             var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;
 
@@ -308,24 +309,21 @@
             var s2 = document.getElementById("myaccount").innerHTML;
             var s3 = document.getElementById("nikename").innerHTML;
             //     $.dialog.succeedTips(acc);
-            $.ajax({
-                type: 'post',
-                url: '@Url.Action("ApplyWithDrawSubmit")',
-                data: { "withdrawtype": s1, myaccount: s2, nickname: s3, amount: parseFloat($('#inputMoney').val()), pwd: $('#payPwd').val() },
-                dataType: "json",
-                success: function (data) {
-                    /*loading.close();*/
-                    if (data.success) {
-                        $.dialog.succeedTips('选择成功！');
-                        //    $('#nikename').val = 's1';
-
-
-                        JumpStep(4);
-                        checkScanState();
+           // var loading = showLoading();
+            $.post('ApplyWithDrawSubmit', { withdrawtype: s1, myaccount: s2, nickname: s3, amount: parseFloat($('#inputMoney').val()), pwd: $('#payPwd').val() },
+                function (result) {
+                   loading.close();
+                    if (result.success) {
+                        $.dialog.succeedTips('提交成功!', function () {
+                            JumpStep(4);
+                        });
                     }
-                    // $.dialog.succeedTips('HERE！');
+                    else {
+                        $.dialog.errorTips(result.msg);
+                    }
                 }
-            });
+            );
+   
 
         });
         /*$('#submitApply').click(function () {
