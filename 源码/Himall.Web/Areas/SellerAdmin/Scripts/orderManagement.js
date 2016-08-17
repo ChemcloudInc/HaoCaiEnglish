@@ -265,7 +265,9 @@ function getSelectedIds() {
     var selecteds = $("#list").hiMallDatagrid('getSelections');
     var ids = [];
     $.each(selecteds, function () {
-        ids.push(this.OrderId);
+        if (this.OrderStatus == "待发货"){
+            ids.push(this.OrderId);
+        }
     });
     return ids;
 }
