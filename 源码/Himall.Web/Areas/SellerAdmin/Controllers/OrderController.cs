@@ -600,7 +600,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
                 from p in entity.OrderInfo
                 join o in entity.OrderRefundInfo on p.Id equals o.OrderId
                 join x in entity.OrderItemInfo on o.OrderId equals x.OrderId
-                where numsOrder.Contains(p.Id)
+                where numsOrder.Contains(p.Id) && (int)o.ManagerConfirmStatus == 7
                 select new { Order = p, OrderRefund = o, OrderItem = x }).Distinct().ToList();
             var collection = (
                 from p in entity.OrderInfo
