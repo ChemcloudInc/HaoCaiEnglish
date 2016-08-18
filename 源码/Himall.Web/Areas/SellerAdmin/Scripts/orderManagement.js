@@ -169,7 +169,7 @@ function downloadProductList() {
 }
 
 function downloadOrderList() {
-    var ids = getSelectedIds();
+    var ids = getSelectedIdsNew();
     if (ids.length <= 0) {
         $.dialog.tips('请至少选择一个订单');
         return false;
@@ -194,7 +194,7 @@ function loadIframeURL(url) {
 }
 
 function myPreview() {
-    var orderIds = getSelectedIds();
+    var orderIds = getSelectedIdsNew();
     if (orderIds.length <= 0) {
         $.dialog.tips('请至少选择一个订单');
         return false;
@@ -216,7 +216,7 @@ function myPreview() {
 }
 
 function sendGood() {
-    var orderIds = getSelectedIds();
+    var orderIds = getSelectedIdsNew();
     if (orderIds.length <= 0) {
         $.dialog.tips('请至少选择一个订单');
         return false;
@@ -265,15 +265,25 @@ function getSelectedIds() {
     var selecteds = $("#list").hiMallDatagrid('getSelections');
     var ids = [];
     $.each(selecteds, function () {
-        if (this.OrderStatus == "待发货"){
-            ids.push(this.OrderId);
-        }
+        ids.push(this.OrderId);
     });
     return ids;
 }
 
+/* 全选框默认获取disable,重写获取函数 */
+function getSelectedIdsNew() {
+    var ids = [];
+    var selectedTable = $("#list tbody").children();
+    for (var i = 0, j = selectedTable.length; i < j; i++) {
+        if (selectedTable[i].getElementsByTagName("input")[0].checked == true) {
+            ids.push(selectedTable[i].getElementsByClassName("hiMallDatagrid-cell")[0].innerText)
+        }
+    };
+    return ids;
+}
+
 function printOrders() {
-    var ids = getSelectedIds();
+    var ids = getSelectedIdsNew();
     if (ids.length == 0)
         $.dialog.tips('请至少选择一个订单');
     else

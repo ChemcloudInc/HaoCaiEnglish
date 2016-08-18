@@ -81,9 +81,7 @@
         var selecteds = $("#listAccountType").hiMallDatagrid('getSelections');
         var ids = [];
         $.each(selecteds, function () {
-            if (this.OrderStatus == "已完成") {
-                ids.push(this.OrderId);
-            }
+            ids.push(this.OrderId);
         });
         return ids;
     }
