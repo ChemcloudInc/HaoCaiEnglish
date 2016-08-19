@@ -854,8 +854,10 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 				nullable = null;
 			}
 			productQuery1.SaleStatus = nullable;
-			productQuery.PageSize = rows;
-			productQuery.PageNo = page;
+            productQuery.PageSize = rows;
+            productQuery.PageNo = page;
+            //productQuery.PageSize = 1;
+            //productQuery.PageNo = 1;
 			productQuery.BrandNameKeyword = brandName;
 			productQuery.KeyWords = keyWords;
 			productQuery.ShopCategoryId = categoryId;

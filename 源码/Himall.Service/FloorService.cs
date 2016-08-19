@@ -56,6 +56,8 @@ namespace Himall.Service
                 context.SaveChanges();
             }
             return homeFloorInfo;
+
+
         }
 
         public void DeleteHomeFloor(long id)
@@ -165,13 +167,13 @@ namespace Himall.Service
 
         private void UpdataProductLink(long floorId, IEnumerable<FloorTopicInfo> productLink)
         {
-            context.FloorTopicInfo.OrderBy((FloorTopicInfo item) => item.FloorId == floorId && (int)item.TopicType != 11);
+            this.context.FloorTopicInfo.Remove<FloorTopicInfo>((FloorTopicInfo item) => item.FloorId == floorId && (int)item.TopicType != 11);
             foreach (FloorTopicInfo floorTopicInfo in productLink)
             {
-                floorTopicInfo.TopicImage = TransferImage(floorTopicInfo.TopicImage, floorId, floorTopicInfo.TopicType.ToString());
+                floorTopicInfo.TopicImage = this.TransferImage(floorTopicInfo.TopicImage, floorId, floorTopicInfo.TopicType.ToString());
             }
-            context.FloorTopicInfo.Remove(o => o.TopicType != Position.Top);
-            context.FloorTopicInfo.AddRange(productLink);
+            this.context.FloorTopicInfo.AddRange(productLink);
+ 
         }
 
         private void UpdateBrand(long floorId, IEnumerable<FloorBrandInfo> floorBrands)
@@ -193,6 +195,8 @@ namespace Himall.Service
                 where !brandId.Contains(item.BrandId)
                 select item;
             context.FloorBrandInfo.AddRange(floorBrandInfos2);
+
+
         }
 
         private void UpdateCategory(long floorId, IEnumerable<FloorCategoryInfo> floorCategories)
@@ -300,13 +304,19 @@ namespace Himall.Service
             }
             else
             {
-                long num = 0;
-                num = (
-                    from p in context.HomeFloorInfo
-                    select p.DisplaySequence).Max<long>() + 1;
-                homeFloor.DisplaySequence = num;
+              
+
+                long? nullable = new long?((long)0);
+                nullable = new long?((
+                    from p in this.context.HomeFloorInfo
+                    select p.DisplaySequence).DefaultIfEmpty<long>().Max<long>());
+                if (!nullable.HasValue)
+                {
+                    nullable = new long?((long)0);
+                }
+                homeFloor.DisplaySequence = nullable.Value + (long)1;
                 homeFloor.IsShow = true;
-                context.HomeFloorInfo.Add(homeFloor);
+                this.context.HomeFloorInfo.Add(homeFloor);
             }
             if (homeFloor.StyleLevel == 1)
             {
@@ -333,6 +343,7 @@ namespace Himall.Service
             homeFloorInfo.DisplaySequence = destiSequence;
             homeFloorInfo1.DisplaySequence = sourceSequence;
             context.SaveChanges();
+
         }
 
         private void UpdateProductModule(HomeFloorInfo homeFloor)
@@ -341,26 +352,40 @@ namespace Himall.Service
 
         private void UpdateProducts(long floorId, IEnumerable<FloorTablsInfo> tabs)
         {
+            //IQueryable<long> floorTablsInfo =
+            //    from item in context.FloorTablsInfo
+            //    where item.FloorId == floorId
+            //    select item.Id;
+            //context.FloorTablDetailsInfo.OrderBy((FloorTablDetailsInfo item) => floorTablsInfo.Contains(item.TabId));
+            //context.FloorTablsInfo.OrderBy((FloorTablsInfo item) => item.FloorId == floorId);
+            //context.FloorTablsInfo.Remove(o => true);
+            //context.FloorTablDetailsInfo.Remove(o => true);
+            //context.FloorTablsInfo.AddRange(tabs);
+            //foreach (FloorTablsInfo tab in tabs)
+            //{
+            //    context.FloorTablDetailsInfo.AddRange(tab.Himall_FloorTablDetails);
+            //}
+
             IQueryable<long> floorTablsInfo =
-                from item in context.FloorTablsInfo
+                from item in this.context.FloorTablsInfo
                 where item.FloorId == floorId
                 select item.Id;
-            context.FloorTablDetailsInfo.OrderBy((FloorTablDetailsInfo item) => floorTablsInfo.Contains(item.TabId));
-            context.FloorTablsInfo.OrderBy((FloorTablsInfo item) => item.FloorId == floorId);
-            context.FloorTablsInfo.Remove(o => true);
-            context.FloorTablDetailsInfo.Remove(o => true);
-            context.FloorTablsInfo.AddRange(tabs);
+            this.context.FloorTablDetailsInfo.Remove<FloorTablDetailsInfo>((FloorTablDetailsInfo item) => floorTablsInfo.Contains<long>(item.TabId));
+            this.context.FloorTablsInfo.Remove<FloorTablsInfo>((FloorTablsInfo item) => item.FloorId == floorId);
+            this.context.FloorTablsInfo.AddRange(tabs);
             foreach (FloorTablsInfo tab in tabs)
             {
-                context.FloorTablDetailsInfo.AddRange(tab.Himall_FloorTablDetails);
+                this.context.FloorTablDetailsInfo.AddRange(tab.Himall_FloorTablDetails);
             }
         }
 
         private void UpdateTextLink(long floorId, IEnumerable<FloorTopicInfo> textLinks)
         {
-            context.FloorTopicInfo.OrderBy((FloorTopicInfo item) => item.FloorId == floorId && (int)item.TopicType == 11);
-            context.FloorTopicInfo.Remove(o => o.TopicType == Position.Top);
-            context.FloorTopicInfo.AddRange(textLinks);
+            //context.FloorTopicInfo.OrderBy((FloorTopicInfo item) => item.FloorId == floorId && (int)item.TopicType == 11);
+           // context.FloorTopicInfo.Remove(o => o.TopicType == Position.Top);
+            //context.FloorTopicInfo.AddRange(textLinks);
+            this.context.FloorTopicInfo.Remove<FloorTopicInfo>((FloorTopicInfo item) => item.FloorId == floorId && (int)item.TopicType == 11);
+            this.context.FloorTopicInfo.AddRange(textLinks);
         }
     }
 }
