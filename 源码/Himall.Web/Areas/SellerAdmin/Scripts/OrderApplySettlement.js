@@ -11,7 +11,7 @@
             url: './listAccountType',
             nowrap: false,
             rownumbers: true,
-            NoDataMsg: '没有找到符合条件的数据',
+            NoDataMsg: '没有可申请结算的订单',
             border: false,
             fit: true,
             fitColumns: true,
