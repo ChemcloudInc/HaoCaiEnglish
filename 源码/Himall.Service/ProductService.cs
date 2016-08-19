@@ -916,11 +916,15 @@ namespace Himall.Service
                                  select item.ProductId;
                 }
                 total = source.Count();
-                source = source.FindBy<ProductInfo, long>(item => (shopCateogryId == 0L) || productIds.Contains(item.Id), productQueryModel.PageNo, productQueryModel.PageSize, out total, item => item.Id, false);
+               source = source.FindBy<ProductInfo, long>(item => (shopCateogryId == 0L) || productIds.Contains(item.Id), productQueryModel.PageNo, productQueryModel.PageSize, out total, item => item.Id, true);
+               
+
             }
-            foreach (ProductInfo info in source.ToList())
+         
+            foreach (ProductInfo current in source.ToList<ProductInfo>())
             {
-                info.ShopCateogryInfos = from item in info.Himall_ProductShopCategories select item.ShopCategoryInfo;
+                current.ShopCateogryInfos = from item in current.Himall_ProductShopCategories
+                                            select item.ShopCategoryInfo;
             }
             return source;
         }

@@ -407,7 +407,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
                 orders = ServiceHelper.Create<IOrderService>().GetOrders<OrderInfo>(orderQuery, null);
                 array =
                     from item in orders.Models.ToArray()
-                    where (item.OrderDate.AddDays(siteSettings.WeekSettlement) < time1)
+                    where (item.OrderDate.AddDays(siteSettings.WeekSettlement) < time1) && (int)item.OrderStatus == 5
                     select new OrderModel()
                     {
                         OrderId = item.Id,

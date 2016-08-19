@@ -169,7 +169,7 @@ function downloadProductList() {
 }
 
 function downloadOrderList() {
-    var ids = getSelectedIds();
+    var ids = getSelectedIdsNew();
     if (ids.length <= 0) {
         $.dialog.tips('请至少选择一个订单');
         return false;
@@ -201,6 +201,7 @@ function myPreview() {
     }
 
     var LODOP = getLodop(document.getElementById('LODOP_OB'), document.getElementById('LODOP_EM'));
+    
     var strBodyStyle = "<style>body{margin:0; padding:0;font-family: 'microsoft yahei',Helvetica;font-size:12px;color: #333;}.table-hd{ margin:0;line-height:30px; float:left; background: #f5f5f5;padding:0 10px;  margin-top:30px;}.table-hd strong{font-size:14px;font-weight:normal; float:left}.table-hd span{ font-weight:normal; font-size:12px;float:right}table{border: 1px solid #ddd;width:100%;border-collapse: collapse;border-spacing: 0; font-size:12px; float:left}table th,table td{border:1px solid #ddd;padding: 8px; text-align:center}table th{border-top:0;}</style>";
     $.post('./GetOrderPrint', { ids: orderIds.toString() }, function (result) {
         if (result.success) {
@@ -212,11 +213,11 @@ function myPreview() {
             LODOP.PREVIEW(); //打印预览
             //LODOP.PRINT(); //直接打印
         }
-    });    
+    });
 }
 
 function sendGood() {
-    var orderIds = getSelectedIds();
+    var orderIds = getSelectedIdsNew();
     if (orderIds.length <= 0) {
         $.dialog.tips('请至少选择一个订单');
         return false;
@@ -265,15 +266,25 @@ function getSelectedIds() {
     var selecteds = $("#list").hiMallDatagrid('getSelections');
     var ids = [];
     $.each(selecteds, function () {
-        if (this.OrderStatus == "待发货"){
-            ids.push(this.OrderId);
-        }
+        ids.push(this.OrderId);
     });
     return ids;
 }
 
+/* 全选框默认获取disable,重写获取函数 */
+function getSelectedIdsNew() {
+    var ids = [];
+    var selectedTable = $("#list tbody").children();
+    for (var i = 0, j = selectedTable.length; i < j; i++) {
+        if (selectedTable[i].getElementsByTagName("input")[0].checked == true) {
+            ids.push(selectedTable[i].getElementsByClassName("hiMallDatagrid-cell")[0].innerText)
+        }
+    };
+    return ids;
+}
+
 function printOrders() {
-    var ids = getSelectedIds();
+    var ids = getSelectedIdsNew();
     if (ids.length == 0)
         $.dialog.tips('请至少选择一个订单');
     else
