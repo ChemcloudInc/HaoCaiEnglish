@@ -71,7 +71,7 @@ body{ background-color:#f9f9f9;}
 .floor-hd ul li{ float:left; padding:0 28px; font-size:16px; color:#424242; cursor:pointer;  max-width: 100px; overflow: hidden; height: 37px;}
 .floor-hd ul li a{ color:#424242; display:block;}
 .floor-hd ul li.active{ border:1px solid #3480eb; border-top-width:3px; border-bottom:0; padding:0 27px; margin-bottom:-1px; background-color:#fff; line-height:32px; color:#3480eb;  height: 35px}
-.floor-hd ul li.active a,.floor-hd ul li:hover,.floor-hd ul li:hover a{ color:#e3393c;}
+.floor-hd ul li.active a,.floor-hd ul li:hover,.floor-hd ul li:hover a{ color:#6096e2;}
 
 .floor .floor-content{}
 .floor .content-left{ width:400px; height:422px; float:left; background-color:#fff;}
@@ -86,7 +86,7 @@ body{ background-color:#f9f9f9;}
 .content-left table{ width:360px; margin:10px 20px 0;}
 .content-left table td{ height:30px;}
 .content-left table a{ color:#000;}
-.content-left table a:hover{ color:#e3393c;}
+.content-left table a:hover{ color:#6096e2;}
 
 .content-right-box{ float:left; width:790px;background-color: #fff;}
 .content-right-img li{ float:left; width:198px; height:245px; border-bottom:1px solid #e5e5e5; border-left:1px solid #e5e5e5; }
