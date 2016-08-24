@@ -1248,12 +1248,12 @@ zoom: 1; }
 .topic-banner img { position: absolute; top: 0; left: 50%; }
 .topic .topic-goods { margin-bottom: 20px; /*overflow: hidden;*/ padding-top: 1px; }
 .topic .topic-goods ul { margin-right: -10px; }
-.topic .topic-goods li { float: left; width: 210px; height: 322px; background-color: #fff; margin-right: 10px; margin-top: 15px; position: relative;    border: 1px solid #ddd; }
+.topic .topic-goods li { float: left; width: 228px; height: 325px; background-color: #fff; margin-right: 10px; margin-top: 15px; position: relative;    border: 1px solid #ddd; }
 .topic .topic-goods li:hover {     border: 1px solid #3480eb; }
 .topic .topic-goods li:hover .p-bottom{    background-color: #deecff;}
 .topic .topic-goods li .p-bottom{ padding:5px 10px; }
-.topic-goods .p-img { text-align: center;  height: 225px; border-bottom: 1px solid #ddd;}
-.topic-goods .p-img img { max-width: 225px; max-height: 225px; }
+.topic-goods .p-img { text-align: center;  height: 228px; border-bottom: 1px solid #ddd;}
+.topic-goods .p-img img { max-width: 228px; max-height: 228px; }
 .topic-goods .btn-buy { display: block; width: 60px; height: 20px; line-height: 23px; text-align: center; background-color: #3480eb; border-radius: 1px; color: #fff; }
 .topic .topic-goods li .btn-buy { position: absolute; bottom: 5px; right: 10px; }
 .topic-goods .btn-buy:hover { color: #fff; text-decoration: none; background-color: #4a8ff1; }
