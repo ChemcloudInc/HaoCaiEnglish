@@ -1243,7 +1243,7 @@ zoom: 1; }
 .topic-page .nav-bar { margin-bottom: 0; }
 .topic-banner, .topic-html { width: 1190px; position: relative; overflow: hidden; text-align:left; margin: 0 auto;}
 .topic-html img { width:1190px; }
-.topic-html p { color: #e3393c; }
+.topic-html p { color: #e3393c; font-size:14px;}
 .topic-banner a { width: 100%; height: 100%; display: block }
 .topic-banner img { position: absolute; top: 0; left: 50%; }
 .topic .topic-goods { margin-bottom: 20px; /*overflow: hidden;*/ padding-top: 1px; }
@@ -1259,7 +1259,7 @@ zoom: 1; }
 .topic-goods .btn-buy:hover { color: #fff; text-decoration: none; background-color: #4a8ff1; }
 .topic-goods .p-price { color: #3480eb; font-weight: bold; font-size: 14px; margin-top: 4px; }
 .topic-goods .p-name { height: 54px; overflow: hidden;padding: 3px 0px; border-bottom: 1px dashed #ddd;}
-.topic .topic-title { line-height: 24px; margin-top: 30px; font-size: 20px; color: #fff; font-weight: bold; border-left: 5px solid #fff; padding-left: 10px; }
+.topic .topic-title { line-height: 24px; margin-top: 30px; font-size: 20px; color: #0056d0; font-weight: bold; border-left: 5px solid #3480eb; padding-left: 10px; }
 .topic-nav {     position: fixed; width: 37px;background: #fff;left: 47%;top: 50%;margin-left: -650px;display: none;   }
 .topic-nav b { display: block; width: 4px; height: 110%; margin-top: -10%; border-radius: 4px; position: absolute; left: 50px; top: 0; z-index: 1; }
 .topic-nav ul { text-align: center; position: relative; z-index: 2;left: 50px; }
