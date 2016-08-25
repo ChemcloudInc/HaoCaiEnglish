@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Web.Mvc;
+using System.Data.Entity.Validation;
 
 namespace Himall.Web.Areas.SellerAdmin.Controllers
 {
@@ -70,7 +71,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
                     AuditTime = StartTime,
                     RecentMonthPrice = recentMonthAveragePrice,
                     ImagePath = product.ImagePath,
-                    ProductAd = product.ShortDescription,
+                    ProductAd = string.IsNullOrWhiteSpace(product.ShortDescription) ? "" : product.ShortDescription,
                     MinPrice = product.MinSalePrice
                 };
                 ServiceHelper.Create<ILimitTimeBuyService>().AddLimitTimeItem(limitTimeMarketInfo);
@@ -81,7 +82,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
             {
                 result.msg = himallException.Message;
             }
-            catch (Exception exception)
+            catch (DbEntityValidationException exception)
             {
                 Log.Error("添加限时购出错", exception);
                 result.msg = "添加限时购出错！";

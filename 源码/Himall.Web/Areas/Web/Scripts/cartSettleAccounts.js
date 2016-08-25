@@ -13,8 +13,10 @@ function loadCartInfo() {
     $.post('/cart/GetCartProducts', {}, function (cart) {
         data = {};
         $.each(cart.products, function (i, e) {
-            if (data[e.shopId]) {
-                if (!data[e.shopId]['name']) {
+            if (data[e.shopId])
+            {
+                if (!data[e.shopId]['name'])
+                {
                     data[e.shopId]['name'] = e.shopName;
                 }
                 data[e.shopId]['shop'].push(e);

@@ -669,7 +669,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ProductId" Type="bigint" Nullable="false" />
-          <Property Name="ProductName" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="400" Nullable="false" />
           <Property Name="CategoryName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="AuditStatus" Type="smallint" Nullable="false" />
           <Property Name="AuditTime" Type="datetime" Nullable="false" />
