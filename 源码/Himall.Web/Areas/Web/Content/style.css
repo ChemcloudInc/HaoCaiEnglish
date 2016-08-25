@@ -32,10 +32,11 @@ body{ background-color:#f9f9f9;}
 .content_recont{ overflow:hidden;}
 .content_recont ul{ width:1206px;}
 .content_recont ul li{ float:left; width:226px; height:288px; overflow:hidden; margin-right:16px; margin-top:15px;}
-.content_recont ul li:first-child,.content_recont ul li.last-child{ width:464px;}
+.content_recont ul li:first-child,.content_recont ul li:last-child{ width:464px;}
 .content_recont ul li:last-child{ width:464px;}
-.content_recont ul li img{ width:100%; height:100%; transition:all 0.3s;}
-.content_recont ul li img:hover{ -webkit-transform: translateX(-5px);-moz-transform: translateX(-5px); -ms-transform: translateX(-5px); -o-transform: translateX(-5px); transform: translateX(-5px);}
+.content_recont ul li img{ width:224px; height:286px; transition:opacity 0.3s;margin-top:1px;margin-left:1px;}
+.content_recont ul li:first-child img,.content_recont ul li:last-child img{ width:462px;}
+.content_recont ul li img:hover{ opacity:0.8;border:1px solid #3480eb;margin-top:0px;margin-left:0px; }
 
 
 /*楼层样式 ---------------*/
