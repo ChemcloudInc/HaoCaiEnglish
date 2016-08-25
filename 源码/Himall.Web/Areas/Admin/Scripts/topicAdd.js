@@ -120,7 +120,9 @@ function generateTopicInfo() {
     topic.topImage = $("#topImage").himallUpload('getImgSrc');
     topic.backgroundImage = $("#backgroudImage").himallUpload('getImgSrc');
     topic.topicModuleInfo = [];
-    topic.isrecommend = $('#isrecommend1').attr('checked') == 'checked' ? 1 : 0;
+    //topic.isrecommend = $('#isrecommend1').attr('checked') == 'checked' ? 1 : 0;
+    //topic.isrecommend =$("input[name='isrecommend']").get(0).checked == true ? 1 : 0;
+    topic.isrecommend = $('#isrecommend1').is(":checked") ? 1 : 0
     topic.SelfDefineText = eidtor.getContent();
 
     var modules = $('#moduleContainer tr');

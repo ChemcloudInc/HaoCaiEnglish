@@ -215,8 +215,10 @@ namespace Himall.Service
 					};
 					topicModuleInfos.Add(topicModuleInfo1);
 				}
-                context.TopicModuleInfo.OrderBy((TopicModuleInfo item) => item.TopicId == topicInfo.Id);
+                //context.TopicModuleInfo.OrderBy((TopicModuleInfo item) => item.TopicId == topicInfo.Id);
+                context.TopicModuleInfo.Remove<TopicModuleInfo>((TopicModuleInfo item) => item.TopicId == topicInfo.Id);
                 context.SaveChanges();
+
 				TopicInfo name = context.TopicInfo.FindById<TopicInfo>(topicInfo.Id);
 				name.Name = topicInfo.Name;
 				name.BackgroundImage = backgroundImage;

@@ -95,19 +95,19 @@ namespace Himall.Model
 		GiftManage = 9006,
 		[Privilege("营销", "礼品兑换列表", 9007, "Gift/Order", "giftorder", "")]
 		GiftOrder = 9007,
-		[Privilege("微商城", "商城首页设置", 10001, "Weixin/HomePageSetting", "WeiXin", "")]
-		Vshop = 10001,
-		[Privilege("微商城", "微店管理", 10002, "Vshop/VShopManagement", "Vshop", "")]
-		VshopManage = 10002,
-		[Privilege("微商城", "菜单设置", 10003, "Weixin/MenuManage", "WeiXin", "")]
-		VshopMenu = 10003,
-		[Privilege("微商城", "公众号设置", 10004, "Weixin/BasicSettings", "WeiXin", "")]
-		VshopBasicSetting = 10004,
-		[Privilege("专题", "移动端专题", 11001, "MobileTopic/management", "MobileTopic", "")]
-		MobileTopic = 11001,
+        //[Privilege("微商城", "商城首页设置", 10001, "Weixin/HomePageSetting", "WeiXin", "")]
+        //Vshop = 10001,
+        //[Privilege("微商城", "微店管理", 10002, "Vshop/VShopManagement", "Vshop", "")]
+        //VshopManage = 10002,
+        //[Privilege("微商城", "菜单设置", 10003, "Weixin/MenuManage", "WeiXin", "")]
+        //VshopMenu = 10003,
+        //[Privilege("微商城", "公众号设置", 10004, "Weixin/BasicSettings", "WeiXin", "")]
+        //VshopBasicSetting = 10004,
+        //[Privilege("专题", "移动端专题", 11001, "MobileTopic/management", "MobileTopic", "")]
+        //MobileTopic = 11001,
 		[Privilege("专题", "PC端专题", 11002, "Topic/management", "Topic", "")]
-		PCTopic = 11002,
-		[Privilege("APP", "APP首页配置", 12001, "APPShop/HomePageSetting", "APPShop", "")]
-		APPShop = 12001
+		PCTopic = 11002
+        //[Privilege("APP", "APP首页配置", 12001, "APPShop/HomePageSetting", "APPShop", "")]
+        //APPShop = 12001
 	}
 }

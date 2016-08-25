@@ -68,20 +68,20 @@ namespace Himall.Model
 		[Privilege("营销", "满额免运费", 7005, "shop/FreightSetting", "shop", "FreightSetting")]
 		FreightSetting = 7005,
 		[Privilege("营销", "代金红包", 7006, "ShopBonus/Management", "ShopBonus", "")]
-		ShopBonus = 7006,
-		[Privilege("微信", "微信配置", 8002, "WeiXin/BasicVShopSettings", "WeiXin", "")]
-		weixinSetting = 8002,
-		[Privilege("微信", "微信菜单", 8003, "WeiXin/MenuManage", "WeiXin", "")]
-		weixinMenu = 8003,
-		[Privilege("微信", "门店管理", 8004, "Poi/Index", "Poi", "")]
-		Poi = 8004,
-		[Privilege("微信", "iBeacon设备", 8005, "ShakeAround/Index", "ShakeAround", "")]
-		ShakeAroundDev = 8005,
-		[Privilege("微信", "摇一摇周边页面", 8006, "ShakeAround/PageIndex", "ShakeAround", "")]
-		ShakeAroundPage = 8006,
-		[Privilege("微店", "我的微店", 9001, "Vshop/management", "Vshop", "")]
-		VShop = 9001,
-		[Privilege("微店", "首页配置", 9002, "Vshop/VshopHomeSite", "Vshop", "")]
-		VshopHomeSite = 9002
+		ShopBonus = 7006
+        //[Privilege("微信", "微信配置", 8002, "WeiXin/BasicVShopSettings", "WeiXin", "")]
+        //weixinSetting = 8002,
+        //[Privilege("微信", "微信菜单", 8003, "WeiXin/MenuManage", "WeiXin", "")]
+        //weixinMenu = 8003,
+        //[Privilege("微信", "门店管理", 8004, "Poi/Index", "Poi", "")]
+        //Poi = 8004,
+        //[Privilege("微信", "iBeacon设备", 8005, "ShakeAround/Index", "ShakeAround", "")]
+        //ShakeAroundDev = 8005,
+        //[Privilege("微信", "摇一摇周边页面", 8006, "ShakeAround/PageIndex", "ShakeAround", "")]
+        //ShakeAroundPage = 8006,
+        //[Privilege("微店", "我的微店", 9001, "Vshop/management", "Vshop", "")]
+        //VShop = 9001,
+        //[Privilege("微店", "首页配置", 9002, "Vshop/VshopHomeSite", "Vshop", "")]
+        //VshopHomeSite = 9002
 	}
 }
