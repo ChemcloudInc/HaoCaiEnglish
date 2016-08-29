@@ -35,9 +35,9 @@ namespace Himall.Model
 		OrderComplaint = 3004,
         [Privilege("Sale", "Freight Management", 3006, "FreightTemplate/Index", "FreightTemplate", "")]
 		FreightTemplate = 3006,
-		[Privilege("Shop", "页面设置", 4001, "PageSettings/management", "PageSettings", "")]
+		[Privilege("Shop", "Page Setting", 4001, "PageSettings/management", "PageSettings", "")]
 		PageSetting = 4001,
-		[Privilege("店铺", "店铺信息", 4002, "shop/ShopDetail", "shop", "ShopDetail")]
+		[Privilege("Shop", "Shop Information", 4002, "shop/ShopDetail", "shop", "ShopDetail")]
 		ShopInfo = 4002,
 		[Privilege("店铺", "客服管理", 4004, "CustomerService/management", "CustomerService", "")]
 		CustomerService = 4004,
