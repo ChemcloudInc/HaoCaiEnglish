@@ -39,35 +39,35 @@ namespace Himall.Model
 		PageSetting = 4001,
 		[Privilege("Shop", "Shop Information", 4002, "shop/ShopDetail", "shop", "ShopDetail")]
 		ShopInfo = 4002,
-		[Privilege("店铺", "客服管理", 4004, "CustomerService/management", "CustomerService", "")]
+        [Privilege("Shop", "Customer Services", 4004, "CustomerService/management", "CustomerService", "")]
 		CustomerService = 4004,
-		[Privilege("店铺", "结算管理", 4005, "Account/management", "Account", "")]
+        [Privilege("Shop", "Settlement Management", 4005, "Account/management", "Account", "")]
 		SettlementManage = 4005,
-		[Privilege("店铺", "保证金管理", 4006, "CashDeposit/Management", "CashDeposit", "")]
+		[Privilege("Shop", "Margin Management", 4006, "CashDeposit/Management", "CashDeposit", "")]
 		CashDepositManagement = 4006,
-		[Privilege("统计", "流量统计", 5001, "statistics/shopflow", "statistics", "shopflow")]
+        [Privilege("Statistics", "Flow Statistics", 5001, "statistics/shopflow", "statistics", "shopflow")]
 		TrafficStatistics = 5001,
-		[Privilege("统计", "店铺统计", 5002, "statistics/shopsale", "statistics", "shopsale")]
+        [Privilege("Statistics", "Shop Statistics", 5002, "statistics/shopsale", "statistics", "shopsale")]
 		ShopStatistics = 5002,
-		[Privilege("统计", "成交转化率", 5003, "statistics/DealConversionRate", "statistics", "DealConversionRate")]
+        [Privilege("Statistics", "Rate of Bargain", 5003, "statistics/DealConversionRate", "statistics", "DealConversionRate")]
 		SalesAnalysis = 5003,
-		[Privilege("系统", "管理员", 6001, "Manager/management", "Manager", "")]
+        [Privilege("System", "Administrator", 6001, "Manager/management", "Manager", "")]
 		AdminManage = 6001,
-		[Privilege("系统", "权限组", 6002, "Privilege/management", "Privilege", "")]
+        [Privilege("System", " Permission Group", 6002, "Privilege/management", "Privilege", "")]
 		PrivilegesManage = 6002,
-		[Privilege("系统", "操作日志", 6003, "OperationLog/management", "OperationLog", "")]
+        [Privilege("System", "Operation Log", 6003, "OperationLog/management", "OperationLog", "")]
 		OperationLog = 6003,
-		[Privilege("营销", "限时购", 7001, "LimitTimeBuy/management", "LimitTimeBuy", "")]
+        [Privilege("Marketing", "Flash Sale", 7001, "LimitTimeBuy/management", "LimitTimeBuy", "")]
 		LimitTimeBuy = 7001,
-		[Privilege("营销", "优惠券", 7002, "Coupon/management", "Coupon", "")]
+        [Privilege("Marketing", "Discount Coupon", 7002, "Coupon/management", "Coupon", "")]
 		Coupon = 7002,
-		[Privilege("营销", "组合购", 7003, "Collocation/management", "Collocation", "")]
+        [Privilege("Marketing", "Combinatiorial Purchase", 7003, "Collocation/management", "Collocation", "")]
 		Collocation = 7003,
-		[Privilege("营销", "移动端专题", 7004, "MobileTopic/Management", "MobileTopic", "")]
+        [Privilege("Marketing", "Mobile", 7004, "MobileTopic/Management", "MobileTopic", "")]
 		MobileTopic = 7004,
-		[Privilege("营销", "满额免运费", 7005, "shop/FreightSetting", "shop", "FreightSetting")]
+        [Privilege("Marketing", "Freight Free", 7005, "shop/FreightSetting", "shop", "FreightSetting")]
 		FreightSetting = 7005,
-		[Privilege("营销", "代金红包", 7006, "ShopBonus/Management", "ShopBonus", "")]
+        [Privilege("Marketing", "Cash Coupon", 7006, "ShopBonus/Management", "ShopBonus", "")]
 		ShopBonus = 7006
         //[Privilege("微信", "微信配置", 8002, "WeiXin/BasicVShopSettings", "WeiXin", "")]
         //weixinSetting = 8002,
