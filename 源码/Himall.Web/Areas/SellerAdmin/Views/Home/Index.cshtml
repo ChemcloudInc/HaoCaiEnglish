@@ -131,10 +131,10 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
                     <li class="dropdown active">
-                        <a class="dropdown-toggle" data-toggle="dropdown">首页</a>
+                        <a class="dropdown-toggle" data-toggle="dropdown">Home</a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("控制台", "Console", "Home", new { area = "selleradmin" }, new { target = "iframe", id = "1001" })</li>
-                            <li>@Html.ActionLink("平台公告", "Index", "Article", new { area = "selleradmin" }, new { target = "iframe", id = "1002" })</li>
+                            <li>@Html.ActionLink("Console", "Console", "Home", new { area = "selleradmin" }, new { target = "iframe", id = "1001" })</li>
+                            <li>@Html.ActionLink("Platform Notice", "Index", "Article", new { area = "selleradmin" }, new { target = "iframe", id = "1002" })</li>
                         </ul>
                     </li>
                     @foreach (var p in Himall.Web.Framework.PrivilegeHelper.SellerAdminPrivileges.Privilege)

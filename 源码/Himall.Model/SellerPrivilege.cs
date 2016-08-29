@@ -4,38 +4,38 @@ namespace Himall.Model
 {
 	public enum SellerPrivilege
 	{
-		[Privilege("商品", "商品发布", 2001, "product/PublicStepOne", "product", "PublicStepOne")]
+		[Privilege("Product", "Product Release", 2001, "product/PublicStepOne", "product", "PublicStepOne")]
 		ProductAdd = 2001,
-		[Privilege("商品", "商品管理", 2002, "product/management", "product", "")]
+		[Privilege("Product", "Product Management", 2002, "product/management", "product", "")]
 		ProductManage = 2002,
-		[Privilege("商品", "分类管理", 2003, "category/management", "category", "")]
+		[Privilege("Product", "Catogory Management", 2003, "category/management", "category", "")]
 		ProductCategory = 2003,
-		[Privilege("商品", "经营品牌申请", 2004, "brand/management", "brand", "")]
+        [Privilege("Product", "Brand Applyment", 2004, "brand/management", "brand", "")]
 		BrandManage = 2004,
-		[Privilege("商品", "关联版式", 2005, "productDescriptiontemplate/management", "productDescriptiontemplate", "")]
+		[Privilege("Product", "Format Relevance", 2005, "productDescriptiontemplate/management", "productDescriptiontemplate", "")]
 		ProductDescriptionTemplate = 2005,
-		[Privilege("商品", "咨询管理", 2006, "productconsultation/management", "productconsultation", "")]
+        [Privilege("Product", "Consultment Management", 2006, "productconsultation/management", "productconsultation", "")]
 		ConsultationManage = 2006,
-		[Privilege("商品", "评价管理", 2007, "ProductComment/management", "ProductComment", "")]
+		[Privilege("Product", "Evaluation Management", 2007, "ProductComment/management", "ProductComment", "")]
 		CommentManage = 2007,
-		[Privilege("商品", "商品数据导入", 2008, "ProductImport/ImportManage", "ProductImport", "")]
+		[Privilege("Product", "Product Import", 2008, "ProductImport/ImportManage", "ProductImport", "")]
 		ProductImportManage = 2008,
-		[Privilege("交易", "订单管理", 3001, "order/management", "order", "")]
+		[Privilege("Sale", "Order Management", 3001, "order/management", "order", "")]
 		OrderManage = 3001,
-      
-        [Privilege("交易", "结算申请", 3011, "Order/ApplySettlement", "order", "")]
+
+        [Privilege("Sale", "Settlement Applyment", 3011, "Order/ApplySettlement", "order", "")]
         OrderApplySettlement = 3011,
-        [Privilege("交易", "订单结算状态", 3010, "Order/AccountTypeList", "order", "")]
+        [Privilege("Sale", "Settlement Status", 3010, "Order/AccountTypeList", "order", "")]
         OrderAccountTypeList = 3010,
-		[Privilege("交易", "退款处理", 3002, "orderrefund/management?showtype=2", "orderrefund", "")]
+		[Privilege("Sale", "Refund Money", 3002, "orderrefund/management?showtype=2", "orderrefund", "")]
 		OrderRefund = 3002,
-		[Privilege("交易", "退货处理", 3003, "orderrefund/management?showtype=3", "orderrefund", "")]
+		[Privilege("Sale", "Refund Goods", 3003, "orderrefund/management?showtype=3", "orderrefund", "")]
 		OrderGoodsRefund = 3003,
-		[Privilege("交易", "交易投诉", 3004, "ordercomplaint/management", "ordercomplaint", "")]
+        [Privilege("Sale", "Trade Complaints", 3004, "ordercomplaint/management", "ordercomplaint", "")]
 		OrderComplaint = 3004,
-		[Privilege("交易", "运费模板管理", 3006, "FreightTemplate/Index", "FreightTemplate", "")]
+        [Privilege("Sale", "Freight Management", 3006, "FreightTemplate/Index", "FreightTemplate", "")]
 		FreightTemplate = 3006,
-		[Privilege("店铺", "页面设置", 4001, "PageSettings/management", "PageSettings", "")]
+		[Privilege("Shop", "页面设置", 4001, "PageSettings/management", "PageSettings", "")]
 		PageSetting = 4001,
 		[Privilege("店铺", "店铺信息", 4002, "shop/ShopDetail", "shop", "ShopDetail")]
 		ShopInfo = 4002,
