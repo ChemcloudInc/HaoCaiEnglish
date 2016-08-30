@@ -21,40 +21,40 @@
         <div class="shop-logo">
             <img src="@Model.ShopLogo" width="100" height="100" alt="">
             <h3><a  target="_blank" href="/shop/home/@Model.ShopId">@Model.ShopName</a> </h3>
-            <p class="time">@Model.ShopEndDate 到期</p>
+            <p class="time">Due @Model.ShopEndDate</p>
             <p class="star">@Model.ShopGradeName</p>
         </div>
         <ul class="shop-score">
-            <li><span>Coincidence between product and description</span><p class="s3"><i style="width:@Model.ProductAndDescriptionPercentage"></i></p><em>@Model.ProductAndDescription</em></li>
-            <li><span>Seller's service attitude</span><p class="s3"><i style="width:@Model.SellerServiceAttitudePercentage"></i></p><em>@Model.SellerServiceAttitude</em></li>
-            <li><span>Seller's speed of delivery</span><p class="s9"><i style="width:@Model.SellerDeliverySpeedPercentage"></i></p><em>@Model.SellerDeliverySpeed</em></li>
+            <li><span>Coincidence</span><p class="s3"><i style="width:@Model.ProductAndDescriptionPercentage"></i></p><em>@Model.ProductAndDescription</em></li>
+            <li><span>Attitude</span><p class="s3"><i style="width:@Model.SellerServiceAttitudePercentage"></i></p><em>@Model.SellerServiceAttitude</em></li>
+            <li><span>Speed</span><p class="s9"><i style="width:@Model.SellerDeliverySpeedPercentage"></i></p><em>@Model.SellerDeliverySpeed</em></li>
         </ul>
         <div id="shopProductPie" style="height:100px;width:100px;float:left;">
         </div>
         <div style="width:100px;float:left;vertical-align:middle;line-height: 70px;margin-left: 10px;">
-            <div style="color:#676767; height:13px;font-size:15px;">Products remaining</div>
+            <div style="color:#676767; height:13px;font-size:15px;">Products</div>
             <div id="productsNumberDiv" style="color:#010101; font-weight:bold; font-size:15px; margin-top:5px;"></div>
         </div>
         <div id="shopImagePie" style="height:100px;width:100px;float:left;">
         </div>
         <div style="width:100px;float:left;vertical-align:middle;line-height: 70px;margin-left: 10px;">
-            <div style="color:#676767; height:13px;font-size:15px;">Space remaining</div>
+            <div style="color:#676767; height:13px;font-size:15px;">Space</div>
             <div id="useSpaceDiv" style="color:#010101; font-weight:bold; font-size:15px; margin-top:5px;"></div>
         </div>
 
     </div>
     <div class="ms-myorder modle-box">
-        <h3><span>Before trade</span><span>In trade</span><span>After trade</span></h3>
+        <h3><span>Before Trade</span><span>In Trade</span><span>After Trade</span></h3>
         <div class="mycollect clearfix">
             <dl class="clearfix">
-                <dt>订单管理</dt>
-                <dd class="first-child"><p><span>交易订单 &minus;</span><a href="/SellerAdmin/order/management">全部订单(@Model.OrderCounts)</a></p></dd>
-                <dd class="two-child"><p><a href="/SellerAdmin/order/management?status=1">待买家付款(@Model.OrderWaitPay)</a></p><p><a href="/SellerAdmin/order/management?status=2"> 待发货(@Model.OrderWaitDelivery)</a></p></dd>
+                <dt>Orders</dt>
+                <dd class="first-child"><p><span>Trades&minus;</span><a href="/SellerAdmin/order/management">All orders(@Model.OrderCounts)</a></p></dd>
+                <dd class="two-child"><p><a href="/SellerAdmin/order/management?status=1">Wait for payment(@Model.OrderWaitPay)</a></p><p><a href="/SellerAdmin/order/management?status=2">Wait for delivery(@Model.OrderWaitDelivery)</a></p></dd>
                 <dd style="margin-bottom: -10px;">
-                    <p><a href="/SellerAdmin/ProductComment/management?status=1">待回复评价(@Model.OrderReplyComments)</a></p>
-                    <p><a href="/SellerAdmin/ordercomplaint/management?status=1">待处理投诉(@Model.OrderHandlingComplaints)</a></p>
-                    <p><a href="/SellerAdmin/orderrefund/management?showtype=2&status=1">待处理退款(@Model.OrderWithRefund)</a></p>
-                    <p><a href="/SellerAdmin/orderrefund/management?showtype=3&status=1">待处理退货(@Model.OrderWithRefundAndRGoods)</a></p>
+                    <p><a href="/SellerAdmin/ProductComment/management?status=1">Comments(@Model.OrderReplyComments)</a></p>
+                    <p><a href="/SellerAdmin/ordercomplaint/management?status=1">Complaint(@Model.OrderHandlingComplaints)</a></p>
+                    <p><a href="/SellerAdmin/orderrefund/management?showtype=2&status=1">Refund money(@Model.OrderWithRefund)</a></p>
+                    <p><a href="/SellerAdmin/orderrefund/management?showtype=3&status=1">Refund goods(@Model.OrderWithRefundAndRGoods)</a></p>
                 </dd>
 
             </dl>
@@ -62,34 +62,34 @@
     </div>
 
     <div class="ms-dynamics modle-box">
-        <h3><a>账户动态</a></h3>
+        <h3><a>Account</a></h3>
         <ul>
-           <li><a href="/SellerAdmin/order/accounttypelist?status=1">未结算交易: ￥@Model.NoAccount.ToString("F2")</a></li>
-            <li><a href="/SellerAdmin/account/management?status=0">待结算交易: ￥@Model.WaitAccount.ToString("F2")</a></li>
-           <li>最近结算交易: @Model.LastestFinishData ￥@Model.LastestAccount.ToString("F2")</li>
+           <li><a href="/SellerAdmin/order/accounttypelist?status=1">Not settled: ￥@Model.NoAccount.ToString("F2")</a></li>
+            <li><a href="/SellerAdmin/account/management?status=0">Wait for settlement: ￥@Model.WaitAccount.ToString("F2")</a></li>
+           <li>New settlement: @Model.LastestFinishData ￥@Model.LastestAccount.ToString("F2")</li>
            
         </ul>
     </div>
     
     <div class="ms-goods modle-box">
-        <h3><a>商品管理</a></h3>
+        <h3><a>Product management</a></h3>
         <ul class="clearfix">
             <li>
                 <div class="icon icon-1"></div>
-                <p><a href="/SellerAdmin/product/management">出售中(@Model.ProductsOnSale)</a><a href="/SellerAdmin/product/management?status=inDraft">草稿箱(@Model.ProductsInDraft)</a></p>
-                <p><a href="/SellerAdmin/product/management?status=unAudit">待审核(@Model.ProductsWaitForAuditing)</a><a href="/SellerAdmin/product/management?status=unAudit">审核未通过(@Model.ProductsAuditFailed)</a></p>
-                <p><a href="/SellerAdmin/product/management?status=saleOff">违规下架(@Model.ProductsInfractionSaleOff)</a><a href="/SellerAdmin/product/management?status=inStock">仓库中(@Model.ProductsInStock)</a></p>
+                <p><a href="/SellerAdmin/product/management">On sale(@Model.ProductsOnSale)</a><a href="/SellerAdmin/product/management?status=inDraft">Drafts(@Model.ProductsInDraft)</a></p>
+                <p><a href="/SellerAdmin/product/management?status=unAudit">Wait for audit(@Model.ProductsWaitForAuditing)</a><a href="/SellerAdmin/product/management?status=unAudit">Fail in auditing(@Model.ProductsAuditFailed)</a></p>
+                <p><a href="/SellerAdmin/product/management?status=saleOff"> Out Of Stock(@Model.ProductsInfractionSaleOff)</a><a href="/SellerAdmin/product/management?status=inStock">In warehouse(@Model.ProductsInStock)</a></p>
             </li>
             <li>
                 <div class="icon icon-2"></div>
-                <p><a href="/SellerAdmin/productconsultation/management">商品咨询(@Model.OrderProductConsultation)</a><a href="/SellerAdmin/ProductComment/management">商品评价<i>(@Model.ProductsEvaluation)</i></a></p>
-                <p><a href="/SellerAdmin/brand/management">授权品牌(@Model.ProductsBrands)</a></p>
+                <p><a href="/SellerAdmin/productconsultation/management">Consultation(@Model.OrderProductConsultation)</a><a href="/SellerAdmin/ProductComment/management">Comments<i>(@Model.ProductsEvaluation)</i></a></p>
+                <p><a href="/SellerAdmin/brand/management">Brands(@Model.ProductsBrands)</a></p>
             </li>
         </ul>
     </div>
 
     <div class="ms-public modle-box">
-        <h3><a>公告</a></h3>
+        <h3><a>Notice</a></h3>
         <ul>
             @foreach (var article in @Model.Articles)
             {
@@ -99,28 +99,28 @@
     </div>
 
     <div class="ms-chat chat-shop modle-box">
-        <h3><a>店铺效果分析</a></h3>
-        <h6 style="margin-top:30px;">昨日数据：@DateTime.Now.Date.AddDays(-1).ToString("yyyy-MM-dd")</h6>
+        <h3><a>Analysis of my shop</a></h3>
+        <h6 style="margin-top:30px;">Yesterday's data：@DateTime.Now.Date.AddDays(-1).ToString("yyyy-MM-dd")</h6>
         <div class="chat-shop-rang" >
             <i></i>
             <ul>
                 <li>
-                    <h5>访问次数</h5>
+                    <h5>visit times</h5>
                     <p><b></b><span>@ViewBag.VistiCounts</span></p>
                 </li>
                 <li>
-                    <h5>下单次数</h5>
+                    <h5>order times</h5>
                     <p><b></b><span>@ViewBag.OrderCounts</span></p>
                 </li>
                 <li>
-                    <h5>支付金额</h5>
+                    <h5>payment amount</h5>
                     <p><b></b><span>@ViewBag.SaleAmounts</span></p>
                 </li>
             </ul>
         </div>
     </div>
     <div class="ms-chat modle-box">
-        <h3>商品销售 <em>Top15</em></h3>
+        <h3>Commodity sales<em> Top15</em></h3>
         <div class="chat-box">
             <div id="main" style="height:300px;border:1px solid #ccc;padding:10px;"></div>
         </div>
