@@ -44,7 +44,7 @@ namespace System.Web.Mvc
 
         public static MvcHtmlString CategoryCrumb(string path)
         {
-            StringBuilder stringBuilder = new StringBuilder("<div class=\"breadcrumb\"><strong><a href=\" / \">首页</a></strong>&nbsp;&gt;&nbsp;");
+            StringBuilder stringBuilder = new StringBuilder("<div class=\"breadcrumb\"><strong><a href=\" / \">Home</a></strong>&nbsp;&gt;&nbsp;");
             try
             {
                // pName = (pName.Length > 40 ? string.Concat(pName.Substring(0, 40), " ...") : pName);
@@ -82,7 +82,7 @@ namespace System.Web.Mvc
 			{
 				TagBuilder tagBuilder = new TagBuilder("a")
 				{
-					InnerHtml = "上一页"
+					InnerHtml = "Previous"
 				};
 				if (pagingInfo.CurrentPage == 1)
 				{
@@ -202,7 +202,7 @@ namespace System.Web.Mvc
 				}
 				TagBuilder tagBuilder9 = new TagBuilder("a")
 				{
-					InnerHtml = "下一页"
+					InnerHtml = "Next"
 				};
 				if (pagingInfo.CurrentPage == pagingInfo.TotalPages)
 				{

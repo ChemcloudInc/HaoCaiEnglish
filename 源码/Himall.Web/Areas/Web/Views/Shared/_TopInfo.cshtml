@@ -5,14 +5,14 @@
 <div class="top">
     <div class="warp cl">
         <span class="top-link">
-            您好，欢迎来到 @ViewBag.SiteName！
+            Hi，Welcome to @ViewBag.SiteName！
             @if (Request.Path == "/")
             {
-                <a href="/userCenter">去买家中心</a>
+                <a href="/userCenter">My Account</a>
             }
             else
             {
-                <a href="/">去首页</a>
+                <a href="/">HomePage</a>
             }
             @*@if (Model != null)
             {
@@ -29,42 +29,42 @@
         <ul class="quick_list">
             @if (Model != null)
             {
-                <li> <a href="/userCenter">@(string.IsNullOrEmpty(Model.Nick) ? @Model.UserName : @Model.Nick)</a> &nbsp; <a href="javascript:logout()">[退出]</a></li>
+                <li> <a href="/userCenter">@(string.IsNullOrEmpty(Model.Nick) ? @Model.UserName : @Model.Nick)</a> &nbsp; <a href="javascript:logout()">[Logout]</a></li>
             }
             else
             {
-                <li> <a href="/Login">[登录]</a></li>
-                <li> <a href="/Register">[注册]</a></li>
+                <li> <a href="/Login">[Sign in]</a></li>
+                <li> <a href="/Register">[Sign up]</a></li>
             }
             <li class="sitemap dropdown">
                 <span class="outline"></span>
                 <span class="blank"></span>
                 <s></s>
-                <a href="/UserCenter">我的@(ViewBag.SiteName)</a>
+                <a href="/UserCenter">My Account</a>
                 <b></b>
                 <div class="dropdown-menu">
                     <ol>
-                        <li><a href="/UserCenter?url=/UserOrder&tar=UserOrder">已买到的商品</a></li>
-						<li><a href="/UserCenter?url=/productConcern&tar=productConcern">我关注的商品</a></li>
-						<li><a href="/UserCenter?url=/shopConcern&tar=shopConcern">我关注的店铺</a></li>
+                        <li><a href="/UserCenter?url=/UserOrder&tar=UserOrder">Orders</a></li>
+						<li><a href="/UserCenter?url=/productConcern&tar=productConcern">Liked Products</a></li>
+						<li><a href="/UserCenter?url=/shopConcern&tar=shopConcern">Liked Shops</a></li>
                     </ol>
                 </div>
             </li>
-            <li><s></s><a target="_blank" href="/cart/cart">购物车<em>(<span id="shopping-amount"></span>)</em></a></li>
+            <li><s></s><a target="_blank" href="/cart/cart">Carts<em>(<span id="shopping-amount"></span>)</em></a></li>
 
 
             <li class="service dropdown">
                 <s></s>
                 <span class="outline"></span>
                 <span class="blank"></span>
-                <a href="/SellerAdmin">卖家中心</a>
+                <a href="/SellerAdmin">Sellers Center</a>
                 <b></b>
                 <div class="dropdown-menu">
                     <ol>
-                        <li><a href="/SellerAdmin">商家入驻</a></li>
-                        <li><a href="/SellerAdmin?url=/SellerAdmin/order/management&tar=order/management">已卖出商品</a></li>
-                        <li><a href="/SellerAdmin?url=/SellerAdmin/product/PublicStepOne&tar=PublicStepOne">发布商品</a></li>
-                        <li><a href="/SellerAdmin?url=/SellerAdmin/product/management&tar=product/management">管理商品</a></li>
+                        <li><a href="/SellerAdmin">Open a Shop</a></li>
+                        <li><a href="/SellerAdmin?url=/SellerAdmin/order/management&tar=order/management">Orders</a></li>
+                        <li><a href="/SellerAdmin?url=/SellerAdmin/product/PublicStepOne&tar=PublicStepOne">Add Product</a></li>
+                        <li><a href="/SellerAdmin?url=/SellerAdmin/product/management&tar=product/management">Products</a></li>
 
                     </ol>
                 </div>
@@ -75,7 +75,7 @@
                 <s></s>
                 <span class="outline"></span>
                 <span class="blank"></span>
-                <a href="javascript:void(0)">移动端</a>
+                <a href="javascript:void(0)">Moblie</a>
                 <b></b>
                 @if (!string.IsNullOrEmpty(ViewBag.QR))
                 {
@@ -89,13 +89,13 @@
                 <s></s>
                 <span class="outline"></span>
                 <span class="blank"></span>
-                <a href="javascript:void(0)">客户中心</a>
+                <a href="javascript:void(0)">Customer Center</a>
                 <b></b>
                 <div class="dropdown-menu">
                     <ol>
-                        <li><a href="/Article/Category">帮助中心</a></li>
-                        <li><a href="/UserCenter?url=/OrderRefund&tar=OrderRefund">售后服务</a></li>
-                        <li><a href="/UserCenter?url=/OrderComplaint&tar=OrderComplaint">投诉中心</a></li>
+                        <li><a href="/Article/Category">Help Center</a></li>
+                        <li><a href="/UserCenter?url=/OrderRefund&tar=OrderRefund">After-sales service</a></li>
+                        <li><a href="/UserCenter?url=/OrderComplaint&tar=OrderComplaint">Complaint Center</a></li>
                     </ol>
                 </div>
             </li>
