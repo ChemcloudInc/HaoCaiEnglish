@@ -120,10 +120,10 @@ $(function () {
                     str += '<a href="#comments-list" data="' + tag + ',' + pid + '">' + (data.totalPage) + '</a>';
                 }
                 if (data.totalPage > 1) {
-                    str += '<a class="next" href="#comments-list" data="' + tag + ',' + pid + ',1,1,' + data.totalPage + '">下一页</a>';
+                    str += '<a class="next" href="#comments-list" data="' + tag + ',' + pid + ',1,1,' + data.totalPage + '">Next</a>';
                 }
             } else if (data.currentPage > 1 && data.totalPage < 6) {// 总页数不超过5个
-                str += '<a class="prev" href="#comments-list" data="' + tag + ',' + pid + ',' + data.currentPage + ',0">上一页</a>';
+                str += '<a class="prev" href="#comments-list" data="' + tag + ',' + pid + ',' + data.currentPage + ',0">Previous</a>';
                 for (i = 1; i < data.totalPage + 1; i++) {
                     if (i == data.currentPage) {
                         str += '<a class="current">' + i + '</a>';
@@ -131,9 +131,9 @@ $(function () {
                         str += '<a href="#comments-list" data="' + tag + ',' + pid + '">' + i + '</a>';
                     }
                 }
-                str += '<a class="next" href="#comments-list" data="' + tag + ',' + pid + ',' + data.currentPage + ',1,' + data.totalPage + '">下一页</a>';
+                str += '<a class="next" href="#comments-list" data="' + tag + ',' + pid + ',' + data.currentPage + ',1,' + data.totalPage + '">Next</a>';
             } else if (data.currentPage > 1 && data.totalPage > 5) {
-                str += '<a class="prev" href="#comments-list" data="' + tag + ',' + pid + ',' + data.currentPage + ',0">上一页</a>';
+                str += '<a class="prev" href="#comments-list" data="' + tag + ',' + pid + ',' + data.currentPage + ',0">Previous</a>';
                 if (data.currentPage < 6) {
                     for (i = 1; i < 6; i++) {
                         if (i == data.currentPage) {
@@ -174,7 +174,7 @@ $(function () {
                     str += '<a href="#comments-list" data="' + tag + ',' + pid + '">' + (data.totalPage) + '</a>';
 
                 }
-                str += '<a class="next" href="#comments-list" data="' + tag + ',' + pid + ',' + data.currentPage + ',1,' + data.totalPage + '">下一页</a>';
+                str += '<a class="next" href="#comments-list" data="' + tag + ',' + pid + ',' + data.currentPage + ',1,' + data.totalPage + '">Next</a>';
             }
             tempData += '<div class="cl"><div style="padding:8px 0 0 120px;" class="fl"></div><div id="commentsPage' + tag + '" class="pagin fr">' + str + '</div></div></div>';
             dom.append(tempData);

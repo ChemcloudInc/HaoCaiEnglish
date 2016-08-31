@@ -408,8 +408,8 @@
             htmlArray.push("</div>");
             htmlArray.push("<div class=\"pager\">");
             htmlArray.push("<span class=\"active-page\">" + currentPage.toString() + "/" + pageCount.toString() + " 页，共"+total.toString()+"条记录 </span>");
-            htmlArray.push("<a class=\"btn btn-default btn-ssm beforePageBtn\" href=\"javascript:void(0);\">上一页</a>");
-            htmlArray.push("<a class=\"btn btn-default btn-ssm afterPageBtn\" href=\"javascript:void(0);\">下一页</a>");
+            htmlArray.push("<a class=\"btn btn-default btn-ssm beforePageBtn\" href=\"javascript:void(0);\">Previous</a>");
+            htmlArray.push("<a class=\"btn btn-default btn-ssm afterPageBtn\" href=\"javascript:void(0);\">Next</a>");
             htmlArray.push("<a id=\"jump-to\" class=\"btn btn-default btn-ssm\">指定跳转</a>");
             htmlArray.push("<div class=\"tipic-dialog\">");
             htmlArray.push("<div class=\"page-jump\">");

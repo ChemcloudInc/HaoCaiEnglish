@@ -70,15 +70,15 @@ q::before, q::after { content: ''; }
 .search { float: right; padding-right:280px;margin-top: 5px; }
 .search-form { height: 36px; margin-bottom: 3px; position:relative; }
 .search-form input { float: left }
-.search-form .text { width: 390px; height: 22px; padding: 5px; background-color: #fff; line-height: 22px; color: rgb(51, 51, 51); font-size: 14px;border: 2px solid #609bef;border-right: 0;  padding-left: 70px;}
+.search-form .text { width: 390px; height: 22px; padding: 5px; background-color: #fff; line-height: 22px; color: rgb(51, 51, 51); font-size: 14px;border: 2px solid #609bef;border-right: 0;  padding-left: 94px;}
 .search-form .button { background: #3480eb; width: 78px; font-size: 16px; color: #fff; cursor: pointer;   height: 36px; border: none 0 ;}
 .hot-search { height: 18px; color: #999; overflow: hidden; }
 .hot-search strong { float: left; font-weight: 400; }
 .hot-search a { margin-right: 10px; }
-.search-form ul{ position:absolute; top:1px; left:1px; background-color:#fff;  width: 56px;line-height: 32px; font-size: 14px; box-shadow:0 2px 4px #ddd; border:1px solid #ddd; z-index:2; display:none;}
+.search-form ul{ position:absolute; top:1px; left:1px; background-color:#fff;  width: 80px;line-height: 32px; font-size: 14px; box-shadow:0 2px 4px #ddd; border:1px solid #ddd; z-index:2; display:none;}
 .search-form ul li{ cursor:pointer; text-indent:12px;}
 .search-form ul li:hover{ color: #3480eb;}
-.search-form label{ position:absolute; left:2px; width:56px; text-indent:12px; font-size:14px; line-height:36px; cursor:pointer; color:#666;}
+.search-form label{ position:absolute; left:2px; width:80px; text-indent:12px; font-size:14px; line-height:36px; cursor:pointer; color:#666;}
 .search-form label:after{ content:''; position:absolute; top:16px; right:0; border-top:5px solid #3480eb; border-left:5px dashed transparent; border-right:5px dashed transparent; font-size:0; width:0; height:0;}
 
 .my-shop { float: right; position: relative; z-index: 9; width: 126px; height: 36px; margin-right:60px; }
@@ -153,7 +153,7 @@ q::before, q::after { content: ''; }
 .right-side-menu li i.go-top{ background-position:0 -280px;}
 .right-side-menu li:hover,.right-side-menu li.active{ background-color:#3480eb;}
 .right-side-menu li.side-cart{ height: 120px;  text-align: center; margin:0; padding:10px 0;}
-.right-side-menu li.side-cart p{ color:#fff; padding:0 14px; margin:2px 0;}
+.right-side-menu li.side-cart p{ color:#fff; padding:0 6px; margin:2px 0;}
 .right-side-menu li.side-cart em{ display:inline-block;  padding: 0 3px; min-width: 14px; height: 20px; line-height: 20px; border-radius: 10px; background-color:#3480eb; color:#fff;}
 
 

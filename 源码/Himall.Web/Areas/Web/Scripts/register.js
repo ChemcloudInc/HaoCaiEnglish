@@ -27,12 +27,12 @@ function bindSubmit() {
             $.post('/Register/RegisterUser', { username: username, password: password, email: email, introducer: introducer }, function (data) {
                 loading.close();
                 if (data.success) {
-                    $.dialog.succeedTips("注册成功！", function () {
+                    $.dialog.succeedTips("Register Success！", function () {
                         location.href = '/login';
                     }, 3);
                 }
                 else {
-                    $.dialog.errorTips("注册失败！" + data.msg);
+                    $.dialog.errorTips("Register Failed！" + data.msg);
                 }
             });
         }
@@ -110,11 +110,11 @@ function checkCheckCodeIsValid() {
                         result = true;
                     }
                     else {
-                        errorLabel.html('验证码错误').show();
+                        errorLabel.html('Verification code error').show();
                     }
                 }
                 else {
-                    $.dialog.errorTips("验证码校验出错", '', 1);
+                    $.dialog.errorTips("Verification code validation error", '', 1);
                 }
             }
         });
@@ -132,13 +132,13 @@ function checkCheckCodeIsValid() {
                     result = true;
                 }
                 else {
-                    errorLabel.html('验证码不正确或者已经超时').show();
+                    errorLabel.html('verification code incorrect or timeout').show();
                 }
             }
         });
     }
     else {
-        errorLabel.html('请输入验证码').show();
+        errorLabel.html('Please enter verification code').show();
     }
     return result;
 }
@@ -158,11 +158,11 @@ function checkUsernameIsValid() {
     var errorLabel = $('#regName_error');
     var reg = /^[\u4E00-\u9FA5\@A-Za-z0-9\_\-]{4,20}$/;
 
-    if (!username || username == '用户名') {
-        errorLabel.html('请输入用户名').show();
+    if (!username || username == 'username') {
+        errorLabel.html('please enter user name').show();
     }
     else if (!reg.test(username)) {
-        errorLabel.html('4-20位字符，支持中英文、数字及"-"、"_"的组合').show();
+        errorLabel.html('Username must be alphanumeric & between 4-20 characters').show();
     }
     else {
         $.ajax({
@@ -178,11 +178,11 @@ function checkUsernameIsValid() {
                         result = true;
                     }
                     else {
-                        errorLabel.html('用户名 ' + username + ' 已经被占用').show();
+                        errorLabel.html('UserName ' + username + ' is already').show();
                     }
                 }
                 else {
-                    $.dialog.errorTips("用户名校验出错", '', 1);
+                    $.dialog.errorTips("UserName validation error", '', 1);
                 }
             }
         });
@@ -237,7 +237,7 @@ function checkAgreementIsValid() {
         errorLabel.hide();
         result = true;
     } else {
-        errorLabel.html('请仔细阅读并同意以上协议').show();
+        errorLabel.html('Please carefully read and agree Terms and Conditions').show();
     }
     return result;
 }
@@ -272,8 +272,8 @@ function checkEmailIsValid() {
     var errorLabel = $('#cellPhone_error');
     var reg = /^0?(13|15|18|14|17)[0-9]{9}$/;
 
-    if (!cellPhone || cellPhone == '邮箱') {
-        errorLabel.html('请输入邮箱地址').show();
+    if (!cellPhone || cellPhone == 'Email') {
+        errorLabel.html('Please enter email address').show();
     }
     else {
         $.ajax({
@@ -288,7 +288,7 @@ function checkEmailIsValid() {
                     result = true;
                 }
                 else {
-                    errorLabel.html('邮箱 ' + cellPhone + ' 已经被占用').show();
+                    errorLabel.html('Email ' + cellPhone + ' is used').show();
                 }
             }
         });
@@ -301,11 +301,11 @@ var delayFlag = true;
 function countDown() {
     delayTime--;
     $("#sendMobileCode").attr("disabled", "disabled");
-    $("#dyMobileButton").html(delayTime + '秒后重新获取');
+    $("#dyMobileButton").html('get it again after' + delayTime + 'seconds');
     if (delayTime == 1) {
         delayTime = 60;
         $("#mobileCodeSucMessage").removeClass().empty();
-        $("#dyMobileButton").html("获取邮箱验证码");
+        $("#dyMobileButton").html("Get email verification code");
         $("#cellPhone_error").addClass("hide");
         $("#sendMobileCode").removeClass().addClass("btn").removeAttr("disabled");
         delayFlag = true;
@@ -324,7 +324,7 @@ function sendMobileCode() {
     var mobile = $("#cellPhone").val();
     var reg = /^0?(13|15|18|14|17)[0-9]{9}$/;
     if (!mobile) {
-        $("#cellPhone_error").removeClass().addClass("error").html("请输入手机号");
+        $("#cellPhone_error").removeClass().addClass("error").html("Please enter Mobile Number");
         $("#cellPhone_error").show();
         return;
     }
@@ -360,12 +360,12 @@ function sendMobileCode() {
             
             if (result.success) {
                 $("#cellPhone_error").hide();
-                $("#dyMobileButton").html("60秒后重新获取");
+                $("#dyMobileButton").html("get it again after 60 seconds");
                 setTimeout(countDown, 1000);
                 $("#sendMobileCode").removeClass().addClass("btn").attr("disabled", "disabled");
                 $("#checkCode").removeAttr("disabled");
             } else {
-                $.dialog.errorTips('发送验证码失败,' + result.msg);
+                $.dialog.errorTips('Failed to send verification code,' + result.msg);
             }
         }
     });

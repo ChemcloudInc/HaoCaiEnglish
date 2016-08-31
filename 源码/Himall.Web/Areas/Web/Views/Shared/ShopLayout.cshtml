@@ -45,7 +45,7 @@
         function addFavoriteFun(shopId, callBack) {
             $.post('/shop/AddFavorite', { shopId: shopId }, function (result) {
                 if (result.success)
-                    $.dialog.succeedTips('关注成功', function () { callBack && callBack(); });
+                    $.dialog.succeedTips('Liked Success', function () { callBack && callBack(); });
                 else
                     $.dialog.succeedTips(result.msg, function () { callBack && callBack(); });
 
@@ -84,7 +84,7 @@
         {
             if(productAndDescriptionMax-productAndDescriptionPeer==0)
             {
-                productAndDescriptionContrast="持平";
+                productAndDescriptionContrast="Flat";
             }
             else
             {
@@ -96,7 +96,7 @@
         {
             if(productAndDescriptionPeer-productAndDescriptionMin==0)
             {
-                productAndDescriptionContrast="持平";
+                productAndDescriptionContrast="Flat";
                 productAndDescriptionColor=red;
             }
             else
@@ -119,7 +119,7 @@
         {
             if(sellerServiceAttitudeMax-sellerServiceAttitudePeer==0)
             {
-                sellerServiceAttitudeContrast="持平";
+                sellerServiceAttitudeContrast="Flat";
             }
             else
             {
@@ -132,7 +132,7 @@
         {
             if(sellerServiceAttitudePeer-sellerServiceAttitudeMin==0)
             {
-                sellerServiceAttitudeContrast="持平";
+                sellerServiceAttitudeContrast="Flat";
                 sellerServiceAttitudeColor=red;
             }
             else
@@ -154,7 +154,7 @@
         {
             if(sellerDeliverySpeedMax-sellerDeliverySpeedPeer==0)
             {
-                sellerDeliverySpeedContrast="持平";
+                sellerDeliverySpeedContrast="Flat";
             }
             else
             {
@@ -166,7 +166,7 @@
         {
             if(sellerDeliverySpeedPeer-sellerDeliverySpeedMin==0)
             {
-                sellerDeliverySpeedContrast="持平";
+                sellerDeliverySpeedContrast="Flat";
                 sellerDeliverySpeedColor=red;
             }
             else
@@ -232,30 +232,30 @@
         <div class="shop-left">
             <div id="brand-bar-pop">
                 <dl id="seller">
-                    <dt>卖　　家：</dt>
+                    <dt>Sellers：</dt>
                     <dd><a href="/shop/home/@Model.Shop.Id">@Model.Shop.Name</a></dd>
                 </dl>
                 <dl id="plus-attent">
                     <dt></dt>
-                    <dd><a href="javascript:addFavorite(@Model.Shop.Id)">加关注</a></dd>
+                    <dd><a href="javascript:addFavorite(@Model.Shop.Id)">Add Like</a></dd>
                 </dl>
 
                 <div id="evaluate-detail">
                     <div class="mc">
                         <dl>
-                            <dt>描述相符：</dt>
+                            <dt>Description Match：</dt>
                             <dd id="productAndDescription" title="（商家得分-行业平均得分）/（行业商家最高得分-行业平均得分）">
 
                             </dd>
                         </dl>
                         <dl>
-                            <dt>发货速度：</dt>
+                            <dt>Shipping Speed：</dt>
                             <dd id="sellerDeliverySpeed" title="（行业平均得分-商家得分）/（行业平均得分-行业商家最低得分）">
 
                             </dd>
                         </dl>
                         <dl>
-                            <dt>服务态度：</dt>
+                            <dt>Service Attitude：</dt>
                             <dd id="sellerServiceAttitude" title="（行业平均得分-商家得分）/（行业平均得分-行业商家最低得分）">
 
                             </dd>
@@ -264,14 +264,14 @@
                     </div>
                 </div>
                 <dl>
-                    <dt style="margin-bottom: 10px;">在线客服：</dt>
+                    <dt style="margin-bottom: 10px;">Online Service：</dt>
                     <dd>@Html.Action("CustmerServices", "Product", new { shopId = @Model.Shop.Id })</dd>
                 </dl>
                 
-                <dl id="pop-company"><dt>公司名称：</dt><dd>@Model.Shop.CompanyName</dd></dl>
-                <dl id="pop-address"><dt>所在地：</dt><dd id="regionAddressId">@Model.Shop.Address</dd></dl>
+                <dl id="pop-company"><dt>Company Name：</dt><dd>@Model.Shop.CompanyName</dd></dl>
+                <dl id="pop-address"><dt>Address：</dt><dd id="regionAddressId">@Model.Shop.Address</dd></dl>
                 <dl id="hotline">
-                    <dt>联系电话：</dt>
+                    <dt>Tel：</dt>
                     <dd>@Model.Shop.Phone</dd>
                 </dl>
             </div>
@@ -291,7 +291,7 @@
 
 
             <div class="shop-ranking">
-                <h3><span class="current">销量排行</span><span>关注排行</span></h3>
+                <h3><span class="current">Sales List</span><span>Liked List</span></h3>
                 <ul class="cl" style="display:block">
                     @foreach (var item in Model.HotSaleProducts)
                     {
@@ -301,8 +301,8 @@
                                 <img src="@item.ImgPath/1_100.png" alt="" />
                             </a>
                             <h3><a target="_blank" href="@Url.Action("Detail", "Product", new { id = item.Id })">@item.Name</a></h3>
-                            <p><span>￥@item.Price.ToString("f2")</span></p>
-                            <p>已售@(item.SaleCount)件</p>
+                            <p><span>$@item.Price.ToString("f2")</span></p>
+                            <p>Saled@(item.SaleCount)Items</p>
                         </li>
                     }
                 </ul>
@@ -315,8 +315,8 @@
                                 <img src="@item.ImgPath/1_100.png" alt="" />
                             </a>
                             <h3><a target="_blank" href="@Url.Action("Detail", "Product", new { id = item.Id })">@item.Name</a></h3>
-                            <p><span>￥@item.Price.ToString("f2")</span></p>
-                            <p>已关注@(item.SaleCount)次</p>
+                            <p><span>$@item.Price.ToString("f2")</span></p>
+                            <p>Liked:@(item.SaleCount)</p>
                         </li>
                     }
                 </ul>
@@ -336,7 +336,7 @@
                     var text = $("#shopSearchText").val();
                     if (text.length === 0)
                     {
-                        $.dialog.errorTips('请输入搜索的关键字');
+                        $.dialog.errorTips('Please input search keyword');
                         return;
                     } else
                     {
@@ -348,7 +348,7 @@
             $("#shopSearchBtn").click(function () {
                 var text = $("#shopSearchText").val();
                 if (text.length === 0) {
-                    $.dialog.errorTips('请输入搜索的关键字');
+                    $.dialog.errorTips('Please input search keyword');
                     return;
                 } else {
                     location.href = "/Shop/Search?pageNo=1&sid=@Model.Shop.Id&keywords=" + text;

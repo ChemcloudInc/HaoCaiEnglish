@@ -155,7 +155,7 @@
                                         </a> 
                                     </div>
                                     <h3><a target="_blank" href="/Product/Detail/@product.ProductId" title="">@product.Name</a></h3>
-                                    <p>￥<span>@product.Price</span></p>
+                                    <p>$<span>@product.Price</span></p>
                                 </li>
                                 if( fore == 8 )
                                 {
@@ -218,7 +218,7 @@
                         }
                     </div>
                     <div class="content_mcontr">
-                        <div class="content_mcontrtop">推荐品牌</div>
+                        <div class="content_mcontrtop">Featured Brands</div>
                         <ul>
                             @foreach (var c in floor.Brands.Take(8))
                             {

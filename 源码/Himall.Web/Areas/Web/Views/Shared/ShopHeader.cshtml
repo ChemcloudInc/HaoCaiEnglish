@@ -8,12 +8,12 @@
         <div class="search">
             <div class="search-form">
 				<ul>
-					<li>商品</li>
-					<li>店铺</li>
+					<li>Products</li>
+					<li>Shops</li>
 				</ul>
-				<label>商品</label>
+				<label>Products</label>
 				<input type="text" id="searchBox" class="text" name="" value="" placeholder="@ViewBag.Keyword" />
-				<input type="button" id="searchBtn" class="button" value="搜索" />
+				<input type="button" id="searchBtn" class="button" value="Search" />
             </div>
         </div>
 	</div>
@@ -59,7 +59,7 @@
         $('#searchBtn').click(function () {
             var keyWords = $( '#searchBox' ).val();
             var selected = $( ".search .search-form label" ).html();
-            if ( selected == "店铺" )
+            if ( selected == "Shops" )
             {
                 location.href = "/shopsearch?keywords=" + encodeURIComponent( keyWords ? keyWords : $( '#searchBox' ).attr( 'placeholder' ) )
             }
@@ -109,7 +109,7 @@
                                 <a href="/product/detail/' + product.id + '" target="_blank"><img src="' + product.imgUrl + '" width="50" height="50" alt=""></a>\
                             </div>\
                             <div class="p-name fl"><a href="/product/detail/' + product.id + '" title="" target="_blank">' + product.name + '</a></div>\
-                            <div class="p-detail fr ar"><span class="p-price"><strong>￥' + product.price.toFixed("2") + '</strong>×' + product.count + '</span><br><a class="delete" skuId="' + product.skuId + '" href="javascript:;">删除</a></div>\
+                            <div class="p-detail fr ar"><span class="p-price"><strong>$' + product.price.toFixed("2") + '</strong>×' + product.count + '</span><br><a class="delete" skuId="' + product.skuId + '" href="javascript:;">Delete</a></div>\
                         </li>';
                 });
                 $('#productsList').html(html);

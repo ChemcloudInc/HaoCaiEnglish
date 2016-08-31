@@ -8,8 +8,8 @@
     <div class="coupon" style="overflow:hidden;width:160px;position:fixed;">
         <div id="id_btn" style="width:80px;height:50px;background:#e3393c;position:fixed;right:0px;padding:10px 15px;text-align:center;cursor:pointer;border-radius:4px;">
             <div style="background:url('/Areas/Web/Images/icon_c.png');position:absolute;left:0;top: 0;width:32px;height:31px;background-position:-4px -1px;"></div>
-            <div style="font-size:12px;color:#fff;line-height:25px;text-align:right;">@Model.Count() 张券可领</div>
-            <div style="font-size:16px;color:#fff;text-align:right;">点此领取</div>
+            <div style="font-size:12px;color:#fff;line-height:25px;text-align:right;">@Model.Count() Coupons</div>
+            <div style="font-size:16px;color:#fff;text-align:right;">Receive</div>
         </div>
         <div style="width:160px;height:100%;position:relative;right:-320px;cursor:pointer;" id="id_coupon">
             @foreach (var item in Model)
@@ -19,18 +19,18 @@
                     <span class="coupon_g_g">
                         <i class="coupon_p">@item.Price</i>
                         <i class="coupon_info">
-                            <span class="coupon_info_t">优惠券</span>
+                            <span class="coupon_info_t">Coupons</span>
                             @if (@item.OrderAmount > 0)
                             {
-                                <span class="coupon_info_p">满@{@item.OrderAmount}用</span>
+                                <span class="coupon_info_p">Over@{@item.OrderAmount}available</span>
                             }
                             else
                             {
-                                <span class="coupon_info_p">全场通用</span>
+                                <span class="coupon_info_p">Can Use anywhere</span>
                             }
                         </i>
                     </span>
-                    <span class="coupon_g_d">立即领取</span>
+                    <span class="coupon_g_d">Immediately Receive</span>
                 </a>
             }
         </div>
@@ -47,7 +47,7 @@
                 initUserInfo();
                 $.post('/shop/ReceiveCoupons?couponId=' + b[0] + '&shopId=' + b[1], function (data) {
                     if (data.success) {
-                        $.dialog.succeedTips('领取成功!', '', 3);
+                        $.dialog.succeedTips('Recive Success!', '', 3);
                     } else {;
                         $.dialog.errorTips(data.msg, 3);
                     }

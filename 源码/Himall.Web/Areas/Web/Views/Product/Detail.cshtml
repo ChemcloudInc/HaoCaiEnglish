@@ -75,7 +75,7 @@
         var productAndDescriptionColor = "";
         if (productAndDescription > productAndDescriptionPeer) {
             if (productAndDescriptionMax - productAndDescriptionPeer == 0) {
-                productAndDescriptionContrast = "持平";
+                productAndDescriptionContrast = "flat";
             } else {
                 productAndDescriptionContrast = (((productAndDescription - productAndDescriptionPeer) / (productAndDescriptionMax - productAndDescriptionPeer)) * 100).toFixed(2) + '%';
             }
@@ -83,7 +83,7 @@
         }
         else {
             if (productAndDescriptionPeer - productAndDescriptionMin == 0) {
-                productAndDescriptionContrast = "持平";
+                productAndDescriptionContrast = "flat";
                 productAndDescriptionColor = red;
             }
             else {
@@ -103,7 +103,7 @@
 
         if (sellerServiceAttitude > sellerServiceAttitudePeer) {
             if (sellerServiceAttitudeMax - sellerServiceAttitudePeer == 0) {
-                sellerServiceAttitudeContrast = "持平";
+                sellerServiceAttitudeContrast = "flat";
             } else {
                 sellerServiceAttitudeContrast = (((sellerServiceAttitude - sellerServiceAttitudePeer) / (sellerServiceAttitudeMax - sellerServiceAttitudePeer)) * 100).toFixed(2) + '%';
             }
@@ -112,7 +112,7 @@
         }
         else {
             if (sellerServiceAttitudePeer - sellerServiceAttitudeMin == 0) {
-                sellerServiceAttitudeContrast = "持平";
+                sellerServiceAttitudeContrast = "flat";
                 sellerServiceAttitudeColor = red;
             } else {
                 sellerServiceAttitudeContrast = ((sellerServiceAttitudePeer - sellerServiceAttitude) / (sellerServiceAttitudePeer - sellerServiceAttitudeMin) * 100).toFixed(2) + '%';
@@ -130,7 +130,7 @@
         var sellerDeliverySpeedColor = "";
         if (sellerDeliverySpeed > sellerDeliverySpeedPeer) {
             if (sellerDeliverySpeedMax - sellerDeliverySpeedPeer == 0) {
-                sellerDeliverySpeedContrast = "持平";
+                sellerDeliverySpeedContrast = "flat";
             }
             else {
                 sellerDeliverySpeedContrast = (((sellerDeliverySpeed - sellerDeliverySpeedPeer) / (sellerDeliverySpeedMax - sellerDeliverySpeedPeer)) * 100).toFixed(2) + '%';
@@ -139,7 +139,7 @@
         }
         else {
             if (sellerDeliverySpeedPeer - sellerDeliverySpeedMin == 0) {
-                sellerDeliverySpeedContrast = "持平";
+                sellerDeliverySpeedContrast = "flat";
                 sellerDeliverySpeedColor = red;
             } else {
                 sellerDeliverySpeedContrast = ((sellerDeliverySpeedPeer - sellerDeliverySpeed) / (sellerDeliverySpeedPeer - sellerDeliverySpeedMin) * 100).toFixed(2) + '%';
@@ -189,27 +189,27 @@
                                // if (ViewBag.Price > 0)
                                // {
                                 if(temp)
-                                { <div class="p-price-old">参考价<span>￥@ViewBag.Price</span></div>}
+                                { <div class="p-price-old">Reference price<span>$@ViewBag.Price</span></div>}
                                // }
-                                  <div class="p-price dt">暂无报价</div>
+                                  <div class="p-price dt">No Quotations</div>
                             }
 
                             else
                             {
-                                <div class="p-price-old">价格<span>￥@Model.Product.MarketPrice.ToString("f2")</span></div>
-                                <div class="dt dt01">耗材价</div>
-                                <strong class="p-price dt" id="jd-price">￥@ViewBag.Price</strong>
+                                <div class="p-price-old">Old Price<span>$@Model.Product.MarketPrice.ToString("f2")</span></div>
+                                <div class="dt dt01">Price</div>
+                                <strong class="p-price dt" id="jd-price">$@ViewBag.Price</strong>
                                
                             }
 
 							@if (!string.IsNullOrEmpty(Model.Product.Himall_FreightTemplate.SendTime))
                             {
-                                <i class="dt" style="width:auto;margin-right:10px;color:#737b9e; float:right; margin-top: -22px;">@(Model.Product.Himall_FreightTemplate.SendTime)h内发货</i>
+                                <i class="dt" style="width:auto;margin-right:10px;color:#737b9e; float:right; margin-top: -22px;">Within @(Model.Product.Himall_FreightTemplate.SendTime)h shipping</i>
                             }
                         </div>
                         <div class="b">
-                            <div class="b-01 dt">销量 &nbsp;&nbsp;<a id="saleCounts">@Model.Product.SaleCounts@Model.Product.MeasureUnit</a></div> <div class="b-01 dt">评价 &nbsp;&nbsp;<a id="Comments" href="#comment">0</a></div>
-                            <div class="dt b-02">评分：</div> <div class="dt summary-grade" style="margin-right:10px">
+                            <div class="b-01 dt">Orders &nbsp;&nbsp;<a id="saleCounts">@Model.Product.SaleCounts@Model.Product.MeasureUnit</a></div> <div class="b-01 dt">Reviews &nbsp;&nbsp;<a id="Comments" href="#comment">0</a></div>
+                            <div class="dt b-02">Rating：</div> <div class="dt summary-grade" style="margin-right:10px">
                                 <span class="star sa@((int)Model.Shop.ProductMark)"></span>
                             </div>
                         </div>
@@ -217,29 +217,29 @@
                     <li id="summary-promotion">
                         @if (ViewBag.CouponCount > 0 || Model.Shop.FreeFreight > 0)
                         {
-                            <div class="dt l l01">促销</div>
+                            <div class="dt l l01">Promotion</div>
                             <div class="promotion-l">
                                 @if (Model.Shop.FreeFreight > 0)
                                 {
-                                    <div><em class="hl_red_bg">满免</em><em class="hl_red">单笔订单满<span>@(Model.Shop.FreeFreight)</span>元免运费</em></div>
+                                    <div><em class="hl_red_bg"></em><em class="hl_red">Free shipping over:<span>@(Model.Shop.FreeFreight)</span> USD</em></div>
                                 }
                                 @if (ViewBag.CouponCount > 0)
-                                {<div class="d02" style="margin-left:50px;"><em class="hl_red_bg hl_coupon">领券</em><em class="hl_red"> <span>@ViewBag.CouponCount 张</span>优惠券可领,</em> &nbsp;&nbsp; <a target="_blank" href="@Url.Action("home", "Shop" , new { id=Model.Shop.Id})">立即领取&gt;&gt;</a></div>}
+                                {<div class="d02" style="margin-left:50px;"><em class="hl_red_bg hl_coupon">Coupons</em><em class="hl_red"> <span>@ViewBag.CouponCount </span>Coupons,</em> &nbsp;&nbsp; <a target="_blank" href="@Url.Action("home", "Shop" , new { id=Model.Shop.Id})">Recive Coupons&gt;&gt;</a></div>}
                             </div>
                     
                         }
                         </li>
                     <li id="summary-service">
-                        <div class="dt l">库存</div>
+                        <div class="dt l">Stock:</div>
                         <div class="dd d03">
                           
-                            <span id="stockProductImage" style="float:left;">有货，下单后立即领取</span>
+                            <span id="stockProductImage" style="float:left;">In stock</span>
                         </div>
                     </li>
                     <li id="summary-service">
-                        <div class="dt l" style="line-height: 26px;">物流</div>
+                        <div class="dt l" style="line-height: 26px;">Ship:</div>
                         <div class="dd">
-                            <span id="addressId">@ViewBag.ProductAddress</span> &nbsp; 至 &nbsp; <a class="address-choose" id="addressChoose" data-select="@ViewBag.ShippingValue">@ViewBag.ShippingAddress</a> &nbsp;| &nbsp;<span id="spFreight">@ViewBag.Freight</span>
+                            <span id="addressId">@ViewBag.ProductAddress</span> &nbsp; to &nbsp; <a class="address-choose" id="addressChoose" data-select="@ViewBag.ShippingValue">@ViewBag.ShippingAddress</a> &nbsp;| &nbsp;<span id="spFreight">@ViewBag.Freight</span>
                             
                         </div>
                     </li>
@@ -254,7 +254,7 @@
                     @if (Model.Color.Count() > 0)
                     {
                         <li class="choose-sku">
-                            <div class="dt l">颜色</div>
+                            <div class="dt l">Color</div>
                             <div class="dd">
                                 @foreach (var color in Model.Color)
                                 {
@@ -272,7 +272,7 @@
                     @if (Model.Size.Count() > 0)
                     {
                         <li class="choose-sku">
-                            <div class="dt l">尺码</div>
+                            <div class="dt l">Size</div>
                             <div class="dd">
                                 @foreach (var size in Model.Size)
                                 {
@@ -288,7 +288,7 @@
                     @if (Model.Version.Count() > 0)
                     {
                         <li class="choose-sku">
-                            <div class="dt l">规格</div>
+                            <div class="dt l">Specification</div>
                             <div class="dd">
                                 @foreach (var version in Model.Version)
                                 {
@@ -302,11 +302,11 @@
                     }
                     @if (ViewBag.DisableBuy)
                     {
-                        <span id="stockProductImage" style="float:left;">请进入店铺联系我们</span>
+                        <span id="stockProductImage" style="float:left;">Please Visit our shop</span>
                     }
                     else { 
                     <li id="choose-amount" style="line-height: 26px;">
-                        <div class="dt l">数量</div>
+                        <div class="dt l">QTY:</div>
                         <div class="dd">
                             <div class="wrap-input">
                                 <a class="btn-reduce" href="javascript:;">-</a>
@@ -314,21 +314,21 @@
                                 <input class="text quantity-text" id="buy-num" value="1" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'1'); if(this.value==''){this.value='1'}}).call(this)" onblur="this.v()" />
                             </div>
                         </div>
-                        <span> &nbsp; 库存：<i id="stockProduct"></i>@Model.Product.MeasureUnit</span>
+                        <span> &nbsp; Stock：<i id="stockProduct"></i>@Model.Product.MeasureUnit</span>
                     </li>
                     <li id="choose-result">
                         <div class="dt"></div><div class="dd"><strong></strong><strong></strong></div>
                     </li>
                     <li id="choose-btns">
                         <div id="choose-btn-buy" class="btn " style="display: none">
-                            <a class="btn-append btn-order-now" id="OrderNow">立即购买<b></b></a>
+                            <a class="btn-append btn-order-now" id="OrderNow">Buy it Now<b></b></a>
                         </div>
                         <div id="choose-btn-append" class="btn disabled">
-                            <a class="btn-append" id="InitCartUrl">加入购物车<b></b></a>
+                            <a class="btn-append" id="InitCartUrl">Add to Cart<b></b></a>
                         </div>
 
                         <div style="display: none" id="choose-btn-easybuy" class="btn">
-                            <a id="easyBuyBtn" class="btn-easybuy" href="#none">轻松购<b></b></a>
+                            <a id="easyBuyBtn" class="btn-easybuy" href="#none">Easy to Buy<b></b></a>
                         </div>
 
                     </li>
@@ -363,11 +363,11 @@
                     </ul>
                 </div>
                 <div class="attent-goods" id="choose-btn-coll">
-                    <a href="#none" class="btn-coll">收藏商品</a>
+                    <a href="#none" class="btn-coll">Liked Product</a>
 
                 </div>
                 <span class="btn" style=" padding-left:45px;float:left; margin-top: 14px;color:#000;">
-                    <span style="float:none;display:inline-block;vertical-align:top;margin-top:3px">分享到：</span>
+                    <span style="float:none;display:inline-block;vertical-align:top;margin-top:3px">Share：</span>
                     <wb:share-button count="n" addition="simple" type="icon" size="medium" title="@Model.Product.ProductName" pic="http://@Request.Url.Host@Model.Product.ImagePath/1_100.png" url="http://@Request.Url.Host/product/detail/@Model.Product.Id"></wb:share-button>
                     <script type="text/javascript">
                         (function () {
@@ -387,11 +387,11 @@
                             for (var i in p) {
                                 s.push(i + '=' + encodeURIComponent(p[i] || ''));
                             }
-                            document.write(['<a version="1.0" class="qzOpenerDiv" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?', s.join('&'), '" target="_blank">分享</a>'].join(''));
+                            document.write(['<a version="1.0" class="qzOpenerDiv" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?', s.join('&'), '" target="_blank">Share</a>'].join(''));
                         })();
                     </script>
                     <script src="http://qzonestyle.gtimg.cn/qzone/app/qzlike/qzopensl.js#jsdate=20111201" charset="utf-8"></script>
-                    <a href="javascript:void(0);" title="分享到微信" onclick="showQrCode()" style="float:none;display:inline-block;vertical-align:top;margin-top:3px"><img src="/Images/wx.png"></a>
+                    <a href="javascript:void(0);" title="Share to WeiXin" onclick="showQrCode()" style="float:none;display:inline-block;vertical-align:top;margin-top:3px"><img src="/Images/wx.png"></a>
                 </span>
 
             </div><!--preview end-->
@@ -410,18 +410,18 @@
             <div class="float-nav-wrap">
                 <div class="mt">
                     <ul class="tab">
-                        <li class="curr goods-li"><span><a href="javascript:;" class="toggle-link">商品介绍<b></b></a></span></li>
-                        <li class="comment-li"><a href="javascript:;" class="toggle-link">商品评价<b></b><span id="CommentsU" class="hl_blue"> 0 </span></a></li>
-                        <li class="consult-li"><a href="javascript:;" class="toggle-link">商品咨询<b></b><span id="ConsU" class="hl_blue"> 0 </span></a></li>
+                        <li class="curr goods-li"><span><a href="javascript:;" class="toggle-link">Description<b></b></a></span></li>
+                        <li class="comment-li"><a href="javascript:;" class="toggle-link">Reviews<b></b><span id="CommentsU" class="hl_blue"> 0 </span></a></li>
+                        <li class="consult-li"><a href="javascript:;" class="toggle-link">Consults<b></b><span id="ConsU" class="hl_blue"> 0 </span></a></li>
                     </ul>
 
                 </div>
             </div>
             <div class="mc" id="product-detail-1">
                 <ul class="detail-list" id="detail-list">
-                    <li style="width:40%;" title="">商品名称：@Model.Product.ProductName</li>
-                    <li>商品货号：@Model.Product.ProductCode</li>
-                    <li>品牌：@Model.Product.BrandName</li>
+                    <li style="width:40%;" title="">Product Name：@Model.Product.ProductName</li>
+                    <li>Product Code：@Model.Product.ProductCode</li>
+                    <li>Brand：@Model.Product.BrandName</li>
                     @*@if (!string.IsNullOrWhiteSpace(Model.Shop.Name))
                         {
                         <li>店铺：<a href="@Url.Action("home", "Shop" , new { id=Model.Shop.Id})" target="_blank">@Model.Shop.Name</a></li>
@@ -441,29 +441,29 @@
         <!--product-detail end-->
         <div id="comment" class="m m1">
             <div class="mt">
-                <h2>商品评价</h2>
+                <h2>Reviews</h2>
             </div>
             <div class="mc">
                 <div id="i-comment">
                     <div class="rate">
                         <strong>100%</strong> <br />
-                        <span>好评度</span>
+                        <span>Good</span>
                     </div>
                     <div class="percent">
                         <dl>
-                            <dt>好评<span>(100%)</span></dt>
+                            <dt>Good<span>(100%)</span></dt>
                             <dd>
                                 <div style="width: 100px;"></div>
                             </dd>
                         </dl>
                         <dl>
-                            <dt>中评<span>(0%)</span></dt>
+                            <dt>Medium<span>(0%)</span></dt>
                             <dd class="d1">
                                 <div style="width: 0%;"> </div>
                             </dd>
                         </dl>
                         <dl>
-                            <dt>差评<span>(0%)</span></dt>
+                            <dt>Bad<span>(0%)</span></dt>
                             <dd class="d1">
                                 <div style="width: 0%;"> </div>
                             </dd>
@@ -477,10 +477,10 @@
         <div id="comments-list" class="m">
             <div class="mt">
                 <ul class="tab" id="id_comment_btn">
-                    <li class="curr"><a href="javascript:;">全部评价<em id="totalComment"></em></a></li>
-                    <li><a href="javascript:;">好评<em id="goodComment"></em></a></li>
-                    <li><a href="javascript:;">中评<em id=""></em></a></li>
-                    <li><a href="javascript:;">差评<em id="badComment"></em></a></li>
+                    <li class="curr"><a href="javascript:;">All Reviews<em id="totalComment"></em></a></li>
+                    <li><a href="javascript:;">Good<em id="goodComment"></em></a></li>
+                    <li><a href="javascript:;">Medium<em id=""></em></a></li>
+                    <li><a href="javascript:;">Bad<em id="badComment"></em></a></li>
                     <li class="tab-last"></li>
                 </ul>
             </div>
@@ -490,12 +490,12 @@
         <div id="consult" class="m m2">
             <div class="mt">
                 <ul class="tab">
-                    <li class="curr"><a href="javascript:;">商品咨询</a></li>
+                    <li class="curr"><a href="javascript:;">Consults</a></li>
                 </ul>
-                <div class="consult-pub"> <a href="@Url.Action("index", "ProductConsultation" , new { id=Model.Product.Id})#ConsultForm" class="css3-btn" target="_blank">发表咨询</a> </div>
+                <div class="consult-pub"> <a href="@Url.Action("index", "ProductConsultation" , new { id=Model.Product.Id})#ConsultForm" class="css3-btn" target="_blank">Write Consults</a> </div>
             </div>
             <div id="consult-search">
-                <div class="prompt"> <strong>温馨提示:</strong>因厂家更改产品包装、产地或者更换随机附件等没有任何提前通知，且每位咨询者购买情况、提问时间等不同，为此以下回复仅对提问者3天内有效，其他网友仅供参考！若由此给您带来不便请多多谅解，谢谢！ </div>
+                <div class="prompt"> <strong>Tips:</strong>Due to the factory to change the product packaging, the origin of a product or replacement accessories such as without any advance notice, and each consultant buying situation and question time is different, so the following reply to the questions valid for 3 days only.Thank you! </div>
             </div>
             <!--consult-search end-->
             <div id="consult-0" class="mc tabcon" data-widget="tab-content">
@@ -510,17 +510,17 @@
     <div class="left product-left">
         <div id="sp-search" class="m m2">
             <div class="mt">
-                <h2>本店搜索</h2>
+                <h2>Search in our shop</h2>
             </div>
             <div class="mc">
                 <p class="sp-form-item1">
-                    <label for="sp-keyword">关键字</label>
+                    <label for="sp-keyword">Keyword</label>
                     <span>
                         <input type="text" id="sp-keyword" onkeydown="javascript:if(event.keyCode==13){}" />
                     </span>
                 </p>
                 <p class="sp-form-item2">
-                    <label for="sp-price">价　格</label>
+                    <label for="sp-price">Price</label>
                     <span>
                         <input type="text" id="sp-price" />
                         -
@@ -530,35 +530,35 @@
                 <p class="sp-form-item3">
                     <label for="">　　　</label>
                     <span>
-                        <input type="submit" id="shopInSearch" value="搜索" />
+                        <input type="submit" id="shopInSearch" value="Seach" />
                     </span>
                 </p>
             </div>
         </div>
         <div id="sp-category" class="m m2 sp-category">
             <div class="mt">
-                <h2>店铺分类</h2>
+                <h2>Shop Categories</h2>
             </div>
             <div id="shopCateDiv" class="mc">
                 <dl>
-                    <dt><a href="#" target="_blank"><s></s>加载中...</a></dt>
+                    <dt><a href="#" target="_blank"><s></s>Loading...</a></dt>
                 </dl>
             </div>
         </div>
         <div id="sp-brand-official" class="m m2 sp-category of-category">
             <div class="mt">
-                <h2>同类其他品牌</h2>
+                <h2>Other Brands</h2>
             </div>
             <div id="brandDivOfficial" class="mc">
                 <dl>
-                    <dt><a href="#" target="_blank"><s></s>加载中...</a></dt>
+                    <dt><a href="#" target="_blank"><s></s>Loading...</a></dt>
                 </dl>
             </div>
         </div>
         <div id="sp-hot-sale" class="m m2 m3">
             <div class="mt">
-                <span class="cur">热门销售</span>
-				<span>热门关注</span>
+                <span class="cur">Top Sellers</span>
+				<span>Top Liked</span>
             </div>
             <div class="mc">
                 <ul id="hotsaleDiv"></ul>
@@ -576,7 +576,7 @@
 		@if (@Model.BoughtProducts.Count > 0){
 		<div class="m m2 m3">
             <div class="mt">
-                <h2>购买该商品的还购买了</h2>
+                <h2>People Also Buy</h2>
             </div>
             <div class="mc">
                 <ul>
@@ -590,7 +590,7 @@
 								<a href="@Url.Action("detail", "Product" , new { id=@p.Id })" title="@p.Name" target="_blank">@p.Name</a>
 							</div>
 							<div class="p-info p-bfc">
-								<div class="p-price"><strong>￥@p.Price.ToString("f2")</strong></div>
+								<div class="p-price"><strong>$@p.Price.ToString("f2")</strong></div>
 							</div>
 						</li>
 					}
@@ -620,13 +620,13 @@
         $.post( "/product/GetShopBonus", {shopid : @Model.Product.ShopId} , function( data ){
             if(data != undefined && data != null )
             {
-                var html = '<div class="dd d02" style="margin-left:50px;"><em class="hl_red_bg">红包</em><em class="hl_red">满<span>'+data.GrantPrice+'元</span>送红包（'+data.Count+'个'+data.RandomAmountStart+'—'+data.RandomAmountEnd+'元代金券红包）</em></div>';
+                var html = '<div class="dd d02" style="margin-left:50px;"><em class="hl_red_bg">Cash Coupon</em><em class="hl_red">Over<span>'+data.GrantPrice+'USD</span> may get cash coupon（'+data.Count+' pieces'+data.RandomAmountStart+'—'+data.RandomAmountEnd+'USD Cash Coupon）</em></div>';
                 if ($(".promotion-l").length>0)
                 {                 
                     $(html).appendTo(".promotion-l");
                 }
                 else{
-                    $('#summary-promotion').append('<div class="dt l l01">促销</div>'+html);
+                    $('#summary-promotion').append('<div class="dt l l01">Promotion</div>'+html);
                 }
             }
         });
@@ -672,7 +672,7 @@
 <script>
     function showQrCode() {
         $.dialog({
-            title: '二维码',
+            title: 'QR Code',
             lock: true,
             id: 'weixinQrCode',
             content: $("#weixinQrCode").html(),

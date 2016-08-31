@@ -24,12 +24,12 @@
         @{ var memberInfo = ViewBag.Member as Himall.Model.UserMemberInfo;}
      @{Html.RenderAction("TopInfo", "ProductPartial");}
         <div class="w990 w1 cl">
-            <div id="logo"><a href="/"><img src="@ViewBag.Logo" height="60" title="返回商城首页" alt="返回商城首页" /></a></div>
+            <div id="logo"><a href="/"><img src="@ViewBag.Logo" height="60" title="Back to Home" alt="Back to Home" /></a></div>
             <div class="progress cl">
                 <ul class="progress-@ViewBag.Step pro-c1">
-                    <li class="step-1">1.我的购物车</li>
-                    <li class="step-2">2.填写核对订单信息</li>
-                    <li class="step-3">3.成功提交订单</li>
+                    <li class="step-1">1.Shipping Cart</li>
+                    <li class="step-2">2.Check Order Info</li>
+                    <li class="step-3">3.Submit Order Successful</li>
                 </ul>
             </div>
         </div>
