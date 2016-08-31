@@ -88,7 +88,7 @@ require(
 function load(echarts) {
     myChart = echarts.init(document.getElementById('main'));
     myChart.showLoading({
-        text: '正在加载图表...',
+        text: 'Loading...',
         effect: 'bubble',
         textStyle: {
             fontSize: 20

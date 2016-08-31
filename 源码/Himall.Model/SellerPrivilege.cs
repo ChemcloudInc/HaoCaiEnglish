@@ -14,9 +14,9 @@ namespace Himall.Model
 		BrandManage = 2004,
 		[Privilege("Product", "Format Relevance", 2005, "productDescriptiontemplate/management", "productDescriptiontemplate", "")]
 		ProductDescriptionTemplate = 2005,
-        [Privilege("Product", "Consultment Management", 2006, "productconsultation/management", "productconsultation", "")]
+        [Privilege("Product", "Consultment", 2006, "productconsultation/management", "productconsultation", "")]
 		ConsultationManage = 2006,
-		[Privilege("Product", "Evaluation Management", 2007, "ProductComment/management", "ProductComment", "")]
+		[Privilege("Product", "Evaluation", 2007, "ProductComment/management", "ProductComment", "")]
 		CommentManage = 2007,
 		[Privilege("Product", "Product Import", 2008, "ProductImport/ImportManage", "ProductImport", "")]
 		ProductImportManage = 2008,
@@ -41,7 +41,7 @@ namespace Himall.Model
 		ShopInfo = 4002,
         [Privilege("Shop", "Customer Services", 4004, "CustomerService/management", "CustomerService", "")]
 		CustomerService = 4004,
-        [Privilege("Shop", "Settlement Management", 4005, "Account/management", "Account", "")]
+        [Privilege("Shop", "Settlement", 4005, "Account/management", "Account", "")]
 		SettlementManage = 4005,
 		[Privilege("Shop", "Margin Management", 4006, "CashDeposit/Management", "CashDeposit", "")]
 		CashDepositManagement = 4006,
@@ -61,7 +61,7 @@ namespace Himall.Model
 		LimitTimeBuy = 7001,
         [Privilege("Marketing", "Discount Coupon", 7002, "Coupon/management", "Coupon", "")]
 		Coupon = 7002,
-        [Privilege("Marketing", "Combinatiorial Purchase", 7003, "Collocation/management", "Collocation", "")]
+        [Privilege("Marketing", "Purchase", 7003, "Collocation/management", "Collocation", "")]
 		Collocation = 7003,
         [Privilege("Marketing", "Mobile", 7004, "MobileTopic/Management", "MobileTopic", "")]
 		MobileTopic = 7004,
