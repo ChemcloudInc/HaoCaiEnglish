@@ -5,7 +5,7 @@ var skuId = new Array(3);
 //chooseResult();
 function chooseResult() {
     //已选择显示
-    var str = '<em>已选择&nbsp;</em>';
+    var str = '<em>Selected &nbsp;</em>';
     var len = $('#choose li .dd .selected').length;
     for (var i = 0; i < len; i++) {
         if (i < len - 1)
@@ -49,13 +49,13 @@ function getStock(skuId) {
             var isshoweasybt = false;
             if (stock > 0 && Status == 1) {
                 isshoweasybt = true;
-                $("#stockProductImage").text("有货");
+                $("#stockProductImage").text("In stock");
                 $('#choose-btn-buy').show();
                 $("#choose-btn-append").removeClass("disabled");
             } else {
                 $("#stockProduct").html("0");
-                $("#stockProductImage").html("缺货");
-                $("#stockProductImage").html('<div class="dd"><strong style="color:red;">提示：无货</strong></div>');
+                $("#stockProductImage").html("Out of stock");
+                $("#stockProductImage").html('<div class="dd"><strong style="color:red;">Tips：Out of stock</strong></div>');
                 $("#choose-btn-append").addClass("disabled");
                 $('#choose-btn-buy').hide();
             }

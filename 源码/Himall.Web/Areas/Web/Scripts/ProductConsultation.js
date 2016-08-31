@@ -73,10 +73,10 @@ $(function(){
                     }
 
                     if (data.totalPage > 1) {
-                        str += '<a class="next" href="#consult" data="' + pid + ',1,1,' + data.totalPage + '">下一页</a>';
+                        str += '<a class="next" href="#consult" data="' + pid + ',1,1,' + data.totalPage + '">Next</a>';
                     }
                 } else if (data.currentPage > 1 && data.totalPage < 6) {// 总页数不超过5个
-                    str += '<a class="prev" href="#consult" data="' + pid + ',' + data.currentPage + ',0">上一页</a>';
+                    str += '<a class="prev" href="#consult" data="' + pid + ',' + data.currentPage + ',0">Previous</a>';
                     for (i = 1; i < data.totalPage + 1; i++) {
                         if (i == data.currentPage) {
                             str += '<a class="current">' + i + '</a>';
@@ -84,9 +84,9 @@ $(function(){
                             str += '<a href="#consult" data="' + pid + '">' + i + '</a>';
                         }
                     }
-                    str += '<a class="next" href="#consult" data="' + pid + ',' + data.currentPage + ',1,' + data.totalPage + '">下一页</a>';
+                    str += '<a class="next" href="#consult" data="' + pid + ',' + data.currentPage + ',1,' + data.totalPage + '">Next</a>';
                 } else if (data.currentPage > 1 && data.totalPage > 5) {
-                    str += '<a class="prev" href="#consult" data="' + pid + ',' + data.currentPage + ',0">上一页</a>';
+                    str += '<a class="prev" href="#consult" data="' + pid + ',' + data.currentPage + ',0">Previous</a>';
                     if (data.currentPage < 6) {
                         for (i = 1; i < 6; i++) {
                             if (i == data.currentPage) {
@@ -127,7 +127,7 @@ $(function(){
                         str += '<a href="#consult" data="' + pid + '">' + (data.totalPage) + '</a>';
 
                     }
-                    str += '<a class="next" href="#consult" data="' + pid + ',' + data.currentPage + ',1,' + data.totalPage + '">下一页</a>';
+                    str += '<a class="next" href="#consult" data="' + pid + ',' + data.currentPage + ',1,' + data.totalPage + '">Next</a>';
                 }
                 str += '</div></div>';
                 $('#consult-0').append(str);

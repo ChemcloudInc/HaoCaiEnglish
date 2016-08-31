@@ -23,12 +23,12 @@ function bindSubmit() {
             $.post('/Register/RegBusiness', { username: username, password: password }, function (data) {
                 loading.close();
                 if (data.success) {
-                    $.dialog.succeedTips("注册成功！", function () {
+                    $.dialog.succeedTips("Register Success！", function () {
                         location.href = '/selleradmin/login';
                     }, 2);
                 }
                 else {
-                    $.dialog.errorTips("注册失败！" + data.msg, '', 1);
+                    $.dialog.errorTips("Register Failed！" + data.msg, '', 1);
                 }
             });
         }
@@ -105,17 +105,17 @@ function checkCheckCodeIsValid() {
                         result = true;
                     }
                     else {
-                        errorLabel.html('验证码错误').show();
+                        errorLabel.html('Verification code error').show();
                     }
                 }
                 else {
-                    $.dialog.errorTips("验证码校验出错", '', 1);
+                    $.dialog.errorTips("Verification code validation error", '', 1);
                 }
             }
         });
     }
     else {
-        errorLabel.html('请输入验证码').show();
+        errorLabel.html('Please enter verification code').show();
     }
     return result;
 }
@@ -135,11 +135,11 @@ function checkUsernameIsValid() {
     var errorLabel=$('#regName_error');
     var reg = /^[\u4E00-\u9FA5\@A-Za-z0-9\_\-]{4,20}$/;
 
-    if (!username || username == '用户名') {
-        errorLabel.html('请输入用户名').show();
+    if (!username || username == 'username') {
+        errorLabel.html('please enter user name').show();
     }
     else if (!reg.test(username)) {
-        errorLabel.html('4-20位字符，支持中英文、数字及"-"、"_"的组合').show();
+        errorLabel.html('Username must be alphanumeric & between 4-20 characters').show();
     }
     else{
         $.ajax({
@@ -155,11 +155,11 @@ function checkUsernameIsValid() {
                         result = true;
                     }
                     else {
-                        errorLabel.html('用户名 ' + username + ' 已经被占用').show();
+                        errorLabel.html('UserName ' + username + ' is already').show();
                     }
                 }
                 else {
-                    $.dialog.errorTips("验证码校验出错", '', 1);
+                    $.dialog.errorTips("UserName validation error", '', 1);
                 }
             }
         });

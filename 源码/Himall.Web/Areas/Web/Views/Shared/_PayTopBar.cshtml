@@ -21,12 +21,12 @@
 <body>
   @{Html.RenderAction("TopInfo", "ProductPartial");}
     <div class="w990 w1 cl">
-        <div id="logo"><a href="/"><img src="@ViewBag.Logo" height="60" title="返回商城首页" alt="返回商城首页" /></a></div>
+        <div id="logo"><a href="/"><img src="@ViewBag.Logo" height="60" title="Back to Home" alt="Back to Home" /></a></div>
         <div class="progress cl">
             <ul class="progress-@ViewBag.Step">
-                <li class="step-1">选择支付方式</li>
-                <li class="step-2">确认支付</li>
-                <li class="step-3">支付结果信息</li>
+                <li class="step-1">Payment Method</li>
+                <li class="step-2">Confirm Payment</li>
+                <li class="step-3">The result of Payment</li>
             </ul>
         </div>
     </div>

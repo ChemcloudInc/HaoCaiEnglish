@@ -1,10 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "购物车结算";
+    ViewBag.Title = "Checkout";
     Layout = "~/Areas/Web/Views/Shared/_OrderTopBar.cshtml";
 }
 <div class="w990 cart">
-    <div class="cart-hd group"><h2>我的购物车</h2></div>
+    <div class="cart-hd group"><h2>My Shopping Cart</h2></div>
     <div id="show">
         <div class="cart-inner">
         	<div class="message">
@@ -15,11 +15,11 @@
             </div>
             <div class="cart-list">
                 <div class="cart-thead cl">
-                    <div class="column t-checkbox form"><input type="checkbox" name="checkAll" checked="" value="" /><label for="">全选</label></div>
-                    <div class="column t-goods">商品</div>
-                    <div class="column t-price">商城价</div>
-                    <div class="column t-quantity">数量</div>
-                    <div class="column t-action">操作</div>
+                    <div class="column t-checkbox form"><input type="checkbox" name="checkAll" checked="" value="" /><label for="">Select All</label></div>
+                    <div class="column t-goods">ProductName</div>
+                    <div class="column t-price">Price</div>
+                    <div class="column t-quantity">Qty.</div>
+                    <div class="column t-action">Operate</div>
                 </div>
                 <div id="product-list" class="cart-tbody">
     
@@ -30,17 +30,17 @@
                         <div class="cart-total-2014">
                             <span class="column t-checkbox form" style="margin-right:10px;">
                                 <input type="checkbox" checked="" name="checkAll" value="" class="jdcheckbox" style="margin: 15px 5px 0 19px;"/>
-                                <label for="">全选</label>
+                                <label for="">Select All </label>
                             </span>
                             <span class="delete" style="margin-right:10px;">
                                 <b></b>
-                                <a href="javascript:void(0);" id="remove-batch">删除</a>
+                                <a href="javascript:void(0);" id="remove-batch">Delete</a>
                             </span>
-                            <span id="selectedCount" style="color:#e4393c;">0</span> 件商品
+                            <span id="selectedCount" style="color:#e4393c;">0</span>Prodct(s)
                             <div class="cart-button">
-                                <a class="checkout" href="javascript:void(0);" id="toSettlement"><b></b>去结算</a>
+                                <a class="checkout" href="javascript:void(0);" id="toSettlement"><b></b>Checkout</a>
                             </div>
-                            <div class="total fr">总计（不含运费）：<span id="finalPrice">¥ 0</span></div>
+                            <div class="total fr">Total（No shipping Fare）：<span id="finalPrice">$ 0</span></div>
                         </div>
                     </div>
                 </div>

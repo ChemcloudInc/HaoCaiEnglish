@@ -22,18 +22,18 @@
         <div class="search">
             <div class="search-form">
 				<ul>
-					<li>商品</li>
-					<li>店铺</li>
+					<li>Products</li>
+					<li>Shops</li>
 				</ul>
-				<label>商品</label>
+				<label>Products</label>
 				<input type="text" id="searchBox" class="text" name="" value="" placeholder="@ViewBag.Keyword" />
-				<input type="button" id="searchBtn" class="button" value="搜索" />
+				<input type="button" id="searchBtn" class="button" value="Search" />
             </div>
             <div class="hot-search">
                 @{
                     int i = 0;
                 }
-                <strong>热门搜索：</strong>
+                <strong>Hottest Search：</strong>
                 @foreach (var hotKey in ViewBag.HotKeyWords)
                 {
                     if (i++ == 0)
@@ -59,7 +59,7 @@
 <div class="nav-bar">
     <div class="nav-content">
         <div class="categorys">
-            <div class="cate-all"><a>全部商品分类</a><b></b></div>
+            <div class="cate-all"><a>All Categories</a><b></b></div>
             <div class="category">
                 <div class="mc">
                     @{
@@ -138,10 +138,10 @@
 
         <ul class="nav cl">
             @{ IEnumerable<Himall.Model.BannerInfo> navigators = ViewBag.Navigators; }
-            <li class="cur  _banner" id="homePage" index=""><a href="/">首页</a></li>
-            <li class="_banner" id="limittimebuy" index="@Url.Action("home","LimitTimeBuy")"><a href="@Url.Action("home","LimitTimeBuy")">限时购</a></li>
-            <li class="_banner" index="@Url.Action("list","topic")"><a href="@Url.Action("list","topic")">专题</a></li>
-            <li class="_banner" id="integralmall" index="@Url.Action("Index", "IntegralMall")"><a href="@Url.Action("Index", "IntegralMall")">积分商城</a></li>
+            <li class="cur  _banner" id="homePage" index=""><a href="/">Home</a></li>
+            <li class="_banner" id="limittimebuy" index="@Url.Action("home","LimitTimeBuy")"><a href="@Url.Action("home","LimitTimeBuy")">Limit Time Buy</a></li>
+            <li class="_banner" index="@Url.Action("list","topic")"><a href="@Url.Action("list","topic")">Topics</a></li>
+            <li class="_banner" id="integralmall" index="@Url.Action("Index", "IntegralMall")"><a href="@Url.Action("Index", "IntegralMall")">Points Shop</a></li>
             @foreach( var navigator in navigators )
             {
                 <li class="_banner" index="@navigator.Url"><a target="_blank" href="@navigator.Url">@navigator.Name</a></li>
@@ -156,18 +156,18 @@
 		<ul class="menu-top">
 			<li data-tag="user"> 
 				<i class="user" id="right_userCenter"></i>
-				<span>个人中心</span>
+				<span>My Account</span>
 			</li>
 			<s></s>
 			<li data-tag="cart" arrow class="side-cart" id="right_cart">
 				<i class="cart"></i>
-				<p>购物车</p>
+				<p>Carts<p>
 				<em>0</em>
 			</li>
 			<s></s>
             <li data-tag="asset" arrow id="right_asset">
                 <i class="asset"></i>
-                <span>资产中心</span>
+                <span>Capital Center</span>
             </li>
 			<!--<li data-tag="at-shop">
 				<i class="at-shop"></i>
@@ -175,17 +175,17 @@
 			</li>-->
 			<li data-tag="at-goods" arrow id="right_goods">
 				<i class="at-goods"></i>
-				<span>关注商品</span>
+				<span>Liked Products</span>
 			</li>
             <li data-tag="history" arrow id="right_history">
                 <i class="history"></i>
-                <span>浏览历史</span>
+                <span>Recently Viewed</span>
             </li>
 		</ul>
 		<ul class="menu-bot">
 			<li>
 				<i class="go-top"></i>
-				<span>返回顶部</span>
+				<span>Return Top</span>
 			</li>
 		</ul>
 	</div>
@@ -195,8 +195,8 @@
 				<input type="hidden" value="@Himall.Model.ProductInfo.ProductAuditStatus.Audited.GetHashCode()" id="hidAuditStatus" />
 				<input type="hidden" value="@Himall.Model.ProductInfo.ProductSaleStatus.OnSale.GetHashCode()" id="hidSaleStatus" />
 				<div class="cart-top">
-					<label><input type="checkbox" name="s-checkAll" checked />全选</label>
-                    <a href="/cart/cart" title="">查看全部</a>
+					<label><input type="checkbox" name="s-checkAll" checked />Select All</label>
+                    <a href="/cart/cart" title="">View All</a>
 				</div>
 				<div class="cart-list">
 					<ul id="side-cart-list">
@@ -206,31 +206,31 @@
 			</div>
 			<div class="side-bt">
 				<div class="cart-total">
-					<span class="total-money">￥<em id="s-total-money">0</em></span>
-					<span class="total-num">已选<em id="s-total-num">0</em>件</span>
+					<span class="total-money">$<em id="s-total-money">0</em></span>
+					<span class="total-num">Selected<em id="s-total-num">0</em>Items</span>
 				</div>
-				<input type="button" id="toSubmitOrder" value="购物车结算">
+				<input type="button" id="toSubmitOrder" value="SubTotal">
 			</div>			
 		</div>
 		
 		<div class="side-asset-c">
 			<div class="side-hd">
-				<a class="side-close" title="关闭">>></a>
-                <a href="/UserCenter?url=/userCoupon&tar=userCoupon" target="_blank">资产中心</a>
+				<a class="side-close" title="Close">>></a>
+                <a href="/UserCenter?url=/userCoupon&tar=userCoupon" target="_blank">Capital Center</a>
 			</div>
 			<div class="side-bd">
 				<div class="side-asset-total cl">
 					<div>
 						<span>@ViewBag.MemberIntegral</span>
-						<p>我的积分</p>
+						<p>My Points</p>
 					</div>
 					<div>
 						<span id="mycouponcount">@(ViewBag.Coupons.Count + ViewBag.ShopBonus.Count)</span>
-						<p>优惠券</p>
+						<p>Coupons</p>
 					</div>
 				</div>
 				<div class="side-asset-list">
-					<p>已领取的优惠券</p>
+					<p>Received Coupons</p>
 					<ul>
                         @{var cls="";}
                         @foreach( var item in ( List<Himall.Model.UserCouponInfo> )ViewBag.Coupons )
@@ -243,13 +243,13 @@
 									<h5>@item.ShopName</h5>
                                     @if(item.OrderAmount>0)
                                     {
-                                     <h3><span>￥@item.Price</span>满@(item.OrderAmount)可用</h3>
+                                     <h3><span>$@item.Price</span>Over@(item.OrderAmount)available</h3>
                                     }
                                     else
                                     {
-                                         <h3><span>￥@item.Price</span>满@(item.Price)可用</h3>
+                                         <h3><span>$@item.Price</span>Over@(item.Price)available</h3>
                                     }
-                                    <p>截止@(item.EndTime.ToString("yyyy.MM.dd"))</p>
+                                    <p>EndTime@(item.EndTime.ToString("yyyy.MM.dd"))</p>
                                 </a>
 						    </li>
                         }
@@ -265,13 +265,13 @@
                                     <h5>@item.Himall_ShopBonusGrant.Himall_ShopBonus.Himall_Shops.ShopName</h5>
                                     @if( item.Himall_ShopBonusGrant.Himall_ShopBonus.UseState == Himall.Model.ShopBonusInfo.UseStateType.FilledSend )
                                     {
-                                        <h3><span>￥@item.Price</span>满@{@item.Himall_ShopBonusGrant.Himall_ShopBonus.UsrStatePrice}减@{@item.Price}优惠券</h3>
+                                        <h3><span>$@item.Price</span>Over@{@item.Himall_ShopBonusGrant.Himall_ShopBonus.UsrStatePrice}-@{@item.Price}Coupons</h3>
                                     }
                                     else
                                     {
-                                        <h3><span>￥@item.Price</span>满@(item.Price)可用</h3>
+                                        <h3><span>$@item.Price</span>Over@(item.Price)available</h3>
                                     }
-                                    <p>截止@(item.Himall_ShopBonusGrant.Himall_ShopBonus.BonusDateEnd.ToString( "yyyy.MM.dd" ))</p>
+                                    <p>EndTime@(item.Himall_ShopBonusGrant.Himall_ShopBonus.BonusDateEnd.ToString( "yyyy.MM.dd" ))</p>
                                 </a>
                             </li>
                         }
@@ -285,8 +285,8 @@
 		
 		<div class="side-atgoods-c">
 			<div class="side-hd">
-				<a class="side-close" title="关闭">>></a>
-                <a href="/UserCenter?url=/productConcern&tar=productConcern" target="_blank">关注商品</a>
+				<a class="side-close" title="Close">>></a>
+                <a href="/UserCenter?url=/productConcern&tar=productConcern" target="_blank">Like Product</a>
 			</div>
 			<div class="side-bd">
 				<ul class="side-goods-list cl">
@@ -302,8 +302,8 @@
 		</div>
 		<div class="side-history-c">
 			<div class="side-hd">
-				<a class="side-close" title="关闭">>></a>
-				<a href="javascript:void(0)" target="_blank">浏览历史</a>
+				<a class="side-close" title="Close">>></a>
+				<a href="javascript:void(0)" target="_blank">Recently Viewed</a>
 			</div>
 			<div class="side-bd">
 				<ul class="side-goods-list cl">
@@ -428,7 +428,7 @@
 			if (str != "")
 				location.href = '/order/submit?' + 'cartItemIds=' + str;
 			else
-				$.dialog.errorTips("没有可结算的商品！");
+				$.dialog.errorTips("No Checkout Products!");
 		});
 		
 	});
@@ -714,7 +714,7 @@ function getCheckProductCount() {
             var keyWords = $.trim($('#searchBox').val());
 
             var selected = $(".search .search-form label").html();
-            if(selected == "店铺")
+            if(selected == "Shops")
             {
                 if(keyWords == '')
                 {
@@ -734,7 +734,7 @@ function getCheckProductCount() {
                 var keyWords = $.trim($('#searchBox').val());
 
                 var selected = $(".search .search-form label").html();
-                if(selected == "店铺")
+                if(selected == "Shops")
                 {
                     if(keyWords == '')
                     {
@@ -766,7 +766,7 @@ function getCheckProductCount() {
             var pagecount = parseInt($("#pageCount").html());
             if (pageNo > pagecount || pageNo < 1)
             {
-                alert("请您输入有效的页码!");
+                alert("Please enter valid page!");
                 return;
             }
             if (isNaN(pageNo)) {
