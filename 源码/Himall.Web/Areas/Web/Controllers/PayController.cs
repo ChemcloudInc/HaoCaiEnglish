@@ -48,7 +48,7 @@ namespace Himall.Web.Areas.Web.Controllers
 					{
 						AddDate = DateTime.Now,
 						Balance = num,
-						Description = "充值",
+						Description = "Recharge",
 						Operator = str1
 					};
 					List<CashDepositDetailInfo> cashDepositDetailInfos = new List<CashDepositDetailInfo>()
@@ -120,7 +120,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			}
 			catch (Exception exception)
 			{
-				Log.Error(string.Concat("预付款充值回调出错：", exception.Message));
+				Log.Error(string.Concat("Recharge failed：", exception.Message));
 			}
 			return base.Content(empty);
 		}
@@ -219,7 +219,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			}
 			catch (Exception exception)
 			{
-				Log.Error(string.Concat("预付款充值回调出错：", exception.Message));
+				Log.Error(string.Concat("Recharge Failed：", exception.Message));
 			}
 			return View();
 		}
@@ -228,7 +228,7 @@ namespace Himall.Web.Areas.Web.Controllers
 		{
 			ViewBag.Logo = ServiceHelper.Create<ISiteSettingService>().GetSiteSettings().Logo;
 			Plugin<IPaymentPlugin> plugin = PluginsManagement.GetPlugin<IPaymentPlugin>(id);
-			ViewBag.Title = string.Concat(plugin.PluginInfo.DisplayName, "支付");
+			ViewBag.Title = string.Concat(plugin.PluginInfo.DisplayName, "Payment");
 			ViewBag.Name = plugin.PluginInfo.DisplayName;
 			Bitmap bitmap = QRCodeHelper.Create(url);
 			DateTime now = DateTime.Now;
@@ -248,7 +248,7 @@ namespace Himall.Web.Areas.Web.Controllers
         {
             ViewBag.Logo = ServiceHelper.Create<ISiteSettingService>().GetSiteSettings().Logo;
             Plugin<IPaymentPlugin> plugin = PluginsManagement.GetPlugin<IPaymentPlugin>(id);
-            ViewBag.Title = string.Concat(plugin.PluginInfo.DisplayName, "支付");
+            ViewBag.Title = string.Concat(plugin.PluginInfo.DisplayName, "Payment");
             ViewBag.Name = plugin.PluginInfo.DisplayName;
             Bitmap bitmap = QRCodeHelper.Create(url);
             DateTime now = DateTime.Now;

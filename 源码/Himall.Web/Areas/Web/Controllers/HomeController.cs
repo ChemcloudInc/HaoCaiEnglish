@@ -66,7 +66,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			ViewBag.OAuthValidateContents = GetOAuthValidateContents();
 			ViewBag.SiteName = base.CurrentSiteSetting.SiteName;
 			dynamic viewBag = base.ViewBag;
-			str = (string.IsNullOrWhiteSpace(base.CurrentSiteSetting.Site_SEOTitle) ? "商城首页" : base.CurrentSiteSetting.Site_SEOTitle);
+			str = (string.IsNullOrWhiteSpace(base.CurrentSiteSetting.Site_SEOTitle) ? "Home" : base.CurrentSiteSetting.Site_SEOTitle);
 			viewBag.Title = str;
 			ViewEngines.Engines.FindView(base.ControllerContext, "Index", null);
 			List<HomeFloorModel> homeFloorModels = new List<HomeFloorModel>();
