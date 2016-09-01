@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "订单详情";
+    ViewBag.Title = "Order Details";
 }
 @model Himall.Model.OrderInfo
 @using Himall.Core
@@ -10,13 +10,13 @@
 
 <div class="box1 lh24">
     <div class="title">
-        <span class="title_txt curr">订单详情</span>
+        <span class="title_txt curr">Order Details</span>
     </div>
     <div class="border-box" style="padding:10px; width: 986px;">
         <div class="orderstate">
             <div class="mt">
                 <strong>
-                    订单号：@Model.Id&nbsp;&nbsp;&nbsp;&nbsp;状态：<span class="ftx14">@Model.OrderStatus.ToDescription()</span>
+                    OrderId：@Model.Id&nbsp;&nbsp;&nbsp;&nbsp;Status：<span class="ftx14">@Model.OrderStatus.ToDescription()</span>
                     <span id="pay-button-1622972656"></span>
                 </strong>
                 <div class="fr">
@@ -24,18 +24,18 @@
                 </div>
                 @if (Model.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.Finish && Model.OrderCommentInfo.Count == 0)
                 {
-                    <a class="btn btn-4 fr" href="@Url.Action("index", "OrderEvaluation", new { id=@Model.Id})">评价</a>
+                    <a class="btn btn-4 fr" href="@Url.Action("index", "OrderEvaluation", new { id=@Model.Id})">Evaluate</a>
                 }
             </div>
             <div style="display:block" class="mc">
                 @if (Model.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.Finish)
                 {
-                    <label>订单已经完成，感谢您在本商城购物，欢迎您对本次交易及所购商品进行评价。</label>
+                    <label>Thank you for order on our site, you can review it.</label>
                 }
                 <span class="flk13">
                     @if (Model.OrderCommentInfo.Count == 0 && Model.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.Finish)
                     {
-                        <a href="@Url.Action("index", "OrderEvaluation", new { id=@Model.Id})">发表评价</a>
+                        <a href="@Url.Action("index", "OrderEvaluation", new { id=@Model.Id})">Wrire Reviews</a>
                     }
                 </span>
             </div>
@@ -46,7 +46,7 @@
                 <div class="node fore ready">
                     <ul>
                         <li class="tx1">&nbsp;</li>
-                        <li class="tx2">提交订单</li>
+                        <li class="tx2">Order</li>
                         <li class="tx3" id="track_time_0">@Model.OrderDate</li>
                     </ul>
                 </div>
@@ -59,7 +59,7 @@
                 <div class="node @pay">
                     <ul>
                         <li class="tx1">&nbsp;</li>
-                        <li class="tx2">付款</li>
+                        <li class="tx2">Payment</li>
                         <li class="tx3" id="track_time_1">@Model.PayDate</li>
                     </ul>
                 </div>
@@ -71,7 +71,7 @@
                 <div class="node @send">
                     <ul>
                         <li class="tx1">&nbsp;</li>
-                        <li class="tx2">发货</li>
+                        <li class="tx2">Shipping</li>
                         <li class="tx3" id="track_time_5">@Model.ShippingDate</li>
                     </ul>
                 </div>
@@ -81,7 +81,7 @@
                 <div class="node @finish">
                     <ul>
                         <li class="tx1">&nbsp;</li>
-                        <li class="tx2">确认收货</li>
+                        <li class="tx2">Signed</li>
                         <li class="tx3" id="track_time_6">@Model.FinishDate</li>
                     </ul>
                 </div>
@@ -90,22 +90,22 @@
         <div class="ordertrack mb10">
             <ul class="tab">
                 <li class="curr" id="id_a">
-                    <h2>订单跟踪</h2>
+                    <h2>Order Tracking Results</h2>
                 </li>
                 <li id="id_b">
-                    <h2>付款信息</h2>
+                    <h2>Payment Information</h2>
                 </li>
             </ul>
             <div class="clr"></div>
             <div class="mc tabcon">
-                <!--订单跟踪-->
+                <!--Tracking Results-->
                 <input type="hidden" id="datesubmit-1622972656" value="2014-07-07 12:17:20">
                 <table width="100%" cellspacing="0" cellpadding="0">
                     <tbody id="tbody_track">
                         <tr>
-                            <th width="15%"><strong>处理时间</strong></th>
-                            <th width="50%"><strong>处理信息</strong></th>
-                            <th width="35%"><strong>操作人</strong></th>
+                            <th width="15%"><strong>Time</strong></th>
+                            <th width="50%"><strong>Location</strong></th>
+                            <th width="35%"><strong>Operator</strong></th>
                         </tr>
                     </tbody>
                     <tbody id="tbExpressData">
@@ -120,9 +120,9 @@
                     </tbody>
                 </table>
                 <div class="extra">
-                    <span id="jdshfs"> 送货方式：@Model.ExpressCompanyName</span>
-                    <span>承运人：@Model.ExpressCompanyName</span>
-                    <span>货运单号：@Model.ShipOrderNumber</span>
+                    <span id="jdshfs"> Shipping Method：@Model.ExpressCompanyName</span>
+                    <span>Express Company：@Model.ExpressCompanyName</span>
+                    <span>Waybill：@Model.ShipOrderNumber</span>
                 </div>
             </div>
             <div class="mc tabcon hide">
@@ -131,10 +131,10 @@
                     <tbody>
                         <tr>
                             <td width="30%" id="daiFuName">
-                                支付方式：
+                                Payment Method：
                                 @if (@Model.OrderTotalAmount == 0)
                                 {
-                                    <span>积分支付</span>
+                                    <span>Points Pay</span>
                                 }
                                 else
                                 {
@@ -145,18 +145,18 @@
 
                         </tr>
                         <tr>
-                            <td width="70%" id="daiFuPeople">支付时间：@Model.PayDate</td>
-                            <td width="70%" id="daiFuPeople">支付单号：@Model.GatewayOrderId</td>
+                            <td width="70%" id="daiFuPeople">Pay Date：@Model.PayDate</td>
+                            <td width="70%" id="daiFuPeople">PaymentID：@Model.GatewayOrderId</td>
                         </tr>
                         <tr>
-                            <td> 商品金额：<span class="ftx-04">￥ @Model.ProductTotalAmount.ToString("F2")</span></td>
-                            <td> 运费金额：<span class="ftx-04">￥@Model.Freight.ToString("F2")</span></td>
+                            <td>Product Total:<span class="ftx-04">$ @Model.ProductTotalAmount.ToString("F2")</span></td>
+                            <td>Shipping:<span class="ftx-04">$@Model.Freight.ToString("F2")</span></td>
                         </tr>
                         <tr>
-                            <td> 订单优惠金额：<span class="ftx-04">￥@Model.DiscountAmount.ToString("F2")</span></td>
+                            <td>Discount:<span class="ftx-04">$@Model.DiscountAmount.ToString("F2")</span></td>
                         </tr>
                         <tr>
-                            <td> 应支付金额：<span class="ftx-04">￥@Model.OrderTotalAmount.ToString("F2")</span></td>
+                            <td> Order Total:<span class="ftx-04">$@Model.OrderTotalAmount.ToString("F2")</span></td>
                         </tr>
                         <tr>
                             <td></td>
@@ -169,29 +169,29 @@
         </div>
         <div class="orderinfo-box">
             <div class="mt">
-                <strong>订单信息</strong>
+                <strong>Order information</strong>
             </div>
             <div class="mc">
                 <!-- 节能补贴信息 --> <!--顾客信息-->
                 <dl class="fore">
-                    <dt>收货人信息</dt>
+                    <dt>Shipping Address</dt>
                     <dd>
                         <ul>
-                            <li>收&nbsp;货&nbsp;人：@Model.ShipTo</li>
-                            <li>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：@Model.RegionFullName @Model.Address</li>
-                            <li>手机号码：@Model.CellPhone</li>
+                            <li>Name: @Model.ShipTo</li>
+                            <li>Address: @Model.RegionFullName @Model.Address</li>
+                            <li>Tel: @Model.CellPhone</li>
                         </ul>
                     </dd>
                 </dl>
                 <!-- 礼品购订单展示送礼人信息 --> <!--配送、支付方式-->
                 <dl>
-                    <dt>支付及配送方式</dt>
+                    <dt>Payment Method and Shipping Method</dt>
                     <dd>
                         <ul>
                             <li>
-                                支付方式：@if (@Model.OrderTotalAmount == 0)
+                                Payment Method: @if (@Model.OrderTotalAmount == 0)
                                 {
-                                    <span>积分支付</span>
+                                    <span>Points Pay</span>
                                 }
                                 else
                                 {
@@ -199,18 +199,18 @@
                                     @Model.PaymentTypeName @Model.PayRemark
                                 }
                             </li>
-                            <li>运&nbsp;&nbsp;&nbsp;&nbsp;费：<span class="ftx-04">￥@Model.Freight.ToString("F2")</span></li>
+                            <li>Shipping: <span class="ftx-04">$@Model.Freight.ToString("F2")</span></li>
                         </ul>
                     </dd>
                 </dl>
                 <dl>
-                    <dt>发票信息</dt>
+                    <dt>Invoice Info</dt>
                     @if (Model.InvoiceType != Himall.Model.InvoiceType.None)
                     {
                         <dd>
                             <ul>
-                                <li>发票抬头：@Model.InvoiceTitle</li>
-                                <li>发票内容：@Model.InvoiceContext</li>
+                                <li>Inovice Title: @Model.InvoiceTitle</li>
+                                <li>Inovice Content: @Model.InvoiceContext</li>
                             </ul>
                         </dd>
                     }
@@ -218,7 +218,7 @@
                     {
                         <dd>
                             <ul>
-                                <li>不需要开发票</li>
+                                <li>Do not need invoice</li>
                             </ul>
                         </dd>
                     }
@@ -240,7 +240,7 @@
                 <!--商品-->
                 <dl>
                     <dt>
-                        <span class="i-mt">商品清单</span>
+                        <span class="i-mt">Product(s)</span>
                         <div id="couponListShow" class="prompt p-fquan">
                             <div id="couponList" class="pc"></div>
                         </div>
@@ -250,13 +250,13 @@
                         <table width="100%" cellspacing="0" cellpadding="0">
                             <tbody>
                                 <tr>
-                                    <th width="10%"> 商品货号 </th>
-                                    <th width="10%"> 商品图片 </th>
-                                    <th width="35%"> 商品名称 </th>
-                                    <th width="10%"> 价格 </th>
-                                    <th width="10%"> 调价</th>
-                                    <th width="10%"> 商品数量 </th>
-                                    <th width="15%">操作</th>
+                                    <th width="10%">ProductCode</th>
+                                    <th width="10%">Image</th>
+                                    <th width="35%">Name</th>
+                                    <th width="10%">Price</th>
+                                    <th width="10%">Price Adjustment</th>
+                                    <th width="10%">Qty</th>
+                                    <th width="15%">Operator</th>
                                 </tr>
                                 @foreach (var orderItem in Model.OrderItemInfo)
                                 {
@@ -276,10 +276,10 @@
                                             <div class="clr"></div>
                                             <div class="fl" id="coupon_1160338"></div>
                                         </td>
-                                        <td><span class="ftx04"> ￥@orderItem.SalePrice.ToString("F2")</span></td>
+                                        <td><span class="ftx04"> $@orderItem.SalePrice.ToString("F2")</span></td>
                                         <td>
                                             <span class="ftx04">
-                                                ￥@((-orderItem.DiscountAmount).ToString("F2"))
+                                                $@((-orderItem.DiscountAmount).ToString("F2"))
                                             </span>
                                         </td>
                                         <td>@orderItem.Quantity</td>
@@ -312,21 +312,21 @@
             <!--金额-->
             <div class="total">
                 <ul>
-                    <li><span>总商品金额：</span>￥@Model.ProductTotalAmount.ToString("F2")</li>
-                    <li><span>+ 运费：</span>￥@Model.Freight.ToString("F2")</li>
+                    <li><span>Product Total: </span>$@Model.ProductTotalAmount.ToString("F2")</li>
+                    <li><span>+ Shipping: </span>$@Model.Freight.ToString("F2")</li>
                     @if (ViewBag.Coupon > 0)
                     {
-                        <li><span>- 优惠抵扣金额：</span>￥@ViewBag.Coupon.ToString("F2") </li>
+                        <li><span>- Coupons: </span>$@ViewBag.Coupon.ToString("F2") </li>
                     }
                     @if (Model.IntegralDiscount > 0)
                     {
-                        <li><span>- 积分抵扣金额：</span>￥@Model.IntegralDiscount.ToString("F2") </li>
+                        <li><span>- Points Price: </span>$@Model.IntegralDiscount.ToString("F2") </li>
                     }
                 </ul>
                 <span class="clr">ad</span>
                 <span style="color:#EDEDED;"></span>
                 <div class="extra">
-                    应付总额：<span class="ftx04"><b>￥@Model.OrderTotalAmount.ToString("F2")</b></span>
+                    Order Total: <span class="ftx04"><b>$@Model.OrderTotalAmount.ToString("F2")</b></span>
                 </div>
             </div>
         </div>
@@ -350,7 +350,7 @@
                     }
                 }
                 else {
-                    html += '<tr><td colspan="3">该单号暂无物流进展，请稍后再试，或检查公司和单号是否有误。</td></tr>';
+                    html += '<tr><td colspan="3">No result found for your this Waybill query. Please try again</td></tr>';
                 }
 
                 html += '<tr><td></td></tr>';

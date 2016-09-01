@@ -2,7 +2,7 @@
 .home-box li img{ border-radius:100%;}
 .home-box img:hover{ border-color:#bababa;}
 
-.user-info { width:300px; height:75px; float:left; padding:27px 0}
+.user-info { width:340px; height:75px; float:left; padding:27px 0}
 .user-info a { margin-right:10px }
 .user-info img { width: 75px; height: 75px; float: left; margin:0 22px; border-radius: 50%;}
 .user-info p.user-name {font-size:18px; color:#000; }
@@ -25,7 +25,7 @@
 .user-info p i.ident-email.active{ background-position:0 -78px}
 
 
-.user-manage{ width:340px;float:left; height:94px;background:url(../Images/manage-bg.png) no-repeat left 0; padding:36px 14px 0;}
+.user-manage{ width:640px;float:left; height:94px;background:url(../Images/manage-bg.png) no-repeat left 0; padding:36px 14px 0;}
 .user-manage li{ width:1%; display:table-cell; }
 .user-manage li p{ margin-top:12px; font-size:14px;}
 .user-manage li p span{ color:#e3393c; margin-left:5px;}
@@ -37,14 +37,14 @@
 .user-manage li i.icon5{ background-position:center -160px;}
 .user-manage li i.icon6{ background-position:center -200px;}
 .user-manage li i.icon7{ background-position:center -240px;}
-.user-manage.manage-2{ width:310px;}
+.user-manage.manage-2{ width:480px;}
 
 
 .home-box h3 {padding: 12px 0 12px 40px;font-size: 16px;font-family: "Microsoft YaHei";color: #000; line-height:20px; border-bottom:1px solid #f3f3f3; background:url(../Images/h-icon.png) no-repeat;}
 .home-box h3 a{ display:inline-block; text-decoration:none; color:#000;}
 .home-box h3 a.more{ font-size:12px; margin-right:20px; float:right; color:#666; font-family: simsun;}
 .home-box h3 a.more:hover{ color:#1b7ccd;}
-.home-box  .test-icon{float: right;margin-right: 105px;position: relative;top: -16px;}
+.home-box  .test-icon{float: right;margin-right: 140px;position: relative;top: -4px;}
 
 /*.ms-myorder h3{position: relative;border-bottom: solid 1px #EEE;  z-index: 2; background:none;}
 .ms-myorder h3 span{ margin:0 115px; font-size:14px; position:relative;}
@@ -77,7 +77,7 @@
 .list-mod .home-box li p a:hover{ color:#e3393c; text-decoration:none;}
 .list-mod .home-box li p em{ color:#999;}
 .list-mod .list-bot{ line-height:30px; border-top:1px solid #efefef; text-align:center; margin:0 10px;}
-
+.list-mod .home-box1{ float:left; width:98%;  margin-right:20px; height:130px;margin-bottom:15px;background: #fff; }
 
 .empty-info{ width:345px;}
 .empty-text{ display:none; position:absolute; top:125px; left:145px;}

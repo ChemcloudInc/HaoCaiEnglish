@@ -117,7 +117,7 @@ namespace Himall.Core
 				from TEnum e in Enum.GetValues(typeof(TEnum))
 				select new { Id = Convert.ToInt32(e), Name = EnumHelper.GetDescription(typeof(TEnum), e.ToString()) };
 			var list = values.ToList();
-			var variable = new { Id = 0, Name = "请选择..." };
+			var variable = new { Id = 0, Name = "Please select..." };
 			if (perfix)
 			{
 				list.Insert(0, variable);

@@ -378,7 +378,7 @@ namespace Himall.Model
 				string expressCompanyName = ExpressCompanyName;
 				if (expressCompanyName == "-1")
 				{
-					expressCompanyName = "其他";
+					expressCompanyName = "others";
 				}
 				return expressCompanyName;
 			}
@@ -430,32 +430,32 @@ namespace Himall.Model
 
 		public enum OrderOperateStatus
 		{
-			[Description("待付款")]
+			[Description("Wait Pay")]
 			WaitPay = 1,
-			[Description("待发货")]
+            [Description("Wait Delivered")]
 			WaitDelivery = 2,
-			[Description("待收货")]
+            [Description("Wait Receiving")]
 			WaitReceiving = 3,
-			[Description("已关闭")]
+            [Description("Closed")]
 			Close = 4,
-			[Description("已完成")]
+            [Description("Finished")]
 			Finish = 5
 		}
 
 		public enum OrderTypes
 		{
-			[Description("组合购")]
+            [Description("Collocation")]
 			Collocation = 1,
-			[Description("限时购")]
+            [Description("Limit Buy")]
 			LimitBuy = 2
 		}
         public enum AccountTypes
         {
-            [Description("未结算")]
+            [Description("No Account")]
             NoAccount=1,
-            [Description("待结算")]
+            [Description("Wait Accout")]
             WaitAccout=2,
-            [Description("已结算")]
+            [Description("Finish Account")]
             FinishAccount=3
         }
 	}

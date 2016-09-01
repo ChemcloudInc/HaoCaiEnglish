@@ -28,7 +28,7 @@ namespace Himall.Web.Areas.Web.Controllers
         {
             if (string.IsNullOrEmpty(datas))
             {
-                return Json(new { success = false, msg = "计算运费失败" });
+                return Json(new { success = false, msg = "Shipping Calculate Failed" });
             }
             List<object[]> objArrays = new List<object[]>();
             string[] strArrays = datas.Split(new char[] { '|' });
@@ -518,7 +518,7 @@ namespace Himall.Web.Areas.Web.Controllers
         {
             if (ServiceHelper.Create<IMemberCapitalService>().GetMemberInfoByPayPwd(base.CurrentUser.Id, pwd) == null)
             {
-                throw new HimallException("支付密码不对");
+                throw new HimallException("Payment Password is incorrect");
             }
             char[] chrArray = new char[] { ',' };
             IEnumerable<long> nums =
@@ -546,7 +546,7 @@ namespace Himall.Web.Areas.Web.Controllers
                 Log.Info(string.Concat("生成红包组，红包Grantid = ", num));
                 nums1.Add(num, byShopId);
             }
-            return Json(new { success = true, msg = "支付成功" });
+            return Json(new { success = true, msg = "Payment Success" });
         }
 
         [HttpPost]
@@ -670,7 +670,7 @@ namespace Himall.Web.Areas.Web.Controllers
             }
             if (integral < 0)
             {
-                throw new HimallException("兑换积分数量不正确");
+                throw new HimallException("Points number is incorrect");
             }
             OrderCreateModel orderCreateModel = new OrderCreateModel()
             {
@@ -733,7 +733,7 @@ namespace Himall.Web.Areas.Web.Controllers
             IOrderService orderService = ServiceHelper.Create<IOrderService>();
             if (integral < 0)
             {
-                throw new HimallException("兑换积分数量不正确");
+                throw new HimallException("Points number is incorrect");
             }
             IEnumerable<string> strs = null;
             if (!string.IsNullOrEmpty(couponIds))
@@ -750,7 +750,7 @@ namespace Himall.Web.Areas.Web.Controllers
             }
             if (string.IsNullOrWhiteSpace(skuIds) || string.IsNullOrWhiteSpace(counts))
             {
-                throw new HimallException("创建订单的时候，SKU为空，或者数量为0");
+                throw new HimallException("SKU is null or qty=0");
             }
             OrderCreateModel orderCreateModel = new OrderCreateModel()
             {

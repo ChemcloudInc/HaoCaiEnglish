@@ -844,7 +844,7 @@ a.css3-btn, a.css3-btn:hover, a.css3-btn:visited { color: #fff; }
 #logo { padding-left: 5px; float: left; margin-top: 15px; }
 .w990.cart { padding-bottom: 20px; }
 .cart .cart-hd { height: 35px; position: relative; }
-.cart h2 { height: 20px; margin-bottom: 15px; line-height: 100px; overflow: hidden; background: url(../Images/my_cart_title.png) no-repeat left top; }
+.cart h2 { height: 20px; margin-bottom: 15px; line-height: 20px; overflow: hidden; font-size:120%; }
 .cart .cart-hd h2 { width: 100px; float: left; }
 .cart-inner { border: 1px solid #ddd; border-top:1px solid #ddd; border-left:0;border-right:0;}
 .cart-inner .cart-thead { height: 35px; background-color:#f8f8f8; }
@@ -903,7 +903,7 @@ a.css3-btn, a.css3-btn:hover, a.css3-btn:visited { color: #fff; }
 .cart-dibu .cart-button a.checkout, .cart-dibu .cart-button a.checkout-jd, .cart-dibu .cart-button a.checkout-jdInt { float: none; height: 50px; line-height: 50px; top: -1px; font-size: 18px; font-weight: bold; background: url(../Images/btn-check-20140627.png) no-repeat #e43f42; text-indent: -999em; }
 .cart-button a.checkout { width: 135px; display: block; overflow: hidden; text-indent: 33px; color: #fff; position: relative; font-family: "\5FAE\8F6F\96C5\9ED1"; }
 
-#toSettlement{background-color:#3480eb;background-image: none;border-radius: 4px;font-size: 16px;font-weight: normal;height: 36px;left: -10px;line-height: 36px;text-align: center;text-indent: 0;top: 6px;width: 120px;}
+#toSettlement{background-color:#3480eb;background-image: none;border-radius: 4px;font-size: 14px;font-weight: normal;height: 32px;left: -10px;line-height: 32px;text-align: center;text-indent: 0;top: 8px;width: 154px;}
 
 
 .cart-total-2014 .total { margin-right: 20px; }
@@ -1047,7 +1047,7 @@ zoom: 1; }
 .checkout-buttons .checkout-submit, .checkout-buttons .checkout-submit2, .checkout-buttons .checkout-submit-disabled { margin-top: 7px; border: 0; float: right; cursor: pointer; }
 .checkout-buttons .inner { padding-right: 18px; }
 .checkout-buttons .checkout-submit-disabled { background-color: #ccc; position: relative; line-height: 36px; font-weight: bold; font-size: 16px; cursor: not-allowed; }
-.checkout-buttons .checkout-submit {background-color: #3480eb;border-radius: 4px;color: #fff;font-size: 15px;font-weight: bold;line-height: 36px;overflow: hidden;position: relative;width: 110px; }
+.checkout-buttons .checkout-submit {background-color: #3480eb;border-radius: 4px;color: #fff;font-size: 14px;font-weight: bold;line-height: 32px;overflow: hidden;position: relative;width: 136px;top:2px; }
 .checkout-buttons .checkout-submit b { position: absolute; left: 0; top: 0; width: 135px; height: 36px;cursor: pointer; overflow: hidden; }
 .checkout-buttons .checkout-submit:hover { background-color: #5f98e8; }
 .checkout-buttons .checkout-submit:hover b { background-position: 0 -36px; }
