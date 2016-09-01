@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "我的订单";
+    ViewBag.Title = "My Orders";
 }
 <div class="coverd cover" style="display:none;"></div>
 @model IEnumerable<Himall.Web.Areas.Web.Models.OrderListModel>
@@ -9,27 +9,27 @@
 
 <div class="order-dialog" style="display:none;">
     <div class="close" onclick="closeQR();"><img src="/Images/close_01.png"></div>
-    <h3>恭喜您获得<span></span>个红包</h3>
-    <h5>快去把它分享给好友吧！</h5>
+    <h3>Congratulations,you get cash coupons</h3>
+    <h5>Share it to your friends</h5>
     <img style="width:180px;height:180px;" src="/Images/close_01_13.jpg" >
-    <p>请使用微信扫描该二维码，在打开的页面选择分享到朋友圈</p>
+    <p>Sweep QR Share it to your friends</p>
 </div>
 
 
 <div class="box1 lh24">
 
     <div class="title">
-        <span class="title_txt cur">我的订单</span>
+        <span class="title_txt cur">My Orders</span>
     </div>
     <div class="search-area">
-        <label>关键字：</label>
-        <input class="search_order" id="txtkeyword" type="text" value="商品名称、订单编号" />
-        <label>开始日期：</label>
+        <label>Keywords：</label>
+        <input class="search_order" id="txtkeyword" type="text" value="ProductName、OrderId" />
+        <label>Start date：</label>
         <input id="inputStartDate" class="search_order start_datetime" type="text">
 
-        <label>结束日期：</label>
+        <label>End date：</label>
         <input id="inputEndDate" class="search_order end_datetime" type="text">
-        <button class="search_btn pointer" onclick="Search()">搜索</button>
+        <button class="search_btn pointer" onclick="Search()">Search</button>
     </div>
     <div class="border-box">
 
@@ -46,27 +46,27 @@
             </colgroup>
             <thead>
                 <tr class="tr">
-                    <th colspan="2">订单信息</th>
-                    <th>订单金额</th>
+                    <th colspan="2">Orders Info</th>
+                    <th>Order total</th>
                     <th>
                         <select name="" id="submitDate" onchange="Query()">
-                            <option selected="selected" value="all">请选择...</option>
-                            <option value="threeMonth">最近三个月</option>
-                            <option value="halfyear">最近半年</option>
-                            <option value="year">最近一年</option>
-                            <option value="yearAgo">一年以前</option>
+                            <option selected="selected" value="all">Please select...</option>
+                            <option value="threeMonth">3 months</option>
+                            <option value="halfyear">half year</option>
+                            <option value="year">year</option>
+                            <option value="yearAgo">year+</option>
                         </select>
                     </th>
                     <th>
                         @Html.DropDownList( "status" , @Himall.Model.OrderInfo.OrderOperateStatus.Close.ToSelectList() , new { onchange = "Query()" } )
                     </th>
-                    <th colspan="2">操作</th>
+                    <th colspan="2">View</th>
                 </tr>
             </thead>
             <tbody id="tb-1877769835">
                 @if( Model.Count() == 0 )
                 {
-                    <tr><td colspan="8"><div class="empty"><b></b>暂时没有任何的订单信息！</div></td></tr>
+                    <tr><td colspan="8"><div class="empty"><b></b>Not Found any Orders！</div></td></tr>
                 }
                 @{var before = true;
                 var child = false;}
@@ -97,10 +97,10 @@
                         <td class="sep-col"></td>
                         <td class="tr-th-text" colspan="5">
                             <span class="tcol1">
-                                订单编号:
+                                OrderId:
                                 <a href="@Url.Action("detail", new { id=@m.Id})">
                                     @m.Id @if( m.UserId != ViewBag.UserId )
-                                    {<label>(子订单)</label>}
+                                    {<label>(Sub-order)</label>}
                                 </a>
                                 @if( m.ReceiveBonus != null )
                                 {
@@ -126,9 +126,9 @@
                                 @foreach( var item in m.OrderItemList )
                                 {
                                     var spc = "";
-                                    if( !string.IsNullOrWhiteSpace( item.Color ) ) { spc += "颜色：" + item.Color; }
-                                    if( !string.IsNullOrWhiteSpace( item.Size ) ) { spc += "，尺寸：" + item.Size; }
-                                    if( !string.IsNullOrWhiteSpace( item.Version ) ) { spc += "，版本：" + item.Version; }
+                                    if( !string.IsNullOrWhiteSpace( item.Color ) ) { spc += "Color：" + item.Color; }
+                                    if( !string.IsNullOrWhiteSpace( item.Size ) ) { spc += "，Size：" + item.Size; }
+                                    if( !string.IsNullOrWhiteSpace( item.Version ) ) { spc += "，Specification：" + item.Version; }
                                     <div>
                                         <a target="_blank" class="img-box" href="@Url.Action("Detail", "Product", new { id = @item.ProductId})" style="float:left;">
                                             <img width="50" height="50" title="@item.ProductName 【@spc.TrimStart('，')】" src="@item.ThumbnailsUrl" class="err-product" />
@@ -136,7 +136,7 @@
                                         <div style="float:left;margin-left: 20px;width:310px">
                                             <p>@item.ProductName 【@spc.TrimStart('，')】</p>
                                             <p>
-                                                <span class="ftx-04"> ￥@item.SalePrice.ToString("F2")</span>
+                                                <span class="ftx-04"> $@item.SalePrice.ToString("F2")</span>
                                                 <span>x @item.Quantity</span>
                                             </p>
                                         </div>
@@ -160,7 +160,7 @@
                         </td>
              
                         <td>
-                            <span class="ftx-04"> ￥@m.OrderTotalAmount.ToString( "F2" ) </span>
+                            <span class="ftx-04"> $@m.OrderTotalAmount.ToString( "F2" ) </span>
 
                             <br />
                             @m.PaymentTypeName
@@ -178,19 +178,19 @@
                             {
                                 if( m.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.WaitReceiving )
                                 {
-                                    <a href="javascript:;" onclick="ConfirmOrder('@m.Id')" class="btn btn-4">确认收货</a><br />
+                                    <a href="javascript:;" onclick="ConfirmOrder('@m.Id')" class="btn btn-4">Confirm Received</a><br />
                                 }
                                 if( m.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.Finish && m.OrderCommentInfo.Count == 0 )
                                 {
-                                    <a href="@Url.Action("index", "OrderEvaluation", new { id = @m.Id })"><s></s>评价</a>
+                                    <a href="@Url.Action("index", "OrderEvaluation", new { id = @m.Id })"><s></s>Evaluated</a>
                                 }
 
                             }
                             @if( m.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.WaitPay )
                             {
-                                <a href="@Url.Action("Pay", "Order", new { orderIds=@m.Id})" target="_blank" class="btn btn-4"><s></s>付&nbsp;款</a><br />
+                                <a href="@Url.Action("Pay", "Order", new { orderIds=@m.Id})" target="_blank" class="btn btn-4"><s></s>Payment</a><br />
                             }
-                            <a href="@Url.Action("Detail", new { id=@m.Id})">查看</a><br />
+                            <a href="@Url.Action("Detail", new { id=@m.Id})">View</a><br />
                             @if( m.UserId == ViewBag.UserId )
                             {
                                 bool isShowRefund = false;
@@ -213,17 +213,17 @@
                                 {
                                     if( iscanRefund )
                                     {
-                                        <a href="@Url.Action("index", "OrderRefund", new { keywords = @m.Id })">退货/退款</a><br />
+                                        <a href="@Url.Action("index", "OrderRefund", new { keywords = @m.Id })">Exchange/Refund</a><br />
                                     }
                                     else
                                     {
-                                        <a href="#" onclick="RefundProductTip()">申请返修/退换货</a><br />
+                                        <a href="#" onclick="RefundProductTip()">Apply Repair/Exchange</a><br />
                                     }
                                 }
 
                                 if( @m.OrderStatus == @Himall.Model.OrderInfo.OrderOperateStatus.WaitPay )
                                 {
-                                    <a href="javascript:;" onclick="CancelOrder('@m.Id')">取消订单</a><br />
+                                    <a href="javascript:;" onclick="CancelOrder('@m.Id')">Cancel Order</a><br />
                                 }
                                 if( @m.OrderStatus == @Himall.Model.OrderInfo.OrderOperateStatus.WaitDelivery )
                                 {
@@ -231,13 +231,13 @@
                                     {
                                         case null:
                                         case 0:
-                                            <a href=@Url.Action("RefundApply", "OrderRefund", new { id = @m.Id })>订单退款</a><br />
+                                            <a href=@Url.Action("RefundApply", "OrderRefund", new { id = @m.Id })>Order Fefund</a><br />
                                             break;
                                         case 4:
-                                        <span>退款被拒绝</span><br />
+                                        <span>Refund was refused</span><br />
                                             break;
                                         default:
-                                        <span>退款中</span><br />
+                                        <span>Refund Pending</span><br />
                                             break;
                                     }
                                 }
@@ -246,7 +246,7 @@
 
                                 if( m.OrderStatus != Himall.Model.OrderInfo.OrderOperateStatus.WaitPay && m.OrderStatus != Himall.Model.OrderInfo.OrderOperateStatus.Close )
                                 {
-                                    <a href="/cart/BatchAddToCart?skuids=@sku&counts=@num" target="_blank"><s></s>还要买</a>
+                                    <a href="/cart/BatchAddToCart?skuids=@sku&counts=@num" target="_blank"><s></s>Re-Order</a>
                                 }
                             }
                         </td>
@@ -271,7 +271,7 @@
                 }
                 @Html.PageLinks( ( PagingInfo )ViewBag.pageInfo , x => Url.Action( "Index" , new { pageNo = x , keywords = keywords , orderStatus = orderStatus , orderDate = orderDate , startDateTime = startDate , endDateTime = endDate , purchaser = purchaser } ) )
                 <span class="page-skip">
-                    <em>&nbsp;&nbsp;共 @count 页&nbsp;&nbsp;&nbsp;&nbsp;</em>
+                    <em>&nbsp;&nbsp;Total @count Pages&nbsp;&nbsp;&nbsp;&nbsp;</em>
                 </span>
             </div>
 
@@ -304,11 +304,11 @@
 
     function ConfirmOrder( orderId )
     {
-        $.dialog.confirm( "你确定收到货了吗？", function () { Confirm( orderId ); } );
+        $.dialog.confirm( "Are you sure you received your products？", function () { Confirm( orderId ); } );
     }
     function RefundProductTip()
     {
-        $.dialog.alert( "很遗憾，该维权入口已经关闭<br/>1、交易已过退货维权受理期,您无法发起退换货<br/>2、请在帮助中心查看平台退换货流程", '', 2000 );
+        $.dialog.alert( "Sorry, it has been closed.<br/>", '', 2000 );
     }
     function Confirm( orderId )
     {
@@ -323,14 +323,14 @@
                 loading.close();
                 if ( d.success )
                 {
-                    $.dialog.succeedTips( "确认成功！", function ()
+                    $.dialog.succeedTips( "Confirm Order Success！", function ()
                     {
                         window.location.href = window.location.href;
                     }, 1 );
                 }
                 else
                 {
-                    $.dialog.errorTips( "确认失败！", '', 2 );
+                    $.dialog.errorTips( "Confirm Order Failed！", '', 2 );
                 }
             }
         } );
@@ -338,7 +338,7 @@
 
     function CancelOrder( orderId )
     {
-        $.dialog.confirm( "确定取消该订单吗？", function () { Cancel( orderId ); } );
+        $.dialog.confirm( "Are you to cancel the order？", function () { Cancel( orderId ); } );
     }
     function Cancel( orderId )
     {
@@ -353,14 +353,14 @@
                 loading.close();
                 if ( d.success )
                 {
-                    $.dialog.succeedTips( "取消成功！", function ()
+                    $.dialog.succeedTips( "Cancel it Success！", function ()
                     {
                         window.location.href = window.location.href;
                     }, 1 );
                 }
                 else
                 {
-                    $.dialog.errorTips( "取消失败！", '', 2 );
+                    $.dialog.errorTips( "Cancel it Failed！", '', 2 );
                 }
             }
         } );
@@ -369,7 +369,7 @@
     function Search()
     {
         var keywords = $( "#txtkeyword" ).val();
-        if ( keywords == "商品名称、订单编号" )
+        if ( keywords == "ProductName、OrderId" )
             keywords = "";
         var purchaser = $( "#purchaser" ).val();
         var startDate = $( "#inputStartDate" ).val();
@@ -387,7 +387,7 @@
             if ( ev.keyCode == 13 )
             {
                 var keywords = $( "#txtkeyword" ).val();
-                if ( keywords == "商品名称、订单编号" )
+                if ( keywords == "ProductName、OrderId" )
                     keywords = "";
                 var purchaser = $( "#purchaser" ).val();
                 var startDate = $( "#inputStartDate" ).val();
@@ -399,7 +399,7 @@
         $( '#txtkeyword' ).focus( function ()
         {
             var a = $( this ).val(),
-                b = '商品名称、订单编号';
+                b = 'ProductName、OrderId';
             if ( a == b )
             {
                 $( this ).val( '' ).css( 'color', '#333' );
@@ -407,7 +407,7 @@
         } ).blur( function ()
         {
             var a = $( this ).val(),
-                b = '商品名称、订单编号';
+                b = 'ProductName、OrderId';
             if ( !a )
             {
                 $( this ).val( b ).css( 'color', '#999' );

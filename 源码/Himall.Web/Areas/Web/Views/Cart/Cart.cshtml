@@ -1,25 +1,25 @@
 ﻿
 @{
-    ViewBag.Title = "Checkout";
+    ViewBag.Title = "Shopping Cart";
     Layout = "~/Areas/Web/Views/Shared/_OrderTopBar.cshtml";
 }
 <div class="w990 cart">
-    <div class="cart-hd group"><h2>My Shopping Cart</h2></div>
+    <div class="cart-hd group"><h2>Shopping Cart</h2></div>
     <div id="show">
         <div class="cart-inner">
         	<div class="message">
                 <ul>
-                    <li>购物车内暂时没有商品<span class="unLogin">，<a href="javascript:bindToSettlement();">登录</a>后，将显示您之前加入的商品</span></li>
-                    <li><a href="/">去首页</a>挑选喜欢的商品</li>
+                    <li>There are no items in your shopping cart.<span class="unLogin">，Please <a href="javascript:bindToSettlement();">Sign In</a> to view the products you have previously added to your Shopping Cart</span></li>
+                    <li><a href="/">Continue Shopping</a></li>
                 </ul>
             </div>
             <div class="cart-list">
                 <div class="cart-thead cl">
                     <div class="column t-checkbox form"><input type="checkbox" name="checkAll" checked="" value="" /><label for="">Select All</label></div>
-                    <div class="column t-goods">ProductName</div>
+                    <div class="column t-goods">Product(s)</div>
                     <div class="column t-price">Price</div>
                     <div class="column t-quantity">Qty.</div>
-                    <div class="column t-action">Operate</div>
+                    <div class="column t-action">Remove</div>
                 </div>
                 <div id="product-list" class="cart-tbody">
     
@@ -36,11 +36,11 @@
                                 <b></b>
                                 <a href="javascript:void(0);" id="remove-batch">Delete</a>
                             </span>
-                            <span id="selectedCount" style="color:#e4393c;">0</span>Prodct(s)
+                            <span id="selectedCount" style="color:#e4393c;">0</span> Item(s)
                             <div class="cart-button">
-                                <a class="checkout" href="javascript:void(0);" id="toSettlement"><b></b>Checkout</a>
+                                <a class="checkout" href="javascript:void(0);" id="toSettlement"><b></b>Proceed to Checkout</a>
                             </div>
-                            <div class="total fr">Total（No shipping Fare）：<span id="finalPrice">$ 0</span></div>
+                            <div class="total fr">Sub-Total（Not includes Shipping）：<span id="finalPrice">$ 0</span></div>
                         </div>
                     </div>
                 </div>

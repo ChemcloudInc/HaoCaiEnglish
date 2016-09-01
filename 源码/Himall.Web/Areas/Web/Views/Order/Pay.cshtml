@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "订单支付";
+    ViewBag.Title = "Order Payment";
     Layout = "~/Areas/Web/Views/Shared/_PayTopBar.cshtml";
     var orders = (IEnumerable<Himall.Model.OrderInfo>)ViewBag.Orders;
 }
@@ -8,30 +8,30 @@
     <div class="m mainbody">
         <div class="mc">
             <s class="icon-succ04"></s>
-            <h3 class="orderinfo">订单提交成功，请您尽快付款！</h3>
+            <h3 class="orderinfo">Order submitted successfully, please pay it asap!</h3>
             <ul class="list-orderinfo">
                 @foreach (var order in orders)
                 {
-                    <li>订单号：@order.Id</li>
+                    <li>Orider Id：@order.Id</li>
                 }
-                <li class="li-last">应付金额：<strong class="ftx-01" id="totalAmount">@(((decimal)ViewBag.TotalAmount).ToString("F2"))</strong> 元</li>
+                <li class="li-last">Total：<strong class="ftx-01" id="totalAmount">@(((decimal)ViewBag.TotalAmount).ToString("F2"))</strong> 元</li>
             </ul>
-            <p class="mb-tip">请您在提交订单后<span class="ftx-04">@(ViewBag.UnpaidTimeout)小时</span>内完成支付，否则订单会自动取消。</p>
+            <p class="mb-tip">Please pay it within <span class="ftx-04">@(ViewBag.UnpaidTimeout) hours</span>, otherwise it will be automatically cancelled.</p>
         </div>
     </div>
     <div class="m pay-box">
         <div class="mc">
-            <h5 class="subtit">使用预付款支付</h5>
+            <h5 class="subtit">Use balance</h5>
             <label>
                 <input type="radio" class="jdradio" value="" name="requestUrl" urltype="-1" id="" />
-                <span>当前账户可用余额 <span id="capitalAmount"> @(ViewBag.Capital)</span>元</span>
-                <a id="btnCharge" href="/userCenter?url=/usercapital/capitalcharge&tar=usercapital">去充值</a>
+                <span>Available balance:<span id="capitalAmount"> @(ViewBag.Capital)</span></span>
+                <a id="btnCharge" href="/userCenter?url=/usercapital/capitalcharge&tar=usercapital">Recharge</a>
             </label>
         </div>
     </div>
     <div class="m pay-box">
         <div class="mc">
-            <h5 class="subtit">请选择支付方式</h5>
+            <h5 class="subtit">Please Select Payment Method</h5>
             <ul class="list-bank">
                 @{var i = 0;}
                 @foreach (var payment in Model)
@@ -39,7 +39,7 @@
                     <li>
                         <label>
                             <input type="radio" class="jdradio" value="@payment.RequestUrl" name="requestUrl" id="@payment.Id" urlType="@((int)payment.UrlType)" />
-                            <img width="165" height="48" alt="微信PC" src="@payment.Logo" />
+                            <img width="165" height="48" alt="WeiXinPC" src="@payment.Logo" />
                         </label>
                     </li>
                 }
@@ -47,7 +47,7 @@
 
         </div>
     </div>
-     <div class="btns"><a class="btn-next" href="javascript:;" id="nextBtn">下一步</a></div>
+     <div class="btns"><a class="btn-next" href="javascript:;" id="nextBtn">Next</a></div>
 </div>
 
 
@@ -83,7 +83,7 @@
             var t = $("input[name='requestUrl']:checked").val();
      
             if (t == undefined) {
-                $.dialog.tips('请选择支付方式！');
+                $.dialog.tips('Please select payment method！');
                 return;
             }
             if ($(this).attr('urlType') == "2") {
@@ -93,7 +93,7 @@
 
             if ($(this).attr('urlType') == "-1") {
                 if (parseFloat($('#capitalAmount').text()) < parseFloat($('#totalAmount').text())) {
-                    $.dialog.alert('预付款金额少于订单金额');
+                    $.dialog.alert('Available balance less than Total Order Money');
                     return false;
                 }
 
@@ -110,13 +110,13 @@
                     }
                 });
                 $.dialog({
-                    title: '确认支付',
+                    title: 'Confirm Payment',
                     lock: true,
                     id: 'goodCheck',
                     content: ['<div class="dialog-form">',
                         '<div class="form-group">',
                            '<div class="item">\
-                                 <span class="label">支付密码：</span>\
+                                 <span class="label">Payment Password：</span>\
                                     <div class="">\
                                     <input type="password" value="" id="payPwd" name="userVo.realName" maxlength="20" class="itxt fl">\
                             </div>\
@@ -127,10 +127,10 @@
                     init: function () { $("#auditMsgBox").focus(); },
                     button: [
                     {
-                        name: '付款',
+                        name: 'Payment',
                         callback: function () {
                             if ($("#payPwd").val().length == 0) {
-                                $.dialog.alert("请输入支付密码");
+                                $.dialog.alert("Confirm Payment password");
                                 return false;
                             }
                             $.post('PayByCapital', { orderIds: $('#orderIds').val(), pwd: $('#payPwd').val(), payid: $('#payid').val() }, function (result) {
@@ -149,7 +149,7 @@
                         focus: true
                     },
                     {
-                        name: '取消',
+                        name: 'Cancel',
                         callback: function () { }
                     }]
                 });
@@ -157,19 +157,19 @@
             else {
                 if ($(this).attr('href') != 'javascript:;' || $(this).attr('urlType') == "2") {
                     $.dialog({
-                        title: '登录平台支付',
+                        title: 'Redirect Payment Page',
                         lock: true,
-                        content: '<p>请您在新打开的支付平台页面进行支付，支付完成前请不要关闭该窗口</p>',
+                        content: '<p>please don\'t close the window before completion of payment</p>',
                         padding: '30px 20px',
                         button: [
                         {
-                            name: '已完成支付',
+                            name: 'Payment Completed',
                             callback: function () {
                                 location.href = '/userCenter?url=/userorder?orderids=@ViewBag.OrderIds&tar=userorder';
                             }
                         },
                         {
-                            name: '支付遇到问题',
+                            name: 'Payment Error',
                             callback: function () { }
                         }]
                     });

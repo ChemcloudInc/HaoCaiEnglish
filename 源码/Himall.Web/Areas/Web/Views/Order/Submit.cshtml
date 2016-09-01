@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "核对并提交订单";
+    ViewBag.Title = "Check and Confirm Order";
     Layout = "~/Areas/Web/Views/Shared/_OrderTopBar.cshtml";
 }
 <style>
@@ -25,13 +25,13 @@ sheet">
 <div class="w990 m2">
     <div id="checkout">
         <div class="mt">
-            <span>填写并核对订单信息</span>
+            <span>Check Order Information</span>
         </div>
         <div id="wizard" class="checkout-steps">
             <div id="step-1" class="step step-complete">
                 <div class="step-title">
-                    <strong id="consigneeTitleDiv">收货人信息</strong>
-                    <span class="step-action"><a href="javascript:;" id="editReciever">[修改]</a></span>
+                    <strong id="consigneeTitleDiv">Shipping Address</strong>
+                    <span class="step-action"><a href="javascript:;" id="editReciever">[Update]</a></span>
                 </div>
                 <div class="step-content">
                     <div id="consignee" class="sbox-wrap">
@@ -52,30 +52,30 @@ sheet">
                                 </div>
                                 <div class="item" id="use-new-address">
                                     <input type="radio" onclick="showEditArea(0)" class="hookbox" name="address" id="consignee_radio_new" />
-                                    <label for="consignee_radio_new">使用新地址 </label><span class="status error" style="display: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 当前地址数量已达上限，若要继续添加新地址，请先删除部分收货地址。</span>
+                                    <label for="consignee_radio_new">New Address</label><span class="status error" style="display: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 当前地址数量已达上限，若要继续添加新地址，请先删除部分收货地址。</span>
                                 </div>
                                 <form style="display:none" id="addressEditArea">
                                     <div class="consignee-form" id="consignee-form" name="consignee-form">
                                         <div class="list message" id="name_div">
-                                            <span class="label"><em>*</em>收货人：</span>
+                                            <span class="label"><em>*</em>Name：</span>
                                             <div class="field">
                                                 <input type="text" class="textbox" id="consignee_name" name="shipTo" maxlength="20" onblur="check_Consignee('name_div')" />
                                             </div>
                                             <span class="status error" id="name_div_error"></span>
                                         </div>
                                         <div class="list select-address" id="area_div">
-                                            <span class="label"><em>*</em>所在地区：</span>
+                                            <span class="label"><em>*</em>Region：</span>
                                             <div class="field">
                                                 <span id="span_area">
-                                                    <span id="span_province"><select id="consignee_province"><option value="">请选择：</option></select></span>
-                                                    <span id="span_city"><select id="consignee_city"><option value="">请选择：</option></select></span>
-                                                    <span id="span_county"><select id="consignee_county"><option value="">请选择：</option></select></span>
-                                                    <span id="span_town" style="display:none"><select id="consignee_town"><option value="">请选择：</option></select></span>
+                                                    <span id="span_province"><select id="consignee_province"><option value="">Please Select：</option></select></span>
+                                                    <span id="span_city"><select id="consignee_city"><option value="">Please Select：</option></select></span>
+                                                    <span id="span_county"><select id="consignee_county"><option value="">Please Select：</option></select></span>
+                                                    <span id="span_town" style="display:none"><select id="consignee_town"><option value="">Please Select：</option></select></span>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="list full-address" id="address_div">
-                                            <span class="label"><em>*</em>详细地址：</span>
+                                            <span class="label"><em>*</em>Address：</span>
                                             <div class="field" id="areaName">
                                                 <span class="fl selected-address" name="regionFullName"><i>湖南省</i><em>长沙市</em><s>芙蓉区</s></span>
                                                 <span class="fl selected-address"></span>
@@ -85,7 +85,7 @@ sheet">
                                             <span class="status error" id="address_div_error"></span>
                                         </div>
                                         <div class="list" id="call_div">
-                                            <span class="label"><em>*</em>电话：</span>
+                                            <span class="label"><em>*</em>Telephone：</span>
                                             <div class="field">
                                                 <div class="phone">
                                                     <input type="text" class="textbox" name="phone" maxlength="18" />
@@ -96,8 +96,8 @@ sheet">
                                     </div>
                                 </form>
                                 <div class="form-btn group">
-                                    <a href="javascript:;" class="btn-submit"><span id="saveConsigneeTitleDiv">保存收货人信息</span></a>
-                                    <div class="loading loading-1" style="display:none"><b></b>正在提交信息，请等待！</div>
+                                    <a href="javascript:;" class="btn-submit"><span id="saveConsigneeTitleDiv">Save</span></a>
+                                    <div class="loading loading-1" style="display:none"><b></b>Saving it now, please wait！</div>
                                 </div>
                             </div>
                         </div>
@@ -106,13 +106,13 @@ sheet">
             </div>
 
             <div class="step step-complete">
-                <div class="step-title"><strong>支付及配送方式</strong></div>
+                <div class="step-title"><strong>Payment method & Shipping Method</strong></div>
                 <div class="step-content">
                     <div id="payment-ship" class="sbox-wrap">
                         <div class="sbox">
                             <div class="payment-selected">
-                                <p>在线支付</p>
-                                <p>快递运输  由商家选择合作快递为您配送</p>
+                                <p>Payment Methods:PayPal,Credit Card,Western Union etc.</p>
+                                <p>Shipping Methods:DHL,TNT,UPS,Fedex etc.</p>
                             </div>
 
                         </div>
@@ -121,19 +121,19 @@ sheet">
                 </div>
             </div>
             <div class="step step-complete">
-                <div class="step-title"><strong>发票信息</strong></div>
+                <div class="step-title"><strong>Invoice Information</strong></div>
                 <div class="step-content">
                     <div class="sbox-wrap">
                         <div class="sbox">
                             <div>
-                                <span><input type="radio" value="0" id="isInvoce1" name="isInvoce" checked="checked" />不需要发票</span>
+                                <span><input type="radio" value="0" id="isInvoce1" name="isInvoce" checked="checked" />No</span>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                <span><input type="radio" value="2" id="isInvoce2" name="isInvoce" />需要发票</span>
+                                <span><input type="radio" value="2" id="isInvoce2" name="isInvoce" />Yes</span>
                             </div>
                             <div class="payment-selected" id="invoceMsg">
-                                <span id="" class="mr15">发票抬头：</span><span id="invoiceTitle" class="mr15"></span>
-                                <span id="" class="mr15">发票内容：</span><span id="invoiceContext" class="mr15"></span>
-                                <a href="#none" class="ftx-05" onclick="invoiceReceipt()">修改</a>
+                                <span id="" class="mr15">Invoice Title：</span><span id="invoiceTitle" class="mr15"></span>
+                                <span id="" class="mr15">Invoice Content：</span><span id="invoiceContext" class="mr15"></span>
+                                <a href="#none" class="ftx-05" onclick="invoiceReceipt()">Update</a>
                             </div>
                             <!--<div class="payment-selected">
                                 是否需要发票：<input type="checkbox" id="isInvoice" onclick="InvoiceReceipt()" />
@@ -149,7 +149,7 @@ sheet">
                 </div>
             </div>
             <div id="step-4" class="step step-complete">
-                <div class="step-title"><strong>商品清单</strong></div>
+                <div class="step-title"><strong>Product Lists</strong></div>
                 <div class="step-content">
                     <div id="part-order" class="sbox-wrap">
                         <span class="sbox">
@@ -166,10 +166,10 @@ sheet">
                                             <table class="review-thead">
                                                 <tbody>
                                                     <tr>
-                                                        <td class="fore1">商品</td>
-                                                        <td class="fore3">服务</td>
-                                                        <td class="fore2">单价</td>
-                                                        <td class="fore4">数量</td>
+                                                        <td class="fore1">Product(s)</td>
+                                                        <td class="fore3">Service</td>
+                                                        <td class="fore2">Price</td>
+                                                        <td class="fore4">QTY.</td>
                                                         @*<td>运费</td>*@
                                                     </tr>
                                                 </tbody>
@@ -235,9 +235,9 @@ sheet">
                                                                 {
 
                                                                     var skuEntity = orderService.GetSkuByID(product.skuId);
-                                                                    string skuStr = string.IsNullOrEmpty(skuEntity.Color) ? "" : "[颜色:" + skuEntity.Color + "]";
-                                                                    skuStr += string.IsNullOrEmpty(skuEntity.Size) ? "" : "   [尺码:" + skuEntity.Size + "]";
-                                                                    skuStr += string.IsNullOrEmpty(skuEntity.Version) ? "" : "   [规格:" + skuEntity.Version + "]";
+                                                                    string skuStr = string.IsNullOrEmpty(skuEntity.Color) ? "" : "[Color:" + skuEntity.Color + "]";
+                                                                    skuStr += string.IsNullOrEmpty(skuEntity.Size) ? "" : "   [Size:" + skuEntity.Size + "]";
+                                                                    skuStr += string.IsNullOrEmpty(skuEntity.Version) ? "" : "   [Specification:" + skuEntity.Version + "]";
                                                                     rows++;
                                                                     <tr skuid="@product.skuId" quntity="@product.count" price="@product.price">
                                                                         <td class="fore1" style="padding:10px;">
@@ -248,7 +248,7 @@ sheet">
                                                                                         <a href="@Url.Action("Detail", "Product", new { id = product.id })" target="_blank">@product.name &nbsp; @skuStr<br /> </a>
                                                                                     </div>
                                                                                     <div class="p-more">
-                                                                                        商品货号：
+                                                                                        ProductCode：
                                                                                         <a href="@Url.Action("Detail", "Product", new { id = product.id })" target="_blank">@product.productCode</a>
                                                                                     </div>
                                                                                 </div>
@@ -257,18 +257,18 @@ sheet">
                                                                         <td class="fore3">
                                                                         @if (product.customerSecurity)
                                                                         {
-                                                                            <img src="/Images/Security.jpg" title="消费者保障" />
+                                                                            <img src="/Images/Security.jpg" title="Security" />
                                                                         }
                                                                         @if (product.sevenDayNoReasonReturn)
                                                                         {
-                                                                            <img src="/Images/SevenDay.jpg"  title="七天无理由退换货" />
+                                                                            <img src="/Images/SevenDay.jpg"  title="Exchangeable" />
                                                                         }
                                                                         @if (product.timelyShip)
                                                                         {
-                                                                            <img src="/Images/TimelyDelivery.jpg" title="及时发货" />
+                                                                            <img src="/Images/TimelyDelivery.jpg" title="Quickly Delivery" />
                                                                         }
                                                                         </td>
-                                                                        <td class="p-price"><strong>￥@product.price.ToString("F2")</strong></td>
+                                                                        <td class="p-price"><strong>$@product.price.ToString("F2")</strong></td>
                                                                         <td class="fore2">x @product.count</td>
                                                                         @*@if (rows == 1)
                                                                             {
@@ -291,31 +291,31 @@ sheet">
                                                 {
                                                     <div class="list" style="height:30px;">
 
-                                                        <div class="shopa">店铺优惠：</div>
+                                                        <div class="shopa">Discount:</div>
                                                         <select class="shopb" data-shopid="@(p.shopId)">
-                                                            <option value="0" data-type="99" data-p="0">不使用优惠劵</option>
+                                                            <option value="0" data-type="99" data-p="0">Can't use coupons</option>
                                                             @*通过属性方式区分优惠方式  如下：
                                                             <option data-type="优惠卷">xx</option><option data-type="红包">xx</option>*@
                                                             @foreach( var c in @p.UserCoupons )
                                                             {
                                                                 if( @c.Himall_Coupon.OrderAmount == 0 )
                                                                 {
-                                                                    <option value="@c.Id" data-p="@c.Himall_Coupon.Price" data-type="0">立减@(c.Himall_Coupon.Price)</option>
+                                                                    <option value="@c.Id" data-p="@c.Himall_Coupon.Price" data-type="0">-@(c.Himall_Coupon.Price)</option>
                                                                 }
                                                                 else
                                                                 {
-                                                                    <option value="@c.Id" data-p="@c.Himall_Coupon.Price" data-type="0">满@(c.Himall_Coupon.OrderAmount)减@(c.Himall_Coupon.Price)</option>
+                                                                    <option value="@c.Id" data-p="@c.Himall_Coupon.Price" data-type="0">Over@(c.Himall_Coupon.OrderAmount)-@(c.Himall_Coupon.Price)</option>
                                                                 }
                                                             }
                                                             @foreach( var c in @p.UserBonus )
                                                             {
                                                                 if( @c.Himall_ShopBonusGrant.Himall_ShopBonus.UseState == Himall.Model.ShopBonusInfo.UseStateType.None)
                                                                 {
-                                                            <option value="@c.Id" data-p="@c.Price" data-type="1">立减@(c.Price)</option>
+                                                            <option value="@c.Id" data-p="@c.Price" data-type="1">-@(c.Price)</option>
                                                                 }
                                                                 else
                                                                 {
-                                                            <option value="@c.Id" data-p="@c.Price" data-type="1">满@(c.Himall_ShopBonusGrant.Himall_ShopBonus.UsrStatePrice)减@(c.Price)</option>
+                                                            <option value="@c.Id" data-p="@c.Price" data-type="1">Over@(c.Himall_ShopBonusGrant.Himall_ShopBonus.UsrStatePrice)-@(c.Price)</option>
                                                                 }
                                                             }
                                                         </select>
@@ -323,12 +323,12 @@ sheet">
                                                     </div>
                                                 }
                                                 <div class="list" style="height:60px;">
-                                                    <div class="shopd" data="@((p.CartItemModels.Sum(item => item.price * item.count) + p.Freight).ToString("F2"))" data-v="@((p.CartItemModels.Sum(item => item.price * item.count)).ToString("F2"))" style="width:140px;text-align:center;">￥@((p.CartItemModels.Sum(item => item.price * item.count) + p.Freight).ToString("F2"))</div>
-                                                    <div class="shope">店铺合计（含运费）：</div>
+                                                    <div class="shopd" data="@((p.CartItemModels.Sum(item => item.price * item.count) + p.Freight).ToString("F2"))" data-v="@((p.CartItemModels.Sum(item => item.price * item.count)).ToString("F2"))" style="width:140px;text-align:center;">$@((p.CartItemModels.Sum(item => item.price * item.count) + p.Freight).ToString("F2"))</div>
+                                                    <div class="shope">Total（Include Shipping）：</div>
 
                                                     <div class="span clr"></div>
-                                                    <div class="shopf" data="@p.Freight" data-profrei="@p.Freight" data-free="@(freefreight)" style="width:140px;text-align:center;">￥@p.Freight</div>
-                                                    <div class="shopg">@(freefreight > 0 ? "（满" + freefreight.ToString("F2") +"免运费）": "")运费：</div>
+                                                    <div class="shopf" data="@p.Freight" data-profrei="@p.Freight" data-free="@(freefreight)" style="width:140px;text-align:center;">$@p.Freight</div>
+                                                    <div class="shopg">@(freefreight > 0 ? "（满" + freefreight.ToString("F2") +"Free Shipping）": "")Shipping：</div>
 
                                                 </div>
                                             </div>
@@ -338,20 +338,20 @@ sheet">
                                     <div class="order-summary" style="padding-top:30px;">
                                         <div class="statistic fr">
                                             <div class="list">
-                                                <span><em id="span-skuNum">@products.Sum(item => item.CartItemModels.Sum(a => a.count))</em> 件商品，总商品金额：</span>
-                                                <em class="price" id="warePriceId" v="@ViewBag.totalAmount">￥@ViewBag.totalAmount.ToString("F2")</em>
+                                                <span><em id="span-skuNum">@products.Sum(item => item.CartItemModels.Sum(a => a.count))</em> items，Total Amount：</span>
+                                                <em class="price" id="warePriceId" v="@ViewBag.totalAmount">$@ViewBag.totalAmount.ToString("F2")</em>
                                             </div>
-                                            <div class="list"><span>运费：</span><em class="price" id="totalFreight"> ￥@ViewBag.Freight.ToString("F2")</em></div>
-                                            <div class="list" style="display:none"><span>优惠券抵扣金额：</span><em class="price" id="id_c"></em></div>
+                                            <div class="list"><span>Shipping：</span><em class="price" id="totalFreight"> $@ViewBag.Freight.ToString("F2")</em></div>
+                                            <div class="list" style="display:none"><span>Coupons amount：</span><em class="price" id="id_c"></em></div>
 
                                             @if (ViewBag.IntegralPerMoney != 0 && ViewBag.Integral != 0)
                                             {
                                                 <div>
                                                     <span style="line-height:30px;">
-                                                        <input type="checkbox" id="IsUsedIntegral" /> 使用平台积分
-                                                        <label class=""><input type="text" style="width:40px;" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v()" class="quantity-text" data-userintegral="@ViewBag.Integral" data-rule="@ViewBag.IntegralPerMoney" name="integral" id="integral" value="0" /> 分：</label><em style="display: inline-block;float: right;position: relative;width: 500px;color: #7b8b94;">可用 @ViewBag.Integral 积分</em>
+                                                        <input type="checkbox" id="IsUsedIntegral" /> Use points
+                                                        <label class=""><input type="text" style="width:40px;" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v()" class="quantity-text" data-userintegral="@ViewBag.Integral" data-rule="@ViewBag.IntegralPerMoney" name="integral" id="integral" value="0" /> 分：</label><em style="display: inline-block;float: right;position: relative;width: 500px;color: #7b8b94;">Have @ViewBag.Integral Points</em>
                                                     </span>
-                                                    <em class="price" id="integralPrice"> ¥0.00</em>
+                                                    <em class="price" id="integralPrice"> $0.00</em>
                                                 </div>
                                             }
                                         </div>
@@ -367,12 +367,12 @@ sheet">
                         <div class="sticky-placeholder">
                             <div class="sticky-wrap">
                                 <div class="inner">
-                                    <span class="total" style="float:left;padding-left:20px;"><a href="/cart/cart" class="return-edit">返回修改购物车</a></span>
-                                    <button type="button" id="submit" class="checkout-submit">提交订单<b></b></button>
-                                    <span class="total">应付总额：<strong id="payPriceId" data-real="@ViewBag.orderAmount.ToString("F2")" data="@ViewBag.orderAmount.ToString("F2")">@ViewBag.orderAmount.ToString("F2")</strong>元</span>
+                                    <span class="total" style="float:left;padding-left:20px;"><a href="/cart/cart" class="return-edit">Return Shopping Cart</a></span>
+                                    <button type="button" id="submit" class="checkout-submit">Place your Order<b></b></button>
+                                    <span class="total">Total：<strong id="payPriceId" data-real="@ViewBag.orderAmount.ToString("F2")" data="@ViewBag.orderAmount.ToString("F2")">@ViewBag.orderAmount.ToString("F2")</strong></span>
                                     @if (ViewBag.MoneyPerIntegral > 0)
                                     {
-                                        <span style="  float: right;line-height: 50px;margin-right: 20px;color:#7b8b94;">可获得平台积分<span id="MoneyPerIntegral" data-rule="@ViewBag.MoneyPerIntegral">@ViewBag.TotalIntegral</span>分</span>
+                                        <span style="  float: right;line-height: 50px;margin-right: 20px;color:#7b8b94;">You will earn points<span id="MoneyPerIntegral" data-rule="@ViewBag.MoneyPerIntegral">@ViewBag.TotalIntegral</span>分</span>
                                     }
                                 </div>
                             </div>
@@ -388,31 +388,31 @@ sheet">
 <div class="thickdiv hide"></div>
 <div class="thickbox hide" id="invoiceDialog">
     <div class="thickwrap">
-        <div class="thicktitle"><span>发票信息</span></div>
+        <div class="thicktitle"><span>Invoice Information</span></div>
         <div style="width: 450px; padding:10px;" class="thickcon">
             <div id="edit-cont" class="m">
                 <div class="mc">
                     <div class="form" id="dvInvoice">
                         <div class="item mt15">
-                            <span class="label fl">发票抬头：</span>
+                            <span class="label fl">Invoice Title：</span>
                             <div class="fl invoice-tit-list">
                                 @foreach (var item in (List<Himall.Model.InvoiceTitleInfo>)ViewBag.InvoiceTitle)
                                 {
                                     <div class="invoice-item">
                                         <input type="text" value="@item.Name" disabled>
                                         <div class="item-btns">
-                                            <a href="javascript:void(0);" class="ml10 del-tit" key="@item.Id">删除</a>
+                                            <a href="javascript:void(0);" class="ml10 del-tit" key="@item.Id">Delete</a>
                                         </div>
                                     </div>
                                 }
                                 <div class="invoice-item invoice-item-selected">
                                     <input type="text" value="个人" disabled>
                                 </div>
-                                <a id="btnAddInvoice" class="addInvoice" href="javascript:;">新增单位发票</a>
+                                <a id="btnAddInvoice" class="addInvoice" href="javascript:;">Add Invoice</a>
                             </div>
                         </div>
                         <div class="item mt15">
-                            <span class="label fl">发票内容：</span>
+                            <span class="label fl">Invoice Content：</span>
                             <div class="fl invoice-list">
                                 @foreach (var item in (List<Himall.Model.InvoiceContextInfo>)ViewBag.InvoiceContext)
                                 {
@@ -422,7 +422,7 @@ sheet">
                             <div class="clr"></div>
                         </div>
                         <div class="btns" style="padding-left: 60px">
-                            <a id="btnOk" class="e-btn btn-5 save-btn" href="javascript:;">确定</a>
+                            <a id="btnOk" class="e-btn btn-5 save-btn" href="javascript:;">Save</a>
                         </div>
                     </div>
                 </div>
@@ -530,10 +530,10 @@ sheet">
         var d_ordDisPrice = $("#id_c");
         var d_ordMPI = $("#MoneyPerIntegral");
         var d_orduseInt = $("#integralPrice");
-        d_ordprice.attr("v", orderPaidPrice.toFixed(2)).html("￥" + orderPaidPrice.toFixed(2));
-        d_ordFreight.html("￥" + orderTotalFreight.toFixed(2));
-        d_ordDisPrice.html("-￥" + orderTotalDisPrice.toFixed(2));
-        d_orduseInt.html("-￥" + orderTotalIntegral);
+        d_ordprice.attr("v", orderPaidPrice.toFixed(2)).html("$" + orderPaidPrice.toFixed(2));
+        d_ordFreight.html("$" + orderTotalFreight.toFixed(2));
+        d_ordDisPrice.html("-$" + orderTotalDisPrice.toFixed(2));
+        d_orduseInt.html("-$" + orderTotalIntegral);
         d_ordDisPrice.parent().hide();
         if (orderTotalDisPrice > 0) {
             d_ordDisPrice.parent().show();
@@ -577,12 +577,12 @@ sheet">
         var ordPaidPrice = ordSumProPrice - ordSubDisPrice + ordSubFreight;
 
         //显示单条
-        d_proPrice.html("￥" + ordPaidPrice);
-        d_freight.html("￥" + ordSubFreight).attr("data", ordSubFreight);
+        d_proPrice.html("$" + ordPaidPrice);
+        d_freight.html("$" + ordSubFreight).attr("data", ordSubFreight);
         if (isFullFreeFrei) {
-            d_freight.html("免运费");
+            d_freight.html("Free Shipping");
         }
-        d_showdis.html("-￥" + ordSubDisPrice).attr("data", ordSubDisPrice);
+        d_showdis.html("-$" + ordSubDisPrice).attr("data", ordSubDisPrice);
         //d_showdis.hide();
         if (ordSubDisPrice == 0) {
             d_showdis.html("");
@@ -622,7 +622,7 @@ sheet">
             //    result = payMoney;
             //}
 
-            //$("#integralPrice").text('-￥' + result);
+            //$("#integralPrice").text('-$' + result);
             //$('#payPriceId').text(($('#payPriceId').data('real') - result).toFixed(2));
             //if ($('#payPriceId').text() - freight > 0) {
             //    $('#MoneyPerIntegral').text(Math.floor(($('#payPriceId').text() - freight) / intRule));

@@ -55,7 +55,7 @@ function loadCartInfo() {
                         <div class="item item_disabled ">\
                           <div class="item_form cl">\
                             <div class="cell p-checkbox">\
-                              <span status=' + product.productstatus + ' name="checkItem" class="checkbox">失效</span>\
+                              <span status=' + product.productstatus + ' name="checkItem" class="checkbox">Disable</span>\
                             </div>'
                     } else {
                         if (product.productauditstatus != strproductauditstatus) {
@@ -63,7 +63,7 @@ function loadCartInfo() {
                             <div class="item item_disabled">\
                               <div class="item_form cl">\
                                 <div class="cell p-checkbox">\
-                                  <span status=' + product.productauditstatus + ' name="checkItem" class="checkbox">失效</span>\
+                                  <span status=' + product.productauditstatus + ' name="checkItem" class="checkbox">Disable</span>\
                                 </div>'
                         } else {
                             str += '\
@@ -74,18 +74,18 @@ function loadCartInfo() {
                                 </div>'
                         }
                     }
-                    var skuStr = product.Color == "" || product.Color==null ? "" : '[颜色:' + product.Color + ']';
-                    skuStr += product.Size == "" || product.Size == null ? "" : '&nbsp;&nbsp;[尺码:' + product.Size + ']';
-                    skuStr += product.Version == "" || product.Version == null ? "" : '&nbsp;&nbsp;[规格:' + product.Version + ']';
+                    var skuStr = product.Color == "" || product.Color==null ? "" : '[Color:' + product.Color + ']';
+                    skuStr += product.Size == "" || product.Size == null ? "" : '&nbsp;&nbsp;[Size:' + product.Size + ']';
+                    skuStr += product.Version == "" || product.Version == null ? "" : '&nbsp;&nbsp;[Specification:' + product.Version + ']';
 
                     str += '<div class="cell p-goods">\
                   <div class="p-img"><a href="/product/detail/' + product.id + '" target="_blank"><img src="' + product.imgUrl + '" alt="" /></a></div>\
-                  <div class="p-name"><a href="/product/detail/' + product.id + '" target="_blank">' + product.name + '<br/>' + skuStr + '</a><br>' + (product.productstatus != 1 || product.productauditstatus == 4 ? "[已停售]" : "") + '</div>'
+                  <div class="p-name"><a href="/product/detail/' + product.id + '" target="_blank">' + product.name + '<br/>' + skuStr + '</a><br>' + (product.productstatus != 1 || product.productauditstatus == 4 ? "[Infraction Sale Off]" : "") + '</div>'
                     if (product.productcode.length > 0) {
-                        str += '<div class="p-code">商品货号：' + product.productcode + '</div>'
+                        str += '<div class="p-code">ProductCode：' + product.productcode + '</div>'
                     }
                     str+='</div>\
-                <div class="cell p-price"><span class="price">¥'+ product.price.toFixed(2) + '</span></div>\
+                <div class="cell p-price"><span class="price">$'+ product.price.toFixed(2) + '</span></div>\
                 <div class="cell p-quantity">\
                   <div class="quantity-form">\
                     <a href="javascript:void(0);" class="decrement" sku="'+ product.skuId + '" >-</a>\
@@ -93,15 +93,15 @@ function loadCartInfo() {
                     <a href="javascript:void(0);" class="increment" sku="' + product.skuId + '"  >+</a>\
                   </div>\
                 </div>\
-                <div class="cell p-remove"><a class="cart-remove" href="javascript:removeFromCart(\''+ product.skuId + '\')">删除</a></div>\
+                <div class="cell p-remove"><a class="cart-remove" href="javascript:removeFromCart(\''+ product.skuId + '\')">Delete</a></div>\
               </div>\
             </div>';
                 });
             });
             $('#product-list').html(str);
-            $('#totalSkuPrice').html('¥' + cart.amount.toFixed(2));
+            $('#totalSkuPrice').html('$' + cart.amount.toFixed(2));
             $('#selectedCount').html(cart.totalCount);
-            $('#finalPrice').html('¥' + cart.amount.toFixed(2));
+            $('#finalPrice').html('$' + cart.amount.toFixed(2));
             bindAddAndReduceBtn();
             bindBatchRemove();
             bindSelectAll();
@@ -126,7 +126,7 @@ function bindToSettlement() {
         if (str != "")
             location.href = '/order/submit?' + 'cartItemIds=' + str;
         else
-            $.dialog.errorTips("没有可结算的商品！");
+            $.dialog.errorTips("No can checkout product！");
     }
     else {
         $.fn.login({}, function () {
@@ -143,12 +143,12 @@ function bindSelectAll() {
             $('#product-list input[type="checkbox"]').attr('checked', checked);
             $('input[name="checkAll"]').attr('checked', checked);
             var total = getCheckProductPrice();
-            $('#finalPrice').html('¥' + total);
+            $('#finalPrice').html('$' + total);
         }
         else {
             $('#product-list input[type="checkbox"]').removeAttr('checked');
             $('input[name="checkAll"]').removeAttr('checked');
-            $('#finalPrice').html('¥' + "0.00");
+            $('#finalPrice').html('$' + "0.00");
 
         }
         $('#selectedCount').html(getCheckProductCount());
@@ -161,13 +161,13 @@ function bindSelectAll() {
         if (checked) {
             var total = priceAll(this, false, checked);
             var t = $('#finalPrice').html();
-            var s = t.replace('¥', '');
-            $('#finalPrice').html('¥' + (+parseFloat(s) + parseFloat(total)).toFixed(2));
+            var s = t.replace('$', '');
+            $('#finalPrice').html('$' + (+parseFloat(s) + parseFloat(total)).toFixed(2));
         } else {
             var total = priceAll(this, false, checked);
             var t = $('#finalPrice').html();
-            var s = t.replace('¥', '');
-            $('#finalPrice').html('¥' + (+parseFloat(s) - parseFloat(total)).toFixed(2));
+            var s = t.replace('$', '');
+            $('#finalPrice').html('$' + (+parseFloat(s) - parseFloat(total)).toFixed(2));
         }
 
         $('#product-list input[type="checkbox"]').each(function (i, e) {
@@ -235,7 +235,7 @@ function bindSelectAll() {
             $('input[name="checkAll"]').removeAttr('checked');
 
 
-        $('#finalPrice').html('¥' + getCheckProductPrice());
+        $('#finalPrice').html('$' + getCheckProductPrice());
         $('#selectedCount').html(getCheckProductCount());
     });
 
@@ -265,7 +265,7 @@ function bindAddAndReduceBtn() {
             updateCartItem(skuId, count);
             if ($(this).parent().parent().parent().find('input[name="checkItem"]').is(":checked")) {
                 $('#finalPrice').html(getCheckProductPrice());
-                $('#selectedCount').html('¥' + getCheckProductCount());
+                $('#selectedCount').html('$' + getCheckProductCount());
             }
         }
     });
@@ -281,10 +281,10 @@ function bindAddAndReduceBtn() {
             updateCartItem(skuId, count);
             if ($(this).parent().parent().parent().find('input[name="checkItem"]').is(":checked")) {
                 $('#finalPrice').html(getCheckProductPrice());
-                $('#selectedCount').html('¥' + getCheckProductCount());
+                $('#selectedCount').html('$' + getCheckProductCount());
             }
         } else {
-            $.dialog.errorTips('最多不能大于 100 件');
+            $.dialog.errorTips('The most not over 100');
             textBox.val(100);
         }
     });
@@ -296,7 +296,7 @@ function bindAddAndReduceBtn() {
             updateCartItem(skuId, count);
             if ($(this).parent().parent().parent().find('input[name="checkItem"]').is(":checked")) {
                 $('#finalPrice').html(getCheckProductPrice());
-                $('#selectedCount').html('¥' + getCheckProductCount());
+                $('#selectedCount').html('$' + getCheckProductCount());
             }
         }
         else {
@@ -326,7 +326,7 @@ function bindBatchRemove() {
         });
         if (skuIds.length < 1)
         {
-            $.dialog.errorTips("请选择要删除的商品！");
+            $.dialog.errorTips("Please select want to delete product！");
             return;
         }
         var loading = showLoading();
@@ -347,7 +347,7 @@ function priceAll(tag, bool, checked) {
     if (bool) {
         $(tag).parent().parent().parent().find('.item_form').each(function (i, e) {
             var a = $(this).find('.price').html(),
-                b = a.replace('¥', ''),
+                b = a.replace('$', ''),
                 c = $(this).find('input[name="count"]').val(),
                 d = (+b) * (+c);
             t += d;
@@ -358,7 +358,7 @@ function priceAll(tag, bool, checked) {
         $(tag).each(function (i, e) {
             if ($(this).find(".checkbox").attr("status") == $("#hidSaleStatus").val() && $(this).find(".checkbox").attr("status") != $("#hidAuditStatus").val()) {
                 var a = $(this).find('.price').html(),
-                b = a.replace('¥', ''),
+                b = a.replace('$', ''),
                 c = $(this).find('input[name="count"]').val(),
                 d = (+b) * (+c);
                 t += d;
@@ -369,7 +369,7 @@ function priceAll(tag, bool, checked) {
             $(tag).parent().parent().parent().find('input[name="checkItem"]').not("input:checked").each(function (i, e) {
                 if ($(tag).val() == $(e).val()) {
                     var a = $(this).parent().parent().find('.price').eq(0).html(),
-                        b = a.replace('¥', ''),
+                        b = a.replace('$', ''),
                         c = $(this).parent().parent().find('input[name="count"]').val(),
                         d = (+b) * (+c);
                     t += d;
@@ -380,7 +380,7 @@ function priceAll(tag, bool, checked) {
             $(tag).parent().parent().parent().find('input[name="checkItem"]:checked').each(function (i, e) {
                 if ($(tag).val() == $(e).val()) {
                     var a = $(this).parent().parent().find('.price').eq(0).html(),
-                        b = a.replace('¥', ''),
+                        b = a.replace('$', ''),
                         c = $(this).parent().parent().find('input[name="count"]').val(),
                         d = (+b) * (+c);
                     t += d;
@@ -396,7 +396,7 @@ function getCheckProductPrice() {
     var t = 0;
     $.each($('input[name="checkItem"]:checked'), function () {
         var a = $(this).parent().parent().find('.price').html(),
-            b = a.replace('¥', ''),
+            b = a.replace('$', ''),
             c = $(this).parent().parent().find('input[name="count"]').val(),
             d = (+b) * (+c);
         t += d;
