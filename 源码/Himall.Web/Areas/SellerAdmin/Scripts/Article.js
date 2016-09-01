@@ -23,14 +23,14 @@ function initGrid() {
         [[
             { field: "id", hidden: true },
            {
-               field: "title", title: '标题', width: 250, align: 'left',
+               field: "title", title: 'Title', width: 250, align: 'left',
                formatter: function (value, row, index) {
                    var html = '<a href="' + location.href + '/Details/' + row.id + '">' + value + '</a>'
                    return html;
                }
            },
            {
-               field: "addDate", title: "发布日期", width: 85, align: "left",
+               field: "addDate", title: "Release date", width: 85, align: "left",
                formatter: function (value, row, index) {
                    return value;
                }
