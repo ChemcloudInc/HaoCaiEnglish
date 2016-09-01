@@ -16,17 +16,17 @@ $(function () {
     $('#list').on('click', '.good-down', function () {
         var name = $(this).siblings('.thisName').val();
         var ids = $(this).siblings('.thisId').val();
-        $.dialog.confirm('您确定要下架' + (name ? ' “' + name + '” ' : ('这' + ($.isArray(ids) ? ids.length : 1) + '件商品')) + '吗？', function () {
+        $.dialog.confirm('Are you sure you put' + (name ? ' “' + name + '” ' : ('the ' + ($.isArray(ids) ? ids.length : 1) + ' products')) + ' out of shelves?', function () {
             var loading = showLoading();
             $.post('batchSaleOff', { ids: ids.toString() }, function (result) {
                 loading.close();
                 if (result.success) {
-                    $.dialog.tips('下架商品成功');
+                    $.dialog.tips('Succeed in puttinging it out of shelves!');
                     var pageNo = $("#list").hiMallDatagrid('options').pageNumber;
                     reload(pageNo);
                 }
                 else
-                    $.dialog.alert('下架商品失败!' + result.msg);
+                    $.dialog.alert('Fail to put it out of shelves!' + result.msg);
             });
         });
 
@@ -37,20 +37,20 @@ $(function () {
         var name = $(this).siblings('.thisName').val();
         var ids = $(this).siblings('.thisId').val();
         if (curType == 'saleOff' && AuditOnOff == 0) {
-            $.dialog.alert('违规下架的商品，不能再上架!');
+            $.dialog.alert('Faile to put the product in shelves !');
             return;
         }
-        $.dialog.confirm('您确定要上架' + (name ? ' “' + name + '” ' : ('这' + ($.isArray(ids) ? ids.length : 1) + '件商品')) + '吗？', function () {
+        $.dialog.confirm('Are you sure put' + (name ? ' “' + name + '” ' : ('the ' + ($.isArray(ids) ? ids.length : 1) + ' products')) + 'in shelves?', function () {
             var loading = showLoading();
             $.post('batchOnSale', { ids: ids.toString() }, function (result) {
                 loading.close();
                 if (result.success) {
-                    $.dialog.tips('申请商品上架成功');
+                    $.dialog.tips('Succeed in applying for putting the products in shelves!');
                     var pageNo = $("#list").hiMallDatagrid('options').pageNumber;
                     reload(pageNo);
                 }
                 else
-                    $.dialog.alert('申请商品上架失败!' + result.msg);
+                    $.dialog.alert('Fail to apply for putting the products in shelves!' + result.msg);
             });
         });
     });
@@ -58,17 +58,17 @@ $(function () {
     $('#list').on('click', '.good-del', function () {
         var name = $(this).siblings('.thisName').val();
         var ids = $(this).siblings('.thisId').val();
-        $.dialog.confirm('您确定要删除' + (name ? ' “' + name + '” ' : ('这' + ($.isArray(ids) ? ids.length : 1) + '件商品')) + '吗？', function () {
+        $.dialog.confirm('Are you sure delete ' + (name ? ' “' + name + '” ' : ('the ' + ($.isArray(ids) ? ids.length : 1) + ' products')) + '?', function () {
             var loading = showLoading();
             $.post('Delete', { ids: ids.toString() }, function (result) {
                 loading.close();
                 if (result.success) {
-                    $.dialog.tips('删除商品成功');
+                    $.dialog.tips('Succeed in deleting the products!');
                     var pageNo = $("#list").hiMallDatagrid('options').pageNumber;
                     reload(pageNo);
                 }
                 else
-                    $.dialog.alert('删除商品失败!' + result.msg);
+                    $.dialog.alert('Fail to delete the products!' + result.msg);
             });
         });
     });
@@ -80,17 +80,17 @@ $(function () {
 });
 
 function deleteProduct(ids) {
-    $.dialog.confirm('您确定要删除这些商品吗？', function () {
+    $.dialog.confirm('Are you sure delete these products?', function () {
         var loading = showLoading();
         $.post('Delete', { ids: ids.join(',').toString() }, function (result) {
             loading.close();
             if (result.success) {
-                $.dialog.tips('删除商品成功');
+                $.dialog.tips('Succeed in deleting these products!');
                 var pageNo = $("#list").hiMallDatagrid('options').pageNumber;
                 reload(pageNo);
             }
             else
-                $.dialog.alert('删除商品失败!' + result.msg);
+                $.dialog.alert('Fail to delete these products!' + result.msg);
         });
     });
 }
@@ -244,7 +244,7 @@ function initInfractionSaleOffGrid() {
         url: 'list',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的商品',
+        NoDataMsg: 'Not Found any produts',
         border: false,
         fit: true,
         fitColumns: true,
@@ -259,29 +259,29 @@ function initInfractionSaleOffGrid() {
         [[
              { checkbox: true, width: 39 },
             {
-                field: "Name", title: '商品', width: 450, align: 'left',
+                field: "Name", title: 'Products', width: 450, align: 'left',
                 formatter: function (value, row, index) {
                     var html = '<img style="margin-left:15px;" width="40" height="40" src="' + row.Image + '" /><span class="overflow-ellipsis" style="width:300px"><a title="' + value + '" target="_blank" href="/product/detail/' + row.Id + '">' + value + '</a></span>';
                     return html;
                 }
             },
         {
-            field: "AuditState", title: "违规下架理由", align: "left",
+            field: "AuditState", title: "Reasons for out of Stock", align: "left",
             formatter: function (value, row, index) {
                 var text = row.AuditReason;
                 return text;
             }
         },
         {
-            field: "s", title: "操作", width: 200, align: "center",
+            field: "s", title: "Operation", width: 200, align: "center",
             formatter: function (value, row, index) {
                 var html = "";
                 html = '<span class="btn-a"><input class="thisId" type="hidden" value="' + row.Id + '"/><input class="thisName" type="hidden" value="' + row.Name + '"/>';
                 if (!row.IsLimitTimeBuy) {
-                    html += '<a class="good-check" href="PublicStepTwo?productId=' + row.Id + '">编辑</a>';
+                    html += '<a class="good-check" href="PublicStepTwo?productId=' + row.Id + '">Edit</a>';
                 }
-                html += '<a class="good-up">上架</a>';
-                html += '<a class="good-del">删除</a></span>';
+                html += '<a class="good-up">put in shelves</a>';
+                html += '<a class="good-del">delete</a></span>';
                 return html;
             }
         }
@@ -303,7 +303,7 @@ function initAuditGrid() {
         url: 'list',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的商品',
+        NoDataMsg: 'Not Found any produts',
         border: false,
         fit: true,
         fitColumns: true,
@@ -319,34 +319,34 @@ function initAuditGrid() {
              { checkbox: true, width: 39 },
              { field: "IsLimitTimeBuy", hidden: true, width: 39 },
             {
-                field: "Name", title: '商品', align: 'left',
+                field: "Name", title: 'Products', align: 'left',
                 formatter: function (value, row, index) {
                     var html = '<img style="margin-left:15px;" width="40" height="40" src="' + row.Image + '" /><span class="overflow-ellipsis" style="width:350px"><a title="' + value + '" href="/product/detail/' + row.Id + '" target="_blank">' + value + '</a></span>';
                     return html;
                 }
             },
         {
-            field: "AuditState", title: "审核", width: 150, align: "center",
+            field: "AuditState", title: "Auditing", width: 150, align: "center",
             formatter: function (value, row, index) {
                 var text = '';
                 if (row.AuditState == 1)
-                    text = '等待审核';
+                    text = 'wait for auditing';
                 else if (row.AuditState == 3) {
-                    text = '<label style="color:red">未通过</label><br />' + row.AuditReason;
+                    text = '<label style="color:red">did not pass</label><br />' + row.AuditReason;
                 }
                 return text;
             }
         },
         {
-            field: "s", title: "操作", width: 150, align: "center",
+            field: "s", title: "Operation", width: 150, align: "center",
             formatter: function (value, row, index) {
                 var html = "";
                 html = '<span class="btn-a"><input class="thisId" type="hidden" value="' + row.Id + '"/><input class="thisName" type="hidden" value="' + row.Name + '"/>';
                 if (!row.IsLimitTimeBuy) {
-                    html += '<a class="good-check" href="PublicStepTwo?productId=' + row.Id + '">编辑</a>';
-                }// html += '<a class="good-check" onclick="onSale(' + row.Id + ',\'' + row.Name + '\')">上架</a>';
-                html += '<a class="good-down">下架</a>';
-                html += '<a class="good-del">删除</a></span>';
+                    html += '<a class="good-check" href="PublicStepTwo?productId=' + row.Id + '">Edit</a>';
+                }// html += '<a class="good-check" onclick="onSale(' + row.Id + ',\'' + row.Name + '\')">put on selves</a>';
+                html += '<a class="good-down">remove</a>';
+                html += '<a class="good-del">delete</a></span>';
                 return html;
             }
         }
@@ -370,7 +370,7 @@ function initGrid(params) {
         url: 'list',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的商品',
+        NoDataMsg: 'Not Found any produts',
         border: false,
         fit: true,
         fitColumns: true,
@@ -385,41 +385,41 @@ function initGrid(params) {
         [[
             { checkbox: true, width: 39 },
              { field: "IsLimitTimeBuy", hidden: true, width: 39 },
-            { field: "ProductCode", title: '商品货号', width: 50 },
+            { field: "ProductCode", title: 'Number', width: 50 },
             {
-                field: "Name", title: '商品', width: 300, align: 'left',
+                field: "Name", title: 'Product', width: 300, align: 'left',
                 formatter: function (value, row, index) {
                     var html = '<img style="margin-left:15px;" width="40" height="40" src="' + row.Image + '" /><span class="overflow-ellipsis" style="width:220px"><a title="' + value + '" target="_blank" href="/product/detail/' + row.Id + '">' + value + '</a></span>';
                     return html;
                 }
             },
-        { field: "CategoryName", title: "商家分类", width: 100, align: "left" },
-        { field: "BrandName", title: "品牌", width: 90, align: "left" },
-         { field: "PublishTime", title: "发布时间", width: 120, align: "left" },
+        { field: "CategoryName", title: "Category", width: 100, align: "left" },
+        { field: "BrandName", title: "Brand", width: 90, align: "left" },
+         { field: "PublishTime", title: "Release time", width: 120, align: "left" },
         {
-            field: "Price", title: "价格", width: 50, align: "left",
+            field: "Price", title: "Price", width: 50, align: "left",
             formatter: function (value, row, index) {
-                return '￥' + value.toFixed(2);
+                return '$' + value.toFixed(2);
             }
         },
         {
-            field: "s", title: "操作", align: "center",
+            field: "s", title: "Operation", align: "center",
             formatter: function (value, row, index) {
                 html = '<span class="btn-a"><input class="thisId" type="hidden" value="' + row.Id + '"/><input class="thisName" type="hidden" value="' + row.Name + '"/>';
                 if (!row.IsLimitTimeBuy) {
-                    html += '<a class="good-check" href="PublicStepTwo?productId=' + row.Id + '">编辑</a>';
+                    html += '<a class="good-check" href="PublicStepTwo?productId=' + row.Id + '">Edit</a>';
                 }
                 var qzoneurl = "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=";
                 var sinaurl = "http://service.weibo.com/share/share.php?source=bookmark&url=";
                 var currenturl = encodeURIComponent('http://' + window.location.host + '/product/detail/' + row.Id + '?uid=' + row.Uid);
                 if (row.SaleState == 1) {
-                    html += '<a class="good-down">下架</a><a class="good-del">删除</a><div class="good-share"><i>分享</i>';
-                    html += '<div class="share-box"><a href="javascript:void(0);" onclick="window.open(\'' + qzoneurl + currenturl + '&pics=http://' + window.location.host + encodeURIComponent(row.Image) + '&title=' + row.Name + '\');return false;" title="分享到QQ空间"><img src="/Images/qzone.png" /></a>';
-                    html += '<a href="javascript:void(0);" onclick="window.open(\'' + sinaurl + currenturl + '&title=' + row.Name + '&pic=http://' + window.location.host + row.Image + '\');return false;" title="分享到新浪微博"><img src="/Images/weibo.png"/></a>';
-                    html += '<a href="javascript:void(0);" title="分享到微信" onclick="showQrCode(\'' + row.QrCode + '\')"><img src="/Images/wx.png"/></a><s></s></div></div></span>';
+                    html += '<a class="good-down">remove</a><a class="good-del">delete</a><div class="good-share"><i>share</i>';
+                    html += '<div class="share-box"><a href="javascript:void(0);" onclick="window.open(\'' + qzoneurl + currenturl + '&pics=http://' + window.location.host + encodeURIComponent(row.Image) + '&title=' + row.Name + '\');return false;" title="share in qq_zone"><img src="/Images/qzone.png" /></a>';
+                    html += '<a href="javascript:void(0);" onclick="window.open(\'' + sinaurl + currenturl + '&title=' + row.Name + '&pic=http://' + window.location.host + row.Image + '\');return false;" title="share in sina blog"><img src="/Images/weibo.png"/></a>';
+                    html += '<a href="javascript:void(0);" title="share in WeChat" onclick="showQrCode(\'' + row.QrCode + '\')"><img src="/Images/wx.png"/></a><s></s></div></div></span>';
                 }
 
-                else { html += '<a class="good-up">上架</a><a class="good-del">删除</a>'; }
+                else { html += '<a class="good-up">put on shelves</a><a class="good-del">delete</a>'; }
 
 
 
@@ -489,33 +489,33 @@ function getSelectedIds() {
 }
 
 function saleOff(ids) {
-    $.dialog.confirm('您确定要下架这些商品吗？', function () {
+    $.dialog.confirm('Are you sure you will put these products out of shelves?', function () {
         var loading = showLoading();
         $.post('batchSaleOff', { ids: ids.join(',').toString() }, function (result) {
             loading.close();
             if (result.success) {
-                $.dialog.tips('下架商品成功');
+                $.dialog.tips('Succeed in puttinging the products out of shelves!');
                 var pageNo = $("#list").hiMallDatagrid('options').pageNumber;
                 reload(pageNo);
             }
             else
-                $.dialog.alert('下架商品失败!' + result.msg);
+                $.dialog.alert('Fail to put these products out of shelves!' + result.msg);
         });
     });
 }
 
 function onSale(ids) {
-    $.dialog.confirm('您确定要上架这些商品吗？', function () {
+    $.dialog.confirm('Are you sure you will put these products on shelves?', function () {
         var loading = showLoading();
         $.post('batchOnSale', { ids: ids.join(',').toString() }, function (result) {
             loading.close();
             if (result.success) {
-                $.dialog.tips('上架商品成功');
+                $.dialog.tips('Succeed in putting these products on shelves!');
                 var pageNo = $("#list").hiMallDatagrid('options').pageNumber;
                 reload(pageNo);
             }
             else
-                $.dialog.alert('上架商品失败!' + result.msg);
+                $.dialog.alert('Fail to put these products on shelves!' + result.msg);
         });
     });
 }
@@ -531,7 +531,7 @@ function initBatchBtnShow() {
                 if (ids.length > 0)
                     saleOff(ids);
                 else
-                    $.dialog.tips('请至少选择一件商品');
+                    $.dialog.tips('Please select one product at least!');
             });
 
     }
@@ -544,7 +544,7 @@ function initBatchBtnShow() {
                if (ids.length > 0)
                    onSale(ids);
                else
-                   $.dialog.tips('请至少选择一件商品');
+                   $.dialog.tips('Please select one product at least!');
            });
     }
 
@@ -559,7 +559,7 @@ function initBatchBtnShow() {
             if (ids.length > 0)
                 deleteProduct(ids);
             else
-                $.dialog.tips('请至少选择一件商品');
+                $.dialog.tips('Please select one product at least!');
         });
 
 }
@@ -604,20 +604,20 @@ function initDatePicker() {
 function bindTemplate(ids) {
 
     $.dialog({
-        title: '关联版式',
+        title: 'Format relevance',
         lock: true,
         id: 'addArticleSort',
         content: ['<div class="dialog-form">',
             '<div class="form-group">',
-                '<label class="label-inline" for="">顶部</label><select id="top" class="form-control input-sm"></select>',
+                '<label class="label-inline" for="">Top</label><select id="top" class="form-control input-sm"></select>',
             '</div>',
             '<div class="form-group">',
-                '<label class="label-inline" for="">底部</label>',
+                '<label class="label-inline" for="">Bottom</label>',
                 '<select class="form-control input-sm" id="bottom"></select>',
             '</div>',
         '</div>'].join(''),
         padding: '10px',
-        okVal: '保存',
+        okVal: 'Save',
         ok: function () {
             var close = false;
             var topTemplateId = $('#top').val();
@@ -632,7 +632,7 @@ function bindTemplate(ids) {
                 success: function (result) {
                     loading.close();
                     if (result.success) {
-                        $.dialog.tips('关联成功');
+                        $.dialog.tips('Relate successful');
                         clearGridSelect();
                         close = true;
                     }
@@ -679,6 +679,6 @@ function bindAssociateTemplateBtnClickEvent() {
         if (ids.length > 0)
             bindTemplate(ids);
         else
-            $.dialog.tips('请至少选择一件商品');
+            $.dialog.tips('Please select one product at least!');
     });
 }
