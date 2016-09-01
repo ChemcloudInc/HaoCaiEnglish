@@ -3,9 +3,9 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>关联版式</strong>
-        <li class="active"><a href="management">管理</a></li>
-        <li><a href="add?id=0">新增</a></li>
+        <strong>Related format</strong>
+        <li class="active"><a href="management">Management</a></li>
+        <li><a href="add?id=0">Add</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -17,18 +17,18 @@
     <div class="search-box only-line">
         <form class="custom-inline">
             <div class="form-group">
-                <label class="label-inline" for="">版式名称</label>
+                <label class="label-inline" for="">Name:</label>
                 <input class="form-control input-ssm" type="text" id="name">
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">版式位置</label>
+                <label class="label-inline" for="">Format location:</label>
                 <select class="form-control input-ssm" id="position">
-                    <option value="">全部</option>
-                    <option value="1">顶部</option>
-                    <option value="2">底部</option>
+                    <option value="">all</option>
+                    <option value="1">top</option>
+                    <option value="2">bottom</option>
                 </select>
             </div>
-            <button type="button" class="btn btn-primary btn-sm" id="searchBtn">搜索</button>
+            <button type="button" class="btn btn-primary btn-sm" id="searchBtn">Search</button>
         </form>
     </div>
     <table class="table" id="list"></table>

@@ -26,15 +26,15 @@ function initGrid() {
         columns:
         [[
              { checkbox: true, width: 39 },
-            { field: "Name", title: '版式名称', width: 450, align: 'left' },
-            { field: "PositionText", title: '版式位置', width: 100, align: 'left' },
+            { field: "Name", title: 'format name', width: 450, align: 'left' },
+            { field: "PositionText", title: 'format location', width: 100, align: 'left' },
         {
-            field: "s", title: "操作", width: 90, align: "center",
+            field: "s", title: "operation", width: 90, align: "center",
             formatter: function (value, row, index) {
                 var html = "";
                 html = '<span class="btn-a">\
-                    <a class="good-check" href="Add?id=' + row.Id + '">编辑</a>';
-                html += '<a class="good-check" onclick="del(' + row.Id + ',\'' + row.Name + '\')">删除</a></span>';
+                    <a class="good-check" href="Add?id=' + row.Id + '">edit</a>';
+                html += '<a class="good-check" onclick="del(' + row.Id + ',\'' + row.Name + '\')">delete</a></span>';
                 return html;
             },
             styler: function () {
@@ -56,15 +56,15 @@ function bindSearchBtnClickEvent() {
 }
 
 function del(id,name) {
-    $.dialog.confirm('您是否确定要删除模板 “' + name + "”吗？", function () {
+    $.dialog.confirm('Are you sure delete tenplate \'' + name + "\'?", function () {
         var loading = showLoading();
         $.post('delete', { id: id }, function (result) {
             loading.close();
             if (result.success) {
-                $.dialog.succeedTips('删除成功!', function () { search(); });
+                $.dialog.succeedTips('delete successful!', function () { search(); });
             }
             else
-                $.dialog.errorTips('删除失败!' + result.msg);
+                $.dialog.errorTips('delete failed!' + result.msg);
         });
     });
 }

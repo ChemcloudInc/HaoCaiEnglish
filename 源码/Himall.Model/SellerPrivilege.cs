@@ -12,7 +12,7 @@ namespace Himall.Model
 		ProductCategory = 2003,
         [Privilege("Product", "Brand Applyment", 2004, "brand/management", "brand", "")]
 		BrandManage = 2004,
-		[Privilege("Product", "Format Relevance", 2005, "productDescriptiontemplate/management", "productDescriptiontemplate", "")]
+        [Privilege("Product", "Related Format", 2005, "productDescriptiontemplate/management", "productDescriptiontemplate", "")]
 		ProductDescriptionTemplate = 2005,
         [Privilege("Product", "Consultment", 2006, "productconsultation/management", "productconsultation", "")]
 		ConsultationManage = 2006,

@@ -5,9 +5,9 @@
 <script src="~/Areas/SellerAdmin/Scripts/Category.js"></script>
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>分类</strong>
-        <li class="active"><a>管理</a></li>
-        <li><a value="0" class="addCategory">新增</a></li>
+        <strong>Categories</strong>
+        <li class="active"><a>Management</a></li>
+        <li><a value="0" class="addCategory">Add</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -21,16 +21,16 @@
     <table class="table category_table">
         <thead>
             <tr>
-                <th class="td-choose">选择</th>
-                <th>分类名称/排序</th>
-                <th class="td-operate">操作</th>
+                <th class="td-choose">Select</th>
+                <th>Categories name/order</th>
+                <th class="td-operate">Operation</th>
             </tr>
         </thead>
         <tbody>
             @if (null == Model || Model.Count() == 0)
             {
                 <tr>
-                    <td style="text-align:center;" colspan="3"><h2>没有任何分类</h2></td>
+                    <td style="text-align:center;" colspan="3"><h2>There is not any categories</h2></td>
                 </tr>
             }
             else
@@ -45,7 +45,7 @@
                         </td>
                         <td class="td-operate">
                             <span class="btn-a">
-                                <a class="addCategory" value="@category.Id">新增下级</a><a class="delete-classify">删除</a>
+                                <a class="addCategory" value="@category.Id">add</a><a class="delete-classify">delete</a>
                             </span>
                         </td>
                     </tr>
@@ -55,8 +55,8 @@
     </table>
     <div class="table-bt clearfix">
         <div class="tabel-operate">
-            <label><input class="check-all" type="checkbox" name="" />全选</label>
-            <button type="submit" id="deleteBatch" class="btn btn-primary btn-ssm">批量删除</button>
+            <label><input class="check-all" type="checkbox" name="" />select all</label>
+            <button type="submit" id="deleteBatch" class="btn btn-primary btn-ssm">delete in banches</button>
         </div>
 
 

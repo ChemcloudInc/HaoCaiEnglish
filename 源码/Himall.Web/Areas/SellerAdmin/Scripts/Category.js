@@ -8,12 +8,12 @@
         success: function (data) {
             loading.close();
             if (data.Successful == true) {
-                $.dialog.tips('更新分类的' + (actionName == 'UpdateOrder' ? '显示顺序' : '名称') + '成功.');
+                $.dialog.tips('Update category\'s ' + (actionName == 'UpdateOrder' ? 'order' : 'name') + 'succeessful.');
             }
         },
         error: function () {
             loading.close();
-            $.dialog.errorTips('您输入了非法字符');
+            $.dialog.errorTips('You entered some invalid character.');
         }
     });
 }
@@ -34,14 +34,14 @@ function categoryTextEventBind() {
         if ($(this).hasClass('text-order')) {
             if (isNaN($(this).val()) || parseInt($(this).val()) <= 0) {
                 $.dialog({
-                    title: '更新分类信息',
+                    title: 'Update category\'s information',
                     lock: true,
                     width: '400px',
                     padding: '20px',
-                    content: ['<div class="dialog-form">您输入的序号不合法,此项只能是大于零的整数.</div>'].join(''),
+                    content: ['<div class="dialog-form">The sequence number you entered is invalid,which can only be an integer greater than 0</div>'].join(''),
                     button: [
 				    {
-				        name: '关闭',
+				        name: 'close',
 				    }]
                 });
                 $(this).val(_order);
@@ -52,14 +52,14 @@ function categoryTextEventBind() {
         } else {
             if ($(this).val().length === 0) {
                 $.dialog({
-                    title: '更新分类信息',
+                    title: 'Update category\'s information',
                     lock: true,
                     width: '400px',
                     padding: '20px',
-                    content: ['<div class="dialog-form">分类名称不能为空.</div>'].join(''),
+                    content: ['<div class="dialog-form">Category\'s name cannot be empty!</div>'].join(''),
                     button: [
 				    {
-				        name: '关闭',
+				        name: 'close',
 				    }]
                 });
                 $(this).val(_name);
@@ -73,7 +73,7 @@ function categoryTextEventBind() {
 function initialdeleteCategory() {
     $('.container').on('click', '.delete-classify', function () {
         var id = $(this).parents('td.td-operate').prev('td').find('.hidden_id').val();
-        $.dialog.confirm('删除该分类将会同时删除该分类的所有下级分类，您确定要删除吗？', function () {
+        $.dialog.confirm('Delete this category will delete all children categories,are you sure?', function () {
             ajaxRequest({
                 type: 'POST',
                 url: "./DeleteCategoryById",
@@ -86,7 +86,7 @@ function initialdeleteCategory() {
                 }, error: function () { }
             });
         }, function () {
-            $.dialog.tips('你取消了操作');
+            $.dialog.tips('You have canceled');
         });
     });
 }
@@ -101,8 +101,8 @@ function initialBatchDelete() {
                 ids.push(curRow.find('input.hidden_id').val());
             }
         });
-        if (ids.length == 0) { $.dialog.tips('不能批量删除,因为您没有选中任何行.'); return; }
-        $.dialog.confirm('确定删除选中行吗？', function () {
+        if (ids.length == 0) { $.dialog.tips('Fail to delete beca.'); return; }
+        $.dialog.confirm('Delete these rows?', function () {
             var loading = showLoading();
             ajaxRequest({
                 type: "POST",
@@ -114,12 +114,12 @@ function initialBatchDelete() {
                     if (data.Successful) {
                         location.href = "./Management";
                     } else {
-                        $.dialog.errorTips("删除失败,请重试！", _this);
+                        $.dialog.errorTips("Delete failed,try again please!", _this);
                     }
                 },
                 error: function (e) {
                     loading.close();
-                    $.dialog.errorTips("删除失败,请重试！", _this);
+                    $.dialog.errorTips("Delete failed,try again please!", _this);
                 }
             });
         });
@@ -134,11 +134,11 @@ function InitialDialog(option) {
         id: 'addAtrr',
         content: ['<div class="dialog-form">',
             '<div class="form-group">',
-                '<label class="label-inline" for="">分类名称</label><input value="' + option.name + '" id="newCategoryName" class="form-control input-sm" type="text" >',
-                '<p id="nameErrorMsg" class="help-block">不能为空且不能多于50个字</p>',
+                '<label class="label-inline" for="">Category Name</label><input value="' + option.name + '" id="newCategoryName" class="form-control input-sm" type="text" >',
+                '<p id="nameErrorMsg" class="help-block">Cannot be empty and must less than 50 words.</p>',
             '</div>',
             '<div class="form-group">',
-                '<label class="label-inline" for="">上级分类</label>',
+                '<label class="label-inline" for="">Parent category</label>',
                 '<select class="form-control input-sm" id="categoryDrop"></select>',
             '</div>',
         '</div>'].join(''),
@@ -165,7 +165,7 @@ function InitialDialog(option) {
             });
         },
         padding: '20px 10px',
-        okVal: '保存',
+        okVal: 'Save',
         ok: function () {
             var len = $("#newCategoryName").val().length;
             if (len > 50 || len <= 0) {
@@ -217,7 +217,7 @@ $(function () {
 
     $('.container').on('click', '.addCategory', function () {
         var id = $(this).attr('value');
-        InitialDialog({ title: '添加分类', name: '', id: id })
+        InitialDialog({ title: 'Add a category', name: '', id: id })
     });
 
 
@@ -245,7 +245,7 @@ $(function () {
                 loading.close();
                 if (data.Successful === true) {
                     var p = $(target).parents('.level-' + layer);
-                    if (data.Category.length === 0) { $.dialog.tips('该分类下目前还没有子分类.'); return; }
+                    if (data.Category.length === 0) { $.dialog.tips('This category do not have any children categories.'); return; }
                     for (var i = 0; i < data.Category.length; i++) {
                         $(target).addClass('glyphicon-minus-sign').removeClass('glyphicon-plus-sign');
                         var left =  50;
@@ -262,7 +262,7 @@ $(function () {
                         sub.push('<td class="td-operate">');
                         sub.push('<span class="btn-a">');
 
-                        sub.push('<a class="delete-classify">删除</a></span>');
+                        sub.push('<a class="delete-classify">delete</a></span>');
                         sub.push('</td>');
                         sub.push('</tr>');
                         p.after(sub.join(''));

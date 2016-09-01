@@ -244,7 +244,7 @@ function initInfractionSaleOffGrid() {
         url: 'list',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: 'Not Found any produts',
+        NoDataMsg: 'Not found any produts',
         border: false,
         fit: true,
         fitColumns: true,
@@ -303,7 +303,7 @@ function initAuditGrid() {
         url: 'list',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: 'Not Found any produts',
+        NoDataMsg: 'Not found any produts',
         border: false,
         fit: true,
         fitColumns: true,
@@ -330,7 +330,7 @@ function initAuditGrid() {
             formatter: function (value, row, index) {
                 var text = '';
                 if (row.AuditState == 1)
-                    text = 'wait for auditing';
+                    text = 'wait for audit';
                 else if (row.AuditState == 3) {
                     text = '<label style="color:red">did not pass</label><br />' + row.AuditReason;
                 }
@@ -370,7 +370,7 @@ function initGrid(params) {
         url: 'list',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: 'Not Found any produts',
+        NoDataMsg: 'Not found any produts',
         border: false,
         fit: true,
         fitColumns: true,
@@ -604,7 +604,7 @@ function initDatePicker() {
 function bindTemplate(ids) {
 
     $.dialog({
-        title: 'Format relevance',
+        title: 'Related format',
         lock: true,
         id: 'addArticleSort',
         content: ['<div class="dialog-form">',
@@ -632,16 +632,16 @@ function bindTemplate(ids) {
                 success: function (result) {
                     loading.close();
                     if (result.success) {
-                        $.dialog.tips('Relate successful');
+                        $.dialog.tips('Relate successfully!');
                         clearGridSelect();
                         close = true;
                     }
                     else
-                        $.dialog.alert('关联失败!' + result.msg);
+                        $.dialog.alert('Relate unsuccessfully!' + result.msg);
                 },
                 error: function () {
                     loading.close();
-                    $.dialog.alert('关联失败:请求出错');
+                    $.dialog.alert('Relate unsuccessfully,error!');
                 }
             });
             return close;
@@ -652,8 +652,8 @@ function bindTemplate(ids) {
     $.post('../ProductDescriptionTemplate/getAll', {}, function (result) {
         var top = $('#top');
         var bottom = $('#bottom');
-        top.append('<option value="0">不选择</option>');
-        bottom.append('<option value="0">不选择</option>');
+        top.append('<option value="0">not choose</option>');
+        bottom.append('<option value="0">not choose</option>');
         $.each(result, function () {
             if (this.Position == 1)
                 top.append('<option value="' + this.Id + '">' + this.Name + '</option>');

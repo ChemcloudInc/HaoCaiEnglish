@@ -139,7 +139,7 @@ function query() {
         url: './list',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的数据',
+        NoDataMsg: 'Not found any data',
         border: false,
         fit: true,
         fitColumns: true,
@@ -153,7 +153,7 @@ function query() {
         [[
             { field: "Id", hidden: true },
             //{ field: "BrandId", hidden: true },
-            { field: "BrandName", title: '名称' },
+            { field: "BrandName", title: 'Name' },
             //{ field: "BrandDesc", hidden: true },
             {
                 field: "BrandLogo", title: 'LOGO', align: 'center',
@@ -164,25 +164,25 @@ function query() {
                 }
             },
             {
-                field: "AuditStatus", title: '状态', align: 'center',
+                field: "AuditStatus", title: 'Status', align: 'center',
                 formatter: function (value, row, index) {
                     var html = ["<span class=\"btn-a\">"];
                     if (row.AuditStatus == 0)
-                        html.push("审核中");
+                        html.push("under audit");
                     else if (row.AuditStatus == 1)
-                        html.push("审核通过");
+                        html.push("pass audit");
                     else
-                        html.push("审核不通过");
+                        html.push("fail in audit");
                     html.push("</span>");
                     return html.join("");
                 }
             },
             {
-                field: "operation", operation: true, title: "操作",
+                field: "operation", operation: true, title: "Operation",
                 formatter: function (value, row, index) {
                     var id = row.Id;
                     var html = ["<span class=\"btn-a\">"];
-                    html.push("<a href='./Show?id=" + id + "'>查看</a>");
+                    html.push("<a href='./Show?id=" + id + "'>View</a>");
                     html.push("</span>");
                     return html.join("");
                 }
@@ -205,8 +205,8 @@ function UploadInit(brandlogo) {
 function InitBrandLetter(brandLetter)
 {
     $('#brandLetter').hishopUpload({
-        title: '<b>*</b>品牌授权证书：',
-        imageDescript: '最多上传三个附件',
+        title: '<b>*</b>Authorization certificate:',
+        imageDescript: 'Up to three attachments to upload',
         displayImgSrc: brandLetter,
         imgFieldName: "brandAuthorizationPhoto",
         dataWidth: 8,
@@ -217,8 +217,8 @@ function InitBrandLetter(brandLetter)
 function InitBrandAuthPic(authPic)
 {
     $('#brandAuthPic').hishopUpload({
-        title: '<b>*</b>品牌授权证书：',
-        imageDescript: '最多上传三个附件',
+        title: '<b>*</b>Authorization certificate:',
+        imageDescript: 'Up to three attachments to upload',
         displayImgSrc: authPic,
         imgFieldName: "brandAuthPic",
         dataWidth: 8,
@@ -237,7 +237,7 @@ function AddApply() {
             success: function (data) {
                 loading.close();
                 if (data.success == true) {
-                    $.dialog.succeedTips('品牌申请成功,正在等待平台审核!', function () { window.location.reload();});
+                    $.dialog.succeedTips('Apply for brand successful,please wait for audit!', function () { window.location.reload();});
                 } else {
                     $.dialog.errorTips(data.msg)
                 }
@@ -254,7 +254,7 @@ function AddApply() {
             ids.push(id);
         });
         if (ids.length == 0) {
-            $.dialog.errorTips("请选择品牌");
+            $.dialog.errorTips("Please select brand!");
             return false;
         }
         var brandLetter = $('#brandLetter').hishopUpload('getImgSrc').toString(),
@@ -308,7 +308,7 @@ function AddApply() {
             async: false,
             success: function (data) {
                 if (data.success == true) {
-                    $.dialog.tips("该品牌已存在，请选择申请已有品牌！");
+                    $.dialog.tips("The brand already exists!");
                     return false;
                 }
                 else

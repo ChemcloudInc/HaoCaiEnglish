@@ -11,9 +11,9 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>品牌</strong>
-        <li><a href="./Management">申请列表</a></li>
-        <li class="active"><a>新增申请</a></li>
+        <strong>Brands</strong>
+        <li><a href="./Management">Application list</a></li>
+        <li class="active"><a>Add application</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -28,13 +28,13 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label"></label>
                 <div class="col-sm-6">
-                    <input id="radExist" name="mode" type="radio" value="1" checked="checked" />平台已有品牌&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input id="radNew" name="mode" type="radio" value="2" />新品牌
+                    <input id="radExist" name="mode" type="radio" value="1" checked="checked" />Existing brands&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="radNew" name="mode" type="radio" value="2" />New brands
                 </div>
             </div>
             <div id="divExist">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><span class="red">*</span>选择品牌：</label>
+                    <label class="col-sm-2 control-label"><span class="red">*</span>Select brand:</label>
                     <div class="col-sm-9 brand-letter" id="id_tab">
 
                     </div>
@@ -42,32 +42,32 @@
                         <div class="checkbox-group">
                         </div>
                         <div id="id_s" class="choose-brand">
-                            <span>已选择：</span>
+                            <span>Have selected:</span>
                         </div>
                     </div>
                 </div>
                 <div id="brandLetter" class="form-group upload-img"></div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">备注：</label>
+                    <label class="col-sm-2 control-label" for="">Note:</label>
                     <div class="col-sm-9"><textarea rows="4" cols="50" class="form-control" id="band_remark"></textarea></div>
                 </div>                
             </div>
             <div id="divNew" style="display:none;">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><span class="red">*</span>名称：</label>
+                    <label class="col-sm-2 control-label"><span class="red">*</span>Name:</label>
                     <div class="col-sm-6"><input type="text" class="form-control input-sm" id="band_name"></div>
                     <div class="col-sm-4"><span class="field-validation-error" id="brandNameTip"></span></div>
                 </div>
                 <div id="brandPic" class="form-group upload-img"></div>
                 <div id="brandAuthPic" class="form-group upload-img"></div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for=""><span class="red">*</span>简介：</label>
+                    <label class="col-sm-2 control-label" for=""><span class="red">*</span>Brief</label>
                     <div class="col-sm-9"><textarea rows="4" cols="50" class="form-control" id="band_des"></textarea></div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-9">
-                    <button type="button" onclick="return AddApply();" class="btn btn-primary">提 交</button>
+                    <button type="button" onclick="return AddApply();" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </form>
@@ -98,13 +98,13 @@
             var reg = /^[a-zA-Z0-9\u4e00-\u9fa5]+$/;
             if (name.length > 30)
             {
-                $("#brandNameTip").text("请输入小于30个字符！");
+                $("#brandNameTip").text("Please enter less than 30 characters!");
                 $('#band_name').css({ border: '1px solid #f60' });
                 $('#band_name').focus();
                 return false;
             }
             if (reg.test(name) == false) {
-                $("#brandNameTip").text("品牌名称必须是中文，字母，数字！");
+                $("#brandNameTip").text("Brand names must be Chinese, letters or numbers!");
                 $('#band_name').css({ border: '1px solid #f60' });
                 $('#band_name').focus();
                 return false;
@@ -122,7 +122,7 @@
                 async: false,
                 success: function (data) {
                     if (data.success == true) {
-                        $("#brandNameTip").text("该品牌已存在，请选择申请已有品牌！");
+                        $("#brandNameTip").text("The brand already exists! ");
                         $('#band_name').css({ border: '1px solid #f60' });
                         $('#band_name').focus();
                     }
