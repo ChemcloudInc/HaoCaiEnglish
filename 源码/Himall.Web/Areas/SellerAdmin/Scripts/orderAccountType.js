@@ -18,7 +18,7 @@ $(function () {
             url: './listAccountType',
             nowrap: false,
             rownumbers: true,
-            NoDataMsg: '没有找到符合条件的数据',
+            NoDataMsg: 'Not found any data.',
             border: false,
             fit: true,
             fitColumns: true,
@@ -34,15 +34,15 @@ $(function () {
 			[[
                
 				{
-				    field: "OrderId", title: '订单号', width: 200, align: "left",
+				    field: "OrderId", title: 'Order No.', width: 200, align: "left",
 				    formatter: function (value, row, index) {
 				        return '<img src="' + row.IconSrc + '" title="' + row.PlatformText + '订单" width="16" />' + value;
 				    }
 				},
-				{ field: "UserName", title: "买家", width: 120, align: "left" },
-				{ field: "OrderDate", title: "下单时间", width: 140, align: "left" },
+				{ field: "UserName", title: "Buyer", width: 120, align: "left" },
+				{ field: "OrderDate", title: "Order time", width: 140, align: "left" },
 				{
-				    field: "TotalPrice", title: "订单总额", width: 120, align: "right",
+				    field: "TotalPrice", title: "Total order", width: 120, align: "right",
 				    formatter: function (value, row, index) {
 				        var html = "<span class='ftx-04'>" + '￥' + value.toFixed(2) + "</span>";
 				        return html;
@@ -50,7 +50,7 @@ $(function () {
 				},
 			//{ field: "PaymentTypeName", title: "支付方式", width: 120, align: "left" },
 			{
-			    field: "OrderStatus", title: "订单状态", width: 100, align: "center",
+			    field: "OrderStatus", title: "Status", width: 100, align: "center",
 			    formatter: function (value, row, index) {
 			        var html = ["<span class='ordstbox'>"];
 			        switch (row.RefundStats) {

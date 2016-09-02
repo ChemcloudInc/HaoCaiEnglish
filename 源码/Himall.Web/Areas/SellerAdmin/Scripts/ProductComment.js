@@ -14,7 +14,7 @@
     $("#replyContent").blur(function () {
         var content = $("#replyContent").val();
         if (content.length > 300 || !content) {
-            $("#commentCotentTip").text("回复内容在200个字符以内！");
+            $("#commentCotentTip").text("Reply must be shorter than 200 words!");
             $("#replyContent").css({ border: '1px solid #f60' });
             return false;
         }
@@ -27,18 +27,18 @@
 
 function ReplyComment(id) {
     $.dialog({
-        title: '回复评论',
+        title: 'Reply',
         lock: true,
         id: 'ReplyComment',
         content: document.getElementById("reply-form"),
         padding: '20px 10px',
-        okVal: '确定',
+        okVal: 'sure',
         init: function () { $("#replyContent").focus();},
         ok: function () {
             //var loading = showLoading();
             var replycontent = $("#replyContent").val();
             if (replycontent == "" || replycontent.length > 200) {
-                $("#consultationCotentTip").text("回复内容在200个字符以内！");
+                $("#consultationCotentTip").text("Reply must be shorter than 200 words!");
                 $("#replyContent").css({ border: '1px solid #f60' });
                 return false;
             }
@@ -48,14 +48,14 @@ function ReplyComment(id) {
                 function (data) {
                     loading.close();
                     if (data.success) {
-                        $.dialog.succeedTips("回复成功", function () {
+                        $.dialog.succeedTips("Reply successful", function () {
                             $("#replyContent").val("");
                             var pageNo = $("#list").hiMallDatagrid('options').pageNumber;
                             $("#list").hiMallDatagrid('reload', { pageNumber: pageNo });
                         });
                     }
                     else
-                        $.dialog.errorTips("回复失败:" + data.msg);
+                        $.dialog.errorTips("Reply failed:" + data.msg);
                 });
         }
     });
@@ -72,7 +72,7 @@ function query(val) {
         url: './list',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的数据',
+        NoDataMsg: 'Not found any data.',
         border: false,
         fit: true,
         fitColumns: true,
@@ -86,45 +86,45 @@ function query(val) {
         [[
             { field: "Id", hidden: true },            
             {
-                field: "ProductName", title: '评价商品', align: "left", width: 300,
+                field: "ProductName", title: 'Comments', align: "left", width: 300,
                 formatter: function (value, row, index) {
                     var spc = " ";
-                    if (row.Color.length > 0) { spc += "颜色：" + row.Color; }
-                    if (row.Size.length > 0) { spc += "，尺寸：" + row.Size; }
-                    if (row.Version.length > 0) { spc += "，版本：" + row.Version; }
+                    if (row.Color.length > 0) { spc += "color:" + row.Color; }
+                    if (row.Size.length > 0) { spc += "，size:" + row.Size; }
+                    if (row.Version.length > 0) { spc += "，versions:" + row.Version; }
                     var html = '<a title="' + value + "【" + spc + '】" href="/product/detail/' + row.ProductId + '" target="_blank" href="/product/detail/' + row.ProductId + '"><img style="margin-left:15px;" width="40" height="40" src="' + row.ImagePath + '" /><span class="overflow-ellipsis"style="width:200px">' + value + '</a></span>';
                     return html;
                 }
             },
-            { field: "CommentContent", title: '评价内容', align: "left",width:300,
+            { field: "CommentContent", title: 'Comment content', align: "left",width:300,
                 formatter: function (value, row, index) {
                     var html = '<span title="' + value + '" class="overflow-ellipsis"style="width:300px">' + value + '</span>';
                     return html;
                 }},
-            { field: "CommentMark", title: '商品评分' },
-            { field: "UserName", title: '评价人' },
-            { field: "CommentDateStr", title: '日期' },
+            { field: "CommentMark", title: 'Grade' },
+            { field: "UserName", title: 'Appraiser' },
+            { field: "CommentDateStr", title: 'Date' },
             {
-                field: "state", title: '状态',
+                field: "state", title: 'Status',
                 formatter: function (value, row, index) {
                     var html = "";
                     if (row.Status)
-                        html += '已回复';
+                        html += 'replied';
                     else
-                        html += '未回复';
+                        html += 'not reply';
                     return html;
                 }
             },
         {
-            field: "operation", operation: true, title: "操作",
+            field: "operation", operation: true, title: "Operation",
             formatter: function (value, row, index) {
                 var id = row.Id.toString();
                 var html = ["<span class=\"btn-a\">"];
                 if (row.Status) {
-                    html.push("<a onclick=\"detail('" + id + "');\">查看回复</a>");
+                    html.push("<a onclick=\"detail('" + id + "');\">View reply</a>");
                 }
                 else
-                html.push("<a onclick=\"ReplyComment('" + id + "');\">回复</a>");
+                html.push("<a onclick=\"ReplyComment('" + id + "');\">reply</a>");
                 html.push("</span>");
                 return html.join("");
             }
@@ -136,24 +136,24 @@ function query(val) {
 }
 function detail(id) {
     $.post("./Detail", { id: id }, function (data) {
-        var content = data.ConsulationContent == "" ? "无" : data.ConsulationContent;
+        var content = data.ConsulationContent == "" ? "None" : data.ConsulationContent;
         $.dialog({
-            title: '查看回复',
+            title: 'View reply',
             lock: true,
             id: 'consultReply',
             width: '400px',
             content: ['<div class="dialog-form">',
                 '<div class="form-group">',
-                    '<label class="label-inline fl">评论</label>',
+                    '<label class="label-inline fl">Comments</label>',
                     '<p class="only-text">' + content + '</p>',
                 '</div>',
                 '<div class="form-group">',
-                    '<label class="label-inline fl">评论回复</label>',
+                    '<label class="label-inline fl">Reply</label>',
                     '<p class="only-text">' + data.ReplyContent + '</p>',
                 '</div>',
             '</div>'].join(''),
             padding: '20px 10px',
-            okVal: '确定',
+            okVal: 'Sure',
             ok: function () {
             }
         });

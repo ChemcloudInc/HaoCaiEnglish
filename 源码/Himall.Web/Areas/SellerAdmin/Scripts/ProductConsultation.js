@@ -13,7 +13,7 @@ $(function () {
 	    var content = $("#replyContent").val();
 	    if(content.length>300||!content)
 	    {
-	        $("#consultationCotentTip").text("回复内容在200个字符以内！");
+	        $("#consultationCotentTip").text("Reply must be shorter than 200 words!");
 	        $("#replyContent").css({ border: '1px solid #f60' });
 	        return false;
 	    }
@@ -31,18 +31,18 @@ $(function () {
 function detail(id) {
     $.post("./Detail", { id: id }, function (data) {
         $.dialog({
-            title: '查看回复',
+            title: 'view reply',
             lock: true,
             id: 'consultReply',
             width: '400px',
             content: ['<div class="dialog-form">',
                 '<div class="form-group">',
-                    '<label class="label-inline fl">咨询</label><p class="only-text">' + html_decode(data.ConsulationContent) + '</p></div>',
+                    '<label class="label-inline fl">consultation</label><p class="only-text">' + html_decode(data.ConsulationContent) + '</p></div>',
                 '<div class="form-group">',
-                    '<label class="label-inline fl">咨询回复</label><p class="only-text">' + html_decode(data.ReplyContent) + '</p></div>',
+                    '<label class="label-inline fl">reply</label><p class="only-text">' + html_decode(data.ReplyContent) + '</p></div>',
             '</div>'].join(''),
             padding: '20px 10px',
-            okVal: '确定',
+            okVal: 'sure',
             ok: function () {
             }
         });
@@ -53,17 +53,17 @@ function detail(id) {
 function ReplyConsulation(id)
 {
     $.dialog({
-        title: '回复咨询',
+        title: 'reply',
         lock: true,
         id: 'ReplyConsulation',
         content: document.getElementById("reply-form"),
         padding: '20px 10px',
-        okVal: '确定',
+        okVal: 'sure',
         init: function () { $("#replyContent").focus(); },
         ok: function () {
             var replycontent = $("#replyContent").val();
             if (replycontent.trim() == "" || replycontent.length > 200) {
-                $("#consultationCotentTip").text("回复内容在200个字符以内！");
+                $("#consultationCotentTip").text("Reply must be shorter than 200 words!");
                 $("#replyContent").css({ border: '1px solid #f60' });
                 return false;
             }
@@ -73,14 +73,14 @@ function ReplyConsulation(id)
                 function (data) {
                     loading.close();
                     if (data.success) {
-                        $.dialog.succeedTips("回复成功", function () {
+                        $.dialog.succeedTips("Reply successful", function () {
                             $("#replyContent").val("");
                             var pageNo = $("#list").hiMallDatagrid('options').pageNumber;
                             $("#list").hiMallDatagrid('reload', { pageNumber: pageNo });
                         });
                     }
                     else
-                        $.dialog.errorTips("回复失败:" + data.msg);
+                        $.dialog.errorTips("Reply failed:" + data.msg);
                 });
         }
     });
@@ -98,7 +98,7 @@ function query(val) {
         url: './list',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的数据',
+        NoDataMsg: 'Not found any data',
         border: false,
         fit: true,
         fitColumns: true,
@@ -112,36 +112,36 @@ function query(val) {
         [[
             { field: "Id", hidden: true },
             {
-                field: "ProductName", title: '评价商品', align: "left", width: 350,
+                field: "ProductName", title: 'Products', align: "left", width: 350,
                 formatter: function (value, row, index) {
                     var html = '<a title="' + value + '" href="/product/detail/' + row.ProductId + '" target="_blank" href="/product/detail/' + row.ProductId + '"><img style="margin-left:15px;" width="40" height="40" src="' + row.ImagePath + '/1_100.png" /><span class="overflow-ellipsis"style="width:200px">' + value + '</a></span>';
                     return html;
                 }
             },
-            { field: "ConsultationContent", title: '咨询内容', align: "left",width:350 },
-            { field: "UserName", title: '咨询人' },
-            { field: "ConsultationDateStr", title: '日期' },
+            { field: "ConsultationContent", title: 'Consult content', align: "left",width:350 },
+            { field: "UserName", title: 'Consultant' },
+            { field: "ConsultationDateStr", title: 'Date' },
             {
-                field: "state", title: '咨询状态',
+                field: "state", title: 'State',
                 formatter: function (value, row, index) {
                     var html = "";
                     if (row.Status)
-                        html += '已回复';
+                        html += 'replied';
                     else
-                        html += '未回复';
+                        html += 'not reply';
                     return html;
                 }
             },
         {
-            field: "operation", operation: true, title: "操作",
+            field: "operation", operation: true, title: "Operation",
             formatter: function (value, row, index) {
                 var id = row.Id.toString();
                 var html = ["<span class=\"btn-a\">"];
                 if (row.Status) {
-                    html.push("<a onclick=\"detail('" + id + "');\">查看回复</a>");
+                    html.push("<a onclick=\"detail('" + id + "');\">view reply</a>");
                 }
                 else
-                    html.push("<a onclick=\"ReplyConsulation('" + id + "');\">回复</a>");
+                    html.push("<a onclick=\"ReplyConsulation('" + id + "');\">reply</a>");
                 html.push("</span>");
                 return html.join("");
             }

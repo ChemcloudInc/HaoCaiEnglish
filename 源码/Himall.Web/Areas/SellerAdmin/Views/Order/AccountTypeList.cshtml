@@ -59,36 +59,36 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>订单结算状态</strong>
-        <li value="0" type="statusTab"><a>所有付款订单</a></li>
-        <li value="1" type="statusTab"><a>未结算</a></li>
-        <li value="2" type="statusTab"><a>待结算</a></li>
-        <li value="3" type="statusTab"><a>已结算</a></li>
+        <strong>Orders</strong>
+        <li value="0" type="statusTab"><a>All orders</a></li>
+        <li value="1" type="statusTab"><a>not settled</a></li>
+        <li value="2" type="statusTab"><a>Pending settlement</a></li>
+        <li value="3" type="statusTab"><a>Settled</a></li>
     
     </ul>
 
     <div class="search-box" id="search-box">
         <form class="custom-inline" role="form">
             <div class="form-group">
-                <label class="label-inline" for="">开始日期</label>
+                <label class="label-inline" for="">Start</label>
                 <input id="inputStartDate" class="form-control input-ssm start_datetime" type="text">
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">结束日期</label>
+                <label class="label-inline" for="">Finish</label>
                 <input id="inputEndDate" class="form-control input-ssm end_datetime" type="text">
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">订单号</label>
+                <label class="label-inline" for="">Order No.</label>
                 <input class="form-control input-ssm" type="text" id="txtOrderId">
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">买家</label>
+                <label class="label-inline" for="">Buyer</label>
                 <input class="form-control input-ssm" type="text" id="txtUserName">
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">订单类型</label>
+                <label class="label-inline" for="">Order type</label>
                 <select id="orderType" class="form-control input-ssm">
-                    <option value="">全部类型</option>
+                    <option value="">all types</option>
                     @foreach (var item in Enum.GetValues(typeof(Himall.Core.PlatformType)))
                     {
                         switch ((Himall.Core.PlatformType)item)
@@ -98,10 +98,10 @@
                             case Himall.Core.PlatformType.Mobile:
                                 break;
                             case Himall.Core.PlatformType.IOS:
-                                <option value="@((int)item)">APP(IOS)订单</option>
+                                <option value="@((int)item)">APP(IOS) order</option>
                                 break;
                             default:
-                            <option value="@((int)item)">@(((Himall.Core.PlatformType)item).ToDescription())订单</option>
+                            <option value="@((int)item)">@(((Himall.Core.PlatformType)item).ToDescription()) order</option>
                                 break;
 
                         }

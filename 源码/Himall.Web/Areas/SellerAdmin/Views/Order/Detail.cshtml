@@ -6,28 +6,28 @@
 <script src="~/Scripts/RegionBind.js"></script>
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>订单</strong>
-        <li><a href="/selleradmin/order/Management">所有订单</a></li>
+        <strong>Orders</strong>
+        <li><a href="/selleradmin/order/Management">All orders</a></li>
         @if (!string.IsNullOrEmpty(Request.QueryString["updatePrice"]))
         {
-            <li class="active"><a>改价</a></li>
+            <li class="active"><a>Adjust price</a></li>
         }
         else
         {
-            <li class="active"><a>查看</a></li>
+            <li class="active"><a>View</a></li>
         }
     </ul>
 
-    <h3 class="table-hd">商品清单</h3>
+    <h3 class="table-hd">Commodity list</h3>
     <table id="tbOrderItems" class="table table-bordered">
         <thead>
             <tr>
-                <th>商品</th>
-                <th>数量</th>
-                <th>单价</th>
-                <th>改价</th>
-                <th>总价</th>
-                @*<th>运费</th>*@
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price per unit</th>
+                <th>Adjust price</th>
+                <th>Total price</th>
+                @*<th>Freight</th>*@
             </tr>
         </thead>
         <tbody>
@@ -84,11 +84,11 @@
                             @if (Model.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.WaitPay && (bool)ViewBag.UpdatePrice == true)
                             {
                                 <select id="updateWay">
-                                    <option value="1">减</option>
-                                    <option value="2">增</option>
+                                    <option value="1">decrease</option>
+                                    <option value="2">increase</option>
                                 </select>
                                 <input id="inputDiscount@(orderItem.Id)" onkeyup="(this.v = function () { this.value = this.value.replace(/[^0-9.]+/, ''); }).call(this)" onblur="    this.v()" class="text-order no-m" type="text">
-                                <span class=" btn btn-warning btn-xs ss" itemid="@orderItem.Id">确认改价</span>
+                                <span class=" btn btn-warning btn-xs ss" itemid="@orderItem.Id">Confirm adjustment</span>
                             }
                             else
                             {
@@ -116,12 +116,12 @@
             }
             <tr>
                 <td align="right" colspan="6">
-                    <b>商品总价： <span class="ftx-04">￥@Model.ProductTotalAmount.ToString("F2") </span></b>
-                    运费：
+                    <b>Total price:<span class="ftx-04">￥@Model.ProductTotalAmount.ToString("F2") </span></b>
+                    Freight:
                     @if (Model.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.WaitPay && (bool)ViewBag.UpdatePrice == true)
                     {
                         <input class="ftx-04" type="text" class="text-order no-m" id="freight" value="@Model.Freight.ToString("F2")" />
-                        <span class=" btn btn-warning btn-xs" id="updateFreight" itemid="@Model.Id">确认改价</span>
+                        <span class=" btn btn-warning btn-xs" id="updateFreight" itemid="@Model.Id">Confirm adjustment</span>
 
                     }
                     else
@@ -143,13 +143,13 @@
                         </b>*@
                     @if (Model.DiscountAmount > 0)
                     {
-                        <label> 优惠券抵扣金额:￥@Model.DiscountAmount.ToString("F2");</label>
+                        <label> Coupon offset amount:$@Model.DiscountAmount.ToString("F2");</label>
                     }
                     @if (Model.IntegralDiscount > 0)
                     {
-                        <label> 积分抵扣金额:￥@Model.IntegralDiscount.ToString("F2");</label>
+                        <label> Integral offset amount:$@Model.IntegralDiscount.ToString("F2");</label>
                     }
-                    <b>实付金额：<span class="ftx-04">￥@Model.OrderTotalAmount.ToString("F2")</span></b>
+                    <b>Actual payment:<span class="ftx-04">$@Model.OrderTotalAmount.ToString("F2")</span></b>
 
                 </td>
 
@@ -159,87 +159,87 @@
 
 
     <h3 class="table-hd">
-        订单信息
+        Order information
         @if (Model.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.WaitPay || Model.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.WaitDelivery)
         {
-            <a class="order-info-resive" href="javascript:void(0)"> 修改</a>
+            <a class="order-info-resive" href="javascript:void(0)"> Modify</a>
         }
     </h3>
     <div class="order-info">
         <div class="caption">
-            <p>&nbsp;订 单 号：@Model.Id</p>
-            <p>下单时间：@Model.OrderDate.ToString("yyyy-MM-dd HH:mm:ss")</p>
+            <p>&nbsp;Order number:@Model.Id</p>
+            <p>Order time:@Model.OrderDate.ToString("yyyy-MM-dd HH:mm:ss")</p>
             <p>
-                订单状态：@Model.OrderStatus.ToDescription()
+                Order status:@Model.OrderStatus.ToDescription()
                 @if ((int)Model.OrderStatus == 4)
                 {
                     @Model.CloseReason
                 }
             </p>
-            <p>下单会员：@Model.UserName</p>
+            <p>Member:@Model.UserName</p>
         </div>
         <div class="caption">
-            <p>收 货 人：<span id="spShipTo">@Model.ShipTo</span></p>
-            <p>地    址：@Model.RegionFullName <span id="spAddress">@Model.Address</span></p>
+            <p>consignee：<span id="spShipTo">@Model.ShipTo</span></p>
+            <p>address:@Model.RegionFullName <span id="spAddress">@Model.Address</span></p>
             <input type="hidden" id="hidRegionIdPath" />
             <input type="hidden" id="hidTopRegionId" value="@Model.TopRegionId" />
             <input type="hidden" id="hidRegionId" value="@Model.RegionId" />
             <input type="hidden" id="hidCityId" value="0" />
-            <p>手机号码：<span id="spCellPhone">@Model.CellPhone</span></p>
-            @*<p>买家备注：@Model.UserRemark</p>*@
+            <p>phone:<span id="spCellPhone">@Model.CellPhone</span></p>
+            @*<p>note:@Model.UserRemark</p>*@
         </div>
         <div class="caption">
             @if (Model.PayDate != null && Model.OrderStatus != Himall.Model.OrderInfo.OrderOperateStatus.WaitPay)
             {
                 if (@Model.OrderTotalAmount == 0)
                 {
-                    <p>支付方式： <span>积分支付</span></p>
+                    <p>Payment method: <span>Integral payment</span></p>
                 }
                 else if (string.IsNullOrEmpty(Model.PaymentTypeName))
                 {
-                    <p>支付方式：平台确认收款  【备注：@{@Model.PayRemark}】</p>
+                    <p>Payment method:Platform confirmed receipt[note：@{@Model.PayRemark}]</p>
                 }
                 else
                 {
 
-                    <p>支付方式：  @Model.PaymentTypeName @Model.PayRemark</p>
+                    <p>Payment method: @Model.PaymentTypeName @Model.PayRemark</p>
                 }
             }
             @if (!string.IsNullOrEmpty(Model.ExpressCompanyName))
             {
-                <p>物流公司：@Model.ShowExpressCompanyName</p>
+                <p>Logistics company:@Model.ShowExpressCompanyName</p>
             }
             @if (!string.IsNullOrEmpty(Model.ShipOrderNumber))
             {
-                <p>快递单号：@Model.ShipOrderNumber</p>
+                <p>Tracking number:@Model.ShipOrderNumber</p>
             }
         </div>
         @if (Model.InvoiceType != Himall.Model.InvoiceType.None)
         {
             <div class="caption">
-                <p>发票抬头：@Model.InvoiceTitle</p>
-                <p>发票内容：@Model.InvoiceContext</p>
+                <p>Invoice title:@Model.InvoiceTitle</p>
+                <p>Invoice content:@Model.InvoiceContext</p>
             </div>
         }
         else
         {
             <div class="caption">
-                <p>不需要开发票</p>
+                <p>do not need invoice</p>
             </div>
         }
 
     </div>
 
-    <h3 class="table-hd">物流跟踪</h3>
+    <h3 class="table-hd">Logistics tracking</h3>
     <table class="table table-bordered" id="tbExpressData"></table>
 
-    <h3 class="table-hd">操作历史</h3>
+    <h3 class="table-hd">Operational history</h3>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>操作者</th>
-                <th>时间</th>
-                <th>描述</th>
+                <th>Operator</th>
+                <th>Time</th>
+                <th>Description</th>
             </tr>
         </thead>
         <tbody>
@@ -278,7 +278,7 @@
                 }
 
                 else {
-                    html += '<tr><td>该单号暂无物流进展，请稍后再试，或检查公司和单号是否有误。</td></tr>';
+                    html += '<tr><td>There is not any logistics development,please try again.</td></tr>';
                 }
 
                 html += '<tr><td></td></tr>';
@@ -298,11 +298,11 @@
                 discountAmount = -discountAmount;
             if(isNaN(discountAmount)||discountAmount.length==0)
             {
-                $.dialog.errorTips("请输入正确金额！");
+                $.dialog.errorTips("Please enter the correct amount!");
                 return false;
             }
             if ($("#updateWay").val() == 1 && isNaN($(this).parent().next().html() < discountAmount))
-                $.dialog.errorTips("减价金额不能大于实付金额！");
+                $.dialog.errorTips("Discount amount is not greater than real pay amount");
             var url='@Url.Action("UpdateItemDiscountAmount")';
             var loading = showLoading();
             if(isPosting) return;
@@ -311,28 +311,28 @@
                 loading.close();
                 isPosting=false;
                 if (result.success) {
-                    $.dialog.succeedTips("改价成功！",function(){location.href = location.href;});
+                    $.dialog.succeedTips("Successful adjust price!",function(){location.href = location.href;});
                     // location.href = "./@Model.Id/?updatePrice="+true;
 
                 }
                 else
-                    $.dialog.errorTips("操作失败"+result.msg);
+                    $.dialog.errorTips("Operate failed"+result.msg);
             });
         });
 
         $("#updateFreight").click(function () {
             var frieght = $("#freight").val();
             if(frieght<0)
-                $.dialog.errorTips("运费金额不能为负！");
+                $.dialog.errorTips("Freight amount can not be negative！");
             var loading = showLoading();
             $.post('@Url.Action("UpdateOrderFrieght")', { orderId: @Model.Id, frieght: frieght }, function (result) {
                 loading.close();
                 if (result.success) {
-                    $.dialog.succeedTips("改价成功！",function(){location.href = location.href;});
+                    $.dialog.succeedTips("Successful adjust price!",function(){location.href = location.href;});
 
                 }
                 else
-                    $.dialog.errorTips("操作失败" + result.msg);
+                    $.dialog.errorTips("Operate failed" + result.msg);
             });
         });
         $.post('@Url.Action("GetRegionIdPath")', { regionId: "@Model.RegionId" }, function (result) {

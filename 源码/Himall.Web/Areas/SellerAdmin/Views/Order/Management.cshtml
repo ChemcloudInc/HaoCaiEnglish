@@ -51,13 +51,13 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>订单</strong>
-        <li value="0" type="statusTab"><a>所有订单</a></li>
-        <li value="1" type="statusTab"><a>待付款</a></li>
-        <li value="2" type="statusTab"><a>待发货</a></li>
-        <li value="3" type="statusTab"><a>待收货</a></li>
-        <li value="5" type="statusTab"><a>交易完成</a></li>
-        <li value="4" type="statusTab"><a>已关闭</a></li>
+        <strong>Orders</strong>
+        <li value="0" type="statusTab"><a>All orders</a></li>
+        <li value="1" type="statusTab"><a>Pending payment</a></li>
+        <li value="2" type="statusTab"><a>Pending delivery</a></li>
+        <li value="3" type="statusTab"><a>Pending receiving</a></li>
+        <li value="5" type="statusTab"><a>Deal done</a></li>
+        <li value="4" type="statusTab"><a>Deal close</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -71,25 +71,25 @@
     <div class="search-box" id="search-box">
         <form class="custom-inline" role="form">
             <div class="form-group">
-                <label class="label-inline" for="">开始日期</label>
+                <label class="label-inline" for="">Start</label>
                 <input id="inputStartDate" class="form-control input-ssm start_datetime" type="text">
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">结束日期</label>
+                <label class="label-inline" for="">Finish</label>
                 <input id="inputEndDate" class="form-control input-ssm end_datetime" type="text">
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">订单号</label>
+                <label class="label-inline" for="">Order No.</label>
                 <input class="form-control input-ssm" type="text" id="txtOrderId">
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">买家</label>
+                <label class="label-inline" for="">Buyer</label>
                 <input class="form-control input-ssm" type="text" id="txtUserName">
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">订单类型</label>
+                <label class="label-inline" for="">Order type</label>
                 <select id="orderType" class="form-control input-ssm">
-                    <option value="">全部类型</option>
+                    <option value="">all types</option>
                                         @foreach (var item in Enum.GetValues(typeof(Himall.Core.PlatformType)))
                     {
                         switch ((Himall.Core.PlatformType)item)
@@ -99,27 +99,27 @@
                             case Himall.Core.PlatformType.Mobile:
                                 break;
                             case Himall.Core.PlatformType.IOS:
-                                <option value="@((int)item)">APP(IOS)订单</option>
+                                <option value="@((int)item)">APP(IOS) order</option>
                                 break;
                             default:
-                                <option value="@((int)item)">@(((Himall.Core.PlatformType)item).ToDescription())订单</option>
+                                <option value="@((int)item)">@(((Himall.Core.PlatformType)item).ToDescription()) order</option>
                                 break;
 
                         }
                     }
                 </select>
             </div>
-            <div class="submit"><button type="button" class="btn btn-primary btn-sm" id="searchButton">搜 索</button></div>
+            <div class="submit"><button type="button" class="btn btn-primary btn-sm" id="searchButton">Search</button></div>
         </form>
     </div>
 
     <table id="list" class="table"></table>
 
     <div class="tabel-operate" id="orderOperate">
-        <a onclick="downloadOrderList()" href="#" class="btn btn-default btn-ssm">订单配货表</a>
-        <a onclick="myPreview()" class="btn btn-default btn-ssm">打印发货单</a>
-        <a onclick="printOrders()" class="btn btn-default btn-ssm">打印快递单</a>
-        <a onclick="sendGood()" class="btn btn-default btn-ssm">批量发货</a>
+        <a onclick="downloadOrderList()" href="#" class="btn btn-default btn-ssm">ditribution table</a>
+        <a onclick="myPreview()" class="btn btn-default btn-ssm">Print invoices</a>
+        <a onclick="printOrders()" class="btn btn-default btn-ssm">Print express</a>
+        <a onclick="sendGood()" class="btn btn-default btn-ssm">Batching delivery</a>
     </div>
 </div>
 <script>

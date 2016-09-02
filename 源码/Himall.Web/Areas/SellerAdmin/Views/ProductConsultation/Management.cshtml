@@ -4,9 +4,9 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>咨询管理</strong>
-        <li flag="" onclick="query('')"><a>全部</a></li>
-        <li flag="false" onclick="query('false')"><a id="notReply">未处理</a></li>
+        <strong>Consultation</strong>
+        <li flag="" onclick="query('')"><a>All</a></li>
+        <li flag="false" onclick="query('false')"><a id="notReply">Untreated</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -20,10 +20,10 @@
 </div>
 <div class="dialog-form" id="reply-form" style="display:none">
     <div class="form-group">
-        <p class="help-top">请填写您的回复内容（必填）</p>
+        <p class="help-top">Please fill in your reply(required).</p>
             <textarea id="replyContent" name="replyContent" class="form-control" cols="50" rows="3" ></textarea>
             <br/>
-            <span class="field-validation-error" id="consultationCotentTip">回复内容在200个字符以内！</span>
+            <span class="field-validation-error" id="consultationCotentTip">Reply must be shorter than 200 words!</span>
     </div>
 </div>
 
