@@ -1,6 +1,6 @@
 ﻿@model Himall.Model.TopicInfo
 @{
-    ViewBag.Title = "推荐专题";
+    ViewBag.Title = "Topic Lists";
     var TopicInfo = (IEnumerable<Himall.Model.TopicInfo>)ViewBag.TopicInfo;
 }
 
@@ -31,7 +31,7 @@
     (function ($) {
         var li = $('#topicUl').find('li');
         if (li.length == 0) {
-            $('#autoLoad').html('没有推荐专题');
+            $('#autoLoad').html('No Topics');
         }
     })($);
 
@@ -46,7 +46,7 @@
                 $('#topicUl').append(html);
             }
             else {
-                $('#autoLoad').html('没有更多专题了');
+                $('#autoLoad').html('No more topics');
             }
         });
     }

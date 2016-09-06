@@ -1,6 +1,6 @@
 ﻿@model Himall.Web.Areas.Web.Models.ShopHomeModel
 @{
-    ViewBag.Title = ViewBag.Keyword + "  商品搜索";
+    ViewBag.Title ="Search"+ ViewBag.Keyword ;
     Layout = "~/Areas/Web/Views/Shared/ShopLayout.cshtml";
 }
 
@@ -9,13 +9,13 @@
     {
 
     <div class="shop-goods-list">
-        <strong class="list-title"><b>@(ViewBag.Keyword == string.Empty ? ViewBag.CategoryName : ViewBag.Keyword)</b> 找到 @Model.Products.Count()件相关商品</strong>
+        <strong class="list-title"><b>@(ViewBag.Keyword == string.Empty ? ViewBag.CategoryName : ViewBag.Keyword)</b> (@Model.Products.Count() Items)</strong>
         
 
             <div class="notice-search" style="height:200px;padding-top:110px;padding-left:360px;">
                 <span class="ns-icon"></span>
                 <div class="ns-content">
-                    <span>抱歉，没有找到与“<em>@(ViewBag.Keyword == string.Empty ? ViewBag.CategoryName : ViewBag.Keyword)</em>”相关的商品</span>
+                    <span>Sorry, no found any product matched“<em>@(ViewBag.Keyword == string.Empty ? ViewBag.CategoryName : ViewBag.Keyword)</em>”</span>
                 </div>
             </div>
 			
@@ -26,7 +26,7 @@
 	<div class="footmark" style="margin-top:20px;">
 			<div class="m recent-view">
 				<div class="mt">
-					<h2 class="title">最近浏览</h2>
+					<h2 class="title">Recently Viewed</h2>
 				</div>
 				<div class="mc">
 					<ul class="recent-view-list clearfix">
@@ -42,7 +42,7 @@
 												<img class="lazyload" src="~/Areas/Web/images/blank.gif" data-url="@item.ImagePath/1_100.png" alt="" />
 											</a>
 										</div>
-										<div class="p-price center">￥@item.ProductPrice.ToString("f2")</div>
+										<div class="p-price center">$@item.ProductPrice.ToString("f2")</div>
 									</li>
 								}
 							}
@@ -55,7 +55,7 @@
 	else
 	{
 	<div class="shop-goods-list">
-        <strong class="list-title"><b>@(ViewBag.Keyword == string.Empty ? ViewBag.CategoryName : ViewBag.Keyword)</b> 找到 @ViewBag.Total 件相关商品</strong>
+        <strong class="list-title"><b>@(ViewBag.Keyword == string.Empty ? ViewBag.CategoryName : ViewBag.Keyword)</b> (@ViewBag.Total Items)</strong>
 		<ul class="cl">
 			@foreach (var p in Model.Products)
 			{
@@ -77,8 +77,8 @@
                                 }
                             </a>
                         </h3>
-                        <p style="float:left"><span>￥@p.MinSalePrice.ToString("f2")</span></p>
-                        <p style="float:right">已售<b>@(p.SaleCounts)</b>件</p>
+                        <p style="float:left"><span>$@p.MinSalePrice.ToString("f2")</span></p>
+                        <p style="float:right">Orders:<b>@(p.SaleCounts)</b></p>
                     </div>
 				</li>
 			}

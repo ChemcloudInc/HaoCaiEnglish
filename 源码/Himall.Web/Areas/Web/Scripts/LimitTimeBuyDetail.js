@@ -5,7 +5,7 @@ var skuId = new Array(3);
 //chooseResult();
 function chooseResult() {
     //已选择显示
-    var str = '<em>已选择&nbsp;</em>';
+    var str = '<em>Seleted&nbsp;</em>';
     var len = $('#choose li .dd .selected').length;
     for (var i = 0; i < len; i++) {
         if (i < len - 1)
@@ -47,11 +47,11 @@ $(function () {
     $("#buy-num").blur(function () {
         var max = parseInt($("#maxSaleCount").val());
         if (parseInt($('#buy-num').val()) < 0) {
-            $.dialog.errorTips('购买数量必须大于零');
+            $.dialog.errorTips('Quantity>0');
             $('#buy-num').val(1);
         }
         if (parseInt($('#buy-num').val()) > max) {
-            $.dialog.errorTips('每个ID限购 ' + max + '件');
+            $.dialog.errorTips('Only can buy ' + max + 'items');
             $('#buy-num').val(max);
         }
     });
@@ -65,7 +65,7 @@ $(function () {
     $('.wrap-input .btn-add').click(function () {
         var max = parseInt($("#maxSaleCount").val());
         if (max < parseInt($('#buy-num').val()) + 1) {
-            $.dialog.errorTips('每个ID限购 ' + max +'件');
+            $.dialog.errorTips('Only can buy ' + max + 'items');
         } else {
             $('#buy-num').val(parseInt($('#buy-num').val()) + 1);
         }
@@ -83,7 +83,7 @@ $(function () {
             location.href = "/Order/EasyBuyToOrder?skuId=" + sku + "&count=" + num;
             //   alert('SKUId：'+sku+'，购买数量：'+num);
         } else {
-            $.dialog.errorTips('请选择商品规格');
+            $.dialog.errorTips('Please Select Specification');
 
         }
     });
@@ -135,7 +135,7 @@ $(function () {
 
         var keyword = $("#sp-keyword").val();
         if (keyword.length === 0 && start == end) {
-            $.dialog.errorTips('请输入关键字或者价格区间');
+            $.dialog.errorTips('Please enter Keywords or Price ranges');
             return;
         }
         location.href = "/Shop/Search?pageNo=1&sid=" + shopid + "&keywords=" + keyword + "&startPrice=" + start + "&endPrice=" + end;
@@ -164,13 +164,13 @@ $(function () {
                 if (result.success) {
                     location.href = "/Order/SubmitByProductId?skuIds=" + sku + "&counts=" + num;
                 } else if(result.remain<=0){
-                    $.dialog.errorTips("亲，限购" + result.maxSaleCount + "件，不能再买了哦");
+                    $.dialog.errorTips("Limited Purchasing " + result.maxSaleCount + " can not buy");
                 } else {
-                    $.dialog.errorTips("亲，限购" + result.maxSaleCount + "件，您最多还能买" + result.remain + "件");
+                    $.dialog.errorTips("Limited Purchasing " + result.maxSaleCount + " You can buy at most" + result.remain);
                 }
             });
         } else {
-            $.dialog.errorTips("请选择商品规格！");
+            $.dialog.errorTips("Please Select Specification！");
         }
     }
 

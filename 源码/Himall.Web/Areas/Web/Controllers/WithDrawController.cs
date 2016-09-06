@@ -18,9 +18,10 @@ namespace Himall.Web.Areas.Web.Controllers
         {
             
             List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem { Text = "支付宝", Value = "支付宝" });
-            items.Add(new SelectListItem { Text = "微信", Value = "微信" });
-            items.Add(new SelectListItem { Text = "银联", Value = "银联" });
+            items.Add(new SelectListItem { Text = "PayPal", Value = "PayPal" });
+            items.Add(new SelectListItem { Text = "Alipay", Value = "Alipay" });
+            items.Add(new SelectListItem { Text = "WeiXin", Value = "WeiXin" });
+           
             this.ViewData["list"] = items;
 
             WithDrawInfo withDrawInfo;
@@ -106,7 +107,7 @@ namespace Himall.Web.Areas.Web.Controllers
         {
             info.MembersId = this.CurrentUser.UserName;
             ServiceHelper.Create<IWithDrawService>().UpdateWithDraw(info);
-            return Json(new { success = true, msg = "修改成功", id = info.Id });
+            return Json(new { success = true, msg = "Update Success", id = info.Id });
         }
 
         [HttpPost]
@@ -117,7 +118,7 @@ namespace Himall.Web.Areas.Web.Controllers
             Result result = new Result()
             {
                 success = true,
-                msg = "删除成功"
+                msg = "Delete Success"
             };
             return Json(result);
         }

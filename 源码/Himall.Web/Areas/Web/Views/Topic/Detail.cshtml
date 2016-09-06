@@ -84,7 +84,7 @@
                     </div>
 		    <div class="p-bottom">
 			<div class="p-name"><a href="@Url.Action("Detail", "Product", new { id = product.ProductId })" target="_blank" title="">@product.ProductInfo.ProductName</a></div>
-			<div class="p-price">￥@product.ProductInfo.MinSalePrice</div><a href="@Url.Action("Detail", "Product", new { id = product.ProductId })" target="_blank" class="btn-buy">立即抢购</a>
+			<div class="p-price">$@product.ProductInfo.MinSalePrice</div><a href="@Url.Action("Detail", "Product", new { id = product.ProductId })" target="_blank" class="btn-buy">Buy it Now</a>
 		    </div>
                 </li>
                 }

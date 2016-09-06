@@ -19,7 +19,7 @@
         var dis = $(this).hasClass('disabled');
         if (dis) return;
         if (parseInt($('#buy-num').val()) > parseInt($("#stockProduct").html())) {
-            $.dialog.errorTips('不能大于库存数量');
+            $.dialog.errorTips('Can not bigger than stock');
             $('#buy-num').val(1);
             return false;
         }
@@ -46,7 +46,7 @@ function checkBuyNum() {
         num = 0;
     }
     if (num < 1) {
-        $.dialog.errorTips('购买数量有误');
+        $.dialog.errorTips('Buy Quantity Error');
         $('#buy-num').val(1);
         result = false;
     }

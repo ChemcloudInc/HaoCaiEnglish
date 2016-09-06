@@ -8,7 +8,7 @@ function checkPayDone() {
     if (type == 'charge') {
         $.getJSON('/PayState/CheckCharge', { orderIds: orderIds }, function (result) {
             if (result.success) {
-                $.dialog.succeedTips('支付成功!', function () {
+                $.dialog.succeedTips('Pay Success!', function () {
                
                     location.href = "/userCenter?url=/usercapital/&tar=usercapital";
                 });
@@ -21,7 +21,7 @@ function checkPayDone() {
     else {
         $.getJSON('/PayState/Check', { orderIds: orderIds }, function (result) {
             if (result.success) {
-                $.dialog.succeedTips('支付成功!', function () {
+                $.dialog.succeedTips('Pay Success!', function () {
           
                     location.href = "/userCenter?url=/userorder?orderids="+orderIds+"&tar=userorder";
                 });

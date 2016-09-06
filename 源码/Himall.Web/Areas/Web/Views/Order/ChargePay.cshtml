@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "订单支付";
+    ViewBag.Title = "Order Payment";
     Layout = "~/Areas/Web/Views/Shared/_PayTopBar.cshtml";
     var orders = (Himall.Model.ChargeDetailInfo)ViewBag.Orders;
 }
@@ -8,16 +8,16 @@
     <div class="m mainbody">
         <div class="mc">
             <s class="icon-succ04"></s>
-            <h3 class="orderinfo">提交成功，请您尽快付款！</h3>
+            <h3 class="orderinfo">Recharge submitted successfully, please pay it asap！</h3>
             <ul class="list-orderinfo">
-                <li>充值单号：@orders.Id</li>
+                <li>RechargeID：@orders.Id</li>
             </ul>
-            <p class="mb-tip">您已申请账户余额充值，请立即支付！ 充值金额：<strong class="ftx-01">@(((decimal)ViewBag.TotalAmount).ToString("F2"))</strong> 元</p>
+            <p class="mb-tip">Recharge Amount：<strong class="ftx-01">@(((decimal)ViewBag.TotalAmount).ToString("F2"))</strong> </p>
         </div>
     </div>
     <div class="m pay-box">
         <div class="mc">
-            <h5 class="subtit">请选择支付方式</h5>
+            <h5 class="subtit">Please select payment method</h5>
             <ul class="list-bank">
                 @{var i = 0;}
                 @foreach (var payment in Model)
@@ -25,12 +25,12 @@
                     <li>
                         <label>
                             <input type="radio" class="jdradio" value="@payment.RequestUrl" name="requestUrl" id="@payment.Id" urltype="@((int)payment.UrlType)" />
-                            <img width="165" height="48" alt="微信PC" src="@payment.Logo" />
+                            <img width="165" height="48" alt="WeiXinPC" src="@payment.Logo" />
                         </label>
                     </li>
                 }
             </ul>
-            <div class="btns"><a class="btn-next" href="javascript:;" id="nextBtn">下一步</a></div>
+            <div class="btns"><a class="btn-next" href="javascript:;" id="nextBtn">Next</a></div>
         </div>
     </div>
 </div>
@@ -61,7 +61,7 @@
             var t = $("input[name='requestUrl']:checked").val();
             if (t == undefined)
             {
-                $.dialog.tips('请选择支付方式！');
+                $.dialog.tips('Please select payment method！');
                 return;
             }
             if ($(this).attr('urlType') == "2") {
@@ -72,19 +72,19 @@
             if ($(this).attr('href') != 'javascript:;' || $(this).attr('urlType') == "2") {
 
                 $.dialog({
-                    title: '登录平台支付',
+                    title: 'Redirect Payment Page',
                     lock: true,
-                    content: '<p>请您在新打开的支付平台页面进行支付，支付完成前请不要关闭该窗口</p>',
+                    content: '<p>please don\'t close the window before completion of payment</p>',
                     padding: '30px 20px',
                     button: [
 				    {
-				        name: '已完成支付',
+				        name: 'Payment Completed',
 				        callback: function () {
 				            location.href = '/userCenter?url=/UserCapital/&tar=';
 				        }
 				    },
 				    {
-				        name: '支付遇到问题',
+				        name: 'Payment Error',
 				        callback: function () {
 
 				        }

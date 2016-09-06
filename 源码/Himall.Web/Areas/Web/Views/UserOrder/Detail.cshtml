@@ -287,12 +287,12 @@
                                             <span class="flk13">
                                                 @if (Model.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.Finish)
                                                 {
-                                                    <a href="@Url.Action("index", "OrderRefund", new { keywords = @Model.Id })">申请返修/退换货</a>
+                                                    <a href="@Url.Action("index", "OrderRefund", new { keywords = @Model.Id })">Apply Repair/Exchange</a>
                                                 }
                                             </span>
                                             @if (Model.OrderStatus != Himall.Model.OrderInfo.OrderOperateStatus.WaitPay && Model.OrderStatus != Himall.Model.OrderInfo.OrderOperateStatus.Close)
                                             {
-                                                <a target="_blank" href="/cart/BatchAddToCart?skuids=@orderItem.SkuId&counts=@orderItem.Quantity" class="btn btn-4">还要买</a>
+                                                <a target="_blank" href="/cart/BatchAddToCart?skuids=@orderItem.SkuId&counts=@orderItem.Quantity" class="btn btn-4">Re-Order</a>
                                             }
                                         </td>
                                     </tr>

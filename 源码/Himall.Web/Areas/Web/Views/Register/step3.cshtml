@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>店铺信息</title>
+<title>Shop Information</title>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/inner-custom.css">
 <link rel="stylesheet" type="text/css" href="../css/artdialog.css">
@@ -22,19 +22,19 @@
 $(function(){
 	$('.add-business').click(function(){
 		$.dialog({
-			title:'新增经营类目',
+			title:'Add Category',
 			lock: true,
 			id:'addBusiness',
 			content:['<div class="dialog-form">',
 				'<div class="form-group">',
-					'<label class="label-inline" for="">经营类目</label>',
+					'<label class="label-inline" for="">Category</label>',
 					'<select class="form-control input-sm select-sort"><option></option></select>',
 					'<select class="form-control input-sm select-sort"><option></option></select>',
 					'<select class="form-control input-sm select-sort"><option></option></select>',
 				'</div>',
 			'</div>'].join(''),
 			padding:'20px 10px',
-			okVal: '确认',
+			okVal: 'Ok',
 			ok:function(){
 				//location.reload();
 			}
@@ -48,7 +48,7 @@ $(function(){
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-    	<strong>店铺信息</strong>
+    	<strong>Shop Information</strong>
         <div class="process-step">
         	<span class="odd">公司信息</span>
             <i class="glyphicon glyphicon-arrow-right odd"></i>

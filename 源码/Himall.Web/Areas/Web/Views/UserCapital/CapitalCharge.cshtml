@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "预付款充值";
+    ViewBag.Title = "Recharge Prepayment ";  @*预付款充值*@
 }
 @model Himall.Model.CapitalInfo
 <script src="~/Scripts/jquery.hiMallDatagrid.js"></script>
@@ -10,28 +10,28 @@
 
 <div class="box1 lh24">
     <div class="title bot-border">
-		<a class="title_txt" href="../UserCapital">账户管理</a>
-        <a class="title_txt cur">预付款充值</a>
+		<a class="title_txt" href="../UserCapital">Accoumt Management</a> @*账户管理*@
+        <a class="title_txt cur">Recharge Prepayment </a>
     </div>
     <div class="border-box">
         <div class="user-set userset-lcol">
             <div class="form">
                 <div class="item">
-                    <span class="label">可用金额：</span>
+                    <span class="label">The Balance：</span>   @*可用金额*@
                     <div class="fl">
-                         @(Model == null ? 0 : Model.Balance.Value) 元
+                         @(Model == null ? 0 : Model.Balance.Value) $
                     </div>
                 </div>
 				<div class="item">
-                    <span class="label">充值金额：</span>
+                    <span class="label">Recharge Amount：</span>    @*充值金额*@
                     <div class="fl">
-						<input class="itxt fl" onkeyup="" onblur="" id="balance" type="text" /> 元
+						<input class="itxt fl" onkeyup="" onblur="" id="balance" type="text" /> $
                     </div>
                 </div>
                 <div class="item">
                     <span class="label">&nbsp;</span>
                     <div class="fl">
-                        <a class="btn-5" href="javascript:;" onclick="Pay()">提交</a>
+                        <a class="btn-5" href="javascript:;" onclick="Pay()">Commit</a>     @*提交*@
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
 
 
 <div class="" id="payMent" style="display:none">
-    <h5 class="subtit">请选择支付方式</h5>
+    <h5 class="subtit">Please choose a payment option</h5>    @*请选择支付方式*@
     <ul></ul>
 </div>
 <style>
@@ -66,20 +66,20 @@
     function Pay() {
         var reg =new RegExp('^[0-9]+([.]{1}[0-9]{1,2})?$');
         if ($("#balance").val() == "") {
-            $.dialog.tips("请输入要充值金额");
-            return false;
+            $.dialog.tips("Please input the amount you want to recharge");      @*请输入要充值金额*@
+            return false; 
         }
         if (!reg.test($("#balance").val()))
         {
-            $.dialog.errorTips("金额格式不对");
+            $.dialog.errorTips("Wrong Form");     @*金额格式不对*@
             return false;
         }
         if (parseFloat($("#balance").val()) <= 0) {
-            $.dialog.errorTips("充值金额必需大于零");
+            $.dialog.errorTips("The amount of recharge must be greater than 0");    @*充值金额必需大于零*@
             return false;
         }
         if (parseFloat($("#balance").val()) > 5000) {
-            $.dialog.errorTips("充值金额最大不能超过5000");
+            $.dialog.errorTips("The amount of recharge must be less than 5000");    @*充值金额最大不能超过5000*@
             return false;
         }
         var loading = showLoading();

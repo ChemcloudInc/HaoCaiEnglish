@@ -43,7 +43,7 @@ function initUserInfo() {
         //});
     }
     catch (e) {
-        $("#sayhello").html("Hi! 你好");
+        $("#sayhello").html("Hello");
         $(".login-bt .btn").show();
     }
 }

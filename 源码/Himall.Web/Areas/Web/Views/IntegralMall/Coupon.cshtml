@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Himall.Model.CouponInfo>
 
 @{
-    ViewBag.Title = "积分商城 - 优惠券兑换";
+    ViewBag.Title = "Gift Shop - Coupon redemption";
 
     var count = ((PagingInfo)ViewBag.pageInfo).TotalPages;
     var curr = ((PagingInfo)ViewBag.pageInfo).CurrentPage;
@@ -9,7 +9,7 @@
 <div class="integra-coupon">
     <div class="warp">
         <div class="inte-coupon-hd cl">
-            <span>热门优惠券</span>
+            <span>Hottest Coupons</span>
         </div>
         <ul class="cl" id="couponbox">
             @foreach (var item in Model)
@@ -19,9 +19,9 @@
                     <a href="@(Url.Action("Home", "shop", new { id=item.ShopId }))" target="_blank" class="shop-logo"><img src="@(item.ShowIntegralCover)" alt=""></a>
                     <div>
                         <h3><a href="@(Url.Action("Home", "shop", new { id=item.ShopId }))" target="_blank">@(shopname)</a></h3>
-                        <p><span class="couponprice">￥@(item.Price)</span><span class="uselimt">@(item.OrderAmount > 0 ? "满" + item.OrderAmount + "可用" : "满" + item.Price + "可用")</span></p>
-                        <p>有效期：@(item.StartTime.ToString("yyyy.MM.dd"))至@(item.EndTime.ToString("yyyy.MM.dd"))</p>
-                        <p><a class="@((CurrentUser==null || CurrentUser.AvailableIntegrals >= item.NeedIntegral )? "btnexchange" : "disabled")" data-shopid="@(item.ShopId)" data-id="@(item.Id)" data-jztime="@(item.EndTime.ToString("yyyy.MM.dd"))" data-needjf="@(item.NeedIntegral)" data-shopname="@(shopname)" data-price="@(item.Price)">@(item.NeedIntegral)积分兑换</a></p>
+                        <p><span class="couponprice">$@(item.Price)</span><span class="uselimt">@(item.OrderAmount > 0 ? "Over" + item.OrderAmount + " can use" : "Over" + item.Price + "can use")</span></p>
+                        <p>Expiry Date：@(item.StartTime.ToString("yyyy.MM.dd"))-@(item.EndTime.ToString("yyyy.MM.dd"))</p>
+                        <p><a class="@((CurrentUser==null || CurrentUser.AvailableIntegrals >= item.NeedIntegral )? "btnexchange" : "disabled")" data-shopid="@(item.ShopId)" data-id="@(item.Id)" data-jztime="@(item.EndTime.ToString("yyyy.MM.dd"))" data-needjf="@(item.NeedIntegral)" data-shopname="@(shopname)" data-price="@(item.Price)">@(item.NeedIntegral)Points Redeem</a></p>
                     </div>
                 </li>
             }
@@ -82,16 +82,16 @@
                             var htmlcont = '<li class="' + cls + '">';
                             htmlcont += '<a href="/Shop/Home/' + dshopid + '" target="_blank">';
                             htmlcont += '<h5>' + dshopname + '</h5>';
-                            htmlcont += '<h3><span>￥' + dprice + '</span>' + duselimt + '</h3>';
-                            htmlcont += '<p>截止' + djztime + '</p>';
+                            htmlcont += '<h3><span>$' + dprice + '</span>' + duselimt + '</h3>';
+                            htmlcont += '<p>end' + djztime + '</p>';
                             htmlcont += '</a>';
                             htmlcont += '</li>';
                             $('.side-asset-list ul').prepend(htmlcont);
-                            $.dialog.succeedTips('领取成功!');
+                            $.dialog.succeedTips('Get Success!');
                         }
                     });
 
-                    $.dialog.succeedTips('领取成功!', '', 3);
+                    $.dialog.succeedTips('Get Success!', '', 3);
                 } else {
                     if (data.status != -1) {
                         _t.removeClass("btnexchange").addClass("disabled");
@@ -101,14 +101,14 @@
                     switch (data.status) {
                         case -2:
                             isshowerr = false;
-                            _t.html("己过期");
+                            _t.html("Expired");
                             break;
                         case -3:
-                            _t.html("不可领");
+                            _t.html("Can not get");
                             break;
                         case -4:
                             isshowerr = false;
-                            _t.html("积分不足");
+                            _t.html("Lack of points");
                             break;
                     }
                     if (isshowerr) {

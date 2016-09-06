@@ -6,8 +6,8 @@
                 width: 410,
                 height: 140,
                 state: 1,
-                msg: '关注成功！',
-                title: '提示标题',
+                msg: 'Liked Succcess！',
+                title: 'Title',
                 success: function (close) {
                 },
                 close: function () {
@@ -24,7 +24,7 @@
 						);
 				    });
 				};
-            $('body').append('<div class="alpha" id="alert_bg"></div><div class="alert_box"><div class="alert_warp"><div class="alert_title"><span>提示</span></div><div class="alert_con"><div class="alert_tips"></div></div><div class="alert_close">×</div></div></div>');
+            $('body').append('<div class="alpha" id="alert_bg"></div><div class="alert_box"><div class="alert_warp"><div class="alert_title"><span>Tips</span></div><div class="alert_con"><div class="alert_tips"></div></div><div class="alert_close">×</div></div></div>');
             switch (obj.state) {
                 case 1: $('.alert_tips').html('<h2 class="alert_state1">' + obj.msg + '</h2>'); break;
                 case 2: $('.alert_tips').html('<h2 class="alert_state2">' + obj.msg + '</h2>'); break;

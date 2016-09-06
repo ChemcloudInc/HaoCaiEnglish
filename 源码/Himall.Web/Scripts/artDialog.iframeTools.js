@@ -291,7 +291,7 @@ artDialog.xgOpen = function(url, xgTitle, xgCloseFn,width,height)
 		fixed : true,
 		width: width || undefined,
 		height:height || undefined,
-		title : xgTitle || "消息",
+		title : xgTitle || "Infomation",
 		closeFn : xgCloseFn || function(){return true;}
 	};
 	return artDialog.open(url, opts);

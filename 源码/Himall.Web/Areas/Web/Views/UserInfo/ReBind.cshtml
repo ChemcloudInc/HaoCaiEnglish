@@ -1,24 +1,24 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "个人信息";
+    ViewBag.Title = "User Information";
 }
 
 <div class="box1 lh24">
     <div class="title bot-border">
-        <h3 class="title_txt cur">验证@{@ViewBag.ShortName}信息</h3>
+        <h3 class="title_txt cur">Verify @{@ViewBag.ShortName} Information</h3>
     </div>
     
     <div class="border-box">
 		<div class="yanzh_pic1 off">
-			<span class="col">获取@{@ViewBag.ShortName}验证码</span>
-			<span>验证新@{@ViewBag.ShortName}</span>
-			<span>完成</span>
+			<span class="col">Get @{@ViewBag.ShortName} Verification Code</span>
+			<span>Verify New @{@ViewBag.ShortName}</span>
+			<span>Completed</span>
 		
 		</div>
         <div class="user-set userset-lcol">
             <div class="form">
                 <div class="item w300">
-                    <span class="label">您绑定的@{@ViewBag.ShortName}：</span>
+                    <span class="label">Bind @{@ViewBag.ShortName}：</span>
                     <div class="fl">
                         <span id="destination" class="itxt" style="color:#999;">@ViewBag.ContactInfo</span>
                         <div id="msg"></div>
@@ -28,11 +28,11 @@
                 <div class="item w300">
                     <span class="label"></span>
                     <div class="fl">
-                        <input type="button" class="btn-8" id="btnAuthCode" intervaltime="60" value="获取@{@ViewBag.ShortName}验证码">
+                        <input type="button" class="btn-8" id="btnAuthCode" intervaltime="60" value="Get @{@ViewBag.ShortName} Verification Code">
                     </div>
                 </div>
                 <div class="item w300">
-                    <span class="label">验证码：</span>
+                    <span class="label">Verification Code：</span>
                     <div class="fl">
                         <input type="text" value="" id="code" maxlength="20" class="itxt">
                         <div class="clr"></div>
@@ -41,7 +41,7 @@
                 <div class="item w300">
                     <span class="label">&nbsp;</span>
                     <div class="fl">
-                        <a id="id_btn" class="btn-5">验证</a>
+                        <a id="id_btn" class="btn-5">Verify</a>
                     </div>
                 </div>
             </div>
@@ -60,13 +60,13 @@ var count=120;
                 setTimeout(countDown1('timeDiv1', ''), 1000);
             }
             else {
-                $.dialog.errorTips('发送验证码失败：' + result.msg);
+                $.dialog.errorTips('Send Verification Code Failed：' + result.msg);
             }
         });
     });
     function countDown1() {
         $("#btnAuthCode").parent().parent().hide();
-        $("#msg").show().html('验证码已发送还剩下<font color="#f60">'+count+'</font>秒');
+        $("#msg").show().html('Verification Code has been sent，it remains <font color="#f60">' + count + '</font> seconds');
         if (count == 1) {
             $("#msg").hide();
             $("#btnAuthCode").parent().parent().show().removeAttr("disabled");
@@ -83,7 +83,7 @@ var count=120;
         var code = $('#code').val();
         $.post('/UserInfo/CheckCode', { pluginId: id, code: code, destination: destination }, function (result) {
             if (result.success){
-                $.dialog.succeedTips('验证成功！',function(){location.href = "/UserInfo/ReBindStep2?pluginId=" + id + "&key=" + result.key;});
+                $.dialog.succeedTips('Verify Success！',function(){location.href = "/UserInfo/ReBindStep2?pluginId=" + id + "&key=" + result.key;});
                 
             }
             else {

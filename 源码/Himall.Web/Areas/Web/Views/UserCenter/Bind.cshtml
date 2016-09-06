@@ -1,16 +1,16 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "个人信息";
+    ViewBag.Title = "User Information";
 }
 
 <div class="box1 lh24">
     <div class="title bot-border">
-        <h3 class="title_txt cur">验证信息</h3>
+        <h3 class="title_txt cur">Verification Information</h3>
     </div>
     
     <div class="border-box">
 		<div class="yanzh_pic off">
-			 <span class="col">验证@{@ViewBag.ShortName}</span><span>完成</span>
+			 <span class="col">Verify @{@ViewBag.ShortName}</span><span>Completed</span>
 			 
 		</div>
         <div class="user-set userset-lcol">
@@ -26,11 +26,11 @@
                 <div class="item w300">
                     <span class="label"></span>
                     <div class="fl">
-                        <input type="button" class="btn-8" id="btnAuthCode" intervaltime="120" value="获取@{@ViewBag.ShortName}验证码" >
+                        <input type="button" class="btn-8" id="btnAuthCode" intervaltime="120" value="Get @{@ViewBag.ShortName} Verificatio Code" >
                     </div>
                 </div>
                 <div class="item w300">
-                    <span class="label">验证码：</span>
+                    <span class="label">Verification Code：</span>
                     <div class="fl">
                         <input type="text" value="" id="code" maxlength="20" class="itxt">
                         <div class="clr"></div>
@@ -39,7 +39,7 @@
                 <div class="item w300">
                     <span class="label">&nbsp;</span>
                     <div class="fl">
-                        <a id="id_btn" class="btn-5">验证</a>
+                        <a id="id_btn" class="btn-5">Verify</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@ var count=120;
             if (result.success) {
                 setTimeout(countDown1('timeDiv1', ''), 1000);
             }else {
-                $.dialog.errorTips('发送验证码失败,'+result.msg);
+                $.dialog.errorTips('Send Verification Code Failed,' + result.msg);
             }
         });
     });
@@ -73,7 +73,7 @@ var count=120;
         }
         $.post('CheckCode', { pluginId: id, code: code, destination: destination }, function (result) {
             if (result.success) {
-                $.dialog.succeedTips('验证成功！',function(){window.location.href='/UserCenter/Finished';});
+                $.dialog.succeedTips('Verify Success！',function(){window.location.href='/UserCenter/Finished';});
                 
             }
             else {
@@ -83,7 +83,7 @@ var count=120;
     });
     function countDown1() {
         $("#btnAuthCode").parent().parent().hide();
-        $("#msg").show().html('验证码已发送还剩下<font color="#f60">'+count+'</font>秒');
+        $("#msg").show().html('Verification Code has been sent，it remains <font color="#f60">' + count + '</font> seconds');
         if (count == 1) {
             $("#msg").hide();
             $("#btnAuthCode").parent().parent().show().removeAttr("disabled");
@@ -104,7 +104,7 @@ var count=120;
             $('#msg').hide();
             return false;
         }else{
-            $('#msg').html('<div style="color:#e4393c">请填写正确的信息!</div>');
+            $('#msg').html('<div style="color:#e4393c">Please enter correct  Information!</div>');
             return true;
         }
     }

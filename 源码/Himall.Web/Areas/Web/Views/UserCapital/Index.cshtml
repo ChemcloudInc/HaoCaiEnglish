@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "我的账户";
+    ViewBag.Title = "My Account";  @*我的账户*@
 }
 @model  Himall.Model.CapitalInfo
 @using Himall.Model;
@@ -15,23 +15,24 @@
 <style>.tb-goods td{ padding:5px 15px;}</style>
 <div class="box1 lh24">
 	<div class="title bot-border">
-        <h3 class="title_txt cur">账户管理</h3>
+        <h3 class="title_txt cur">Account Management</h3> @*账户管理*@
     </div>
     <div class="border-box" style="margin:0;">
         <div id="describe" style="padding: 15px;">
             <div class="fl">
-				可用金额： <span style="color:#e3393c"> @(Model==null ?0: Model.Balance) 元</span>
+				The Balance： <span style="color:#e3393c"> @(Model==null ?0: Model.Balance) </span>  @*可用金额*@
             </div>
 			<div class="fr">
-				<a class="btn-5 btn-8" style="background-color:#3480eb; width:72px;height:26px;color:#fff;padding:0;text-align:center;margin-right:10px;" href="@Url.Action("CapitalCharge")" target="_self">去充值</a>
-				<a class="btn-5 btn-8" style="background-color:#3480eb;width:72px;height:26px;color:#fff;padding:0;text-align:center;margin-right:10px;" href="@Url.Action("ApplyWithDraw")" target="_self">提现</a>
+                @*去充值*@@*提现*@
+				<a class="btn-5 btn-8" style="background-color:#3480eb; width:72px;height:26px;color:#fff;padding:0;text-align:center;margin-right:10px;" href="@Url.Action("CapitalCharge")" target="_self">Recharge</a>
+				<a class="btn-5 btn-8" style="background-color:#3480eb;width:72px;height:26px;color:#fff;padding:0;text-align:center;margin-right:10px;" href="@Url.Action("ApplyWithDraw")" target="_self">Withdraw</a>
 			</div>
             <div class="clr"></div>
         </div>
     </div>
 
     <ul class="cl two-title" id="ulstatus">
-        <li value="0" @(string.IsNullOrEmpty(type) ? "class=active" : "")><a href="#">账户明细</a></li>
+        <li value="0" @(string.IsNullOrEmpty(type) ? "class=active" : "")><a href="#"></a>Account Details</li>@*账户明细*@
 
         @foreach (var d in Himall.Core.EnumHelper.ToDescriptionDictionary<Himall.Model.CapitalDetailInfo.CapitalDetailType>())
         {

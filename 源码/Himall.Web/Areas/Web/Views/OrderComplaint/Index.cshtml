@@ -1,13 +1,13 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "投诉维权";
+    ViewBag.Title = "Order Complaints";
 }
 @model IEnumerable<Himall.Model.OrderInfo>
 
 <div class="box1 lh24">
     <div class="title">
-        <span class="title_txt curr">投诉维权</span>
-        <span class="title_txt"><a href="@Url.Action("Record")">申请记录</a></span>
+        <span class="title_txt curr">Order Complain</span>
+        <span class="title_txt"><a href="@Url.Action("Record")">Complaint Records</a></span>
     </div>
     <div class="border-box">
         <table class="tb-void tb-back">
@@ -19,16 +19,16 @@
             </colgroup>
             <thead>
                 <tr class="tr">
-                    <th>订单编号</th>
-                    <th>订单商品</th>
-                    <th>下单时间</th>
-                    <th>操作</th>
+                    <th>OrderId</th>
+                    <th>Product(s)</th>
+                    <th>OrderDate</th>
+                    <th>Operator</th>
                 </tr>
             </thead>
             <tbody>
                 @if (Model.Count() == 0)
                 {
-                    <tr><td colspan="4"><div class="empty"><b></b>暂时没有记录！</div></td></tr>
+                    <tr><td colspan="4"><div class="empty"><b></b>No Records！</div></td></tr>
                 }
                 @foreach (var m in Model)
                 {
@@ -36,7 +36,7 @@
                         <td>
                             <span class="col-blue">
                                 @m.Id @if (m.UserId != ViewBag.UserId)
-                                {<label>(子订单)</label>}
+                                {<label>(sub-orders)</label>}
                             </span>
                         </td>
                         <td>
@@ -44,9 +44,9 @@
                                 @foreach (var item in m.OrderItemInfo)
                                 {
                                     var spc = "";
-                                    if (!string.IsNullOrWhiteSpace(item.Color)) { spc += "颜色：" + item.Color; }
-                                    if (!string.IsNullOrWhiteSpace(item.Size)) { spc += "，尺寸：" + item.Size; }
-                                    if (!string.IsNullOrWhiteSpace(item.Version)) { spc += "，版本：" + item.Version; }
+                                    if (!string.IsNullOrWhiteSpace(item.Color)) { spc += "Color：" + item.Color; }
+                                    if (!string.IsNullOrWhiteSpace(item.Size)) { spc += "，Size：" + item.Size; }
+                                    if (!string.IsNullOrWhiteSpace(item.Version)) { spc += "，Specification：" + item.Version; }
                                     <li>
                                         <a href="/product/detail/@item.ProductId" title="@item.ProductName 【@spc.TrimStart('，')】"><img width="50" height="50" alt="" src="@item.ThumbnailsUrl" /></a>
                                     </li>
@@ -60,19 +60,19 @@
                         {
                             if (m.OrderComplaintInfo.Count() > 0 && string.IsNullOrWhiteSpace(m.OrderComplaintInfo.ElementAt(0).SellerReply))
                             {
-                                <td><a class="btn-5" href="javascript:void(0)">等待商家处理</a></td>
+                                <td><a class="btn-5" href="javascript:void(0)">Dealing with</a></td>
                             }
                             else if (m.OrderComplaintInfo.Count() > 0 && !string.IsNullOrWhiteSpace(m.OrderComplaintInfo.ElementAt(0).SellerReply))
                             {
                                 <td>
                                     <a class="btn-5" href="javascript:void(0)">
-                                        商家处理结果：@m.OrderComplaintInfo.ElementAt(0).SellerReply
+                                        Deal with Result：@m.OrderComplaintInfo.ElementAt(0).SellerReply
                                     </a>
                                 </td>
                             }
                             else
                             {
-                                <td><a class="complain-btn btn-5" href="javascript:AddComplain('@m.ShopId','@m.Id')">我要投诉</a></td>
+                                <td><a class="complain-btn btn-5" href="javascript:AddComplain('@m.ShopId','@m.Id')">Add Complaint</a></td>
                             }
                         }
                     </tr>
@@ -88,7 +88,7 @@
                 }
                 @Html.PageLinks((PagingInfo)ViewBag.pageInfo, x => Url.Action("Index", new { pageNo = x }))
                 <span class="page-skip">
-                    <em>&nbsp;&nbsp;共 @count 页&nbsp;&nbsp;&nbsp;&nbsp;</em>
+                    <em>Pages of @count </em>
                 </span>
             </div>
         </div>
@@ -101,14 +101,14 @@
     <div class="mc">
         <div class="form">
             <div class="item">
-                <span class="label">投诉内容：</span>
+                <span class="label">Content：</span>
                 <div class="fl">
                     <textarea class="area" id="content" cols="50" rows="4"></textarea>
                 </div>
                 <div class="clr"></div>
             </div>
             <div class="item">
-                <span class="label">联系电话：</span>
+                <span class="label">Telphone：</span>
                 <div class="fl">
                     <input type="text" id="UserPhone" class="text" value="@ViewBag.UserPhone" />
                 </div>
@@ -123,30 +123,30 @@
 <script type="text/javascript">
     function AddComplain(shopId, orderId) {
         $.dialog({
-            title: '我要投诉',
+            title: 'Add Complaint',
             lock: true,
             id: 'ChangePwd',
             width: '500px',
             content: document.getElementById("addform"),
             padding: '20px 10px',
-            okVal: '确认投诉',
+            okVal: 'Ok',
             init: function () { $("#content").focus(); },
             ok: function () {
                 var complaint = $("#content").val();
                 complaint = complaint.replace(/>/g, '&gt;').replace(/</g, '&lt;').replace(/\n/g, "&nbsp;").replace("'", "‘").replace('"', "“");
                 var phone = $("#UserPhone").val();
                 if (complaint.length < 5) {
-                    $.dialog.errorTips("投诉原因不能小于五个字符！", '', 1);
+                    $.dialog.errorTips("Complaint content more than 5 characters", '', 1);
                     return false;
                 }
                 else if (phone == "") {
-                    $.dialog.errorTips("投诉电话不能为空！", '', 1);
+                    $.dialog.errorTips("Complaint Tel is required！", '', 1);
                     return false;
                 }
                 var reg = /^0?1[3|4|5|8][0-9]\d{8}$/;
                 if ( !reg.test( phone ) )
                 {
-                    $.dialog.errorTips( "电话格式错误！", '', 1 );
+                    $.dialog.errorTips( "Tel format is error！", '', 1 );
                     return false;
                 } 
                 var loading = showLoading();
@@ -159,13 +159,13 @@
                     success: function (data) {
                         loading.close();
                         if (data.success) {
-                            $.dialog.succeedTips("提交成功！", function () {
+                            $.dialog.succeedTips("Submit Success！", function () {
                                 window.location.href = window.location.href;
                             }, 1);
 
                         }
                         else {
-                            $.dialog.errorTips("提交失败！" + data.msg, '', 2);
+                            $.dialog.errorTips("Submit Failed！" + data.msg, '', 2);
                         }
                     },
                 });

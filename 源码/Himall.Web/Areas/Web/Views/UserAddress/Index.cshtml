@@ -1,20 +1,20 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "收货地址管理";
+    ViewBag.Title = "Shipping Address";
 }
 @model IEnumerable<Himall.Model.ShippingAddressInfo>
 <link href="~/Areas/Web/Content/base.css" rel="stylesheet" />
 <link href="~/Areas/Web/Content/myjd.easebuy.css" rel="stylesheet" />
 <div class="box1 lh24">
     <div class="title bot-border">
-        <h3 class="title_txt cur">收货地址管理</h3>
+        <h3 class="title_txt cur">Shipping Address</h3>
     </div>
 
     <div class="border-box">
         <div class="mod lh24">
             <div class="pd10">
-                <a href="javascript:;" class="e-btn add-btn btn-5">新增收货地址</a>
-                <span class="ftx-03">您已创建<span class="ftx-02" id="addressNum_top">@Model.Count() </span>个收货地址，最多可创建<span class="ftx-02">20</span>个</span>
+                <a href="javascript:;" class="e-btn add-btn btn-5">Add New Address</a>
+                <span class="ftx-03"> Already have <span class="ftx-02" id="addressNum_top">@Model.Count() </span> addresses，can you add <span class="ftx-02">20</span> addresses</span>
             </div>
             <div class="mc pd10" id="order_box">
                 @foreach (var m in Model)
@@ -26,42 +26,42 @@
                     <div id="@m.Id" class="sm easebuy-m">
                         <div class="smt">
                             <h3>
-                                <span class="ftx-02 mr10" style="display:none;">轻松购</span>
+                                <span class="ftx-02 mr10" style="display:none;">Easy to buy</span>
                                 @m.ShipTo
                             </h3>
                             <div class="extra">
-                                <a class="btn-9 default-address @(isdefault?"hide":"")" href="javascript:;" data-id="@m.Id">设为默认</a>
-                                <a class="btn-9 id_edit" href="javascript:;" data="@m.Id">编辑</a>
-                                <a class="btn-9 del" href="javascript:;" data-tag="@m.Id">删除</a>
+                                <a class="btn-9 default-address @(isdefault?"hide":"")" href="javascript:;" data-id="@m.Id">Is Default</a>
+                                <a class="btn-9 id_edit" href="javascript:;" data="@m.Id">Edit</a>
+                                <a class="btn-9 del" href="javascript:;" data-tag="@m.Id">Delete</a>
                             </div>
                         </div>
                         <div class="smc">
                             <div class="items new-items">
                                 <div class="item-lcol">
                                     <div class="item">
-                                        <span class="label">收货人：</span>
+                                        <span class="label">Name：</span>
                                         <div class="fl">@m.ShipTo</div>
                                         <span class="clr"></span>
                                     </div>
                                     <div class="item">
-                                        <span class="label">所在地区：</span>
+                                        <span class="label">Region：</span>
                                         <div class="fl" data="@m.RegionIdPath">@m.RegionFullName</div>
                                         <span class="clr"></span>
                                     </div>
                                     <div class="item">
-                                        <span class="label">地址：</span>
+                                        <span class="label">Address：</span>
                                         <div class="fl">@m.Address</div>
                                         <span class="clr"></span>
                                     </div>
                                     <div class="item">
-                                        <span class="label">手机号码：</span>
+                                        <span class="label">Telphone：</span>
                                         <div class="fl">@m.Phone</div>
                                         <span class="clr"></span>
                                     </div>
                                 </div>
                                 <div class="item-rcol">
                                     <div class="extra">
-                                        <a class="btn-5 update-eshop e-btn" data="@m.Id" style="display:none;">升级为轻松购</a>
+                                        <a class="btn-5 update-eshop e-btn" data="@m.Id" style="display:none;">Upgraded</a>
 
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
 <div id="order_edit" class="thickbox hide" style="left: 566.5px; top: 0px;">
     <div class="thickwrap">
         <div id="" class="thicktitle">
-            <span>新增收货地址</span>
+            <span>Add a New Address</span>
         </div>
         <div style="width: 450px; padding-left: 10px; padding-right: 10px;" id="" class="thickcon">
             <div id="addressDiagDiv">
@@ -94,53 +94,53 @@
                     <div class="mc">
                         <div class="form">
                             <div class="item">
-                                <span class="label"><em>*</em>收货人：</span>
+                                <span class="label"><em>*</em>Name：</span>
                                 <div class="fl">
                                     <input type="text" class="text" value="" id="consigneeName">
-                                    <span class="error-msg hide" id="consigneeNameNote">请您填写收货人姓名</span>
+                                    <span class="error-msg hide" id="consigneeNameNote">Please enter Name</span>
                                 </div>
                                 <div class="clr"></div>
                             </div>
                             <div class="item">
-                                <span class="label"><em>*</em>所在地区：</span>
+                                <span class="label"><em>*</em>Region：</span>
                                 <div class="fl">
                                     <select class="sele" id="provinceDiv">
-                                        <option value="0">请选择</option>
+                                        <option value="0">Please Select</option>
                                     </select>
                                     <select class="sele" id="cityDiv">
-                                        <option value="0">请选择</option>
+                                        <option value="0">Please Select</option>
                                     </select>
                                     <select class="sele" id="countyDiv">
-                                        <option value="0">请选择</option>
+                                        <option value="0">Please Select</option>
                                     </select>
 
-                                    <span id="areaNote" class="error-msg  hide">请您填写完整的地区信息</span>
+                                    <span id="areaNote" class="error-msg  hide">Please enter detail region information</span>
                                 </div>
 
                                 <div class="clr"></div>
                             </div>
                             <div class="item">
-                                <span class="label"><em>*</em>详细地址：</span>
+                                <span class="label"><em>*</em>Address：</span>
                                 <div class="fl">
                                     <span id="areaName" style="float: left;margin-right: 5px;line-height:32px;">
                                         <span></span><span></span><span></span>
                                     </span>
                                     <input type="text" class="text text1" value="" id="consigneeAddress">
                                 </div>
-                                <span id="consigneeAddressNote" class="error-msg hide">请您填写收货人详细地址</span>
+                                <span id="consigneeAddressNote" class="error-msg hide">Please enter Address</span>
                                 <div class="clr"></div>
                             </div>
                             <div class="item">
                                 <div class="fl">
-                                    <span class="label"><em>*</em>手机号码：</span>
+                                    <span class="label"><em>*</em>Telphone：</span>
                                     <input type="text" class="text" maxlength="20" value="" id="consigneeMobile">
-                                    <span id="consigneeMobileNote" class="error-msg hide">请您填写收货人手机号码</span>
+                                    <span id="consigneeMobileNote" class="error-msg hide">Please enter telphone</span>
                                     <span class="clr"></span>
                                 </div>
                                 <div class="clr"></div>
                             </div>
                             <div class="btns">
-                                <a id="id_add_order" class="e-btn btn-5 save-btn" href="javascript:;">保存收货地址</a>
+                                <a id="id_add_order" class="e-btn btn-5 save-btn" href="javascript:;">Save</a>
                             </div>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
 <div id="id_del_ms" class="thickbox hide" style="left: 786.5px; top: 458px;">
     <div class="thickwrap">
         <div id="" class="thicktitle">
-            <span>删除</span>
+            <span>Delete</span>
         </div>
         <div style="width: 300px; padding-left: 10px; padding-right: 10px;" id="" class="thickcon">
             <div class="m flexbox">
@@ -161,10 +161,10 @@
                     <div class="tip-box icon-box">
                         <span class="warn-icon m-icon"></span>
                         <div class="item-fore">
-                            <h3 class="ftx04">您确定要删除该收货地址吗？</h3>
+                            <h3 class="ftx04">Do you confirm to delete this address？</h3>
                             <div class="op-btns">
-                                <a id="id_del_c" class="btn-8">确定</a>
-                                <a id="id_del_n" class="btn-9 ml10" href="javascript:void(0);">取消</a>
+                                <a id="id_del_c" class="btn-8">Ok</a>
+                                <a id="id_del_n" class="btn-9 ml10" href="javascript:void(0);">Cancel</a>
                             </div>
                         </div>
                     </div>
@@ -215,7 +215,7 @@
                             number = $('.easebuy-m').length;
                         }
                         else {
-                            $.dialog.errorTips('删除失败,' + d.msg);
+                            $.dialog.errorTips('Delete Failed,' + d.msg);
                         }
                     }
                 });
@@ -271,8 +271,8 @@
                 city;
             if (id != 0) {
                 city = fnSelect(province, id, 'city');
-                cityDiv.html('<option value="0">请选择</option>');
-                countyDiv.html('<option value="0">请选择</option>');
+                cityDiv.html('<option value="0">Please Select</option>');
+                countyDiv.html('<option value="0">Please Select</option>');
                 createElem(city, cityDiv, id);
                 areaName.find('span').eq(0).html($(this).find("option:selected").html() + '&nbsp;');
                 areaName.find('span').eq(1).html('');
@@ -290,7 +290,7 @@
                 tag = $(this).find("option:selected").attr('data');
                 city = fnSelect(province, tag, 'city');
                 county = fnSelect(city, id, 'county');
-                countyDiv.html('<option value="0">请选择</option>');
+                countyDiv.html('<option value="0">Please Select</option>');
                 createElem(county, countyDiv);
                 areaName.find('span').eq(1).html($(this).find("option:selected").html() + '&nbsp;');
                 areaName.find('span').eq(2).html('');
@@ -306,7 +306,7 @@
 
             $(e).bind('click', function () {
                 if (checkNumber(number)) {
-                    $.dialog.errorTips('最多只能创建20个收货地址！');
+                    $.dialog.errorTips('shipping adresses can not over 20！');
                     return;
                 }
                 var left, top, width, height;
@@ -315,7 +315,7 @@
                 width = $('.thickbox').width() / 2;
                 height = $('.thickbox').height() / 2;
                 $('.thickdiv').show();
-                $('#order_edit .thicktitle').text('新增收货地址');
+                $('#order_edit .thicktitle').text('Address a new address');
                 $('#order_edit').css({ top: '50%', left: '50%', marginLeft: '-' + width + 'px', marginTop: '-' + height + 'px', position: 'fixed' }).show();
 
                 provinceDiv.children().each(function (i, e) {
@@ -338,7 +338,7 @@
                     s = e.selected;
                     if (s == true) {
                         t = $(e).html();
-                        if (t == '请选择') {
+                        if (t == 'Please select') {
                             t = '';
                         }
                         return;
@@ -486,7 +486,7 @@
                     success: function (d) {
                         loading.close();
                         if (d.success) {
-                            $('#order_box').prepend('<div class="sm easebuy-m" id="' + d.id + '"><div class="smt"><h3><span class="ftx-02 mr10" style="display:none;">轻松购</span>' + consigneeName + '</h3><div class="extra"><a class="btn-9 default-address" href="javascript:;" data-id="' + d.id + '">设为默认</a><a href="javascript:;" class="btn-9 id_edit" data="' + d.id + '">编辑</a><a data-tag="' + d.id + '" href="javascript:;" class="btn-9 del" id="' + d.id + '">删除</a></div></div><div class="smc"><div class="items new-items"><div class="item-lcol"><div class="item"><span class="label">收货人：</span><div class="fl">' + consigneeName + '</div><span class="clr"></span></div><div class="item"><span class="label">所在地区：</span><div class="fl" data="' + provinceid + ',' + cityid + ',' + countyid + '">' + province + ' ' + city + ' ' + county + '</div><span class="clr"></span></div><div class="item"><span class="label">地址：</span><div class="fl">' + consigneeAddress + '</div><span class="clr"></span></div><div class="item"><span class="label">手机：</span><div class="fl">' + consigneeMobile + '</div><span class="clr"></span></div></div><div class="item-rcol"><div class="extra"><a data="' + d.id + '" class="btn-5 update-eshop e-btn" style="display:none;">升级为轻松购</a></div></div><div class="clr"></div></div></div></div>');
+                            $('#order_box').prepend('<div class="sm easebuy-m" id="' + d.id + '"><div class="smt"><h3><span class="ftx-02 mr10" style="display:none;">Easy to buy</span>' + consigneeName + '</h3><div class="extra"><a class="btn-9 default-address" href="javascript:;" data-id="' + d.id + '">Is Default</a><a href="javascript:;" class="btn-9 id_edit" data="' + d.id + '">Edit</a><a data-tag="' + d.id + '" href="javascript:;" class="btn-9 del" id="' + d.id + '">Delete</a></div></div><div class="smc"><div class="items new-items"><div class="item-lcol"><div class="item"><span class="label">Name：</span><div class="fl">' + consigneeName + '</div><span class="clr"></span></div><div class="item"><span class="label">Region：</span><div class="fl" data="' + provinceid + ',' + cityid + ',' + countyid + '">' + province + ' ' + city + ' ' + county + '</div><span class="clr"></span></div><div class="item"><span class="label">Address：</span><div class="fl">' + consigneeAddress + '</div><span class="clr"></span></div><div class="item"><span class="label">Telphone：</span><div class="fl">' + consigneeMobile + '</div><span class="clr"></span></div></div><div class="item-rcol"><div class="extra"><a data="' + d.id + '" class="btn-5 update-eshop e-btn" style="display:none;">Upgrate</a></div></div><div class="clr"></div></div></div></div>');
                             $('#addressNum_top,#addressNum_bottom').html($('.easebuy-m').length);
                             number = $('.easebuy-m').length;
                         }
@@ -505,7 +505,7 @@
                     success: function (d) {
                         loading.close();
                         if (d.success) {
-                            $('#' + bool[1] + ' h3').html('<span class="ftx-02 mr10">轻松购</span>' + consigneeName);
+                            $('#' + bool[1] + ' h3').html('<span class="ftx-02 mr10">Easy to buy</span>' + consigneeName);
                             $('#' + bool[1] + ' .item-lcol').children().each(function (i, e) {
                                 $(e).children().filter('.fl').html(valArr[i]);
                                 var elData = $(e).children().filter('.fl[data]');
@@ -645,7 +645,7 @@
                 $('#consigneeName').val(data.consigneeName);
                 $('#consigneeAddress').val(data.consigneeAddress);
                 $('#consigneeMobile').val(data.consigneeMobile);
-                $('#order_edit .thicktitle').text('编辑收货地址');
+                $('#order_edit .thicktitle').text('Edit shipping address');
                 var areaArr = data.areaName.split(' ');
                 areaArr[2] = areaArr[2] || '';
                 $('#areaName').html('<span>' + areaArr[0] + '&nbsp;</span>' + '<span>' + areaArr[1] + '&nbsp;</span>' + '<span>' + areaArr[2] + '&nbsp;</span>');
@@ -658,15 +658,15 @@
                     if ($(this).val() == pid) {
                         $(this).attr('selected', true);
                         city = fnSelect(province, pid, 'city');
-                        cityDiv.html('<option value="0">请选择</option>');
-                        countyDiv.html('<option value="0">请选择</option>');
+                        cityDiv.html('<option value="0">Please Select</option>');
+                        countyDiv.html('<option value="0">Please Select</option>');
                         createElem(city, cityDiv, pid);
                         $('#cityDiv').children().each(function () {
                             if ($(this).val() == cid) {
                                 $(this).attr('selected', true);
                                 city = fnSelect(province, pid, 'city');
                                 county = fnSelect(city, cid, 'county');
-                                countyDiv.html('<option value="0">请选择</option>');
+                                countyDiv.html('<option value="0">Please Select</option>');
                                 createElem(county, countyDiv);
                                 $('#countyDiv').children().each(function () {
                                     if ($(this).val() == cuid) {

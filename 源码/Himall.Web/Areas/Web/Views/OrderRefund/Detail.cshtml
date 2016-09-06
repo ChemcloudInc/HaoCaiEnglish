@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "退换货明细";
+    ViewBag.Title = "Details of Refunds & Exchange";
 }
 @using Himall.Core;
 @using Himall.Model;
@@ -28,16 +28,16 @@
 
 <div class="box1 lh24">
     <div class="title bot-border">
-        <h3 class="title_txt cur">退货记录详情</h3>
+        <h3 class="title_txt cur">Return Information</h3>
     </div>
     <div class="mod lh24">
-        <div class="smt-01">售后服务进度条<span class="remind-box">（服务单号：@Model.Id）</span></div>
+        <div class="smt-01">After-Sales Service progress <span class="remind-box">（ServiceID：@Model.Id）</span></div>
         <div class="smc-01">
 
             <div class="step-list">
                 <div class="step-u done">
                     <em>@(curstep)</em>
-                    买家申请售后
+                    Sellers Apply After-Sales
                     <span class="tail tail2"></span>
                     <span class="tail"></span>
                 </div>
@@ -51,7 +51,7 @@
                 }
                 <div class="step-u @(curshowcls)">
                     <em>@(curstep)</em>
-                    商家审核申请
+                    Sellers Dealing with
                     <span class="tail tail2"></span>
                     <span class="tail"></span>
                 </div>
@@ -60,7 +60,7 @@
                     curstep++;
                     <div class="step-u  done">
                         <em>@(curstep)</em>
-                        商家拒绝申请
+                        Merchant refusal
                     </div>
                 }
                 @if (Model.SellerAuditStatus == OrderRefundInfo.OrderRefundAuditStatus.Audited && isDiscard)
@@ -68,7 +68,7 @@
                     curstep++;
                     <div class="step-u  done">
                         <em>@(curstep)</em>
-                        商家选择弃货
+                        Sellers give up product
                         <span class="tail tail2"></span>
                         <span class="tail"></span>
                     </div>
@@ -90,7 +90,7 @@
                     }
                     <div class="step-u  @(curshowcls)">
                         <em>@(curstep)</em>
-                        买家回寄商品
+                        Customer Return Products
                         <span class="tail tail2"></span>
                         <span class="tail"></span>
                     </div>
@@ -112,7 +112,7 @@
                     }
                     <div class="step-u @(curshowcls)">
                         <em>@(curstep)</em>
-                        商家确认收货
+                        Sellers confirm received
                         <span class="tail tail2"></span>
                         <span class="tail"></span>
                     </div>
@@ -129,7 +129,7 @@
                 {
                     <div class="step-u  @(curshowcls)">
                         <em>@(curstep)</em>
-                        平台完成退款
+                        Administration Refunded
                     </div>
                 }
             </div>
@@ -137,7 +137,7 @@
     </div>
 
     <div class="mod lh24">
-        <h3 class="sub-title">服务单信息</h3>
+        <h3 class="sub-title">Service Information</h3>
         <div class="border-box" style=" border-top:1px solid #e4e4e4;">
             <table class="tb-void tb-cols">
                 <colgroup>
@@ -146,22 +146,22 @@
                 </colgroup>
                 <tbody>
                     <tr class="tr-td">
-                        <td>退款金额</td>
+                        <td>Refund Amount</td>
                         <td class="ftx-04">@Model.Amount</td>
                     </tr>
                     @if (Model.IsReturn)
                     {
                         <tr class="tr-td">
-                            <td>退货数量</td>
+                            <td>Return Quantity</td>
                             <td>@Model.OrderItemInfo.ReturnQuantity</td>
                         </tr>
                     }
                     <tr class="tr-td">
-                        <td>退款方式</td>
-                        <td>@(Model.RefundPayType==null?"线下处理":Model.RefundPayType.ToDescription())</td>
+                        <td>Refund Type</td>
+                        <td>@(Model.RefundPayType==null?"offline deal":Model.RefundPayType.ToDescription())</td>
                     </tr>
                     <tr class="tr-td">
-                        <td>退款理由</td>
+                        <td>Refudn Reason</td>
                         <td>@Model.Reason.Replace("&nbsp;"," ")</td>
                     </tr>
                 </tbody>
@@ -171,7 +171,7 @@
     </div>
 
     <div class="refund-remark mt20">
-        <h5><b>进度说明：</b></h5>
+        <h5><b>Progress:</b></h5>
     </div>
 
     <div class="mod lh24">
@@ -185,10 +185,10 @@
                 </colgroup>
                 <thead>
                     <tr class="tr">
-                        <th>处理时间</th>
-                        <th>处理信息</th>
-                        <th>操作人</th>
-                        <th>备注</th>
+                        <th>Deal Date</th>
+                        <th>Deal Information</th>
+                        <th>Operator</th>
+                        <th>Notes</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -200,7 +200,7 @@
                         <tr class="tr-td @(isFirstShow ? "tr-result" : "")">
                             <td><span>@Model.ManagerConfirmDate</span></td>
                             <td>@Model.ManagerConfirmStatus.ToDescription()</td>
-                            <td><span>平台</span></td>
+                            <td><span>Administration</span></td>
                             <td>@(Model.ManagerRemark)</td>
                         </tr>
                         isFirstShow = false;
@@ -211,8 +211,8 @@
                     {
                         <tr class="tr-td @(isFirstShow ? "tr-result" : "")">
                             <td><span>@Model.SellerConfirmArrivalDate</span></td>
-                            <td>商家确认收货</td>
-                            <td><span>商家</span></td>
+                            <td>Sellers Confirm Received</td>
+                            <td><span>Sellers</span></td>
                             <td>&nbsp;</td>
                         </tr>
                         isFirstShow = false;
@@ -223,8 +223,8 @@
                     {
                         <tr class="tr-td @(isFirstShow ? "tr-result" : "")">
                             <td><span>@Model.BuyerDeliverDate</span></td>
-                            <td>买家回寄商品</td>
-                            <td><span>买家</span></td>
+                            <td>Customers return product</td>
+                            <td><span>Customers</span></td>
                             <td>
                                 @(Model.ExpressCompanyName)
                                 <br />
@@ -244,18 +244,18 @@
                                 }
                                 else
                                 {
-                                    @("商家同意退款") @(isDiscard ? "并弃货" : "")
+                                    @("Sellers agree refund") @(isDiscard ? " and give up product" : "")
                                 }
                             </td>
-                            <td><span>商家</span></td>
+                            <td><span>Sellers</span></td>
                             <td>@(Model.SellerRemark)</td>
                         </tr>
                                 isFirstShow = false;
                     }
                     <tr class="tr-td @(isFirstShow ? "tr-result" : "")">
                         <td><span>@Model.ApplyDate</span></td>
-                        <td>您的服务单已申请成功，待商家审核中</td>
-                        <td><span>系统</span></td>
+                        <td>Your service application commit success, please wait seller deal with</td>
+                        <td>&nbsp;</td>
                         <td>&nbsp;</td>
                     </tr>
                 </tbody>

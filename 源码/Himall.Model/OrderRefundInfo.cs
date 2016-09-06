@@ -237,51 +237,51 @@ namespace Himall.Model
 
 		public enum OrderRefundAuditStatus
 		{
-			[Description("待商家审核")]
+            [Description("Wait Audit")]
 			WaitAudit = 1,
-			[Description("待买家寄货")]
+            [Description("Wait Delivery")]
 			WaitDelivery = 2,
-			[Description("待商家收货")]
+            [Description("Wait Receiving")]
 			WaitReceiving = 3,
-			[Description("商家拒绝")]
+            [Description("Sellers Refused")]
 			UnAudit = 4,
-			[Description("商家通过审核")]
+            [Description("Audited")]
 			Audited = 5
 		}
 
 		public enum OrderRefundConfirmStatus
 		{
-			[Description("待平台确认")]
+			[Description("Wait Confirm")]
 			UnConfirm = 6,
-			[Description("退款成功")]
+			[Description("Refund Success")]
 			Confirmed = 7
 		}
 
 		public enum OrderRefundMode
 		{
-			[Description("订单退款")]
+            [Description("Order Refund")]
 			OrderRefund = 1,
-			[Description("货品退款")]
+			[Description("Product Refund")]
 			OrderItemRefund = 2,
-			[Description("退货退款")]
+            [Description("Return Goods Refund")]
 			ReturnGoodsRefund = 3
 		}
 
 		public enum OrderRefundPayStatus
 		{
-			[Description("支付成功")]
+            [Description("Pay Success")]
 			PaySuccess = 1,
-			[Description("支付失败")]
+            [Description("Pay Fail")]
 			PayFail = 2
 		}
 
 		public enum OrderRefundPayType
 		{
-			[Description("原路返回")]
+            [Description("BackOut")]
 			BackOut = 1,
-			[Description("线下支付")]
+            [Description("Off Line")]
 			OffLine = 2,
-			[Description("退到预付款")]
+            [Description("Back Capital")]
 			BackCapital = 3
 		}
 	}

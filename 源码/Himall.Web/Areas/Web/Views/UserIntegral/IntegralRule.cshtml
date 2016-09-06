@@ -1,6 +1,9 @@
-ï»¿@{
+@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "æ€ä¹ˆè·å–ç§¯åˆ†";
+
+    @*ViewBag.Title = "ÔõÃ´»ñÈ¡»ı·Ö";*@
+
+    ViewBag.Title = "How to get the points";
 }
 @model  Himall.Model.UserIntegralGroupModel
 
@@ -11,36 +14,51 @@
         <table class="tb-void tb-goods">
             <thead>
                 <tr class="tr-td">
-                    <th width="150">é¡¹ç›®</th>
-                    <th>å½“å‰ç´¯ç§¯ç§¯åˆ†</th>
-                    <th>è§„åˆ™è¯´æ˜</th>
+                    <th width="150">Items</th>        @*ÏîÄ¿*@
+                    <th>Accumulative Points</th>      @*µ±Ç°ÀÛ»ı»ı·Ö*@
+                    <th>Rules</th>         @*¹æÔòËµÃ÷*@
                 </tr>
             </thead>
             <tbody>
                 <tr class="tr-td">
-                    <td>ç™»å½•</td>
+                    <td>Login</td>    @*µÇÂ¼*@
                     <td class="red-lg">@Model.LoginIntegral</td>
-                    <td>æ‚¨æ¯æ¬¡ç™»å½•éƒ½å¯è·å¾—ä¸€å®šç§¯åˆ†å¥–åŠ±ï¼Œæ¯æ—¥åªèƒ½è·å¾—ä¸€æ¬¡ç™»å½•ç§¯åˆ†</td>
+
+@* <td>ÄúÃ¿´ÎµÇÂ¼¶¼¿É»ñµÃÒ»¶¨»ı·Ö½±Àø£¬Ã¿ÈÕÖ»ÄÜ»ñµÃÒ»´ÎµÇÂ¼»ı·Ö~</td> *@
+
+                    <td>You can gain some points every time when you login to the site,but you can only get them once a day ~</td>
                 </tr>
                 <tr class="tr-td">
-                    <td>è¯„è®º</td>
+                    <td>Comments</td>    @*ÆÀÂÛ*@
                     <td class="red-lg">@Model.CommentIntegral</td>
-                    <td>æ‚¨æ‰€è´­ä¹°çš„å•†å“ï¼Œå‘è¡¨è¯„è®ºå¯è·å¾—ç§¯åˆ†å¥–åŠ±</td>
+
+@*<td>ÄúËù¹ºÂòµÄÉÌÆ·£¬·¢±íÆÀÂÛ¿É»ñµÃ»ı·Ö½±Àø</td>*@
+
+                    <td>If you evaluate the products that  have been purchased, you will get options as rewards </td>
                 </tr>
                 <tr class="tr-td">
-                    <td>æ¶ˆè´¹</td>
+                    <td>Consumption</td>    @*Ïû·Ñ*@
                     <td class="red-lg">@Model.ConsumptionIntegral</td>
-                    <td>æ‚¨æ¯æ¬¡æ¶ˆè´¹å‡å¯è·å¾—ä¸€å®šç§¯åˆ†å¥–åŠ±</td>
+
+@*<td>ÄúÃ¿´ÎÏû·Ñ¾ù¿É»ñµÃÒ»¶¨»ı·Ö½±Àø</td>*@
+
+                    <td>Your consumption can gain some bonus points as encouragement every time</td>   
                 </tr>
                 <tr class="tr-td">
-                    <td>ç»‘å®š</td>
+                    <td>Binding</td>     @*°ó¶¨*@
                     <td class="red-lg">@Model.BindWxIntegral</td>
-                    <td>é¦–æ¬¡ç»‘å®šå¹³å°ä¸‹å¾®ä¿¡å…¬ä¼—å·å¯è·å¾—ç§¯åˆ†å¥–åŠ±</td>
+
+@* <td>Ê×´Î°ó¶¨Æ½Ì¨ÏÂÎ¢ĞÅ¹«ÖÚºÅ¿É»ñµÃ»ı·Ö½±Àø</td>*@
+
+                    <td>If you are the first time to bind the platform under the WeChat Official Accounts, you can get the bonus points </td>
                 </tr>
                 <tr class="tr-td">
-                    <td>æ³¨å†Œ</td>
+                    <td>Register</td>    @*×¢²á*@
                     <td class="red-lg">@Model.RegIntegral</td>
-                    <td>æ³¨å†Œå¹¶å®ŒæˆéªŒè¯ï¼ˆæ‰‹æœºæˆ–é‚®ç®±ï¼‰å¯è·å¾—ç§¯åˆ†å¥–åŠ±</td>
+
+@* <td>×¢²á²¢Íê³ÉÑéÖ¤£¨ÊÖ»ú»òÓÊÏä£©¿É»ñµÃ»ı·Ö½±Àø</td>*@
+
+                    <td> You can get the bonus points when you signed up and completed the validation (used mobile phone or email).</td>
                 </tr>
             </tbody>
         </table>

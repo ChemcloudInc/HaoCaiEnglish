@@ -123,15 +123,15 @@ function loadShopInfo() {
 				}
 				html += '<dl id="hotline">' + $("#online-service").html() + '</dl>';
 				if (data.IsSevenDayNoReasonReturn || data.IsCustomerSecurity || data.TimelyDelivery) {
-				    html += '<h3>服务支持：</h3>';
+				    html += '<h3>Serive Support：</h3>';
 				    if (data.IsSevenDayNoReasonReturn) {
-				        html += '<dl class="pop-ensure"><dt><img src="/Images/SevenDay.jpg">  七天无理由退换货</dt></dl>';
+				        html += '<dl class="pop-ensure"><dt><img src="/Images/SevenDay.jpg">Refund or return without reason in 7 days</dt></dl>';
 				    }
 				    if (data.IsCustomerSecurity) {
-				        html += '<dl class="pop-ensure"><dt><img src="/Images/Security.jpg">  消费者保障服务</dt></dl>';
+				        html += '<dl class="pop-ensure"><dt><img src="/Images/Security.jpg">Consumer protection services</dt></dl>';
 				    }
 				    if (data.TimelyDelivery) {
-				        html += '<dl class="pop-ensure"><dt><img src="/Images/TimelyDelivery.jpg"> 及时发货</dt></dl>';
+				        html += '<dl class="pop-ensure"><dt><img src="/Images/TimelyDelivery.jpg">Delivery in time</dt></dl>';
 				    }
 				}
 				$("#brand-bar-pop").show().append($(html));
@@ -145,29 +145,29 @@ function loadShopInfo() {
 					shopinfo +
 					'</dl>';
 					if (data.CashDeposits > 0) {
-					    html += '<dl class="pop-money"><dt>资质：</dt><dd><span title="该卖家已缴纳保证金' + data.CashDeposits + '元">' + data.CashDeposits + '元</span></dd></dl>'
+					    html += '<dl class="pop-money"><dt>Level：</dt><dd><span title="The seller has paid Deposit' + data.CashDeposits + 'usd">' + data.CashDeposits + 'usd</span></dd></dl>'
 					}
 					html +='<div id="evaluate-detail">' +
 					'<div class="mc">' +
 					'<dl >' +
-					'<dt>描述相符：</dt>' +
-					'<dd title="（商家得分-行业平均得分）/（行业商家最高得分-行业平均得分）">' +
+					'<dt>Description Match：</dt>' +
+					'<dd title="（Merchant score-Industry average score）/（Merchant industry the highest score - Industry average score）">' +
 					'<span class="' + productAndDescriptionColor + '">' + productAndDescription + '</span>' +
 					'<i class="' + productAndDescriptionImage + '"></i>' +
 					'<em class="' + productAndDescriptionColor + '">' + productAndDescriptionContrast + '</em>' +
 					'</dd>' +
 					'</dl>' +
 					'<dl>' +
-					'<dt>发货速度：</dt>' +
-					'<dd title="（行业平均得分-商家得分）/（行业平均得分-行业商家最低得分）">' +
+					'<dt>Delivery Speed：</dt>' +
+					'<dd title="（Industry average score-Merchant score）/（Industry average score-Merchant industry the lowest score）">' +
 					'<span class="' + sellerDeliverySpeedColor + '">' + sellerDeliverySpeed + '</span>' +
 					'<i class="' + sellerDeliverySpeedImage + '"></i>' +
 					'<em class="' + sellerDeliverySpeedColor + '">' + sellerDeliverySpeedContrast + '</em>' +
 					'</dd>' +
 					'</dl>' +
 					'<dl>' +
-					'<dt>服务态度：</dt>' +
-					'<dd title="（行业平均得分-商家得分）/（行业平均得分-行业商家最低得分）">' +
+					'<dt>Service attitude:</dt>' +
+					'<dd title="（Industry average score-Merchant score）/（Industry average score-Merchant industry the lowest score）">' +
 					 '<span class="' + sellerServiceAttitudeColor + '">' + sellerServiceAttitude + '</span>' +
 					'<i class="' + sellerServiceAttitudeImage + '"></i>' +
 					 '<em class="' + sellerServiceAttitudeColor + '">' + sellerServiceAttitudeContrast + '</em>' +
@@ -179,20 +179,20 @@ function loadShopInfo() {
 					'</dl>' +
 					'<dl id="pop-company">' + $("#online-service").html() + '</dl>';
 					if (data.IsSevenDayNoReasonReturn || data.IsCustomerSecurity || data.TimelyDelivery) {
-					    html += '<h3>服务支持：</h3>';
+					    html += '<h3>Service：</h3>';
 					    if (data.IsSevenDayNoReasonReturn) {
-					        html += '<dl class="pop-ensure"><dt><a href="/Article/Category"><img src="/Images/SevenDay.jpg">  七天无理由退换货</a></dt></dl>';
+					        html += '<dl class="pop-ensure"><dt><a href="/Article/Category"><img src="/Images/SevenDay.jpg">Refund or return without reason in 7 days</a></dt></dl>';
 					    }
 					    if (data.IsCustomerSecurity) {
-					        html += '<dl class="pop-ensure"><dt><a href="/Article/Category"><img src="/Images/Security.jpg">  消费者保障服务</a></dt></dl>';
+					        html += '<dl class="pop-ensure"><dt><a href="/Article/Category"><img src="/Images/Security.jpg">Consumer protection services</a></dt></dl>';
 					    }
 					    if (data.TimelyDelivery) {
-					        html += '<dl class="pop-ensure"><dt><a href="/Article/Category"><img src="/Images/TimelyDelivery.jpg"> 及时发货</a></dt></dl>';
+					        html += '<dl class="pop-ensure"><dt><a href="/Article/Category"><img src="/Images/TimelyDelivery.jpg">Delivery in time</a></dt></dl>';
 					    }
 					}
 					html +='<div id="enter-shop">' +
-					'<a target="_blank" href="/Shop/Home/' + data.Id + '">进入店铺</a>' +
-					'<a href="javascript:addFavorite(' + data.Id + ')">收藏店铺</a>' +
+					'<a target="_blank" href="/Shop/Home/' + data.Id + '">Go to shop</a>' +
+					'<a href="javascript:addFavorite(' + data.Id + ')">Add Wishlist</a>' +
 					'</div>';
 				$("#brand-bar-pop").show().append($(html));
 				if ($('#online-service').html() == '<div class="line"></div>') { $('#online-service').hide() }
@@ -255,7 +255,7 @@ function loadHotSaleProduct() {
                     '<div class="p-img"><a href="/Product/Detail/' + data[i].Id.toString() + '" target="_blank"><img alt="' + data[i].Name + '" src="' + data[i].ImgPath + '/1_220.png" /></a></div>' +
                             '<div class="p-name"><a href="/Product/Detail/' + data[i].Id.toString() + '" target="_blank" title="">' + data[i].Name + '</a></div>' +
                             '<div class="p-info p-bfc">' +
-                                '<div class="p-count fl"><s>' + (i + 1).toString() + '</s><b>热销' + data[i].SaleCount.toString() + '件</b></div>' +
+                                '<div class="p-count fl"><s>' + (i + 1).toString() + '</s><b>Top Seller' + data[i].SaleCount.toString() + '</b></div>' +
                                 '<div class="p-price fr"><strong>￥+' + data[i].Price.toString + '</strong></div>' +
                             '</div>' +
                         '</li>';
@@ -305,8 +305,8 @@ function loadHotConcernedProduct() {
                     '<div class="p-img"><a href="/Product/Detail/' + data[i].Id.toString() + '" target="_blank"><img alt="' + data[i].Name + '" src="' + data[i].ImgPath + '/1_220.png" /></a></div>' +
                             '<div class="p-name"><a href="/Product/Detail/' + data[i].Id.toString() + '" target="_blank" title="">' + data[i].Name + '</a></div>' +
                             '<div class="p-info p-bfc">' +
-                                '<div class="p-count fl"><s>' + (i + 1).toString() + '</s><b>关注' + data[i].SaleCount.toString() + '次</b></div>' +
-                                '<div class="p-price fr"><strong>￥+' + data[i].Price.toString + '</strong></div>' +
+                                '<div class="p-count fl"><s>' + (i + 1).toString() + '</s><b>Liked ' + data[i].SaleCount.toString() + '</b></div>' +
+                                '<div class="p-price fr"><strong>$+' + data[i].Price.toString + '</strong></div>' +
                             '</div>' +
                         '</li>';
                     html += text;
@@ -344,7 +344,7 @@ function loadGetProductDesc() {
 
 function loadGetEnableBuyInfo() {
     if ($('#IsExpiredShop').val()) {
-        $('#summary-price').html('<div class="dd"><strong style="font-size:25px;color:red;">提示：该商品所在店铺已过期！</strong></div>');
+        $('#summary-price').html('<div class="dd"><strong style="font-size:25px;color:red;">The Shop expired！</strong></div>');
         $('#choose-btn-buy').hide();
         $("#choose-btn-append").addClass("disabled");
     } else {
@@ -359,12 +359,12 @@ function loadGetEnableBuyInfo() {
                 if (data) {
                     //console.log(data);
                     if (!data.hasSKU) {
-                        $("#stockProductImage").html("缺货");
+                        $("#stockProductImage").html("Out of stock");
                         $("#stockProduct").html("0");
                     }
                     else if (data.IsOnSale === false) {
-                        $('#summary-price').html('<div class="dd"><strong style="font-size:25px;color:red;">提示：该商品已经下架！</strong></div>');
-                        $("#stockProductImage").html('<div class="dd"><strong style="color:red;">提示：无货</strong></div>');
+                        $('#summary-price').html('<div class="dd"><strong style="font-size:25px;color:red;">This product sold out！</strong></div>');
+                        $("#stockProductImage").html('<div class="dd"><strong style="color:red;">Out of stock</strong></div>');
                     }
                     else {
                         $("#choose-btn-append").removeClass("disabled");
@@ -473,7 +473,7 @@ $(function () {
 
     $("#easyBuyBtn").click(function () {
         if (parseInt($('#buy-num').val()) > parseInt($("#stockProduct").html())) {
-            $.dialog.errorTips('不能大于库存数量');
+            $.dialog.errorTips('Buy quantity can not bigger than stock');
             $('#buy-num').val(parseInt($("#stockProduct").html()));
             return false;
         }
@@ -489,7 +489,7 @@ $(function () {
                 //   alert('SKUId：'+sku+'，购买数量：'+num);
             }
         } else {
-            $.dialog.errorTips('请选择商品规格');
+            $.dialog.errorTips('Please select specification');
 
         }
     });
@@ -568,7 +568,7 @@ $(function () {
 
         var keyword = $("#sp-keyword").val();
         if (keyword.length === 0 && start == end) {
-            $.dialog.errorTips('请输入关键字或者价格区间');
+            $.dialog.errorTips('please enter keywords or price ranges');
             return;
         }
         location.href = "/Shop/Search?pageNo=1&sid=" + shopid + "&keywords=" + keyword + "&startPrice=" + start + "&endPrice=" + end;
@@ -605,7 +605,7 @@ $(function () {
     //加入购物车
     $("#InitCartUrl").click(function (e) {
         if (parseInt($('#buy-num').val()) > parseInt($("#stockProduct").html())) {
-            $.dialog.errorTips('不能大于库存数量');
+            $.dialog.errorTips('Buy quantity can not bigger than stock');
             $('#buy-num').val(parseInt($("#stockProduct").html()));
             return false;
         }
@@ -655,12 +655,12 @@ $(function () {
 					},
 					error: function (e) {
 						//loading.close();
-						$.dialog.errorTips('加入购物车失败');
+						$.dialog.errorTips('Add to cart failed');
 					}
 				});
             }
         } else {
-            $.dialog.errorTips("请选择商品规格！");
+            $.dialog.errorTips("Please select specification！");
         }
     });
 	
@@ -681,7 +681,7 @@ $(function () {
     //加入购物车
     $("#justBuy").click(function () {
         if (parseInt($('#buy-num').val()) > parseInt($("#stockProduct").html())) {
-            $.dialog.errorTips('不能大于库存数量');
+            $.dialog.errorTips('Buy quantity can not bigger than stock');
             $('#buy-num').val(parseInt($("#stockProduct").html()));
             return false;
         }
@@ -697,7 +697,7 @@ $(function () {
                 //alert('SKUId：'+sku+'，购买数量：'+num);
             }
         } else {
-            $.dialog.errorTips("请选择商品规格！");
+            $.dialog.errorTips("Please select specification！");
         }
     });
 
@@ -768,7 +768,7 @@ function checkBuyNum() {
         num = 0;
     }
     if (num < 1) {
-        $.dialog.errorTips('购买数量有误');
+        $.dialog.errorTips('Buy quantity error');
         $('#buy-num').val(1);
         result = false;
     }
@@ -836,7 +836,7 @@ function loadShopCateOfficial() {
 
 function bindToSettlement() {
     if (parseInt($('#buy-num').val()) > parseInt($("#stockProduct").html())) {
-        $.dialog.errorTips('不能大于库存数量');
+        $.dialog.errorTips('buy quantity can not bigger than stock');
         $('#buy-num').val(parseInt($("#stockProduct").html()));
         return false;
     }
@@ -892,7 +892,7 @@ function bindToSettlement() {
 
         //   alert('SKUId：'+sku+'，购买数量：'+num);
     } else {
-        $.dialog.errorTips("请选择商品规格！");
+        $.dialog.errorTips("Please select specification！");
     }
 
 
@@ -923,7 +923,7 @@ function addFavoriteFun(shopId, callBack) {
     $.post('/Product/AddFavorite', { shopId: shopId }, function (result) {
         loading.close();
         if (result.success)
-            $.dialog.succeedTips('收藏店铺成功', function () { callBack && callBack(); });
+            $.dialog.succeedTips('Add to Wishlist Success', function () { callBack && callBack(); });
         else
             $.dialog.succeedTips(result.msg, function () { callBack && callBack(); });
 
@@ -973,17 +973,17 @@ function GroupPriceChange(){
 		maxSaleTotal+=$(this).data('maxsaleprice');
 	});
 	if(minCollTotal!=maxCollTotal)
-		$('#collTotalPrice').text('¥'+minCollTotal.toFixed(2)+'-'+maxCollTotal.toFixed(2));
+		$('#collTotalPrice').text('$'+minCollTotal.toFixed(2)+'-'+maxCollTotal.toFixed(2));
 	else
-		$('#collTotalPrice').text('¥'+minCollTotal.toFixed(2));
+		$('#collTotalPrice').text('$'+minCollTotal.toFixed(2));
 	if(minSaleTotal!=maxSaleTotal)
 		$('#saleTotalPrice').text(minSaleTotal.toFixed(2)+'-'+maxSaleTotal.toFixed(2));
 	else
 		$('#saleTotalPrice').text(minSaleTotal.toFixed(2));
 	if(minSaleTotal-minCollTotal!=maxSaleTotal-maxCollTotal)
-		$('#groupPriceMinus').text('¥'+(minSaleTotal-minCollTotal).toFixed(2)+'-'+(maxSaleTotal-maxCollTotal).toFixed(2))
+		$('#groupPriceMinus').text('$'+(minSaleTotal-minCollTotal).toFixed(2)+'-'+(maxSaleTotal-maxCollTotal).toFixed(2))
 	else
-		$('#groupPriceMinus').text('¥'+(minSaleTotal-minCollTotal).toFixed(0))
+		$('#groupPriceMinus').text('$'+(minSaleTotal-minCollTotal).toFixed(0))
 }
 
 
@@ -993,7 +993,7 @@ function CollocationBuy() {
 	var pids = "";
 	var colloPids="";
 	if (chk.length < 2) {
-		$.dialog.errorTips("请至少选择一个商品组合购买！");
+		$.dialog.errorTips("Please select！");
 		return;
 	}
 	else {
@@ -1017,13 +1017,13 @@ function CollocationBuy() {
 		}
 	});
 	$.dialog({
-		title: '组合购选择',
+	    title: 'Collocation Buy',
 		width: 908,
 		padding:0,
 		id: 'Collocation',
 		content: document.getElementById("addCollocation"),
 		lock: true,
-		okVal: '确定购买套餐',
+		okVal: 'Determine to buy packages',
 		init: function () {
 			var groupPrice=0;
 			for(var i=0;i<$('.group-item').length;i++){
@@ -1069,11 +1069,11 @@ function CollocationBuy() {
 				groupcounts+=$('#groupCounts').val()+','
 			});
 			if(flag==2){
-				$.dialog.errorTips("有未选择规格的商品");
+				$.dialog.errorTips("please select specification");
 				return false;
 			}
 			if(flag==3){
-				$.dialog.errorTips("购买数大于商品库存");
+				$.dialog.errorTips("Buy quantity>stock");
 				return false;
 			}
 			

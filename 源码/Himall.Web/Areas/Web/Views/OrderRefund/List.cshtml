@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "退换货列表";
+    ViewBag.Title = "Refund & Exchange list";
     int? showtype = (int?)ViewBag.ShowType;
 }
 @model  IEnumerable<Himall.Model.OrderRefundInfo>
@@ -9,9 +9,9 @@
 
 <div class="box1 lh24">
     <div class="title">
-        <span class="title_txt @((showtype != 3) ? "curr" : "")"><a href="@Url.Action("List", new { showtype=2 })">我申请的退款</a></span>
-        <span class="title_txt @(showtype == 3 ? "curr" : "")"><a href="@Url.Action("List", new { showtype = 3 })">我申请的退货</a></span>
-        <span class="title_txt"><a href="@Url.Action("Index")">申请售后</a></span>
+        <span class="title_txt @((showtype != 3) ? "curr" : "")"><a href="@Url.Action("List", new { showtype=2 })">My Refunds List</a></span>
+        <span class="title_txt @(showtype == 3 ? "curr" : "")"><a href="@Url.Action("List", new { showtype = 3 })">My Returns List</a></span>
+        <span class="title_txt"><a href="@Url.Action("Index")">Apply After-Sales</a></span>
     </div>
     <div class="border-box">
         <table class="tb-void tb-back">
@@ -25,19 +25,19 @@
             </colgroup>
             <thead>
                 <tr class="tr">
-                    <th>售后编号</th>
-                    <th>订单编号</th>
-                    <th>商品名称</th>
+                    <th>ID</th>
+                    <th>OrderId</th>
+                    <th>Produt(s)</th>
                     <th>
                         <select class="sele" id="submitDate" onchange="Query()">
-                            <option value="all">申请时间</option>
-                            <option value="threeMonth">最近三个月</option>
-                            <option value="threeMonthAgo">三个月以前</option>
+                            <option value="all">Apply Date</option>
+                            <option value="threeMonth">Recent 3 months</option>
+                            <option value="threeMonthAgo">3 months+</option>
                         </select>
                     </th>
                     <th>
                         <select class="sele" id="status" onchange="Query()">
-                            <option value="">审核状态</option>
+                            <option value="">Audit Status</option>
                             @foreach (var d in Himall.Core.EnumHelper.ToDescriptionDictionary<Himall.Model.OrderRefundInfo.OrderRefundAuditStatus>())
                             {
                                 if (d.Value != Himall.Model.OrderRefundInfo.OrderRefundAuditStatus.Audited.ToDescription())
@@ -51,30 +51,30 @@
                             }
                         </select>
                     </th>
-                    <th>操作</th>
+                    <th>Operator</th>
                 </tr>
             </thead>
             <tbody>
                 @if (Model.Count() == 0)
                 {
-                    <tr><td colspan="4"><div class="empty"><b></b>暂时没有任何申请记录！</div></td></tr>
+                    <tr><td colspan="4"><div class="empty"><b></b>No Records！</div></td></tr>
                 }
                 @foreach (var m in Model)
                 {
                     <tr class="tr-td">
                         <td><span class="col-blue">@m.Id</span></td>
                         <td><span class="col-blue">@m.OrderId @if (m.UserId != ViewBag.UserId)
-                        { <span>[子订单]</span>}</span></td>
+                        { <span>[sub-orders]</span>}</span></td>
                         <td class="goods-name">                         
                         @if (m.RefundMode == OrderRefundInfo.OrderRefundMode.OrderRefund)
                         {
-                            @("订单所有商品")
+                            @("Order Products")
                         }
                         else {
                             var spc = "";
-                            if (!string.IsNullOrWhiteSpace(m.OrderItemInfo.Color)) { spc += "颜色：" + m.OrderItemInfo.Color; }
-                            if (!string.IsNullOrWhiteSpace(m.OrderItemInfo.Size)) { spc += "，尺寸：" + m.OrderItemInfo.Size; }
-                            if (!string.IsNullOrWhiteSpace(m.OrderItemInfo.Version)) { spc += "，版本：" + m.OrderItemInfo.Version; }
+                            if (!string.IsNullOrWhiteSpace(m.OrderItemInfo.Color)) { spc += "Color：" + m.OrderItemInfo.Color; }
+                            if (!string.IsNullOrWhiteSpace(m.OrderItemInfo.Size)) { spc += "，Size：" + m.OrderItemInfo.Size; }
+                            if (!string.IsNullOrWhiteSpace(m.OrderItemInfo.Version)) { spc += "，Specification：" + m.OrderItemInfo.Version; }
                             spc = spc.TrimStart('，');
                             spc = string.IsNullOrWhiteSpace(spc) ? "" : "【" + spc + "】";
                         <a target="_blank" href="@Url.Action("Detail", "product", new { id=@m.OrderItemInfo.ProductId})">
@@ -91,10 +91,10 @@
                             <td>@m.SellerAuditStatus.ToDescription()</td>
                         }
                         <td class="operate">
-                            <a href="@Url.Action("Detail", new { id=@m.Id})">查看</a>
+                            <a href="@Url.Action("Detail", new { id=@m.Id})">View</a>
                             @if (@m.SellerAuditStatus == Himall.Model.OrderRefundInfo.OrderRefundAuditStatus.WaitDelivery)
                             {
-                                <a class="back-goods-btn" datashop="@m.ShopId" dataid="@m.Id">请退货</a>
+                                <a class="back-goods-btn" datashop="@m.ShopId" dataid="@m.Id">Please Return Products</a>
                             }
                         </td>
                     </tr>
@@ -109,7 +109,7 @@
 				}
 				@Html.PageLinks((PagingInfo)ViewBag.pageInfo, x => Url.Action("List", new { pageNo = x }))
                 <span class="page-skip">
-                    <em>&nbsp;&nbsp;共 @count 页&nbsp;&nbsp;&nbsp;&nbsp;</em>
+                    <em>&nbsp;&nbsp;Pages of @count</em>
                 </span>
 			</div>
 			<div class="clr"></div>
@@ -140,7 +140,7 @@
             var shopId=$(this).attr("dataShop");
              curentId = $(this).attr("dataId");
             $.dialog({
-                title: '请退货',
+                title: 'Please return products',
                 lock: true,
                 id: 'BackForm',
                 content: $('#backform')[0],
@@ -159,7 +159,7 @@
                     });
                 },
                 padding: '20px 30px 20px 0',
-                okVal: '确认已退货',
+                okVal: 'Confirm Returns',
                 ok: function () {
                     UpdateRefund();
                 }
@@ -172,7 +172,7 @@
         var expressCompanyName = $("#ExpressCompanyName").val();
         var shipOrderNumber = $("#ShipOrderNumber").val();
         if (expressCompanyName == "" || shipOrderNumber == "") {
-            $.dialog.errorTips("请输入快递公司和快递单号！", '',1);
+            $.dialog.errorTips("Please enter  waybill！", '',1);
         }
         var loading = showLoading();
         $.ajax({
@@ -184,12 +184,12 @@
             success: function (d) {
                 loading.close();
                 if (d.success) {
-                    $.dialog.succeedTips("提交成功！", function () {
+                    $.dialog.succeedTips("submit success！", function () {
                         window.location.href = window.location.href;
                     }, 1);
                 }
                 else {
-                    $.dialog.errorTips("提交失败," + d.msg, '', 2);
+                    $.dialog.errorTips("subit error," + d.msg, '', 2);
                 }
             }
         });
@@ -216,18 +216,18 @@
         <div class="clr"></div>
     </div>*@
             <div class="item">
-                <span class="label">快递公司：</span>
+                <span class="label">Express Company：</span>
                 <div class="fl">
                     <input type="text" id="ExpressCompanyName" name="ExpressCompanyName" class="text" value="" />
-                    <span class="error-msg hide">请您填写快递公司</span>
+                    <span class="error-msg hide">Please enter express companyname</span>
                 </div>
                 <div class="clr"></div>
             </div>
             <div class="item">
-                <span class="label">快递单号：</span>
+                <span class="label">Waybill：</span>
                 <div class="fl">
                     <input type="text" class="text" id="ShipOrderNumber" name="ShipOrderNumber" value="" />
-                    <span class="error-msg hide">请您填写快递单号</span>
+                    <span class="error-msg hide">Please enter waybill</span>
                 </div>
                 <div class="clr"></div>
             </div>
@@ -241,7 +241,7 @@
 <div class="thickbox hide">
     <div class="thickwrap">
         <div class="thicktitle">
-            <span>请退货</span>
+            <span>Please return products</span>
         </div>
         <div style="width: 400px; padding-left: 10px; padding-right: 10px;" class="thickcon">
             <div id="">
@@ -250,7 +250,7 @@
                         
 
                             <div class="btns">
-                                <a id="id_add_order" class="e-btn btn-9 save-btn" onclick="UpdateRefund()">确认已退货</a>
+                                <a id="id_add_order" class="e-btn btn-9 save-btn" onclick="UpdateRefund()">Confirm Returns</a>
                             </div>
                         </div>
                     </div>

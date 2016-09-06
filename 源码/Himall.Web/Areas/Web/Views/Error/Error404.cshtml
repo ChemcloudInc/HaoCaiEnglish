@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "页面未找到";
+    ViewBag.Title = "Not found";
 }
 <script language="javascript" type="text/javascript">
     var secs = 5; //倒计时的秒数
@@ -12,7 +12,7 @@
     }
 
     function doUpdate(num) {
-        document.getElementById("ShowDiv").innerHTML = '将在<strong><font color=red> ' + num + ' </font></strong>秒后自动转入<a  href="/" class="link_1">商城首页</a>，请稍候...';
+        document.getElementById("ShowDiv").innerHTML = '<strong><font color=red> ' + num + ' </font></strong> Seconds auto direct to <a  href="/" class="link_1">Home Page</a>，Please waiting...';
         if (num == 0) { window.location = URL; }
     }
     $(function () {
@@ -21,8 +21,8 @@
 </script>
 <div class="w cl">
     <div class="tips-page error-page">
-        <h2>抱歉，您请求的地址已下线或者过期</h2>
-        <div class="error_child">您可以：直接返回首页 或 等待推荐跳转。</div>
+        <h2>Sorry, not found this url</h2>
+        <div class="error_child"></div>
         <div id="ShowDiv"></div>
     </div>
 </div>

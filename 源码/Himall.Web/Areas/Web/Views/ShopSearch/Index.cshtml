@@ -2,13 +2,13 @@
 
 @model IEnumerable<ShopInfo>
 @{
-    ViewBag.Title = ViewBag.KeyWords + "  店铺商品搜索";
+    ViewBag.Title = ViewBag.KeyWords + "  search products in shops";
 }
 
 <script type="text/javascript">
     $(function(){
 
-        $('.search .search-form label').html("店铺");
+        $('.search .search-form label').html("Shops");
         $('.search .search-form #searchBox').val("@ViewBag.QueryModel.ShopName");
 
         $('.shop-cate-option p').each(function() {
@@ -43,7 +43,7 @@
 
         <div class="searh-shop-cate">
             <div id="brandDiv" class="shop-cate-option cl">
-                <span>品牌</span>
+                <span>Brands</span>
                 <p class="min">
                     @foreach( var b in ( Dictionary<long , string> )ViewBag.Brands )
                     {
@@ -60,7 +60,7 @@
                 </p>
             </div>
             <div id="categoryDiv" class="shop-cate-option cl">
-                <span>类目</span>
+                <span>Categories</span>
                 <p class="min">
                     @foreach( var c in ( Dictionary<long , string> )ViewBag.Categorys )
 				{
@@ -78,17 +78,17 @@
             </div>
         </div>
 
-        <div class="search-shop-count">共找到 <span>@Model.Count()</span> 家店铺</div>
+        <div class="search-shop-count">Find: <span>@Model.Count()</span> Shops</div>
         <div class="search-shop-hd">
             @if( ViewBag.QueryModel.OrderBy == 0 )
             {
-                <a href="shopsearch?keywords=@ViewBag.QueryModel.ShopName&categoryId=@ViewBag.QueryModel.CategoryId&brandId=@ViewBag.QueryModel.BrandId&orderBy=0" class="active">默认</a><s></s>
-                <a href="shopsearch?keywords=@ViewBag.QueryModel.ShopName&categoryId=@ViewBag.QueryModel.CategoryId&brandId=@ViewBag.QueryModel.BrandId&orderBy=1">销量</a>
+                <a href="shopsearch?keywords=@ViewBag.QueryModel.ShopName&categoryId=@ViewBag.QueryModel.CategoryId&brandId=@ViewBag.QueryModel.BrandId&orderBy=0" class="active">Default</a><s></s>
+                <a href="shopsearch?keywords=@ViewBag.QueryModel.ShopName&categoryId=@ViewBag.QueryModel.CategoryId&brandId=@ViewBag.QueryModel.BrandId&orderBy=1">Orders</a>
             }
             else
             {
-                <a href="shopsearch?keywords=@ViewBag.QueryModel.ShopName&categoryId=@ViewBag.QueryModel.CategoryId&brandId=@ViewBag.QueryModel.BrandId&orderBy=0">默认</a><s></s>
-                <a href="shopsearch?keywords=@ViewBag.QueryModel.ShopName&categoryId=@ViewBag.QueryModel.CategoryId&brandId=@ViewBag.QueryModel.BrandId&orderBy=1" class="active">销量</a>
+                <a href="shopsearch?keywords=@ViewBag.QueryModel.ShopName&categoryId=@ViewBag.QueryModel.CategoryId&brandId=@ViewBag.QueryModel.BrandId&orderBy=0">Default</a><s></s>
+                <a href="shopsearch?keywords=@ViewBag.QueryModel.ShopName&categoryId=@ViewBag.QueryModel.CategoryId&brandId=@ViewBag.QueryModel.BrandId&orderBy=1" class="active">Orders</a>
             }
 
         </div>
@@ -101,20 +101,20 @@
                         <div class="shop-logo cl">
                             <a target="_blank" href="/shop/home/@item.Id"><img src="@item.Logo" /></a>
                             <h3><a target="_blank" href="/shop/home/@item.Id">@item.ShopName</a></h3>
-                            <p>描述相符：<span>@item.ProductAndDescription</span></p>
-                            <p>发货速度：<span>@item.SellerDeliverySpeed</span></p>
-                            <p>服务态度：<span>@item.SellerServiceAttitude</span></p>
+                            <p>Description match：<span>@item.ProductAndDescription</span></p>
+                            <p>Delivery speed：<span>@item.SellerDeliverySpeed</span></p>
+                            <p>Service attitude：<span>@item.SellerServiceAttitude</span></p>
                         </div>
                         <div class="shop-data">
-                            <p><span>总销量：@item.Sales</span><span>商品数：@item.Himall_Products.Where( p => p.SaleStatus == ProductInfo.ProductSaleStatus.OnSale  && p.AuditStatus== ProductInfo.ProductAuditStatus.Audited ).Count()</span></p>
+                            <p><span>Total：@item.Sales</span><span>Quantity：@item.Himall_Products.Where( p => p.SaleStatus == ProductInfo.ProductSaleStatus.OnSale  && p.AuditStatus== ProductInfo.ProductAuditStatus.Audited ).Count()</span></p>
                             <div class="shop-sale-action">
                                 @if( item.FreeFreight > 0 )
                                 {
-                                    <span class="full-free-tag" title="满免 @item.FreeFreight">满免</span>
+                                    <span class="full-free-tag" title="Free shipping over @item.FreeFreight"></span>
                                 }
                                 @if( item.Himall_Coupon.Count > 0 && item.Himall_Coupon.Any( a => a.EndTime > DateTime.Now ) )
                                 {
-                                    <span class="coupon-tag">优惠券</span>
+                                    <span class="coupon-tag">Coupons</span>
                                 }
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                         {
                             <li>
                                 <a target="_blank" href="/Product/Detail/@pro.Id"><img src="@pro.ImagePath/1_150.png" /></a>
-                                <p>￥@pro.MinSalePrice</p>
+                                <p>$@pro.MinSalePrice</p>
                             </li>
                         }
                     </ul>
@@ -142,7 +142,7 @@
                    brandId = ViewBag.QueryModel.BrandId ,
                    orderBy = ViewBag.QueryModel.OrderBy
                } ) )<span class="page-skip">
-                    <em>&nbsp;&nbsp;共 </em><em id="pageCount">@ViewBag.pageInfo.TotalPages</em><em>&nbsp;页&nbsp;&nbsp;&nbsp;&nbsp;</em>
+                    <em>Pages of </em><em id="pageCount">@ViewBag.pageInfo.TotalPages</em><em></em>
                 </span>
             </div>
         </div>
@@ -154,7 +154,7 @@ else
         <div class="notice-search">
             <span class="ns-icon"></span>
             <div class="ns-content">
-                <span>抱歉，没有找到与“<em>@ViewBag.QueryModel.ShopName</em>”相关的店铺</span>
+                <span>Sorry，not find matched“<em>@ViewBag.QueryModel.ShopName</em>”shops</span>
             </div>
         </div>
     </div>

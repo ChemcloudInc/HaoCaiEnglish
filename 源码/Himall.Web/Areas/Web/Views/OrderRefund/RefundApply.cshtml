@@ -225,25 +225,25 @@
         {
             target: 'Reason',
             ruleType: 'required',
-            'tips': '该信息为必填项，退款原因:6-500字！',
+            'tips': 'Refund Reason is required，between:6-500 characters！',
             beforeBlur: function () {
                 var a = $('#Reason').val();
                 if (a.length < 6 || a.length>500) {
                     return false;
                 }
             },
-            error: '请输入6 - 500字符!'
+            error: 'Please enter 6 - 500 characters!'
         },
         {
             target: 'ContactPerson',
             //ruleType: 'ce&&required',
             rule:/^[\u4E00-\u9FA5A-Za-z0-9_\ ]{1,20}$/i,
-            error: '名字不能包含非法字符!'
+            error: 'Contains invalid characters!'
         },
         {
             target: 'ContactCellPhone',
             ruleType: 'mobile||phone',
-            error: '请输入正确的电话号码!'
+            error: 'Please enter correct Telphone!'
         }
     );
     $("input[name='RefundType']").click(function () {
@@ -266,7 +266,7 @@
                         return false;
                     }
                 },
-                error: '不能超过' + maxNumber + '件或者只能为数字!'
+                error: 'maxi is' + maxNumber
             });
         } else {
             rgbox.hide();

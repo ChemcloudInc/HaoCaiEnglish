@@ -2,19 +2,19 @@
     "comments":
     [
       {
-          "UserName": "用户名",
-          "ReviewContent": "评价内容",
+          "UserName": "UserName",
+          "ReviewContent": "ReviewContent",
           "ReviewDate": "2014-09-09",
-          "ReplyContent": "答复内容",
+          "ReplyContent": "ReplyContent",
           "ReplyDate": "2014-10-10",
           "BuyDate": "2014-10-10",
           "ReviewMark": 4  /*评价星级*/
       },
       {
           "UserName": "11111111111",
-          "ReviewContent": "评价内容",
+          "ReviewContent": "ReviewContent",
           "ReviewDate": "2014-09-09",
-          "ReplyContent": "答复内容",
+          "ReplyContent": "ReplyContent",
           "ReplyDate": "2014-10-10",
           "BuyDate": "2014-10-10",
           "ReviewMark": 4  /*评价星级*/
@@ -56,7 +56,7 @@ $(function () {
             '<div class="item">',
             '<div class="user">',
             '<div class="u-icon">',
-            '<a target="_blank" title="查看TA的全部评价">',
+            '<a target="_blank" title="View Details">',
             '<div class="u-name">',
             '<span class="u-level">',
             '<span class="u-address">',
@@ -86,10 +86,10 @@ $(function () {
                                     + '<span class="star sa' + e.ReviewMark + '"></span>'
                                     + template[10] + e.ReplyDate + '</span></div>'
                                 + template[11]
-                                    + '<dl><dt>心得：</dt><dd>' + e.ReviewContent + '</dd></dl>'
-                                    + '<dl><dt>购买日期：</dt><dd>' + e.BuyDate + '</dd></dl>';
-                            if (e.ReplyContent != "暂无回复") {
-                                str += '<dl class="shop-reply"><dt>商家回复：</dt><dd><div class="content">' + e.ReplyContent + '</></div><div class="date-answer">' + e.ReplyDate + '</div></dd></dl>'
+                                    + '<dl><dt>Content：</dt><dd>' + e.ReviewContent + '</dd></dl>'
+                                    + '<dl><dt>Order Date：</dt><dd>' + e.BuyDate + '</dd></dl>';
+                            if (e.ReplyContent != "No Reviews") {
+                                str += '<dl class="shop-reply"><dt>Reply Content：</dt><dd><div class="content">' + e.ReplyContent + '</></div><div class="date-answer">' + e.ReplyDate + '</div></dd></dl>'
                                     }
                                     str+= '</div></div><div class="corner tl"></div></div>';
             }

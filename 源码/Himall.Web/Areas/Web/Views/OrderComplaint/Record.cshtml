@@ -1,14 +1,14 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "退换货列表";
+    ViewBag.Title = "Complaint list";
 }
 @model  IEnumerable<Himall.Model.OrderComplaintInfo>
 @using Himall.Core;
 
 <div class="box1 lh24">
     <div class="title">
-        <span class="title_txt"><a href="@Url.Action("Index")">投诉维权</a></span>
-        <span class="title_txt curr">申请记录</span>
+        <span class="title_txt"><a href="@Url.Action("Index")">Order Complain</a></span>
+        <span class="title_txt curr">Complaint Records</span>
     </div>
     <div class="border-box">
         <table class="tb-void tb-back">
@@ -22,18 +22,18 @@
             </colgroup>
             <thead>
                 <tr class="tr">
-                    <th>投诉内容</th>
-                    <th>联系电话</th>
-                    <th>所属订单</th>
-                    <th>提交时间</th>
-                    <th>状态</th>
-                    <th>操作</th>
+                    <th>Complaint Content</th>
+                    <th>Tel</th>
+                    <th>OrderId</th>
+                    <th>Complain Date</th>
+                    <th>Status</th>
+                    <th>Operator</th>
                 </tr>
             </thead>
             <tbody>
                 @if (Model.Count() == 0)
                 {
-                    <tr><td colspan="6"><div class="empty"><b></b>暂时没有记录</div></td></tr>
+                    <tr><td colspan="6"><div class="empty"><b></b>No Records</div></td></tr>
                 }
                 @foreach (var m in Model)
                 {
@@ -47,15 +47,15 @@
                             <span style="display:none">@m.SellerReply</span>
                             @if (m.Status == Himall.Model.OrderComplaintInfo.ComplaintStatus.WaitDeal)
                             {
-                                <a cid="@m.Id" deal="cancel" class="complain-btn">取消</a>
+                                <a cid="@m.Id" deal="cancel" class="complain-btn">Cancel</a>
                             }
                             else if (m.Status == Himall.Model.OrderComplaintInfo.ComplaintStatus.Dealed)
                             {
-                                <a cid="@m.Id" deal="ok" class="complain-btn">满意</a>
+                                <a cid="@m.Id" deal="ok" class="complain-btn">Ok</a>
                             }
                             @if (m.Status == Himall.Model.OrderComplaintInfo.ComplaintStatus.Dealed || m.ComplaintDate.AddDays(1) < DateTime.Now && m.Status == Himall.Model.OrderComplaintInfo.ComplaintStatus.WaitDeal)
                             {
-                                <a cid="@m.Id" deal="bad" class="complain-btn">申请仲裁</a>
+                                <a cid="@m.Id" deal="bad" class="complain-btn">Bad</a>
                             }
                         </td>
                     </tr>
@@ -70,7 +70,7 @@
 				}
 				@Html.PageLinks((PagingInfo)ViewBag.pageInfo, x => Url.Action("Record", new { pageNo = x }))
 				<span class="page-skip">
-					<em>&nbsp;&nbsp;共 @count 页&nbsp;&nbsp;&nbsp;&nbsp;</em>
+					<em>Pages of @count</em>
 				</span>
 			</div>
 			<div class="clr"></div>
@@ -88,17 +88,17 @@
             var replyContent = $(this).parent().find("span").html();
             switch (type) {
                 case "cancel":
-                    $.dialog.confirm("取消此次投诉！", function () { DealComplaint() });
+                    $.dialog.confirm("Cancel Complaint！", function () { DealComplaint() });
                     break;
                 case "ok":
                     $.dialog({
-                        title: '对投诉结果满意',
+                        title: 'Satisfy Deal Result',
                         lock: true,
                         width: 400,
                         id: 'Agree',
-                        content: '<p class="ftx03">商家回复：' + replyContent + '</p><br>是否满意商家的回复？',
+                        content: '<p class="ftx03">Seller Reply：' + replyContent + '</p><br>Do you satisfy sellers deal result？',
                         padding: '20px',
-                        cancelVal: '取消',
+                        cancelVal: 'cancel',
                         ok: function () {
                             DealComplaint();
                         },
@@ -107,17 +107,18 @@
                     break;
                 case "bad":
                     $.dialog({
-                        title: '申请仲裁',
+                        title: 'Apply Arbitration',
                         lock: true,
                         width: 400,
                         id: 'goodCheck',
-                        content: '<p class="ftx03">商家回复：' + replyContent + '</p><br>是否不满意商家的回复并且进行投诉？',
+                        content: '<p class="ftx03">Sellers Reply：' + replyContent + '</p><br>Do you unsatisfy deal result and complaints？',
                         padding: '20px',
-                        cancelVal: '取消',
+                        cancelVal: 'cancel',
                         ok: function () {
                             ApplyArbitration();
                         },
                         cancel: true
+                       
                     });
                     break;
             }
@@ -134,7 +135,7 @@
             success: function (data) {
                 loading.close();
                 if (data.success) {
-                    $.dialog.succeedTips("处理成功！", function () {
+                    $.dialog.succeedTips("Deal with success！", function () {
                         window.location.href = window.location.href;
                     }, 1);
                 }
@@ -153,7 +154,7 @@
             success: function (data) {
                 loading.close();
                 if (data.success) {
-                    $.dialog.succeedTips("申请成功！", function () {
+                    $.dialog.succeedTips("Apply Success！", function () {
                         window.location.href = window.location.href;
                     }, 1);
                 }

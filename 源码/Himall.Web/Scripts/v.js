@@ -703,8 +703,8 @@ var v=({
 		},
 		'money':{
 			'rules':/^[-+]?(0|[1-9]\d*)(\.\d+)?$/,
-			'tips':'请输入金额！',
-			'error':'金额格式不正确。正确格式如：“60” 或 “60.5”。'
+			'tips': 'Please enter the amount！',
+			'error':'Amount format is error， eg:“60” or “60.5”。'
 		},
 		'per':{
 			'rules':/^(?:[1-9][0-9]?|100)(?:\.[0-9]{1,2})?$/,
@@ -724,8 +724,8 @@ var v=({
 		},
 		'mobile':{
 			'rules':/^[1-9]\d{10}$/,
-			'tips':'请输入可以联系到您的手机号码！',
-			'error':'对不起，您填写的手机号码格式不正确！'
+			'tips':'Please enter your moblie number！',
+			'error':'Sorry，moblie Number format incorrect！'
 		},
 		'url':{
 			'rules':/^(http|https):\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"])*$/,
