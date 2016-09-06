@@ -43,7 +43,7 @@ function buildOrder() {
 
 function updateSupplierShop(shopId, shopName, ele, status) {
     var eleText = $(ele).text();
-    $.dialog.confirm('确定' + eleText + shopName + '吗？', function () {
+    $.dialog.confirm('Are you sure' + eleText + shopName , function () {
         var loading = showLoading();
         ajaxRequest({
             type: "POST",
@@ -53,14 +53,14 @@ function updateSupplierShop(shopId, shopName, ele, status) {
             success: function (data) {
                 loading.close();
                 if (data.success) {
-                    $.dialog.succeedTips('操作成功！',function(){ location.href = "/UserCenter/SupplierManagement";});
+                    $.dialog.succeedTips('Success！',function(){ location.href = "/UserCenter/SupplierManagement";});
                 } else {
-                    $.dialog.errorTips("操作失败,请重试！", _this);
+                    $.dialog.errorTips("Failed,Please try it again！", _this);
                 }
             },
             error: function (e) {
                 loading.close();
-                $.dialog.errorTips("操作失败,请重试！", _this);
+                $.dialog.errorTips("Failed,Please try it again！", _this);
             }
         });
     });
@@ -123,9 +123,9 @@ function getRegionIds(regionId) {
             createElem = function (data, elem, select, id) {// 创建元素
                 if (!data) { return; }
                 if (select) {
-                    elem.append('<option value="0">请选择</option>');
+                    elem.append('<option value="0">Please Select</option>');
                 } else {
-                    elem.append('<option value="0" selected="true">请选择</option>');
+                    elem.append('<option value="0" selected="true">Please Select</option>');
                 }
                 for (var i = 0, e; e = data[i++];) {
                     if (select == e.id) {
@@ -174,10 +174,10 @@ function getRegionIds(regionId) {
             init = function (a, b, c) {
                 $(that[0]).html('');
                 if (b == 0) {
-                    $(that[1]).html('<option value="0">请选择</option>');
+                    $(that[1]).html('<option value="0">Please Select</option>');
                 }
                 if (c == 0) {
-                    $(that[2]).html('<option value="0">请选择</option>');
+                    $(that[2]).html('<option value="0">Please Select</option>');
                 }
                 createElem(data, province, a);
                 var cityData = fnSelect(data, a, 'city'),

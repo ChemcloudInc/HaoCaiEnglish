@@ -26,8 +26,8 @@ function bindRecieverEdit() {
                              <b>' + address.shipTo + '</b>&nbsp; ' + address.fullRegionName + ' &nbsp; ' + address.address + ' &nbsp; ' + address.phone + ' &nbsp\
                           </label>\
                           <span class="item-action">\
-                              <a href="javascript:;" onclick="showEditArea(\'' + address.id + '\')">编辑</a> &nbsp;\
-                              <a href="javascript:;" onclick="deleteAddress(\'' + address.id + '\')">删除</a>&nbsp;\
+                              <a href="javascript:;" onclick="showEditArea(\'' + address.id + '\')">Edit</a> &nbsp;\
+                              <a href="javascript:;" onclick="deleteAddress(\'' + address.id + '\')">Delete</a>&nbsp;\
                           </span>\
                       </div>';
             });
@@ -53,7 +53,7 @@ function bindAddressRadioClick() {
 
 
 function deleteAddress(id) {
-    $.dialog.confirm('您确定要删除该收货地址吗？', function () {
+    $.dialog.confirm('Are you sure to delete this shipping address？', function () {
         var loading = showLoading();
         $.post('/UserAddress/DeleteShippingAddress', { id: id }, function (result) {
             loading.close();
@@ -97,7 +97,7 @@ function saveAddress(id, regionId, shipTo, address, phone, callBack) {
         if (result.success)
             callBack(result);
         else
-            $.dialog.errorTips('保存失败!' + result.msg);
+            $.dialog.errorTips('Save Failed!' + result.msg);
     });
 }
 
@@ -113,7 +113,7 @@ function bindSubmit() {
         recieveAddressId = isNaN(recieveAddressId) ? null : recieveAddressId;
 
         if (!recieveAddressId)
-            $.dialog.tips('请选择或新建收货地址');
+            $.dialog.tips('Please select or creat a shipping address');
         else {
             var loading = showLoading();
             //提交订单
@@ -231,35 +231,35 @@ function showEditArea(id) {
             var regionId = $('#consignee_county').val();
 
             if (!shipTo) {
-                $.dialog.tips('请填写收货人');
+                $.dialog.tips('Please enter name');
                 return false;
             }
             else if ( $.trim( shipTo ).length == 0 )
             {
-                $.dialog.tips( '请填写收货人' );
+                $.dialog.tips('Please enter name');
                 return false;
             }
             else if (!phone) {
-                $.dialog.tips('请填写电话');
+                $.dialog.tips('Please enter telphone');
                 return false;
             }
             else if(!regTel.test(phone))
             {
-                $.dialog.tips('请填写正确的电话');
+                $.dialog.tips('Please enter correct telphone');
                 return false;
             }
             else //RegionBind.js
                 if (!isSelectAddr($('#consignee_province'), $('#consignee_city'), $('#consignee_county'))) {
-                    $.dialog.tips('请填选择所在地区');
+                    $.dialog.tips('Please select region');
                     return false;
                 }
                 else if (!address) {
-                    $.dialog.tips('请填写详细地址');
+                    $.dialog.tips('Please enter detail address');
                     return false;
                 }
                 else if ( $.trim( address ).length == 0 )
                 {
-                    $.dialog.tips( '请填写详细地址' );
+                    $.dialog.tips('Please enter detail address');
                     return false;
                 }
                 else {

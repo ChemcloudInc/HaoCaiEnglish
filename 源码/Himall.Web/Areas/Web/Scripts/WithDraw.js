@@ -1,7 +1,7 @@
 ﻿function initialdeleteCategory() {
     $('.container').on('click', '.delete-classify', function () {
         var id = $(this).parents('td.td-operate').prev('td').find('.hidden_id').val();
-        $.dialog.confirm('删除该分类，您确定要删除吗？', function () {
+        $.dialog.confirm('Do you confirm to delete this category', function () {
             ajaxRequest({
                 type: 'POST',
                 url: "./DeleteWithDraw",
@@ -14,7 +14,7 @@
                 }, error: function () { }
             });
         }, function () {
-            $.dialog.tips('你取消了操作');
+            $.dialog.tips('Cancel');
         });
     });
 }
@@ -26,11 +26,11 @@ function InitialDialog(option) {
         id: 'addAtrr',
         content: ['<div class="dialog-form">',
             '<div class="form-group">',
-                '<label class="label-inline" for="">分类名称</label><input value="' + option.name + '" id="newCategoryName" class="form-control input-sm" type="text" >',
-                '<p id="nameErrorMsg" class="help-block">不能为空且不能多于5个字</p>',
+                '<label class="label-inline" for="">Category Name</label><input value="' + option.name + '" id="newCategoryName" class="form-control input-sm" type="text" >',
+                '<p id="nameErrorMsg" class="help-block">category name is required</p>',
             '</div>',
             '<div class="form-group">',
-                '<label class="label-inline" for="">上级分类</label>',
+                '<label class="label-inline" for="">Parent Category</label>',
                 '<select class="form-control input-sm" id="categoryDrop"></select>',
             '</div>',
         '</div>'].join(''),
@@ -57,7 +57,7 @@ function InitialDialog(option) {
             });
         },
         padding: '20px 10px',
-        okVal: '保存',
+        okVal: 'Save',
         ok: function () {
             var len = $("#newCategoryName").val().length;
             if (len > 5 || len <= 0) {

@@ -1,6 +1,6 @@
 ﻿@model Himall.Web.Areas.Web.Models.IntegralMallPageModel
 @{
-    ViewBag.Title = "积分商城";
+    ViewBag.Title = "Gift Shops";
 }
 <script type="text/javascript">
     var couponmaxpage=@(Model.CouponMaxPage);
@@ -12,8 +12,8 @@
             @if (CurrentUser != null)
             {
                 <div class="inte-user-info">
-                    <h3>亲爱的@(CurrentUser.UserName),欢迎回来！</h3>
-                    <p>我的积分：<span>@(CurrentUser.AvailableIntegrals)分</span></p>
+                    <h3>Hello,@(CurrentUser.UserName)</h3>
+                    <p>My Points：<span>@(CurrentUser.AvailableIntegrals)</span></p>
                     <h1>@(CurrentUser.MemberGradeName)</h1>
                 </div>
             }
@@ -21,14 +21,14 @@
             {
                 <div class="inte-user-info">
                     <br />
-                    <h3>您还没有会员账号！</h3>
-                    <p>请<a href="@Url.Action("Index", "Login", new { returnUrl = @"/IntegralMall" })">登录</a> 或 <a href="@Url.Action("index", "register")">免费注册</a></p>
+                    <h3>New Customer?</h3>
+                    <p>Please <a href="@Url.Action("Index", "Login", new { returnUrl = @"/IntegralMall" })">Sign In</a> | <a href="@Url.Action("index", "register")">Join Free</a></p>
                 </div>
             }
             <ul>
-                <li class="fore1"><i></i><a href="/UserCenter?url=/userIntegral/Index&tar=/userIntegral/Index" target="_blank">查看积分明细</a></li>
-                <li class="fore2"><i></i><a href="#tag-coupon">兑换优惠劵</a></li>
-                <li class="fore3"><i></i><a href="#tag-gift">兑换礼品</a></li>
+                <li class="fore1"><i></i><a href="/UserCenter?url=/userIntegral/Index&tar=/userIntegral/Index" target="_blank">View Details</a></li>
+                <li class="fore2"><i></i><a href="#tag-coupon">Redeem Coupons</a></li>
+                <li class="fore3"><i></i><a href="#tag-gift">Redeem Gifts</a></li>
             </ul>
         </div>
         <div class="inte-slide">
@@ -40,8 +40,8 @@
 <div class="integra-coupon">
     <div class="warp">
         <div class="inte-coupon-hd cl">
-            <span name="tag-coupon" id="tag-coupon">热门优惠券</span>
-            <a href="@Url.Action("Coupon")" class="more">更多 ></a>
+            <span name="tag-coupon" id="tag-coupon">Hottest Coupons</span>
+            <a href="@Url.Action("Coupon")" class="more">More</a>
         </div>
         <ul class="cl" id="couponbox">
             @foreach (var item in Model.CouponList)
@@ -51,9 +51,9 @@
                     <a href="@(Url.Action("Home", "shop", new { id=item.ShopId }))" target="_blank" class="shop-logo"><img src="@(item.ShowIntegralCover)" alt=""></a>
                     <div>
                         <h3><a href="@(Url.Action("Home", "shop", new { id=item.ShopId }))" target="_blank">@(shopname)</a></h3>
-                        <p><span class="couponprice">￥@(item.Price)</span><span class="uselimt">@(item.OrderAmount > 0 ? "满" + item.OrderAmount + "可用" : "满" + item.Price + "可用")</span></p>
-                        <p>有效期：@(item.StartTime.ToString("yyyy.MM.dd"))至@(item.EndTime.ToString("yyyy.MM.dd"))</p>
-                        <p><a class="@((CurrentUser==null || CurrentUser.AvailableIntegrals >= item.NeedIntegral )? "btnexchange" : "disabled")" data-shopid="@(item.ShopId)" data-id="@(item.Id)" data-jztime="@(item.EndTime.ToString("yyyy.MM.dd"))" data-needjf="@(item.NeedIntegral)" data-shopname="@(shopname)" data-price="@(item.Price)">@(item.NeedIntegral)积分兑换</a></p>
+                        <p><span class="couponprice">$@(item.Price)</span><span class="uselimt">@(item.OrderAmount > 0 ? "Over" + item.OrderAmount + "can use" : "Over" + item.Price + "can use")</span></p>
+                        <p>Expiry Date：@(item.StartTime.ToString("yyyy.MM.dd"))-@(item.EndTime.ToString("yyyy.MM.dd"))</p>
+                        <p><a class="@((CurrentUser==null || CurrentUser.AvailableIntegrals >= item.NeedIntegral )? "btnexchange" : "disabled")" data-shopid="@(item.ShopId)" data-id="@(item.Id)" data-jztime="@(item.EndTime.ToString("yyyy.MM.dd"))" data-needjf="@(item.NeedIntegral)" data-shopname="@(shopname)" data-price="@(item.Price)">@(item.NeedIntegral)Points Redeem</a></p>
                     </div>
                 </li>
             }
@@ -64,7 +64,7 @@
 <div class="integra-gift">
     <div class="warp">
         <div class="inte-gift-hd">
-            <span name="tag-gift" id="tag-gift">热门礼品</span>
+            <span name="tag-gift" id="tag-gift">Hottest Gifts</span>
         </div>
         <ul class="cl" id="giftbox">
             @foreach (var item in Model.GiftList)
@@ -72,9 +72,9 @@
                 <li>
                     <a href="@Url.Action("Detail", "Gift", new { id=item.Id })" target="_blank"><img src="@(item.ShowImagePath+@"/1_350.png")" alt=""></a>
                     <h3><a href="@Url.Action("Detail", "Gift", new { id=item.Id })" target="_blank">@(item.GiftName)</a></h3>
-                    <p><span>@(item.NeedIntegral)分</span><s>￥@(item.GiftValue)</s><em>@(item.NeedGradeName)</em></p>
-                    <p>@(item.SumSales)人已经兑换</p>
-                    <a class="btn-buy @(item.StockQuantity < 0 ? "disabled" : "")" href="@Url.Action("Detail", "Gift", new { id=item.Id })" target="_blank">@(item.StockQuantity > 0 ? "去兑换" : "无库存")</a>
+                    <p><span>@(item.NeedIntegral) </span><s>$@(item.GiftValue)</s><em>@(item.NeedGradeName)</em></p>
+                    <p>@(item.SumSales) customers have been redeemed</p>
+                    <a class="btn-buy @(item.StockQuantity < 0 ? "disabled" : "")" href="@Url.Action("Detail", "Gift", new { id=item.Id })" target="_blank">@(item.StockQuantity > 0 ? "to redeem" : "zero inventory")</a>
                 </li>
             }
         </ul>
@@ -133,8 +133,8 @@
                             var htmlcont='<li class="'+cls+'">';
                             htmlcont+='<a href="/Shop/Home/'+dshopid+'" target="_blank">';
                             htmlcont+='<h5>'+dshopname+'</h5>';
-                            htmlcont+='<h3><span>￥'+dprice+'</span>'+duselimt+'</h3>';
-                            htmlcont+='<p>截止'+djztime+'</p>';
+                            htmlcont+='<h3><span>$'+dprice+'</span>'+duselimt+'</h3>';
+                            htmlcont+='<p>end'+djztime+'</p>';
                             htmlcont+='</a>';
                             htmlcont+='</li>';
                             $('.side-asset-list ul').prepend(htmlcont);
@@ -144,7 +144,7 @@
                             cpcount=cpcount+1;
                             $("#mycouponcount").html(cpcount);
 
-                            $.dialog.succeedTips('领取成功!');
+                            $.dialog.succeedTips('Get Success!');
                         }
                     });
 
@@ -157,14 +157,14 @@
                     switch (data.status) {
                         case -2:
                             isshowerr = false;
-                            _t.html("己过期");
+                            _t.html("Expired");
                             break;
                         case -3:
-                            _t.html("不可领");
+                            _t.html("Can not get");
                             break;
                         case -4:
                             isshowerr = false;
-                            _t.html("积分不足");
+                            _t.html("Lack of points");
                             break;
                     }
                     if (isshowerr) {
@@ -194,7 +194,7 @@
                 LoadGift(giftpage);
             }else{
                 if(giftpage>1){
-                    autoloading.html('没有积分礼品');
+                    autoloading.html('No Gifts');
                 }else{
                     autoloading.html("");
                 }
@@ -206,7 +206,7 @@
         var li = $('#giftbox').find('li');
         if (li.length == 0) {
             ismoredata=false;
-            autoloading.html('没有积分礼品');
+            autoloading.html('No Gifts');
         }
     })($);
 
@@ -222,9 +222,9 @@
                         html += '<li>';
                         html += '<a href="/Gift/Detail/' + rows.Id + '"><img src="' + rows.ShowImagePath + '\/1_350.png")" alt=""></a>';
                         html += '<h3><a href="/Gift/Detail/' + rows.Id + '">' + rows.GiftName + '</a></h3>';
-                        html += '<p><span>' + rows.NeedIntegral + '分</span><s>￥' + rows.GiftValue + '</s><em>'+rows.NeedGradeName+'</em></p>';
-                        html += '<p>' + rows.SumSales + '人已经兑换</p>';
-                        html += '<a href="/Gift/Detail/' + rows.Id + '" class="btn-buy ' + (rows.StockQuantity > 0 ? 'canchange' : 'nostock') + '" href="" target="_blank">' + (rows.StockQuantity > 0 ? '去兑换' : '无库存') + '</a>';
+                        html += '<p><span>' + rows.NeedIntegral + '</span><s>$' + rows.GiftValue + '</s><em>'+rows.NeedGradeName+'</em></p>';
+                        html += '<p>' + rows.SumSales + ' customers have been redeemed</p>';
+                        html += '<a href="/Gift/Detail/' + rows.Id + '" class="btn-buy ' + (rows.StockQuantity > 0 ? 'canchange' : 'nostock') + '" href="" target="_blank">' + (rows.StockQuantity > 0 ? 'to redeem' : 'zero inventory') + '</a>';
                         html += '</li>';
                     });
                     $('#giftbox').append(html);
@@ -232,7 +232,7 @@
                     autoloading.html("");
                 }else {
                     ismoredata = false;
-                    autoloading.html('没有更多积分礼品了');
+                    autoloading.html('No more gifts');
                 }
             });
         }

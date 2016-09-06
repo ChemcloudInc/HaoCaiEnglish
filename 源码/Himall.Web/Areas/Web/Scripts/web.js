@@ -144,10 +144,10 @@ $(document).ready(function () {
     $('#refilter .extra').click(function () {
         if ($(this).siblings('.undis').css('display') == 'none') {
             $(this).siblings('.undis').show();
-            $(this).find('.more').html('<span>收起</span><b class="close"></b>');
+            $(this).find('.more').html('<span>Fold</span><b class="close"></b>');
         } else {
             $(this).siblings('.undis').hide();
-            $(this).find('.more').html('<span>显示全部分类</span><b class="open"></b>');
+            $(this).find('.more').html('<span>Show All Categories</span><b class="open"></b>');
         }
 
     });

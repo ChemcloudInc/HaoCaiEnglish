@@ -106,9 +106,9 @@ width: 21px; }
 .comment-box .msg-error-01 { background: none repeat scroll 0 0 #ffebeb; border: 1px solid #ffbdbe; color: #3480eb; float: left; line-height: 24px; padding: 2px 6px; }
 .score-succ { padding: 10px; }
 .service-rcol { float: left; height: 164px; padding-left: 30px; padding-top: 15px; position: relative; width: 440px; }
-.service-rcol .score { float: left; width: 300px; }
+.service-rcol .score { float: left; width: 600px; }
 .service-rcol dl:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
-.service-rcol dt { width: 120px; }
+.service-rcol dt { width: 180px; }
 .service-rcol dt, .service-rcol dd { float: left; }
 .service-rcol dl .commstar { background: url("../images/commstar.jpg") repeat-x scroll 0 -21px; display: inline-block; float: left; height: 20px; position: relative; width: 105px; }
 .service-rcol dl .commstar a:hover, .service-rcol dl .commstar .active { background: url("../images/commstar.jpg") repeat-x scroll left top; }

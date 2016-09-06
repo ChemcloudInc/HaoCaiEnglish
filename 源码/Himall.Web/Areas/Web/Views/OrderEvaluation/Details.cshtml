@@ -1,12 +1,12 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "满意度评价";
+    ViewBag.Title = "Satisfaction Rating";
 }
 @model IEnumerable<Himall.Model.ProductEvaluation>
 
 <div class="box1 lh24">
     <div class="title">
-        <span class="title_txt curr">查看订单评价</span>        
+        <span class="title_txt curr">View Order Evaluation</span>        
     </div>
     <div class="border-box">
         <div class="tb-void tb-line">
@@ -19,15 +19,15 @@
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>商品信息</th>
-                        <th>购买时间</th>
-                        <th>评价</th>
+                        <th>Product(s)</th>
+                        <th>Order Date</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if (Model.Count() == 0)
                     {
-                        <tr><td colspan="4"><div class="empty"><b></b>暂时没有记录！</div></td></tr>
+                        <tr><td colspan="4"><div class="empty"><b></b>No Records！</div></td></tr>
                     }
                     @{var i = 0;}
                     @foreach (var m in @Model)
@@ -46,9 +46,9 @@
                                             <div class="p-name fl">
                                                 @{
                                                     var sp = "";
-                                                    if (!string.IsNullOrWhiteSpace(m.Color)) { sp += string.Format("[颜色：{0}]", m.Color); }
-                                                    if (!string.IsNullOrWhiteSpace(m.Size)) { sp += string.Format("[尺寸：{0}]", m.Size); }
-                                                    if (!string.IsNullOrWhiteSpace(m.Version)) { sp += string.Format("[版本：{0}]", m.Version); }
+                                                    if (!string.IsNullOrWhiteSpace(m.Color)) { sp += string.Format("[Color：{0}]", m.Color); }
+                                                    if (!string.IsNullOrWhiteSpace(m.Size)) { sp += string.Format("[Size：{0}]", m.Size); }
+                                                    if (!string.IsNullOrWhiteSpace(m.Version)) { sp += string.Format("[Specification：{0}]", m.Version); }
                                                 }
                                                 <a href="@Url.Action("Detail", "Product", new { id = @m.ProductId })" target="_blank">@m.ProductName @sp</a>
                                             </div>
@@ -56,8 +56,8 @@
                                     </li>
                                     <li class="fore2"><span class="ftx03">@m.BuyTime</span></li>
                                     <li class="fore3 forem">
-                                        <a catethird="@m.Id" title="发评价" class="pj" href="#none">
-                                            展开/收缩<b class="icon-show"></b>
+                                        <a catethird="@m.Id" title="Write Evaluation" class="pj" href="#none">
+                                            show/unshow<b class="icon-show"></b>
                                         </a><br />
                                     </li>
 
@@ -68,7 +68,7 @@
                                     <div class="box-t"></div>
                                     <div class="form">
                                         <div class="item">
-                                            <span class="label"><em>*</em>评分 
+                                            <span class="label"><em>*</em>Rating 
                                             ：</span>
                                             <input type="hidden" name="EvaluationRank" value="@m.EvaluationRank" />
                                             <div class="fl">
@@ -81,11 +81,11 @@
                                                 </span>
                                                 <div class="clr"></div>
                                             </div>
-                                            <span class="id_star msg-error-01 ml10 hide" style="display:none">你的评分是偶们前进的动力</span>
+                                            <span class="id_star msg-error-01 ml10 hide" style="display:none">Your rating is our motivation</span>
                                             <div class="clr"></div>
                                         </div>
                                         <div class="item item01">
-                                            <span class="label">心得：</span>
+                                            <span class="label">Content：</span>
                                             <div class="cont">
                                                 <span id="cont_txt" name="cont_txt" >@m.EvaluationContent</span>
                                                 
@@ -116,7 +116,7 @@
     </div>
     @if (!ViewBag.IsSellerAdminProdcut)
         {
-    <h3 class="sub-title">满意度评价</h3>
+    <h3 class="sub-title">Satisfaction Evaluation</h3>
     <div class="border-box" style=" border-top:1px solid #e4e4e4;" id="orderComment">
         <div class="service-rcol" style="display:block; height:134px;">
             <div class="score-cont">
@@ -125,7 +125,7 @@
                     <input type="hidden" value="69" name="gid">
                     <input type="hidden" value="549656" name="sid">
                     <dl class="ev-list">
-                        <dt>商品包装满意度</dt>
+                        <dt>Products Package Satisfaction</dt>
                         <dd>
                             <span class="commstar" id="id_a">
                                 <a data-t="1" class="star1" href="javascript:;"></a>
@@ -139,7 +139,7 @@
                         </dd>
                     </dl>
                     <dl class="ev-list">
-                        <dt>送货速度满意度</dt>
+                        <dt>Delivery speed satisfaction</dt>
                         <dd>
                             <span class="commstar" id="id_b">
                                 <a data-t="1" class="star1" href="javascript:;"></a>
@@ -153,7 +153,7 @@
                         </dd>
                     </dl>
                     <dl class="ev-list">
-                        <dt>配送服务满意度</dt>
+                        <dt>Delivery service satisfaction</dt>
                         <dd>
                             <span class="commstar" id="id_c">
                                 <a data-t="1" class="star1" href="javascript:;"></a>
@@ -171,8 +171,8 @@
             </div>
         </div>
         <div class="score-succ hide">
-            <span class="s_pf">您的评分：</span><span class="s-star"></span>
-            <h3 class="ftx02"><s class="icon-02"></s>感谢您的评分</h3>
+            <span class="s_pf">Rating：</span><span class="s-star"></span>
+            <h3 class="ftx02"><s class="icon-02"></s>Thanks for your Rating</h3>
         </div>
         <div class="clr"></div>
 
@@ -233,7 +233,7 @@
                 var uid = $(e).attr('data'),
                     star = $('#' + uid + ' .commstar').attr('data'),
                     cont = $('#' + uid + ' .id_cont_txt').val();
-                if (cont == '商品是否给力？快分享你的购买心得吧~') {
+                if (cont == 'Do you Satisfy it, Please write evaluation') {
                     cont = false;
                 }
                 if (!star) {
@@ -255,7 +255,7 @@
                             $('#' + uid).hide('200');
                             $('.pj').each(function (i, e) {
                                 if ($(e).attr('catethird') == uid) {
-                                    $(e).html('已评价');
+                                    $(e).html('Evaluated');
                                     $(e).attr('catethird', 0);
                                 }
                             });
@@ -281,15 +281,15 @@
                 obj.addClass('active');
                 star1 = obj.attr('data-t');
                 if (star == 1) {
-                    $('#id_a_txt').show().removeClass().addClass('d1 degree-text').html('不满');
+                    $('#id_a_txt').show().removeClass().addClass('d1 degree-text').html('Bad');
                 } else if (star == 2) {
-                    $('#id_a_txt').show().removeClass().addClass('d1 degree-text').html('不满');
+                    $('#id_a_txt').show().removeClass().addClass('d1 degree-text').html('Bad');
                 } else if (star == 3) {
-                    $('#id_a_txt').show().removeClass().addClass('d3 degree-text').html('一般');
+                    $('#id_a_txt').show().removeClass().addClass('d3 degree-text').html('Medium');
                 } else if (star == 4) {
-                    $('#id_a_txt').show().removeClass().addClass('d3 degree-text').html('满意');
+                    $('#id_a_txt').show().removeClass().addClass('d3 degree-text').html('Good');
                 } else if (star == 5) {
-                    $('#id_a_txt').show().removeClass().addClass('d5 degree-text').html('赞一个');
+                    $('#id_a_txt').show().removeClass().addClass('d5 degree-text').html('Excellent');
                 }
             });
         });
@@ -299,15 +299,15 @@
                 obj.addClass('active');
                 star2 = obj.attr('data-t');
                 if (star == 1) {
-                    $('#id_b_txt').show().removeClass().addClass('d1 degree-text').html('不满');
+                    $('#id_b_txt').show().removeClass().addClass('d1 degree-text').html('Bad');
                 } else if (star == 2) {
-                    $('#id_b_txt').show().removeClass().addClass('d1 degree-text').html('不满');
+                    $('#id_b_txt').show().removeClass().addClass('d1 degree-text').html('Bad');
                 } else if (star == 3) {
-                    $('#id_b_txt').show().removeClass().addClass('d3 degree-text').html('一般');
+                    $('#id_b_txt').show().removeClass().addClass('d3 degree-text').html('Medium');
                 } else if (star == 4) {
-                    $('#id_b_txt').show().removeClass().addClass('d3 degree-text').html('满意');
+                    $('#id_b_txt').show().removeClass().addClass('d3 degree-text').html('Good');
                 } else if (star == 5) {
-                    $('#id_b_txt').show().removeClass().addClass('d5 degree-text').html('赞一个');
+                    $('#id_b_txt').show().removeClass().addClass('d5 degree-text').html('Excellent');
                 }
             });
         });
@@ -317,15 +317,15 @@
                 obj.addClass('active');
                 star3 = obj.attr('data-t');
                 if (star == 1) {
-                    $('#id_c_txt').show().removeClass().addClass('d1 degree-text').html('不满');
+                    $('#id_c_txt').show().removeClass().addClass('d1 degree-text').html('Bad');
                 } else if (star == 2) {
-                    $('#id_c_txt').show().removeClass().addClass('d1 degree-text').html('不满');
+                    $('#id_c_txt').show().removeClass().addClass('d1 degree-text').html('Bad');
                 } else if (star == 3) {
-                    $('#id_c_txt').show().removeClass().addClass('d3 degree-text').html('一般');
+                    $('#id_c_txt').show().removeClass().addClass('d3 degree-text').html('Medium');
                 } else if (star == 4) {
-                    $('#id_c_txt').show().removeClass().addClass('d3 degree-text').html('满意');
+                    $('#id_c_txt').show().removeClass().addClass('d3 degree-text').html('Good');
                 } else if (star == 5) {
-                    $('#id_c_txt').show().removeClass().addClass('d5 degree-text').html('赞一个');
+                    $('#id_c_txt').show().removeClass().addClass('d5 degree-text').html('Excellent');
                 }
             });
         });
@@ -340,7 +340,7 @@
                         star = $(this).attr('data-t');
                     }
                 });
-                var cont = $("[name=cont_txt]", this).val() == "商品是否给力？快分享你的购买心得吧~" ? "" : $("[name=cont_txt]", this).val();
+                var cont = $("[name=cont_txt]", this).val() == "Do you Satisfy it, Please write evaluation" ? "" : $("[name=cont_txt]", this).val();
                 var arr = {
                     "subOrderId": uid,
                     "star": star,

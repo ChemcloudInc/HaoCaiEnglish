@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "提现方式管理";
+    ViewBag.Title = "WithDraw Type List";
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
 }
 @model IEnumerable<Himall.Model.WithDrawInfo>
@@ -9,25 +9,25 @@
 
 <div class="box1 lh24">
     <div class="title bot-border">
-        <h3 class="title_txt cur">提现方式管理</h3>
+        <h3 class="title_txt cur">WithDraw Type Manage</h3>
          </div>
     
     <div class="border-box">
         <div class="mod lh24">
             <div class="pd10">
-                <a href="/withdraw/AddWithDraw" class="e-btn add-btn btn-5">新增提现方式</a>
+                <a href="/withdraw/AddWithDraw" class="e-btn add-btn btn-5">Add a New WithDraw Type</a>
             </div>
             <div class="border-box">
 
                 <table class="tb-void tb-goods" id="list">
                     <thead style="height:20px;">
                         <tr>
-                            <th>提现方式</th>
-                            <th>账号信息</th>
-                            <th>姓名</th>
-                            <th>身份证号</th>
-                            <th>手机号码</th>
-                            <th>操作</th>
+                            <th>WithDraw Type</th>
+                            <th>Account Number</th>
+                            <th>Name</th>
+                            <th>ID Card</th>
+                            <th>Mobile</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,8 +41,8 @@
                                  <td>@withDrawInfo.Mobile</td>
                                  <td>
                                      <span class="btn-a">
-                                         <a href="/withdraw/addwithdraw?id=@withDrawInfo.Id">编辑</a>
-                                         <a onclick="del(@withDrawInfo.Id,'该提现方式')">删除</a>
+                                         <a href="/withdraw/addwithdraw?id=@withDrawInfo.Id">Edit</a>
+                                         <a onclick="del(@withDrawInfo.Id,'this withdraw type')">Delete</a>
                                      </span></td>
                              </tr>
                         }
@@ -55,14 +55,14 @@
 <script>
 
     function del(id, name) {
-        $.dialog.confirm('确定要删除客服 ' + name + ' 吗？', function () {
+        $.dialog.confirm('Do you confirm to delete' + name + ' ？', function () {
             var loading = showLoading();
             $.post('/withdraw/DeleteWithDraw', { id: id }, function (result) {
                 loading.close();
                 if (result.success)
-                    $.dialog.succeedTips('删除成功!', function () { location.href = location.href });
+                    $.dialog.succeedTips('Delete Success!', function () { location.href = location.href });
                 else
-                    $.dialog.errorTips('删除失败！' + result.msg);
+                    $.dialog.errorTips('Delete Failed！' + result.msg);
             });
         });
     }

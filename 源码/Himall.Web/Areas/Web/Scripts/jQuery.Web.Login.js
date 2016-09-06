@@ -1,6 +1,6 @@
 ﻿; (function ($) {
     $(function () {
-        $('body').append('<div class="alpha hide" id="id_alpha"></div><div class="mimiBox hide" id="id_mimiBox"><div class="mimiWrap"><div class="mimiTitle"><span>您尚未登录</span></div><div class="mimiCon"><div class="mimiTitleBox"><span class="mimiCurr">登 录</span><a class="mimiLimk" href="/register">注 册</a></div><div class="mimiLog"><span class="mimiLogTitleMesg">邮箱/用户名/已验证手机</span><div class="mimiInput"><input class="mimiText" type="text" value=""><i class="i-name"></i><label id="loginname_error" class="mimiError hide">您输入的账户名不存在，请核对后重新输入</label></div><span class="mimiLogTitleMesg">密码</span><div class="mimiInput"><input class="mimiText" type="password" value=""><i class="i-pass"></i><label id="loginname_error" class="mimiError hide">您输入的账户名不存在，请核对后重新输入</label></div><span class="mimiLogTitleMesg hide" id="verification_title">验证码</span><div class="mimiInput hide" id="verification"><input class="mimiText w60 fl" type="text" value="" id="verification_input"><label class="fl" style="line-height: 26px;"><img id="verification_img" class="verification_img" src="/Login/GetCheckCode" alt="" style="cursor:pointer;width:88px;height:33px;display:block;"></label><label class="ftx23 fr" style="line-height: 26px;">&nbsp;看不清？<a class="verification_img" href="javascript:;">换一张</a></label><div class="clear"></div><label id="verification_error" class="mimiError hide">验证码不正确或验证码已过期</label></div><div class="mimiAutoentry"><label style="font-size:12px;float:left;line-height:26px;cursor:pointer;"><input class="mimiCheckbox" type="checkbox" name="chkRememberMe" style="margin:3px 3px 3px;vertical-align:middle;">自动登录</label></div><div class="mimiBtn"><input id="loginsubmitframe" class="mimi_btn" type="button" tabindex="8" value="登 录"></div></div></div><div class="mimiClose" style="cursor:pointer;">×</div></div></div>');
+        $('body').append('<div class="alpha hide" id="id_alpha"></div><div class="mimiBox hide" id="id_mimiBox"><div class="mimiWrap"><div class="mimiTitle"><span>Please Sign In</span></div><div class="mimiCon"><div class="mimiTitleBox"><span class="mimiCurr">Sign In</span><a class="mimiLimk" href="/register">Sign Up</a></div><div class="mimiLog"><span class="mimiLogTitleMesg">UserName/Email/Mobile</span><div class="mimiInput"><input class="mimiText" type="text" value=""><i class="i-name"></i><label id="loginname_error" class="mimiError hide">Account does not exist,please check it</label></div><span class="mimiLogTitleMesg">Password</span><div class="mimiInput"><input class="mimiText" type="password" value=""><i class="i-pass"></i><label id="loginname_error" class="mimiError hide">Account does not exist,please check it</label></div><span class="mimiLogTitleMesg hide" id="verification_title">Verification Code</span><div class="mimiInput hide" id="verification"><input class="mimiText w60 fl" type="text" value="" id="verification_input"><label class="fl" style="line-height: 26px;"><img id="verification_img" class="verification_img" src="/Login/GetCheckCode" alt="" style="cursor:pointer;width:88px;height:33px;display:block;"></label><label class="ftx23 fr" style="line-height: 26px;">&nbsp;No clear?<a class="verification_img" href="javascript:;">change</a></label><div class="clear"></div><label id="verification_error" class="mimiError hide">Verification code is not correct or expired</label></div><div class="mimiAutoentry"><label style="font-size:12px;float:left;line-height:26px;cursor:pointer;"><input class="mimiCheckbox" type="checkbox" name="chkRememberMe" style="margin:3px 3px 3px;vertical-align:middle;">Remember Me</label></div><div class="mimiBtn"><input id="loginsubmitframe" class="mimi_btn" type="button" tabindex="8" value="Sign In"></div></div></div><div class="mimiClose" style="cursor:pointer;">×</div></div></div>');
     });
     $.fn.login = function (selectData, callBack, targetUrl, dataUrl, verifyUrl) {
         var that = $('.mimiText'),
@@ -50,9 +50,9 @@
                                 uid = 0;
                                 str=$('#verification_input').val();
                                 if(str){
-                                    $('#verification_error').show().html('验证码错误!');
+                                    $('#verification_error').show().html('Verification Code is Error!');
                                 }else{
-                                    $('#verification_error').show().html('验证码不能为空!');
+                                    $('#verification_error').show().html('Verification Code is required!');
                                 }
                             }
                             $(elem).bind('focus', function () {
@@ -87,7 +87,7 @@
             if($('#verification').css('display')=='block'){
                 checkCode();
                 if(!uid){
-                    $('#verification_error').show().html('验证码不能为空!');
+                    $('#verification_error').show().html('Verification Code is required!');
                     return;
                 }else{
                     $('#verification_error').hide();

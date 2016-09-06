@@ -162,11 +162,11 @@ namespace Himall.Model
 
 		public enum GiftOrderStatus
 		{
-			[Description("待发货")]
+            [Description("WaitDelivery")]
 			WaitDelivery = 2,
-			[Description("待收货")]
+            [Description("WaitReceiving")]
 			WaitReceiving = 3,
-			[Description("已完成")]
+            [Description("Finished")]
 			Finish = 5
 		}
 	}

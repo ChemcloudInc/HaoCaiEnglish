@@ -1,6 +1,6 @@
 ﻿@model IQueryable<Himall.Model.TopicInfo>
 @{
-    ViewBag.Title = "精选专题";
+    ViewBag.Title = "Topics";
 }
 
 <style type="text/css">
@@ -120,7 +120,7 @@
                 $('.topic-list').append(html);
             }
             else {
-                $('#autoLoad').html('没有更多专题了');
+                $('#autoLoad').html('Not more Topics');
             }
         });
     }

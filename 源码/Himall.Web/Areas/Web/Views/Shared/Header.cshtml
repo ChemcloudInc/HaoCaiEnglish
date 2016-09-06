@@ -33,7 +33,7 @@
                 @{
                     int i = 0;
                 }
-                <strong>Hottest Search：</strong>
+                <strong>Trending searches：</strong>
                 @foreach (var hotKey in ViewBag.HotKeyWords)
                 {
                     if (i++ == 0)
@@ -139,9 +139,9 @@
         <ul class="nav cl">
             @{ IEnumerable<Himall.Model.BannerInfo> navigators = ViewBag.Navigators; }
             <li class="cur  _banner" id="homePage" index=""><a href="/">Home</a></li>
-            <li class="_banner" id="limittimebuy" index="@Url.Action("home","LimitTimeBuy")"><a href="@Url.Action("home","LimitTimeBuy")">Limit Time Buy</a></li>
+            <li class="_banner" id="limittimebuy" index="@Url.Action("home","LimitTimeBuy")"><a href="@Url.Action("home","LimitTimeBuy")">Limit Time Offer</a></li>
             <li class="_banner" index="@Url.Action("list","topic")"><a href="@Url.Action("list","topic")">Topics</a></li>
-            <li class="_banner" id="integralmall" index="@Url.Action("Index", "IntegralMall")"><a href="@Url.Action("Index", "IntegralMall")">Points Shop</a></li>
+            <li class="_banner" id="integralmall" index="@Url.Action("Index", "IntegralMall")"><a href="@Url.Action("Index", "IntegralMall")">Gift Shop</a></li>
             @foreach( var navigator in navigators )
             {
                 <li class="_banner" index="@navigator.Url"><a target="_blank" href="@navigator.Url">@navigator.Name</a></li>

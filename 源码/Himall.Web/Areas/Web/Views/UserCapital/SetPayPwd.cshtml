@@ -1,24 +1,24 @@
 ﻿
 @{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "支付密码";
+    ViewBag.Title = "Payment Password";
 }
 <div class="box1 lh24" id="step1" name="stepname">
     <div class="title bot-border">
-        <h3 class="title_txt cur">提现支付密码设置</h3>
+        <h3 class="title_txt cur">WithDraw Payment Password</h3>
     </div>
     <div class="border-box">
         <div class="user-set userset-lcol">
             <div class="form">
                 <div class="item">
-                    <span class="label">请设置密码：</span>
+                    <span class="label">Password：</span>
                     <div class="fl">
                         <input type="password" value="" id="new" name="userVo.realName" maxlength="20" class="itxt fl">
-                        <span id="new_msg" class="prompt-06" style="padding-left:10px;"></span><span>6-20位字符，可使用字母、数字或符号的组合</span>
+                        <span id="new_msg" class="prompt-06" style="padding-left:10px;"></span><span>Passwords must be alphanumeric & between 6 and 20 characters</span>
                     </div>
                 </div>
                 <div class="item">
-                    <span class="label">请确认密码：</span>
+                    <span class="label">Confirm Password：</span>
                     <div class="fl">
                         <input type="password" value="" id="confirm" name="userVo.realName" maxlength="20" class="itxt fl">
                         <span class="prompt-06" id="confirm_msg" style="padding-left:10px;"></span>
@@ -27,7 +27,7 @@
                 <div class="item">
                     <span class="label">&nbsp;</span>
                     <div class="fl">
-                        <a id="submitPwd" class="btn-5" href="javascript:;">提交</a>
+                        <a id="submitPwd" class="btn-5" href="javascript:;">Save</a>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
             var d = $(this).val();
             if (d.length < 6) {
                 $('#new').css({ borderColor: '#f60' });
-                $('#new_msg').css({ color: '#f60' }).html('密码不能少于6位!');
+                $('#new_msg').css({ color: '#f60' }).html('Passwords must be alphanumeric & between 6 and 20 characters!');
                 stae2 = '';
             } else {
                 $('#new').css({ borderColor: '#ccc' });
@@ -61,7 +61,7 @@
                 stae3 = d;
             } else {
                 $('#confirm').css({ borderColor: '#f60' });
-                $('#confirm_msg').css({ color: '#f60' }).html('两次密码不一致!');
+                $('#confirm_msg').css({ color: '#f60' }).html('Passwords does not match!');
                 stae3 = '';
             }
         });
@@ -69,11 +69,11 @@
             //console.log(stae1)
             if (!stae2) {
                 $('#new').css({ borderColor: '#f60' });
-                $('#new_msg').css({ color: '#f60' }).html('密码不能少于6位!');
+                $('#new_msg').css({ color: '#f60' }).html('Passwords must be alphanumeric & between 6 and 20 characters!');
             }
             if (!stae3) {
                 $('#confirm').css({ borderColor: '#f60' });
-                $('#confirm_msg').css({ color: '#f60' }).html('两次密码不一致!');
+                $('#confirm_msg').css({ color: '#f60' }).html('Password does not match!');
             }
             if (stae2 && stae3) {
                 var loading = showLoading();
@@ -85,7 +85,7 @@
                     success: function (data) {
                         loading.close();
                         if (data.success) {
-                            $.dialog.succeedTips('设置成功！');
+                            $.dialog.succeedTips('Update Password  successful！');
                             window.top.close();
                         }
                     }

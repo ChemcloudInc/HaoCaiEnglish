@@ -1,6 +1,7 @@
-ï»¿@{
+@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "ç¤¼å“å…‘æ¢ç®¡ç†";
+    @*ÀñÆ·¶Ò»»¹ÜÀí*@
+    ViewBag.Title = "Gifts Exchange Management";
     var status = Request["status"];
     var skey = Request["skey"];
     var jsonconfig = new Newtonsoft.Json.JsonSerializerSettings();
@@ -13,13 +14,19 @@
 
 <div class="box1 lh24">
     <div class="title bot-border">
-        <span class="title_txt"><a href="@Url.Action("Index")">æˆ‘çš„ç§¯åˆ†</a></span>
-        <span class="title_txt curr">ç¤¼å“å…‘æ¢ç®¡ç†</span>
+        @*ÎÒµÄ»ı·Ö*@
+        <span class="title_txt"><a href="@Url.Action("Index")">My Points</a></span>
+        @*ÀñÆ·¶Ò»»¹ÜÀí*@
+        <span class="title_txt curr">Gifts Exchange Management</span>
     </div>
     <div class="search-area">
-        <label>å…³é”®å­—ï¼š</label>
-        <input class="search_order" id="txtkeyword" type="text" value="å•†å“åç§°ã€è®¢å•ç¼–å·" />
-        <button class="search_btn pointer" onclick="Search()">æœç´¢</button>
+
+     @*¹Ø¼ü×Ö*@
+        <label>Key Words£º</label>
+        <input class="search_order" id="txtkeyword" type="text" value="GoodsName¡¢OrderId" />
+
+         @*ËÑË÷*@
+        <button class="search_btn pointer" onclick="Search()">Search</button>
     </div>
 
     <div class="border-box">
@@ -37,20 +44,23 @@
             </colgroup>
             <thead>
                 <tr class="tr">
-                    <th colspan="2">è®¢å•ä¿¡æ¯</th>
-                    <th>æ”¶è´§äºº</th>
-                    <th>èŠ±è´¹ç§¯åˆ†</th>
-                    <th>å…‘æ¢æ—¶é—´</th>
+                    <th colspan="2">Order Information</th>   @*¶©µ¥ĞÅÏ¢*@
+                    <th>Consignee</th>  @*ÊÕ»õÈË*@
+                    <th>Consumption Points</th>  @*»¨·Ñ»ı·Ö*@
+                    <th>Conversion Date</th>  @*¶Ò»»Ê±¼ä*@
                     <th>
                         @Html.DropDownList("status", @Himall.Model.GiftOrderInfo.GiftOrderStatus.WaitReceiving.ToSelectList(), new { onchange = "Query()" })
                     </th>
-                    <th colspan="2">æ“ä½œ</th>
+                    <th colspan="2">Operations</th>   @*²Ù×÷*@
                 </tr>
             </thead>
             <tbody>
                 @if (Model.Count() == 0)
                 {
-                    <tr><td colspan="8"><div class="empty"><b></b>æš‚æ—¶æ²¡æœ‰ä»»ä½•çš„è®¢å•ä¿¡æ¯ï¼</div></td></tr>
+
+                     @*tr><td colspan="8"><div class="empty"><b></b>ÔİÊ±Ã»ÓĞÈÎºÎµÄ¶©µ¥ĞÅÏ¢£¡</div></td></tr>*@
+
+                    <tr><td colspan="8"><div class="empty"><b></b>There is no information of orders£¡</div></td></tr>
                 }
                 @foreach (var m in Model)
                 {
@@ -59,7 +69,8 @@
                         <td class="sep-col"></td>
                         <td class="tr-th-text" colspan="6">
                             <span class="tcol1">
-                                è®¢å•ç¼–å·:@(m.Id)
+                            @*¶©µ¥±àºÅ*@
+                                OrderId:@(m.Id)
                             </span>
                         </td>
                         <td class="sep-col"></td>
@@ -82,7 +93,7 @@
                         </td>
                         <td><div class="u-name">@m.ShipTo</div></td>
                         <td>
-                            <span class="ftx-04"> @(m.TotalIntegral)ç§¯åˆ† </span>
+                            <span class="ftx-04"> @(m.TotalIntegral) points </span>
                         </td>
                         <td>
                             <span class="ftx-03">@m.OrderDate</span>
@@ -96,9 +107,10 @@
                             <input type="hidden" name="rowdata" id="rowdata-@(m.Id)" value='@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(m, jsonconfig))'>
                             @if (m.OrderStatus == Himall.Model.GiftOrderInfo.GiftOrderStatus.WaitReceiving)
                             {
-                                <a href="javascript:;" onclick="ConfirmOrder('@m.Id')" class="btn btn-4">ç¡®è®¤æ”¶è´§</a><br />
+                                <a href="javascript:;" onclick="ConfirmOrder('@m.Id')" class="btn btn-4">Confirm Received</a><br />  @*È·ÈÏÊÕ»õ*@
                             }
-                            <a href="javascript:vieworder(@(m.Id))">æŸ¥çœ‹è¯¦æƒ…</a>
+                            @* ²é¿´ÏêÇé*@
+              <a href="javascript:vieworder(@(m.Id))">For More Details</a>
                         </td>
                         <td class="sep-col r"></td>
                     </tr>
@@ -130,7 +142,7 @@
 
 
     function ConfirmOrder(orderId) {
-        $.dialog.confirm("ä½ ç¡®å®šæ”¶åˆ°è´§äº†å—ï¼Ÿ", function () { Confirm(orderId); });
+        $.dialog.confirm("Are you sure you have received the goods£¿", function () { Confirm(orderId); }); @*ÄãÈ·¶¨ÊÕµ½»õÁËÂğ*@
     }
 
     function Confirm(orderId) {
@@ -143,12 +155,16 @@
             success: function (d) {
                 loading.close();
                 if (d.success) {
-                    $.dialog.succeedTips("ç¡®è®¤æˆåŠŸï¼", function () {
+                    
+                     @*È·ÈÏ³É¹¦£¡*@
+                    $.dialog.succeedTips("Confirm successed!", function () {
                         window.location.href = window.location.href;
                     }, 1);
                 }
                 else {
-                    $.dialog.errorTips("ç¡®è®¤å¤±è´¥ï¼", '', 2);
+                   
+                     @*È·ÈÏÊ§°Ü£¡*@
+                    $.dialog.errorTips("Confirm Failed!", '', 2);
                 }
             }
         });
@@ -156,7 +172,7 @@
 
     function Search() {
         var keywords = $("#txtkeyword").val();
-        if (keywords == "å•†å“åç§°ã€è®¢å•ç¼–å·")
+        if (keywords == "GoodsName¡¢OrderId'")
             keywords = "";
         window.location.href = "?skey=" + keywords;
     }
@@ -173,13 +189,13 @@
 
         $('#txtkeyword').focus(function () {
             var a = $(this).val(),
-                b = 'å•†å“åç§°ã€è®¢å•ç¼–å·';
+                b = 'GoodsName¡¢OrderId';
             if (a == b) {
                 $(this).val('').css('color', '#333');
             }
         }).blur(function () {
             var a = $(this).val(),
-                b = 'å•†å“åç§°ã€è®¢å•ç¼–å·';
+                b = 'GoodsName¡¢OrderId';
             if (!a) {
                 $(this).val(b).css('color', '#999');
             }
@@ -213,37 +229,40 @@
         var ShipOrderNumber = data.ShipOrderNumber || "";
         var arrcontent = ['<div class="dialog-form">',
                 '<div class="form-group">',
-                    '<label class="label-inline fl">æ”¶è´§äºº</label>',
+                    '<label class="label-inline fl">Consignee</label>'@*ÊÕ»õÈË*@,
                     '<p class="help-top">' + data.ShipTo.replace(/>/g, '&gt;').replace(/</g, '&lt;') + '&nbsp;</p>',
                 '</div>',
                 '<div class="form-group">',
-                    '<label class="label-inline fl">è”ç³»ç”µè¯</label>',
+                    '<label class="label-inline fl">Telephone Number</label>'@*ÁªÏµµç»°*@,
                     '<p class="help-top">' + data.CellPhone + '&nbsp;</p>',
                 '</div>',
                  '<div class="form-group">',
-                    '<label class="label-inline fl">æ”¶è´§åœ°å€</label>',
+                    '@*ÊÕ»õµØÖ·*@<label class="label-inline fl">Address</label>',
                     '<p class="help-top">' + data.RegionFullName.replace(/>/g, '&gt;').replace(/</g, '&lt;') + " " + data.Address + '&nbsp;</p>',
                ' </div>'];
 
         if (ExpressCompanyName != "" & ShipOrderNumber != "") {
 
+             
             arrcontent = arrcontent.concat(['<div class="form-group">',
-                        '<label class="label-inline fl">å¿«é€’å…¬å¸</label>',
+                        '@*¿ìµİ¹«Ë¾*@<label class="label-inline fl">Express Company</label>',
                         '<p class="help-top" id="expselp">' + ExpressCompanyName + '&nbsp;</p>',
                    ' </div>',
                      '<div class="form-group">',
-                        '<label class="label-inline fl">å¿«é€’å•å·</label>',
+                        '<label class="label-inline fl">Tracking NO</label>'@*¿ìµİµ¥ºÅ*@,
                         '<p class="help-top">' + ShipOrderNumber + '&nbsp;</p>',
                    ' </div>']);
 
             var loading = showLoading();
-            // ç‰©æµä¿¡æ¯
+            // ÎïÁ÷ĞÅÏ¢
             $.post('/UserOrder/GetExpressData', { expressCompanyName: data.ExpressCompanyName, shipOrderNumber: ShipOrderNumber }, function (result) {
                 loading.close();
                 var html = "";
                 html += "<table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style='line-height:24px'>";
                 html += "<tbody id=\"tbody_track\">";
-                html += "<tr><th width=\"25%\"><strong>å¤„ç†æ—¶é—´</strong></th><th width=\"50%\"><strong>å¤„ç†ä¿¡æ¯</strong></th><th width=\"10%\"><strong>æ“ä½œäºº</strong></th></tr>"
+                
+                @*´¦ÀíÊ±¼ä/´¦ÀíĞÅÏ¢/²Ù×÷ÈË*@
+                html += "<tr><th width=\"25%\"><strong>Operation Time</strong></th><th width=\"50%\"><strong>Operation Information</strong></th><th width=\"10%\"><strong>Operator </strong></th></tr>"
                 html += "</tbody>";
                 html += "<tbody id=\"tbExpressData\">";
                 var obj = jQuery.parseJSON(result);
@@ -256,7 +275,10 @@
                     }
                 }
                 else {
-                    html += '<tr><td colspan="3">è¯¥å•å·æš‚æ— ç‰©æµè¿›å±•ï¼Œè¯·ç¨åå†è¯•ï¼Œæˆ–æ£€æŸ¥å…¬å¸å’Œå•å·æ˜¯å¦æœ‰è¯¯ã€‚</td></tr>';
+
+@* html += '<tr><td colspan="3">¸Ãµ¥ºÅÔİÎŞÎïÁ÷½øÕ¹£¬ÇëÉÔºóÔÙÊÔ£¬»ò¼ì²é¹«Ë¾ºÍµ¥ºÅÊÇ·ñÓĞÎó¡£</td></tr>';*@
+
+html += '<tr><td colspan="3">It hasn\'t received any progress on this Tracking NO£¬please try it again£¬or check out the company and the numbers.</td></tr>';
                 }
 
                 html += '<tr><td colspan="3"></td></tr>';
@@ -270,7 +292,9 @@
             '</div>']);
 
         $.dialog({
-            title: data.Id + ' è®¢å•æŸ¥çœ‹',
+ 
+             
+            title: data.Id + 'Details ', @*¶©µ¥²é¿´*@
             width: 500,
             lock: true,
             id: 'dlgsendgift',
@@ -278,8 +302,9 @@
             padding: '10px',
             init: function () { $("#txtRefundRemark").focus(); },
             button: [
-            {
-                name: 'å…³é—­',
+            {   
+                 @*¹Ø±Õ*@
+                name: 'CLOSE',
                 focus: true
             }
             ]

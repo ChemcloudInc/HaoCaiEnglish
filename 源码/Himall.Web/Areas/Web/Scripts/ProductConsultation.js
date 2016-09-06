@@ -4,7 +4,7 @@ testData1 = {
     "consults": [
       {
           "UserName": "007",
-          "ConsultationContent": "联想智能电视画面超清晰，还有非常多的电影电视剧可以看",
+          "ConsultationContent": "ConsultationContent",
           "ConsultationDate": "2014-09-08 12:00:00",
           "ReplyContent": "6665487",
           "ReplyDate": "2014-09-19 12:00:00"
@@ -36,12 +36,12 @@ $(function(){
             render = function (data) {
                 var str = '', i, e;
                 for (i = 0; e = data.consults[i++];) {
-                    str += '<div class="item"><div class="user"><span class="u-name">网　　友：' + e.UserName + '</span>'
+                    str += '<div class="item"><div class="user"><span class="u-name">Customer：' + e.UserName + '</span>'
                        + '<span class="date-ask">' + e.ConsultationDate + '</span>'
-                       + '<dl class="ask"><dt>咨询内容：</dt><dd>' + html_decode(e.ConsultationContent) + '</dd></dl>';
+                       + '<dl class="ask"><dt>Content：</dt><dd>' + html_decode(e.ConsultationContent) + '</dd></dl>';
                     
-                    if (e.ReplyContent != "暂无回复") {
-                        str += '<dl class="answer"><dt>商家回复：</dt><dd><div class="content">' + html_decode(e.ReplyContent) + '</></div><div class="date-answer">' + e.ReplyDate + '</div></dd></dl>';
+                    if (e.ReplyContent != "No Reply") {
+                        str += '<dl class="answer"><dt>Seller Reply：</dt><dd><div class="content">' + html_decode(e.ReplyContent) + '</></div><div class="date-answer">' + e.ReplyDate + '</div></dd></dl>';
                     }
                         str+='</div></div>';
                 }

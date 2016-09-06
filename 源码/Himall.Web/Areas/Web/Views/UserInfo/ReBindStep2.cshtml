@@ -1,24 +1,24 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "个人信息";
+    ViewBag.Title = "User Information";
 }
 
 <input type="hidden" value="@{@ViewBag.ShortName}" id="name">
 <div class="box1 lh24">
     <div class="title bot-border">
-        <h3 class="title_txt cur">验证新的@{@ViewBag.ShortName}信息</h3>
+        <h3 class="title_txt cur">Verify New @{@ViewBag.ShortName} Information</h3>
     </div>
     
     <div class="border-box">
 		<div class="yanzh_pic1 off2">
-			<span class="col">获取@{@ViewBag.ShortName}验证码</span>
-			<span>验证新@{@ViewBag.ShortName}</span>
-			<span>完成</span>
+			<span class="col">Get @{@ViewBag.ShortName} Verification Code</span>
+			<span>Verify New @{@ViewBag.ShortName}</span>
+			<span>Completed</span>
 		</div>
         <div class="user-set userset-lcol">
             <div class="form">
                 <div class="item w300">
-                    <span class="label">请输入新@{@ViewBag.ShortName}：</span>
+                    <span class="label">Please enter new @{@ViewBag.ShortName}：</span>
                     <div class="fl">
                         <input type="text" value="" id="destination" maxlength="20" class="itxt" onblur="check();">
                         <div id="msg"></div>
@@ -28,11 +28,11 @@
                 <div class="item w300">
                     <span class="label"></span>
                     <div class="fl">
-                        <input type="button" class="imput_text btn-8" id="btnAuthCode" intervaltime="60" value="获取@{@ViewBag.ShortName}验证码">
+                        <input type="button" class="imput_text btn-8" id="btnAuthCode" intervaltime="60" value="Get @{@ViewBag.ShortName} Verification Code">
                     </div>
                 </div>
                 <div class="item w300">
-                    <span class="label">验证码：</span>
+                    <span class="label">Verification Code：</span>
                     <div class="fl">
                         <input type="text" value="" id="code" maxlength="20" class="itxt">
                         <div class="clr"></div>
@@ -41,7 +41,7 @@
                 <div class="item w300">
                     <span class="label">&nbsp;</span>
                     <div class="fl">
-                        <a id="id_btn" class="btn-5">验证</a>
+                        <a id="id_btn" class="btn-5">Verify</a>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@ var count=120;
                 setTimeout(countDown1('timeDiv1', ''), 1000);
             }
             else {
-                $.dialog.errorTips('发送验证码失败：' + result.msg);
+                $.dialog.errorTips('Send Verification Code Failed：' + result.msg);
             }
         });
     });
@@ -76,7 +76,7 @@ var count=120;
         }
         $.post('/userCenter/CheckCode', { pluginId: id, code: code, destination: destination }, function (result) {
             if (result.success) {
-                $.dialog.succeedTips('验证成功！',function(){window.location.href='/Userinfo/rebindstep3?name='+($('#name').val());});
+                $.dialog.succeedTips('Verify Success！', function () { window.location.href = '/Userinfo/rebindstep3?name=' + ($('#name').val()); });
                 
             }
             else {
@@ -86,7 +86,7 @@ var count=120;
     });
     function countDown1() {
         $("#btnAuthCode").parent().parent().hide();
-        $("#msg").show().html('验证码已发送还剩下<font color="#f60">'+count+'</font>秒');
+        $("#msg").show().html('Verification Code has been sent，it remains <font color="#f60">' + count + '</font> seconds');
         if (count == 1) {
             $("#msg").hide();
             $("#btnAuthCode").parent().parent().show().removeAttr("disabled");
@@ -107,7 +107,7 @@ var count=120;
             $('#msg').hide();
             return false;
         }else{
-            $('#msg').html('<div style="color:#e4393c">请填写正确的信息!</div>');
+            $('#msg').html('<div style="color:#e4393c">Please enter correct  Information!</div>');
             return true;
         }
     }

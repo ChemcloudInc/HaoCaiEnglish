@@ -101,7 +101,7 @@ function checkCheckCode() {
                     }
                     else {
                         $('#checkCodeBox').focus();
-                        errorLabel.html('验证码错误').show();
+                        errorLabel.html('Verification Code Error').show();
                     }
                 }
             });
@@ -109,9 +109,9 @@ function checkCheckCode() {
         else {
             $('#checkCodeBox').focus();
             if (!checkCode)
-                errorLabel.html('请填写验证码').show();
+                errorLabel.html('Please enter verification code').show();
             else
-                errorLabel.html('验证码错误').show();
+                errorLabel.html('Verification Code Error').show();
         }
     }
     return result;
@@ -122,7 +122,7 @@ function checkUsername() {
     var username = $('#loginname').val();
     var loginError = $('#loginname_error');
     if (!username) {
-        loginError.html('请输入用户名').show();
+        loginError.html('Please enter username').show();
     }
     else {
         result = true;
@@ -136,7 +136,7 @@ function checkPassword() {
     var password = $('#password').val();
     var passwordError = $('#loginpwd_error');
     if (!password) {
-        passwordError.html('请输入密码').show();
+        passwordError.html('please enter password').show();
     }
     else {
         result = true;

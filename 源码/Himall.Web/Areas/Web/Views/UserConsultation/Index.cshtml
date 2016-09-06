@@ -1,12 +1,12 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "商品咨询";
+    ViewBag.Title = "Consult Manage";
 }
 @model  IEnumerable<Himall.Web.Models.ProductConsultationModel>
 
 <div class="box1 lh24">
     <div class="title">
-        <span class="title_txt cur">购买咨询</span>
+        <span class="title_txt cur">Consult Manage</span>
     </div>
     <div class="border-box">
         <table class="tb-void tb-goods">
@@ -17,15 +17,15 @@
             </colgroup>
             <thead>
                 <tr>
-                    <th>咨询商品</th>
-                    <th>商品名称</th>
-                    <th>咨询回复</th>
+                    <th>Image</th>
+                    <th>ProductName</th>
+                    <th>Content</th>
                 </tr>
             </thead>
             <tbody>
                 @if (Model.Count() == 0)
                 {
-                    <tr><td colspan="4"><div class="empty"><b></b>暂时没有咨询记录！</div></td></tr>
+                    <tr><td colspan="4"><div class="empty"><b></b>No consult records！</div></td></tr>
                 }
                 @foreach (var m in Model)
                 {
@@ -46,14 +46,14 @@
                             <div class="col3">
                                 <div class="col3q">
                                     <span title="@m.ConsultationContent" class="fore2">
-                                        我的咨询：@m.ConsultationContent.Replace("&nbsp","")
+                                        My Consult：@m.ConsultationContent.Replace("&nbsp","")
                                     </span>
                                     <span class="ftx-03 time2">@m.ConsultationDate.ToString("yyyy-MM-dd HH:mm")</span>
                                 </div>
                                 <div class="col3a mt5">
                                     @if (!string.IsNullOrWhiteSpace(m.ReplyContent))
                                     {
-                                        <div class="ftx04 col3a-lcol">商家回复：</div>
+                                        <div class="ftx04 col3a-lcol">Rely：</div>
                                         <div class="col3a-rcol">
                                             @m.ReplyContent.Replace("&nbsp","")
                                             <span class="ftx03 time">@(m.ReplyDate.HasValue ? m.ReplyDate.Value.ToString("yyyy-MM-dd HH:mm") : "")</span>
@@ -74,7 +74,7 @@
                 }
                 @Html.PageLinks((PagingInfo)ViewBag.pageInfo, x => Url.Action("Index", new { pageNo = x }))
                 <span class="page-skip">
-                    <em>&nbsp;&nbsp;共 @count 页&nbsp;&nbsp;&nbsp;&nbsp;</em>
+                    <em>Pages of @count </em>
                 </span>
             </div>
         </div>

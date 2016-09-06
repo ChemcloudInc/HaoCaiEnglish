@@ -1,12 +1,12 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "商品咨询";
+    ViewBag.Title = "";
 }
 @model IEnumerable<Himall.Model.ProductEvaluation>
 
 <div class="box1 lh24">
     <div class="title bot-border">
-        <h3 class="title_txt cur">满意度评价</h3>
+        <h3 class="title_txt cur">Product Evaluation</h3>
     </div>
     
     <div class="border-box">
@@ -19,16 +19,16 @@
             </colgroup>
             <thead>
                 <tr>
-                    <th>订单编号</th>
-                    <th>状态</th>
-                    <th>评价时间</th>
-                    <th>评价</th>
+                    <th>OrderId</th>
+                    <th>Status</th>
+                    <th>Evaluate Date</th>
+                    <th>View</th>
                 </tr>
             </thead>
             <tbody>
                 @if (Model.Count() == 0)
                 {
-                    <tr><td colspan="4"><div class="empty"><b></b>暂时没有评论记录</div></td></tr>
+                    <tr><td colspan="4"><div class="empty"><b></b>No Evaluation</div></td></tr>
                 }
                 @{var i = 0;}
                 @foreach (var m in Model)
@@ -41,11 +41,11 @@
                         <td>
                             @if (m.EvaluationStatus)
                             {
-                                <strong state="ddfk" class="ftx-02 order-statu">已评价</strong>
+                                <strong state="ddfk" class="ftx-02 order-statu">Evaluated</strong>
                             }
                             else
                             {
-                                <strong state="ddfk" class="ftx-04 order-statu">未评价</strong>
+                                <strong state="ddfk" class="ftx-04 order-statu">No Evaluate</strong>
                             }
                         </td>
                         <td>
@@ -58,12 +58,12 @@
 
                             @if (m.EvaluationStatus)
                             {
-                                <a href="@Url.Action("Details", "OrderEvaluation", new { orderId = @m.OrderId })" class="pj" title="已评价" catethird="0">查看评价</a><br>
+                                <a href="@Url.Action("Details", "OrderEvaluation", new { orderId = @m.OrderId })" class="pj" title="View" catethird="0">View</a><br>
                             }
                             else
                             {
-                                <a catethird="@m.Id" class="id_sub" title="发评价" class="pj" href="@Url.Action("Index", "OrderEvaluation", new { id = @m.OrderId })">
-                                发表评价<b class="icon-show"></b>
+                                <a catethird="@m.Id" class="id_sub" title="write review" class="pj" href="@Url.Action("Index", "OrderEvaluation", new { id = @m.OrderId })">
+                                Write Evaluation<b class="icon-show"></b>
                                 </a>
                             }
                         </td>
@@ -81,7 +81,7 @@
                     }
                     @Html.PageLinks((PagingInfo)ViewBag.pageInfo, x => Url.Action("Index", new { pageNo = x }))
                     <span class="page-skip">
-                        <em>&nbsp;&nbsp;共 @count 页&nbsp;&nbsp;&nbsp;&nbsp;</em>
+                        <em>Pages of @count </em>
                     </span>
                 </div>
             </div>
@@ -127,7 +127,7 @@
                     //
                 } else {
                     $(e).addClass('area01');
-                    $(e).val('商品是否给力？快分享你的购买心得吧~');
+                    $(e).val('Do you Satisfy it, Please write evaluation');
                 }
             });
         });

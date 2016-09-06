@@ -3,10 +3,10 @@
         <div class="m" id="succeed">
             <div class="success">
                 <div class="success-b">
-                    <h3>商品已成功加入购物车！</h3>
-                    <span style="display:none">商品数量有限，请您尽快下单并付款！</span><!--如果商品数量只有1， 提示-->
+                    <h3>Product add Shopping cart！</h3>
+                    <span style="display:none">Quantity is limited, please place the order and payment asap</span><!--如果商品数量只有1， 提示-->
                 </div>
-                <span><a href="/cart/cart" class="btn-pay">去结算</a><a href="/product/detail/@ViewBag.ProductId" class="btn-continue">继续购物</a></span>
+                <span><a href="/cart/cart" class="btn-pay">Proceed to checkout</a><a href="/product/detail/@ViewBag.ProductId" class="btn-continue">Continue Shopping</a></span>
             </div>
         </div><!--succeed end-->
     </div>
@@ -20,7 +20,7 @@
             {
                 <div class="mc" id="cart_content">
                     <!--刚加入的商品 start-->
-                    <h3>刚加入购物车的商品</h3>
+                    <h3>Products in shopping cart</h3>
                     <dl class="new">
                         <dt class="p-img"><a href="/product/detail/@(product.id)" target="_blank"><img src="@product.imgUrl" alt="" /></a></dt>
                         <dd class="p-info">
@@ -29,7 +29,7 @@
                         </dd>
                     </dl>
                     <!--其它商品 start-->
-                    <h3>您购物车中的其它商品</h3>
+                    <h3>Other products in shopping cart</h3>
 
                     @{var products = (IEnumerable<Himall.Web.Areas.Web.Models.CartItemModel>)ViewBag.Others; }
                     @foreach (var item in products)
@@ -42,8 +42,8 @@
                             </dd>
                         </dl>
                     }
-                    <div class="total">共<strong>@ViewBag.TotalCount</strong>件商品<br />金额总计：<strong>@ViewBag.Amount.ToString("F2")</strong></div>
-                    <div class="btns"><a href="/cart/cart" class="btn-pay">去结算</a></div>
+                    <div class="total"><strong>@ViewBag.TotalCount</strong> items<br />Total：<strong>@ViewBag.Amount.ToString("F2")</strong></div>
+                    <div class="btns"><a href="/cart/cart" class="btn-pay">Proceed to checkout</a></div>
                 </div>
             }
         </div><!--my-cart end-->

@@ -27,8 +27,8 @@ function bindRecieverEdit() {
                              <b>' + address.shipTo + '</b>&nbsp; ' + address.fullRegionName + ' &nbsp; ' + address.address + ' &nbsp; ' + address.phone + ' &nbsp\
                           </label>\
                           <span class="item-action">\
-                              <a href="javascript:;" onclick="showEditArea(\'' + address.id + '\')">编辑</a> &nbsp;\
-                              <a href="javascript:;" onclick="deleteAddress(\'' + address.id + '\')">删除</a>&nbsp;\
+                              <a href="javascript:;" onclick="showEditArea(\'' + address.id + '\')">Edit</a> &nbsp;\
+                              <a href="javascript:;" onclick="deleteAddress(\'' + address.id + '\')">Delete</a>&nbsp;\
                           </span>\
                       </div>';
             });
@@ -54,7 +54,7 @@ function bindAddressRadioClick() {
 
 
 function deleteAddress(id) {
-    $.dialog.confirm('您确定要删除该收货地址吗？', function () {
+    $.dialog.confirm('Are you sure to delete this shipping adrdess？', function () {
         var loading = showLoading();
         $.post('/UserAddress/DeleteShippingAddress', { id: id }, function (result) {
             loading.close();
@@ -100,7 +100,7 @@ function saveAddress(id, regionId, shipTo, address, phone, callBack) {
         if (result.success)
             callBack(result);
         else
-            $.dialog.errorTips('保存失败!' + result.msg);
+            $.dialog.errorTips('Failed!' + result.msg);
     });
 }
 
@@ -138,17 +138,17 @@ function bindSubmit() {
 
         if ($("#isInvoice").attr('checked')) {
             if (!$("input[name='invoiceType']").is(":checked")) {
-                $.dialog.tips('请选择发票类型');
+                $.dialog.tips('Please Select Invoice Type');
                 return false;
             }
             if ($("#invoiceTitle").val() == null || $("#invoiceTitle").val() == '') {
-                $.dialog.tips('请输入发票抬头');
+                $.dialog.tips('Please enter invoice title');
                 return false;
             }
         }
 
         if (!recieveAddressId)
-            $.dialog.tips('请选择或新建收货地址');
+            $.dialog.tips('Please select or create a shipping address');
         else {
             if (skuIds) {
                 action = "SubmitOrderByProductId";
@@ -206,9 +206,9 @@ function showEditArea(id) {
             createElem = function (data, elem, select, id) {// 创建元素
                 if (!data) { return; }
                 if (select) {
-                    elem.append('<option value="0">请选择</option>');
+                    elem.append('<option value="0">Please Select</option>');
                 } else {
-                    elem.append('<option value="0" selected="true">请选择</option>');
+                    elem.append('<option value="0" selected="true">Please Select</option>');
                 }
                 for (var i = 0, e; e = data[i++];) {
                     if (select == e.id) {
@@ -257,10 +257,10 @@ function showEditArea(id) {
             init = function (a, b, c) {
                 $(that[0]).html('');
                 if (b == 0) {
-                    $(that[1]).html('<option value="0">请选择</option>');
+                    $(that[1]).html('<option value="0">Please Select</option>');
                 }
                 if (c == 0) {
-                    $(that[2]).html('<option value="0">请选择</option>');
+                    $(that[2]).html('<option value="0">Please Select</option>');
                 }
                 createElem(data, province, a);
                 var cityData = fnSelect(data, a, 'city'),
@@ -349,20 +349,20 @@ function showEditArea(id) {
             var regionId = $('#consignee_county').val();
 
             if (!shipTo) {
-                $.dialog.tips('请填写收货人');
+                $.dialog.tips('Please enter Name');
                 return false;
             }
             else if (!phone) {
-                $.dialog.tips('请填写电话');
+                $.dialog.tips('Please enter telphone');
                 return false;
             }
             else if (!regionId || regionId == "0") {
-                $.dialog.tips('请填选择所在地区');
+                $.dialog.tips('please select region');
                 return false;
             }
 
             else if (!address) {
-                $.dialog.tips('请填写详细地址');
+                $.dialog.tips('please write detail address');
                 return false;
             }
             else {

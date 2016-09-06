@@ -424,7 +424,7 @@ namespace Himall.Model
 
 		public enum ActiveTypes
 		{
-			[Description("无活动")]
+			[Description("None Activity")]
 			None
 		}
 

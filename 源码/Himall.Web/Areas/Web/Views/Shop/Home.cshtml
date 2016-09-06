@@ -39,7 +39,7 @@
             }
 
             if(IsExpired=="True"){
-                $.dialog.errorTips('该店铺已过期！','',5000)
+                $.dialog.errorTips('This shop has expired！', '', 5000)
             }
         });
     </script>
@@ -85,8 +85,8 @@
                         </a>
 			<div>
                             <h3><a target="_blank" href="@Url.Action("Detail", "Product", new { id = p.Id })">@p.Name</a></h3>
-                            <p style="float:left;"><span>￥@p.Price</span></p>
-                            <p style="float:right;">已售@(p.SaleCount)件</p>
+                            <p style="float:left;"><span>$@p.Price</span></p>
+                            <p style="float:right;">Orders:@(p.SaleCount)</p>
 			</div>
                     </li>
                 }

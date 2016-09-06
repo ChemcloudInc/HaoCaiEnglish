@@ -39,7 +39,7 @@ function initGrid() {
         success: function (data) {
             var html = [];
             if (data.rows == null) {
-                html.push('<tr><td colspan="6"><div class="empty"><b></b>暂时没有选择任何产品</div></td></tr>');
+                html.push('<tr><td colspan="6"><div class="empty"><b></b>No products</div></td></tr>');
             }
             else {               
                            
@@ -64,7 +64,7 @@ function initGrid() {
                         annex += '<input class="file uploadFilebtn" type="file" name="_file" onchange="uploadfile(this,' + product.Id + ')" style="display:none;" />';
                     }
                     html.push('<td>' + annex + '</td>');
-                    html.push('<td><span class="btn-a"><a class="good-check" onclick="del(' + product.Id + ')">删除</a></span></td>');
+                    html.push('<td><span class="btn-a"><a class="good-check" onclick="del(' + product.Id + ')">Delete</a></span></td>');
                     html.push('</tr>');
                 });
             }
@@ -78,7 +78,7 @@ function initGrid() {
 }
 
 function del(id) {
-    $.dialog.confirm('确定要删除该商品吗?', function () {
+    $.dialog.confirm('Are you sure you want to delete it?', function () {
         var loading = showLoading();
         $.post('/UserPurchase/DeleteItem', { id: id }, function (result) {
             loading.close();
@@ -86,7 +86,7 @@ function del(id) {
                 initGrid();
             }
             else
-                $.dialog.errorTips('删除失败！' + result.msg);
+                $.dialog.errorTips('Delete Failed！' + result.msg);
         });
     });
 }
@@ -109,7 +109,7 @@ function initUpdateQuantity() {
         var quantity = $(this).val();
         var quantity = parseInt(quantity);
         if (isNaN(quantity)) {
-            $.dialog.errorTips('数字格式不正确');
+            $.dialog.errorTips('Number format is incorrect');
             $(this).val(1);
         }
         else {
@@ -120,7 +120,7 @@ function initUpdateQuantity() {
                     // $.dialog.tips('更新数量成功');
                 }
                 else
-                    $.dialog.errorTips('更新数量失败！' + result.msg);
+                    $.dialog.errorTips('Update Quantity Failed！' + result.msg);
             });
         }
     });
@@ -131,12 +131,12 @@ function uploadfile(target,id) {
     var AttaHideFile = $(target).parent().find("input:hidden").eq(0); //附件隐藏域
     var SpanAtta = $(target).parent().find(".spanAttaSrc").eq(0); //文件名显示span
     if (attaupfile.val() == "") {
-        $.dialog.errorTips("请选择要上传的文件！");
+        $.dialog.errorTips("Please select a file to upload！");
         return false;
     }
     else {
         if (!checkImgType(attaupfile.val())) {
-            $.dialog.errorTips("上传格式为gif、jpeg、jpg、png、bmp、txt、doc、docx、xls、xlsx、ppt、pptx、zip、rar", '', 3);
+            $.dialog.errorTips("File format:gif、jpeg、jpg、png、bmp、txt、doc、docx、xls、xlsx、ppt、pptx、zip、rar", '', 3);
             return false;
         }
     }
@@ -157,7 +157,7 @@ function uploadfile(target,id) {
     //开始模拟提交表当。
     form.ajaxSubmit({
         success: function (data) {
-            if (data == "NoFile" || data == "Error" || data == "格式不正确！") {
+            if (data == "NoFile" || data == "Error" || data == "format is incorret！") {
                 $.dialog.errorTips(data);
 
                 $(fu1).insertAfter($("span.spanAttaSrc", $(AttaHideFile).parent()));
@@ -210,7 +210,7 @@ function updateAnnex(id,url)
             // $.dialog.tips('更新数量成功');
         }
         else
-            $.dialog.errorTips('更新数量失败！' + result.msg);
+            $.dialog.errorTips('Update Quantity Failed！' + result.msg);
     });
 }
 
@@ -227,7 +227,7 @@ function GetSkus(id,pid, value,t)
             if (data != null && data != undefined && data.length > 0) {
                 var sel = [];
                 sel.push('<select class="itxt" id="sel' + id + '" onchange="updateSkuid(' + id + ')">');
-                sel.push('<option value="">请选择</option>');
+                sel.push('<option value="">Please Select</option>');
                 var skus = "";
                 for (var i = 0; i < data.length; i++) {
                     var sku = "";
@@ -290,7 +290,7 @@ function updateSkuid(id)
             // $.dialog.tips('更新规格成功');
         }
         else
-            $.dialog.alert('更新规格失败！' + result.msg);
+            $.dialog.alert('Update Specification Failed！' + result.msg);
     });
 }
 
@@ -303,13 +303,13 @@ function initList() {
         success: function (data) {
             var html = [];
             if (data.rows == null) {
-                html.push('<tr><td colspan="5"><div class="empty"><b></b>暂时没有选择任何产品</div></td></tr>');
+                html.push('<tr><td colspan="5"><div class="empty"><b></b>No Products</div></td></tr>');
             }
             else {
                 $.each(data.rows, function (i, product) {
                     html.push('<tr class="tr-td">');
                     html.push('<td align="left"><a target="_blank" href="/product/Detail/' + product.ProductId + '"> <img width="50" height="50" title="" src="' + product.ThumbnailsUrl + '"/>' + product.ProductName + '</a></td>');
-                    html.push('<td class="ftx-04">￥' + product.SalePrice + '</td>');
+                    html.push('<td class="ftx-04">$' + product.SalePrice + '</td>');
                     var spec = GetSkus(product.Id, product.ProductId, product.SkuId, 2);
                     html.push('<td>' + spec + '</td>');
                     html.push('<td>' + product.Quantity + '</td>');
