@@ -24,7 +24,7 @@ $(function () {
 			url: './list',
 			nowrap: false,
 			rownumbers: true,
-			NoDataMsg: '没有找到符合条件的数据',
+			NoDataMsg: 'Not found any data',
 			border: false,
 			fit: true,
 			fitColumns: true,
@@ -36,27 +36,27 @@ $(function () {
 			queryParams: { complaintStatus:val },
 			columns:
 			[[
-				{ field: "OrderId", title: '订单号', width: 120 },
-				{ field: "UserName", title: "买家", width: 100, align: "left" },
-				{ field: "ComplaintDate", title: "投诉日期", width: 100, align: "left" },
+				{ field: "OrderId", title: 'Order no.', width: 120 },
+				{ field: "UserName", title: "Buyer", width: 100, align: "left" },
+				{ field: "ComplaintDate", title: "Complain date", width: 100, align: "left" },
                 {
-                    field: "OrderTotalAmount", title: "实付金额", width: 100, align: "left",
+                    field: "OrderTotalAmount", title: "Amount paid", width: 100, align: "left",
                     formatter: function (value, row, index) {
                         var html = "<span class='ftx-04'>" + '￥' + value + "</span>";
                         return html;
                     }
                 },				
-				{ field: "PaymentTypeName", title: "支付方式", width: 100, align: "left" },
-				{ field: "UserPhone", title: "联系方式", width: 100, align: "left" },
-				{ field: "ComplaintStatus", title: "状态", width: 100, align: "left" },
+				{ field: "PaymentTypeName", title: "Payment method", width: 100, align: "left" },
+				{ field: "UserPhone", title: "Contact", width: 100, align: "left" },
+				{ field: "ComplaintStatus", title: "Status", width: 100, align: "left" },
 				{
-					field: "operation", operation: true, title: "操作",
+					field: "operation", operation: true, title: "Operation",
 					formatter: function (value, row, index) {
 						var html = ["<span class=\"btn-a\">"];
 					   
 						html.push("<a class=\"good-check\" onclick=\"OpenComplaintReason('" + row.OrderId + "','" + row.ComplaintReason.replace(/\'/g, "’").replace(/\"/g, "“") + "')\">查看投诉</a>");
 	
-						if (row.ComplaintStatus == "等待商家处理") {
+						if (row.ComplaintStatus == "Wait for processing") {
 						    html.push("<a class=\"good-check\" onclick=\"OpenDealComplaint('" + row.Id + "','" + row.OrderId + "','" + row.ComplaintReason.replace(/\'/g, "’").replace(/\"/g, "“") + "','" + row.ShopPhone + "','" + row.UserPhone + "')\">完成处理</a>");
 						}
 						else {
@@ -104,23 +104,23 @@ function OpenDealComplaint(id, orderId, complaintReason, shopPhone, userPhone) {
         id: 'goodCheck',
         content: ['<div class="dialog-form">',
 				'<div class="form-group">',
-					'<label class="label-inline fl">订单号</label>',
+					'<label class="label-inline fl">Order no.</label>',
 					'<p class="only-text">' + orderId + '</p>',
 				'</div>',
 				'<div class="form-group">',
-					'<label class="label-inline fl">投诉原因</label>',
+					'<label class="label-inline fl">Reasons for complaint</label>',
 					'<p class="only-text">' + complaintReason + '</p>',
 				'</div>',				
 				'<div class="form-group">',
-					'<label class="label-inline fl">会员联系方式</label>',
+					'<label class="label-inline fl">Buyer contact</label>',
 					'<p class="only-text">' + userPhone + '</p>',
 				'</div>',
 				'<div class="form-group">',
-					'<label class="label-inline fl">商家联系方式</label>',
+					'<label class="label-inline fl">Seller contact</label>',
 					'<p class="only-text">' + shopPhone + '</p>',
 				'</div>',
                 '<div class="form-group">',
-                    '<label class="label-inline fl">回复买家</label>',
+                    '<label class="label-inline fl">Reply to buyer</label>',
                     '<textarea class="form-control" cols="38" rows="3" id="txtReply"></textarea>',
                 '</div>',
 			'</div>'].join(''),
@@ -145,11 +145,11 @@ function OpenComplaintReason(orderId, complaintReason, sellerReply) {
         id: 'goodCheck',
         content: ['<div class="dialog-form">',
 				'<div class="form-group">',
-					'<label class="label-inline fl">订单号</label>',
+					'<label class="label-inline fl">Order no.</label>',
 					'<p class="only-text">'+orderId+'</p>',
 				'</div>',
 				'<div class="form-group">',
-					'<label class="label-inline fl">投诉原因</label>',
+					'<label class="label-inline fl">Reasons for complaint</label>',
 					'<p class="only-text">' + complaintReason + '</p>',
 				'</div>',
 			'</div>'].join(''),
@@ -163,12 +163,12 @@ function DealComplaint(id, reply) {
     $.post('./DealComplaint', { id: id, reply: reply }, function (result) {
         loading.close();
         if (result.success) {
-            $.dialog.succeedTips("操作成功！");
+            $.dialog.succeedTips("Successful operation!");
             var pageNo = $("#list").hiMallDatagrid('options').pageNumber;
             $("#list").hiMallDatagrid('reload', { pageNumber: pageNo });
         }
         else
-            $.dialog.errorTips("操作失败");
+            $.dialog.errorTips("Operation failed");
     });
 }
 

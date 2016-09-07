@@ -58,9 +58,9 @@ namespace Himall.Web.Areas.Admin.Models.Product
 			set;
 		}
 
-		[MaxLength(12, ErrorMessage="分类名称不能多于12个字符")]
-		[RegularExpression("^[a-zA-Z0-9_\\u4e00-\\u9fa5]+$", ErrorMessage="分类名称由汉字、字母、数字下划线组成")]
-		[Required(ErrorMessage="分类名称必填,且不能多于12个字符")]
+	//	[MaxLength(12, ErrorMessage="分类名称不能多于12个字符")]
+	//	[RegularExpression("^[a-zA-Z0-9_\\u4e00-\\u9fa5]+$", ErrorMessage="分类名称由汉字、字母、数字下划线组成")]
+	//	[Required(ErrorMessage="分类名称必填,且不能多于12个字符")]
 		public string Name
 		{
 			get;

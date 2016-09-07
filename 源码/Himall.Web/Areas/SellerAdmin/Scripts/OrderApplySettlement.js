@@ -11,7 +11,7 @@
             url: './listAccountType',
             nowrap: false,
             rownumbers: true,
-            NoDataMsg: '没有可申请结算的订单',
+            NoDataMsg: 'Not found any orders.',
             border: false,
             fit: true,
             fitColumns: true,
@@ -28,7 +28,7 @@
                 {
                     checkbox: true, witdh: 35, formatter: function ( value, row, index )
                     {
-                        if ( row.OrderStatus == "待发货" )
+                        if ( row.OrderStatus == "Pending delivery" )
                         {
                             return '<input type="checkbox" disabled>';
                         }
@@ -36,15 +36,15 @@
                     }
                 },
 				{
-				    field: "OrderId", title: '订单号', width: 160, align: "left",
+				    field: "OrderId", title: 'Order no.', width: 160, align: "left",
 				    formatter: function (value, row, index) {
 				        return '<img src="' + row.IconSrc + '" title="' + row.PlatformText + '订单" width="16" />' + value;
 				    }
 				},
-				{ field: "UserName", title: "买家", width: 120, align: "left" },
-				{ field: "OrderDate", title: "下单时间", width: 140, align: "left" },
+				{ field: "UserName", title: "Buyer", width: 120, align: "left" },
+				{ field: "OrderDate", title: "Order time", width: 140, align: "left" },
 				{
-				    field: "TotalPrice", title: "订单总额", width: 120, align: "right",
+				    field: "TotalPrice", title: "Order total", width: 120, align: "right",
 				    formatter: function (value, row, index) {
 				        var html = "<span class='ftx-04'>" + '￥' + value.toFixed(2) + "</span>";
 				        return html;
@@ -52,7 +52,7 @@
 				},
 			//{ field: "PaymentTypeName", title: "支付方式", width: 120, align: "left" },
 			{
-			    field: "OrderStatus", title: "订单状态", width: 100, align: "center",
+			    field: "OrderStatus", title: "Order status", width: 100, align: "center",
 			    formatter: function (value, row, index) {
 			        var html = ["<span class='ordstbox'>"];
 			        switch (row.RefundStats) {
@@ -62,7 +62,7 @@
 			            case 4:
 			                break;
 			            default:
-			                html.push("<i class='refundico' title='有待处理退款'>有退款</i>");
+			                html.push("<i class='refundico' title='有待处理退款'>refund</i>");
 			                break;
 			        }
 			        html.push(row.OrderStatus);
@@ -70,13 +70,13 @@
 			        return html.join("");
 			    }
 			},
-            { field: "AccountType", title: "结算状态", width: 80, align: "center" },
+            { field: "AccountType", title: "Order status", width: 80, align: "center" },
 			{
-			    field: "operation", operation: true, title: "操作",
+			    field: "operation", operation: true, title: "Operation",
 			    formatter: function (value, row, index) {
 			        var id = row.OrderId.toString();
 			        var html = ["<span class=\"btn-a\">"];
-			        html.push("<a href='./Detail/" + id + "'>查看</a>");
+			        html.push("<a href='./Detail/" + id + "'>view</a>");
 
 			        html.push("</span>");
 			        return html.join("");
@@ -94,7 +94,7 @@
         var endDate = $("#inputEndDate").val();
         var orderId = $.trim($('#txtOrderId').val());
         if (isNaN(orderId)) {
-            $.dialog.errorTips("请输入正确的查询订单号"); return false;
+            $.dialog.errorTips("Please enter right order code."); return false;
         }
         var userName = $.trim($('#txtUserName').val());
         var orderType = $("#orderType").val();

@@ -3,9 +3,9 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>客服管理</strong>
-        <li class="active"><a>管理</a></li>
-        <li><a href="add">新增</a></li>
+        <strong>Customer Service</strong>
+        <li class="active"><a>Management</a></li>
+        <li><a href="add">Add</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -18,11 +18,11 @@
     <table class="table mt20">
         <thead>
             <tr>
-                <th>客服名称</th>
-                <th style="text-align:center">沟通工具</th>
-                <th style="text-align:center">账号</th>
-                <th style="text-align:center">客服类型</th>
-                <th class="td-operate">操作</th>
+                <th>Customer Service Name</th>
+                <th style="text-align:center">Communication Tools</th>
+                <th style="text-align:center">Account</th>
+                <th style="text-align:center">Customer Service Type</th>
+                <th class="td-operate">Operation</th>
             </tr>
         </thead>
         <tbody>
@@ -35,8 +35,8 @@
                     <td align="center">@customerService.Type.ToDescription()</td>
                     <td class="td-operate">
                         <span class="btn-a">
-                             <a href="add?id=@customerService.Id">编辑</a>
-                             <a onclick="del(@customerService.Id,'@customerService.Name')">删除</a>
+                             <a href="add?id=@customerService.Id">edit</a>
+                             <a onclick="del(@customerService.Id,'@customerService.Name')">delete</a>
                         </span>
                     </td>
                 </tr>
@@ -47,14 +47,14 @@
 <script>
 
     function del(id,name) {
-        $.dialog.confirm('确定要删除客服 '+name+' 吗？',function(){
+        $.dialog.confirm('Are you sure you delete customer service '+name+'?',function(){
             var loading = showLoading();
             $.post('delete',{id:id},function(result){
                 loading.close();
                 if(result.success)
-                    $.dialog.succeedTips('删除成功!',function(){location.href=location.href});
+                    $.dialog.succeedTips('Delete successfully!',function(){location.href=location.href});
                 else
-                    $.dialog.errorTips('删除失败！'+result.msg);
+                    $.dialog.errorTips('Delete failed'+result.msg);
             });
         });
     }

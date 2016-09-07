@@ -99,13 +99,13 @@ namespace Himall.Model
 
 		public enum ComplaintStatus
 		{
-			[Description("等待商家处理")]
+            [Description("Wait for processing")]          //等待商家处理
 			WaitDeal = 1,
-			[Description("商家处理完成")]
+            [Description("Have processed")]               //商家处理完成
 			Dealed = 2,
-			[Description("等待平台介入")]
+            [Description("Wait for the platform")]         //等待平台介入
 			Dispute = 3,
-			[Description("已结束")]
+			[Description("Finished")]                      //已结束
 			End = 4
 		}
 	}

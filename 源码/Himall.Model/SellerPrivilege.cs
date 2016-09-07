@@ -31,7 +31,7 @@ namespace Himall.Model
 		OrderRefund = 3002,
 		[Privilege("Sale", "Refund Goods", 3003, "orderrefund/management?showtype=3", "orderrefund", "")]
 		OrderGoodsRefund = 3003,
-        [Privilege("Sale", "Trade Complaints", 3004, "ordercomplaint/management", "ordercomplaint", "")]
+        [Privilege("Sale", "Order Complaint", 3004, "ordercomplaint/management", "ordercomplaint", "")]
 		OrderComplaint = 3004,
         [Privilege("Sale", "Freight Management", 3006, "FreightTemplate/Index", "FreightTemplate", "")]
 		FreightTemplate = 3006,

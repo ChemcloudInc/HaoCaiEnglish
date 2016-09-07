@@ -48,9 +48,9 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>订单投诉</strong>
-        <li type="statusTab"><a>所有记录</a></li>      
-        <li value="1" type="statusTab"><a>未处理</a></li>
+        <strong>Order complaint</strong>
+        <li type="statusTab"><a>all orders</a></li>      
+        <li value="1" type="statusTab"><a>Untreated</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -63,32 +63,32 @@
     <div class="search-box" id="search-box">
         <form class="custom-inline" role="form">
             <div class="form-group">
-                <label class="label-inline" for="">开始日期</label>
+                <label class="label-inline" for="">Start date</label>
                 <input id="inputStartDate" class="form-control input-ssm start_datetime" type="text" >
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">结束日期</label>
+                <label class="label-inline" for="">Finish date</label>
                 <input id="inputEndDate" class="form-control input-ssm end_datetime" type="text" >
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">订单编号</label>
+                <label class="label-inline" for="">Order no.</label>
                 <input class="form-control input-ssm" type="text" id="txtOrderId">
             </div>          
             <div class="form-group">
-                <label class="label-inline" for="">投诉会员</label>
+                <label class="label-inline" for="">Name</label>
                 <input class="form-control input-ssm" type="text" id="txtUserName">
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">状态</label>
+                <label class="label-inline" for="">Status</label>
                 <select class="form-control input-ssm" id="slelctStatus">
-                    <option>状态</option>
-                    <option value="1">待处理</option>
-                    <option value="2">已处理</option>
-                    <option value="3">有纠纷</option>
-                    <option value="4">已结束</option>
+                    <option>status</option>
+                    <option value="1">not treated</option>
+                    <option value="2">have treated</option>
+                    <option value="3">have trouble</option>
+                    <option value="4">finished</option>
                 </select>
             </div>
-            <div class="submit"><button type="button" id="searchButton" class="btn btn-primary btn-sm">搜 索</button></div>
+            <div class="submit"><button type="button" id="searchButton" class="btn btn-primary btn-sm">Search</button></div>
         </form>
     </div>
     <table id="list" class="table"></table>

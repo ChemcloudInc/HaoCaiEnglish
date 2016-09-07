@@ -18,7 +18,7 @@ $(function () {
             url: './list',
             nowrap: false,
             rownumbers: true,
-            NoDataMsg: '没有找到符合条件的数据',
+            NoDataMsg: 'Not found any orders.',
             border: false,
             fit: true,
             fitColumns: true,
@@ -35,7 +35,7 @@ $(function () {
                 {
                     checkbox: true, witdh: 35, formatter: function ( value, row, index )
                     {
-                        if ( row.OrderStatus == "待付款" || row.OrderStatus == "已关闭" )
+                        if (row.OrderStatus == "Pending payment" || row.OrderStatus == "Closed")
                         {
                             return '<input type="checkbox" disabled>';
                         }
@@ -50,15 +50,15 @@ $(function () {
                 //    }
                 //},
 				{
-				    field: "OrderId", title: '订单号', width: 200, align: "left",
+				    field: "OrderId", title: 'Order no.', width: 200, align: "left",
 				    formatter: function (value, row, index) {
 				        return '<img src="' + row.IconSrc + '" title="' + row.PlatformText + '订单" width="16" />' + value;
 				    }
 				},
-				{ field: "UserName", title: "买家", width: 120, align: "left" },
-				{ field: "OrderDate", title: "下单时间", width: 140, align: "left" },
+				{ field: "UserName", title: "Buyer", width: 120, align: "left" },
+				{ field: "OrderDate", title: "Order time", width: 140, align: "left" },
 				{
-				    field: "TotalPrice", title: "订单总额", width: 120, align: "right",
+				    field: "TotalPrice", title: "Order total", width: 120, align: "right",
 				    formatter: function (value, row, index) {
 				        var html = "<span class='ftx-04'>" + '￥' + value.toFixed(2) + "</span>";
 				        return html;				        
@@ -66,7 +66,7 @@ $(function () {
 				},
 			//{ field: "PaymentTypeName", title: "支付方式", width: 120, align: "left" },
 			{
-			    field: "OrderStatus", title: "订单状态", width: 100, align: "center",
+			    field: "OrderStatus", title: "Order status", width: 100, align: "center",
 			    formatter: function (value, row, index) {
 			        var html = ["<span class='ordstbox'>"];               
 			        switch(row.RefundStats)
@@ -77,7 +77,7 @@ $(function () {
 			            case 4:
 			                break;
 			            default:
-			                html.push("<i class='refundico' title='有待处理退款'>有退款</i>");
+			                html.push("<i class='refundico' title='有待处理退款'>refund</i>");
                             break;
 			        }
 			        html.push(row.OrderStatus);
@@ -86,17 +86,17 @@ $(function () {
 			    }
 			},
 			{
-			    field: "operation", operation: true, title: "操作",
+			    field: "Operation", operation: true, title: "Operation",
 			    formatter: function (value, row, index) {
 			        var id = row.OrderId.toString();
 			        var html = ["<span class=\"btn-a\">"];
-			        html.push("<a href='./Detail/" + id + "'>查看</a>");
-			        if (row.OrderStatus == "待付款") {
-			            html.push("<a href='./Detail/" + id + "?&updatePrice=" + true + "'>改价</a>");
-			            html.push("<a class=\"good-check\" onclick=\"OpenCloseOrder('" + id + "')\">取消</a>");
+			        html.push("<a href='./Detail/" + id + "'>view</a>");
+			        if (row.OrderStatus == "Pending payment") {
+			            html.push("<a href='./Detail/" + id + "?&updatePrice=" + true + "'>adjust</a>");
+			            html.push("<a class=\"good-check\" onclick=\"OpenCloseOrder('" + id + "')\">cancel</a>");
 			        }
-			        if (row.OrderStatus == "待发货") {
-			            html.push("<a href='./SendGood?ids=" + id + "'>发货</a>");
+			        if (row.OrderStatus == "Pending delivery") {
+			            html.push("<a href='./SendGood?ids=" + id + "'>deliver</a>");
 			        }
 			        html.push("</span>");
 			        return html.join("");
@@ -123,7 +123,7 @@ $(function () {
         var endDate = $("#inputEndDate").val();
         var orderId = $.trim($('#txtOrderId').val());
         if (isNaN(orderId)) {
-            $.dialog.errorTips("请输入正确的查询订单号"); return false;
+            $.dialog.errorTips("Please enter right order code."); return false;
         }
         var userName = $.trim($('#txtUserName').val());
         var orderType = $("#orderType").val();
@@ -140,7 +140,7 @@ $(function () {
                 $('#txtOrderId').val('');
                 $('#txtuserName').val('');
                 if ($(this).attr('value') == 0 || $(this).attr('value') == 2) {
-                    var html = '<a href="javascript:downloadOrderList()" class="btn btn-default btn-ssm">订单配货表</a><a href="myPreview()" class="btn btn-default btn-ssm">打印发货单</a><a href="printOrders()" class="btn btn-default btn-ssm">打印快递单</a><a href="sendGood()" class="btn btn-default btn-ssm">批量发货</a>';
+                    var html = '<a href="javascript:downloadOrderList()" class="btn btn-default btn-ssm">Ditribution table</a><a href="myPreview()" class="btn btn-default btn-ssm">Print invoices</a><a href="printOrders()" class="btn btn-default btn-ssm">Print express</a><a href="sendGood()" class="btn btn-default btn-ssm">Batching delivery</a>';
                     $(".tabel-operate").html('');
                     $(".tabel-operate").append(html);
                 }
@@ -161,7 +161,7 @@ $(function () {
 function downloadProductList() {
     var ids = getSelectedIds();
     if (ids.length <= 0) {
-        $.dialog.tips('请至少选择一个订单');
+        $.dialog.tips('Please select at least one order.');
         return false;
     }
 
@@ -171,7 +171,7 @@ function downloadProductList() {
 function downloadOrderList() {
     var ids = getSelectedIdsNew();
     if (ids.length <= 0) {
-        $.dialog.tips('请至少选择一个订单');
+        $.dialog.tips('Please select at least one order.');
         return false;
     }
 
@@ -196,7 +196,7 @@ function loadIframeURL(url) {
 function myPreview() {
     var orderIds = getSelectedIds();
     if (orderIds.length <= 0) {
-        $.dialog.tips('请至少选择一个订单');
+        $.dialog.tips('Please select at least one order.');
         return false;
     }
 
@@ -219,7 +219,7 @@ function myPreview() {
 function sendGood() {
     var orderIds = getSelectedIdsNew();
     if (orderIds.length <= 0) {
-        $.dialog.tips('请至少选择一个订单');
+        $.dialog.tips('Please select at least one order.');
         return false;
     }
 
@@ -233,7 +233,7 @@ function OpenCloseOrder(orderId) {
         id: 'goodCheck',
         content: ['<div class="dialog-form">',
             '<div class="form-group">',
-                '<p class="help-top">确认要取消订单吗？取消后订单将会是关闭状态。</p>',
+                '<p class="help-top">Are you sure you cancel the order?if so,the order would be closed.</p>',
             '</div>',
         '</div>'].join(''),
         padding: '10px',
@@ -253,12 +253,12 @@ function CloseOrder(orderId) {
     $.post('./CloseOrder', { orderId: orderId }, function (result) {
         loading.close();
         if (result.success) {
-            $.dialog.succeedTips("操作成功！");
+            $.dialog.succeedTips("Successful operation!");
             var pageNo = $("#list").hiMallDatagrid('options').pageNumber;
             $("#list").hiMallDatagrid('reload', { pageNumber: pageNo });
         }
         else
-            $.dialog.errorTips("操作失败");
+            $.dialog.errorTips("Operation failed!");
     });
 }
 
@@ -286,7 +286,7 @@ function getSelectedIdsNew() {
 function printOrders() {
     var ids = getSelectedIdsNew();
     if (ids.length == 0)
-        $.dialog.tips('请至少选择一个订单');
+        $.dialog.tips('Please select at least one order.');
     else
         location.href = "print?orderIds=" + ids.toString();
 }

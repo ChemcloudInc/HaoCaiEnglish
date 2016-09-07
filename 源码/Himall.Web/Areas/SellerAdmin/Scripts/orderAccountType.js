@@ -50,7 +50,7 @@ $(function () {
 				},
 			//{ field: "PaymentTypeName", title: "支付方式", width: 120, align: "left" },
 			{
-			    field: "OrderStatus", title: "Status", width: 100, align: "center",
+			    field: "OrderStatus", title: "Order status", width: 100, align: "center",
 			    formatter: function (value, row, index) {
 			        var html = ["<span class='ordstbox'>"];
 			        switch (row.RefundStats) {
@@ -68,13 +68,13 @@ $(function () {
 			        return html.join("");
 			    }
 			},
-            { field: "AccountType", title: "结算状态", width: 80, align: "center" },
+            { field: "AccountType", title: "Settlement status", width: 130, align: "center" },
 			{
-			    field: "operation", operation: true, title: "操作",
+			    field: "operation", operation: true, title: "operation",
 			    formatter: function (value, row, index) {
 			        var id = row.OrderId.toString();
 			        var html = ["<span class=\"btn-a\">"];
-			        html.push("<a href='./Detail/" + id + "'>查看</a>");
+			        html.push("<a href='./Detail/" + id + "'>view</a>");
 			        
 			        html.push("</span>");
 			        return html.join("");
@@ -92,7 +92,7 @@ $(function () {
         var endDate = $("#inputEndDate").val();
         var orderId = $.trim($('#txtOrderId').val());
         if (isNaN(orderId)) {
-            $.dialog.errorTips("请输入正确的查询订单号"); return false;
+            $.dialog.errorTips("Please enter right order number."); return false;
         }
         var userName = $.trim($('#txtUserName').val());
         var orderType = $("#orderType").val();

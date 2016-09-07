@@ -22,27 +22,27 @@
         showtype = 0;
     }
     datacols = [[
-            { field: "OrderId", title: '订单号', width: 120 },
-            { field: "ProductName", title: "商品", width: 280, align: "left" },
-            { field: "UserName", title: "买家", width: 80, align: "left" },
-            { field: "ApplyDate", title: "申请日期", width: 80, align: "left" },
+            { field: "OrderId", title: 'Order no.', width: 120 },
+            { field: "ProductName", title: "Products", width: 280, align: "left" },
+            { field: "UserName", title: "Buyer", width: 80, align: "left" },
+            { field: "ApplyDate", title: "Application date", width: 120, align: "left" },
             {
-                field: "Amount", title: "退款金额", width: 90, align: "left",
+                field: "Amount", title: "Refund amount", width: 90, align: "left",
                 formatter: function (value, row, index) {
-                    return '￥' + value;
+                    return '$' + value;
                 }
             }]];
     switch (showtype) {
         case 0:
         case 3:
-            datacols[0].push({ field: "ReturnQuantity", title: "退货数量", width: 80, align: "center" });
+            datacols[0].push({ field: "ReturnQuantity", title: "Return quantity", width: 80, align: "center" });
             break;
     }
 
     datacols[0] = datacols[0].concat([
-        { field: "RefundStatus", title: "退款状态", width: 90, align: "center" },
+        { field: "RefundStatus", title: "Refund status", width: 90, align: "center" },
         {
-            field: "operation", operation: true, title: "操作",
+            field: "operation", operation: true, title: "Operation",
             formatter: function (value, row, index) {
                 var html = ["<span class=\"btn-a\">"];
                 html.push("<input type=\"hidden\" name=\"rowdata\" id=\"rowdata-" + row.RefundId + "\" value='" + jQuery.toJSON(row) + "'>");
@@ -68,7 +68,7 @@
         url: './list?showtype=' + showtype,
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的退款退货记录',
+        NoDataMsg: 'Not found any records.',
         border: false,
         fit: true,
         fitColumns: true,

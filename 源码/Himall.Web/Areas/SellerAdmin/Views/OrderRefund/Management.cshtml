@@ -2,20 +2,20 @@
     ViewBag.Title = "OrderRefund";
     int? showtype = (int?)ViewBag.ShowType;
     showtype = showtype ?? 0;   //初始显示所有
-    string pagename = "所有记录";
+    string pagename = "All records";
     switch (showtype)
     {
         case 1:
-            pagename = "订单退款";
+            pagename = "Order refund";
             break;
         case 2:
-            pagename = "退款记录";
+            pagename = "Refund records";
             break;
         case 3:
-            pagename = "退货记录";
+            pagename = "Return records";
             break;
         case 4:
-            pagename = "货品退款";
+            pagename = "Products refund";
             break;
     }
    }
@@ -71,7 +71,7 @@
     <ul class="nav nav-tabs-custom clearfix">
         <strong>退货退款</strong>
         <li type="statusTab" class="active"><a>@(pagename)</a></li>
-        <li value="1" type="statusTab"><a>待处理</a></li>
+        <li value="1" type="statusTab"><a>Pending treatment</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -84,26 +84,26 @@
     <div class="search-box">
         <form class="custom-inline" role="form">
             <div class="form-group">
-                <label class="label-inline" for="">开始日期</label>
+                <label class="label-inline" for="">Start date</label>
                 <input id="inputStartDate" class="form-control input-ssm start_datetime" type="text" >
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">结束日期</label>
+                <label class="label-inline" for="">Finish date</label>
                 <input id="inputEndDate" class="form-control input-ssm end_datetime" type="text" >
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">订单编号</label>
+                <label class="label-inline" for="">Order no.</label>
                 <input class="form-control input-ssm" type="text" id="txtOrderId">
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">商品名称</label>
+                <label class="label-inline" for="">Name</label>
                 <input class="form-control input-ssm" type="text" id="txtProductName">
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">买家</label>
+                <label class="label-inline" for="">Buyer</label>
                 <input class="form-control input-ssm" type="text" id="txtUserName">
             </div>
-            <div class="submit"><button type="button" class="btn btn-primary btn-sm" id="searchButton">搜 索</button></div>
+            <div class="submit"><button type="button" class="btn btn-primary btn-sm" id="searchButton">Search</button></div>
         </form>
     </div>
     <table id="list" class="table"></table>

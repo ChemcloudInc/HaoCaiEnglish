@@ -2,13 +2,13 @@
 @model Himall.Web.Areas.SellerAdmin.Models.CustomerServiceModel
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>客服管理</strong>
-        <li><a href="management">管理</a></li>
-        <li class="active"><a>@(Model.Id > 0 ? "编辑" : "新增")</a></li>
+        <strong>Customer Service</strong>
+        <li><a href="management">Management</a></li>
+        <li class="active"><a>@(Model.Id > 0 ? "Edit" : "Add")</a></li>
     </ul>
     <form class="form-horizontal" role="form">
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label"><b>*</b>客服名称：</label>
+            <label for="" class="col-sm-2 control-label"><b>*</b>Customer Service Name:</label>
             <div class="col-sm-3">
                 @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-sm", maxlength = 15 })
             </div>
@@ -17,14 +17,14 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label"><b>*</b>沟通工具：</label>
+            <label for="" class="col-sm-2 control-label"><b>*</b>Communication Tools:</label>
             <div class="col-sm-3">
                 @Html.DropDownListFor(s => s.Tool, ((IEnumerable<SelectListItem>)Himall.Model.CustomerServiceInfo.ServiceTool.QQ.ToSelectList(false)), new { @class = "form-control input-sm" })
             </div>
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label"><b>*</b>账号：</label>
+            <label for="" class="col-sm-2 control-label"><b>*</b>Account:</label>
             <div class="col-sm-3">
                 @Html.TextBoxFor(m => m.Account, new { @class = "form-control input-sm", maxlength = 25 })
             </div>
@@ -34,17 +34,17 @@
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label"><b>*</b>账号：</label>
+            <label for="" class="col-sm-2 control-label"><b>*</b>Account:</label>
             <div class="col-sm-3">
-                <label> <input type="radio" name="type" value="1" @((Model.Type.HasValue || Model.Type == Himall.Model.CustomerServiceInfo.ServiceType.PreSale) ? "checked" : "") />售前</label>
-                <label> <input type="radio" name="type" value="2" @(Model.Type == Himall.Model.CustomerServiceInfo.ServiceType.AfterSale ? "checked" : "") />售后</label>
+                <label> <input type="radio" name="type" value="1" @((Model.Type.HasValue || Model.Type == Himall.Model.CustomerServiceInfo.ServiceType.PreSale) ? "checked" : "") />pre-sale</label>
+                <label> <input type="radio" name="type" value="2" @(Model.Type == Himall.Model.CustomerServiceInfo.ServiceType.AfterSale ? "checked" : "") />after-sale</label>
             </div>
         </div>
 
         @Html.HiddenFor(m => m.Id)
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" class="btn btn-primary" id="submit">保 存</button>
+                <button type="button" class="btn btn-primary" id="submit">Save</button>
             </div>
         </div>
     </form>
@@ -62,12 +62,12 @@ $("#Name").focus();
                 $.post('add', form.serialize(), function (result) {
                     loading.close();
                     if (result.success) {
-                        $.dialog.tips('保存成功', function () {
+                        $.dialog.tips('Save successful!', function () {
                             location.href = '@Url.Action("management", "CustomerService", new {area="Selleradmin"})';
                         });
                     }
                     else
-                        $.dialog.errorTips('保存失败!' + result.msg);
+                        $.dialog.errorTips('Save failed' + result.msg);
                 })
             }
         });
