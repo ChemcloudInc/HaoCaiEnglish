@@ -46,7 +46,7 @@ $(function () {
                 var id = row.OrderId.toString();
                 var html = ["<span class=\"btn-a\">"];
                 html.push("<a href='./Detail/" + id + "'>查看</a>");
-                if (row.OrderStatus == "待付款") {
+                if (row.OrderStatus == "Wait Pay") {
                     html.push("<a class=\"good-check\" onclick=\"OpenConfirmPay('" + id + "')\">确认收款</a>");
                     html.push("<a class=\"good-check\" onclick=\"OpenCloseOrder('" + id + "')\">取消</a>");
                 }

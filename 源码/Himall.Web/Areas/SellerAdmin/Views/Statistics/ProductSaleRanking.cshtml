@@ -12,9 +12,9 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>销量统计</strong>
-        <li><a href="./ShopSale">店铺总销量</a></li>
-        <li class="active"><a>商品销量排行</a></li>
+        <strong>Sale Statistics</strong>
+        <li><a href="./ShopSale">Shop sale</a></li>
+        <li class="active"><a>Product sale ranking</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -28,9 +28,9 @@
     <form class="custom-inline count-search">
         <div class="form-group">
             <select id="queryType" class="form-control input-sm">
-                <option value="0">按天统计</option>
-                <option value="1">按周统计</option>
-                <option value="2">按月统计</option>
+                <option value="0">Daily statistics</option>
+                <option value="1">Weekly statistics</option>
+                <option value="2">Monthly statistics</option>
             </select>
         </div>
         <div class="form-group">
@@ -46,13 +46,13 @@
             @Html.DropDownList("week", (List<SelectListItem>)ViewBag.WeekDrop, new { @class = "form-control input-sm", style = "display:none;", id = "weekDrop" })
         </div>
 
-        <input type="button" class="btn btn-primary btn-sm" id="SearchBtn" value="查询" />
+        <input type="button" class="btn btn-primary btn-sm" id="SearchBtn" value="Search" />
     </form>
     <div class="count">
         <div class="text-right form-group">
             <div class="btn-group">
-                <button type="button" value="1" name="dimensionType" class="btn btn-default btn-xs active">销售量排行</button>
-                <button type="button" value="2" name="dimensionType" class="btn btn-default btn-xs">销售额排行</button>
+                <button type="button" value="1" name="dimensionType" class="btn btn-default btn-xs active">Sales volume ranking</button>
+                <button type="button" value="2" name="dimensionType" class="btn btn-default btn-xs">Sales ranking</button>
             </div>
         </div>
         <div class="count-chat">

@@ -7,7 +7,7 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>成交转化率</strong>
+        <strong>Deal Convision Rate</strong>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -24,7 +24,7 @@
             @Html.DropDownList("month", (List<SelectListItem>)ViewBag.MonthDrop, new { @class = "form-control input-sm" })
         </div>
 
-        <input type="button" class="btn btn-primary btn-sm" id="SearchBtn" value="查询" />
+        <input type="button" class="btn btn-primary btn-sm" id="SearchBtn" value="Search" />
     </form>
     <div class="count">
         <div class="text-right form-group">
@@ -59,8 +59,8 @@ $(function(){
         tooltip: {
             trigger: 'axis',
             formatter: function (params, ticket, callback) {
-                var t1 = params[0][0].replace('月', '月' + params[0][1] + '号') + '  :  <b style="color:yellow;font-size:14px;">' + params[0][2] + '</b>  %';
-                var t2 = params[1][0].replace('月', '月' + params[1][1] + '号') + '  :  <b style="color:yellow;font-size:14px;">' + params[1][2] + '</b>  %';
+                var t1 = params[0][1] + 'th Deal Convision Rate'+ '  :  <b style="color:yellow;font-size:14px;">' + params[0][2] + '</b>  %';
+                var t2 = params[1][1] + 'th Deal Convision Rate'+ '  :  <b style="color:yellow;font-size:14px;">' + params[1][2] + '</b>  %';
                 var html = ['<div style="text-align:left;">', t1, '<br />', t2, '</div>'];
 
                 return html.join('');
@@ -102,13 +102,13 @@ $(function(){
                 symbol: 'emptyCircle',
                 markPoint: {
                     data: [
-                        { type: 'max', name: '最多' },
-                        { type: 'min', name: '最少' }
+                        { type: 'max', name: 'Max' },
+                        { type: 'min', name: 'Min' }
                     ]
                 },
                 markLine: {
                     data: [
-                        { type: 'average', name: '平均值' }
+                        { type: 'average', name: 'Average' }
                     ]
                 }
             },
@@ -120,13 +120,13 @@ $(function(){
                 symbol: 'emptyCircle',
                 markPoint: {
                     data: [
-                        { type: 'max', name: '最多' },
-                        { type: 'min', name: '最少' }
+                        { type: 'max', name: 'Max' },
+                        { type: 'min', name: 'Min' }
                     ]
                 },
                 markLine: {
                     data: [
-                        { type: 'average', name: '平均值' }
+                        { type: 'average', name: 'Average' }
                     ]
                 }
             }

@@ -60,7 +60,7 @@ $(function () {
                 formatter: function (value, row, index) {
                     var html = ["<span class=\"btn-a\">"];
                     html.push("<input type=\"hidden\" name=\"rowdata\" id=\"rowdata-" + row.RefundId + "\" value='" + jQuery.toJSON(row) + "'>");
-                    if (row.AuditStatus == "商家通过审核" || row.AuditStatus == "待平台确认") {
+                    if (row.AuditStatus == "Wait Audit" || row.AuditStatus == "Wait Confirm") {
                         html.push("<a class=\"good-check\" onclick=\"OpenConfirmRefund('" + row.RefundId + "')\">确认退款</a>");
                     } else {
                         html.push("<a class=\"good-check\" onclick=\"OpenRefundReason('" + row.RefundId + "')\">查看原因</a>");

@@ -4,17 +4,17 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>订单</strong>
-        <li><a href="./Management">所有订单</a></li>
+        <strong>Orders</strong>
+        <li><a href="./Management">All orders</a></li>
         <li class="active">
             @{var num = Model.Orders.Count();}
             @if (num > 1)
             {
-                <a>批量发货</a>
+                <a>Bulk shipments</a>
             }
             else
             {
-                 <a>订单发货</a>
+                 <a>Delivery</a>
             }
         </li>
     </ul>
@@ -22,11 +22,11 @@
     <table class="table">
         <thead>
             <tr style="text-align:center;">
-                <th>订单号</th>
-                <th>收货人</th>
-                <th>收货地址</th>
-                <th>快递</th>
-                <th>快递单号</th>
+                <th>Order no.</th>
+                <th>Receiver</th>
+                <th>Shipping address</th>
+                <th>Express delivery</th>
+                <th>Express No.</th>
             </tr>
         </thead>
         <tbody>
@@ -46,7 +46,7 @@
                                     <option>@logisticsCompany.Name</option>
                                 }
                             }
-                            <option value="-1">其他</option>
+                            <option value="-1">Others</option>
                         </select>
                     </td>
                     <td><input class="form-control input-xs cssShipOrderNumber" type="text" value="@order.ShipOrderNumber"></td>
@@ -56,11 +56,11 @@
     </table>
     @if (num > 1)
     {
-         <button id="btnSendGood" type="button" class="btn btn-primary mt20">批量发货</button>
+         <button id="btnSendGood" type="button" class="btn btn-primary mt20">Bulk shipments</button>
     }
     else
     {
-          <button id="btnSendGood" type="button" class="btn btn-primary mt20">订单发货</button>
+          <button id="btnSendGood" type="button" class="btn btn-primary mt20">Delivery</button>
     }
    
 </div>
@@ -77,7 +77,7 @@
         });
         $('.cssCompanyName').each(function (index, item) {
             if ($(item).val() == "") {
-                $.dialog.errorTips("你有没有填写的快递公司！");
+                $.dialog.errorTips("Express Missing!");
                 invaldat = true;
                 return;
             }
@@ -88,7 +88,7 @@
             var valx = $( this ).parent().parent().find( ".cssCompanyName option:selected" ).val();
             if ( $( item ).val() == "" && parseInt( valx ) != -1 )
             {
-                $.dialog.errorTips("你有没有填写的快递单号！");
+                $.dialog.errorTips("Express no. Missing!");
                 invaldat = true;
                 return;
             }
@@ -103,10 +103,10 @@
         $.post('./ConfirmSendGood', { ids: orderIds, companyNames: companyNames, shipOrderNumbers: shipOrderNumbers }, function (result) {
             loading.close();
             if (result.success) {
-                $.dialog.succeedTips("操作成功！",function(){window.location.href = "./Management"});
+                $.dialog.succeedTips("Successful Operation!",function(){window.location.href = "./Management"});
             }
             else
-                $.dialog.errorTips("操作失败,"+result.msg);
+                $.dialog.errorTips("Operation failed,"+result.msg);
         });
     });
 </script>

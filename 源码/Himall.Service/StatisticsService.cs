@@ -63,9 +63,30 @@ namespace Himall.Service
 			}
 			return mapChartDataModel;
 		}
+        public String getEnglishMonth(int month)
+        {
+            String Mon = "January";
+            switch (month)
+            {
+                case 1: Mon = "January"; break;
+                case 2: Mon = "February "; break;
+                case 3: Mon = "March"; break;
+                case 4: Mon = "April"; break;
+                case 5: Mon = "May"; break;
+                case 6: Mon = "June"; break;
+                case 7: Mon = "July"; break;
+                case 8: Mon = "August"; break;
+                case 9: Mon = "September"; break;
+                case 10: Mon = "October"; break;
+                case 11: Mon = "November"; break;
+                case 12: Mon = "December"; break;
 
+            }
+            return Mon;
+        }
 		public LineChartDataModel<float> GetDealConversionRateChart(long shopId, int year, int month)
 		{
+           
 			LineChartDataModel<float> lineChartDataModel = new LineChartDataModel<float>()
 			{
 				SeriesData = new List<ChartSeries<float>>()
@@ -93,7 +114,7 @@ namespace Himall.Service
 				select new { Count = g.Sum((s) => (s.VistiCounts == 0 ? 0f : s.SaleCounts / (float)s.VistiCounts)), Year = g.Key.Year, Month = g.Key.Month, Day = g.Key.Day }).ToList();
 			ChartSeries<float> chartSeries = new ChartSeries<float>()
 			{
-				Name = string.Format("{0}月成交转化率", dateTime.Month),
+                Name = string.Format("{0} Deal Convision Rate", getEnglishMonth(dateTime.Month)),
 				Data = new float[31]
 			};
 			ChartSeries<float> chartSeries1 = chartSeries;
@@ -127,7 +148,7 @@ namespace Himall.Service
 				select new { Count = g.Sum((s) => (s.VistiCounts == 0 ? 0f : s.SaleCounts / (float)s.VistiCounts)), Year = g.Key.Year, Month = g.Key.Month, Day = g.Key.Day }).ToList();
 			ChartSeries<float> chartSeries2 = new ChartSeries<float>()
 			{
-				Name = string.Format("{0}月成交转化率", dateTime2.Month),
+                Name = string.Format("{0} Deal Convision Rate", getEnglishMonth(dateTime2.Month)),
 				Data = new float[31]
 			};
 			chartSeries1 = chartSeries2;
@@ -699,7 +720,7 @@ namespace Himall.Service
 				select new { Count = g.Sum((s) => s.VistiCounts), Year = g.Key.Year, Month = g.Key.Month, Day = g.Key.Day }).ToList();
 			ChartSeries<int> chartSeries = new ChartSeries<int>()
 			{
-				Name = string.Format("{0}月店铺总流量", dateTime.Month),
+				Name = string.Format("{0} Shop Flow", getEnglishMonth(dateTime.Month)),
 				Data = new int[31]
 			};
 			ChartSeries<int> count = chartSeries;
@@ -732,7 +753,7 @@ namespace Himall.Service
 				select new { Count = g.Sum((s) => s.VistiCounts), Year = g.Key.Year, Month = g.Key.Month, Day = g.Key.Day }).ToList();
 			ChartSeries<int> chartSeries1 = new ChartSeries<int>()
 			{
-				Name = string.Format("{0}月店铺总流量", dateTime2.Month),
+				Name = string.Format("{0} Shop Flow",getEnglishMonth(dateTime2.Month)),
 				Data = new int[31]
 			};
 			count = chartSeries1;
@@ -872,7 +893,7 @@ namespace Himall.Service
 				select new { Count = g.Sum((s) => s.SaleCounts), Year = g.Key.Year, Month = g.Key.Month, Day = g.Key.Day }).ToList();
 			ChartSeries<int> chartSeries = new ChartSeries<int>()
 			{
-				Name = string.Format("{0}月店铺总销量", dateTime.Month),
+				Name = string.Format("{0} Shop Sale",getEnglishMonth(dateTime.Month)),
 				Data = new int[31]
 			};
 			ChartSeries<int> count = chartSeries;
@@ -906,7 +927,7 @@ namespace Himall.Service
 				select new { Count = g.Sum((s) => s.SaleCounts), Year = g.Key.Year, Month = g.Key.Month, Day = g.Key.Day }).ToList();
 			ChartSeries<int> chartSeries1 = new ChartSeries<int>()
 			{
-				Name = string.Format("{0}月店铺总销量", dateTime2.Month),
+				Name = string.Format("{0} Shop Sale",getEnglishMonth(dateTime2.Month)),
 				Data = new int[31]
 			};
 			count = chartSeries1;
@@ -1063,7 +1084,7 @@ namespace Himall.Service
 				{
 					Data = new int[rankSize]
 				};
-				string[] str = new string[] { "月销售量Top", rankSize.ToString(), "      ", start.ToString("yyyy-MM-dd"), "至", end.ToString("yyyy-MM-dd") };
+                string[] str = new string[] { "Monthly Sales Top", rankSize.ToString(), "      ", start.ToString("yyyy-MM-dd"), " To ", end.ToString("yyyy-MM-dd") };
 				chartSeries.Name = string.Concat(str);
 				ChartSeries<int> chartSeries1 = chartSeries;
 				for (int i = 0; i < rankSize; i++)
@@ -1080,7 +1101,7 @@ namespace Himall.Service
 			{
 				Data = new int[rankSize]
 			};
-			string[] strArrays = new string[] { "月销售量Top", rankSize.ToString(), "      ", start.ToString("yyyy-MM-dd"), "至", end.ToString("yyyy-MM-dd") };
+            string[] strArrays = new string[] { "Monthly Sales Top", rankSize.ToString(), "      ", start.ToString("yyyy-MM-dd"), " To ", end.ToString("yyyy-MM-dd") };
 			chartSeries2.Name = string.Concat(strArrays);
 			ChartSeries<int> count = chartSeries2;
 			foreach (var variable in list.Take(rankSize))
@@ -1113,7 +1134,7 @@ namespace Himall.Service
 				ChartSeries<int> chartSeries = new ChartSeries<int>()
 				{
 					Data = new int[rankSize],
-					Name = string.Concat("商品销售额排行Top", rankSize.ToString())
+					Name = string.Concat("Product Sale Ranking Top", rankSize.ToString())
 				};
 				ChartSeries<int> chartSeries1 = chartSeries;
 				for (int i = 0; i < rankSize; i++)
@@ -1129,7 +1150,7 @@ namespace Himall.Service
 			ChartSeries<int> chartSeries2 = new ChartSeries<int>()
 			{
 				Data = new int[rankSize],
-				Name = string.Concat("商品销售额排行Top", rankSize.ToString())
+                Name = string.Concat("Product Sale Ranking Top", rankSize.ToString())
 			};
 			ChartSeries<int> money = chartSeries2;
 			foreach (var variable in list.Take(rankSize))
@@ -1162,7 +1183,7 @@ namespace Himall.Service
 				ChartSeries<int> chartSeries = new ChartSeries<int>()
 				{
 					Data = new int[rankSize],
-					Name = string.Concat("商品浏览量排行Top", rankSize.ToString())
+					Name = string.Concat("Product Visit Ranking Top", rankSize.ToString())
 				};
 				ChartSeries<int> chartSeries1 = chartSeries;
 				for (int i = 0; i < rankSize; i++)
@@ -1178,7 +1199,7 @@ namespace Himall.Service
 			ChartSeries<int> chartSeries2 = new ChartSeries<int>()
 			{
 				Data = new int[rankSize],
-				Name = string.Concat("商品浏览量排行Top", rankSize.ToString())
+				Name = string.Concat("Product Visit Ranking Top", rankSize.ToString())
 			};
 			ChartSeries<int> visit = chartSeries2;
 			foreach (var variable in list.Take(rankSize))
@@ -1210,7 +1231,7 @@ namespace Himall.Service
 				ChartSeries<int> chartSeries = new ChartSeries<int>()
 				{
 					Data = new int[rankSize],
-					Name = string.Concat("商品销售量排行Top", rankSize.ToString())
+					Name = string.Concat("Product Sale Ranking Volume Top", rankSize.ToString())
 				};
 				ChartSeries<int> chartSeries1 = chartSeries;
 				for (int i = 0; i < rankSize; i++)
@@ -1226,7 +1247,7 @@ namespace Himall.Service
 			ChartSeries<int> chartSeries2 = new ChartSeries<int>()
 			{
 				Data = new int[rankSize],
-				Name = string.Concat("商品销售量排行Top", rankSize.ToString())
+				Name = string.Concat("Product Sale Volume Ranking Top", rankSize.ToString())
 			};
 			ChartSeries<int> count = chartSeries2;
 			foreach (var variable in list.Take(rankSize))
@@ -1268,7 +1289,7 @@ namespace Himall.Service
 				ChartSeries<int> chartSeries = new ChartSeries<int>()
 				{
 					Data = new int[rankSize],
-					Name = string.Concat("商品销售额排行Top", rankSize.ToString())
+					Name = string.Concat("Product Sale Ranking Top", rankSize.ToString())
 				};
 				ChartSeries<int> chartSeries1 = chartSeries;
 				for (int i = 0; i < rankSize; i++)
@@ -1284,7 +1305,7 @@ namespace Himall.Service
 			ChartSeries<int> chartSeries2 = new ChartSeries<int>()
 			{
 				Data = new int[rankSize],
-				Name = string.Concat("商品销售额排行Top", rankSize.ToString())
+				Name = string.Concat("Product Sale Ranking Top", rankSize.ToString())
 			};
 			ChartSeries<int> chartSeries3 = chartSeries2;
 			foreach (var variable in list.Take(rankSize))

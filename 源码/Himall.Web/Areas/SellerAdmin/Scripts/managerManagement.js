@@ -9,7 +9,7 @@ $(function () {
 })
 
 function Delete(id) {
-    $.dialog.confirm('确定删除该条记录吗？', function () {
+    $.dialog.confirm('Determine this record to delete it?', function () {
         var loading = showLoading();
         $.post("./Delete", { id: id }, function (data) {
             loading.close();
@@ -25,10 +25,10 @@ function BatchDelete() {
         selectids.push(selectedRows[i].Id);
     }
     if (selectedRows.length == 0) {
-        $.dialog.tips("你没有选择任何选项！");
+        $.dialog.tips("You did not choose any of the options!");
     }
     else {
-        $.dialog.confirm('确定删除选择的管理员吗？', function () {
+        $.dialog.confirm('Sure to delete the selected administrator?', function () {
             var loading = showLoading();
             $.post("./BatchDelete", { ids: selectids.join(',') }, function (data) {
                 loading.close();
@@ -43,7 +43,7 @@ function query() {
         url: './list',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的数据',
+        NoDataMsg: 'Not matching data.',
         border: false,
         fit: true,
         fitColumns: true,
@@ -58,11 +58,11 @@ function query() {
         [[
             { checkbox: true, width: 39 },
             { field: "Id", hidden: true },
-            { field: "UserName", title: '管理员' },
-            { field: "CreateDate", title: '创建日期' },
-            { field: "RoleName", title: '权限组' },
+            { field: "UserName", title: 'Administrator' },
+            { field: "CreateDate", title: 'Creation Date' },
+            { field: "RoleName", title: 'Rights Groups' },
         {
-            field: "operation", operation: true, title: "操作",
+            field: "operation", operation: true, title: "Operation",
             formatter: function (value, row, index) {
                 var id = row.Id.toString();
                 var roleid = row.RoleId.toString();
@@ -72,8 +72,8 @@ function query() {
                 var model = JSON.stringify({ id: id, roleid: roleid, username: username, realname: realname, remark: remark });
                 var html = ["<span class=\"btn-a\">"];
                 if (row.RoleId != 0) {
-                    html.push("<a onclick='Change(" + model + ");'>修改</a>");
-                    html.push("<a onclick=\"Delete('" + id + "');\">删除</a>");
+                    html.push("<a onclick='Change(" + model + ");'>edit</a>");
+                    html.push("<a onclick=\"Delete('" + id + "');\">delete</a>");
                 }
                 html.push("</span>");
                 return html.join("");
@@ -132,13 +132,13 @@ function Change(model) {
     });
 
     $.dialog({
-        title: '修改密码',
+        title: 'Modify password',
         lock: true,
         id: 'ChangePwd',
         width: '500px',
         content: document.getElementById("addManagerform"),
         padding: '20px 10px',
-        okVal: '确定',
+        okVal: 'OK',
         init: function () { $("#PassWord").focus(); },
         ok: function () {
             var confirmPassWord = $("#confirmPassWord").val();
@@ -147,16 +147,16 @@ function Change(model) {
             var SelectedRoleId = $("#RoleId").val();
             var password = $("#PassWord").val();
             if (realName == null || realName == "") {
-                $.dialog.tips("用户姓名必须填写！");
+                $.dialog.tips("Username must be filled!！");
                 return false;
             }
             if (password != null && password != "") {
                 if (password.length < 6) {
-                    $.dialog.tips("密码至少为6位！");
+                    $.dialog.tips("Length of password is at least 6!");
                     return false;
                 }
                 if (confirmPassWord != password) {
-                    $.dialog.tips("两次密码输入不一致！");
+                    $.dialog.tips("Enter the password twice inconsistent!");
                     return false;
                 }
             }
@@ -168,14 +168,14 @@ function Change(model) {
                 function (data) {
                     loading.close();
                     if (data.success) {
-                        $.dialog.tips("修改成功", function () {
+                        $.dialog.tips("Successfully modified", function () {
                             //if (roleid != 0 && roleid != SelectedRoleId)
                                 query();
                         });
                         $("#password").val("");
                     }
                     else
-                        $.dialog.tips("修改失败:" + data.msg);
+                        $.dialog.tips("Modify failed:" + data.msg);
                 });
         }
     });
@@ -193,12 +193,12 @@ function LoadAddBox() {
         $("#reMark").val("");
     })
     $.dialog({
-        title: '添加管理员',
+        title: 'Add administrator',
         id: 'addManager',
         width: '500px',
         content: document.getElementById("addManagerform"),
         lock: true,
-        okVal: '确认添加',
+        okVal: 'Confirm add',
         init: function () { $("#UserName").focus(); },
         ok: function () {
             var roleId = $("#RoleId").val();
@@ -208,15 +208,15 @@ function LoadAddBox() {
             var realName = $("#realName").val();
             var reMark = $("#reMark").val();
             if (realName == null || realName == "") {
-                $.dialog.tips("用户姓名必须填写！");
+                $.dialog.tips("User name must be filled!");
                 return false;
             }
             if (confirmPassWord != password) {
-                $.dialog.tips("两次密码输入不一致！");
+                $.dialog.tips("Enter the password twice inconsistent!");
                 return false;
             }
             if (roleId == null) {
-                $.dialog.tips("请选择权限组，如果无权限组请先添加！");
+                $.dialog.tips("Please select the rights group, if there is no rights group,Please add!");
                 return false;
             }
             if (!CheckAdd(username, password))
@@ -239,12 +239,12 @@ function AddManage(username, password, roleid, realName, reMark) {
         success: function (data) {
             loading.close();
             if (data.success) {
-                $.dialog.tips("添加成功！");
+                $.dialog.tips("Add successfully!");
                 $("#addManagerform input").val("");
                 query();
             }
             else {
-                $.dialog.tips("添加失败！" + data.msg);
+                $.dialog.tips("Add failed!" + data.msg);
             }
         },
         error: function () {
@@ -260,15 +260,15 @@ function CheckAdd(username, password) {
     var regpwd = /^[^\s]{6,20}$/;
     var pwdOk = regpwd.test(password);
     if (username.length < 4) {
-        $.dialog.tips("用户名不能小于4个字符");
+        $.dialog.tips("User name can not be less than 4 characters");
         return false;
     }
     else if (!reg.test(username)) {
-        $.dialog.tips('用户名需为4-20位字符，支持中英文、数字及"-"、"_"的组合');
+        $.dialog.tips('User name needs 4-20 characters');
         return false;
     }
     else if (!pwdOk) {
-        $.dialog.tips("密码6-20个字符,不包含空格");
+        $.dialog.tips("Password needs 6-20 characters, not containing spaces");
         return false;
     }
     var loading = showLoading();
@@ -284,7 +284,7 @@ function CheckAdd(username, password) {
             loading.close();
             result = !data.Exists;
             if (data.Exists)
-                $.dialog.tips("该用户名已存在！");
+                $.dialog.tips("This user name already exists!");
         },
         error: function () {
             loading.close();

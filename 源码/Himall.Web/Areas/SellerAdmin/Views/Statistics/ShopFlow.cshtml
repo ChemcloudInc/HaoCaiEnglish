@@ -7,9 +7,9 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>流量统计</strong>
-        <li class="active"><a>店铺总流量</a></li>
-        <li><a href="./ProductVisitRanking">商品流量排行</a></li>
+        <strong>Flow Statistics</strong>
+        <li class="active"><a>Shop flow</a></li>
+        <li><a href="./ProductVisitRanking">Product visit ranking</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -28,7 +28,7 @@
             @Html.DropDownList("month", (List<SelectListItem>)ViewBag.MonthDrop, new { @class = "form-control input-sm" })
         </div>
 
-        <input type="button" class="btn btn-primary btn-sm" id="SearchBtn" value="查询" />
+        <input type="button" class="btn btn-primary btn-sm" id="SearchBtn" value="Search" />
     </form>
     <div class="count">
         <div class="text-right form-group">
@@ -38,8 +38,8 @@
             <table class="table table-bordered table-primary">
                 <tbody>
                     <tr class="info">
-                        <td><span id="thisMonthName"></span>：<b id="thisMonthCount">9</b>次</td>
-                        <td><span id="prevMonthName"></span>：<b id="prevMonthCount">9</b>次</td>
+                        <td><span id="thisMonthName"></span>：<b id="thisMonthCount">9</b>times</td>
+                        <td><span id="prevMonthName"></span>：<b id="prevMonthCount">9</b>times</td>
                     </tr>
                 </tbody>
             </table>
@@ -63,8 +63,8 @@ $(function(){
         tooltip: {
             trigger: 'axis',
             formatter: function (params, ticket, callback) {
-                var t1 = params[0][0].replace('月', '月' + params[0][1] + '号') + '  :  <b style="color:yellow;font-size:14px;">' + params[0][2] + '</b>  人';
-                var t2 = params[1][0].replace('月', '月' + params[1][1] + '号') + '  :  <b style="color:yellow;font-size:14px;">' + params[1][2] + '</b>  人';
+                var t1 = params[0][1] + 'th Shop Flow' + '  :  <b style="color:yellow;font-size:14px;">' + params[0][2] + '</b>  人';
+                var t2 = params[1][1] + 'th Shop Flow' + '  :  <b style="color:yellow;font-size:14px;">' + params[1][2] + '</b>  人';
                 var html = ['<div style="text-align:left;">', t1, '<br />', t2, '</div>'];
 
                 return html.join('');
@@ -92,7 +92,7 @@ $(function(){
             {
                 type: 'value',
                 axisLabel: {
-                    formatter: '{value} 次'
+                    formatter: '{value} times'
                 },
                 splitArea: { show: true }
             }
@@ -106,13 +106,13 @@ $(function(){
                 symbol: 'emptyCircle',
                 markPoint: {
                     data: [
-                        { type: 'max', name: '最多次数' },
-                        { type: 'min', name: '最少次数' }
+                        { type: 'max', name: 'Max times' },
+                        { type: 'min', name: 'Min times' }
                     ]
                 },
                 markLine: {
                     data: [
-                        { type: 'average', name: '平均值' }
+                        { type: 'average', name: 'Average' }
                     ]
                 }
             },
@@ -124,13 +124,13 @@ $(function(){
                 symbol: 'emptyCircle',
                 markPoint: {
                     data: [
-                        { type: 'max', name: '最多次数' },
-                        { type: 'min', name: '最少次数' }
+                        { type: 'max', name: 'Max times' },
+                        { type: 'min', name: 'Min times' }
                     ]
                 },
                 markLine: {
                     data: [
-                        { type: 'average', name: '平均值' }
+                        { type: 'average', name: 'Average' }
                     ]
                 }
             }
@@ -175,7 +175,7 @@ $(function(){
 
         myChart = echarts.init(document.getElementById('main'));
         myChart.showLoading({
-            text: '正在加载图表...',
+            text: 'Loading...',
             effect: 'bubble',
             textStyle: {
                 fontSize: 20

@@ -9,12 +9,12 @@ option = {
             var type = $("button.active").val();
             var html = '';
             if (1 == type) {
-                var t1 = '<span style="text-align:left;">商品：<b style="color:yellow;font-size:14px;">' + mapName[params[0][1] - 1] + '</b></span>';
-                var t2 = '<span style="text-align:left;">销售量：<b style="color:yellow;font-size:14px;">' + params[0][2] + '</b>个</span>';
+                var t1 = '<span style="text-align:left;">Product:<b style="color:yellow;font-size:14px;">' + mapName[params[0][1] - 1] + '</b></span>';
+                var t2 = '<span style="text-align:left;">Sale:<b style="color:yellow;font-size:14px;">' + params[0][2] + '</b></span>';
                 html = ['<div style="text-align:left;">', t1, '<br />', t2, '</div>'];
             } else {
-                var t1 = '<span style="text-align:left;">商品：<b style="color:yellow;font-size:14px;">' + mapName[params[0][1] - 1] + '</b></span>';
-                var t2 = '<span style="text-align:left;">销售额：<b style="color:yellow;font-size:14px;">' + params[0][2] + '</b>元</span>';
+                var t1 = '<span style="text-align:left;">Product:<b style="color:yellow;font-size:14px;">' + mapName[params[0][1] - 1] + '</b></span>';
+                var t2 = '<span style="text-align:left;">Sale:<b style="color:yellow;font-size:14px;">' + params[0][2] + '</b>dollars</span>';
                 html = ['<div style="text-align:left;">', t1, '<br />', t2, '</div>'];
             }
 
@@ -54,13 +54,13 @@ option = {
             symbol: 'emptyCircle',
             markPoint: {
                 data: [
-                    { type: 'max', name: '最多' },
-                    { type: 'min', name: '最少' }
+                    { type: 'max', name: 'Max' },
+                    { type: 'min', name: 'Min' }
                 ]
             },
             markLine: {
                 data: [
-                    { type: 'average', name: '平均值' }
+                    { type: 'average', name: 'Average' }
                 ]
             }
         }

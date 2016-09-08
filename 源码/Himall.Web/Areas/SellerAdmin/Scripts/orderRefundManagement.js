@@ -47,14 +47,14 @@
                 var html = ["<span class=\"btn-a\">"];
                 html.push("<input type=\"hidden\" name=\"rowdata\" id=\"rowdata-" + row.RefundId + "\" value='" + jQuery.toJSON(row) + "'>");
                 switch (row.AuditStatus) {
-                    case "待商家审核":
-                        html.push("<a class=\"good-check\" onclick=\"OpenDealRefund('" + row.RefundId + "')\">审核售后</a>");
+                    case "Wait Audit":
+                        html.push("<a class=\"good-check\" onclick=\"OpenDealRefund('" + row.RefundId + "')\">after sale</a>");
                         break;
-                    case "待商家收货":
-                        html.push("<a class=\"good-check\" onclick=\"OpenConfirmGood('" + row.RefundId + "','" + row.ExpressCompanyName + "','" + row.ShipOrderNumber + "')\">审核售后确认收货</a>");
+                    case "Wait Receiving":
+                        html.push("<a class=\"good-check\" onclick=\"OpenConfirmGood('" + row.RefundId + "','" + row.ExpressCompanyName + "','" + row.ShipOrderNumber + "')\">Confirm receving</a>");
                         break;
                     default:
-                        html.push("<a class=\"good-check\" onclick=\"ShowRefundInfo('" + row.RefundId + "')\">查看原因</a>");
+                        html.push("<a class=\"good-check\" onclick=\"ShowRefundInfo('" + row.RefundId + "')\">view</a>");
                         break;
                 }
                 html.push("</span>");
@@ -111,18 +111,18 @@ function OpenDealRefund(refundId) {
 
     dlgcontent = ['<div class="dialog-form">',
             '<div class="form-group">',
-                '<label class="label-inline fl">商品名称</label>',
+                '<label class="label-inline fl">Product name</label>',
                 '<p class="only-text">' + data.ProductName + '</p>',
             '</div>'];
     dlgcontent = dlgcontent.concat(['<div class="form-group">',
-                '<label class="label-inline fl">退款金额</label>',
-                '<p class="only-text"><span class="cor-red">￥' + data.Amount + '</span>（实付：' + data.SalePrice + '）</p>',
+                '<label class="label-inline fl">Amount</label>',
+                '<p class="only-text"><span class="cor-red">$' + data.Amount + '</span>（Actual paid ' + data.SalePrice + '）</p>',
             '</div>']);
     if (data.RefundMode != 1) {
         if (data.ReturnQuantity > 0) {
             dlgcontent = dlgcontent.concat(['<div class="form-group">',
-                        '<label class="label-inline fl">退货数量</label>',
-                        '<p class="only-text"><span class="cor-red">' + data.ReturnQuantity + "</span>（购买：" + data.Quantity + "）" + '</p>',
+                        '<label class="label-inline fl">Quantity</label>',
+                        '<p class="only-text"><span class="cor-red">' + data.ReturnQuantity + "</span>（Buy:" + data.Quantity + "）" + '</p>',
                     '</div>']);
         }
     } else {
@@ -130,28 +130,28 @@ function OpenDealRefund(refundId) {
     }
     dlgcontent = dlgcontent.concat([
             '<div class="form-group">',
-                '<label class="label-inline fl">原因</label>',
+                '<label class="label-inline fl">Reasons</label>',
                 '<p class="only-text">' + data.Reason.replace(/>/g, '&gt;').replace(/</g, '&lt;') + '</p>',
             '</div>',
             '<div class="form-group">',
-                '<label class="label-inline fl">联系人</label>',
+                '<label class="label-inline fl">Contact</label>',
                 '<p class="only-text">' + data.ContactPerson + "（" + data.ContactCellPhone + "）" + '</p>',
             '</div>',
             '<div class="form-group">',
-                '<label class="label-inline fl">期望退款方式</label>',
+                '<label class="label-inline fl">Pay type</label>',
                 '<p class="only-text">' + data.RefundPayType + '</p>',
             '</div>',
             '<div class="form-group">',
-                '<textarea class="form-control" cols="56" rows="3" id="txtRefundRemark" placeholder="回复买家"></textarea>',
+                '<textarea class="form-control" cols="56" rows="3" id="txtRefundRemark" placeholder="Reply to buyer"></textarea>',
             '</div>',
         '</div>']);
 
     var dlgbt = [{
-        name: '拒绝',
+        name: 'Refuse',
         callback: function () {
             sellerRemark = $('#txtRefundRemark').val();
             if (sellerRemark.length < 1) {
-                alert("请输入拒绝理由！");
+                alert("Please enter reasons to refuse.");
                 return false;
             }
             DealRefund(data.RefundId, 4, sellerRemark);
@@ -159,7 +159,7 @@ function OpenDealRefund(refundId) {
     }];
     if (data.ReturnQuantity > 0) {
         dlgbt.push({
-            name: '弃货',
+            name: 'Give up goods',
             callback: function () {
                 DealRefund(data.RefundId, 5, $('#txtRefundRemark').val());
             }
@@ -167,18 +167,18 @@ function OpenDealRefund(refundId) {
     }
 
     dlgbt.push({
-        name: '同意',
+        name: 'Agree',
         callback: function () {
             DealRefund(data.RefundId, 2, $('#txtRefundRemark').val());
         },
         focus: true
     });
     dlgbt.push({
-        name: '关闭'
+        name: 'Close'
     });
 
     $.dialog({
-        title: '退货退款审核',
+        title: 'Refund Audit',
         lock: true,
         id: 'handlingComplain',
         width: '400px',
@@ -196,18 +196,18 @@ function ShowRefundInfo(refundId) {
 
     dlgcontent = ['<div class="dialog-form">',
             '<div class="form-group">',
-                '<label class="label-inline fl">商品名称</label>',
+                '<label class="label-inline fl">Product name</label>',
                 '<p class="only-text">' + data.ProductName + '</p>',
             '</div>'];
     dlgcontent = dlgcontent.concat(['<div class="form-group">',
-                '<label class="label-inline fl">退款金额</label>',
-                '<p class="only-text"><span class="cor-red">￥' + data.Amount + '</span>（实付：' + data.SalePrice + '）</p>',
+                '<label class="label-inline fl">Refund amount</label>',
+                '<p class="only-text"><span class="cor-red">$' + data.Amount + '</span>（Actual paid:' + data.SalePrice + '）</p>',
             '</div>']);
     if (data.RefundMode != 1) {
         if (data.ReturnQuantity > 0) {
             dlgcontent = dlgcontent.concat(['<div class="form-group">',
-                        '<label class="label-inline fl">退货数量</label>',
-                        '<p class="only-text"><span class="cor-red">' + data.ReturnQuantity + "</span>（购买：" + data.Quantity + "）" + '</p>',
+                        '<label class="label-inline fl">Quantity</label>',
+                        '<p class="only-text"><span class="cor-red">' + data.ReturnQuantity + "</span>（Buy:" + data.Quantity + "）" + '</p>',
                     '</div>']);
         }
     } else {
@@ -215,42 +215,42 @@ function ShowRefundInfo(refundId) {
     }
     dlgcontent = dlgcontent.concat([
             '<div class="form-group">',
-                '<label class="label-inline fl">原因</label>',
+                '<label class="label-inline fl">Reasons</label>',
                 '<p class="only-text">' + data.Reason.replace(/>/g, '&gt;').replace(/</g, '&lt;') + '</p>',
             '</div>',
             '<div class="form-group">',
-                '<label class="label-inline fl">联系人</label>',
+                '<label class="label-inline fl">Contact</label>',
                 '<p class="only-text">' + data.ContactPerson + "（" + data.ContactCellPhone + "）" + '</p>',
             '</div>',
             '<div class="form-group">',
-                '<label class="label-inline fl">期望退款方式</label>',
+                '<label class="label-inline fl">Pay type</label>',
                 '<p class="only-text">' + data.RefundPayType + '</p>',
             '</div>']);
     if (data.SellerRemark) {
                     dlgcontent = dlgcontent.concat([
                             '<div class="form-group">',
-                                '<label class="label-inline fl">商家备注</label>',
+                                '<label class="label-inline fl">Seller remarks</label>',
                                 '<p class="help-top">' + data.SellerRemark.replace(/>/g, '&gt;').replace(/</g, '&lt;') + '</p>',
                            ' </div>']);
                 }
     if (data.ManagerRemark) {
         dlgcontent = dlgcontent.concat(['<div class="form-group">',
-                                '<label class="label-inline fl">平台备注</label>',
+                                '<label class="label-inline fl">Platform remarks</label>',
                                 '<p class="only-text">' + data.ManagerRemark.replace(/>/g, '&gt;').replace(/</g, '&lt;') + '</p>',
                             '</div>']);
     }
     dlgcontent = dlgcontent.concat(['<div class="form-group">',
-                '<label class="label-inline fl">当前状态</label>',
+                '<label class="label-inline fl">Current status</label>',
                 '<p class="only-text"><span class="cor-red">' + data.RefundStatus + '</span></p>',
             '</div>',
             '</div>']);
 
     var dlgbt = [{
-        name: '关闭'
+        name: 'Close'
     }];
 
     $.dialog({
-        title: '查看退款申请',
+        title: 'View refund application',
         lock: true,
         id: 'handlingComplain',
         width: '400px',
@@ -263,20 +263,20 @@ function ShowRefundInfo(refundId) {
 
 function OpenConfirmGood(refundId, expressCompanyName, shipOrderNumber) {
     $.dialog({
-        title: '确认收货',
+        title: 'Confirm receipt',
         lock: true,
         id: 'goodCheck',
         content: ['<div class="dialog-form">',
             '<div class="form-group">',
-                 '<p class="help-top">物流公司：' + expressCompanyName + '</p>',
-                 '<p class="help-top">物流单号：' + shipOrderNumber + '</p>',
-                '<p class="help-top">确认已经收到订单的退货了吗？</p>',
+                 '<p class="help-top">Logistics company:' + expressCompanyName + '</p>',
+                 '<p class="help-top">Shipment number:' + shipOrderNumber + '</p>',
+                '<p class="help-top">Return order confirmation has been received yet?</p>',
             '</div>',
         '</div>'].join(''),
         padding: '10px',
         button: [
         {
-            name: '确认收货',
+            name: 'Confirm receipt',
             callback: function () {
                 ConfirmGood(refundId);
             },
@@ -290,12 +290,12 @@ function DealRefund(refundId, auditStatus, sellerRemark) {
     $.post('./DealRefund', { refundId: refundId, auditStatus: auditStatus, sellerRemark: sellerRemark }, function (result) {
         loading.close();
         if (result.success) {
-            $.dialog.succeedTips("操作成功！");
+            $.dialog.succeedTips("Successful operation!");
             var pageNo = $("#list").hiMallDatagrid('options').pageNumber;
             $("#list").hiMallDatagrid('reload', { pageNumber: pageNo });
         }
         else
-            $.dialog.errorTips("操作失败");
+            $.dialog.errorTips("Operation failed!");
     });
 }
 
@@ -304,11 +304,11 @@ function ConfirmGood(refundId) {
     $.post('./ConfirmRefundGood', { refundId: refundId }, function (result) {
         loading.close();
         if (result.success) {
-            $.dialog.succeedTips("操作成功！");
+            $.dialog.succeedTips("Successful operation!");
             var pageNo = $("#list").hiMallDatagrid('options').pageNumber;
             $("#list").hiMallDatagrid('reload', { pageNumber: pageNo });
         }
         else
-            $.dialog.errorTips("操作失败");
+            $.dialog.errorTips("Operation failed!");
     });
 }

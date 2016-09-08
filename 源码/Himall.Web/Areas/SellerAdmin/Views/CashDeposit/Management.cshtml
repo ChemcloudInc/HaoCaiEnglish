@@ -48,7 +48,7 @@
         <div class="form-group">
             <label for="" class="col-sm-2 control-label"><a onclick="ShowCashDeposit()">To pay cash deposit</a></label>
             <div class="col-sm-3" style="display:none" id="cashDeposit">
-                <input class="form-control input-sm" onkeyup="(this.v = function () { this.value = this.value.replace(/[^0-9.]+/, ''); }).call(this)" onblur="    this.v()" id="balance" type="text" style="display:inline-block; width:100px" /> (元) &nbsp; <button type="button" class="btn btn-primary btn-sm" onclick="Pay()">提交</button>
+                <input class="form-control input-sm" onkeyup="(this.v = function () { this.value = this.value.replace(/[^0-9.]+/, ''); }).call(this)" onblur="    this.v()" id="balance" type="text" style="display:inline-block; width:100px" /> dollars &nbsp; <button type="button" class="btn btn-primary btn-sm" onclick="Pay()">submit</button>
 			</div>
         </div>
 		@if(Model!=null)
