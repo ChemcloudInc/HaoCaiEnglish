@@ -35,7 +35,7 @@ $(function () {
                 {
                     checkbox: true, witdh: 35, formatter: function ( value, row, index )
                     {
-                        if (row.OrderStatus == "Pending payment" || row.OrderStatus == "Closed")
+                        if (row.OrderStatus == "Wait Pay" || row.OrderStatus == "Closed")
                         {
                             return '<input type="checkbox" disabled>';
                         }
@@ -77,7 +77,7 @@ $(function () {
 			            case 4:
 			                break;
 			            default:
-			                html.push("<i class='refundico' title='有待处理退款'>refund</i>");
+			                html.push("<i class='refundico' title='Have refunds'>refund</i>");
                             break;
 			        }
 			        html.push(row.OrderStatus);
@@ -91,11 +91,11 @@ $(function () {
 			        var id = row.OrderId.toString();
 			        var html = ["<span class=\"btn-a\">"];
 			        html.push("<a href='./Detail/" + id + "'>view</a>");
-			        if (row.OrderStatus == "Pending payment") {
+			        if (row.OrderStatus == "Wait pay") {
 			            html.push("<a href='./Detail/" + id + "?&updatePrice=" + true + "'>adjust</a>");
 			            html.push("<a class=\"good-check\" onclick=\"OpenCloseOrder('" + id + "')\">cancel</a>");
 			        }
-			        if (row.OrderStatus == "Pending delivery") {
+			        if (row.OrderStatus == "Wait Delivered") {
 			            html.push("<a href='./SendGood?ids=" + id + "'>deliver</a>");
 			        }
 			        html.push("</span>");

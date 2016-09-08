@@ -144,9 +144,9 @@ namespace Himall.Model
 
 		public enum AccountStatus
 		{
-			[Description("待结算")]
+			[Description("Not settled")]
 			UnAccount,
-			[Description("已结算")]
+			[Description("settled")]
 			Accounted
 		}
 	}

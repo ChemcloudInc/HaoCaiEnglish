@@ -62,13 +62,13 @@
         @if (string.IsNullOrWhiteSpace(errorMsg))
         {
             <h2>
-                恭喜您，支付成功！
+                Congratulations, pay successful!
             </h2>
         }
         else
         {
             <h2>
-                抱歉，支付失败！请重新支付！
+                Sorry,pay failed!Please Re-pay!
             </h2>
             <div class="error_child">您可以：<a href="/selleradmin?url=/selleradmin/CashDeposit/Management&tar=CashDeposit">返回保证金支付页面</a></div>
         }
@@ -96,7 +96,7 @@
 
     function doUpdate(num)
     {
-        document.getElementById("ShowDiv").innerHTML = '将在<strong><font color=red> '+num+' </font></strong>@Html.Raw(htmlPart)，请稍候...' ;
+        document.getElementById("ShowDiv").innerHTML = '将在<strong><font color=red> '+num+' </font></strong>@Html.Raw(htmlPart)，Please wait...' ;
         if(num == 0) { window.location=URL;  }
     }
     $(function(){

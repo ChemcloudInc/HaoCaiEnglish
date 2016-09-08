@@ -7,46 +7,46 @@
 <script src="~/Scripts/CommonJS.js"></script>
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <li class="active"><a>保证金管理</a></li>
+        <li class="active"><a>Cash Deposit</a></li>
     </ul>
 
     <div class="form-horizontal">
         <div class="form-group">
 
-            <label for="" class="col-sm-2 control-label">需缴纳保证金：</label>
+            <label for="" class="col-sm-2 control-label">Need pay cash deposit:</label>
             <div class="col-sm-3 form-control-static">
                 <span id="needPayCashDeposit" needpay="@ViewBag.NeedPayCashDeposit">@ViewBag.NeedPayCashDeposit (元)</span>
             </div>
         </div>
         <div class="form-group">
             
-            <label for="" class="col-sm-2 control-label">已缴纳保证金：</label>
+            <label for="" class="col-sm-2 control-label">Have paid cash deposit:</label>
             <div class="col-sm-3 form-control-static">
                 @if(Model!=null)
                 { 
-                    <span>@Model.TotalBalance (元)</span>
+                    <span>@Model.TotalBalance dollars</span>
                 }
                 else
                 {
-                    <span>0.00 (元)</span>
+                    <span>0.00 dollars</span>
                 }
             </div>
         </div>
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label">当前余额：</label>
+            <label for="" class="col-sm-2 control-label">Current Balance:</label>
             <div class="col-sm-3 form-control-static">
                 @if(Model!=null)
                 {
-                    <span>@Model.CurrentBalance (元)</span>
+                    <span>@Model.CurrentBalance dollars</span>
                 }
                 else
                 {
-                    <span>0.00 (元)</span>
+                    <span>0.00 dollars</span>
                 }
             </div>
         </div>
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label"><a onclick="ShowCashDeposit()">去缴纳保证金</a></label>
+            <label for="" class="col-sm-2 control-label"><a onclick="ShowCashDeposit()">To pay cash deposit</a></label>
             <div class="col-sm-3" style="display:none" id="cashDeposit">
                 <input class="form-control input-sm" onkeyup="(this.v = function () { this.value = this.value.replace(/[^0-9.]+/, ''); }).call(this)" onblur="    this.v()" id="balance" type="text" style="display:inline-block; width:100px" /> (元) &nbsp; <button type="button" class="btn btn-primary btn-sm" onclick="Pay()">提交</button>
 			</div>
@@ -54,7 +54,7 @@
 		@if(Model!=null)
     	{
 		<div class="form-group">
-            <label for="" class="col-sm-2 control-label">保证金动向明细：</label>
+            <label for="" class="col-sm-2 control-label">Cash Deposit Details:</label>
             <div class="col-sm-9">
                 <table class="table table-bordered" id="shopDatagrid">
     			</table>
@@ -65,7 +65,7 @@
                     url: './CashDepositDetail',
                     nowrap: false,
                     rownumbers: true,
-                    NoDataMsg: '没有找到符合条件的数据',
+                    NoDataMsg: 'Not found any data.',
                     border: false,
                     fit: true,
                     fitColumns: true,
@@ -77,10 +77,10 @@
                     queryParams: { cashDepositId: "@Model.Id" },
                     columns:
                     [[
-                        { field: "Date", title: "时间", width: 120, align: "left" },
-                        { field: "Balance", title: "金额", width: 120, align: "left" },
-                        { field: "Operator", title: "操作人", width: 120, align: "left" },
-                        { field: "Description", title: "说明", width: 120, align: "left" },
+                        { field: "Date", title: "Date", width: 120, align: "left" },
+                        { field: "Balance", title: "Balance", width: 120, align: "left" },
+                        { field: "Operator", title: "Operator", width: 120, align: "left" },
+                        { field: "Description", title: "Description", width: 120, align: "left" },
                     ]]
                 });
             </script>
@@ -94,7 +94,7 @@
 
 
 <div class="" id="payMent" style="display:none">
-        <h5 class="subtit">请选择支付方式</h5>
+        <h5 class="subtit">Please select the payment method</h5>
         <ul></ul>
 </div>
 <style>#payMent ul{ margin-left:20px;}#payMent li{ padding-top:10px;}#payMent input[type="radio"]{ vertical-align:middle; margin-right:10px;}</style>
@@ -108,15 +108,15 @@
 
     function Pay() {
         if ($("#balance").val() == "") {
-            $.dialog.tips("请输入要充值金额");
+            $.dialog.tips("Please enter the amount you want to recharge.");
             return false;
         }
         if (parseFloat($("#balance").val()) && parseFloat($("#balance").val()) < 0) {
-            $.dialog.errorTips("只能输入正数");
+            $.dialog.errorTips("Can only enter a positive number.");
             return false;
         }
         if (parseFloat($("#balance").val()) < parseFloat($("#needPayCashDeposit").attr("needpay"))) {
-            $.dialog.errorTips("充值金额不能小于应缴金额");
+            $.dialog.errorTips("Recharge amount should not be less than the amount need to pay.");
             return false;
         }
         var loading = showLoading();
@@ -135,7 +135,7 @@
             $("#payMent").find("ul").append(html);
 
             $.dialog({
-                title: '缴纳保证金',
+                title: 'Pay cash deposit',
                 lock: true,
                 width: 300,
                 id: 'goodCheck',
@@ -143,7 +143,7 @@
                 padding: '20px',
                 button: [
                 {
-                    name: '支付',
+                    name: 'Payment',
                     callback: function () {
                         if ($('input[name="requestUrl"]:checked').length != 0) {
                             PayMessage();
@@ -172,7 +172,7 @@
 
                         }
                         else
-                            $.dialog.tips("请选择支付方式");
+                            $.dialog.tips("Please select the payment method");
                     },
                     focus: true
                 }]
@@ -192,19 +192,19 @@
 
     function PayMessage() {
         $.dialog({
-            title: '登录平台支付',
+            title: 'Login platform to pay',
             lock: true,
-            content: '<p>请您在新打开的支付平台页面进行支付，支付完成前请不要关闭该窗口</p>',
+            content: '<p>Please pay on the newly opened payment platform page and do not close the window before payment is completed.</p>',
             padding: '30px 20px',
             button: [
             {
-                name: '已完成支付',
+                name: ' Payment has been completed',
                 callback: function () {
                     location.href = location.href;
                 }
             },
             {
-                name: '支付遇到问题',
+                name: 'Have trouble in payment.',
                 callback: function () {
 
                 }
