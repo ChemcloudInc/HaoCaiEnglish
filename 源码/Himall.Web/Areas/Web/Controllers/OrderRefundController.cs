@@ -414,7 +414,7 @@ namespace Himall.Web.Areas.Web.Controllers
 		public JsonResult UpdateRefund(long id, string expressCompanyName, string shipOrderNumber)
 		{
 			ServiceHelper.Create<IRefundService>().UserConfirmRefundGood(id, base.CurrentUser.UserName, expressCompanyName, shipOrderNumber);
-			return Json(new { success = true, msg = "提交成功" });
+			return Json(new { success = true, msg = "Success" });
 		}
 	}
 }

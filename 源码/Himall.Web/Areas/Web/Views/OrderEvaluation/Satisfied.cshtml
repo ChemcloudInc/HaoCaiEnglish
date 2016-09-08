@@ -30,7 +30,8 @@
                         {
                             <tr class="tr-td">
                                 <td>
-                                    <a target="_blank" href="@Url.Action("index", new { id=@m.Id})">
+                                    @*<a target="_blank" href="@Url.Action("index", new { id=@m.Id})">*@
+                                    <a  href="@Url.Action("Index", "OrderEvaluation", new { id = @m.Id })">
                                         @m.Id
                                     </a>
                                 </td>
