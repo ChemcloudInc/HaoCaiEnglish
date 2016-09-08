@@ -1,6 +1,6 @@
 ﻿@model Himall.Web.Areas.Web.Models.GiftOrderConfirmPageModel
 @{
-    ViewBag.Title = "核对并提交订单";
+    ViewBag.Title = "Check and Confirm Order";
     Layout = "~/Areas/Web/Views/Shared/_OrderTopBar.cshtml";
 }
 <style>
@@ -18,13 +18,13 @@
 <div class="w990 m2">
     <div id="checkout">
         <div class="mt">
-            <h2>填写并核对订单信息</h2>
+            <h2>Check Order Information</h2>
         </div>
         <div id="wizard" class="checkout-steps">
             <div id="step-1" class="step step-complete">
                 <div class="step-title">
-                    <strong id="consigneeTitleDiv">收货人信息</strong>
-                    <span class="step-action"><a href="javascript:;" id="editReciever">[修改]</a></span>
+                    <strong id="consigneeTitleDiv">Shipping Address</strong>
+                    <span class="step-action"><a href="javascript:;" id="editReciever">[Edit]</a></span>
                 </div>
                 <div class="step-content">
                     <div id="consignee" class="sbox-wrap">
@@ -44,30 +44,30 @@
                                 </div>
                                 <div class="item" id="use-new-address">
                                     <input type="radio" onclick="showEditArea(0)" class="hookbox" name="address" id="consignee_radio_new" />
-                                    <label for="consignee_radio_new">使用新地址 </label><span class="status error" style="display: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 当前地址数量已达上限，若要继续添加新地址，请先删除部分收货地址。</span>
+                                    <label for="consignee_radio_new">New Address </label><span class="status error" style="display: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 当前地址数量已达上限，若要继续添加新地址，请先删除部分收货地址。</span>
                                 </div>
                                 <form style="display:none" id="addressEditArea">
                                     <div class="consignee-form" id="consignee-form" name="consignee-form">
                                         <div class="list message" id="name_div">
-                                            <span class="label"><em>*</em>收货人：</span>
+                                            <span class="label"><em>*</em>Name：</span>
                                             <div class="field">
                                                 <input type="text" class="textbox" id="consignee_name" name="shipTo" maxlength="20" onblur="check_Consignee('name_div')" />
                                             </div>
                                             <span class="status error" id="name_div_error"></span>
                                         </div>
                                         <div class="list select-address" id="area_div">
-                                            <span class="label"><em>*</em>所在地区：</span>
+                                            <span class="label"><em>*</em>Region：</span>
                                             <div class="field">
                                                 <span id="span_area">
-                                                    <span id="span_province"><select id="consignee_province"><option value="">请选择：</option></select></span>
-                                                    <span id="span_city"><select id="consignee_city"><option value="">请选择：</option></select></span>
-                                                    <span id="span_county"><select id="consignee_county"><option value="">请选择：</option></select></span>
-                                                    <span id="span_town" style="display:none"><select id="consignee_town"><option value="">请选择：</option></select></span>
+                                                    <span id="span_province"><select id="consignee_province"><option value="">Please select：</option></select></span>
+                                                    <span id="span_city"><select id="consignee_city"><option value="">Please select：</option></select></span>
+                                                    <span id="span_county"><select id="consignee_county"><option value="">Please select：</option></select></span>
+                                                    <span id="span_town" style="display:none"><select id="consignee_town"><option value="">Please select：</option></select></span>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="list full-address" id="address_div">
-                                            <span class="label"><em>*</em>详细地址：</span>
+                                            <span class="label"><em>*</em>Address：</span>
                                             <div class="field" id="areaName">
                                                 <span class="fl selected-address" name="regionFullName"><i>湖南省</i><em>长沙市</em><s>芙蓉区</s></span>
                                                 <span class="fl selected-address"></span>
@@ -77,7 +77,7 @@
                                             <span class="status error" id="address_div_error"></span>
                                         </div>
                                         <div class="list" id="call_div">
-                                            <span class="label"><em>*</em>电话：</span>
+                                            <span class="label"><em>*</em>Telphone：</span>
                                             <div class="field">
                                                 <div class="phone">
                                                     <input type="text" class="textbox" name="phone" maxlength="18" />
@@ -88,8 +88,8 @@
                                     </div>
                                 </form>
                                 <div class="form-btn group">
-                                    <a href="javascript:;" class="btn-submit"><span id="saveConsigneeTitleDiv">保存收货人信息</span></a>
-                                    <div class="loading loading-1" style="display:none"><b></b>正在提交信息，请等待！</div>
+                                    <a href="javascript:;" class="btn-submit"><span id="saveConsigneeTitleDiv">Save</span></a>
+                                    <div class="loading loading-1" style="display:none"><b></b>Saving it now, please wait！</div>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
             </div>
 
             <div id="step-4" class="step step-complete">
-                <div class="step-title"><strong>礼品清单</strong></div>
+                <div class="step-title"><strong>Gift List</strong></div>
                 <div class="step-content">
                     <div id="part-order" class="sbox-wrap">
                         <span class="sbox">
@@ -109,10 +109,10 @@
                                     <table class="review-thead">
                                         <tbody>
                                             <tr>
-                                                <td class="fore1">礼品名称</td>
-                                                <td width="100">礼品单价</td>
-                                                <td class="fore2">数量</td>
-                                                <td class="fore2">小计</td>
+                                                <td class="fore1">Gift Name</td>
+                                                <td width="100">Price</td>
+                                                <td class="fore2">Quantity</td>
+                                                <td class="fore2">subtotal</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -135,9 +135,9 @@
                                                                     </div>
                                                                 </div>
                                                             </td>
-                                                            <td class="p-price"><strong>@item.SaleIntegral 分</strong></td>
+                                                            <td class="p-price"><strong>@item.SaleIntegral points</strong></td>
                                                             <td class="fore2">x @item.Quantity</td>
-                                                            <td class="fore2">@(item.Quantity * item.SaleIntegral) 分</td>
+                                                            <td class="fore2">@(item.Quantity * item.SaleIntegral) points</td>
                                                         </tr>
                                                     }
                                                 </tbody>
@@ -154,9 +154,9 @@
                         <div class="sticky-placeholder">
                             <div class="sticky-wrap">
                                 <div class="inner">
-                                    <span class="total" style="float:left;padding-left:20px;">注：礼品一旦兑换不可退换。</span>
-                                    <button type="button" id="submit" class="btn-5 fr" style="margin-top:8px">确认兑换</button>
-                                    <span class="total">@(Model.GiftList.Sum(d => d.Quantity))</em> 件礼品，应付：<strong id="payPriceId">@(Model.TotalAmount)</strong> 积分</span>
+                                    <span class="total" style="float:left;padding-left:20px;">Note: once the gift exchange shall not return</span>
+                                    <button type="button" id="submit" class="btn-5 fr" style="margin-top:8px">Submit</button>
+                                    <span class="total">@(Model.GiftList.Sum(d => d.Quantity))</em> gifts，need to pay：<strong id="payPriceId">@(Model.TotalAmount)</strong> points</span>
                                 </div>
                             </div>
                         </div>

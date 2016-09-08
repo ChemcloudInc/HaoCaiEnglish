@@ -1054,7 +1054,7 @@ namespace Himall.Service
             decimal? balance = capitalInfo.Balance;
             if ((balance.GetValueOrDefault() >= num ? false : balance.HasValue))
             {
-                throw new HimallException("预付款金额少于订单金额");
+                throw new HimallException("Balance is less than order total");
             }
             OrderInfo[] orderInfoArray = array;
             for (int i = 0; i < orderInfoArray.Length; i++)
@@ -1077,7 +1077,7 @@ namespace Himall.Service
                     {
                         empty.PayDate = new DateTime?(DateTime.Now);
                         empty.PaymentTypeGateway = string.Empty;
-                        empty.PaymentTypeName = "预付款支付";
+                        empty.PaymentTypeName = "Balance Payment";
                         empty.OrderStatus = OrderInfo.OrderOperateStatus.WaitDelivery;
                        
                         if (orderPayInfo != null)

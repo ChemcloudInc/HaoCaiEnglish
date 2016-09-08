@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_SimpeHeadAndFoot.cshtml";
-    ViewBag.Title = "找回密码-成功";
+    ViewBag.Title = "Get back password-SUCCESS";@*找回密码-成功*@
 }
 <div id="container">
     <div class="w pt10">
@@ -10,33 +10,35 @@
                     <div class="mod-main mod-comm">
                         <div class="mt">
                             <input type="hidden" name="key" id="key" value="@ViewBag.Key" />
-                             <h3>找回密码</h3>
+                             <h3>Get back password</h3> 
                         </div>
                         <div class="mc">
                             <div class="stepflex " id="sflex04">
                                 <dl class="first done">
                                     <dt class="s-num">1</dt>
-                                    <dd class="s-text">填写账户名<s></s><b></b></dd>
+                                    <dd class="s-text"><s>Input the account name</s><b></b></dd> @*填写账户名*@
                                     <dd></dd>
                                 </dl>
                                 <dl class="normal done">
                                     <dt class="s-num">2</dt>
-                                    <dd class="s-text">验证身份<s></s><b></b></dd>
+                                    <dd class="s-text"><s>Authentication</s><b></b></dd> @*验证身份*@
                                 </dl>
                                 <dl class="normal done">
                                     <dt class="s-num">3</dt>
-                                    <dd class="s-text">设置新密码<s></s><b></b></dd>
+                                    <dd class="s-text">Set new password<s></s><b></b></dd> @*设置新密码*@
                                 </dl>
                                 <dl class="last doing">
                                     <dt class="s-num">&nbsp;</dt>
-                                    <dd class="s-text">完成<s></s><b></b></dd>
+                                    <dd class="s-text"><s>Finished</s><b></b></dd> @*完成*@
                                 </dl>
                             </div>
                             <div class="safe-icon-box formno">
                                 <s class="icon-succ02 m-icon"></s>
                                 <div class="fore">
-                                    <h3 class="ftx-02">新密码设置成功！</h3>
-                                    <div class="ftx-03">请牢记您新设置的密码。<a href="/">返回首页</a></div>
+                                    <h3 class="ftx-02">Set new password successful!</h3> @*新密码设置成功！*@
+                                    <div class="ftx-03">Please keep the new password in your mind ! @*请牢记您新设置的密码。*@
+                                        <a href="/">Return Homepage@*返回首页*@</a>
+                                    </div> 
                                 </div>
                             </div>
                         </div>

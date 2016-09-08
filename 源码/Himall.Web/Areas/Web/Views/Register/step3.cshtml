@@ -50,73 +50,75 @@ $(function(){
     <ul class="nav nav-tabs-custom clearfix">
     	<strong>Shop Information</strong>
         <div class="process-step">
-        	<span class="odd">公司信息</span>
+        	<span class="odd">Company Infomation </span>  @*公司信息*@
+            <i class="glyphicon glyphicon-arrow-right odd"></i> 
+            <span class="odd">Fiscal Information</span>  @*财务信息*@
             <i class="glyphicon glyphicon-arrow-right odd"></i>
-            <span class="odd">财务信息</span>
-            <i class="glyphicon glyphicon-arrow-right odd"></i>
-            <span class="odd">店铺信息</span>
+            <span class="odd">Store Information</span>  @*店铺信息*@
             <i class="glyphicon glyphicon-arrow-right"></i>
-            <span>审核状态</span>
+            <span>Audit Status</span>  @*审核状态*@
         </div>
     </ul>
     <form class="form-horizontal" role="form">
-    	<h3 class="table-hd">店铺经营信息</h3>
+    	<h3 class="table-hd"> Store Management Information</h3>  @*店铺经营信息*@
         <div class="form-group">
-        	<label for="" class="col-sm-2 control-label"><b>*</b>商家帐号：</label>
+        	<label for="" class="col-sm-2 control-label"><b>*</b>Merchant Account:</label>  @*商家帐号：*@
             <div class="col-sm-3">
                 <input type="text" class="form-control input-sm" />
             </div>
             <div class="col-sm-6">
-            	<span class="help-default cor-red">此帐号为日后登录并管理商家中心时使用，注册后不可修改，请牢记。</span>
+
+                @*此帐号为日后登录并管理商家中心时使用，注册后不可修改，请牢记。*@
+            	<span class="help-default cor-red">This account is used to login and manage the merchant center.moreover,you must know that the account can not be modified after registration. </span>
             </div>
         </div>
         <div class="form-group">
-        	<label for="" class="col-sm-2 control-label"><b>*</b>店铺名称：</label>
+        	<label for="" class="col-sm-2 control-label"><b>*</b>Store Name:</label>  @*店铺名称：*@
             <div class="col-sm-3">
                 <input type="text" class="form-control input-sm" />
             </div>
             <div class="col-sm-6">
-            	<span class="help-default cor-red">店铺名称注册后不可修改，请认真填写。</span>
+            	<span class="help-default cor-red">The store name can not be modified after registration, please write it carefully! </span>  @*店铺名称注册后不可修改，请认真填写。*@
             </div>
         </div>
         <div class="form-group">
-        	<label for="" class="col-sm-2 control-label"><b>*</b>店铺等级：</label>
+        	<label for="" class="col-sm-2 control-label"><b>*</b>Store Level:</label>  @*店铺等级：*@
             <div class="col-sm-3">
                 <select class="form-control input-sm"><option></option></select>
             </div>
             <div class="col-sm-6">
-            	<span class="help-default">商品数：不限 模板数：6 收费标准：1000 附加功能：富文本编辑器</span>
+            	<span class="help-default">Goods Number: unlimited Template Number: 6  Charging Standards: 1000 additional functions:  Rich Text Edito</span>  @*商品数：不限 模板数：6 收费标准：1000 附加功能：富文本编辑器*@
             </div>
         </div>
         <div class="form-group">
-        	<label for="" class="col-sm-2 control-label"><b>*</b>店铺分类：</label>
+        	<label for="" class="col-sm-2 control-label"><b>*</b>Store Classification:</label>  @*店铺分类：*@
             <div class="col-sm-3">
                 <select class="form-control input-sm"><option></option></select>
                 
             </div>
             <div class="col-sm-6">
-            	<span class="help-default cor-red">请根据您所经营的内容认真选择店铺分类，注册后商家不可自行修改。</span>
+            	<span class="help-default cor-red"> You can not modify classification after registration, Please choose Classification carefully according to your goods. </span>  @*请根据您所经营的内容认真选择店铺分类，注册后商家不可自行修改。*@
             </div>
         </div>
         
         <div class="form-group">
-        	<label for="" class="col-sm-2 control-label"><b>*</b>经营类目：</label>
+        	<label for="" class="col-sm-2 control-label"><b>*</b>Business scope: </label>  @*经营类目：*@
             <div class="col-sm-10">
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th>经营类目</th>
-                      <th class="td-operate">操作</th>
+                      <th>Business scope</th>  @*经营类目*@
+                      <th class="td-operate">Operation</th>  @*操作*@
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>数码 > 电脑 > DIY</td>
-                      <td class="td-operate"><span class="btn-a"><a class="a-del">删除</a></span></td>
+                      <td>Digital Products > Computer > DIY</td>  @*数码 > 电脑 > DIY*@
+                      <td class="td-operate"><span class="btn-a"><a class="a-del">Delete</a></span></td>  @*删除*@
                     </tr>
                   </tbody>
                 </table>
-                <a class="add-business"><span class="glyphicon glyphicon-plus-sign"></span>新增经营类目</a>
+                <a class="add-business"><span class="glyphicon glyphicon-plus-sign">Add new business scope</span></a>  @*新增经营类目*@
             </div>
         </div>
         
@@ -125,7 +127,7 @@ $(function(){
         
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-            	<button type="submit" class="btn btn-primary">提交申请</button>
+            	<button type="submit" class="btn btn-primary">Submit Applicaton</button>  @*提交申请*@
             </div>
         </div>
     </form>

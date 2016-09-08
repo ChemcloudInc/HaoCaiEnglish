@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "订单支付结果";
+    ViewBag.Title = "The result of order payment";
    // Layout = "~/Areas/Web/Views/Shared/_OrderTopBar.cshtml";
 }
 <div class="w cl">
@@ -15,23 +15,23 @@
         }
 
         var ID = ViewBag.OrderIds;
-        var htmlPart = string.IsNullOrWhiteSpace(errorMsg) ? ("秒后自动跳至我的订单页面<a  href=\"/userCenter?url=/userorder?orderids=" + ViewBag.OrderIds + "&tar=userorder\" class=\"link_1\"> 我的订单页面</a>") : ("秒后自动跳至支付页面<a  href=\"/order/pay?orderIds=" + ViewBag.OrderIds + "\" class=\"link_1\">支付页面</a>");
+        var htmlPart = string.IsNullOrWhiteSpace(errorMsg) ? ("seconds it will direct My order page<a  href=\"/userCenter?url=/userorder?orderids=" + ViewBag.OrderIds + "&tar=userorder\" class=\"link_1\"> My Orders</a>") : ("seconds it will direct to payment page<a  href=\"/order/pay?orderIds=" + ViewBag.OrderIds + "\" class=\"link_1\">Payment Page</a>");
 
          }
     <div class="tips-page pay-@flag-page">
         @if (string.IsNullOrWhiteSpace(errorMsg))
         {
             <h2>
-                恭喜您，支付成功！
+                Congratulation，Pay Success！
             </h2>
-            <div class="error_child">您可以： <a href="/">继续购买</a>。</div>
+            <div class="error_child">： <a href="/">Continue Shopping</a>。</div>
         }
         else
         {
             <h2>
-                抱歉，支付失败！请重新支付！
+                Sorry，Pay Failed！Please pay it again！
             </h2>
-            <div class="error_child">您可以：<a href="/order/pay?orderIds=@(ViewBag.OrderIds)">重新支付</a></div>
+            <div class="error_child"><a href="/order/pay?orderIds=@(ViewBag.OrderIds)">Re-Pay</a></div>
         }
       
         <div id="ShowDiv"></div>
@@ -55,7 +55,7 @@
     }
 
     function doUpdate(num) {
-        document.getElementById("ShowDiv").innerHTML = '将在<strong><font color=red> ' + num + ' </font></strong>@Html.Raw(htmlPart)，请稍候...';
+        document.getElementById("ShowDiv").innerHTML = '<strong><font color=red> ' + num + ' </font></strong>@Html.Raw(htmlPart)，Please waiting...';
         if (num == 0) { window.location = URL; }
     }
     $(function () {

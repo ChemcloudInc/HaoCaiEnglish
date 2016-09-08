@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_SimpeHeadAndFoot.cshtml";
-    ViewBag.Title = "找回密码-重新设置新密码";
+    ViewBag.Title = "Get back passsword-Reset new password"; @*找回密码-重新设置新密码*@
 }
 @model Himall.Model.UserMemberInfo
 <!DOCTYPE html>
@@ -25,38 +25,38 @@ s{text-decoration:none;}
                     <div class="mod-main mod-comm">
                         <div class="mt">
                             <input type="hidden" name="key" id="key" value="@ViewBag.Key" />
-                            <h3>找回密码</h3>
+                            <h3>Get back passsword</h3> @*找回密码*@
                         </div>
                         <div class="mc">
                             <div class="stepflex " id="sflex04">
                                 <dl class="first done">
                                     <dt class="s-num">1</dt>
-                                    <dd class="s-text">填写账户名<s></s><b></b></dd>
+                                    <dd class="s-text"><s>Fill in the account name</s><b></b></dd>  @*填写账户名*@
                                     <dd></dd>
                                 </dl>
                                 <dl class="normal done">
                                     <dt class="s-num">2</dt>
-                                    <dd class="s-text">验证身份<s></s><b></b></dd>
+                                    <dd class="s-text">Authentication<s></s><b></b></dd>  @*验证身份*@
                                 </dl>
                                 <dl class="normal doing">
                                     <dt class="s-num">3</dt>
-                                    <dd class="s-text">设置新密码<s></s><b></b></dd>
-                                </dl>
+                                    <dd class="s-text">Set new password<s></s><b></b></dd>  @*设置新密码*@
+                                </dl> 
                                 <dl class="last">
                                     <dt class="s-num">&nbsp;</dt>
-                                    <dd class="s-text">完成<s></s><b></b></dd>
+                                    <dd class="s-text">Finished<s></s><b></b></dd>  @*完成*@
                                 </dl>
                             </div>
 
                             <div class="form formno">
 
                                 <div class="item">
-                                    <span class="label">新登录密码：</span>
+                                    <span class="label">New Login Password:</span>  @*新登录密码：*@
                                     <div class="fl">
                                         <input type="password" value="" tabindex="1" onfocus="passwordFocus();" onblur="passwordBlur();" class="itxt" id="password">
                                         <span class="clr"></span>
                                         <div id="pwdstrength" style="display:none" class="u-safe">
-                                            安全程度：
+                                            Security Level: @*安全程度：*@
                                             <i class="safe-rank06"></i>
                                             <s id="text"></s>
                                         </div>
@@ -66,7 +66,7 @@ s{text-decoration:none;}
                                 </div>
 
                                 <div class="item">
-                                    <span class="label">确认新密码：</span>
+                                    <span class="label">Confirm New Password:</span>  @*确认新密码：*@
                                     <div class="fl">
                                         <input type="password" value="" tabindex="2" onfocus="repasswordFocus();" onblur="repasswordBlur();" class="itxt" id="repassword">
                                         <span class="clr"></span>
@@ -95,7 +95,9 @@ s{text-decoration:none;}
 function passwordFocus(passwordId){
     $("#pwdstrength").hide();
     $("#password").removeClass().addClass("itxt highlight1");
-    $("#password_error").removeClass().addClass("msg-text").html("由字母加数字或符号至少两种以上字符组成的6-20位半角字符，区分大小写。");
+
+    @*由字母加数字或符号至少两种以上字符组成的6-20位半角字符，区分大小写。 *@   
+    $("#password_error").removeClass().addClass("msg-text").html("Password is made of letters , numbers or symbols with case sensitivity.It has more than two types half-width characters between 6 and 20!");
 }
 
 function passwordBlur(){
@@ -114,21 +116,21 @@ function checkNewPasswordForm(){
     var password = $("#password").val();
     if(!password){
         $("#password").removeClass().addClass("itxt text-error highlight2");
-        $("#password_error").removeClass().addClass("msg-error").html("请输入密码");
+        $("#password_error").removeClass().addClass("msg-error").html("Please input password!");  @*请输入密码*@
         return false;
     }
     var reg = new RegExp("^.*([\u4E00-\u9FA5])+.*$", "g");
     if (reg.test(password)) {
         $("#password").removeClass().addClass("itxt text-error highlight2");
-        $("#password_error").removeClass().addClass("msg-error").html("密码格式不正确，请重新设置");
+        $("#password_error").removeClass().addClass("msg-error").html("Form Error!Please reset the password!");  @*密码格式不正确，请重新设置*@
         return false;
     } else if (password.length < 6) {
         $("#password").removeClass().addClass("itxt text-error highlight2");
-        $("#password_error").removeClass().addClass("msg-error").html("密码长度不正确，请重新设置");
+        $("#password_error").removeClass().addClass("msg-error").html("Lengths Error!Please reset the password!");  @*密码长度不正确，请重新设置*@
         return false;
     } else if (password.length > 20) {
         $("#password").removeClass().addClass("itxt text-error highlight2");
-        $("#password_error").removeClass().addClass("msg-error").html("密码长度不正确，请重新设置");
+        $("#password_error").removeClass().addClass("msg-error").html("Lengths Error!Please reset the password!");  @*密码长度不正确，请重新设置*@
         return false;
     } else {
         var   pattern_1   =   /^.*([\W_])+.*$/i;
@@ -149,7 +151,9 @@ function checkNewPasswordForm(){
         }
         if(strength<=1){
             $("#password").removeClass().addClass("itxt text-error highlight2");
-            $("#password_error").removeClass().addClass("msg-error").html("密码太弱，有被盗风险，请设置由多种字符组成的复杂密码");
+
+            @* 密码太弱，有被盗风险，请设置由多种字符组成的复杂密码*@
+            $("#password_error").removeClass().addClass("msg-error").html("The password is too weak to have the risk of being stolen,please set a complex password consisting of a variety of characters");
             return false;
         }
         if(strength==2){
@@ -162,7 +166,7 @@ function checkNewPasswordForm(){
         }
         if(strength>=3){
             $("#pwdstrength").show();
-            $("#text").html('强');
+            $("#text").html('Stronger');  @*强*@
             $("#pwdstrength i").removeClass().addClass('safe-rank06');
             //$("#pwdstrength").removeClass().addClass("strengthC");
             $("#password").removeClass().addClass("itxt");
@@ -173,7 +177,7 @@ function checkNewPasswordForm(){
 }
 function repasswordFocus(passwordId){
     $("#repassword").removeClass().addClass("itxt highlight1");
-    $("#repassword_error").removeClass().addClass("msg-text").html("请再次输入新密码");
+    $("#repassword_error").removeClass().addClass("msg-text").html("Please input new password again!");  @*请再次输入新密码*@
 }
 function repasswordBlur(){
     $("#repassword").removeClass().addClass("itxt");
@@ -191,12 +195,12 @@ function isSamePassword(){
     var repassword = $("#repassword").val();
     if(!repassword){
         $("#repassword").removeClass().addClass("itxt highlight2");
-        $("#repassword_error").removeClass().addClass("msg-error").html("请再次输入新密码");
+        $("#repassword_error").removeClass().addClass("msg-error").html("Please input new password again!");  @*请再次输入新密码*@
         return false;
     }
     if(password != repassword){
         $("#repassword").removeClass().addClass("itxt highlight2");
-        $("#repassword_error").removeClass().addClass("msg-error").html("两次输入的密码不一致，请重新输入");
+        $("#repassword_error").removeClass().addClass("msg-error").html("Passwords does not much，please input password again!");  @*两次输入的密码不一致，请重新输入*@
         return false;
     }
     $("#repassword_error").removeClass().html("");
@@ -219,12 +223,12 @@ function updatePassword(key,needMobile) {
       if(data && data.success==true){
         window.location.href = "/findpassword/step4";
       }else{
-        alert("网络连接超时，请重新修改登录密码");
+        alert("Network connection is timeout，please reset login password!");  @*网络连接超时，请重新修改登录密码*@
         $("#resetPwdSubmit").removeAttr("disabled");
       }
     },
     error:function(){
-      alert("网络连接超时，请您稍后重试");
+      alert("Network connection is timeout,please try it again later!");  @*网络连接超时,请您稍后再试*@
       $("#resetPwdSubmit").removeAttr("disabled");
     }
   });

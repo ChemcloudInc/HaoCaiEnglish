@@ -27,7 +27,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result = new Result()
 			{
 				success = true,
-				msg = "评价成功"
+				msg = "Evaluated Success"
 			};
 			return Json(result);
 		}
@@ -86,7 +86,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result = new Result()
 			{
 				success = true,
-				msg = "评价成功"
+                msg = "Evaluated Success"
 			};
 			return Json(result);
 		}

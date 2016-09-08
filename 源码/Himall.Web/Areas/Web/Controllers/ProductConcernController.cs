@@ -29,7 +29,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result = new Result()
 			{
 				success = true,
-				msg = "取消成功！"
+				msg = "Cancel Success！"
 			};
 			return Json(result);
 		}

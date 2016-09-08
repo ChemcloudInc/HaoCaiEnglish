@@ -23,11 +23,11 @@
             @if (isRefundOrder)
         {
             <colgroup>
-                <col width="400" />
+                <col width="200" />
                 <col width="200" />
                 <col width="100" />
-                <col width="100" />
-                <col width="100" />
+                <col width="200" />
+                <col width="200" />
             </colgroup>
             <thead>
                 <tr class="tr">
@@ -93,7 +93,7 @@
                     <input type="hidden" name="OrderId" value="@(OrderData.Id)" />
                     <input type="hidden" name="OrderItemId" value="@(OrderItemId)">
                     <div class="item">
-                        <span class="label"><em>*</em>Refund Type：</span>
+                        <span class="label"><em>*</em>Refund Type:</span>
                         <div class="fl">
                             <label>@Html.RadioButton("RefundType", 1, RefundType==1) Only Refund</label>
                             @if(!isRefundOrder){<label>@Html.RadioButton("RefundType", 2, RefundType==2) Return & Refund</label>}
@@ -120,7 +120,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <span class="label"><em>*</em>Refund Reason：</span>
+                        <span class="label"><em>*</em>Refund Reason:</span>
                         <div class="fl">
                             @Html.TextArea("Reason", (OrderItemId == null ? "Cancel Refund" : ""), new Dictionary<string, object>() {
                        { "class", "textarea-item" },
@@ -131,7 +131,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <span class="label"><em>*</em>UserName：</span>
+                        <span class="label"><em>*</em>UserName:</span>
                         <div class="fl">
                             @Html.TextBox("ContactPerson", (string)ViewBag.UserName , new Dictionary<string, object>() {
                        { "class", "input-item" },
@@ -149,7 +149,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <span class="label"><em>*</em>Refund Type：</span>
+                        <span class="label"><em>*</em>Refund Type:</span>
                         <div class="fl">
                             @Html.DropDownList("RefundPayType",(IEnumerable<SelectListItem>) ViewBag.RefundWay, new { @class = "form-control input-sm" })
                         </div>

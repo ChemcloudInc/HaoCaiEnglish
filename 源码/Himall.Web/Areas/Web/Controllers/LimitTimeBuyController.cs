@@ -198,7 +198,7 @@ namespace Himall.Web.Areas.Web.Controllers
 								CollectionSKU color = maxSaleCount.Color;
 								ProductSKU productSKU = new ProductSKU()
 								{
-									Name = "选择颜色",
+									Name = "Please select color",
 									EnabledClass = (num5 != 0 ? "enabled" : "disabled"),
 									SelectedClass = "",
 									SKUId = num2,
@@ -222,7 +222,7 @@ namespace Himall.Web.Areas.Web.Controllers
 								CollectionSKU size = maxSaleCount.Size;
 								ProductSKU productSKU1 = new ProductSKU()
 								{
-									Name = "选择尺码",
+                                    Name = "Please select size",
 									EnabledClass = (num6 != 0 ? "enabled" : "disabled"),
 									SelectedClass = "",
 									SKUId = num3,
@@ -252,7 +252,7 @@ namespace Himall.Web.Areas.Web.Controllers
 					CollectionSKU version = maxSaleCount.Version;
 					ProductSKU productSKU2 = new ProductSKU()
 					{
-						Name = "选择版本",
+                        Name = "Please select specification",
 						EnabledClass = (num7 != 0 ? "enabled" : "disabled"),
 						SelectedClass = "",
 						SKUId = num4,

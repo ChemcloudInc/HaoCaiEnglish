@@ -267,7 +267,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = false,
-					msg = "请登录后领取",
+					msg = "Obtain it after sign in",
 					status = -1
 				};
 				return Json(result);
@@ -277,7 +277,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result1 = new Result()
 				{
 					success = false,
-					msg = "此优惠券已过期",
+                    msg = "This Coupon expired",
 					status = -2
 				};
 				return Json(result1);
@@ -288,7 +288,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result2 = new Result()
 				{
 					success = false,
-					msg = string.Concat("每人最多领取", couponInfo.PerMax, "张该类型的优惠券"),
+					msg = string.Concat("Every customer can obtain ", couponInfo.PerMax, " this type coupons"),
 					status = -3
 				};
 				return Json(result2);
@@ -298,7 +298,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result3 = new Result()
 				{
 					success = false,
-					msg = "优惠券已领完",
+                    msg = "Coupons have been brought out",
 					status = -3
 				};
 				return Json(result3);
@@ -319,7 +319,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result4 = new Result()
 			{
 				success = true,
-				msg = "领取成功",
+				msg = "Obtain Success",
 				status = 1
 			};
 			return Json(result4);
