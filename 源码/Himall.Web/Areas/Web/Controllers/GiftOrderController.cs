@@ -36,7 +36,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			GiftOrderInfo order = orderser.GetOrder(id, base.CurrentUser.Id);
 			if (order == null)
 			{
-				throw new HimallException("错误的订单编号！");
+				throw new HimallException("OrderId is error！");
 			}
 			ViewBag.Logo = ServiceHelper.Create<ISiteSettingService>().GetSiteSettings().Logo;
 			ViewBag.Step = 3;
@@ -50,7 +50,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			GiftInfo byId = giftser.GetById(id);
 			if (byId == null)
 			{
-				throw new HimallException("错误的礼品编号！");
+				throw new HimallException("Gift ID is error！");
 			}
 			GiftOrderItemInfo giftOrderItemInfo = new GiftOrderItemInfo()
 			{
@@ -98,7 +98,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result = new Result()
 			{
 				success = false,
-				msg = "未知错误",
+				msg = "Unknown error",
 				status = 0
 			};
 			Result str = result;
@@ -107,7 +107,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				flag = false;
 				str.success = false;
-				str.msg = "错误的兑换数量！";
+				str.msg = "Exchange quantity error！";
 				str.status = -8;
 				return Json(str);
 			}
@@ -118,7 +118,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				flag = false;
 				str.success = false;
-				str.msg = "礼品不存在！";
+				str.msg = "Gift does not exist！";
 				str.status = -2;
 				return Json(str);
 			}
@@ -126,7 +126,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				flag = false;
 				str.success = false;
-				str.msg = "礼品己失效！";
+				str.msg = "Gift expired！";
 				str.status = -2;
 				return Json(str);
 			}
@@ -135,7 +135,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				flag = false;
 				str.success = false;
 				int stockQuantity = byId.StockQuantity;
-				str.msg = string.Concat("礼品库存不足,仅剩 ", stockQuantity.ToString(), " 件！");
+                str.msg = string.Concat("Gift inventory shortage, only remain ", stockQuantity.ToString(), " items！");
 				str.status = -3;
 				return Json(str);
 			}
@@ -143,7 +143,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				flag = false;
 				str.success = false;
-				str.msg = "礼品关联等级信息有误或礼品积分数据有误！";
+                str.msg = "Gifts associated level information is wrong or points wrong！";
 				str.status = -5;
 				return Json(str);
 			}
@@ -151,7 +151,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				flag = false;
 				str.success = false;
-				str.msg = "超过礼品限兑数量！";
+				str.msg = "Exceed gift exchange quantity！";
 				str.status = -4;
 				return Json(str);
 			}
@@ -159,7 +159,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				flag = false;
 				str.success = false;
-				str.msg = "积分不足！";
+                str.msg = "Lack of points！";
 				str.status = -6;
 				return Json(str);
 			}
@@ -167,7 +167,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				flag = false;
 				str.success = false;
-				str.msg = "用户等级不足！";
+				str.msg = "Lack of Level！";
 				str.status = -6;
 				return Json(str);
 			}
@@ -176,7 +176,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				flag = false;
 				str.success = false;
-				str.msg = "错误的收货人地址信息！";
+				str.msg = "Shipping address error！";
 				str.status = -6;
 				return Json(str);
 			}

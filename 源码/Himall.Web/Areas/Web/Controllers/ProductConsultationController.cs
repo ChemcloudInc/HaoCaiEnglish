@@ -24,7 +24,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = false,
-					msg = "咨询失败，该商品不存在或已经删除！"
+					msg = "Consult Failed，this product has not exist or deleted！"
 				};
 				return Json(result);
 			}
@@ -33,7 +33,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result1 = new Result()
 				{
 					success = false,
-					msg = "登录超时，请重新登录！"
+					msg = "Sign in timeout，please sign in again！"
 				};
 				return Json(result1);
 			}
@@ -50,7 +50,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result2 = new Result()
 			{
 				success = true,
-				msg = "咨询成功"
+				msg = "Consult Success"
 			};
 			return Json(result2);
 		}

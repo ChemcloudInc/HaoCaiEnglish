@@ -56,9 +56,9 @@ namespace Himall.Web.Areas.Web.Controllers
 			ServiceHelper.Create<IProductService>().AddFavorite(pid, base.CurrentUser.Id, out num);
 			if (num == 1)
 			{
-				return Json(new { successful = true, favorited = true, mess = "您已经关注过该商品了." }, JsonRequestBehavior.AllowGet);
+				return Json(new { successful = true, favorited = true, mess = "Already liked this product." }, JsonRequestBehavior.AllowGet);
 			}
-			return Json(new { successful = true, favorited = false, mess = "成功关注该商品." }, JsonRequestBehavior.AllowGet);
+			return Json(new { successful = true, favorited = false, mess = "Liked this prodcut success." }, JsonRequestBehavior.AllowGet);
 		}
 
 		[HttpPost]
@@ -115,7 +115,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			nums.Add(pId);
 			nums1.Add(count);
 			decimal freight = Instance<IProductService>.Create.GetFreight(nums, nums1, cityId);
-			string str = string.Concat("运费 ￥", freight);
+			string str = string.Concat("Shipping: $", freight);
 			Result result = new Result()
 			{
 				success = true,
@@ -198,7 +198,7 @@ namespace Himall.Web.Areas.Web.Controllers
             FreightTemplateInfo freightTemplate = service2.GetFreightTemplate(product.FreightTemplateId);
             decimal num3 = 0M;
             int cityId = 0;
-            string str2 = "请选择";
+            string str2 = "Please select";
             string str3 = string.Empty;
             string str4 = string.Empty;
             string str5 = string.Empty;
@@ -238,7 +238,7 @@ namespace Himall.Web.Areas.Web.Controllers
                 }
                 if (freightTemplate.IsFree == FreightTemplateInfo.FreightTemplateType.Free)
                 {
-                    str4 = "卖家承担运费";
+                    str4 = "Free Shipping";
                 }
                 else if ((base.CurrentUser != null) && (defaultUserShippingAddressByUserId != null))
                 {
@@ -249,7 +249,7 @@ namespace Himall.Web.Areas.Web.Controllers
                     //List<int> counts = new List<int> { (int)result};
                     List<int> counts = new List<int> { 1};
                     num3 = Instance<IProductService>.Create.GetFreight(productIds, counts, cityId);
-                    str4 = "运费 ￥" + num3;
+                    str4 = "Shipping: $" + num3;
                 }
             }
             ViewBag.ProductAddress = str5;
@@ -297,7 +297,7 @@ namespace Himall.Web.Areas.Web.Controllers
                                     long num9 = product.SKUInfo.Where(func2).Sum<SKUInfo>(s => s.Stock);
                                     ProductSKU item = new ProductSKU
                                     {
-                                        Name = "选择颜色",
+                                        Name = "Please select color",
                                         EnabledClass = (num9 != 0L) ? "enabled" : "disabled",
                                         SelectedClass = "",
                                         SKUId = num6,
@@ -325,7 +325,7 @@ namespace Himall.Web.Areas.Web.Controllers
                                     long num10 = product.SKUInfo.Where(func4).Sum<SKUInfo>(s1 => s1.Stock);
                                     ProductSKU tsku2 = new ProductSKU
                                     {
-                                        Name = "选择尺码",
+                                        Name = "Please select size",
                                         EnabledClass = (num10 != 0L) ? "enabled" : "disabled",
                                         SelectedClass = "",
                                         SKUId = num7,
@@ -353,7 +353,7 @@ namespace Himall.Web.Areas.Web.Controllers
                                     long num11 = product.SKUInfo.Where(func6).Sum<SKUInfo>(s => s.Stock);
                                     ProductSKU tsku3 = new ProductSKU
                                     {
-                                        Name = "选择版本",
+                                        Name = "Please select specification",
                                         EnabledClass = (num11 != 0L) ? "enabled" : "disabled",
                                         SelectedClass = "",
                                         SKUId = num8,
@@ -644,7 +644,7 @@ namespace Himall.Web.Areas.Web.Controllers
 								CollectionSKU color = collocationSkusModel.Color;
 								ProductSKU productSKU = new ProductSKU()
 								{
-									Name = "选择颜色",
+									Name = "Please select color",
 									EnabledClass = (num3 != 0 ? "enabled" : "disabled"),
 									SelectedClass = "",
 									SKUId = num,
@@ -668,7 +668,7 @@ namespace Himall.Web.Areas.Web.Controllers
 								CollectionSKU size = collocationSkusModel.Size;
 								ProductSKU productSKU1 = new ProductSKU()
 								{
-									Name = "选择尺码",
+									Name = "Please select size",
 									EnabledClass = (num4 != 0 ? "enabled" : "disabled"),
 									SelectedClass = "",
 									SKUId = num1,
@@ -698,7 +698,7 @@ namespace Himall.Web.Areas.Web.Controllers
 					CollectionSKU version = collocationSkusModel.Version;
 					ProductSKU productSKU2 = new ProductSKU()
 					{
-						Name = "选择版本",
+						Name = "Please select specification",
 						EnabledClass = (num5 != 0 ? "enabled" : "disabled"),
 						SelectedClass = "",
 						SKUId = num2,

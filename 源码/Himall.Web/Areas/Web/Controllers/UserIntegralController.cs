@@ -40,7 +40,7 @@ namespace Himall.Web.Areas.Web.Controllers
             orderser.ConfirmOrder(id, base.CurrentUser.Id);
 			result.success = true;
 			result.status = 1;
-			result.msg = "订单完成";
+			result.msg = "Order Completed";
 			return Json(result);
 		}
 
@@ -60,7 +60,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				str = string.Concat(str, memberIntegralRecordAction.VirtualItemId, ",");
 			}
 			char[] chrArray = new char[] { ',' };
-			remark = string.Concat("使用订单号(", str.TrimEnd(chrArray), ")");
+			remark = string.Concat("OrderId (", str.TrimEnd(chrArray), ")");
 			return remark;
 		}
 

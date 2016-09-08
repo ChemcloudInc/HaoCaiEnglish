@@ -367,7 +367,7 @@ del { text-decoration: line-through; }
 #store-selector .text b { display: block; position: absolute; top: 0; right: 0; width: 17px; height: 24px; background-position: -264px -188px; overflow: hidden; }
 #store-prompt { float: left; margin-top: 4px; }
 #store-prompt strong { font-size: 14px; }
-#brand-bar-pop { width: 200px; position: absolute; top: 0px; right: 0;border-left: 1px solid #cbcab0;padding-bottom: 10px;padding-bottom: 25px;border-bottom: 1px solid #cbcab0;}
+#brand-bar-pop { width: 210px; position: absolute; top: 0px; right: 0;border-left: 1px solid #cbcab0;padding-bottom: 10px;padding-bottom: 25px;border-bottom: 1px solid #cbcab0;}
 #evaluate { padding: 10px 0 0 5px; overflow: hidden; clear: both; }
 #brand-bar-pop dl { overflow: hidden; padding: 10px 0 0 10px; border-bottom: 0;}
 #brand-bar-pop dt { float: left; }
@@ -406,9 +406,9 @@ del { text-decoration: line-through; }
 .p-bfc { overflow: hidden; }
 #evaluate-detail .mc dl { margin-bottom: 10px; }
 #brand-bar-pop #evaluate-detail .mc dl { padding-bottom: 1px; border: 0; padding: 0; }
-#evaluate-detail .mc dt { float: left; color: #222; line-height: 1.1em; }
+#evaluate-detail .mc dt { float: left; color: #222; line-height: 1.1em;width:104px;text-align:right;padding:0 2px 0 0; }
 #brand-bar-pop #evaluate-detail .mc dd { overflow: hidden; clear: none; font-size: 16px; line-height: 13px; color: #3480eb; }
-#brand-bar-pop #evaluate-detail i { width: 10px; height: 10px; display: inline-block; margin: 0 18px; background: url(../Images/newicon20140417.png) no-repeat; }
+#brand-bar-pop #evaluate-detail i { width: 10px; height: 10px; display: inline-block; margin: 0 10px; background: url(../Images/newicon20140417.png) no-repeat; }
 #brand-bar-pop #evaluate-detail i.up { background-position: -140px -96px; }
 #brand-bar-pop #evaluate-detail i.down { background-position: -151px -85px; }
 #brand-bar-pop #evaluate-detail em{ font-size:12px;}

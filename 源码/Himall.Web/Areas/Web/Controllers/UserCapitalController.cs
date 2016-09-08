@@ -34,7 +34,7 @@ namespace Himall.Web.Areas.Web.Controllers
             SiteSettingsInfo siteSettings = ServiceHelper.Create<ISiteSettingService>().GetSiteSettings();
             if (string.IsNullOrWhiteSpace(siteSettings.WeixinAppId) || string.IsNullOrWhiteSpace(siteSettings.WeixinAppSecret))
             {
-                throw new HimallException("未配置公众号参数");
+                throw new HimallException("Can not Set WeiXin AppId");
             }
             string str = AccessTokenContainer.TryGetToken(siteSettings.WeixinAppId, siteSettings.WeixinAppSecret, true);
             SceneModel sceneModel = new SceneModel(QR_SCENE_Type.WithDraw)
@@ -90,15 +90,15 @@ namespace Himall.Web.Areas.Web.Controllers
 				string empty = string.Empty;
 				if (e.ApplyStatus == ApplyWithDrawInfo.ApplyWithDrawStatus.PayFail || e.ApplyStatus == ApplyWithDrawInfo.ApplyWithDrawStatus.WaitConfirm)
 				{
-					empty = "提现中";
+                    empty = "WithDrawing";
 				}
 				else if (e.ApplyStatus == ApplyWithDrawInfo.ApplyWithDrawStatus.Refuse)
 				{
-					empty = "提现失败";
+                    empty = "WithDraw Failed";
 				}
 				else if (e.ApplyStatus == ApplyWithDrawInfo.ApplyWithDrawStatus.WithDrawSuccess)
 				{
-					empty = "提现成功";
+                    empty = "WithDraw Success";
 				}
 				return new ApplyWithDrawModel()
 				{
@@ -151,14 +151,14 @@ namespace Himall.Web.Areas.Web.Controllers
             if (ServiceHelper.Create<IMemberCapitalService>().GetMemberInfoByPayPwd(base.CurrentUser.Id, pwd) == null)
             {
                // throw new HimallException("支付密码不对，请重新输入！");
-                return Json(new { success = false,msg="支付密码不对，请重新输入！"});
+                return Json(new { success = false,msg="Payment password error，please enter again！"});
             }
             CapitalInfo capitalInfo = ServiceHelper.Create<IMemberCapitalService>().GetCapitalInfo(base.CurrentUser.Id);
             decimal num = amount;
             decimal? balance = capitalInfo.Balance;
             if ((num <= balance.GetValueOrDefault() ? false : balance.HasValue))
             {
-                throw new HimallException("提现金额不可超出可用金额！");
+                throw new HimallException("withdraw amount exceed Balance！");
             }
             ApplyWithDrawInfo applyWithDrawInfo = new ApplyWithDrawInfo()
             {
@@ -264,7 +264,7 @@ namespace Himall.Web.Areas.Web.Controllers
 					CreateTime = e.CreateTime.Value.ToString(),
 					SourceData = e.SourceData,
 					SourceType = e.SourceType,
-					Remark = string.Concat(e.SourceType.ToDescription(), ",单号：", e.Id),
+					Remark = string.Concat(e.SourceType.ToDescription(), ",ID：", e.Id),
 					PayWay = e.Remark
 				}).ToList();
               
@@ -311,11 +311,11 @@ namespace Himall.Web.Areas.Web.Controllers
 					string str2 = str6;
 					string[] strArrays1 = new string[] { EncodePaymentId(item.PluginInfo.PluginId), "-", balance.ToString(), "-", null };
 					strArrays1[4] = CurrentUser.Id.ToString();
-					empty = biz.GetRequestUrl(str1, string.Format(str2, string.Concat(strArrays1)), str7, balance, "预付款充值", null);
+					empty = biz.GetRequestUrl(str1, string.Format(str2, string.Concat(strArrays1)), str7, balance, "Recharge", null);
 				}
 				catch (Exception exception)
 				{
-					Log.Error("支付页面加载支付插件出错", exception);
+					Log.Error("Payment page loading payment plugin failed", exception);
 				}
 				return new PaymentModel()
 				{
@@ -335,7 +335,7 @@ namespace Himall.Web.Areas.Web.Controllers
 		public JsonResult SavePayPwd(string pwd)
 		{
 			ServiceHelper.Create<IMemberCapitalService>().SetPayPwd(base.CurrentUser.Id, pwd);
-			return Json(new { success = true, msg = "设置成功" });
+			return Json(new { success = true, msg = "Set pay password success" });
 		}
         public JsonResult SelectAccount(string account)
         {

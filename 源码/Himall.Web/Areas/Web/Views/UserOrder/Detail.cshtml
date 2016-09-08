@@ -254,16 +254,16 @@
                                     <th width="10%">Image</th>
                                     <th width="35%">Name</th>
                                     <th width="10%">Price</th>
-                                    <th width="10%">Price Adjustment</th>
+                                    <th width="15%">Price Adjustment</th>
                                     <th width="10%">Qty</th>
-                                    <th width="15%">Operator</th>
+                                    <th width="10%">Operator</th>
                                 </tr>
                                 @foreach (var orderItem in Model.OrderItemInfo)
                                 {
                                     <tr>
                                         <td>@orderItem.ProductCode</td>
                                         <td>
-                                            <div class="img-list" style="width:250px">
+                                            <div class="img-list" style="width:150px">
                                                 <a href="@Url.Action("Detail", "Product", new { id = @orderItem.ProductId })" target="_blank" class="img-box">
                                                     <img width="50" height="50" title="" src="@orderItem.ThumbnailsUrl">
                                                 </a>

@@ -47,7 +47,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result = new Result()
 			{
 				success = true,
-				msg = "发表成功"
+                msg = "Published Sucess"
 			};
 			return Json(result);
 		}

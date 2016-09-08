@@ -327,7 +327,7 @@ namespace Himall.Web.Areas.Web.Controllers
             }
             if (strs.Count() > 1)
             {
-                object[] objArray = new object[] { strs.ElementAt<string>(0), " 等", strs.Count(), "种商品" };
+                object[] objArray = new object[] { strs.ElementAt<string>(0), "", strs.Count(), " type products" };
                 str = string.Concat(objArray);
             }
             else
@@ -423,7 +423,7 @@ namespace Himall.Web.Areas.Web.Controllers
                 }
                 orderInfos.Add(orderInfo);
                 flag = true;
-                orderService.PlatformCloseOrder(orderInfo.Id, "系统自动", "有未销售的商品，请联系商家或平台");
+                orderService.PlatformCloseOrder(orderInfo.Id, "automatic", "You have not sell the goods, please contact the merchant or Administration");
             }
             if (flag)
             {

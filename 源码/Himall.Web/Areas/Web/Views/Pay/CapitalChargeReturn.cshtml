@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "充值成功";
+    ViewBag.Title = "Recharge Success";
 }
 <style type="text/css">
     * {
@@ -64,15 +64,15 @@
         @if (string.IsNullOrWhiteSpace(errorMsg))
         {
             <h2>
-                恭喜您，支付成功！
+                Congratulation，Pay Success！
             </h2>
         }
         else
         {
             <h2>
-                抱歉，支付失败！请重新支付！
+                Sorry，Pay Failed, Please pay it again！
             </h2>
-            <div class="error_child">您可以：<a href="/userCenter?url=/UserCapital&tar=">返回我的账户页面</a></div>
+            <div class="error_child">You Can：<a href="/userCenter?url=/UserCapital&tar="> return Capital Center</a></div>
         }
 
         <div id="ShowDiv"></div>
@@ -98,7 +98,7 @@
 
     function doUpdate(num)
     {
-        document.getElementById("ShowDiv").innerHTML = '将在<strong><font color=red> '+num+' </font></strong>@Html.Raw(htmlPart)，请稍候...' ;
+        document.getElementById("ShowDiv").innerHTML = '<strong><font color=red> '+num+' </font></strong>@Html.Raw(htmlPart)，Please Waiting...' ;
         if(num == 0) { window.location=URL;  }
     }
     $(function(){

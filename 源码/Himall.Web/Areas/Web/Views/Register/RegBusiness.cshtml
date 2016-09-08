@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>注册页面</title>
+    <title>Registration Page</title>  @*注册页面*@
     <link href="~/Areas/Web/Content/register.css" rel="stylesheet" />
     <link href="~/Areas/Web/Content/artdilog.css" rel="stylesheet" />
 </head>
@@ -13,24 +13,24 @@
 <body>
     <div class="top">
         <div class="w cl">
-            <span class="favorite"><i></i><a href="javascript:AddFavorite('/','商城')">收藏商城</a></span>
+            <span class="favorite"><i></i><a href="javascript:AddFavorite('/','Mall')">Collect Mall</a></span>  @* 收藏商城*@
             <ul class="quick_list">
-                <li class="loginbar">您好！欢迎来到商城！<a href="/login">[登录]</a>&nbsp;<a href="javascript:regist()">[免费注册]</a></li>
+                <li class="loginbar">Hello! Welcome to the mall!<a href="/login">[Login]</a>&nbsp;<a href="javascript:regist()">[registration Free]</a></li>   @*您好！欢迎来到商城！ *@
             </ul>
         </div>
     </div>
 
     <div class="w">
-        <div id="logo"><a href="/"><img src="@ViewBag.Logo" alt="商城" height="60"></a><b></b></div>
+        <div id="logo"><a href="/"><img src="@ViewBag.Logo" alt="Mall" height="60"></a><b></b></div>
     </div>
 
     <div class="w" id="regist">
         <div class="mt">
             <ul class="tab">
-                <li class="line"><a href="/register">个人用户</a></li>
-                <li class="curr">商家注册</li>
+                <li class="line"><a href="/register">Personal User</a></li>  @*个人用户 *@
+                <li class="curr">Merchant Registration</li>  @*商家注册 *@
             </ul>
-            <div class="extra"><span>我已经注册，现在就&nbsp;<a href="/selleradmin/login" class="flk13">登录</a></span></div>
+            <div class="extra"><span>I have been registered, &nbsp;<a href="/selleradmin/login" class="flk13">Login right now</a></span></div>   @*我已经注册，现在就登录 *@
         </div>
         <div class="mc">
             <form id="personRegForm" method="POST" onsubmit="return false;">
@@ -39,45 +39,49 @@
 
                 <div class="form">
                     <div class="item" id="select-regName">
-                        <span class="label"><b class="ftx04">*</b>管理员账号：</span>
+                        <span class="label"><b class="ftx04">*</b>Administrator account:</span>  @*管理员账号： *@
 
                         <div class="fl item-ifo">
                             <div class="o-intelligent-regName">
-                                <input type="text" id="regName" name="regName" class="text" tabindex="1" autocomplete="off" onpaste="return false;" value="用户名" onfocus="if(this.value=='用户名') this.value='';this.style.color='#333'" onblur="if(this.value=='') {this.value='用户名';this.style.color='#999999'}" style="color: rgb(153, 153, 153);">
+                                @*用户名*@
+                                <input type="text" id="regName" name="regName" class="text" tabindex="1" autocomplete="off" onpaste="return false;" value="Username" onfocus="if(this.value=='Username') this.value='';this.style.color='#333'" onblur="if(this.value=='') {this.value='Username';this.style.color='#999999'}" style="color: rgb(153, 153, 153);">
                                 <i class="i-name"></i>
                                 <label id="regName_succeed" class="blank"></label>
-                                <label id="regName_info" style="display:none;" class="focus">4-20位字符，支持中英文、数字及"-"、"_"的组合</label>
-                                <label id="regName_error" style="display:none;" class="error">请输入用户名</label>
+                                <label id="regName_info" style="display:none;" class="focus">It consist of chinese,english,number,'_' or '-'.</label>  @*4-20位字符，支持中英文、数字及"-"、"_"的组合*@
+                                <label id="regName_error" style="display:none;" class="error">Please input username</label>  @* 请输入用户名*@
                             </div>
                         </div>
                     </div>
                     <div id="o-password">
                         <div class="item">
-                            <span class="label"><b class="ftx04">*</b>管理员密码：</span>
+                            <span class="label"><b class="ftx04">*</b>Administrator Password：</span>  @*管理员密码： *@
 
                             <div class="fl item-ifo">
                                 <input type="password" id="pwd" name="pwd" class="text" tabindex="2" style="ime-mode:disabled;" onpaste="return  false" autocomplete="off">
                                 <i class="i-pass"></i>
                                 <label id="pwd_succeed" class="blank"></label>
-                                <label id="pwd_info" class="focus" style="display:none;"><span>6-20位字符，可使用字母、数字或符号的组合，不建议使用纯字母、纯数字、纯符号</span></label>
-                                <label id="pwd_error" class="focus" style="display:none;"><span>密码长度只能在6-20位字符之间</span></label>
+
+                                @*6-20位字符，可使用字母、数字或符号的组合，不建议使用纯字母、纯数字、纯符号 *@
+                                @*密码长度只能在6-20位字符之间 *@
+                                <label id="pwd_info" class="focus" style="display:none;"><span>You can use letters,numbers or symbles formed a password between 6 and 20 characters,we do not recommend you to use pure numbers,pure letters and pure symbles. </span></label>
+                                <label id="pwd_error" class="focus" style="display:none;"><span>The lengths of password must between 6 and 20 characters.</span></label>
                                 <span class="clr"></span>
                             </div>
                         </div>
 
                         <div class="item">
-                            <span class="label"><b class="ftx04">*</b>请确认密码：</span>
+                            <span class="label"><b class="ftx04">*</b>Please submit the password:</span>  @*请确认密码： *@
 
                             <div class="fl item-ifo">
                                 <input type="password" id="pwdRepeat" name="pwdRepeat" class="text" tabindex="3" onpaste="return  false" autocomplete="off">
                                 <i class="i-pass"></i>
                                 <label id="pwdRepeat_succeed" class="blank"></label>
-                                <label id="pwdRepeat_info" class="focus" style="display:none;"><span>请再次输入密码</span></label>
-                                <label id="pwdRepeat_error" class="error" style="display:none"><span>两次输入密码不一致</span></label>
+                                <label id="pwdRepeat_info" class="focus" style="display:none;"><span>Please input the password again! </span></label> @*请再次输入密码 *@
+                                <label id="pwdRepeat_error" class="error" style="display:none"><span>Passwords do not much!</span></label>  @*两次输入密码不一致 *@
                             </div>
                         </div>
                         <div class="item" id="authcodeDiv">
-                            <span class="label"><b class="ftx04">*</b>验证码：</span>
+                            <span class="label"><b class="ftx04">*</b>Verification Code:</span>  @*验证码： *@
                             <div class="fl item-ifo" style="width:272px;">
                                 <input type="text" id="checkCode" name="authcode" class="text text-1" tabindex="6" autocomplete="off" maxlength="4">
                                 <label class="img">
@@ -85,7 +89,7 @@
                                 </label>
                                 
                                 @*<label class="ftx23">&nbsp;看不清？<a href="javascript:void(0)" class="flk13" id="checkCodeChangeBtn">换一张</a></label>*@
-                                <label id="checkCode_error" class="error" style="display:none"><span>请输入验证码</span></label>
+                                <label id="checkCode_error" class="error" style="display:none"><span>Please input Verification Code</span></label>  @*请输入验证码 *@
                                 <span class="clr"></span>
                             </div>
                         </div>
@@ -99,7 +103,7 @@
                     </div>*@
                     <div class="item">
                         <span class="label">&nbsp;</span>
-                        <input type="button" class="btn-img btn-regist" id="registsubmit" style="cursor:pointer" value="立即注册" tabindex="8">
+                        <input type="button" class="btn-img btn-regist" id="registsubmit" style="cursor:pointer" value="register right now" tabindex="8"> @*立即注册*@
                     </div>
                 </div>
                 <span class="clr"></span>

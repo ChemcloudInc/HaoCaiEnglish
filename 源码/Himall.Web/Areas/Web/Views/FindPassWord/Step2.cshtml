@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Areas/Web/Views/Shared/_SimpeHeadAndFoot.cshtml";
-    ViewBag.Title = "找回密码-验证用户信息";
+    ViewBag.Title = "Get back password-Authentication";   @*找回密码-验证用户信息*@
 }
 @model Himall.Model.UserMemberInfo
 <div id="container">
@@ -11,32 +11,32 @@
                     <div class="mod-main mod-comm">
                         <div class="mt">
                             <input type="hidden" name="key" id="key" value="@ViewBag.Key" />
-                            <h3>找回密码</h3>
+                            <h3>Get back passsword</h3>  @*找回密码*@
                         </div>
                         <div class="mc">
                             <div class="stepflex " id="sflex04">
                                 <dl class="first done">
                                     <dt class="s-num">1</dt>
-                                    <dd class="s-text">填写账户名<s></s><b></b></dd>
+                                    <dd class="s-text"><s>Fill in the account name</s><b></b></dd>  @*填写账户名*@
                                     <dd></dd>
                                 </dl>
                                 <dl class="normal doing">
                                     <dt class="s-num">2</dt>
-                                    <dd class="s-text">验证身份<s></s><b></b></dd>
+                                    <dd class="s-text">Authentication<s></s><b></b></dd>  @*验证身份*@
                                 </dl>
                                 <dl class="normal">
                                     <dt class="s-num">3</dt>
-                                    <dd class="s-text">设置新密码<s></s><b></b></dd>
+                                    <dd class="s-text"><s>Set new password</s><b></b></dd>  @*设置新密码*@
                                 </dl>
                                 <dl class="last">
                                     <dt class="s-num">&nbsp;</dt>
-                                    <dd class="s-text">完成<s></s><b></b></dd>
+                                    <dd class="s-text"><s>Finished</s><b></b></dd>  @*完成*@
                                 </dl>
                             </div>
 
                             <div class="form formno">
                                 <div class="item">
-                                    <span class="label">请选择验证身份方式：</span>
+                                    <span class="label">Please choose type of Authentication :</span>  @*请选择验证身份方式：*@
                                     <div class="fl">
                                         <select onchange="selectVerifyType();" name="" id="type" class="selt">
                                             @foreach (var messagePlugin in @ViewBag.BindContactInfo)
@@ -53,7 +53,7 @@
                                 </div>
                                 <div id="mobileDiv" style="display: none;">
                                     <div class="item">
-                                        <span class="label">昵称：</span>
+                                        <span class="label">Nickname:</span>  @*昵称：*@
                                         <div class="fl">
                                             <strong class="ftx-un">@Model.UserName</strong>
                                             <label id="username_succeed" class="blank invisible"></label>
@@ -62,7 +62,7 @@
                                         <div class="clr"></div>
                                     </div>
                                     <div class="item">
-                                        <span class="label">已验证手机：</span>
+                                        <span class="label">The Verified Telephone Number:</span>  @*已验证手机：*@
                                         <div class="fl">
                                             <strong class="ftx-un" id="mobileSpan">@Model.CellPhone</strong>
                                             <div class="clr"></div>
@@ -70,15 +70,17 @@
                                         <div class="clr"></div>
                                     </div>
                                     <div class="item">
-                                        <span class="label">请填写手机校验码：</span>
+                                        <span class="label">Please input the telephone Verification code:"</span>  @*请填写手机校验码：*@
                                         <div class="fl">
                                             <input type="text" id="code" name="code" class="itxt text-1" disabled="disabled">
                                             <a class="btn btn-10 ml10" id="sendMobileCode" href="javascript:sendFindPwdCode('sendMobileCode','@ViewBag.Key');">
-                                                <s></s>获取短信校验码
+                                                <s>Get SMS verification code</s>  @*获取短信校验码*@
                                             </a>
                                             <div class="clr"></div>
                                             <div class="msg-text" style="display:none;" id="timeDiv">
-                                                校验码已发出，请注意查收短信，如果没有收到，你可以在<strong class="ftx-01">35</strong>秒后要求系统重新发送
+
+                                                @*校验码已发出，请注意查收短信，如果没有收到，你可以在<strong class="ftx-01">35</strong>秒后要求系统重新发送*@
+                                                Verification code has been sent，Please check your message，if you do not receive the SMS ，you can request system to send it in <strong class="ftx-01">35</strong>seconds again
                                             </div>
                                             <div class="" id="code_error"></div>
                                         </div>
@@ -96,7 +98,7 @@
 
                                 <div style="display: none;" id="emailDiv">
                                     <div class="item">
-                                        <span class="label">昵称：</span>
+                                        <span class="label">Nickname:</span>  @*昵称：*@
                                         <div class="fl">
                                             <strong class="ftx-un">@Model.UserName</strong>
                                             <label id="username_succeed" class="blank invisible"></label>
@@ -105,7 +107,7 @@
                                         <div class="clr"></div>
                                     </div>
                                     <div class="item">
-                                        <span class="label">邮箱地址：</span>
+                                        <span class="label">E-mail Address:</span>  @*邮箱地址：*@
                                         <div class="fl">
                                             <strong class="ftx-un" id="mobileSpan">@Model.Email</strong>
                                             <div class="clr"></div>
@@ -113,15 +115,17 @@
                                         <div class="clr"></div>
                                     </div>
                                     <div class="item">
-                                        <span class="label">请填写邮箱校验码：</span>
+                                        <span class="label">Please input the Verification code of E-mail: </span>  @*请填写邮箱校验码：*@
                                         <div class="fl">
                                             <input type="text" id="code1" name="code" class="itxt text-1" disabled="disabled">
                                             <a class="btn btn-10 ml10" id="sendMobileCode1" href="javascript:sendFindEmailCode('sendMobileCode1','@ViewBag.Key');">
-                                                <s></s>获取邮箱校验码
+                                                <s>Get the Verification code of E-mail</s> @*获取邮箱校验码 *@
                                             </a>
                                             <div class="clr"></div>
                                             <div class="msg-text" style="display:none;" id="timeDiv1">
-                                                校验码已发出，请注意查收邮件，如果没有收到，你可以在<strong class="ftx-01">35</strong>秒后要求系统重新发送
+
+                                                @*校验码已发出，请注意查收邮件，如果没有收到，你可以在<strong class="ftx-01">35</strong>秒后要求系统重新发送*@
+                                                 Verification code has been sent，Please check your E-mail，if you do not receive the mail ，you can request system to send it in <strong class="ftx-01">35</strong>seconds again
                                             </div>
                                             <div class="" id="code_error1"></div>
                                         </div>
@@ -180,15 +184,15 @@
                     $("#code").removeAttr("disabled");
                     $("#submitCode").removeAttr("disabled");
                 }else if (data.flag == "0") {
-                    alert("120秒内仅能获取一次验证码，请稍后重试");
+                    alert("You can only get a Verification code in 120 seconds,please try it again later!");  @*120秒内仅能获取一次验证码，请稍后重试*@
                     $("#sendMobileCode").removeAttr("disabled");
                 }else {
-                    alert("网络连接超时，请重新获取验证码");
+                    alert("Network connection is timeout,please obtain the Verification code again!");  @*网络连接超时，请重新获取验证码*@
                     $("#sendMobileCode").removeAttr("disabled");
                 }
             },
             error: function () {
-                alert("网络连接超时，请您稍后重试");
+                alert("Network connection is timeout,please try it again later!");  @*网络连接超时，请您稍后重试*@
                 $("#sendMobileCode").removeAttr("disabled");
             }
         });
@@ -210,15 +214,15 @@
                     $("#code1").removeAttr("disabled");
                     $("#submitCode1").removeAttr("disabled");
                 }else if (data.flag == "0") {
-                    alert("120秒内仅能获取一次验证码，请稍后重试");
+                    alert("You can only get a Verification code in 120 seconds,please try it again later!");  @*120秒内仅能获取一次验证码，请稍后重试*@
                     $("#sendMobileCode1").removeAttr("disabled");
                 }else {
-                    alert("网络连接超时，请重新获取验证码");
+                    alert("Network connection is timeout,please obtain the Verification code again!");   @*网络连接超时，请重新获取验证码*@
                     $("#" + a).removeAttr("disabled");
                 }
             },
             error: function () {
-                alert("网络连接超时，请您稍后重试");
+                alert("Network connection is timeout,please try it again later!");  @*网络连接超时，请您稍后重试*@
                 $("#" + a).removeAttr("disabled");
             }
         });
@@ -265,11 +269,11 @@
                 if (data.success) {
                     window.location.href = "/findpassword/Step3?key=" + data.key;
                 } else {
-                    alert('验证码错误!');
+                    alert('The Verification code is error!');  @*验证码错误!*@
                 }
             },
             error: function () {
-                alert("网络连接超时，请您稍后重试");
+                alert("Network connection is timeout,please try it again later!");  @*网络连接超时，请您稍后重试*@
                 $("#submitCode").removeAttr("disabled");
             }
         });
@@ -291,11 +295,11 @@
                 if (data.success) {
                     window.location.href = "/findpassword/Step3?key=" + data.key;
                 } else {
-                    alert('验证码错误!');
+                    alert('The Verification code is error!!');  @*验证码错误*@
                 }
             },
             error: function () {
-                alert("网络连接超时，请您稍后重试");
+                alert("Network connection is timeout,please try it again later!");   @*网络连接超时，请您稍后重试*@
                 $("#submitCode").removeAttr("disabled");
             }
         });
@@ -304,7 +308,7 @@
         var code = $("#code1").val();
         if (!code) {
             $("#code1").removeClass().addClass("itxt text-1 highlight2");
-            $("#code_error1").removeClass().addClass("msg-error").html("请输入验证码");
+            $("#code_error1").removeClass().addClass("msg-error").html("Please input the Verification code!");  @*请输入验证码*@
             return false;
         }
         $("#code1").removeClass().addClass("itxt text-1");
@@ -315,7 +319,7 @@
         var code = $("#code").val();
         if (!code) {
             $("#code").removeClass().addClass("itxt text-1 highlight2");
-            $("#code_error").removeClass().addClass("msg-error").html("请输入验证码");
+            $("#code_error").removeClass().addClass("msg-error").html("Please input the Verification code!");  @*请输入验证码*@
             return false;
         }
         $("#code").removeClass().addClass("itxt text-1");

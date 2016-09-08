@@ -64,7 +64,7 @@
             }
         }
 
-        /* 计算规则：
+        /* 计算规则:
       高 （商家得分-同行业平均分）/（同行业商家最高得分-同行业平均分）
       低 （同行业平均分-商家得分）/（同行业平均分-同行业商家最高低分）
        */
@@ -232,7 +232,7 @@
         <div class="shop-left">
             <div id="brand-bar-pop">
                 <dl id="seller">
-                    <dt>Sellers：</dt>
+                    <dt>Sellers:</dt>
                     <dd><a href="/shop/home/@Model.Shop.Id">@Model.Shop.Name</a></dd>
                 </dl>
                 <dl id="plus-attent">
@@ -243,19 +243,19 @@
                 <div id="evaluate-detail">
                     <div class="mc">
                         <dl>
-                            <dt>Description Match：</dt>
+                            <dt>Description Match:</dt>
                             <dd id="productAndDescription" title="（Merchant score-Industry average score）/（Merchant industry the highest score-Industry average score）">
 
                             </dd>
                         </dl>
                         <dl>
-                            <dt>Shipping Speed：</dt>
+                            <dt>Shipping Speed:</dt>
                             <dd id="sellerDeliverySpeed" title="（Industry average score-Merchant score）/（Industry average score-Merchant industry the lowest score）">
 
                             </dd>
                         </dl>
                         <dl>
-                            <dt>Service Attitude：</dt>
+                            <dt>Service Attitude:</dt>
                             <dd id="sellerServiceAttitude" title="（Industry average score-Merchant score）/（Industry average score-Merchant industry the lowest score）">
 
                             </dd>
@@ -264,14 +264,14 @@
                     </div>
                 </div>
                 <dl>
-                    <dt style="margin-bottom: 10px;">Online Service：</dt>
+                    <dt style="margin-bottom: 10px;">Online Service:</dt>
                     <dd>@Html.Action("CustmerServices", "Product", new { shopId = @Model.Shop.Id })</dd>
                 </dl>
                 
-                <dl id="pop-company"><dt>Company Name：</dt><dd>@Model.Shop.CompanyName</dd></dl>
-                <dl id="pop-address"><dt>Address：</dt><dd id="regionAddressId">@Model.Shop.Address</dd></dl>
+                <dl id="pop-company"><dt>Company Name:</dt><dd>@Model.Shop.CompanyName</dd></dl>
+                <dl id="pop-address"><dt>Address:</dt><dd id="regionAddressId">@Model.Shop.Address</dd></dl>
                 <dl id="hotline">
-                    <dt>Tel：</dt>
+                    <dt>Tel:</dt>
                     <dd>@Model.Shop.Phone</dd>
                 </dl>
             </div>

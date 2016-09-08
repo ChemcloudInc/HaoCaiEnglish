@@ -42,21 +42,21 @@ namespace Himall.Web.Areas.Web.Controllers
 			model.ShopName = (shop == null ? "" : shop.ShopName);
 			model.ShopPhone = (shop == null ? "" : shop.CompanyPhone);
 			ServiceHelper.Create<IComplaintService>().AddComplaint(model);
-			return Json(new { success = true, msg = "提交成功" }, JsonRequestBehavior.AllowGet);
+			return Json(new { success = true, msg = "Success" }, JsonRequestBehavior.AllowGet);
 		}
 
 		[HttpPost]
 		public JsonResult ApplyArbitration(long id)
 		{
 			ServiceHelper.Create<IComplaintService>().UserApplyArbitration(id, base.CurrentUser.Id);
-			return Json(new { success = true, msg = "处理成功" });
+			return Json(new { success = true, msg = "Success" });
 		}
 
 		[HttpPost]
 		public JsonResult DealComplaint(long id)
 		{
 			ServiceHelper.Create<IComplaintService>().UserDealComplaint(id, base.CurrentUser.Id);
-			return Json(new { success = true, msg = "处理成功" });
+            return Json(new { success = true, msg = "Success" });
 		}
 
 		public ActionResult Index(int pageSize = 10, int pageNo = 1)

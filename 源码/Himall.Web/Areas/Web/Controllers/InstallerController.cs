@@ -27,7 +27,7 @@ namespace Himall.Web.Areas.Web.Controllers
 
 		private int usernameMaxLength = 20;
 
-		private string usernameRegex = "[一-龥a-zA-Z0-9]+[一-龥_a-zA-Z0-9]*";
+		private string usernameRegex = "[一-_a-zA-Z0-9]+[一-_a-zA-Z0-9]*";
 
 		private int passwordMaxLength = 16;
 
