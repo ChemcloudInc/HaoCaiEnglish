@@ -60,7 +60,7 @@ function query() {
             { field: "Id", hidden: true },
             { field: "UserName", title: 'Administrator' },
             { field: "CreateDate", title: 'Creation Date' },
-            { field: "RoleName", title: 'Rights Groups' },
+            { field: "RoleName", title: 'Privilege Groups' },
         {
             field: "operation", operation: true, title: "Operation",
             formatter: function (value, row, index) {
@@ -216,7 +216,7 @@ function LoadAddBox() {
                 return false;
             }
             if (roleId == null) {
-                $.dialog.tips("Please select the rights group, if there is no rights group,Please add!");
+                $.dialog.tips("Please select the privilege group, if there is no privilege group,Please add!");
                 return false;
             }
             if (!CheckAdd(username, password))

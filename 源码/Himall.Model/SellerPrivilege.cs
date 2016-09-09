@@ -53,21 +53,21 @@ namespace Himall.Model
 		SalesAnalysis = 5003,
         [Privilege("System", "Administrator", 6001, "Manager/management", "Manager", "")]
 		AdminManage = 6001,
-        [Privilege("System", " Permission Group", 6002, "Privilege/management", "Privilege", "")]
+        [Privilege("System", " Privilege Group", 6002, "Privilege/management", "Privilege", "")]
 		PrivilegesManage = 6002,
         [Privilege("System", "Operation Log", 6003, "OperationLog/management", "OperationLog", "")]
 		OperationLog = 6003,
-        [Privilege("Marketing", "Flash Sale", 7001, "LimitTimeBuy/management", "LimitTimeBuy", "")]
+        [Privilege("Marketing", "Limit Time Buy", 7001, "LimitTimeBuy/management", "LimitTimeBuy", "")]
 		LimitTimeBuy = 7001,
-        [Privilege("Marketing", "Discount Coupon", 7002, "Coupon/management", "Coupon", "")]
+        [Privilege("Marketing", "Coupon", 7002, "Coupon/management", "Coupon", "")]
 		Coupon = 7002,
-        [Privilege("Marketing", "Purchase", 7003, "Collocation/management", "Collocation", "")]
+        [Privilege("Marketing", "Collocation", 7003, "Collocation/management", "Collocation", "")]
 		Collocation = 7003,
-        [Privilege("Marketing", "Mobile", 7004, "MobileTopic/Management", "MobileTopic", "")]
+        [Privilege("Marketing", "Mobile Topic", 7004, "MobileTopic/Management", "MobileTopic", "")]
 		MobileTopic = 7004,
-        [Privilege("Marketing", "Freight Free", 7005, "shop/FreightSetting", "shop", "FreightSetting")]
+        [Privilege("Marketing", "Freight Setting", 7005, "shop/FreightSetting", "shop", "FreightSetting")]
 		FreightSetting = 7005,
-        [Privilege("Marketing", "Cash Coupon", 7006, "ShopBonus/Management", "ShopBonus", "")]
+        [Privilege("Marketing", "Shop Bonus", 7006, "ShopBonus/Management", "ShopBonus", "")]
 		ShopBonus = 7006
         //[Privilege("微信", "微信配置", 8002, "WeiXin/BasicVShopSettings", "WeiXin", "")]
         //weixinSetting = 8002,

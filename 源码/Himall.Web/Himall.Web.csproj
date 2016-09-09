@@ -1654,10 +1654,10 @@
     <Content Include="Areas\SellerAdmin\Views\OperationLog\Management.cshtml" />
     <Content Include="Areas\SellerAdmin\Views\OrderComplaint\Management.cshtml" />
     <Content Include="Areas\SellerAdmin\Views\OrderRefund\Management.cshtml" />
-    <Content Include="Areas\SellerAdmin\Views\Order\Detail.cshtml" />
-    <Content Include="Areas\SellerAdmin\Views\Order\Management.cshtml" />
-    <Content Include="Areas\SellerAdmin\Views\Order\Print.cshtml" />
-    <Content Include="Areas\SellerAdmin\Views\Order\SendGood.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\OperationLog\Order\Detail.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\OperationLog\Order\Management.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\OperationLog\Order\Print.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\OperationLog\Order\SendGood.cshtml" />
     <Content Include="Areas\SellerAdmin\Views\PageSettings\Management.cshtml" />
     <Content Include="Areas\SellerAdmin\Views\PageSettings\SlideAds.cshtml" />
     <Content Include="Areas\SellerAdmin\Views\Poi\AddPage.cshtml" />
@@ -1884,9 +1884,9 @@
     <Content Include="Areas\Web\Views\WithDraw\Index.cshtml" />
     <Content Include="Areas\Web\Views\WithDraw\AddWithDraw.cshtml" />
     <Content Include="Areas\Web\Views\Pay\CashDepositWeiXinPay.cshtml" />
-    <Content Include="Areas\SellerAdmin\Views\Order\AccountTypeList.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\OperationLog\Order\AccountTypeList.cshtml" />
     <Content Include="Areas\Web\Views\Category\Index.cshtml" />
-    <Content Include="Areas\SellerAdmin\Views\Order\ApplySettlement.cshtml" />
+    <Content Include="Areas\SellerAdmin\Views\OperationLog\Order\ApplySettlement.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

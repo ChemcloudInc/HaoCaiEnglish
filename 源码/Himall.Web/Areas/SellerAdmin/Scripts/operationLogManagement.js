@@ -10,7 +10,7 @@ function query() {
         url: './list',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的数据',
+        NoDataMsg: 'No matching data.',
         border: false,
         fit: true,
         fitColumns: true,
@@ -24,14 +24,14 @@ function query() {
         columns:
         [[
             { field: "Id", hidden: true },
-            { field: "UserName", title: '操作人' },
-            { field: "PageUrl", title: '页面', 
+            { field: "UserName", title: 'Operator' },
+            { field: "PageUrl", title: 'Page', 
 				formatter: function (value, row, index) {
 					return '<span title="'+value+'" class="overflow-ellipsis" style="width:300px; text-align:left">'+value+'</span>';
 				}
 			},
-            { field: "Description", title: '行为' },
-            { field: "Date", title: '操作日期' },
+            { field: "Description", title: 'Action' },
+            { field: "Date", title: 'Operation date' },
         { field: "IPAddress", title: 'IP' }
         ]]
     });

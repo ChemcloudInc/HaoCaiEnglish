@@ -5,20 +5,18 @@
 <script src="~/Scripts/v.js"></script>
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>组合购</strong>
-        <li class=""><a href="@Url.Action("Management")">所有组合购</a></li>
+        <strong>Collocation</strong>
+        <li class="active"><a>All Collocation</a></li>
         @if (!ViewBag.Expire)
         {
-            <li class=""><a href="@Url.Action("Add")">添加组合购</a></li>
+            <li><a href="@Url.Action("Add")">Add Collocation</a></li>
         }
-        <li class="active"><a>购买服务</a></li>
+        <li class=""><a href="@Url.Action("BuyService")">Purchasing service</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
                 <h3>温馨提示：</h3>
-                <span>1、</span><p>购买单位为月，您可以在所购买的周期内发布组合购；</p>
-                <span>2、</span><p>每月您需要支付 @Model.Price.ToString("f2") 元 ;</p>
-                <span>3、</span><p class="red">相关费用会在店铺的账期结算中扣除</p>
+                <span>*</span><p>Display a list of collocation</p>
             </div>
         </em>
     </ul>
@@ -27,22 +25,22 @@
             <div class="form-group">
                 @if (ViewBag.IsBuy)
                 {
-                    <label class="col-sm-2 control-label" for="">服务到期时间：</label>
+                    <label class="col-sm-2 control-label" for="">Service expiration time:</label>
                     <div class="col-sm-2 form-control-static"><b>@ViewBag.EndDateInfo</b></div>
-                    <div class="col-sm-6"><span class="help-default" style="position:relative;top:6px;">每月您需要支付<b class="red"> @Model.Price.ToString("f2") </b> 元，相关费用会在店铺的账期结算中扣除</span></div>
+                    <div class="col-sm-6"><span class="help-default" style="position:relative;top:6px;">Every month you need to pay <b class="red"> @Model.Price.ToString("f2") </b> dollars and related costs will be deducted from the account of the settlement in the shop</span></div>
                 }
                 else
                 {
-                    <div class="col-sm-3 col-sm-offset-2 form-control-static red">您未购买组合购服务</div>
-                    <span>每月您需要支付 @Model.Price.ToString("f2") 元</span>
+                    <div class="col-sm-3 col-sm-offset-2 form-control-static red">You did not buy collocation service</div>
+                    <span>Every month you need to pay @Model.Price.ToString("f2") dollars</span>
                 }
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label" for="">购买数量：</label>
-                <div class="col-sm-8"><input class="form-control input-sm " type="text" id="range" name="month" style="width:105px; display:inline-block" /> &nbsp; 月</div>
+                <label class="col-sm-2 control-label" for="">Purchase quantity:</label>
+                <div class="col-sm-8"><input class="form-control input-sm " type="text" id="range" name="month" style="width:105px; display:inline-block" /> &nbsp; </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-3 col-sm-offset-2"><button type="submit" class="btn btn-primary">确认购买</button></div>
+                <div class="col-sm-3 col-sm-offset-2"><button type="submit" class="btn btn-primary">Confirm purchase</button></div>
             </div>
         </div>
     </form>
@@ -62,7 +60,7 @@
             loadingobj.close();
             var d = data;
             if (d.success) {
-                $.dialog.succeedTips("提交成功！", function () {
+                $.dialog.succeedTips("Submit successfully", function () {
                     window.location.reload();
                 }, 0.3);
             } else {
@@ -75,6 +73,6 @@
             target: 'range',
             empty: true,
             ruleType: 'uint&&(value>0)&&(value<=3600)',// v.js规则验证
-            error: '只能为数字，且只能是0到3600之间的整数!'
+            error: 'Can only be an integer between 0-3600!'
         });
 </script>

@@ -7,7 +7,7 @@ $(function () {
 })
 
 function Delete(id) {
-    $.dialog.confirm('确定删除该条记录吗？', function () {
+    $.dialog.confirm('Determine the record to delete it?', function () {
         $.post("./Delete", { id: id }, function (data) { $.dialog.tips(data.msg); query() });
     });
 }
@@ -17,7 +17,7 @@ function query() {
         url: './list',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的数据',
+        NoDataMsg: 'No matching data',
         border: false,
         fit: true,
         fitColumns: true,
@@ -28,15 +28,15 @@ function query() {
         columns:
         [[
             { field: "Id", hidden: true },
-            { field: "Name", title: '权限组名' },
+            { field: "Name", title: 'Privilege groups name' },
            
         {
-            field: "operation", operation: true, title: "操作",
+            field: "operation", operation: true, title: "Operation",
             formatter: function (value, row, index) {
                 var id = row.Id.toString();
                 var html = ["<span class=\"btn-a\">"];
-                html.push("<a href='./Edit/" + id + "'>编辑</a>");
-                html.push("<a onclick=\"Delete('" + id + "');\">删除</a>");
+                html.push("<a href='./Edit/" + id + "'>edit</a>");
+                html.push("<a onclick=\"Delete('" + id + "');\">delete</a>");
                 html.push("</span>");
                 return html.join("");
             }

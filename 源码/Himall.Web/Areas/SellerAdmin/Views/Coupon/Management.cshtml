@@ -11,13 +11,13 @@
     }
     }
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>优惠券</strong>
-        <li class="active"><a>所有优惠券</a></li>
+        <strong>Coupon</strong>
+        <li class="active"><a>All coupons</a></li>
         @if (CheckService && CheckDate)
         {
-            <li><a href="@Url.Action("Add")">新增优惠券</a></li>
+            <li><a href="@Url.Action("Add")">Add coupon</a></li>
         } 
-        <li class=""><a href="@Url.Action("BuyService")">服务购买</a></li>
+        <li class=""><a href="@Url.Action("BuyService")">Purchasing service</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -32,9 +32,9 @@
         <div class="search-box only-line">
             <form class="custom-inline">
                 <div class="form-group">
-                    <label class="label-inline" for="">搜优惠券</label><input type="text" id="CouponName" class="form-control input-ssm">
+                    <label class="label-inline" for="">Search coupons</label><input type="text" id="CouponName" class="form-control input-ssm">
                 </div>
-                <button id="searchBtn" class="btn btn-primary btn-sm" type="button">搜 索</button>
+                <button id="searchBtn" class="btn btn-primary btn-sm" type="button">Search</button>
             </form>
         </div>
     }
@@ -42,7 +42,7 @@
     {	
 		<div class="form-horizontal">
 			<div class="form-group">
-				<p class="apply-primary"><span class="glyphicon glyphicon-info-sign"></span>您还未购买优惠券服务或者服务已到期，<a href="./BuyService">现在购买</a></p>
+				<p class="apply-primary"><span class="glyphicon glyphicon-info-sign"></span>You have not purchased a coupon service or service has expired,<a href="./BuyService">buy now</a></p>
 			</div>
 		</div>
     }
@@ -61,7 +61,7 @@
             url: './GetItemList',
             nowrap: false,
             rownumbers: true,
-            NoDataMsg: '没有找到符合条件的优惠券',
+            NoDataMsg: 'No matching coupons',
             border: false,
             fit: true,
             fitColumns: true,
@@ -75,16 +75,16 @@
             [[
                 { field: "Id", title: 'Id', hidden: true, width: 150 },
                 {
-                    field: "CouponName", title: "优惠名称", width: 200, align: "left",
+                    field: "CouponName", title: "Coupon name", width: 200, align: "left",
                 },
-               { field: "Price", title: "价值", width: 80, align: "center" },
-                { field: "PerMax", title: "领取限制", width: 70, align: "left" },
-                { field: "OrderAmount", title: "使用条件", align: "left",width:90 },
-                { field: "Num", title: "库存", width: 90, align: "left" },
+               { field: "Price", title: "Value", width: 80, align: "center" },
+                { field: "PerMax", title: "Receive restrictions", width: 70, align: "left" },
+                { field: "OrderAmount", title: "Conditions of Use", align: "left", width: 90 },
+                { field: "Num", title: "Storage capacity", width: 90, align: "left" },
                 {
-                    field: "Date", title: "有效期", align: "center",
+                    field: "Date", title: "Validity", align: "center",
                     formatter: function (value, row, index) {
-                        var html = '<span>' + row.StartTime + "至" + row.EndTime + '</span>';
+                        var html = '<span>' + row.StartTime + " to " + row.EndTime + '</span>';
                         return html;
                     }
                 },

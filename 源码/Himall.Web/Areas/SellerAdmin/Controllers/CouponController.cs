@@ -75,7 +75,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
             DateTime date = DateTime.Now.Date;
             if ((couponService != null) && (couponService.MarketServiceRecordInfo.Max<MarketServiceRecordInfo, DateTime>(item => item.EndTime) < date))
             {
-                str = "您的优惠券服务已经过期，您可以续费。";
+                str = "Your coupon service has expired, you can renew.";
             }
             else if ((couponService != null) && (couponService.MarketServiceRecordInfo.Max<MarketServiceRecordInfo, DateTime>(item => item.EndTime) >= date))
             {
@@ -96,7 +96,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 			IMarketService marketService = ServiceHelper.Create<IMarketService>();
 			marketService.OrderMarketService(month, base.CurrentSellerManager.ShopId, MarketType.Coupon);
 			result.success = true;
-			result.msg = "购买服务成功";
+            result.msg = "Purchase successfully";
 			return Json(result);
 		}
 
