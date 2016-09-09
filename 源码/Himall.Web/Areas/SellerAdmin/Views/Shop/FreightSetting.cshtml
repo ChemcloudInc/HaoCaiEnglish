@@ -3,26 +3,26 @@
 <script src="~/Scripts/autoNumeric.js"></script>
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>运费设置</strong>
-        <li class="active"><a>运费设置</a></li>
+        <strong>Freight Setting</strong>
+        <li class="active"><a>Freight Setting</a></li>
     </ul>
     <form class="form-horizontal" role="form">
         <div class="form-group" style="display:none;">
-            <label for="" class="col-sm-2 control-label">店铺运费：</label>
+            <label for="" class="col-sm-2 control-label">Shop freight:</label>
             <div class="col-sm-2">
                 <input type="text" id="freightInput" class="auto form-control input-sm" name="freight" value="@Model.Freight.ToString("F2")" data-d-group="0" data-a-sign="¥ ">
             </div>
         </div>
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label">满额免运费：</label>
+            <label for="" class="col-sm-2 control-label">Free shipping:</label>
             <div class="col-sm-2">
                 <input type="text" class="auto form-control input-sm" name="freeFreight" value="@Model.FreeFreight.ToString("F2")" data-d-group="0" data-a-sign="¥ ">
-                &nbsp;0表示不启用此功能
+                &nbsp;'0' indicates that this feature is not enabled
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" class="btn btn-primary">保 存</button>
+                <button type="button" class="btn btn-primary">Save</button>
             </div>
         </div>
     </form>
@@ -35,12 +35,12 @@
             var freeFreight = $('input[name="freeFreight"]').autoNumeric('get');
             if (freeFreight.length<1)
             {
-                alert("请输入数字");
+                alert("Please enter a number");
                 return;
             }
             if (freeFreight < 0)
             {
-                alert("请不要输入小于0的数字");
+                alert("Do not enter numbers less than 0");
                 return;
             }
             var loading = showLoading();
@@ -48,9 +48,9 @@
             $.post('SaveFreightSetting', { freight: freight, freeFreight: freeFreight }, function (result) {
                 loading.close();
                 if (result.success)
-                    $.dialog.succeedTips('保存成功!');
+                    $.dialog.succeedTips('Save successfully!');
                 else
-                    $.dialog.errorTips('保存失败!' + result.msg);
+                    $.dialog.errorTips('Save failed!' + result.msg);
 
             });
         });

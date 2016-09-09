@@ -74,7 +74,7 @@
     function GetExpiryDate() {
         var a = $('#starttime').val(),
                b = $('#endtime').val();
-        $('#id_date').html(a + '至' + b);
+        $('#id_date').html(a + ' to ' + b);
     }
 </script>
 <script src="~/Scripts/v.js"></script>
@@ -86,10 +86,10 @@
         .form-control-static label { padding-right: 20px; }
     </style>
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>优惠券</strong>
-        <li class=""><a href="@Url.Action("Management","Coupon")">所有优惠卷</a></li>
-        <li class="active"><a>@(Model.Id > 0 ? "修改" : "新增")优惠券</a></li>
-        <li class=""><a href="@Url.Action("BuyService", "Coupon")">购买服务</a></li>
+        <strong>Coupon</strong>
+        <li class=""><a href="@Url.Action("Management","Coupon")">All Coupon</a></li>
+        <li class="active"><a>@(Model.Id > 0 ? "edit" : "add")Coupon</a></li>
+        <li class=""><a href="@Url.Action("BuyService", "Coupon")">Buy service</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">

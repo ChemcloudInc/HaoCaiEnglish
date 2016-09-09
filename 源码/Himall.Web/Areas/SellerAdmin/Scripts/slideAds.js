@@ -44,15 +44,15 @@ function showEditor(id,url,pic) {
             '<div id="HandSlidePic" class="form-group upload-img clearfix">',
             '</div>',
             '<div class="form-group">',
-                '<label class="label-inline" for="">跳转链接</label>',
+                '<label class="label-inline" for="">Link</label>',
                 '<input class="form-control input-sm" type="text" id="url">',
             '</div>',
         '</div>'].join(''),
-        okVal: '保存',
+        okVal: 'Save',
         init: function () {
             $("#HandSlidePic").himallUpload(
             {
-                title: '请上传图片',
+                title: 'Please upload pictures.',
                 imageDescript: '990*350',
                 displayImgSrc: pic,
 				dataWidth: 8
@@ -65,8 +65,8 @@ function showEditor(id,url,pic) {
             pic = $("#HandSlidePic").himallUpload('getImgSrc');
 
 
-            if (!url||url.length === 0) { $("#url").focus(); $.dialog.errorTips('链接地址不能为空.'); return valida; }
-            if (!pic || pic.length === 0) { $.dialog.errorTips('图片不能为空.'); return valida; }
+            if (!url || url.length === 0) { $("#url").focus(); $.dialog.errorTips('Link address can not be empty.'); return valida; }
+            if (!pic || pic.length === 0) { $.dialog.errorTips('Pictures can not be empty.'); return valida; }
             var loading = showLoading();
             $.ajax({
                 type: "POST",
@@ -77,7 +77,7 @@ function showEditor(id,url,pic) {
                 success: function (data) {
                     loading.close();
                     if (data.success) {
-                        $.dialog.tips('保存成功!', function () {
+                        $.dialog.tips('Save successfully', function () {
                             if (!id)
                                 location.reload();
                             else {
@@ -91,12 +91,13 @@ function showEditor(id,url,pic) {
                         });
                     }
                     else {
-                        $.dialog.errorTips('保存失败！' + data.msg);
+                        $.dialog.errorTips('Save failed!' + data.msg);
                         return false;
                     }
                 },
                 error: function (data) {
-                    loading.close(); $.dialog.errorTips('操作失败,请稍候尝试.'); }
+                    loading.close(); $.dialog.errorTips('Operation failed, please wait to try.');
+                }
             });
         }
     });
@@ -170,7 +171,7 @@ function swapSequence(id, direction, callback) {
         error: function (data) {
 
             loading.close();
-            $.dialog.errorTips('调整顺序失败,请稍候尝试.');
+            $.dialog.errorTips('Sorting failed, please wait to try.');
         }
     });
 
@@ -188,18 +189,18 @@ function bindDeleteClickEvent() {
 
 
 function del(id) {
-    $.dialog.confirm('确定要删除本条轮播图吗？', function () {
+    $.dialog.confirm('Sure you want to delete this section rotation picture?', function () {
         var loading = showLoading();
         $.post('deleteSlide', { id: id }, function (result) {
             loading.close();
             if (result.success) {
-                $.dialog.succeedTips('删除成功!');
+                $.dialog.succeedTips('Delete successfully!');
                 $('tr[swapid="' + id + '"]').remove();
                 ReSetSwapIcon();
 
             }
             else
-                $.dialog.errorTips('删除失败!' + result.msg);
+                $.dialog.errorTips('Delete failed!' + result.msg);
         })
 
 

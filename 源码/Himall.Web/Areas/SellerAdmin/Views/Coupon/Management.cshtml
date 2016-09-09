@@ -17,7 +17,7 @@
         {
             <li><a href="@Url.Action("Add")">Add coupon</a></li>
         } 
-        <li class=""><a href="@Url.Action("BuyService")">Purchasing service</a></li>
+        <li class=""><a href="@Url.Action("BuyService")">Buy service</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -90,35 +90,35 @@
                 },
 
                 {
-                    field: "Receive", title: "领取人/次", width: 100, align: "center",
+                    field: "Receive", title: "Receivers/every time", width: 100, align: "center",
                     formatter: function (value, row, index) {
                         var html = '<span>' + row.RecevicePeople + "/" + row.ReceviceNum + '</span>';
                         return html;
                     }
                 },
             {
-                field: "Used", title: "已使用", width: 50,
+                field: "Used", title: "Have used", width: 50,
             },
             {
-                field: "operation", operation: true, title: "操作",width:220,
+                field: "operation", operation: true, title: "Operation",width:220,
                 formatter: function (value, row, index) {
                     var id = row.Id.toString();
                     var now = "@DateTime.Now.Date".replace(/-/g, '/');
                     var html = ["<span class=\"btn-a\">"];
                     switch (row.WXAuditStatus) {
                         case 1:
-                            html.push("<a href='./Receivers/" + id + "'>领取详情</a>");
-                            html.push("<a href='./Detail/" + id + "'>查看</a>");
+                            html.push("<a href='./Receivers/" + id + "'>more details</a>");
+                            html.push("<a href='./Detail/" + id + "'>view</a>");
                             if (new Date(row.EndTime) > new Date(now)) {
-                                html.push("<a class=\"good-check\" href=\"./Edit/" + id + "\">编辑</a>");
-                                html.push("<a class=\"good-check\" onclick=\"Cancel(" + id + ")\">使失效</a>");
+                                html.push("<a class=\"good-check\" href=\"./Edit/" + id + "\">edit</a>");
+                                html.push("<a class=\"good-check\" onclick=\"Cancel(" + id + ")\">invalidate</a>");
                             }
                             break;
                         case 0:
-                            html.push("同步审核中...");
+                            html.push("audit...");
                             break;
                         case -1:
-                            html.push("同步审核失败");
+                            html.push("audit failed...");
                             break;
                     }
                     html.push("</span>");
@@ -147,7 +147,7 @@
     });
 
     function Cancel(id) {
-        $.dialog.confirm('确定使该优惠券失效吗？', function () {
+        $.dialog.confirm('Determined to make the coupon invalid?', function () {
             var loading = showLoading();
             $.post("./Cancel", { couponid: id }, function (data) { loading.close(); $.dialog.tips(data.msg); query(); });
         });

@@ -4,7 +4,7 @@
         url: './list',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的专题',
+        NoDataMsg: 'No matching topics',
         border: false,
         fit: true,
         fitColumns: true,
@@ -17,17 +17,17 @@
         columns:
         [[
             {
-                field: "name", title: '专题名称', align: "center"
+                field: "name", title: 'Topic name', align: "center"
             },
             {
-                field: "tags", title: '标签', align: "center", width: 300
+                field: "tags", title: 'Label', align: "center", width: 300
             },
             {
-                field: "s", title: "操作", align: "center",width:300,
+                field: "s", title: "Operation", align: "center",width:300,
                 formatter: function (value, row, index) {
                     var html = '<span class="btn-a"><input type="hidden" value="' + row.url + '" id="url' + row.id + '" />';
-                    html += '<a class="good-check" href="./save/' + row.id + '">编辑</a><a class="good-check" onclick="deleteTopic(' + row.id + ',\'' + row.name + '\')">删除</a>';
-                    html += '<a onclick="copyurl(\'' + row.id + '\')" class=\"good-check copyurlbt\">复制链接</a>';
+                    html += '<a class="good-check" href="./save/' + row.id + '">edit</a><a class="good-check" onclick="deleteTopic(' + row.id + ',\'' + row.name + '\')">delete</a>';
+                    html += '<a onclick="copyurl(\'' + row.id + '\')" class=\"good-check copyurlbt\">copy link</a>';
                     //html += "<a href='" + row.url + "' target='_blank'>预览</a></span>";
                     html += '<a class="glyphicon glyphicon-eye-open view-mobile-shop" title="预览" data-url="' + row.url + '" style="font-size:18px;text-decoration: none; cursor:pointer;"></a>'
                     html += '</span>';
@@ -69,29 +69,29 @@ function initzclip()
     $(".copyurlbt").zclip({
         path: '/scripts/ZeroClipboard.swf', //记得把ZeroClipboard.swf引入到项目中 
         copy: function () {
-            return "我是复制";
+            return "I am copy";
         },
         afterCopy: function () {
-            alert("复制了");
+            alert("Copied");
         }
     });
 }
 
 
 function deleteTopic(id, name) {
-    $.dialog.confirm('您确定要删除 ' + name + ' 吗', function () {
+    $.dialog.confirm('Are you sure you want to delete ' + name + ' ?', function () {
         var loading = showLoading();
         $.post('./delete', { id: id }, function (result) {
             loading.close();
             if (result.success) {
-                $.dialog.tips('删除成功', function () {
+                $.dialog.tips('Delete successfully', function () {
 
                     var pageNo = $("#topicGrid").hiMallDatagrid('options').pageNumber;
                     $("#topicGrid").hiMallDatagrid('reload', { pageNumber: pageNo });
                 });
             }
             else
-                $.dialog.alert('删除失败!' + result.msg);
+                $.dialog.alert('Delete failed!' + result.msg);
         }, "json");
     });
 }
@@ -106,7 +106,7 @@ function copyToClipboard(dom) {
             return text;
         },
         afterCopy: function () {
-            alert("复制了");
+            alert("Copied");
         }
     });
 }

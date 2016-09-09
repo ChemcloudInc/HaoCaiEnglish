@@ -5,17 +5,17 @@
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
         <strong>自动轮播</strong>
-        <li class="active"><a>管理</a></li>
-        <li><a class="add-auto-img" id="addSlideAd">新增</a></li>
+        <li class="active"><a>Management</a></li>
+        <li><a class="add-auto-img" id="addSlideAd">Add</a></li>
     </ul>
 
     <table class="table mt20">
         <thead>
             <tr>
-                <th>图片</th>
-                <th>跳转地址</th>
-                <th>排序</th>
-                <th class="td-operate">操作</th>
+                <th>Pictures</th>
+                <th>Link</th>
+                <th>Sorting</th>
+                <th class="td-operate">Operation</th>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +25,7 @@
                     <td><img width="134" height="48" slideid="@slideAd.Id" src="@slideAd.ImageUrl"></td>
                     <td><label style="width:370px; word-break:break-all;" slideid="@slideAd.Id">@slideAd.Url</label></td>
                     <td><span class="glyphicon glyphicon-circle-arrow-up"></span> <span class="glyphicon glyphicon-circle-arrow-down"></span></td>
-                    <td class="td-operate"><span class="btn-a"><a btntype="edit" pic="@slideAd.ImageUrl" url="@slideAd.Url" slideid="@slideAd.Id">编辑</a><a btnType="delete" slideId="@slideAd.Id" class="a-del">删除</a></span></td>
+                    <td class="td-operate"><span class="btn-a"><a btntype="edit" pic="@slideAd.ImageUrl" url="@slideAd.Url" slideid="@slideAd.Id">edit</a><a btnType="delete" slideId="@slideAd.Id" class="a-del">delete</a></span></td>
                 </tr>
             }
         </tbody>

@@ -314,11 +314,11 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 				if (dateTime <= date)
 				{
 					flag = true;
-					ViewBag.EndDateInfo = "您的优惠券服务已经过期，您可以续费。";
+                    ViewBag.EndDateInfo = "Your coupon service has expired, you can renew.";
 				}
 				else
 				{
-					ViewBag.EndDateInfo = dateTime.ToString("yyyy年MM月dd日");
+					ViewBag.EndDateInfo = dateTime.ToString("yyyy.MM.dd");
 				}
 			}
 			else

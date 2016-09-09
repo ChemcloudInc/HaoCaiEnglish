@@ -80,7 +80,7 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
             else if ((couponService != null) && (couponService.MarketServiceRecordInfo.Max<MarketServiceRecordInfo, DateTime>(item => item.EndTime) >= date))
             {
                 DateTime time2 = couponService.MarketServiceRecordInfo.Max<MarketServiceRecordInfo, DateTime>(item => item.EndTime);
-                str = string.Format("{0} 年 {1} 月 {2} 日", time2.Year, time2.Month, time2.Day);
+                str = string.Format("{0} . {1} . {2} ", time2.Year, time2.Month, time2.Day);
             }
             ViewBag.EndDate = str;
             ViewBag.Price = ServiceHelper.Create<IMarketService>().GetServiceSetting(MarketType.Coupon).Price;

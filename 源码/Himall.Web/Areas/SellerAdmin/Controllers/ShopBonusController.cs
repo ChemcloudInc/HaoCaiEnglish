@@ -56,12 +56,12 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
             DateTime date = DateTime.Now.Date;
             if ((shopBonusService != null) && (shopBonusService.MarketServiceRecordInfo.Max<MarketServiceRecordInfo, DateTime>(item => item.EndTime) < date))
             {
-                str = "您的随机红包服务已经过期，您可以续费。";
+                str = "Your shop bonus service limit has expired, you can renew.";
             }
             else if ((shopBonusService != null) && (shopBonusService.MarketServiceRecordInfo.Max<MarketServiceRecordInfo, DateTime>(item => item.EndTime) >= date))
             {
                 DateTime time2 = shopBonusService.MarketServiceRecordInfo.Max<MarketServiceRecordInfo, DateTime>(item => item.EndTime);
-                str = string.Format("{0} 年 {1} 月 {2} 日", time2.Year, time2.Month, time2.Day);
+                str = string.Format("{0} . {1} . {2} ", time2.Year, time2.Month, time2.Day);
             }
             else if (serviceSetting == null)
             {

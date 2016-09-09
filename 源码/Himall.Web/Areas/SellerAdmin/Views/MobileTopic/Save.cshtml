@@ -2,21 +2,21 @@
 @using Newtonsoft.Json;
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>移动专题</strong>
-        <li><a href="/selleradmin/MobileTopic/Management">专题列表</a></li>
-        <li class="active"><a href="Save">@(Model.Id > 0 ? "编辑" : "新增")</a></li>
+        <strong>Mobile Topic</strong>
+        <li class="active"><a href="Management">Topic list</a></li>
+        <li><a href="Save">Add topic</a></li>
     </ul>
 
     <form class="form-horizontal" role="form">
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label">专题标题：</label>
+            <label for="" class="col-sm-2 control-label">Topic title:</label>
             <div class="col-sm-3">
                 @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-sm" })
             </div>
             <div class="col-sm-3">@Html.ValidationMessageFor(item => item.Name)</div>
         </div>
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label">标签：</label>
+            <label for="" class="col-sm-2 control-label">Label:</label>
             <div class="col-sm-3">
                 @Html.TextBoxFor(m => m.Tags, new { @class = "form-control input-sm" })
             </div>
@@ -28,14 +28,14 @@
         </div>
 
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label">商品模块：</label>
+            <label for="" class="col-sm-2 control-label">Product module:</label>
             <div class="col-sm-10">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>模块名称</th>
-                            <th>已选择商品数</th>
-                            <th class="td-operate">操作</th>
+                            <th>module name</th>
+                            <th>Selected number of products</th>
+                            <th class="td-operate">operation</th>
                         </tr>
                     </thead>
                     <tbody id="moduleContainer">
@@ -46,9 +46,9 @@
                             {
 
                                 <tr index="@i">
-                                    <td><input class="text-module" type="text" value="@item.Name" placeholder="@("默认模块"+(i+1))" /></td>
+                                    <td><input class="text-module" type="text" value="@item.Name" placeholder="@("Default module" + (i + 1))" /></td>
                                     <td type="selectedNumber">@item.ModuleProductInfo.Count</td>
-                                    <td class="td-operate"><span class="btn-a"><a class="choose-goods" index="@(i)">选择商品</a><a class="a-del" index="@(i)">删除</a></span></td>
+                                    <td class="td-operate"><span class="btn-a"><a class="choose-goods" index="@(i)">Select products</a><a class="a-del" index="@(i)">delete</a></span></td>
                                 </tr>
                                 i++;
                             }
@@ -57,19 +57,19 @@
                         {
                             <tr index="0">
                                 <td><input class="text-module" type="text" value="默认模块1" placeholder="默认模块1" /></td>
-                                <td type="selectedNumber">未选择</td>
-                                <td class="td-operate"><span class="btn-a"><a class="choose-goods">选择商品</a><a class="a-del" index="0">删除</a></span></td>
+                                <td type="selectedNumber">unselected</td>
+                                <td class="td-operate"><span class="btn-a"><a class="choose-goods">Select products</a><a class="a-del" index="0">delete</a></span></td>
                             </tr>
                         }
                     </tbody>
                 </table>
-                <a class="add-topic-module" href="javascript:;" onclick="addModule()"><span class="glyphicon glyphicon-plus-sign"></span>新增模块</a>
+                <a class="add-topic-module" href="javascript:;" onclick="addModule()"><span class="glyphicon glyphicon-plus-sign"></span>Add module</a>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" onclick="submitTopic()" class="btn btn-primary">保 存</button>
+                <button type="button" onclick="submitTopic()" class="btn btn-primary">Save</button>
             </div>
         </div>
         <input type="hidden" value="@Model.Id" name="Id" />

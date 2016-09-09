@@ -58,9 +58,9 @@
     @*@{Html.RenderAction("TopInfo", "ProductPartial", new {area="Web" });}*@
     <div class="top">
         <div class="warp cl">
-            <span class="top-link">您好，欢迎来到@(ViewBag.SiteName)！ <a href="/">去@(ViewBag.SiteName)首页</a></span>
+            <span class="top-link">Hi，Welcome to @ViewBag.SiteName！ <a href="/">Home</a></span>
             <ul class="quick_list">
-                <li><a href="/userCenter">@Model.UserName</a> &nbsp; <a href="javascript:logout()">[退出]</a></li>
+                <li><a href="/userCenter">@Model.UserName</a> &nbsp; <a href="javascript:logout()">[Logout]</a></li>
                 <li class="sitemap dropdown">
                     <span class="outline"></span>
                     <span class="blank"></span>
@@ -71,31 +71,31 @@
 
                         <div class="dropdown-menu">
 							<ol>
-								<li><a href="/UserCenter?url=/UserOrder&tar=UserOrder">已买到的商品</a></li>
-								<li><a href="/UserCenter?url=/productConcern&tar=productConcern">我关注的商品</a></li>
-								<li><a href="/UserCenter?url=/shopConcern&tar=shopConcern">我关注的店铺</a></li>
+                                <li><a href="/UserCenter?url=/UserOrder&tar=UserOrder">Orders</a></li>
+                                <li><a href="/UserCenter?url=/productConcern&tar=productConcern">Wishlist Products</a></li>
+                                <li><a href="/UserCenter?url=/shopConcern&tar=shopConcern">Wishlist Shops</a></li>
 		
 							</ol>
                         </div>
                     }
                     else
                     {
-                        <a href="/sellerAdmin">我的@(ViewBag.SiteName)</a>
+                        <a href="/sellerAdmin">My@(ViewBag.SiteName)</a>
                     }
                 </li>
-                <li><s></s><a href="/cart/cart" target="_blank">购物车<em>(<span id="shopping-amount"></span>)</em></a></li>
+                <li><s></s><a href="/cart/cart" target="_blank">Carts<em>(<span id="shopping-amount"></span>)</em></a></li>
                 <li class="service dropdown">
                     <s></s>
                     <span class="outline"></span>
                     <span class="blank"></span>
-                    <a href="/SellerAdmin">卖家中心</a>
+                    <a href="/SellerAdmin">Sellers Center</a>
                     <b></b>
                     <div class="dropdown-menu">
                         <ol>
-                            <li><a href="/SellerAdmin">商家入驻</a></li>
-                            <li><a href="/SellerAdmin?url=/SellerAdmin/order/management&tar=order/management">已卖出商品</a></li>
-                            <li><a href="/SellerAdmin?url=/SellerAdmin/product/PublicStepOne&tar=PublicStepOne">发布商品</a></li>
-                            <li><a href="/SellerAdmin?url=/SellerAdmin/product/management&tar=product/management">管理商品</a></li>
+                            <li><a href="/SellerAdmin">Open a Shop</a></li>
+                            <li><a href="/SellerAdmin?url=/SellerAdmin/order/management&tar=order/management">Orders</a></li>
+                            <li><a href="/SellerAdmin?url=/SellerAdmin/product/PublicStepOne&tar=PublicStepOne">Add Product</a></li>
+                            <li><a href="/SellerAdmin?url=/SellerAdmin/product/management&tar=product/management">Products</a></li>
 
                         </ol>
                     </div>
@@ -104,15 +104,15 @@
                     <s></s>
                     <span class="outline"></span>
                     <span class="blank"></span>
-                    <a href="javascript:void(0)">客户中心</a>
+                    <a href="javascript:void(0)">Customer Center</a>
                     <b></b>
                     <div class="dropdown-menu">
                         <ol>
-                            <li><a href="/Article/Category">帮助中心</a></li>
+                            <li><a href="/Article/Category">Help Center</a></li>
                             @if (Model.UserName.IndexOf(":") <= 0)
                             {
-                                <li><a href="/UserCenter?url=/OrderRefund&tar=OrderRefund">售后服务</a></li>
-                                <li><a href="/UserCenter?url=/OrderComplaint&tar=OrderComplaint">投诉中心</a></li>
+                                <li><a href="/UserCenter?url=/OrderRefund&tar=OrderRefund">After-sales service</a></li>
+                                <li><a href="/UserCenter?url=/OrderComplaint&tar=OrderComplaint">Complaint Center</a></li>
                             }
                         </ol>
                     </div>

@@ -10,55 +10,57 @@
 <script src="~/Scripts/jquery.zclip.js"></script>
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>优惠券</strong>
-        <li class=""><a href="@Url.Action("Management")">所有优惠卷</a></li>
-        <li class=""><a href="@Url.Action("Add")">添加优惠券</a></li>
-        <li class=""><a href="@Url.Action("BuyService")">购买服务</a></li>
-        <li class="active"><a>查看优惠券</a></li>
+        <strong>Coupon</strong>
+        <li class=""><a href="@Url.Action("Management")">All coupons</a></li>
+        @if (ViewBag.Market != null && ((Himall.Model.ActiveMarketServiceInfo)ViewBag.Market).MarketServiceRecordInfo.Max(a => a.EndTime) >= DateTime.Now.Date)
+        {
+            <li class=""><a href="@Url.Action("Add")">Add coupon</a></li>
+        }
+        <li class="active"><a>Buy service</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
                 <h3>温馨提示：</h3>
-                <span>*</span><p>显示店铺的优惠券列表</p>
+                <span>1、</span><p>购买单位为月，您可以在所购买的周期内发布优惠券；</p>
+                <span>2、</span><p>每月您需要支付 @ViewBag.Price.ToString("f2") 元 ;</p>
+                <span>3、</span><p class="red">相关费用会在店铺的账期结算中扣除</p>
             </div>
         </em>
-
-
     </ul>
     <div class="row">
         <div class="col-xs-7">
             <form role="form" class="form-horizontal" style="padding:10px;background:#f8f8f8;">
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">优惠券数量：</label>
+                    <label class="col-sm-2 control-label" for="">Coupon quantity:</label>
                     <div class="col-sm-3">
                         <p class="form-control-static">@Model.Num</p>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">链接：</label>
+                    <label class="col-sm-2 control-label" for="">Link:</label>
                     <div class="col-sm-10">
                         <div class="form-group col-xs-10">
                             <p class="form-control-static" style="overflow:hidden;">@ViewBag.Url</p>
                         </div>
-                        <span class="btn btn-link" id="copyurlbt" data-url="@ViewBag.Url">复制</span>
+                        <span class="btn btn-link" id="copyurlbt" data-url="@ViewBag.Url">copy</span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">温馨提示：</label>
+                    <label class="col-sm-2 control-label" for="">Tips:</label>
                     <div class="col-sm-10">
-                        <p class="form-control-static">该链接为WAP链接，可在移动设备中打开</p>
+                        <p class="form-control-static">The link to the WAP link,can open in mobile devices</p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">领取二维码：</label>
+                    <label class="col-sm-2 control-label" for="">Receive two-dimensional code:</label>
                     <div class="col-sm-10">
                         <p class="form-control-static"><img src="@ViewBag.Image" width="300" height="300"></p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for=""><a href="@Url.Action("Management")" class="btn btn-link" id="id_c">返回列表</a></label>
+                    <label class="col-sm-2 control-label" for=""><a href="@Url.Action("Management")" class="btn btn-link" id="id_c">Back to list</a></label>
                 </div>
             </form>
         </div>
@@ -68,10 +70,10 @@
             </div>
             <div style="border-bottom:1px dashed #e4e4e4;height:45px;text-align:center;line-height:45px;font-size:16px;color:#f60;font-weight:700;" id="id_price">¥@Model.Price</div>
             <div style="color:#666;height:45px;line-height:45px;">
-                有效日期：<span style="color:#f60;display:inline-block;" id="id_date">@Model.StartTime.ToShortDateString()--@Model.EndTime.ToShortDateString()</span>
+                Effective date:<span style="color:#f60;display:inline-block;" id="id_date">@Model.StartTime.ToShortDateString()--@Model.EndTime.ToShortDateString()</span>
             </div>
             <div style="color:#666;height:45px;line-height:45px;">
-                使用限制：订单满<span style="color:#f60;display:inline-block;" id="id_p">@Model.OrderAmount</span>元可使用（不含运费）
+                Limitations:Can be used when order count is over <span style="color:#f60;display:inline-block;" id="id_p">@Model.OrderAmount</span>dollars(exlcuding freight)
             </div>
             <!-- <div style="color:#666;height:45px;line-height:45px;">
                 <button class="btn btn-primary" type="button">立即使用</button>
@@ -89,7 +91,7 @@
                 return $('#copyurlbt').data("url");
             },
             afterCopy: function () {
-                $.dialog.succeedTips('复制链接成功！');
+                $.dialog.succeedTips('Copy link successfully!');
             }
         });
     });

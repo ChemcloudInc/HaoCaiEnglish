@@ -26,11 +26,11 @@ function SetLogo() {
             id: 'logoArea',
             content: document.getElementById("logosetting"),
             padding: '20px 10px',
-            okVal: '保存',
+            okVal: 'Save',
             ok: function () {
                 var logosrc = $("input[name='Logo']").val();
                 if (logosrc == "") {
-                    $.dialog.tips("请上传一张LOGO图片！");
+                    $.dialog.tips("Please upload a LOGO picture!");
                     return false;
                 }
                 var loading = showLoading();
@@ -38,11 +38,11 @@ function SetLogo() {
                     function (data) {
                         loading.close();
                         if (data.success) {
-                            $.dialog.succeedTips("LOGO修改成功！");
+                            $.dialog.succeedTips("LOGO modified successfully!");
                             $("input[name='Logo']").val(data.logo);
                             logo = data.logo;
                         }
-                        else { $.dialog.errorTips("LOGO修改失败！") }
+                        else { $.dialog.errorTips("LOGO modified failed!") }
                     });
             }
         });
@@ -64,15 +64,15 @@ function imageAdsClickEventBind() {
                 '<div id="HandSlidePic" class="form-group upload-img clearfix">',
                 '</div>',
                 '<div class="form-group">',
-                    '<label class="label-inline" for="">跳转链接</label>',
+                    '<label class="label-inline" for="">Link</label>',
                     '<input class="form-control input-sm" type="text" id="url">',
                 '</div>',
             '</div>'].join(''),
-            okVal: '保存',
+            okVal: 'Save',
             init: function () {
                 $("#HandSlidePic").himallUpload(
                 {
-                    title: '请上传图片',
+                    title: 'Please upload photos',
                     imageDescript: $(that).attr("imageDescript"),
                     displayImgSrc: thisPic,
                     imgFieldName: "HandSlidePic",
@@ -85,8 +85,8 @@ function imageAdsClickEventBind() {
                 var id = parseInt($(that).attr('value'));
                 var url = $("#url").val();
                 var pic = $("#HandSlidePic").himallUpload('getImgSrc');
-                if (url.length === 0) { $("#url").focus(); $.dialog.errorTips('链接地址不能为空.'); return valida; }
-                if (pic.length === 0) { $.dialog.errorTips('图片不能为空.'); return valida; }
+                if (url.length === 0) { $("#url").focus(); $.dialog.errorTips('Link address can not be empty.'); return valida; }
+                if (pic.length === 0) { $.dialog.errorTips('Pictures can not be empty.'); return valida; }
                 var loading = showLoading();
                 $.ajax({
                     type: "POST",
@@ -99,15 +99,16 @@ function imageAdsClickEventBind() {
                         if (data.success) {
                             $(that).attr('pic', data.imageUrl);
                             $(that).attr('url', url);
-                            $.dialog.tips('保存成功!');
+                            $.dialog.tips('Save successfully!');
                         }
                         else {
-                            $.dialog.errorTips('保存失败！' + data.msg);
+                            $.dialog.errorTips('Save failed!' + data.msg);
                             return false;
                         }
                     },
                     error: function (data) {
-                        loading.close(); $.dialog.errorTips('操作失败,请稍候尝试.'); }
+                        loading.close(); $.dialog.errorTips('Operation failed, please wait to try.');
+                    }
                 });
             }
         });

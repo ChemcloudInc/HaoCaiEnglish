@@ -97,12 +97,12 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
             string str = null;
             if ((marketService != null) && (marketService.MarketServiceRecordInfo.Max<MarketServiceRecordInfo, DateTime>(m => m.EndTime) < DateTime.Now))
             {
-                str = "您的限时购服务已经过期，您可以续费。";
+                str = "Your limit-time-buy service has expired, you can renew.";
             }
             else if ((marketService != null) && (marketService.MarketServiceRecordInfo.Max<MarketServiceRecordInfo, DateTime>(m => m.EndTime) > DateTime.Now))
             {
                 DateTime time = marketService.MarketServiceRecordInfo.Max<MarketServiceRecordInfo, DateTime>(m => m.EndTime);
-                str = string.Format("{0} 年 {1} 月 {2} 日", time.Year, time.Month, time.Day);
+                str = string.Format("{0} . {1} . {2} ", time.Year, time.Month, time.Day);
             }
             ViewBag.EndDate = str;
             ViewBag.Price = ServiceHelper.Create<ILimitTimeBuyService>().GetServiceSetting().Price;

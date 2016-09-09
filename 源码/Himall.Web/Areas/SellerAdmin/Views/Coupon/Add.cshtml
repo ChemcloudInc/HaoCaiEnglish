@@ -84,7 +84,7 @@
         <strong>Coupon</strong>
         <li class=""><a href="@Url.Action("Management","Coupon")">All Coupons</a></li>
         <li class="active"><a>@(Model.Id > 0 ? "edit" : "add")Coupons</a></li>
-        <li class=""><a href="@Url.Action("BuyService", "Coupon")">Purchasing service</a></li>
+        <li class=""><a href="@Url.Action("BuyService", "Coupon")">Buy service</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -255,25 +255,25 @@
                             </p>
                         </div>
                         <div class="col-sm-5">
-                            <p class="form-control-static" style="color:#999;">建议填写代金券“减免金额”及自定义内容，描述卡券提供的具体优惠。例如：HiMall 100元代金券;字数上限为9个汉字</p>
+                            <p class="form-control-static" style="color:#999;">Specific recommendations to fill in coupon promotions "reduction amount" to describe the Specific deals.</p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="">卡券副标题：</label>
+                        <label class="col-sm-2 control-label" for="">Card subtitle</label>
                         <div class="col-sm-5">
                             <p class="form-control-static">
                                 <input type="text" value="@(Model.WXCardInfo != null ? Model.WXCardInfo.CardSubTitle: "")" name="FormWXCSubTit" maxlength="36" class="auto form-control input-sm" id="FormWXCSubTit">
                             </p>
                         </div>
                         <div class="col-sm-5">
-                            <p class="form-control-static" style="color:#999;">字数上限为18个汉字</p>
+                            <p class="form-control-static" style="color:#999;">A maximum of 18 words</p>
                         </div>
                     </div>
 
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button class="btn btn-primary" type="submit">保 存</button>
+                        <button class="btn btn-primary" type="submit">Save</button>
                     </div>
                 </div>
                 <div class="form-group">
@@ -288,20 +288,20 @@
             <div id="id_title" style="background:#FF7676;border-bottom:1px dashed #e4e4e4;height:45px;text-align:center;line-height:45px;padding:0 10px;color:#fff;">
                 @Model.CouponName
             </div>
-            <div style="padding:0 10px;background:#FF7676;border-bottom:1px dashed #e4e4e4;height:45px;text-align:center;line-height:45px;font-size:16px;color:#f60;font-weight:700;color:#fff;" id="id_price">¥@Model.Price</div>
+            <div style="padding:0 10px;background:#FF7676;border-bottom:1px dashed #e4e4e4;height:45px;text-align:center;line-height:45px;font-size:16px;color:#f60;font-weight:700;color:#fff;" id="id_price">$@Model.Price</div>
             <div style="padding:0 10px;background:#FF7676;color:#666;height:45px;line-height:45px;color:#fff;">
-                有效日期：<span style="display:inline-block;color:#fff;" id="id_date"></span>
+                Effective Date:<span style="display:inline-block;color:#fff;" id="id_date"></span>
             </div>
             <div style="padding:0 10px;color:#666;height:45px;line-height:45px;background:#FFCD66;color:#fff;">
                 <div id="limit">
-                    使用限制：
+                    Restrictions:
                     @if (Model.OrderAmount == 0)
                     {
-                        <span>无限制</span>
+                        <span>Unlimited</span>
                     }
                     else
                     {
-                        <span>订单满<span style="color:#f60;display:inline-block;" id="id_p">@Model.OrderAmount</span>元可使用（不含运费）</span>
+                        <span>Available when order amount is over <span style="color:#f60;display:inline-block;" id="id_p">@Model.OrderAmount</span>dollars(Excluding shipping)</span>
                     }
                 </div>
             </div>
@@ -316,7 +316,7 @@
     $(function () {
         $("#imgIntegralCover").himallUpload(
         {
-            title: '封面图片：',
+            title: 'Cover image:',
             imageDescript: '非必填，建议尺寸 150 *120；默认显示商家logo',
             displayImgSrc: "@(Model.IntegralCover)",
             headerWidth: 2,
