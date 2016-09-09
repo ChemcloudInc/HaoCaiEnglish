@@ -52,7 +52,7 @@ select.search_order { width: 202px; }
 .form .item:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
 .form .item { display: block; line-height: 30px; padding-bottom: 15px; width: 100%; }
 .form .item .edui-editor { line-height: 20px; }
-.form .item span.label { float: left; height: 18px; line-height: 18px; padding: 6px 0; text-align: right; width: 100px; }
+.form .item span.label { float: left; height: 18px; line-height: 18px; padding: 6px 4px; text-align: right; width: 120px; }
 .form .itxt, .form .text { height: 20px; padding: 5px 23px 5px 5px; width: 250px; border-radius: 2px; border: 1px solid #ccc; }
 .form .itxt, .form .selt, .form .sele, .form .area { border: 1px solid #ccc; float: none; line-height: 18px; padding: 5px; margin-right: 8px; }
 .form textarea { resize: none; border-radius: 2px; min-width: 250px; }
@@ -80,7 +80,7 @@ select.search_order { width: 202px; }
 .comment-box { background: none repeat scroll 0 0 #fcfffa; border-bottom: 1px solid #d0e4c2; display: none; padding: 10px 0 0 30px; position: relative; text-align: left; }
 .comment-box .box-t { background: url("../Images/cicon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 12px; position: absolute; right: 85px; Images top: -11px;
 width: 21px; }
-.form em { color: #3480eb; }
+.form em { color: #f60; }
 .comment-box .commstar { background: url("../Images/commstar.jpg") repeat-x scroll 0 -21px; display: inline-block; height: 20px; margin-top: 5px; overflow: hidden; position: relative; width: 105px; }
 .comment-box .commstar .star1 { width: 20%; z-index: 9; }
 .comment-box .commstar .star2 { width: 40%; z-index: 8; }

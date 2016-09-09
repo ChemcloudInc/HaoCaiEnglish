@@ -33,7 +33,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			UserMemberInfo userMemberInfo = memberService.Login(username, password);
 			if (userMemberInfo == null)
 			{
-				throw new HimallException("用户名和密码不匹配");
+                throw new HimallException("The user name and password does not match ");
 			}
 			memberService.BindMember(userMemberInfo.Id, oauthId, openId, null, unionid, unionopenid);
 			string str = UserCookieEncryptHelper.Encrypt(userMemberInfo.Id, "Web");
@@ -64,7 +64,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				}
 				if ((base.Session["checkCode"] as string).ToLower() != checkCode.ToLower())
 				{
-					throw new LoginException("验证码错误", LoginException.ErrorTypes.CheckCodeError);
+					throw new LoginException("Verificatio code error", LoginException.ErrorTypes.CheckCodeError);
 				}
 				base.Session["checkCode"] = Guid.NewGuid().ToString();
 			}
@@ -88,7 +88,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			catch (Exception exception)
 			{
 				Log.Error("检验验证码时发生异常", exception);
-				jsonResult = Json(new { success = false, msg = "未知错误" });
+				jsonResult = Json(new { success = false, msg = "Unknown Error" });
 			}
 			return jsonResult;
 		}
@@ -97,11 +97,11 @@ namespace Himall.Web.Areas.Web.Controllers
 		{
 			if (string.IsNullOrWhiteSpace(username))
 			{
-				throw new LoginException("请填写用户名", LoginException.ErrorTypes.UsernameError);
+				throw new LoginException("Please enter username", LoginException.ErrorTypes.UsernameError);
 			}
 			if (string.IsNullOrWhiteSpace(password))
 			{
-				throw new LoginException("请填写密码", LoginException.ErrorTypes.PasswordError);
+				throw new LoginException("please enter password", LoginException.ErrorTypes.PasswordError);
 			}
 		}
 
@@ -168,7 +168,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				{
 					if (SellerLoginIn(username, password, keep) == null)
 					{
-						throw new LoginException("用户名和密码不匹配", LoginException.ErrorTypes.PasswordError);
+                        throw new LoginException("The user name and password do not match ", LoginException.ErrorTypes.PasswordError);
 					}
                     ClearErrorTimes(username);
 					jsonResult = Json(new { success = true, IsChildSeller = true });
@@ -190,8 +190,8 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				Exception exception = exception1;
 				int num2 = SetErrorTimes(username);
-				Log.Error(string.Concat("用户", username, "登录时发生异常"), exception);
-				jsonResult = Json(new { success = false, msg = "未知错误", errorTimes = num2, minTimesWithoutCheckCode = 3 });
+				Log.Error(string.Concat("UserName:", username, "Sign in Exception"), exception);
+				jsonResult = Json(new { success = false, msg = "Unknown error", errorTimes = num2, minTimesWithoutCheckCode = 3 });
 			}
 			return jsonResult;
 		}
@@ -270,7 +270,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			UserMemberInfo userMemberInfo = ServiceHelper.Create<IMemberService>().Login(username, password);
 			if (userMemberInfo == null)
 			{
-				throw new LoginException("用户名和密码不匹配", LoginException.ErrorTypes.PasswordError);
+                throw new LoginException("The user name and password do not match ", LoginException.ErrorTypes.PasswordError);
 			}
 			BizAfterLogin.Run(userMemberInfo.Id);
 			string str = UserCookieEncryptHelper.Encrypt(userMemberInfo.Id, "Web");

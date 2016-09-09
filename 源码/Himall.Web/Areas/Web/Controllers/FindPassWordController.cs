@@ -29,7 +29,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			UserMemberInfo userMemberInfo = Cache.Get(string.Concat(key, "3")) as UserMemberInfo;
 			if (userMemberInfo == null)
 			{
-				return Json(new { success = false, flag = -1, msg = "验证超时" });
+				return Json(new { success = false, flag = -1, msg = "Verify Timeout" });
 			}
 			long id = userMemberInfo.Id;
 			ServiceHelper.Create<IMemberService>().ChangePassWord(id, passWord);
@@ -39,7 +39,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				UserName = userMemberInfo.UserName
 			};
 			Task.Factory.StartNew(() => ServiceHelper.Create<IMessageService>().SendMessageOnFindPassWord(id, messageUserInfo));
-			return Json(new { success = true, flag = 1, msg = "成功找回密码" });
+			return Json(new { success = true, flag = 1, msg = "Password recovery success" });
 		}
 
 		[HttpPost]
@@ -53,7 +53,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = false,
-					msg = "验证码不正确或者已经超时"
+					msg = "Verification code error or timeout"
 				};
 				return Json(result);
 			}
@@ -61,7 +61,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			string str1 = string.Concat(key, "3");
 			DateTime now = DateTime.Now;
 			Cache.Insert(str1, userMemberInfo, now.AddMinutes(15));
-			return Json(new { success = true, msg = "验证正确", key = key });
+			return Json(new { success = true, msg = "Verify Success", key = key });
 		}
 
 		[HttpPost]
@@ -73,7 +73,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			UserMemberInfo memberByContactInfo = ServiceHelper.Create<IMemberService>().GetMemberByContactInfo(userName);
 			if (memberByContactInfo == null)
 			{
-				return Json(new { success = false, tag = "username", msg = "您输入的账户名不存在或者没有绑定邮箱和手机，请核对后重新输入" });
+				return Json(new { success = false, tag = "username", msg = "username has not exist or not bind email and mobile,please check and enter it again" });
 			}
 			DateTime now = DateTime.Now;
 			Cache.Insert(str, memberByContactInfo, now.AddMinutes(15));
@@ -104,12 +104,12 @@ namespace Himall.Web.Areas.Web.Controllers
 			UserMemberInfo userMemberInfo = Cache.Get(key) as UserMemberInfo;
 			if (userMemberInfo == null)
 			{
-				return Json(new { success = false, flag = -1, msg = "验证已超时！" });
+				return Json(new { success = false, flag = -1, msg = "Verify Timetout！" });
 			}
 			string destination = ServiceHelper.Create<IMessageService>().GetDestination(userMemberInfo.Id, pluginId, MemberContactsInfo.UserTypes.General);
 			if (Cache.Get(CacheKeyCollection.MemberPluginFindPassWordTime(userMemberInfo.UserName, pluginId)) != null)
 			{
-				return Json(new { success = false, flag = 0, msg = "120秒内只允许请求一次，请稍后重试!" });
+                return Json(new { success = false, flag = 0, msg = "Only allowed to request once in 120 seconds，Please wait and try it again!" });
 			}
 			int num = (new Random()).Next(10000, 99999);
 			DateTime dateTime = DateTime.Now.AddMinutes(15);
@@ -124,7 +124,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			string str = CacheKeyCollection.MemberPluginFindPassWordTime(userMemberInfo.UserName, pluginId);
 			DateTime now = DateTime.Now;
 			Cache.Insert(str, "0", now.AddSeconds(110));
-			return Json(new { success = true, flag = 1, msg = "发送成功" });
+			return Json(new { success = true, flag = 1, msg = "Send Success" });
 		}
 
 		public ActionResult Step2(string key)
@@ -169,16 +169,16 @@ namespace Himall.Web.Areas.Web.Controllers
 		{
 			if (string.IsNullOrWhiteSpace(checkCode))
 			{
-				throw new HimallException("验证码不能为空");
+				throw new HimallException("Verification code is require");
 			}
 			string item = base.Session["FindPassWordcheckCode"] as string;
 			if (string.IsNullOrEmpty(item))
 			{
-				throw new HimallException("验证码超时，请刷新");
+				throw new HimallException("verify timeout,please refresh");
 			}
 			if (item.ToLower() != checkCode.ToLower())
 			{
-				throw new HimallException("验证码不正确");
+				throw new HimallException("Verification code error");
 			}
 			base.Session["FindPassWordcheckCode"] = Guid.NewGuid().ToString();
 		}

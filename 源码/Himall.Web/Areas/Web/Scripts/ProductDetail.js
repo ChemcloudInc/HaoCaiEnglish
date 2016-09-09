@@ -145,12 +145,12 @@ function loadShopInfo() {
 					shopinfo +
 					'</dl>';
 					if (data.CashDeposits > 0) {
-					    html += '<dl class="pop-money"><dt>Level：</dt><dd><span title="The seller has paid Deposit' + data.CashDeposits + 'usd">' + data.CashDeposits + 'usd</span></dd></dl>'
+					    html += '<dl class="pop-money"><dt>Level:</dt><dd><span title="The seller has paid Deposit' + data.CashDeposits + 'usd">' + data.CashDeposits + 'usd</span></dd></dl>'
 					}
 					html +='<div id="evaluate-detail">' +
 					'<div class="mc">' +
 					'<dl >' +
-					'<dt>Description Match：</dt>' +
+					'<dt>Description Match:</dt>' +
 					'<dd title="（Merchant score-Industry average score）/（Merchant industry the highest score - Industry average score）">' +
 					'<span class="' + productAndDescriptionColor + '">' + productAndDescription + '</span>' +
 					'<i class="' + productAndDescriptionImage + '"></i>' +
@@ -158,7 +158,7 @@ function loadShopInfo() {
 					'</dd>' +
 					'</dl>' +
 					'<dl>' +
-					'<dt>Delivery Speed：</dt>' +
+					'<dt>Delivery Speed:</dt>' +
 					'<dd title="（Industry average score-Merchant score）/（Industry average score-Merchant industry the lowest score）">' +
 					'<span class="' + sellerDeliverySpeedColor + '">' + sellerDeliverySpeed + '</span>' +
 					'<i class="' + sellerDeliverySpeedImage + '"></i>' +
@@ -179,7 +179,7 @@ function loadShopInfo() {
 					'</dl>' +
 					'<dl id="pop-company">' + $("#online-service").html() + '</dl>';
 					if (data.IsSevenDayNoReasonReturn || data.IsCustomerSecurity || data.TimelyDelivery) {
-					    html += '<h3>Service：</h3>';
+					    html += '<h3>Service:</h3>';
 					    if (data.IsSevenDayNoReasonReturn) {
 					        html += '<dl class="pop-ensure"><dt><a href="/Article/Category"><img src="/Images/SevenDay.jpg">Refund or return without reason in 7 days</a></dt></dl>';
 					    }
@@ -192,7 +192,7 @@ function loadShopInfo() {
 					}
 					html +='<div id="enter-shop">' +
 					'<a target="_blank" href="/Shop/Home/' + data.Id + '">Go to shop</a>' +
-					'<a href="javascript:addFavorite(' + data.Id + ')">Add Wishlist</a>' +
+					'<a href="javascript:addFavorite(' + data.Id + ')">Add Favorite</a>' +
 					'</div>';
 				$("#brand-bar-pop").show().append($(html));
 				if ($('#online-service').html() == '<div class="line"></div>') { $('#online-service').hide() }

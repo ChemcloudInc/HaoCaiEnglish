@@ -9,7 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Areas/Web/Content/login.css" rel="stylesheet" />
-    <title>用户绑定</title>
+    <title>User Bind</title>
 </head>
 <body>
     <div class="w">
@@ -21,14 +21,14 @@
             <div class="form">
                 @if (ViewBag.OauthId.Contains("QQ"))
                 {
-                    <div class="login-prm">您已通过 QQ账号:@(ViewBag.NickName) 登录成功，建议您同时绑定商城账号避免账号意外丢失。</div>
+                    <div class="login-prm">You have signed in with QQ:@(ViewBag.NickName) ，suggest you bind your register account to avoid accident loss</div>
                 }
                 else
                 { 
-                <div class="login-prm">您已使用@(ViewBag.ServiceProvider)登录，建议您同时绑定商城账号避免账号意外丢失。</div>
+                <div class="login-prm">You have signed in with @(ViewBag.ServiceProvider)，suggest you bind your register account to avoid accident loss</div>
                 }
                 <div class="item fore1">
-                    <span>用户名</span>
+                    <span>Username</span>
                     <div class="item-ifo">
                         <input type="text" id="username" class="text" tabindex="1" autocomplete="off" sta="2" />
                         <div class="i-name ico"></div>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="item fore2">
-                    <span>密码</span>
+                    <span>Password</span>
                     <div class="item-ifo">
                         <input type="password" id="password" class="text highlight2" tabindex="2" autocomplete="off" sta="2" />
                         <input type="hidden" name="loginpwd" id="loginpwd" value="111" class="hide" sta="2" />
@@ -51,8 +51,8 @@
                 <input type="hidden" name="unionid" value="@ViewBag.unionid" />
                 <input type="hidden" name="unionopenid" value="@ViewBag.unionopenid" />
                 <div class="item login-bind-btn">
-                    <input type="button" class="btn-bind-id" id="bindBtn" value="绑定账号" />
-                    <a class="ftx24" id="skip" href="javascript:;">不绑定，直接去购物！</a>
+                    <input type="button" class="btn-bind-id" id="bindBtn" value="Bind" />
+                    <a class="ftx24" id="skip" href="javascript:;">Skip</a>
                 </div>
             </div>
         </div>
@@ -81,9 +81,9 @@
                 var username = $('#username').val();
                 var password = $('#password').val();
                 if (!username)
-                    $('#loginname_error').html('用户名不能为空').show();
+                    $('#loginname_error').html('Username is required').show();
                 if(!password)
-                    $('#password_error').html('密码不能为空').show();
+                    $('#password_error').html('Password is required').show();
 
                 var oauthId = $('input[name="oauthId"]').val();
                 var openId = $('input[name="openId"]').val();
@@ -93,7 +93,7 @@
                 $.post('BindUser', { oauthId: oauthId, openId: openId, username: username, password: password, unionid: unionid, unionopenid: unionopenid }, function (result) {
                     loading.close();
                     if (result.success) {
-                        $.dialog.succeedTips('绑定成功', function () {
+                        $.dialog.succeedTips('Bind Success', function () {
                             location.href = "/";
                         });
                     }

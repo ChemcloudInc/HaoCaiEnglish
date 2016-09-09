@@ -1,6 +1,6 @@
 ﻿@model Himall.Web.Areas.Web.Models.GiftDetailPageModel
 @{
-    ViewBag.Title = @Model.GiftData.GiftName + " - 礼品详情";
+    ViewBag.Title = @Model.GiftData.GiftName + " - Gift Details";
 }
 <script src="~/Areas/Web/Scripts/cloud-zoom.1.0.2.min.js"></script>
 <style type="text/css">
@@ -33,23 +33,23 @@
 			<div class="inte-goods-data">
 				<h3>@(Model.GiftData.GiftName) </h3>
 				<ul>
-					<li class="old-price"><span>市场价：</span><s>¥ @(Model.GiftData.GiftValue.Value.ToString("F2"))</s></li>
-					<li class="new-integra"><span>所需积分</span><em>@(Model.GiftData.NeedIntegral)分</em><i>@(Model.GiftData.NeedGrade > 0 ? Model.GiftData.NeedGradeName + " 专享" : Model.GiftData.NeedGradeName)</i></li>
-					<li class="new-gray">已有@(Model.GiftData.SumSales)人兑换</li>
-					<li>礼品编号：@(Model.GiftData.Id)</li>
+					<li class="old-price"><span>Price：</span><s>$ @(Model.GiftData.GiftValue.Value.ToString("F2"))</s></li>
+					<li class="new-integra"><span>Need </span><em>@(Model.GiftData.NeedIntegral) points</em><i>@(Model.GiftData.NeedGrade > 0 ? Model.GiftData.NeedGradeName + " VIP" : Model.GiftData.NeedGradeName)</i></li>
+					<li class="new-gray">already have @(Model.GiftData.SumSales) customers exchanged</li>
+					<li>GiftId：@(Model.GiftData.Id)</li>
                     @if(Model.GiftData.LimtQuantity>0){
-                        <li>限兑数量：@(Model.GiftData.ShowLimtQuantity)</li>
+                        <li>Limit exchange quantity：@(Model.GiftData.ShowLimtQuantity)</li>
                     }
-					<li>剩余可兑：<span id="stockProduct">@Model.GiftData.StockQuantity</span></li>
+					<li>Remain exchange quantity：<span id="stockProduct">@Model.GiftData.StockQuantity</span></li>
 					<li>
-						数量：
+						Quantity：
 						<div class="changeNum">
 							<a class="btn-reduce">−</a>
 							<input class="text" id="buy-num" value="1" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9]+/,'1'); if(this.value==''){this.value='1'}}).call(this)" onblur="this.v()">
 							<a class="btn-add">+</a>
 						</div>
 					</li>
-					<li><a class="chang-goods @(Model.GiftCanBuy ? "" : "disabled")" id="OrderNow">立即兑换</a></li>
+					<li><a class="chang-goods @(Model.GiftCanBuy ? "" : "disabled")" id="OrderNow">Exchange it Now</a></li>
 				</ul>
 				
 			</div>
@@ -57,7 +57,7 @@
 		
 		<div class="inte-goods-desc">
 			<div class="goods-desc-hd">
-				<span>礼品信息</span>
+				<span>Gift Information</span>
 			</div>
 			<div class="inte-goods-content">
 				@Html.Raw(Model.GiftData.Description)
@@ -66,11 +66,11 @@
 	</div>
 	
 	<ul class="inte-detail-right">
-		<li class="hd"><h3>热门礼品</h3></li>
+		<li class="hd"><h3>Hottest Gifts</h3></li>
         @foreach(var item in Model.HotGifts){
 		<li>
 			<a href="@Url.Action("Detail", new { id=item.Id })"><img src="@(item.GetImage(Himall.Model.GiftInfo.ImageSize.Size_150, 1))" alt=""></a>
-			<p>@(item.NeedIntegral)积分</p>
+			<p>@(item.NeedIntegral) points</p>
 		</li>
         }
 	</ul>

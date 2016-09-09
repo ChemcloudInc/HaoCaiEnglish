@@ -31,7 +31,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				flag = false;
 				result.success = false;
-				result.msg = "您还未登录！";
+				result.msg = "Please Sign in！";
 				result.status = -1;
 				return Json(result);
 			}
@@ -41,14 +41,14 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				flag = false;
 				result.success = false;
-				result.msg = "礼品不存在！";
+				result.msg = "Gift isn't exist！";
 				result.status = -2;
 			}
 			if (flag && byId.GetSalesStatus != GiftInfo.GiftSalesStatus.Normal)
 			{
 				flag = false;
 				result.success = false;
-				result.msg = "礼品己失效！";
+                result.msg = "Gift Has Expired ！";
 				result.status = -2;
 			}
 			if (flag && count > byId.StockQuantity)
@@ -56,14 +56,14 @@ namespace Himall.Web.Areas.Web.Controllers
 				flag = false;
 				result.success = false;
 				int stockQuantity = byId.StockQuantity;
-				result.msg = string.Concat("礼品库存不足,仅剩 ", stockQuantity.ToString(), " 件！");
+                result.msg = string.Concat("Gift inventory shortage, only remain ", stockQuantity.ToString(), " items！");
 				result.status = -3;
 			}
 			if (flag && byId.NeedIntegral < 1)
 			{
 				flag = false;
 				result.success = false;
-				result.msg = "礼品关联等级信息有误或礼品积分数据有误！";
+                result.msg = "Gifts associated level information is wrong or points wrong！";
 				result.status = -5;
 				return Json(result);
 			}
@@ -71,27 +71,27 @@ namespace Himall.Web.Areas.Web.Controllers
 			{
 				flag = false;
 				result.success = false;
-				result.msg = "超过礼品限兑数量！";
+                result.msg = "Exceed gift exchange quantity！";
 				result.status = -4;
 			}
 			if (flag && byId.NeedIntegral * count > member.AvailableIntegrals)
 			{
 				flag = false;
 				result.success = false;
-				result.msg = "积分不足！";
+                result.msg = "Lack of points！";
 				result.status = -6;
 			}
 			if (flag && member.HistoryIntegral < byId.GradeIntegral)
 			{
 				flag = false;
 				result.success = false;
-				result.msg = "用户等级不足！";
+                result.msg = "Lack of level！";
 				result.status = -6;
 			}
 			if (flag)
 			{
 				result.success = true;
-				result.msg = "可以购买！";
+				result.msg = "Can Buy！";
 				result.status = 1;
 			}
 			return Json(result);
@@ -105,7 +105,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			};
 			if (giftDetailPageModel.GiftData == null)
 			{
-				throw new HimallException("礼品信息无效！");
+				throw new HimallException("Gift information invalid！");
 			}
 			int num = 10;
 			GiftQuery giftQuery = new GiftQuery()

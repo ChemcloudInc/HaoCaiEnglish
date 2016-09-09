@@ -95,7 +95,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = false,
-					msg = "验证码不正确或者已经超时"
+					msg = "Verification code is error or timeout"
 				};
 				return Json(result);
 			}
@@ -105,19 +105,19 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result1 = new Result()
 				{
 					success = false,
-					msg = string.Concat(destination, "已经绑定过了！")
+					msg = string.Concat(destination, "Already Binded！")
 				};
 				return Json(result1);
 			}
 			if (pluginId.ToLower().Contains("email"))
 			{
 				currentUser.Email = destination;
-				str1 = "邮箱";
+				str1 = "Email";
 			}
 			else if (pluginId.ToLower().Contains("sms"))
 			{
 				currentUser.CellPhone = destination;
-				str1 = "手机";
+				str1 = "Mobile";
 			}
 			ServiceHelper.Create<IMemberService>().UpdateMember(currentUser);
 			MemberContactsInfo memberContactsInfo = new MemberContactsInfo()
@@ -143,7 +143,7 @@ namespace Himall.Web.Areas.Web.Controllers
 					MemberId = currentUser.Id,
 					RecordDate = new DateTime?(DateTime.Now),
 					TypeId = MemberIntegral.IntegralType.Reg,
-					ReMark = string.Concat("绑定", str1)
+					ReMark = string.Concat("Bind ", str1)
 				};
 				IConversionMemberIntegralBase conversionMemberIntegralBase = ServiceHelper.Create<IMemberIntegralConversionFactoryService>().Create(MemberIntegral.IntegralType.Reg, 0);
 				ServiceHelper.Create<IMemberIntegralService>().AddMemberIntegral(memberIntegralRecord, conversionMemberIntegralBase);
@@ -155,7 +155,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result2 = new Result()
 			{
 				success = true,
-				msg = "验证正确"
+				msg = "Verify Success"
 			};
 			return Json(result2);
 		}
@@ -294,7 +294,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = false,
-					msg = "60秒内只允许请求一次，请稍后重试!"
+                    msg = "Only allowed to request once in 60 seconds，Please wait and try it again!"
 				};
 				return Json(result);
 			}
@@ -319,7 +319,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result1 = new Result()
 			{
 				success = true,
-				msg = "发送成功"
+				msg = "Send Success"
 			};
 			return Json(result1);
 		}

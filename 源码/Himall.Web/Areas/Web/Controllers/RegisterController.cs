@@ -36,14 +36,14 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = true,
-					msg = "验证正确"
+					msg = "Verify Success"
 				};
 				return Json(result);
 			}
 			Result result1 = new Result()
 			{
 				success = false,
-				msg = "验证码不正确或者已经超时"
+				msg = "Verification code error or timeout"
 			};
 			return Json(result1);
 		}
@@ -132,7 +132,7 @@ namespace Himall.Web.Areas.Web.Controllers
                 Result result0 = new Result()
                 {
                     success = false,
-                    msg = "邮箱已绑定"
+                    msg = "Email has been bind"
                 };
                 return Json(result0);
             }
@@ -142,7 +142,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = false,
-					msg = "120秒内只允许请求一次，请稍后重试!"
+                    msg = "Only allowed to request once in 120 seconds，Please wait and try it again!"
 				};
 				return Json(result);
 			}
@@ -166,7 +166,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result1 = new Result()
 			{
 				success = true,
-				msg = "发送成功"
+				msg = "Send Success"
 			};
 			return Json(result1);
 		}

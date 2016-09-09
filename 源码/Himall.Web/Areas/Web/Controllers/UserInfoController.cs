@@ -34,7 +34,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = false,
-					msg = "密码不能为空！"
+					msg = "Password is require！"
 				};
 				return Json(result);
 			}
@@ -44,7 +44,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result1 = new Result()
 				{
 					success = false,
-					msg = "旧密码错误"
+					msg = "Old password is error"
 				};
 				return Json(result1);
 			}
@@ -52,7 +52,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result2 = new Result()
 			{
 				success = true,
-				msg = "修改成功"
+                msg = "Password Has Been Changed"
 			};
 			return Json(result2);
 		}
@@ -68,7 +68,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = false,
-					msg = "验证码不正确或者已经超时"
+					msg = "Verification code is error or timeout"
 				};
 				return Json(result);
 			}
@@ -76,7 +76,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			string str1 = string.Concat("Rebind", currentUser.Id);
 			DateTime now = DateTime.Now;
 			Cache.Insert(str1, "step2", now.AddMinutes(30));
-			return Json(new { success = true, msg = "验证正确", key = currentUser.Id });
+			return Json(new { success = true, msg = "Verify Sucess", key = currentUser.Id });
 		}
 
 		public JsonResult CheckOldPassWord(string password)
@@ -170,7 +170,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = false,
-					msg = "120秒内只允许请求一次，请稍后重试!"
+                    msg = "Only allowed to request once in 120 seconds，Please wait and try it again!"
 				};
 				return Json(result);
 			}
@@ -190,7 +190,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result1 = new Result()
 			{
 				success = true,
-				msg = "发送成功"
+				msg = "Send Success"
 			};
 			return Json(result1);
 		}
@@ -203,7 +203,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = false,
-					msg = "120秒内只允许请求一次，请稍后重试!"
+                    msg = "Only allowed to request once in 120 seconds，Please wait and try it again!"
 				};
 				return Json(result);
 			}
@@ -223,7 +223,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result1 = new Result()
 			{
 				success = true,
-				msg = "发送成功"
+				msg = "Send Success"
 			};
 			return Json(result1);
 		}
@@ -235,7 +235,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result = new Result()
 			{
 				success = true,
-				msg = "修改成功"
+				msg = "Update Success"
 			};
 			return Json(result);
 		}

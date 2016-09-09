@@ -35,7 +35,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				Result result = new Result()
 				{
 					success = false,
-					msg = "取消失败，该订单已删除或者不属于当前用户！"
+					msg = "Close order failed！"
 				};
 				return Json(result);
 			}
@@ -47,7 +47,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result1 = new Result()
 			{
 				success = true,
-				msg = "取消成功"
+				msg = "Close  order Success!"
 			};
 			return Json(result1);
 		}
@@ -59,7 +59,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result = new Result()
 			{
 				success = true,
-				msg = "操作成功！"
+				msg = "Sucess！"
 			};
 			return Json(result);
 		}
@@ -134,12 +134,12 @@ namespace Himall.Web.Areas.Web.Controllers
 		{
 			if (string.IsNullOrWhiteSpace(expressCompanyName) || string.IsNullOrWhiteSpace(shipOrderNumber))
 			{
-				throw new HimallException("错误的订单信息");
+                throw new HimallException("The wrong order information");
 			}
 			string kuaidi100Code = ServiceHelper.Create<IExpressService>().GetExpress(expressCompanyName).Kuaidi100Code;
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(string.Format("http://www.kuaidi100.com/query?type={0}&postid={1}", kuaidi100Code, shipOrderNumber));
 			httpWebRequest.Timeout = 8000;
-			string end = "暂时没有此快递单号的信息";
+			string end = "Without Express tracking number";
 			try
 			{
 				HttpWebResponse response = (HttpWebResponse)httpWebRequest.GetResponse();

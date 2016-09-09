@@ -18,7 +18,7 @@ namespace Himall.Web.Areas.Web.Controllers
 		{
 			info.UserId = base.CurrentUser.Id;
 			ServiceHelper.Create<IShippingAddressService>().AddShippingAddress(info);
-			return Json(new { success = true, msg = "添加成功", id = info.Id });
+			return Json(new { success = true, msg = "Add Shipping Address Success", id = info.Id });
 		}
 
 		[HttpPost]
@@ -29,7 +29,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result = new Result()
 			{
 				success = true,
-				msg = "删除成功"
+				msg = "Delete Success"
 			};
 			return Json(result);
 		}
@@ -39,7 +39,7 @@ namespace Himall.Web.Areas.Web.Controllers
 		{
 			info.UserId = base.CurrentUser.Id;
 			ServiceHelper.Create<IShippingAddressService>().UpdateShippingAddress(info);
-			return Json(new { success = true, msg = "修改成功", id = info.Id });
+			return Json(new { success = true, msg = "Update Success", id = info.Id });
 		}
 
 		[HttpPost]
@@ -64,7 +64,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result = new Result()
 			{
 				success = true,
-				msg = "设置成功"
+				msg = "Setting Success"
 			};
 			return Json(result);
 		}
@@ -77,7 +77,7 @@ namespace Himall.Web.Areas.Web.Controllers
 			Result result = new Result()
 			{
 				success = true,
-				msg = "设置成功"
+				msg = "Setting Success"
 			};
 			return Json(result);
 		}
