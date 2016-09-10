@@ -6,7 +6,7 @@ table { border-collapse: collapse; word-break: break-all }
 input { font: 12px/1.5 tahoma,Arial, 'microsoft yahei', 'SimSun'; }
 ol, ul, li { list-style: none; }
 img { border: 0 none; display: block; font-size: 0; vertical-align: top }
-body { color: #666; background: #fff; font: 12px/1.5 Arial, 'microsoft yahei', 'SimSun'; _background-image: url(about:blank); /* for IE6 */ _background-attachment: fixed; }
+body { color: #666; background: #fff; font: 12px/1.5 Arial, Tahoma, Verdana, Helvetica, sans-serif; _background-image: url(about:blank); /* for IE6 */ _background-attachment: fixed; }
 .cl,.clearfix { zoom: 1; }
 .cl:after,.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; overflow: hidden }
 .clr { display: block; overflow: hidden; clear: both; height: 0; line-height: 0; font-size: 0; }
@@ -48,18 +48,19 @@ q::before, q::after { content: ''; }
 .top .quick_list { float: right; height: 30px; }
 .top .quick_list li { height: 30px; padding: 0 11px 0 12px; float: left; position: relative; }
 .top .quick_list li a em{ color:#3480eb;}
-.top .quick_list .dropdown-menu{width: 91%; left: 3px;padding-left:3px;}
+.top .quick_list .dropdown-menu{width: 92%; left: 3px;padding-left:3px;}
 .top .quick_list .dropdown-menu li{ padding: 0 0 0 6px; line-height: 22px; height: 22px;  display: block;white-space: nowrap; }
 .top .quick_list li.service,.top .quick_list li.moblie-qrcode,.top .quick_list li.sitemap{ z-index: 12; padding-right:16px; }
 .top .in-order{ width:48px; z-index: 12;}
 .top .in-order .dropdown-menu { width: 100px; }
 .top .mycenter .dropdown-menu { width: 90px; }
-.top .sitemap .dropdown-menu {width: 92px; }
+.top .sitemap .dropdown-menu {width: 95px; }
 .top .quick_list .sitemap ul li { width: 100%; height: auto; padding: 0; }
 .top .sitemap ul li p { padding: 4px 0 4px 9px; line-height: 20px; font-weight: 700; }
 .top .sitemap ul li div { margin: 0 9px; line-height: 22px; overflow: hidden; padding-bottom: 3px; border-bottom: 1px solid #f2f2f2; }
 .top .sitemap ul li div span { margin:0 10px; float: left }
 .top .moblie-qrcode .dropdown-menu{ width:90px; padding:10px;}
+.top .sitemap { width:76px; }
 
 /*header
 ---------------------*/
@@ -89,13 +90,13 @@ q::before, q::after { content: ''; }
 /*nav bar
 ---------------------*/
 
-.categorys { position: absolute; top: 0; left: 0; width: 210px; height: 41px; background-color: #3480eb; }
+.categorys { position: absolute; top: 0; left: 0; width: 210px; height: 34px; background-color: #3480eb; }
 .cate-all {  font-size: 16px; }
-.cate-all a { color: #fff; margin-left: 12px; line-height: 41px;    font: 400 15px/44px "microsoft yahei"; }
-.categorys .mc { position: absolute; top: 41px; left: 0; width: 210px; height: 480px; background-color:#444; background:rgba(56,56,60,0.95);  overflow: visible;border: 0; }
-.categorys .item { width: 209px; height: 34px; }
+.cate-all a { color: #fff; margin-left: 12px; line-height: 41px;    font: 400 13px/34px "microsoft yahei"; }
+.categorys .mc { position: absolute; top: 34px; left: 0; width: 210px; height: 480px; background-color:#444; background:rgba(56,56,60,0.95);  overflow: visible;border: 0; }
+.categorys .item { width: 209px; height: 30px; }
 .categorys span { display: block; width: 210px; position: absolute; z-index: 1; }
-.categorys h3 { width: 180px; height: 34px; line-height: 34px; padding-left: 10px; font-size: 14px; overflow: hidden; padding-right: 20px; color: #fff; position: relative; }
+.categorys h3 { width: 180px; height: 30px; line-height: 30px; padding-left: 10px; font-size: 12px; overflow: hidden; padding-right: 20px; color: #fff; position: relative; }
 .categorys h3 a { color: #fff; }
 .categorys s { display: block; position: absolute; top: 8px; left: 189px; width: 9px; height: 16px; background-position:-107px -42px; background-image: url(../Images/20130330A_2.png); background-repeat: no-repeat; }
 .categorys h3 a:hover, .categorys h3 a:active { color: #fff; text-decoration: none; }
@@ -103,16 +104,16 @@ q::before, q::after { content: ''; }
 .categorys .subitem { float: left; width: 700px; min-height: 480px; display:table; }
 .categorys .cate-right { width: 250px; padding-bottom: 2010px; margin-bottom: -2000px; float: right; background: #f7f7f7; }
 .categorys .cate-right dl { width: 234px; padding: 6px 8px; }
-.categorys .subitem dl { overflow: hidden; zoom: 1; width:300px; margin-left:30px; margin-bottom:15px;  display: inline-block;vertical-align: top; *display:inline; *zoom:1;}
+.categorys .subitem dl { overflow: hidden; zoom: 1; width:300px; margin-left:30px; margin-bottom:10px;  display: inline-block;vertical-align: top; *display:inline; *zoom:1;}
 .categorys .subitem .first dd { border-top: 0; }
 .categorys .item dt { padding: 6px 6px 0 0; color: #33a81d; }
 .categorys .subitem dt a { color: #000; }
 .categorys .subitem dt { line-height:36px; border-bottom:1px solid #3480eb; }
 .categorys .item dd { padding: 6px 0 0;  overflow: hidden; zoom: 1; border-top: 1px solid #efefef; }
-.categorys .item dd a { color: #333;display: block; }
+.categorys .item dd a { color: #555;display: block; }
 .categorys .item dd a:hover{ color:#3480e8; text-decoration:none;}
-.categorys .subitem em { float: left; margin-right: 15px; line-height: 28px; white-space:nowrap}
-.categorys .subitem p{ font-size:18px; color:#000; border-left:5px solid #3480eb; line-height:20px; margin:20px 0 20px 30px;}
+.categorys .subitem em { float: left; margin-right: 15px; line-height: 22px; white-space:nowrap}
+.categorys .subitem p{ font-size:16px; color:#000; border-left:5px solid #3480eb; line-height:20px; margin:15px 0 5px 30px;}
 .categorys .subitem p a{ color:#000; padding-left:10px;}
 .categorys .subitem p a:hover{ color:#3480e8}
 
@@ -129,10 +130,10 @@ q::before, q::after { content: ''; }
 
 .nav-bar { background: #fff;border-bottom: 1px solid #3480eb;position: relative; z-index: 888; }
 .nav-bar .nav-content { position: relative; z-index: 6; padding-left: 210px; width: 980px; margin: 0 auto; }
-.nav { filter: none;  height: 40px; overflow: hidden; }
+.nav { filter: none;  height: 33px; overflow: hidden; }
 .nav li { float: left; position: relative;}
 .nav li.cur a, .nav li:hover a { color: #2964b7; }
-.nav li a { display: block;padding: 0 27px;color: #000; font-size:16px; text-decoration: none; line-height: 40px; transition:all .3s;     font: 400 15px/44px "microsoft yahei";}
+.nav li a { display: block;padding: 0 27px;color: #000; font-size:13px; text-decoration: none; line-height: 34px; transition:all .3s;     font: 400 13px/34px "microsoft yahei";}
 
 .right-side{ position:fixed; right:0; top:0; height:100%; z-index: 999;}
 .right-side-menu{ height:100%; width:40px; background-color:#2a2a2e; position:relative;  float: left; }
