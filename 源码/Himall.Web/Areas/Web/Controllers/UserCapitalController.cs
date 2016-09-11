@@ -151,7 +151,7 @@ namespace Himall.Web.Areas.Web.Controllers
             if (ServiceHelper.Create<IMemberCapitalService>().GetMemberInfoByPayPwd(base.CurrentUser.Id, pwd) == null)
             {
                // throw new HimallException("支付密码不对，请重新输入！");
-                return Json(new { success = false,msg="Payment password error，please enter again！"});
+                return Json(new { success = false,msg="Payment pwd error,please try again!"});
             }
             CapitalInfo capitalInfo = ServiceHelper.Create<IMemberCapitalService>().GetCapitalInfo(base.CurrentUser.Id);
             decimal num = amount;

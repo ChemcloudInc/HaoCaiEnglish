@@ -60,7 +60,7 @@ namespace Himall.Plugin.Message.Email
         {
             get
             {
-                return "邮箱";
+                return "Email";
             }
         }
 

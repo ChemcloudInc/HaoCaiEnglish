@@ -29,21 +29,21 @@
 
 <div class="box1 lh24" id="step1" name="stepname">
     <div class="title bot-border">
-        <h3 class="title_txt cur">Set withdrawals password   @*提现支付密码设置*@</h3>
+        <h3 class="title_txt cur">Set withdrawa password   @*提现支付密码设置*@</h3>
     </div>
     <div class="border-box">
         <div class="user-set userset-lcol">
             <div class="form">
                 <div class="item">
-                    <span class="label">Please set password@*请设置密码*@：</span>
+                    <span class="label">Password@*请设置密码*@：</span>
                     <div class="fl">
                         <input type="password" value="" id="new" name="userVo.realName" maxlength="20" class="itxt fl">
                         <span id="new_msg" class="prompt-06" style="padding-left:10px;"></span>
-                        <span>Password should be between 6 and 20 characters and made of letters, numbers and symbols.@*6-20位字符，可使用字母、数字或符号的组合*@</span>
+                        <span>6-20 characters(letter,number)@*6-20位字符，可使用字母、数字或符号的组合*@</span>
                     </div>
                 </div>
                 <div class="item">
-                    <span class="label">Please commit password@*请确认密码*@：</span>
+                    <span class="label">Confirm password@*请确认密码*@：</span>
                     <div class="fl">
                         <input type="password" value="" id="confirm" name="userVo.realName" maxlength="20" class="itxt fl">
                         <span class="prompt-06" id="confirm_msg" style="padding-left:10px;"></span>
@@ -52,7 +52,7 @@
                 <div class="item">
                     <span class="label">&nbsp;</span>
                     <div class="fl">
-                        <a id="submitPwd" class="btn-5" href="javascript:;">Commit</a>
+                        <a id="submitPwd" class="btn-5" href="javascript:;">Save</a>
                     </div>
                 </div>
             </div>
@@ -201,14 +201,7 @@
         });
         $('#account').blur(function () {                                           //账户信息
             var d = $(this).val();
-            /* if (d.length < 1) {
-                 $('#account').css({ borderColor: '#f60' });
-                 $('#account').css({ color: '#f60' }).html('PLEASE!'); @*请!*@
-                 stae4 = '';
-             } else {
-                 $('#account').css({ borderColor: '#ccc' }).html('Lawful'); @*合法*@
-                 stae4 = d;
-             }*/
+           
             stae4 = d;
         });
         $('#submitPwd').bind('click', function () {
@@ -231,7 +224,7 @@
                     success: function (data1) {
                         loading.close();
                         if (data1.success) {
-                            $.dialog.succeedTips('Set password successful!'); @*设置成功！*@
+                            $.dialog.succeedTips('Set password successful!');
                             JumpStep(2);
                             //checkScanState();
                         }
@@ -268,44 +261,6 @@
 
         });
        
-        $('#submitApply').bind('click', function () {
-            var reg = /^[0-9]+([.]{1}[0-9]{1,2})?$/;
-
-            if (!reg.test($('#inputMoney').val())) {
-                $.dialog.alert("The characters of amount must be alphanumeric! "); @*提现金额不能为非数字字符*@
-                return;
-            }
-            var applyWithDrawAmount = parseFloat($('#inputMoney').val());
-            var userBalance = parseFloat($('#balanceValue').text());
-            if (parseFloat(applyWithDrawAmount) > userBalance) {
-                $.dialog.alert("The amount of withdrawals must be less than the balance!");  @*提现金额不可超出可用金额*@
-                return;
-            }
-            if (parseFloat(applyWithDrawAmount) < 1) {
-                $.dialog.alert("Withdraw amount must be greater than 1");  @*提现金额不能小于1*@
-                return;
-            }
-            var s1 = document.getElementById("withdrawtype").innerHTML;
-            var s2 = document.getElementById("myaccount").innerHTML;
-            var s3 = document.getElementById("nikename").innerHTML;
-            //     $.dialog.succeedTips(acc);
-           // var loading = showLoading();
-            $.post('ApplyWithDrawSubmit', { withdrawtype: s1, myaccount: s2, nickname: s3, amount: parseFloat($('#inputMoney').val()), pwd: $('#payPwd').val() },
-                function (result) {
-                   loading.close();
-                    if (result.success) {
-                        $.dialog.succeedTips('Commit Successful!', function () {
-                            JumpStep(4);
-                        });
-                    }
-                    else {
-                        $.dialog.errorTips(result.msg);
-                    }
-                }
-            );
-   
-
-        });
         $('#acocount').himallLinkage({
             url: '../Category/getCategory',
             enableDefaultItem: true,

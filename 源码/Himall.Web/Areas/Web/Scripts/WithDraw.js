@@ -1,7 +1,7 @@
 ﻿function initialdeleteCategory() {
     $('.container').on('click', '.delete-classify', function () {
         var id = $(this).parents('td.td-operate').prev('td').find('.hidden_id').val();
-        $.dialog.confirm('Do you confirm to delete this category', function () {
+        $.dialog.confirm('Are you sure to delete this category', function () {
             ajaxRequest({
                 type: 'POST',
                 url: "./DeleteWithDraw",

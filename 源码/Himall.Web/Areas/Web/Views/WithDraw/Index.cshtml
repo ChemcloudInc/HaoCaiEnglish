@@ -55,7 +55,7 @@
 <script>
 
     function del(id, name) {
-        $.dialog.confirm('Do you confirm to delete' + name + ' ？', function () {
+        $.dialog.confirm('Are you sure to delete' + name + ' ？', function () {
             var loading = showLoading();
             $.post('/withdraw/DeleteWithDraw', { id: id }, function (result) {
                 loading.close();

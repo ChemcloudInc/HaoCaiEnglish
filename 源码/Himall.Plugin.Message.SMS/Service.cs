@@ -60,7 +60,7 @@ namespace Himall.Plugin.Message.SMS
         {
             get
             {
-                return "手机";
+                return "Mobile";
             }
         }
 

@@ -41,7 +41,7 @@ namespace Himall.Service
 					MemberId = member.Id,
 					RecordDate = new DateTime?(DateTime.Now),
 					TypeId = MemberIntegral.IntegralType.BindWX,
-					ReMark = "绑定微信"
+					ReMark = "BiindWeiXin"
 				};
 				IConversionMemberIntegralBase conversionMemberIntegralBase = Instance<IMemberIntegralConversionFactoryService>.Create.Create(MemberIntegral.IntegralType.BindWX, 0);
 				Instance<IMemberIntegralService>.Create.AddMemberIntegral(memberIntegralRecord, conversionMemberIntegralBase);
@@ -61,7 +61,7 @@ namespace Himall.Service
 					UserName = member.UserName,
 					MemberId = member.Id,
 					RecordDate = new DateTime?(DateTime.Now),
-					ReMark = "每天登录",
+					ReMark = "Sign in",
 					TypeId = MemberIntegral.IntegralType.Login
 				};
 				IConversionMemberIntegralBase conversionMemberIntegralBase = Instance<IMemberIntegralConversionFactoryService>.Create.Create(MemberIntegral.IntegralType.Login, 0);
@@ -638,7 +638,7 @@ namespace Himall.Service
 						MemberId = nullable.Id,
 						RecordDate = new DateTime?(DateTime.Now),
 						TypeId = MemberIntegral.IntegralType.Reg,
-						ReMark = "绑定邮箱"
+						ReMark = "Bind Email"
 					};
 					IConversionMemberIntegralBase conversionMemberIntegralBase = Instance<IMemberIntegralConversionFactoryService>.Create.Create(MemberIntegral.IntegralType.Reg, 0);
 					Instance<IMemberIntegralService>.Create.AddMemberIntegral(memberIntegralRecord, conversionMemberIntegralBase);

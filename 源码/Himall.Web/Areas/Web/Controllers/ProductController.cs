@@ -768,7 +768,7 @@ namespace Himall.Web.Areas.Web.Controllers
 				select a).Skip((pageNo - 1) * pageSize).Take(pageSize).ToArray();
 			var variable = 
 				from c in productCommentInfoArray
-                select new { UserName = c.UserName, ReviewContent = c.ReviewContent, ReviewDate = c.ReviewDate.ToString("yyyy-MM-dd HH:mm:ss"), ReplyContent = (string.IsNullOrWhiteSpace(c.ReplyContent) ? "暂无回复" : c.ReplyContent), ReplyDate = (c.ReplyDate.HasValue ? c.ReplyDate.Value.ToString("yyyy-MM-dd HH:mm:ss") : " "), ReviewMark = c.ReviewMark, BuyDate = c.Himall_OrderItems.OrderInfo.OrderDate.ToString("yyyy-MM-dd HH:mm:ss") };
+                select new { UserName = c.UserName, ReviewContent = c.ReviewContent, ReviewDate = c.ReviewDate.ToString("yyyy-MM-dd HH:mm:ss"), ReplyContent = (string.IsNullOrWhiteSpace(c.ReplyContent) ? "No Reply" : c.ReplyContent), ReplyDate = (c.ReplyDate.HasValue ? c.ReplyDate.Value.ToString("yyyy-MM-dd HH:mm:ss") : " "), ReviewMark = c.ReviewMark, BuyDate = c.Himall_OrderItems.OrderInfo.OrderDate.ToString("yyyy-MM-dd HH:mm:ss") };
 			return Json(new { successful = true, comments = variable, totalPage = (Math.Ceiling((decimal)array.Count() / pageSize)), pageSize = pageSize, currentPage = pageNo, goodComment = (
 				from c in commentsByProductId.ToArray()
                 where c.ReviewMark >= 4

@@ -697,7 +697,7 @@ a.d-offline b { color: #ccc; }
 #comments-list .star { float: left; margin: 1px 0 0 5px; }
 #comments-list .date-comment { float: right; color: #9C9A9C; margin-left: 10px; }
 #comments-list .comment-content dl { padding: 2px 0; overflow: hidden; zoom: 1; }
-#comments-list .comment-content dt { float: left; width: 62px; text-align: right; color: #9C9A9C; }
+#comments-list .comment-content dt { float: left; width: 100px; color: #9C9A9C; }
 #comments-list .comment-content dd { float: left; width: 750px; word-wrap: break-word; }
 #comments-list .dl-extra dl { float: left; margin-right: 1em; }
 #comments-list .comment-content .dl-extra dd { width: auto; }
@@ -745,7 +745,7 @@ a.css3-btn, a.css3-btn:hover, a.css3-btn:visited { color: #fff; }
 #consult .user { margin-top: 0; color: #9C9A9C; }
 #consult .user span { margin-right: 20px; }
 #consult dl { margin-top: 5px; overflow: hidden; zoom: 1; }
-#consult dt { float: left; width: 62px; text-align: justify; }
+#consult dt { float: left; width: 100px; text-align: justify; }
 #consult dd { float: right; width: 887px; overflow: hidden; }
 #consult .answer { color: #FF6500; }
 #consult .content { float: left; width: 750px; }

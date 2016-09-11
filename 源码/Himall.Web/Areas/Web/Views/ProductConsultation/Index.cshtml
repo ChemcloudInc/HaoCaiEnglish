@@ -1,83 +1,137 @@
-﻿@{
-    Layout = "~/Areas/Web/Views/Shared/_UserCenter.cshtml";
-    ViewBag.Title = "Product Consultation";
+﻿@model Himall.Model.ProductInfo
+@{
+    ViewBag.Title = Model.ProductName + " Consultation";
 }
-@model  IEnumerable<Himall.Web.Models.ProductConsultationModel>
+@section Style{
+    <link href="~/Areas/Web/Content/WebAlertPlug.css" rel="stylesheet" />
+    }
+<div class="w">
+    @MVCHelpers.CategoryPath(Model.CategoryPath, Model.ProductName)
+</div>
+<div class="w">
+    <div class="right">
+        <input type="hidden" id="gid" value="@Model.Id" />
+        <div id="consult" class="m m2">
+            <div class="mt">
+                <ul class="tab">
+                    <li class="curr"><a href="javascript:;">Product Consultation</a></li>
+                </ul>
+                <div class="consult-pub"></div>
+            </div>
+            <div id="consult-search">
+                <div class="prompt"> <strong>Tips:</strong>Due to the factory to change the product packaging, the origin of a product or replacement accessories such as without any advance notice, and each consultant buying situation and question time is different, so the following reply to the questioner valid for 3 days only, other Internet users are for reference only! If to inconvenience you please understanding, thank you! </div>
+            </div>
+            <!--consult-search end-->
+            <div id="consult-0" class="mc tabcon" data-widget="tab-content">
 
-<div class="box1 lh24">
-    <div class="title">
-        <span class="title_txt cur">Product consultation</span>
-    </div>
-    <div class="border-box">
-        <table class="tb-void tb-goods">
-            <colgroup>
-                <col width="90px">
-                <col width="200px">
-                <col></col>
-            </colgroup>
-            <thead>
-                <tr>
-                    <th>Product Consultation</th>
-                    <th>ProductName</th>
-                    <th>Reply</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (Model.Count() == 0)
-                {
-                    <tr><td colspan="4"><div class="empty"><b></b>No Consultation Records！</div></td></tr>
-                }
-                @foreach (var m in Model)
-                {
-                    <tr>
-                        <td>
-                            <div class="img-list">
-                                <a href="@Url.Action("Detail", "Product", new { id = @m.ProductId })" target="_blank">
-                                    <img src="@m.ProductPic/1_100.png" title="">
-                                </a>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="p-name">
-                                <a href="@Url.Action("Detail", "Product", new { id = @m.ProductId })" target="_blank">@m.ProductName</a>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="col3">
-                                <div class="col3q">
-                                    <span title="@m.ConsultationContent" class="fore2">
-                                        My Consultation：@m.ConsultationContent.Replace("&nbsp","")
-                                    </span>
-                                    <span class="ftx-03 time2">@m.ConsultationDate.ToString("yyyy-MM-dd HH:mm")</span>
-                                </div>
-                                <div class="col3a mt5">
-                                    @if (!string.IsNullOrWhiteSpace(m.ReplyContent))
-                                    {
-                                        <div class="ftx04 col3a-lcol">Sellers Reply：</div>
-                                        <div class="col3a-rcol">
-                                            @m.ReplyContent.Replace("&nbsp","")
-                                            <span class="ftx03 time">@(m.ReplyDate.HasValue ? m.ReplyDate.Value.ToString("yyyy-MM-dd HH:mm") : "")</span>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        <div class="cl mt10" id="bottom_pager">
-            <div id="pagin-btm" class="pagin fr" style="clear:both">
-                @{
-                    var count = ((PagingInfo)ViewBag.pageInfo).TotalPages;
-                    var curr = ((PagingInfo)ViewBag.pageInfo).CurrentPage;
-                }
-                @Html.PageLinks((PagingInfo)ViewBag.pageInfo, x => Url.Action("Index", new { pageNo = x }))
-                <span class="page-skip">
-                    <em>Pages of @count</em>
-                </span>
+
             </div>
         </div>
-    </div>
+        <!--consult end-->
+        <div class="Review_Form">
+            <a name="ConsultForm" id="ConsultForm"></a>
+            <h5>Write Consult:</h5>
+            <div class="Re_Explain">Declaration: you can consult the product packaging, color, transportation, inventory, etc before order.Consulting reply as follows: working hours from Monday to Friday, 9 until 18:00</div>
+            <ul>
+                <li>
+                    <span>Consult Content:</span>
+                    <textarea id="ConsultContent" name="ConsultContent" class="area1"></textarea>
+                </li>
 
+                <li class="buttons">
+                    <a href="#none" onclick="AddConsult()" class="getRefer">Submit</a>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+    <!--right end-->
+
+    <div class="left product-left">
+        <div class="m m2" id="product-info">
+            <div class="mt"><h2>Product Informatioin</h2></div>
+            <div class="mc">
+                <ul>
+                    <li class="p-img ac"><a href="@Url.Action("Detail", "Product", new { id = @Model.Id })" target="_blank"> <img alt="" src="@Model.ImagePath/1_100.png"> </a></li>
+
+                    <li class="p-name">ProductName:<a href="@Url.Action("Detail", "Product", new { id = @Model.Id })" target="_blank">@Model.ProductName</a></li>
+                    <li class="p-price">
+                        <div class="dt">&nbsp;&nbsp;Price:</div>
+                        <strong class="c-J_975101">$@Model.MinSalePrice.ToString("F2")</strong>
+                    </li>
+                    <li class="p-grade">
+                        <div class="dt">Rating：</div>
+                        <div class="fl dd">
+                            <span id="product_star" class="star sa@(((int)ViewBag.productMark==0?5:(int)(ViewBag.productMark)))"></span>
+                            (<span id="product_star_score">@(((Decimal)ViewBag.productMark == 0 ? 5 : (Decimal)ViewBag.productMark).ToString("F1"))</span>)
+                        </div>
+                    </li>
+                    <li class="p-count">
+                        <div class="dt">Consults：</div>
+                        <div id="p-num-comment" class="dd">@{@Model.Himall_ProductComments.Count}</div>
+                    </li>
+
+                    <li class="p-btn">
+                        <a class="btn-goshop" href="@Url.Action("Detail", "Product", new { id = @Model.Id })">Go to buy<b>></b></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div><!--left end-->
+    <span class="clr"></span>
 </div>
+<script src="~/Areas/Web/Scripts/ProductConsultation.js"></script>
+<script type="text/javascript">
+
+
+    $(function () {
+        $("#ConsultContent").bind("focus", function () { SendConsultation(); });
+    });
+</script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script type="text/javascript">
+    function SendConsultation() {
+        var memberId = $.cookie('Himall-User');
+        if (memberId) {
+        }
+        else {
+            $.fn.login({}, function () {
+                location.href = '/ProductConsultation/index/' + $("#gid").val() + '#ConsultForm';
+            }, '', '', '/Login/Login');
+        }
+    }
+
+    function AddConsult() {
+        if ( $( "#ConsultContent" ).val().trim() == '' )
+        {
+            $.dialog.tips("Please enter Consult Content！");
+            return false;
+        }
+        if ($("#ConsultContent").val().length > 500)
+        {
+            $.dialog.tips("Consult Content within 500 characters！");
+            return false;
+        }
+        SendConsultation();
+        var content = $("#ConsultContent").val();
+        var loading = showLoading();
+        $.ajax({
+            type: 'post',
+            url: "@Url.Action("AddConsultation", "ProductConsultation")",
+            data: { Content: content, productId: $("#gid").val() },
+            dataType: "json",
+            success: function (data) {
+                loading.close();
+                if (data.success) {
+					$.dialog.succeedTips("Consult Success！", function () {location.reload();}, 2);
+                }
+                else {
+					$.dialog.errorTips("Consult Failed！"+ data.msg);
+                }
+            }
+        });
+    }
+</script>

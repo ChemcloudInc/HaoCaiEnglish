@@ -57,41 +57,41 @@ namespace Himall.Model
 
 		public enum IntegralType
 		{
-			[Description("交易获得")]
+            [Description("Consumption")]
 			Consumption = 1,
-			[Description("积分抵扣")]
+            [Description("Exchange")]
 			Exchange = 2,
-			[Description("会员邀请")]
+            [Description("InvitationMemberRegiste")]
 			InvitationMemberRegiste = 3,
-			[Description("每日登录")]
+            [Description("Login")]
 			Login = 5,
-			[Description("绑定微信")]
+            [Description("BindWX")]
 			BindWX = 6,
-			[Description("订单评价")]
+            [Description("Comment")]
 			Comment = 7,
-			[Description("管理员操作")]
+            [Description("SystemOper")]
 			SystemOper = 8,
-			[Description("完善用户信息")]
+            [Description("Reg")]
 			Reg = 9,
-			[Description("取消订单")]
+            [Description("Cancel")]
 			Cancel = 10,
-			[Description("其他")]
+            [Description("Others")]
 			Others = 11
 		}
 
 		public enum VirtualItemType
 		{
-			[Description("兑换")]
+            [Description("Exchange")]
 			Exchange = 1,
-			[Description("邀请会员")]
+            [Description("InvitationMember")]
 			InvitationMember = 2,
-			[Description("返利消费")]
+            [Description("ProportionRebate")]
 			ProportionRebate = 3,
-			[Description("评论")]
+            [Description("Comment")]
 			Comment = 4,
-			[Description("交易获得")]
+            [Description("Consumption")]
 			Consumption = 5,
-			[Description("取消订单")]
+            [Description("Cancel")]
 			Cancel = 6
 		}
 	}
