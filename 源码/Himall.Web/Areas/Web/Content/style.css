@@ -110,7 +110,7 @@ body{ background-color:#f9f9f9;}
 
 
 /*导航-----------*/
-.floor-nav{  position: fixed; width:37px; background:#fff;left: 50%;top: 50%;margin-left: -650px; display:none;}
+.floor-nav{  position: fixed; width:37px; background:#fff;left: 50%;top: 50%;margin-left: -645px; display:none;}
 .floor-nav a{ width:19px; height:30px; line-height:30px; white-space:nowrap; text-decoration:none; text-align:center; display:block; margin:0 auto; border-bottom:1px dotted #c9c9c9; color:#625352;cursor:pointer;}
 .floor-nav li:last-child a{ border:0;}
 .floor-nav a span{ display:none;}

@@ -625,6 +625,7 @@ a.d-offline b { color: #ccc; }
 #sp-reco .p-info, #sp-reco .p-name { text-align: center; }
 #sp-reco .p-info { height: 15px; }
 #product-detail, #comments-list, #consult { overflow: visible;  _clear: both; }
+#comments-list #comment-0 { border: 1px solid #cbcad0;border-top: none; }
 #product-detail { overflow: visible; }
 #product-detail .float-nav-wrap { height:40px; }
 #product-detail .mt { top: auto; z-index: 5; height:38px; width: 908px;}
@@ -653,6 +654,7 @@ a.d-offline b { color: #ccc; }
 #nav-minicart .p-price { line-height: 1.2em; font-weight: 700; color: #3480eb; }
 #nav-minicart .p-price em { color: #999; font-weight: 400; }
 #nav-minicart .p-price { line-height: 1.2em; font-weight: 700; color: #3480eb; }
+#product-html { padding-left: 8px;border: 1px solid #cbcad0;padding-top:8px; }
 #product-detail .detail-list { padding: 8px; border: solid #cbcad0; border-width: 0 1px 1px; overflow: hidden; zoom: 1; margin-bottom: 10px; }
 #product-detail .detail-list li { float: left; width: 30%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 2px 0; }
 #product-detail .detail-correction { padding: 8px 0; zoom: 1; }
@@ -738,7 +740,7 @@ a.css3-btn, a.css3-btn:hover, a.css3-btn:visited { color: #fff; }
 #consult .consult-pub a { padding: 4px 10px; font-size: 12px; font-family: simsun; }
 .norecode { padding-top: 10px; color: #999; }
 #consult .extra { margin-top: 6px; }
-#consult .tabcon { padding: 10px; }
+#consult .tabcon { padding: 10px; border: 1px solid #cbcad0;border-top: none; }
 #consult .item { padding: 8px 0; border-bottom: 1px dotted #DEDEDE; }
 #consult .user { margin-top: 0; color: #9C9A9C; }
 #consult .user span { margin-right: 20px; }
