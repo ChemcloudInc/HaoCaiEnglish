@@ -69,15 +69,15 @@ namespace Himall.Model
 
 		public enum CapitalDetailType
 		{
-			[Description("领取红包")]
+			[Description("CashCoupon")]
 			RedPacket = 1,
-			[Description("充值")]
+            [Description("ChargeAmount")]
 			ChargeAmount = 2,
-			[Description("提现")]
+            [Description("WithDraw")]
 			WithDraw = 3,
-			[Description("消费")]
+            [Description("Consume")]
 			Consume = 4,
-			[Description("退款")]
+            [Description("Refund")]
 			Refund = 5
 		}
 	}

@@ -243,7 +243,7 @@
                     opts.pageNumber = parseInt(opts.pageNumber) - 1;
                     request(target);
                 } else {
-                    $.dialog.errorTips('已经是第一页了');
+                    $.dialog.errorTips('First Page');
                 }
 
             });
@@ -257,7 +257,7 @@
                     opts.pageNumber = parseInt(opts.pageNumber) + 1;
                     request(target);
                 } else {
-                    $.dialog.errorTips('已经是最后一页了');
+                    $.dialog.errorTips('Last Page');
                 }
 
             });
@@ -268,7 +268,7 @@
         $("input.pageJumpBtn", $(target).next()).unbind("click").bind("click", function () {
             var jump = $("input.pageNumberTxt", $(target).next()).val();
             if (isNaN(jump) || jump > pageCount || jump <= 0) {
-                $.dialog.errorTips('请您输入有效的页码');
+                $.dialog.errorTips('Please enter valid page number');
                 $("input.pageNumberTxt", $(target).next()).val("");
             }
             else {
@@ -401,20 +401,20 @@
             var htmlArray = ["<div class=\"table-bt clearfix\">"];
             htmlArray.push("<div class=\"tabel-operate\">");
             if (opts.hasCheckbox && !opts.singleSelect) {
-                htmlArray.push("<label><input name=\"\" class=\"check-all\" type=\"checkbox\"/>全选</label>");
+                htmlArray.push("<label><input name=\"\" class=\"check-all\" type=\"checkbox\"/>Sellect All</label>");
 
             }
             htmlArray.push(opts.operationButtonsInnerHTML);
             htmlArray.push("</div>");
             htmlArray.push("<div class=\"pager\">");
-            htmlArray.push("<span class=\"active-page\">" + currentPage.toString() + "/" + pageCount.toString() + " 页，共"+total.toString()+"条记录 </span>");
+            htmlArray.push("<span class=\"active-page\">" + currentPage.toString() + "/" + pageCount.toString() + " pages，total "+total.toString()+" items </span>");
             htmlArray.push("<a class=\"btn btn-default btn-ssm beforePageBtn\" href=\"javascript:void(0);\">Previous</a>");
             htmlArray.push("<a class=\"btn btn-default btn-ssm afterPageBtn\" href=\"javascript:void(0);\">Next</a>");
-            htmlArray.push("<a id=\"jump-to\" class=\"btn btn-default btn-ssm\">指定跳转</a>");
+            htmlArray.push("<a id=\"jump-to\" class=\"btn btn-default btn-ssm\">Go to page</a>");
             htmlArray.push("<div class=\"tipic-dialog\">");
             htmlArray.push("<div class=\"page-jump\">");
-            htmlArray.push("<span>跳转到第<input class=\"pageNumberTxt\" type=\"text\" name=\"\">页</span>");
-            htmlArray.push("<input type=\"button\" class=\"btn btn-default btn-ssm pageJumpBtn\" value=\"确定\"></input>");
+            htmlArray.push("<span>Go to <input class=\"pageNumberTxt\" type=\"text\" name=\"\">Page</span>");
+            htmlArray.push("<input type=\"button\" class=\"btn btn-default btn-ssm pageJumpBtn\" value=\"Go\"></input>");
             htmlArray.push("</div></div></div></div>");
 
             $(htmlArray.join("")).insertAfter($(target));
@@ -572,14 +572,14 @@
                 var col = $(target).hiMallDatagrid("getColumnOption", findFiled);
                 var widthStyle = col.width === undefined ? "width:auto;" : "width:" + (col.width) + "px;";
                 if (col.checkbox) {
-                    content = "选择";
+                    content = "Select";
                     className = " class=\"td-choose\"";
                     opts.hasCheckbox = true;
                 } else {
                     content = col.title;
                 }
                 if (col.operation) {
-                    content = "操作";
+                    content = "Operate";
                     className = " class=\"td-operate\"";
                 }
                 var style = col.hidden ? "style=\"display:none;\"" : "style=\"text-align:center;padding-left:0px;padding-right:0px;" + widthStyle + "\"";
@@ -650,8 +650,8 @@
         hasCheckbox: false,
         idField: null,
         url: null,
-        loadMsg: "正在加载,请稍等 ...",
-        NoDataMsg: '没有找到符合条件的数据',
+        loadMsg: "Loading ...",
+        NoDataMsg: 'Could not find related data',
         singleSelect: false,
         pagination: false,
         pageNumber: 1,

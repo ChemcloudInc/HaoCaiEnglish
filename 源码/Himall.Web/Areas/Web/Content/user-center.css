@@ -52,7 +52,7 @@ select.search_order { width: 202px; }
 .form .item:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
 .form .item { display: block; line-height: 30px; padding-bottom: 15px; width: 100%; }
 .form .item .edui-editor { line-height: 20px; }
-.form .item span.label { float: left; height: 18px; line-height: 18px; padding: 6px 4px; text-align: right; width: 120px; }
+.form .item span.label { float: left; height: 18px; line-height: 18px; padding: 6px 4px; text-align: right; width: 160px; }
 .form .itxt, .form .text { height: 20px; padding: 5px 23px 5px 5px; width: 250px; border-radius: 2px; border: 1px solid #ccc; }
 .form .itxt, .form .selt, .form .sele, .form .area { border: 1px solid #ccc; float: none; line-height: 18px; padding: 5px; margin-right: 8px; }
 .form textarea { resize: none; border-radius: 2px; min-width: 250px; }
@@ -330,7 +330,7 @@ background-image: linear-gradient(to top, #f7f7f7 0, #f3f2f2 100%); -webkit-bord
 .yanzh_pic1.off { background: url("../images/verification1.jpg") no-repeat; }
 .yanzh_pic1.off2 { background: url("../images/verification2.jpg") no-repeat; }
 .yanzh_pic1.no { background: url("../images/verification3.jpg") no-repeat; }
-.yanzh_pic1 span { display: block; float: left; margin-left: 70px; margin-right: 80px; overflow: hidden; text-align: center; width: 106px; }
+.yanzh_pic1 span { display: block; float: left; margin-left: 32px; margin-right: 43px; overflow: hidden; text-align: center; width: 190px; }
 .yanzh_pic { font-size: 14px; height: 34px; margin: 15px auto 10px; overflow: hidden; padding-top: 40px; width: 517px; }
 .yanzh_pic { margin-bottom: 10px; margin-top: 15px; overflow: hidden; text-align: center; }
 .yanzh_pic .col { color: #f37214; }

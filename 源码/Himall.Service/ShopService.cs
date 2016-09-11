@@ -30,7 +30,7 @@ namespace Himall.Service
 		{
 			if (context.FavoriteShopInfo.FirstOrDefault((FavoriteShopInfo item) => item.UserId == memberId && item.ShopId == shopId) != null)
 			{
-				throw new HimallException("您已经关注过该店铺");
+				throw new HimallException("You have liked the shop");
 			}
 			FavoriteShopInfo favoriteShopInfo = new FavoriteShopInfo()
 			{

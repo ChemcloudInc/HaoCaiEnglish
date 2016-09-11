@@ -126,13 +126,13 @@ UE.I18N['en'] = {
         'vb':'Visual Basic',
         'xml':'XML'
     },
-    'confirmClear':"Do you confirm to clear the Document?",
+    'confirmClear':"Are you sure to clear the Document?",
     'contextMenu':{
         'delete':"Delete",
         'selectall':"Select all",
         'deletecode':"Delete Code",
         'cleardoc':"Clear Document",
-        'confirmclear':"Do you confirm to clear the Document?",
+        'confirmclear':"Are you sure to clear the Document?",
         'unlink':"Unlink",
         'paragraph':"Paragraph",
         'edittable':"Table property",
