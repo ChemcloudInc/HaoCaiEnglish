@@ -56,7 +56,7 @@ $(function () {
 					   
 						html.push("<a class=\"good-check\" onclick=\"OpenComplaintReason('" + row.OrderId + "','" + row.ComplaintReason.replace(/\'/g, "’").replace(/\"/g, "“") + "')\">查看投诉</a>");
 	
-						if (row.ComplaintStatus == "Wait for processing") {
+						if (row.ComplaintStatus == "WaitDeal") {
 						    html.push("<a class=\"good-check\" onclick=\"OpenDealComplaint('" + row.Id + "','" + row.OrderId + "','" + row.ComplaintReason.replace(/\'/g, "’").replace(/\"/g, "“") + "','" + row.ShopPhone + "','" + row.UserPhone + "')\">完成处理</a>");
 						}
 						else {
