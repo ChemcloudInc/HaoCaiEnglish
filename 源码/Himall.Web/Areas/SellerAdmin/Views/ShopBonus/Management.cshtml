@@ -5,26 +5,26 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>红包管理</strong>
-        <li class="active"><a>管理</a></li>
-        <li class=""><a href="#" onclick="isad( '@Url.Action("Add")' )">添加代金红包</a></li>
+        <strong>Shop Bonus</strong>
+        <li class="active"><a>Management</a></li>
+        <li class=""><a href="#" onclick="isad( '@Url.Action("Add")' )">Add bonus</a></li>
 
-        <li><a href="@Url.Action("BuyService")">服务购买</a></li>
+        <li><a href="@Url.Action("BuyService")">Buy service</a></li>
     </ul>
     <div class="search-box only-line">
         <form class="custom-inline" role="form">
             <div class="form-group">
-                <label class="label-inline" for="">状态</label>
+                <label class="label-inline" for="">Status</label>
                 <select class="form-control input-ssm" id="searchState">
-                    <option value="1">进行中</option>
-                    <option value="2">无效</option>
+                    <option value="1">processing</option>
+                    <option value="2">invalid</option>
                 </select>
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">名称</label>
+                <label class="label-inline" for="">name</label>
                 <input type="text" class="form-control input-ssm" id="searchName" value=" " />
             </div>
-            <button type="button" id="btnSearch" class="btn btn-primary btn-sm">搜索</button>
+            <button type="button" id="btnSearch" class="btn btn-primary btn-sm">Search</button>
         </form>
     </div>
 
@@ -53,7 +53,7 @@
             }
             else
             {
-                $.dialog.tips( '一个时间段只能新增一个随机红包！' );
+                $.dialog.tips( 'A period of time can only add a random bonus!' );
             }
         } );
     }
@@ -64,7 +64,7 @@
             url: './list',
             nowrap: false,
             rownumbers: true,
-            NoDataMsg: '没有找到符合条件的数据',
+            NoDataMsg: 'Not matching data.',
             border: false,
             fit: true,
             fitColumns: true,
@@ -76,61 +76,61 @@
             toolbar: /*"#goods-datagrid-toolbar",*/'',
             columns:
             [[
-                { field: "Name", title: "活动名称" },
+                { field: "Name", title: "Activity name" },
                 {
-                    field: "RandomAmountStart", title: "随机范围", formatter: function ( value, row, index )
+                    field: "RandomAmountStart", title: "Random range", formatter: function ( value, row, index )
                     {
                         return row.RandomAmountStart + " - " + row.RandomAmountEnd;
                     }
                 },
                 {
-                    field: "UseState", title: "使用条件", formatter: function ( value, row, index )
+                    field: "UseState", title: "Use conditions", formatter: function ( value, row, index )
                     {
                         if ( row.UseState == 2 )
                         {
-                            return "满" + row.UsrStatePrice + "元";
+                            return "Up to" + row.UsrStatePrice + "dollars";
                         }
-                        return "无";
+                        return "None";
                     }
                 },
                 {
-                    field: "BonusDateEnd", title: "有效日期", formatter: function ( value, row, index )
+                    field: "BonusDateEnd", title: "Valid time", formatter: function ( value, row, index )
                     {
                         return row.BonusDateStartStr + " - " +row.BonusDateEndStr ;
                     }
                 },
                 {
-                    field: "DateStart", title: "活动时间", formatter: function ( value, row, index )
+                    field: "DateStart", title: "Activity time", formatter: function ( value, row, index )
                     {
                         return row.DateStartStr + " - " + row.DateEndStr;
                     }
                 },
                 //{ field: "ReceiveCount", title: "领取数量" },
                 {
-                    field: "IsInvalid", title: "状态", formatter: function ( value, row, index )
+                    field: "IsInvalid", title: "Status", formatter: function ( value, row, index )
                     {
                         if($( "#searchState" ).val() == "1")
                         {
-                            return "正在进行";
+                            return "Processing";
                         }
                         else
                         {
                             if(row.IsInvalid)
                             {
-                                return "失效";
+                                return "Invalid";
                             }
                             else
                             {
-                                return "已过期";
+                                return "Expired";
                             }
                         }
                     }
                 },
                 {
-                    field: "operation", operation: true, title: "操作", formatter: function ( value, row, index )
+                    field: "operation", operation: true, title: "Operation", formatter: function ( value, row, index )
                     {
                         var html = "";
-                        html += '<span class="btn-a"><a href="/SellerAdmin/ShopBonus/Detail/' + row.Id + '">详情</a></span>';
+                        html += '<span class="btn-a"><a href="/SellerAdmin/ShopBonus/Detail/' + row.Id + '">detail</a></span>';
 
                         var str = row.DateEndStr + ' 23:59:59';
                         str = str.replace( /-/g, "/" );
@@ -143,11 +143,11 @@
 
                         if ( !row.IsInvalid || row.StartTime > new Date() )
                         {
-                            html += '<span class="btn-a"><a href="/SellerAdmin/ShopBonus/Edit/' + row.Id + '">编辑</a></span>';
+                            html += '<span class="btn-a"><a href="/SellerAdmin/ShopBonus/Edit/' + row.Id + '">edit</a></span>';
                         }
                         if ( !row.IsInvalid )
                         {
-                            html += '<span class="btn-a"><a onclick="invalid(' + row.Id + ' , ' + row.IsInvalid + ');">失效</a></span>';
+                            html += '<span class="btn-a"><a onclick="invalid(' + row.Id + ' , ' + row.IsInvalid + ');">invalid</a></span>';
                         }
 
                         return html;
@@ -161,25 +161,25 @@
     {
         if ( isInvalid )
         {
-            $.dialog.tips( '此活动已失效!' );
+            $.dialog.tips( 'This activity has expired!' );
             return;
         }
 
-        $.dialog.confirm( '您确定要失效此活动？', function (  )
+        $.dialog.confirm( 'Determine to close the activity?', function (  )
         {
             var loading = showLoading();
             $.post( "/SellerAdmin/ShopBonus/Invalid", { id: id }, function ( data )
             {
                 if ( data )
                 {
-                    $.dialog.tips( '已成功失效此活动' );
+                    $.dialog.tips( 'Close the activity successfully' );
                     var pageNo = $( "#list" ).hiMallDatagrid( 'options' ).pageNumber;
                     $( "#list" ).hiMallDatagrid( 'reload', { pageNumber: pageNo } );
                     loading.close();
                 }
                 else
                 {
-                    $.dialog.tips( '执行失效操作失败' );
+                    $.dialog.tips( 'Close the activity failed' );
                 }
             } )
         } )

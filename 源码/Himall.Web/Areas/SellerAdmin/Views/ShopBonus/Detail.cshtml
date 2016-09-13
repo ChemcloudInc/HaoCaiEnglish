@@ -5,9 +5,9 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>红包管理</strong>
-        <li><a href="/SellerAdmin/ShopBonus/Management">管理</a></li>
-        <li class="active"><a>详情</a></li>
+        <strong>Shop Bonus</strong>
+        <li><a href="/SellerAdmin/ShopBonus/Management">Management</a></li>
+        <li class="active"><a>Detail</a></li>
     </ul>
 
 
@@ -26,7 +26,7 @@
             url: '/SellerAdmin/ShopBonus/DetailList',
             nowrap: false,
             rownumbers: true,
-            NoDataMsg: '没有找到符合条件的数据',
+            NoDataMsg: 'No matching data',
             border: false,
             fit: true,
             fitColumns: true,
@@ -48,11 +48,11 @@
                         return row.OpenId;
                     }
                 } },
-                { field: "Price", title: "金额" },
-                 { field: "StateStr", title: "状态" , formatter: function ( value, row, index ){
+                { field: "Price", title: "Amount" },
+                 { field: "StateStr", title: "State" , formatter: function ( value, row, index ){
                      return row.StateStr;
                  } },
-                { field: "ReceiveTime", title: "领取日期" , formatter: function ( value, row, index ){
+                { field: "ReceiveTime", title: "Receive time" , formatter: function ( value, row, index ){
                     if(row.ReceiveTime == null || row.ReceiveTime == "")
                     {
                         return "-";
@@ -62,7 +62,7 @@
                         return row.ReceiveTime;
                     }
                 } },
-                { field: "UsedTime", title: "使用时间" , formatter: function ( value, row, index ){
+                { field: "UsedTime", title: "Used time" , formatter: function ( value, row, index ){
                     if(row.UsedTime == null || row.UsedTime == "")
                     {
                         return "-";
@@ -72,7 +72,7 @@
                         return row.UsedTime;
                     }
                 } },
-                { field: "UsedOrderId", title: "使用订单编号" , formatter: function ( value, row, index ){
+                { field: "UsedOrderId", title: "Order no." , formatter: function ( value, row, index ){
                     if(row.UsedOrderId == null || row.UsedOrderId == "")
                     {
                         return "-";

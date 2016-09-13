@@ -2,8 +2,8 @@
     $('#Name').focus();
     $("#topImage").himallUpload(
     {
-        title: '头部图片',
-        imageDescript: '请上传1920 * 500的图片',
+        title: 'Head pictures',
+        imageDescript: 'Please upload pictures of 1920 * 500',
         displayImgSrc: $('#topImageBox').val(),
         imgFieldName: "TopImage"
     });

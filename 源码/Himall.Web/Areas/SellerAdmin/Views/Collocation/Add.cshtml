@@ -58,10 +58,10 @@ table th,table td{ text-align:center;}
 </style>
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>组合购</strong>
-        <li><a href="./Management">活动管理</a></li>
-        <li class="active"><a>新增组合购</a></li>
-        <li class=""><a href="./BuyService">购买服务</a></li>
+        <strong>Collocation</strong>
+        <li><a href="./Management">Activity management</a></li>
+        <li class="active"><a>Add Collocation</a></li>
+        <li class=""><a href="./BuyService">Buy service</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -74,14 +74,14 @@ table th,table td{ text-align:center;}
     {
         <div class="form-horizontal">
             <div class="form-group">
-                <label class="col-sm-2 control-label" for=""><b style="color:red;">*</b>活动标题：</label>
+                <label class="col-sm-2 control-label" for=""><b style="color:red;">*</b>Title:</label>
                 <div class="col-sm-3">@Html.EditorFor(item => item.Title, new { htmlAttributes = new { @class = "form-control input-sm" } }) </div>
-                <div class="col-sm-5"><span class="help-default">活动标题是商家对组合购活动的别名.</span></div>
+                <div class="col-sm-5"><span class="help-default"> Title is an alias to the collocation activities.</span></div>
 
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label" for=""><b style="color:red;">*</b>主商品：</label>
-                <div class="col-sm-3"><a class="btn btn-primary btn-sm" id="SelectProduct"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp; 选择主商品</a></div>
+                <label class="col-sm-2 control-label" for=""><b style="color:red;">*</b>Main product:</label>
+                <div class="col-sm-3"><a class="btn btn-primary btn-sm" id="SelectProduct"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp; Select main product</a></div>
                 <input type="hidden" id="MainProductId" name="MainProductId" value="" />
             </div>
             <div class="form-group">
@@ -89,8 +89,8 @@ table th,table td{ text-align:center;}
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label" for=""><b style="color:red;">*</b>搭配商品：</label>
-                <div class="col-sm-3"><a class="btn btn-primary btn-sm" id="SelectOtherProducts"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp; 添加搭配商品</a></div>
+                <label class="col-sm-2 control-label" for=""><b style="color:red;">*</b>Other products:</label>
+                <div class="col-sm-3"><a class="btn btn-primary btn-sm" id="SelectOtherProducts"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp; Add product</a></div>
                 <input type="hidden" id="OtherProductIds" name="OtherProductIds" value="" />
             </div>
             <div class="form-group">
@@ -98,22 +98,22 @@ table th,table td{ text-align:center;}
                 </div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label" for=""><b style="color:red;">*</b>开始时间：</label>
+				<label class="col-sm-2 control-label" for=""><b style="color:red;">*</b>Start time:</label>
 				<div class="col-sm-3">@Html.EditorFor(item => item.StartTime, new { htmlAttributes = new { @class = "form-control input-sm start_datetime" } })</div>
-				<div class="col-sm-5"><span class="help-default">开始时间必填.</span></div>
+				<div class="col-sm-5"><span class="help-default">required</span></div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label" for=""><b style="color:red;">*</b>结束时间：</label>
+				<label class="col-sm-2 control-label" for=""><b style="color:red;">*</b>End time:</label>
 				<div class="col-sm-3">@Html.EditorFor(item => item.EndTime, new { htmlAttributes = new { @class = "form-control input-sm end_datetime" } })</div>
-				<div class="col-sm-5"><span class="help-default">结束时间必须晚于开始时间.</span></div>
+				<div class="col-sm-5"><span class="help-default">End time must be later than the start time.</span></div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label" for=""><b style="color:red;"></b>组合描述:</label>
+				<label class="col-sm-2 control-label" for=""><b style="color:red;"></b>Description:</label>
 				<div class="col-sm-10">@Html.TextAreaFor(item => item.ShortDesc, 4, 50, new { htmlAttributes = new { @class = "form-control input-sm" } })</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="button" class="btn btn-primary" onclick="PostCollocation()">保存</button><label class="label-inline" for=""><a href="./Management">返回</a></label>
+					<button type="button" class="btn btn-primary" onclick="PostCollocation()">Save</button><label class="label-inline" for=""><a href="./Management">返回</a></label>
 				</div>
 			</div>
          </div>
@@ -133,7 +133,7 @@ table th,table td{ text-align:center;}
                 });
                 $("#SelectOtherProducts").click(function () {
                     if ($("#MainProductId").val() == "") {
-                        $.dialog.errorTips('请先选择主商品！');
+                        $.dialog.errorTips('Please select main product first!');
                         return;
                     }
                     $.productSelector.show(otherIds, function (selectedProducts) {

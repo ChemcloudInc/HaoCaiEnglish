@@ -6,12 +6,12 @@
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
         <strong>Collocation</strong>
-        <li class="active"><a>All Collocation</a></li>
+        <li class=""><a>All Collocation</a></li>
         @if (!ViewBag.Expire)
         {
             <li><a href="@Url.Action("Add")">Add Collocation</a></li>
         }
-        <li class=""><a href="@Url.Action("BuyService")">Buy service</a></li>
+        <li class="active"><a href="@Url.Action("BuyService")">Buy service</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">

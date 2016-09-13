@@ -83,7 +83,7 @@
     <ul class="nav nav-tabs-custom clearfix">
         <strong>Coupon</strong>
         <li class=""><a href="@Url.Action("Management","Coupon")">All Coupons</a></li>
-        <li class="active"><a>@(Model.Id > 0 ? "edit" : "add")Coupons</a></li>
+        <li class="active"><a>@(Model.Id > 0 ? "Edit" : "Add")Coupons</a></li>
         <li class=""><a href="@Url.Action("BuyService", "Coupon")">Buy service</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
@@ -111,7 +111,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">Each person may receive:</label>
+                    <label class="col-sm-2 control-label" for="">Most receive:</label>
                     <div class="col-sm-3">
                         <select class="form-control input-sm" name="permax" data="@Model.PerMax" id="id_select">
                             <option value="0">Any</option>
@@ -279,7 +279,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="">温馨提示：</label>
                     <div class="col-sm-10">
-                        <p class="form-control-static" style="color:#999;">分别推广到PC端及移动端店铺首页的优惠券不能超过五张</p>
+                        <p class="form-control-static" style="color:#999;">The coupons extended to the PC and mobile shop home is not more than five</p>
                     </div>
                 </div>
             </form>
@@ -317,7 +317,7 @@
         $("#imgIntegralCover").himallUpload(
         {
             title: 'Cover image:',
-            imageDescript: '非必填，建议尺寸 150 *120；默认显示商家logo',
+            imageDescript: 'Optional, recommended size 150 * 120; the default display business logo.',
             displayImgSrc: "@(Model.IntegralCover)",
             headerWidth: 2,
             dataWidth: 9,
@@ -363,9 +363,9 @@
 
     function showlimittxt(v) {
         if (v != 0) {
-            $("#limit").html('使用限制：<span>订单满<span style="color:#f60;display:inline-block;" id="id_p">' + v + '</span>元可使用（不含运费）</span>');
+            $("#limit").html('Limitations:<span>Can be uerd if order over <span style="color:#f60;display:inline-block;" id="id_p">' + v + '</span>dollars(Excluding shipping costs)</span>');
         } else {
-            $("#limit").html('使用限制：<span>无限制</span>');
+            $("#limit").html('Limitations:<span>Unlimited</span>');
         }
     }
 
@@ -397,10 +397,10 @@
             loadingobj.close();
             if (data.success) {
                 a.reset();
-                $.dialog.succeedTips('数据提交成功！', function () { window.location.href = '/SellerAdmin/Coupon/Management'; });
+                $.dialog.succeedTips('Data submitted successfully!', function () { window.location.href = '/SellerAdmin/Coupon/Management'; });
 
             } else {
-                $.dialog.errorTips('数据提交失败,' + data.msg);
+                $.dialog.errorTips('Data submitted failed,' + data.msg);
             }
         },// 表单提交之后的回调 不是必须
         ajaxSubmit: true// 是否ajax提交 如果没有这个参数那么就是默认提交方式 如果没有特殊情况建议默认提交方式
@@ -413,8 +413,8 @@
             },
 
             ruleType: "required&&ce",
-            tips: "1~20个字符，由中文、英文字母和数字组成。",
-            error: "对不起，优惠券名称格式不正确。",
+            tips: "1 to 20 characters,consisting of the Chinese, English letters and numbers.",
+            error: "Sorry,format of coupon name is incorrect.",
         },
         {
             target: "price",
@@ -424,12 +424,12 @@
             },
             fnRule: function () {
                 var a = $('#price').val();
-                if (a.length > 3 || a - 0 == 0) {
+                if ( a - 0 == 0) {
                     return false;
                 }
             },
-            tips: '该信息为必填项，请输入金额!',
-            error: '金额输入错误,三位以下且大于0的整数!'
+            tips: 'This information is required, please enter the amount!',
+            error: 'Amount input error!'
         },
 
         {
@@ -444,8 +444,8 @@
             afterBlur: function () {
                 $('#id_price').html('¥' + $('#price').val());
             },
-            tips: '该信息为必填项，请输入发放数量!',
-            error: '1-999999之间!'
+            tips: 'This information is required, please enter payment amount!',
+            error: '1-1-999999!'
         },
         {
             target: "orderamout1",
@@ -469,21 +469,21 @@
                 $('#id_p').html('¥' + a);
                 showlimittxt(a);
             },
-            tips: '该信息为必填项，请输入金额!',
-            error: '错误,必须大于优惠券面额,小于999999！'
+            tips: 'This information is required, please enter the amount!',
+            error: 'Error,it must be greater than the coupon face value, less than 999999!'
         },
 
         {
             target: "starttime",
             ruleType: "required&&date",
-            tips: '该信息为必填项，请选择时间!',
-            error: '时间格式错误!'
+            tips: 'This information is required, please select the time!',
+            error: 'Time format error!'
         },
         {
             target: "endtime",
             ruleType: "required&&date",
-            tips: '该信息为必填项，请选择时间!',
-            error: '时间格式错误!'
+            tips: 'This information is required, please select the time!!',
+            error: 'Time format error!'
         }
     );
 </script>
