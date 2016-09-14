@@ -53,7 +53,7 @@
 <div class="container">
     <input type="hidden" id="inputFileName" value="" />
     <ul class="nav nav-tabs-custom clearfix">
-        <li class="active"><a>Import products' data</a></li>
+        <li class="active"><a>Import Products Data</a></li>
     </ul>
     <div class="form-horizontal" style="border:1px solid #ccc">
 
@@ -61,26 +61,26 @@
             <label class="col-sm-2 control-label">Category:</label>
             <div class="col-sm-3">
                 <select id="sellercategory1" class="form-control input-sm select-sort">
-                    <option>分类</option>
+                    <option>category</option>
                 </select>
                 <select id="sellercategory2" class="form-control input-sm select-sort">
-                    <option>分类</option>
+                    <option>category</option>
                 </select>
             </div>
-            <div class="col-sm-5"><span class="help-default">请选择商品所在的店铺分类,如果没有分类请<a href="/SellerAdmin/category/management">添加分类</a></span></div>
+            <div class="col-sm-5"><span class="help-default">Please select the shop categories, if not classified, please <a href="/SellerAdmin/category/management">add a category</a></span></div>
         </div>
 
 
 
 
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="">从Excel导入数据：</label>
+            <label class="col-sm-2 control-label" for="">Import excel data:</label>
             <div class="col-sm-3 form-control-static">
                 <form id="formUpload" action="/common/PublicOperation/UploadFile" enctype="multipart/form-data" method="post" target="iframeUpload">
 
                     <div class="divFile">
-                        <input type="text" id="inputFile" value="请选择文件" disabled="disabled" />
-                        <input type="button" value="选择文件" />
+                        <input type="text" id="inputFile" value="select a file" disabled="disabled" />
+                        <input type="button" value="select a file" />
                         <input type="file" id="btnFile" class="inputFile" name="_file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
                     </div>
                 </form>
@@ -89,17 +89,17 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <input type="submit" class="btn btn-primary" id="btnUpload" value="导 入" />
+                <input type="submit" class="btn btn-primary" id="btnUpload" value="Import" />
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="divAttention">
-                    <h5 style="color:red;">注意事项：</h5>
-                    <p>请严格按照Excel示例格式整理数据并导入</p>
-                    <p>单个文件大小不能超过<span style="color:red;">15M</span></p>
-                    <p>请先下载Excel模板文件:<a href="~/ExcelTemplate/BulkImportTemplate.xlsx" target="_blank" style="color:blue">下载模板文件</span></p>
+                    <h5 style="color:red;">Precautions:</h5>
+                    <p>Please strictly follow the example Excel format and import the data.</p>
+                    <p>Size of every file cannot bigger than <span style="color:red;">15M</span></p>
+                    <p>Please download the Excel template file:<a href="~/ExcelTemplate/BulkImportTemplate.xlsx" target="_blank" style="color:blue">template file</a></p>
                 </div>
             </div>
         </div>

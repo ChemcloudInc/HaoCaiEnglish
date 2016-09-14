@@ -118,7 +118,7 @@ function query(val) {
                     return html;
                 }
             },
-            { field: "ConsultationContent", title: 'Consult content', align: "left",width:350 },
+            { field: "ConsultationContent", title: 'Consult content', align: "left",width:300 },
             { field: "UserName", title: 'Consultant' },
             { field: "ConsultationDateStr", title: 'Date' },
             {

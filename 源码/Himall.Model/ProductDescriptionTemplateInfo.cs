@@ -51,9 +51,9 @@ namespace Himall.Model
 
 		public enum TemplatePosition
 		{
-			[Description("顶部")]
+			[Description("top")]
 			Top = 1,
-			[Description("底部")]
+			[Description("bottom")]
 			Bottom = 2
 		}
 	}

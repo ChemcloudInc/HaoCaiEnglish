@@ -26,10 +26,10 @@ function initGrid() {
         columns:
         [[
              { checkbox: true, width: 39 },
-            { field: "Name", title: 'format name', width: 450, align: 'left' },
-            { field: "PositionText", title: 'format location', width: 100, align: 'left' },
+            { field: "Name", title: 'Format name', width: 450, align: 'left' },
+            { field: "PositionText", title: 'Format location', width: 100, align: 'left' },
         {
-            field: "s", title: "operation", width: 90, align: "center",
+            field: "s", title: "Operation", width: 90, align: "center",
             formatter: function (value, row, index) {
                 var html = "";
                 html = '<span class="btn-a">\

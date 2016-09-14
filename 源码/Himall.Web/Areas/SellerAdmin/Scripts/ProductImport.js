@@ -18,7 +18,7 @@ $(function () {
                     var fso = new ActiveXObject('Scripting.FileSystemObject');
                     var f = fso.GetFile($("#btnFile").val());
                     if (f.Size > MaxFileSize) {
-                        $.dialog.tips('选择的文件太大');
+                        $.dialog.tips('Selected file is too large.');
                         return;
                     }
                 }
@@ -28,7 +28,7 @@ $(function () {
             }
             else {
                 if (dom_btnFile.files.length > 0 && dom_btnFile.files[0].size > MaxFileSize) {
-                    $.dialog.tips('选择的文件太大');
+                    $.dialog.tips('Selected file is too large.');
                     return;
                 }
             }
@@ -36,7 +36,7 @@ $(function () {
             $('#inputFile').val(filename);
         }
         else {
-            $('#inputFile').val('请选择文件');
+            $('#inputFile').val('Please select a file.');
         }
     });
     $('#btnUpload').bind('click', function () {
@@ -45,14 +45,14 @@ $(function () {
         sellercate2 = $('#sellercategory2').val() || '';
 
         if (sellercate1 == '' && sellercate2 == '') {
-            $.dialog.tips('请选择一个商品分类');
+            $.dialog.tips('Please select a category.');
             return;
         }
         
         
         var filename = $('#inputFile').val();
-        if (filename == '请选择文件') {
-            $.dialog.tips('请选择文件');
+        if (filename == 'select a file') {
+            $.dialog.tips('Please select a file');
             return;
         }
         else {
@@ -85,13 +85,13 @@ function fnUploadFileCallBack(filename) {
         , success: function (data) {
             var returnMess = "";
             if (data.message == 1) {
-                returnMess = "已经成功导入" + data.SuccessCount + "条数据," + "有" + data.ErrorCount + "条数据有误。";
+                returnMess = "Have imported " + data.SuccessCount + " cases successfully," + "but " + data.ErrorCount + " cases are incorrect.";
             }
             else if (data.message == 6) {
-                returnMess = "没有找到文件,请重新上传";
+                returnMess = "File is not found, please re-upload";
             }
             else {
-                returnMess = "系统内部异常";
+                returnMess = "Internal system abnormalities"
             }
             $('.ajax-loading').remove();
             //art.dialog.alert(returnMess, function () { location.reload(); });
@@ -110,7 +110,7 @@ function GetImportOpCount() {
        , datatype: 'json'
        , success: function (data) {
            if (data.Count >= MaxImportCount) {
-               $.dialog.tips('上传人数较多，请稍等。。。');
+               $.dialog.tips('Upload busy, pleas wait a minute...');
                return;
            }
            var dom_iframe = document.getElementById('iframe');
@@ -119,10 +119,10 @@ function GetImportOpCount() {
                var filename = this.contentDocument.body.innerHTML;
                if (filename != 'NoFile' && filename != 'Error') {
                    fnUploadFileCallBack(filename);//上传文件后，继续导入商品操作
-                   $('#inputFile').val('请选择文件');
+                   $('#inputFile').val('Please select a file.');
                }
                else {
-                   $.dialog.tips('上传文件异常');
+                   $.dialog.tips('Upload file exception.');
                }
                this.onload = null;
                this.onreadystatechange = null;
@@ -136,13 +136,13 @@ function GetImportOpCount() {
                    }
                    else {
                        loading.close();
-                       $.dialog.tips('上传文件异常');
+                       $.dialog.tips('Upload file exception.');
                    }
                    this.onload = null;
                    this.onreadystatechange = null;
                }
            };
-           loading = showLoading('正在上传');
+           loading = showLoading('uploading...');
            $('#formUpload').submit();
        }
     });

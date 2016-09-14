@@ -257,7 +257,7 @@ function initInfractionSaleOffGrid() {
         operationButtons: "#saleOff",
         columns:
         [[
-             { checkbox: true, width: 39 },
+             { checkbox: true, width: 45 },
             {
                 field: "Name", title: 'Products', width: 450, align: 'left',
                 formatter: function (value, row, index) {
