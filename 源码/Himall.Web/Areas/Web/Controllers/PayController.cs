@@ -264,24 +264,27 @@ namespace Himall.Web.Areas.Web.Controllers
             return View();
         }
 
-		public ActionResult Return(string id)
+        public ActionResult Return(string orderIds)
 		{
-			id = DecodePaymentId(id);
+           
+	
 			string empty = string.Empty;
 			try
 			{
-				Plugin<IPaymentPlugin> plugin = PluginsManagement.GetPlugin<IPaymentPlugin>(id);
-				PaymentInfo paymentInfo = plugin.Biz.ProcessReturn(base.HttpContext.Request);
-				DateTime? tradeTime = paymentInfo.TradeTime;
-				long num = paymentInfo.OrderIds.FirstOrDefault();
+
+                char[] chrArray = new char[] { ',' };
+                IEnumerable<long> num =
+                    from item in orderIds.Split(chrArray)
+                    select long.Parse(item);
 				List<long> list = (
-					from item in ServiceHelper.Create<IOrderService>().GetOrderPay(num)
-					select item.OrderId).ToList();
+                    from item in ServiceHelper.Create<IOrderService>().GetOrders(num)
+					select item.Id).ToList();
 				ViewBag.OrderIds = string.Join<long>(",", list);
 				IOrderService orderService = ServiceHelper.Create<IOrderService>();
-				DateTime? nullable = paymentInfo.TradeTime;
-				orderService.PaySucceed(list, id, nullable.Value, paymentInfo.TradNo, num);
-				string str = CacheKeyCollection.PaymentState(string.Join<long>(",", list));
+				DateTime? nullable = DateTime.Now;
+
+                orderService.PayPalSucceed(list, nullable.Value, null, list.FirstOrDefault());
+                string str = CacheKeyCollection.PaymentState(string.Join<long>(",", list));
 				Cache.Insert(str, true, 15);
 				Dictionary<long, ShopBonusInfo> nums = new Dictionary<long, ShopBonusInfo>();
 				string str1 = string.Concat("http://", base.Request.Url.Host.ToString(), "/m-weixin/shopbonus/index/");

@@ -1163,6 +1163,50 @@ namespace Himall.Service
             Task.Factory.StartNew(() => Instance<IMessageService>.Create.SendMessageOnOrderPay(userId, messageOrderInfo));
         }
 
+        public void PayPalSucceed(IEnumerable<long> orderIds, DateTime payTime, string payNo = null, long payId = 0L)
+        {
+            OrderInfo[] array = context.OrderInfo.FindBy((OrderInfo item) => orderIds.Contains(item.Id)).ToArray();
+           // Plugin<IPaymentPlugin> plugin = PluginsManagement.GetPlugin<IPaymentPlugin>(paymentId);
+            OrderInfo[] orderInfoArray = array;
+            for (int i = 0; i < orderInfoArray.Length; i++)
+            {
+                OrderInfo nullable = orderInfoArray[i];
+                if (nullable != null && nullable.OrderStatus == OrderInfo.OrderOperateStatus.WaitPay)
+                {
+                    OrderPayInfo orderPayInfo = context.OrderPayInfo.FirstOrDefault((OrderPayInfo item) => item.OrderId == nullable.Id && item.PayId == payId);
+                    using (TransactionScope transactionScope = new TransactionScope())
+                    {
+                        nullable.PayDate = new DateTime?(payTime);
+                        nullable.PaymentTypeGateway = "PayPal";
+                        nullable.PaymentTypeName ="PayPal";
+                        nullable.OrderStatus = OrderInfo.OrderOperateStatus.WaitDelivery;
+                        if (orderPayInfo != null)
+                        {
+                            orderPayInfo.PayState = true;
+                            orderPayInfo.PayTime = new DateTime?(payTime);
+                            nullable.AccountType = OrderInfo.AccountTypes.NoAccount;//付款成功修改结算状态
+                        }
+                        UpdateShopVisti(nullable);
+                        UpdateProductVisti(nullable);
+                        UpdateLimitTimeBuyLog(nullable);
+                        nullable.GatewayOrderId = payNo;
+                        context.SaveChanges();
+                        transactionScope.Complete();
+                    }
+                }
+            }
+            MessageOrderInfo messageOrderInfo = new MessageOrderInfo()
+            {
+                OrderId = string.Join<long>(",", orderIds),
+                ShopId = 0,
+                SiteName = Instance<ISiteSettingService>.Create.GetSiteSettings().SiteName,
+                TotalMoney = ((IEnumerable<OrderInfo>)array).Sum<OrderInfo>((OrderInfo a) => a.OrderTotalAmount),
+                UserName = array.FirstOrDefault().UserName
+            };
+            long userId = array.FirstOrDefault().UserId;
+            Task.Factory.StartNew(() => Instance<IMessageService>.Create.SendMessageOnOrderPay(userId, messageOrderInfo));
+        }
+
         public void PlatformCloseOrder(long orderId, string managerName, string closeReason = "")
         {
             OrderInfo orderInfo = context.OrderInfo.FindById<OrderInfo>(orderId);

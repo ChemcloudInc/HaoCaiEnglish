@@ -19,16 +19,15 @@
         <div class="mc">
             <h5 class="subtit">Please select payment method</h5>
             <ul class="list-bank">
-                @{var i = 0;}
-                @foreach (var payment in Model)
-                {
+              
                     <li>
                         <label>
-                            <input type="radio" class="jdradio" value="@payment.RequestUrl" name="requestUrl" id="@payment.Id" urltype="@((int)payment.UrlType)" />
-                            <img width="165" height="48" alt="WeiXinPC" src="@payment.Logo" />
+                         <input type="radio" class="jdradio" value="" name="requestUrl" id="radPaypal" urltype="2" />
+                                <img title="paypal" width="165" height="48" alt="paypal" src="~/Areas/Web/Images/logo_paypal.png" style="border: 1px solid #CCC;" />
+
                         </label>
                     </li>
-                }
+                
             </ul>
             <div class="btns"><a class="btn-next" href="javascript:;" id="nextBtn">Next</a></div>
         </div>
@@ -65,33 +64,18 @@
                 return;
             }
             if ($(this).attr('urlType') == "2") {
-                var url = $(this).attr('formdata');
-                BuildPostForm('pay_form', url, '_blank').submit();
+                var totalmon = @(((decimal)ViewBag.RechargeMoney).ToString("F2"));
+                openBlank('https://www.paypal.com/cgi-bin/webscr', {
+                    cmd: "_xclick",
+                    business: "fangmsen@sina.com",
+                    item_name: orderIds,
+                    amount: totalmon,
+                    notify_url: "/Pay/CapitalChargeReturn?orderid=" + orderIds + "&price=" + totalmon + "&paytype=0&type=webcz&iplm=2",
+                    currency_code: "USD"
+                }, true);
+                //$('#nextBtn').attr('href', "/Pay/Return?orderid=" + orderIds + "&price=" + totalmon+ "&paytype=0&type=webcz&iplm=2");
+                //$('#nextBtn').attr('target', "_self");
             }
-
-            if ($(this).attr('href') != 'javascript:;' || $(this).attr('urlType') == "2") {
-
-                $.dialog({
-                    title: 'Redirect Payment Page',
-                    lock: true,
-                    content: '<p>please don\'t close the window before completion of payment</p>',
-                    padding: '30px 20px',
-                    button: [
-				    {
-				        name: 'Payment Completed',
-				        callback: function () {
-				            location.href = '/userCenter?url=/UserCapital/&tar=';
-				        }
-				    },
-				    {
-				        name: 'Payment Error',
-				        callback: function () {
-
-				        }
-				    }]
-                });
-            }
-
 
         });
 
@@ -131,4 +115,15 @@
         e.action = url;
         return e;
     };
+
+    function openBlank(action, data, n) {
+        var form = $("<form/>").attr('action', action).attr('method', 'post');
+        if (n)
+            //form.attr('target', '_blank');
+            var input = '';
+        $.each(data, function (i, n) {
+            input += '<input type="hidden" name="' + i + '" value="' + n + '" />';
+        });
+        form.append(input).appendTo("body").css('display', 'none').submit();
+    }
 </script>

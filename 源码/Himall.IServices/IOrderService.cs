@@ -62,6 +62,7 @@ namespace Himall.IServices
 
 		void PayCapital(IEnumerable<long> orderIds, string payNo = null, long payId = 0L);
 
+        void PayPalSucceed(IEnumerable<long> orderIds, DateTime payTime, string payNo = null, long payId = 0L);
 		void PaySucceed(IEnumerable<long> orderIds, string paymentId, DateTime payTime, string payNo = null, long payId = 0L);
 
 		void PlatformCloseOrder(long orderId, string managerName, string CloseReason = "");
