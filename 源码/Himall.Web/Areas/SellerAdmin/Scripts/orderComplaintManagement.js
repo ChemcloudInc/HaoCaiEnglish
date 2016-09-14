@@ -24,7 +24,7 @@ $(function () {
 			url: './list',
 			nowrap: false,
 			rownumbers: true,
-			NoDataMsg: 'Not found any data',
+			NoDataMsg: 'No matching data',
 			border: false,
 			fit: true,
 			fitColumns: true,
@@ -54,7 +54,7 @@ $(function () {
 					formatter: function (value, row, index) {
 						var html = ["<span class=\"btn-a\">"];
 					   
-						html.push("<a class=\"good-check\" onclick=\"OpenComplaintReason('" + row.OrderId + "','" + row.ComplaintReason.replace(/\'/g, "’").replace(/\"/g, "“") + "')\">查看投诉</a>");
+						html.push("<a class=\"good-check\" onclick=\"OpenComplaintReason('" + row.OrderId + "','" + row.ComplaintReason.replace(/\'/g, "’").replace(/\"/g, "“") + "')\">View complaints</a>");
 	
 						if (row.ComplaintStatus == "WaitDeal") {
 						    html.push("<a class=\"good-check\" onclick=\"OpenDealComplaint('" + row.Id + "','" + row.OrderId + "','" + row.ComplaintReason.replace(/\'/g, "’").replace(/\"/g, "“") + "','" + row.ShopPhone + "','" + row.UserPhone + "')\">完成处理</a>");

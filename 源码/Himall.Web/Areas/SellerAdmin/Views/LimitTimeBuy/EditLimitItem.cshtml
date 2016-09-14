@@ -58,9 +58,9 @@
                 @Html.EditorFor(item => item.StartTime, new { htmlAttributes = new { @class = "form-control input-sm start_datetime" } })
             </div>
             <div class="form-group">
-                <label class="label-inline" for=""><b style="color:red;">*</b>Finish time:</label>
+                <label class="label-inline" for=""><b style="color:red;">*</b>End time:</label>
                                 @Html.EditorFor(item => item.EndTime, new { htmlAttributes = new { @class = "form-control input-sm end_datetime" } })
-                                <span class="help-default">&nbsp;&nbsp;&nbsp;&nbsp;Finish time must be later than the start time.</span>
+                                <span class="help-default">&nbsp;&nbsp;&nbsp;&nbsp;End time must be later than the start time.</span>
             </div>
                 @*<div class="form-group">
         <label class="label-inline" for=""><b style="color:red;">*</b>Storage capacity:</label>
@@ -192,7 +192,7 @@
             }, {
                 target: 'EndTime',
                 ruleType: 'required',// v.js规则验证
-                error: 'Please select the activity\'s finish time'
+                error: 'Please select the activity\'s end time'
             }, {
                 target: 'MaxSaleCount',
                 empty: true,

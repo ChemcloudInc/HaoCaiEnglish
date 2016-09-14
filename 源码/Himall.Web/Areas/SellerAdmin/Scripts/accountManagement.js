@@ -35,7 +35,7 @@ function InitData(status) {
         url: './list',
         nowrap: true,
         rownumbers: true,
-        NoDataMsg: 'Not found any data.',
+        NoDataMsg: 'No matching data',
         border: true,
         fit: true,
         fitColumns: true,

@@ -18,7 +18,7 @@ $(function () {
             url: './listAccountType',
             nowrap: false,
             rownumbers: true,
-            NoDataMsg: 'Not found any data.',
+            NoDataMsg: 'No matching data',
             border: false,
             fit: true,
             fitColumns: true,

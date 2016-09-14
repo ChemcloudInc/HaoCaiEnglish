@@ -2,24 +2,24 @@
 
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
-        <strong>订单</strong>
-        <li><a href="./management">所有订单</a></li>
-        <li class="active"><a>批量打印快递单(@ViewBag.OrdersCount)</a></li><!--数字为已选择订单数量-->
+        <strong>Order</strong>
+        <li><a href="./management">All orders</a></li>
+        <li class="active"><a>Batch printing express list(@ViewBag.OrdersCount)</a></li><!--数字为已选择订单数量-->
     </ul>
     <h3 class="table-hd">寄件人信息</h3>
     <form class="form-horizontal mt20">
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label">姓名：</label>
+            <label for="" class="col-sm-2 control-label">Name:</label>
             <div class="col-sm-4">
                 <input id="senderName" type="text" class="form-control input-sm" value="@ViewBag.Name" />
             </div>
             <div class="col-sm-3">
-                <!--<span class="help-default cor-red">不能多于10个字</span>-->
+                <!--<span class="help-default cor-red">No more than 10 words</span>-->
                 <span class="field-validation-valid"></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label">区域：</label>
+            <label for="" class="col-sm-2 control-label">Area:</label>
             <div class="col-sm-7">
                 <select id="senderAddressProvince" class="form-control input-sm select-sort"></select>
                 <select id="senderAddressCity" class="form-control input-sm select-sort"></select>
@@ -27,27 +27,27 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label">地址：</label>
+            <label for="" class="col-sm-2 control-label">Address:</label>
             <div class="col-sm-7">
                 <input type="text" class="form-control input-sm" id="address" value="@ViewBag.Address" />
             </div>
         </div>
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label">联系电话：</label>
+            <label for="" class="col-sm-2 control-label">Tel:</label>
             <div class="col-sm-4">
                 <input id="phone" type="text" class="form-control input-sm" value="@ViewBag.Tel" />
             </div>
             <div class="col-sm-3">
-                <span class="help-default cor-red" style="display:none">请输入正确的联系电话</span>
+                <span class="help-default cor-red" style="display:none">Please enter the correct telephone number</span>
                 <span class="field-validation-valid"></span>
             </div>
         </div>
     </form>
 
-    <h3 class="table-hd">快递信息</h3>
+    <h3 class="table-hd">Express information</h3>
     <form class="form-horizontal mt20">
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label">选择快递公司：</label>
+            <label for="" class="col-sm-2 control-label">Select express:</label>
             <div class="col-sm-4">
                 <ul class="express-choose clearfix">
                     @*class="active"*@
@@ -56,22 +56,22 @@
                         <li name="@express.Name" title="@express.DisplayName" expresscompany @(express.Elements == null || express.Elements.Count() == 0 ? "notSet=\"true\"" : "")><img src="@express.Logo" style="width:86px;height:24px" /><b class="on-choose"></b></li>
                     }
                 </ul>
-                <a class="more-express">显示更多</a>
+                <a class="more-express">Show more</a>
             </div>
         </div>
         <div class="form-group">
-            <label for="" class="col-sm-2 control-label">快递单号：</label>
+            <label for="" class="col-sm-2 control-label">Tracking number:</label>
             <div class="col-sm-4">
                 <input type="text" id="startNo" class="form-control input-sm" />
             </div>
             <div class="col-sm-5">
-                <span class="help-default">批量打印，填写开始快递单号，后续的快递单号将自动递增。</span>
+                <span class="help-default">Batch printing,enter the first tracking number and others will automatically increase.</span>
                 <span class="field-validation-valid"></span>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-4">
-                <button type="button" class="btn btn-primary" id="print-express">确认打印</button>
+                <button type="button" class="btn btn-primary" id="print-express">Confirm printing</button>
             </div>
         </div>
         <input type="hidden" id="regionId" value="@ViewBag.RegionId" />
