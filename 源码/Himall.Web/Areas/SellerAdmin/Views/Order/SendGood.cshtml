@@ -1,0 +1,112 @@
+﻿@using Himall.Core;
+@model Himall.Web.Areas.SellerAdmin.Controllers.OrderController.SendGoodMode
+
+
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>Orders</strong>
+        <li><a href="./Management">All orders</a></li>
+        <li class="active">
+            @{var num = Model.Orders.Count();}
+            @if (num > 1)
+            {
+                <a>Bulk shipments</a>
+            }
+            else
+            {
+                 <a>Delivery</a>
+            }
+        </li>
+    </ul>
+
+    <table class="table">
+        <thead>
+            <tr style="text-align:center;">
+                <th>Order no.</th>
+                <th>Receiver</th>
+                <th>Shipping address</th>
+                <th>Express delivery</th>
+                <th>Express No.</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td class="cssOrderId">@order.Id</td>
+                    <td>@order.ShipTo</td>
+                    <td><span class="overflow-ellipsis" style="width:500px">@order.RegionFullName @order.Address</span></td>
+                    <td>
+                        <select class="form-control input-xs cssCompanyName">
+                            <option selected="selected">@order.ShowExpressCompanyName</option>
+                            @foreach (var logisticsCompany in Model.LogisticsCompanies)
+                            {
+                                if (logisticsCompany.Name != order.ExpressCompanyName)
+                                {
+                                    <option>@logisticsCompany.Name</option>
+                                }
+                            }
+                            <option value="-1">Others</option>
+                        </select>
+                    </td>
+                    <td><input class="form-control input-xs cssShipOrderNumber" type="text" value="@order.ShipOrderNumber"></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (num > 1)
+    {
+         <button id="btnSendGood" type="button" class="btn btn-primary mt20">Bulk shipments</button>
+    }
+    else
+    {
+          <button id="btnSendGood" type="button" class="btn btn-primary mt20">Delivery</button>
+    }
+   
+</div>
+
+<script type="text/javascript">
+    $('#btnSendGood').click(function () {
+        var orderIds = "";
+        var companyNames = "";
+        var shipOrderNumbers = "";
+        var invaldat = false;
+
+        $('.cssOrderId').each(function () {
+            orderIds += $(this).html() + ",";
+        });
+        $('.cssCompanyName').each(function (index, item) {
+            if ($(item).val() == "") {
+                $.dialog.errorTips("Express Missing!");
+                invaldat = true;
+                return;
+            }
+            companyNames += $(this).find("option:selected").text() + ",";
+        });
+        $( '.cssShipOrderNumber' ).each( function ( index, item )
+        {
+            var valx = $( this ).parent().parent().find( ".cssCompanyName option:selected" ).val();
+            if ( $( item ).val() == "" && parseInt( valx ) != -1 )
+            {
+                $.dialog.errorTips("Express no. Missing!");
+                invaldat = true;
+                return;
+            }
+            shipOrderNumbers += $(this).val() + ",";
+        });
+        if (invaldat) { return; }
+        orderIds = orderIds.substring(0, orderIds.length - 1);
+        companyNames = companyNames.substring(0, companyNames.length - 1);
+        shipOrderNumbers = shipOrderNumbers.substring(0, shipOrderNumbers.length - 1);
+
+        var loading = showLoading();
+        $.post('./ConfirmSendGood', { ids: orderIds, companyNames: companyNames, shipOrderNumbers: shipOrderNumbers }, function (result) {
+            loading.close();
+            if (result.success) {
+                $.dialog.succeedTips("Successful Operation!",function(){window.location.href = "./Management"});
+            }
+            else
+                $.dialog.errorTips("Operation failed,"+result.msg);
+        });
+    });
+</script>

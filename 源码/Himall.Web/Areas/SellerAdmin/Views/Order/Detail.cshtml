@@ -1,0 +1,424 @@
+﻿@using Himall.Core;
+@model Himall.Model.OrderInfo
+
+<script src="~/Scripts/jquery.himallLinkage.nocreate.js"></script>
+<script src="~/Scripts/Region.js"></script>
+<script src="~/Scripts/RegionBind.js"></script>
+<div class="container">
+    <ul class="nav nav-tabs-custom clearfix">
+        <strong>Orders</strong>
+        <li><a href="/selleradmin/order/Management">All orders</a></li>
+        @if (!string.IsNullOrEmpty(Request.QueryString["updatePrice"]))
+        {
+            <li class="active"><a>Adjust price</a></li>
+        }
+        else
+        {
+            <li class="active"><a>View</a></li>
+        }
+    </ul>
+
+    <h3 class="table-hd">Commodity list</h3>
+    <table id="tbOrderItems" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price per unit</th>
+                <th>Adjust price</th>
+                <th>Total price</th>
+                @*<th>Freight</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var service = Himall.Web.Framework.ServiceHelper.Create<Himall.IServices.IProductService>();
+                var regionService = Himall.Web.Framework.ServiceHelper.Create<Himall.IServices.IRegionService>();
+                var OrderItems = Model.OrderItemInfo.Select(r =>
+                {
+                    var product = service.GetProduct(r.ProductId);
+                    return new
+                    {
+                        Id = r.Id,
+                        FreightTemplateId = product != null ? product.FreightTemplateId : 0,
+                        SalePrice = r.SalePrice,
+                        Quantity = r.Quantity,
+                        ProductId = r.ProductId,
+                        ProductName = r.ProductName,
+                        Color = r.Color,
+                        Size = r.Size,
+                        Version = r.Version,
+                        SkuId = r.SkuId,
+                        DiscountAmount = r.DiscountAmount,
+                        ThumbnailsUrl = r.ThumbnailsUrl
+                    };
+                }
+               );
+                var freightProductGroup = OrderItems.GroupBy(item => item.FreightTemplateId);
+            }
+            @foreach (var items in freightProductGroup)
+            {
+                var products = items.GroupBy(r => r.ProductId);
+                IEnumerable<long> productIds = products.Select(r => r.Key);
+                IEnumerable<int> counts = products.Select(r => r.Sum(p => (int)p.Quantity));
+
+                string RegionIdPath = regionService.GetRegionIdPath(Model.RegionId);
+                int cityId = regionService.GetCityId(RegionIdPath);
+                decimal freight = freight = service.GetFreight(productIds, counts, cityId);
+
+                int rows = 0;
+                foreach (var orderItem in items)
+                {
+                    rows++;
+                    <tr class="product">
+                        <td>
+                            <a target="_blank" href="/product/detail/@orderItem.ProductId">
+                                <img width="50" height="50" title="" src="@orderItem.ThumbnailsUrl">@orderItem.ProductName @orderItem.Color @orderItem.Size @orderItem.Version
+
+                            </a>
+
+                        </td>
+                        <td>@orderItem.Quantity</td>
+                        <td class="ftx-04">@orderItem.SalePrice.ToString("F2")</td>
+                        <td class="ftx-04">
+                            @if (Model.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.WaitPay && (bool)ViewBag.UpdatePrice == true)
+                            {
+                                <select id="updateWay">
+                                    <option value="1">decrease</option>
+                                    <option value="2">increase</option>
+                                </select>
+                                <input id="inputDiscount@(orderItem.Id)" onkeyup="(this.v = function () { this.value = this.value.replace(/[^0-9.]+/, ''); }).call(this)" onblur="    this.v()" class="text-order no-m" type="text">
+                                <span class=" btn btn-warning btn-xs ss" itemid="@orderItem.Id">Confirm adjustment</span>
+                            }
+                            else
+                            {
+                                if (orderItem.DiscountAmount > 0)
+                                {
+                                    <span>减: @orderItem.DiscountAmount.ToString("F2")</span>
+                                }
+                                else
+                                {
+                                    <span>增: @Math.Abs(orderItem.DiscountAmount).ToString("F2")</span>
+                                }
+
+                            }
+                        </td>
+                        <td class="ftx-04">@(orderItem.SalePrice * orderItem.Quantity - orderItem.DiscountAmount)</td>
+
+                        @*@if (rows == 1)
+                            {
+                                <td rowspan="@items.Count()">
+                                    @(freight.ToString("F2"))
+                                </td>
+                            }*@
+                    </tr>
+                }
+            }
+            <tr>
+                <td align="right" colspan="6">
+                    <b>Total price:<span class="ftx-04">￥@Model.ProductTotalAmount.ToString("F2") </span></b>
+                    Freight:
+                    @if (Model.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.WaitPay && (bool)ViewBag.UpdatePrice == true)
+                    {
+                        <input class="ftx-04" type="text" class="text-order no-m" id="freight" value="@Model.Freight.ToString("F2")" />
+                        <span class=" btn btn-warning btn-xs" id="updateFreight" itemid="@Model.Id">Confirm adjustment</span>
+
+                    }
+                    else
+                    {
+                        <span class="ftx-04"> @Model.Freight.ToString("F2")</span>
+                    }
+
+                    @*<b >*@
+                    @*改价：
+                            @{var itemDis = Model.OrderItemInfo.Sum(i => i.DiscountAmount);}
+                            @if (itemDis > 0)
+                            {
+                                <b>减 <span class="ftx-04">@itemDis</span></b>
+                            }
+                            else
+                            {
+                                <b>增 <span class="ftx-04">@(-itemDis)</span></b>
+                            }
+                        </b>*@
+                    @if (Model.DiscountAmount > 0)
+                    {
+                        <label> Coupon offset amount:$@Model.DiscountAmount.ToString("F2");</label>
+                    }
+                    @if (Model.IntegralDiscount > 0)
+                    {
+                        <label> Integral offset amount:$@Model.IntegralDiscount.ToString("F2");</label>
+                    }
+                    <b>Actual payment:<span class="ftx-04">$@Model.OrderTotalAmount.ToString("F2")</span></b>
+
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h3 class="table-hd">
+        Order information
+        @if (Model.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.WaitPay || Model.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.WaitDelivery)
+        {
+            <a class="order-info-resive" href="javascript:void(0)"> Modify</a>
+        }
+    </h3>
+    <div class="order-info">
+        <div class="caption">
+            <p>&nbsp;Order number:@Model.Id</p>
+            <p>Order time:@Model.OrderDate.ToString("yyyy-MM-dd HH:mm:ss")</p>
+            <p>
+                Order status:@Model.OrderStatus.ToDescription()
+                @if ((int)Model.OrderStatus == 4)
+                {
+                    @Model.CloseReason
+                }
+            </p>
+            <p>Member:@Model.UserName</p>
+        </div>
+        <div class="caption">
+            <p>consignee：<span id="spShipTo">@Model.ShipTo</span></p>
+            <p>address:@Model.RegionFullName <span id="spAddress">@Model.Address</span></p>
+            <input type="hidden" id="hidRegionIdPath" />
+            <input type="hidden" id="hidTopRegionId" value="@Model.TopRegionId" />
+            <input type="hidden" id="hidRegionId" value="@Model.RegionId" />
+            <input type="hidden" id="hidCityId" value="0" />
+            <p>phone:<span id="spCellPhone">@Model.CellPhone</span></p>
+            @*<p>note:@Model.UserRemark</p>*@
+        </div>
+        <div class="caption">
+            @if (Model.PayDate != null && Model.OrderStatus != Himall.Model.OrderInfo.OrderOperateStatus.WaitPay)
+            {
+                if (@Model.OrderTotalAmount == 0)
+                {
+                    <p>Payment method: <span>Integral payment</span></p>
+                }
+                else if (string.IsNullOrEmpty(Model.PaymentTypeName))
+                {
+                    <p>Payment method:Platform confirmed receipt[note：@{@Model.PayRemark}]</p>
+                }
+                else
+                {
+
+                    <p>Payment method: @Model.PaymentTypeName @Model.PayRemark</p>
+                }
+            }
+            @if (!string.IsNullOrEmpty(Model.ExpressCompanyName))
+            {
+                <p>Logistics company:@Model.ShowExpressCompanyName</p>
+            }
+            @if (!string.IsNullOrEmpty(Model.ShipOrderNumber))
+            {
+                <p>Tracking number:@Model.ShipOrderNumber</p>
+            }
+        </div>
+        @if (Model.InvoiceType != Himall.Model.InvoiceType.None)
+        {
+            <div class="caption">
+                <p>Invoice title:@Model.InvoiceTitle</p>
+                <p>Invoice content:@Model.InvoiceContext</p>
+            </div>
+        }
+        else
+        {
+            <div class="caption">
+                <p>do not need invoice</p>
+            </div>
+        }
+
+    </div>
+
+    <h3 class="table-hd">Logistics tracking</h3>
+    <table class="table table-bordered" id="tbExpressData"></table>
+
+    <h3 class="table-hd">Operational history</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Operator</th>
+                <th>Time</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var orderOperationLog in Model.OrderOperationLogInfo)
+            {
+                <tr>
+                    <td>@orderOperationLog.Operator</td>
+                    <td>@orderOperationLog.OperateDate</td>
+                    <td>@orderOperationLog.OperateContent</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>
+<script type="text/javascript">
+    var isPosting=false;
+    $(function () {
+
+        var expressCompanyName="@Model.ExpressCompanyName";
+        var shipOrderNumber=  "@Model.ShipOrderNumber" ;
+
+        if(expressCompanyName!=""||shipOrderNumber!="")
+        {
+            $.post('../GetExpressData', { expressCompanyName:expressCompanyName, shipOrderNumber:shipOrderNumber}, function (result) {
+                var html;
+                var obj = jQuery.parseJSON(result);
+                if (obj.message == "ok") {
+                    var data = obj.data;
+                    for (var i = 0; i < data.length; i++) {
+                        html += '<tr><td>' + data[i].time + '</td>\
+                             <td>' + data[i].context + '</td>';
+                        html += '</tr>';
+                    }
+                }
+
+                else {
+                    html += '<tr><td>There is not any logistics development,please try again.</td></tr>';
+                }
+
+                html += '<tr><td></td></tr>';
+
+                $("#tbExpressData").html(html);
+            });
+        }
+
+        // 物流信息
+
+
+        $('.btn-xs.ss').click(function () {
+            //$(this).fadeOut(200);
+            var itemid = $(this).attr("itemid");
+            var discountAmount = $("#inputDiscount" + itemid).val();
+            if ($("#updateWay").val() == 2)
+                discountAmount = -discountAmount;
+            if(isNaN(discountAmount)||discountAmount.length==0)
+            {
+                $.dialog.errorTips("Please enter the correct amount!");
+                return false;
+            }
+            if ($("#updateWay").val() == 1 && isNaN($(this).parent().next().html() < discountAmount))
+                $.dialog.errorTips("Discount amount is not greater than real pay amount");
+            var url='@Url.Action("UpdateItemDiscountAmount")';
+            var loading = showLoading();
+            if(isPosting) return;
+            isPosting=true;
+            $.post(url, { orderItemId: itemid, discountAmount: discountAmount }, function (result) {
+                loading.close();
+                isPosting=false;
+                if (result.success) {
+                    $.dialog.succeedTips("Successful operation!",function(){location.href = location.href;});
+                    // location.href = "./@Model.Id/?updatePrice="+true;
+
+                }
+                else
+                    $.dialog.errorTips("Operate failed"+result.msg);
+            });
+        });
+
+        $("#updateFreight").click(function () {
+            var frieght = $("#freight").val();
+            if(frieght<0)
+                $.dialog.errorTips("Freight amount can not be negative！");
+            var loading = showLoading();
+            $.post('@Url.Action("UpdateOrderFrieght")', { orderId: @Model.Id, frieght: frieght }, function (result) {
+                loading.close();
+                if (result.success) {
+                    $.dialog.succeedTips("Successful adjust price!",function(){location.href = location.href;});
+
+                }
+                else
+                    $.dialog.errorTips("Operate failed" + result.msg);
+            });
+        });
+        $.post('@Url.Action("GetRegionIdPath")', { regionId: "@Model.RegionId" }, function (result) {
+            $("#hidRegionIdPath").val(result);
+        });
+
+        // 修改收货地址
+        $('.order-info-resive').click(function () {
+            $.dialog({
+                title: '修改收货地址',
+                lock: true,
+                id: 'orderInfoResive',
+                content: ['<div class="dialog-form">',
+                    '<div class="form-group">',
+                        '<label class="label-inline" for="">Consignee</label>',
+                        '<input class="form-control input-sm" type="text" id="txtShopTo" value="' + $("#spShipTo").html() + '">',
+                    '</div>',
+                    '<div class="form-group" id="regionAddr">',
+                        '<label class="label-inline" for="">Address</label>',
+                        '<select id="region1" class="form-control input-sm select-sort"><option></option></select>',
+                        '<select id="region2" class="form-control input-sm select-sort"><option></option></select>',
+                        '<select id="region3" class="form-control input-sm select-sort"><option></option></select>',
+                        '<br/>',
+                        '<input class="form-control input-sm input-only-line" type="text" id="txtAddress" value="' + $("#spAddress").html() + '">',
+                    '</div>',
+                    '<div class="form-group">',
+                        '<label class="label-inline" for="">Phone</label>',
+                        '<input class="form-control input-sm" type="text" id="txtCellPhone" value="' + $("#spCellPhone").html() + '">',
+                    '</div>',
+
+                '</div>'].join(''),
+                padding: '20px 10px',
+                button: [
+               {
+                   name: '确认修改',
+                   callback: function () {
+                       if (isSelectAddr($('#region1'),$('#region2'),$('#region3'))){
+                           UpdateAddress();
+                       }
+                       else{
+                           $('#regionAddr').css({ border: '1px solid #f60' });
+                           return false
+                       }
+                   },
+                   focus: true
+               }]
+            });
+            setProvince($('#region1'), $('#region2'), $('#region3'));
+            InitRegion($('#region1'), $('#region2'), $('#region3'),$('#hidRegionIdPath').val());
+            /*
+            $('#region1,#region2,#region3').himallLinkage({
+                url: '../getRegion',
+                enableDefaultItem: true,
+                defaultItemsText: '全部',
+                defaultSelectedValues: $("#hidRegionIdPath").val().split(','),
+                onChange: function (level, value, text) {
+                    if (level == 0)
+                    {$("#hidTopRegionId").val(value);
+                        $('#hidCityId').val('0');
+                        $("#hidRegionId").val('0');
+                    }
+                    if (level==1)
+                    {
+                        $('#hidCityId').val(value);
+                        $("#hidRegionId").val('0');
+                    }
+                    if (level == 2)
+                        $("#hidRegionId").val(value);
+                }
+            });*/
+        });
+    });
+
+    function UpdateAddress() {
+        var loading = showLoading();
+        $.post('../UpdateAddress', {
+            orderId: "@Model.Id", shipTo: $("#txtShopTo").val(), cellPhone: $("#txtCellPhone").val(),
+            topRegionId: $("#hidTopRegionId").val(), regionId: $("#region3").val()=='0'?$('#region2').val():$("#region3").val(), address: $("#txtAddress").val()
+        }, function (result) {
+            loading.close();
+            if (result.success) {
+                $.dialog.succeedTips("Successful operation！",function(){location.href = "../Detail/@Model.Id";});
+
+            }
+            else
+                $.dialog.errorTips("Operation failure");
+        });
+    }
+</script>
