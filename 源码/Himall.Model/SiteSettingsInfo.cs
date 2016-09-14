@@ -288,6 +288,38 @@ namespace Himall.Model
             get;
             set;
         }
+        /// <summary>
+        /// Paypal API 用户名
+        /// </summary>
+        public string PayPalAPIAccountName
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// API 密码
+        /// </summary>
+        public string PayPalAPIAccountPassword
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// API 签名
+        /// </summary>
+        public string PayPalAPISignature
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// PayPalEnvenment
+        /// </summary>
+        public string PayPalEnvenment
+        {
+            get;
+            set;
+        }
 		public SiteSettingsInfo()
 		{
 		}

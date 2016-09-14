@@ -80,6 +80,9 @@
     <Reference Include="NPOI">
       <HintPath>..\DLL\NPOI.dll</HintPath>
     </Reference>
+    <Reference Include="paypal_base">
+      <HintPath>..\DLL\paypal_base.dll</HintPath>
+    </Reference>
     <Reference Include="Senparc.Weixin, Version=3.3.8.30701, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\Senparc.Weixin.dll</HintPath>
@@ -1038,6 +1041,7 @@
     <Compile Include="Areas\SellerAdmin\Models\WithDrawModel.cs" />
     <Compile Include="Areas\Web\Controllers\stirng.cs" />
     <Compile Include="Areas\Web\Controllers\WithDrawController.cs" />
+    <Compile Include="Controllers\PaypalController.cs" />
     <Compile Include="UEditor\Config.cs" />
     <Compile Include="UEditor\ConfigHandler.cs" />
     <Compile Include="UEditor\IUEditorHandle.cs" />
@@ -1896,8 +1900,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Web\Views\Paypal\" />
     <Folder Include="Config\" />
     <Folder Include="Plugins\configs\" />
+    <Folder Include="Views\Paypal\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Himall.AOPProxy\Himall.AOPProxy.csproj">

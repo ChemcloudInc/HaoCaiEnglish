@@ -1,3 +1,4 @@
+using com.paypal.sdk.util;
 using Himall.Core;
 using Himall.Core.Plugins;
 using Himall.Core.Plugins.Payment;
@@ -6,11 +7,13 @@ using Himall.Model;
 using Himall.ServiceProvider;
 using Himall.Web;
 using Himall.Web.Areas.Web.Models;
+using Himall.Web.Controllers;
 using Himall.Web.Framework;
 using Microsoft.CSharp.RuntimeBinder;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Web;
@@ -227,7 +230,45 @@ namespace Himall.Web.Areas.Web.Controllers
             dynamic obj = ViewBag.totalAmount;
             viewBag.orderAmount = obj + ViewBag.Freight;
         }
-
+        [HttpPost]
+        //发送请求支付请求
+        public JsonResult SetExpressCheckout(decimal amount, string currency_code, string item_name, string return_false_url, string webtype, string fq = "")
+        {
+            PaypalController paypal = new PaypalController();
+            string hots = Request.Url.Scheme + "://" + Request.Url.Host + ":" + Request.Url.Port + "/";
+            NVPCodec encoder = new NVPCodec();
+            encoder.Add("PAYMENTACTION", "Sale");
+            //不允许客户改地址
+            //encoder.Add("ADDROVERRIDE", "1");
+            encoder.Add("CURRENCYCODE", currency_code);
+            encoder.Add("L_NAME0", item_name);
+            encoder.Add("L_NUMBER0", item_name);
+            encoder.Add("L_DESC0", item_name);
+            encoder.Add("L_AMT0", amount.ToString());
+            encoder.Add("L_QTY0", "1");
+            double ft = double.Parse(amount.ToString());
+            encoder.Add("AMT", ft.ToString());
+            if (!string.IsNullOrEmpty(webtype))
+            {
+                encoder.Add("RETURNURL", hots + "/Pay/Return?orderid=" + item_name + "&price=" + amount + "&type=webzf&fq=" + fq + "&paymodel=paypal");
+            }
+            else
+            {
+                encoder.Add("RETURNURL", hots + "/Pay/Return?orderid=" + item_name + "&price=" + amount + "&type=webcz&fq=" + fq + "&paymodel=paypal");
+            }
+            encoder.Add("CANCELURL", return_false_url);
+            NVPCodec decoder = paypal.SetExpressCheckout(encoder);
+            string ack = decoder["ACK"];
+            if (!string.IsNullOrEmpty(ack) && (ack.Equals("Success", System.StringComparison.OrdinalIgnoreCase) || ack.Equals("SuccessWithWarning", System.StringComparison.OrdinalIgnoreCase)))
+            {
+                //Session["TOKEN"] = decoder["token"];
+                return Json(ConfigurationManager.AppSettings["RedirectURL"] + decoder["token"]);
+            }
+            else
+            {
+                return Json(return_false_url);
+            }
+        }
         private void GetOrderProductsInfo(string cartItemIds, long? regionId)
         {
             ShippingAddressInfo shippingAddressInfo = new ShippingAddressInfo();
