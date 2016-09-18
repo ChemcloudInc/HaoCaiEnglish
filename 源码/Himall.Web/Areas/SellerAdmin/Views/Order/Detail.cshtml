@@ -94,11 +94,11 @@
                             {
                                 if (orderItem.DiscountAmount > 0)
                                 {
-                                    <span>减: @orderItem.DiscountAmount.ToString("F2")</span>
+                                    <span>decrease: @orderItem.DiscountAmount.ToString("F2")</span>
                                 }
                                 else
                                 {
-                                    <span>增: @Math.Abs(orderItem.DiscountAmount).ToString("F2")</span>
+                                    <span>increase: @Math.Abs(orderItem.DiscountAmount).ToString("F2")</span>
                                 }
 
                             }
@@ -116,7 +116,7 @@
             }
             <tr>
                 <td align="right" colspan="6">
-                    <b>Total price:<span class="ftx-04">￥@Model.ProductTotalAmount.ToString("F2") </span></b>
+                    <b>Total price:<span class="ftx-04">$@Model.ProductTotalAmount.ToString("F2") </span></b>
                     Freight:
                     @if (Model.OrderStatus == Himall.Model.OrderInfo.OrderOperateStatus.WaitPay && (bool)ViewBag.UpdatePrice == true)
                     {

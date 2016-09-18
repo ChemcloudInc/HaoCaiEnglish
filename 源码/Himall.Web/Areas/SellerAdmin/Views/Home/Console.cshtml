@@ -64,9 +64,9 @@
     <div class="ms-dynamics modle-box">
         <h3><a>Account</a></h3>
         <ul>
-           <li><a href="/SellerAdmin/order/accounttypelist?status=1">Not settled: ￥@Model.NoAccount.ToString("F2")</a></li>
-            <li><a href="/SellerAdmin/account/management?status=0">Wait for settlement: ￥@Model.WaitAccount.ToString("F2")</a></li>
-           <li>New settlement: @Model.LastestFinishData ￥@Model.LastestAccount.ToString("F2")</li>
+           <li><a href="/SellerAdmin/order/accounttypelist?status=1">Not settled: $@Model.NoAccount.ToString("F2")</a></li>
+            <li><a href="/SellerAdmin/account/management?status=0">Wait for settlement: $@Model.WaitAccount.ToString("F2")</a></li>
+           <li>New settlement: @Model.LastestFinishData $@Model.LastestAccount.ToString("F2")</li>
            
         </ul>
     </div>

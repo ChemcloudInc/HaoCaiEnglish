@@ -50,18 +50,18 @@
             }
             <tr>
                 <td align="right" colspan="7">
-                    商品总价：￥ @Model.ProductTotalAmount.ToString("F2")&nbsp;&nbsp;&nbsp;
-                    &nbsp; &nbsp; &nbsp;运费：￥@Model.Freight.ToString("F2")
+                    商品总价：$ @Model.ProductTotalAmount.ToString("F2")&nbsp;&nbsp;&nbsp;
+                    &nbsp; &nbsp; &nbsp;运费：$@Model.Freight.ToString("F2")
                     @if (@Model.DiscountAmount > 0)
                     {
-                        <label> 优惠券抵扣金额:￥@Model.DiscountAmount.ToString("F2");</label>
+                        <label> 优惠券抵扣金额:$@Model.DiscountAmount.ToString("F2");</label>
                     }
 
                     @if (Model.IntegralDiscount > 0)
                     {
-                        <label> 积分抵扣金额:￥@Model.IntegralDiscount.ToString("F2");</label>
+                        <label> 积分抵扣金额:$@Model.IntegralDiscount.ToString("F2");</label>
                     }
-                    <b>&nbsp;&nbsp;&nbsp;实付金额：￥@Model.OrderTotalAmount.ToString("F2")</b>
+                    <b>&nbsp;&nbsp;&nbsp;实付金额：$@Model.OrderTotalAmount.ToString("F2")</b>
                 </td>
             </tr>
         </tbody>

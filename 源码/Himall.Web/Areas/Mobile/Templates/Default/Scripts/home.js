@@ -24,7 +24,7 @@ function loadProducts(page) {
                 <a class="p-img" href="/' + areaname + '/product/detail/' + product.id + '"><img src="' + product.image + '" alt=""></a>\
                 <i>' + (((product.price / product.marketPrice) * 10).toFixed("1")) + '折</i>\
                 <h3><a>' + product.name + '</a></h3>\
-                <p><span>￥' + product.price.toFixed("2") + '</span><s>￥' + product.marketPrice.toFixed("2") + '</s></p>\
+                <p><span>$' + product.price.toFixed("2") + '</span><s>$' + product.marketPrice.toFixed("2") + '</s></p>\
             </li>';
             });
             $('#productList').append(html);

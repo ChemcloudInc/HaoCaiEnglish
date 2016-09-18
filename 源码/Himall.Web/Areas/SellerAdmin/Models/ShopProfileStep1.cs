@@ -84,70 +84,70 @@ namespace Himall.Web.Areas.SellerAdmin.Models
 			set;
 		}
 
-		[MinLength(5, ErrorMessage="公司名称不能小于5个字符")]
-		[Remote("CheckCompanyName", "ShopProfile", "SellerAdmin", ErrorMessage="该公司名已存在")]
-		[Required(ErrorMessage="必须填写公司名称")]
-		[StringLength(60, ErrorMessage="最大长度不能超过60")]
+        [MinLength(5, ErrorMessage = "Company name can not be less than 5 characters")]
+        [Remote("CheckCompanyName", "ShopProfile", "SellerAdmin", ErrorMessage = "The company name already exists")]
+        [Required(ErrorMessage = "Company name is required")]
+        [StringLength(60, ErrorMessage = "The maximum length can not exceed 60")]
 		public string CompanyName
 		{
 			get;
 			set;
 		}
 
-		[Required(ErrorMessage="必须填写联系人姓名")]
+		[Required(ErrorMessage="Contact name is required")]
 		public string ContactName
 		{
 			get;
 			set;
 		}
 
-		[Phone(ErrorMessage="电话号码不正确")]
-		[Required(ErrorMessage="必须填写联系人电话")]
+        [Phone(ErrorMessage = "Phone number is incorrect")]
+		[Required(ErrorMessage="Phone number is required")]
 		public string ContactPhone
 		{
 			get;
 			set;
 		}
 
-		[EmailAddress(ErrorMessage="电子邮箱格式不正确")]
-		[Required(ErrorMessage="必须填写电子邮箱")]
+        [EmailAddress(ErrorMessage = "E-mail format is incorrect")]
+		[Required(ErrorMessage="E-mail is required")]
 		public string Email
 		{
 			get;
 			set;
 		}
 
-		[DisplayName("员工总数")]
-		[Range(1, 2147483647, ErrorMessage="请选择公司人数")]
-		[Required(ErrorMessage="必须填写员工总数")]
+        [DisplayName("Number of employees")]
+        [Range(1, 2147483647, ErrorMessage = "Please select number of employees")]
+        [Required(ErrorMessage = "Number of employees is required")]
 		public CompanyEmployeeCount EmployeeCount
 		{
 			get;
 			set;
 		}
 
-		[Required(ErrorMessage="必须填写一般纳税人证明")]
+        [Required(ErrorMessage = "General tax payer photo is required")]
 		public string GeneralTaxpayerPhoto
 		{
 			get;
 			set;
 		}
 
-		[Required(ErrorMessage="必须填写公司法定代表人")]
+        [Required(ErrorMessage = "Legal person is required")]
 		public string legalPerson
 		{
 			get;
 			set;
 		}
 
-		[Required(ErrorMessage="必须填写组织机构代码")]
+		[Required(ErrorMessage="Organization code is required")]
 		public string OrganizationCode
 		{
 			get;
 			set;
 		}
 
-		[Required(ErrorMessage="必须上传组织机构代码证电子版")]
+		[Required(ErrorMessage="Organization code photo is required")]
 		public string OrganizationCodePhoto
 		{
 			get;
@@ -166,7 +166,7 @@ namespace Himall.Web.Areas.SellerAdmin.Models
 			set;
 		}
 
-		[Required(ErrorMessage="必须填写公司电话")]
+		[Required(ErrorMessage="Phone is required")]
 		public string Phone
 		{
 			get;
@@ -185,9 +185,9 @@ namespace Himall.Web.Areas.SellerAdmin.Models
 			set;
 		}
 
-		[DataType(DataType.Currency, ErrorMessage="必须为货币值")]
-		[Range(typeof(decimal), "0.00", "10000.00", ErrorMessage="输入不大于10000")]
-		[Required(ErrorMessage="必须填写注册资金")]
+        [DataType(DataType.Currency, ErrorMessage = "Must be a monetary value")]
+        [Range(typeof(decimal), "0.00", "10000.00", ErrorMessage = "Input is not more than 10,000")]
+		[Required(ErrorMessage="Register money is required")]
 		public decimal RegisterMoney
 		{
 			get;

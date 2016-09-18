@@ -35,7 +35,7 @@ $(function () {
             {
                 field: "TotalPrice", title: "订单总额", width: 80, align: "right",
                 formatter: function (value, row, index) {
-                    return '￥' + value.toFixed(2);
+                    return '$' + value.toFixed(2);
                 }
             },
         //{ field: "PaymentTypeName", title: "支付方式", width: 80, align: "left" },

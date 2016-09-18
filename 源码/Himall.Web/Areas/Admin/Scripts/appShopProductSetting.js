@@ -71,7 +71,7 @@ function initGrid() {
                  }
              },
             {
-                field: "price", title: '价格', align: "center", formatter: function (value, row, index) { return '￥' + value; }
+                field: "price", title: '价格', align: "center", formatter: function (value, row, index) { return '$' + value; }
             },
             {
                 field: "brand", title: '品牌', align: "center"

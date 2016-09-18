@@ -23,8 +23,8 @@
         <div class="item">
             <h4>@Model.Product.ProductName, 每个ID限购 @Model.MaxSaleCount 件</h4>
             <h5 class="color">@Model.Product.ShortDescription</h5>
-            <p><s>商城价:￥@Model.Product.MinSalePrice.ToString("F2")</s></p>
-            <h4>促销价:<em class="color" id="jd-price">￥@Model.Product.MarketPrice.ToString("F2")</em><span>评价数：(@(ViewBag.CommentCount)条)</span></h4>
+            <p><s>商城价:$@Model.Product.MinSalePrice.ToString("F2")</s></p>
+            <h4>促销价:<em class="color" id="jd-price">$@Model.Product.MarketPrice.ToString("F2")</em><span>评价数：(@(ViewBag.CommentCount)条)</span></h4>
         </div>
         @if (ViewBag.CouponCount != null)
         {

@@ -54,7 +54,11 @@ select.input-ssm { line-height: 24px; padding: 0 3px; }
 .two-title .active a{color:#3480eb;}
 .two-title li a:hover,.two-title li a:active,.two-title li a:visited{color:#3480eb;text-decoration: none;}
 
+<<<<<<< HEAD
 .label-inline { margin: 0; margin-right: 5px; font-weight: 200; width:114px; text-align: right; line-height: 24px; }
+=======
+.label-inline { margin: 0; margin-right: 5px; font-weight: 200; width: 90px; text-align: right; line-height: 24px; }
+>>>>>>> e8d6473420bac3aae2144fe990b951d6751527ef
 .custom-inline .submit { margin-top: 15px; padding-left: 63px; position: relative; }
 .nav-tabs-custom {  line-height: 42px; background-color:#e6e6e6; padding-left:15px; height:44px; }
 .nav-tabs-custom li { cursor: pointer; display: inline-block; font-size:14px; }
@@ -91,7 +95,7 @@ select.input-ssm { line-height: 24px; padding: 0 3px; }
 .table-bt .pager { float: right; margin: 0; position: relative; margin-right: 10px ;}
 .table-bt .pager .active-page { vertical-align: middle; }
 .apply-settlement-btn { position:relative; }
-.apply-settlement-btn a{ position:absolute; left:80px; top:-42px; }
+.apply-settlement-btn a{ position:absolute; left:100px; top:-42px; }
 .pager .tipic-dialog { bottom: 30px; right: 0; }
 .total-account { float: right; }
 .total-account b { color: #3480eb; }

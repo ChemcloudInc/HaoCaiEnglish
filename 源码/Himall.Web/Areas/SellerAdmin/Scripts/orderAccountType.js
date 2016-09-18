@@ -18,7 +18,7 @@ $(function () {
             url: './listAccountType',
             nowrap: false,
             rownumbers: true,
-            NoDataMsg: 'Not found any data.',
+            NoDataMsg: 'No matching data',
             border: false,
             fit: true,
             fitColumns: true,
@@ -44,7 +44,7 @@ $(function () {
 				{
 				    field: "TotalPrice", title: "Total order", width: 120, align: "right",
 				    formatter: function (value, row, index) {
-				        var html = "<span class='ftx-04'>" + '￥' + value.toFixed(2) + "</span>";
+				        var html = "<span class='ftx-04'>" + '$' + value.toFixed(2) + "</span>";
 				        return html;
 				    }
 				},

@@ -46,7 +46,7 @@ function initGrid() {
                 $.each(data.rows, function (i, product) {
                     html.push('<tr class="tr-td">');                  
                     html.push('<td align="left"><a target="_blank" href="/product/Detail/' + product.ProductId + '"> <img width="50" height="50" title="" src="' + product.ThumbnailsUrl + '"/>' + product.ProductName + '</a></td>');
-                    html.push('<td class="ftx-04">￥' + product.SalePrice + '</td>');
+                    html.push('<td class="ftx-04">$' + product.SalePrice + '</td>');
                     var spec = GetSkus(product.Id, product.ProductId, product.SkuId, 1);
                     html.push('<td>' + spec + '</td>');
                     html.push('<td><input class="itxt" type="text" style=" width:40px" name="quentity" hpId="' + product.Id + '" value="' + product.Quantity + '"></td>');

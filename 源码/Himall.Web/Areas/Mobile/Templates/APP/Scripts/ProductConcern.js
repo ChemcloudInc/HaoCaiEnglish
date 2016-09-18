@@ -26,7 +26,7 @@ function loadProducts(page) {
 
                 html += '<li><a class="p-img" href="/'+areaName+'/product/detail/'+item.Id+'"><img class="lazyload" src="' + item.Image + '" width="100%" alt=""></a>';
                 html += ' <h3><a>' + item.ProductName + '</a></h3>';
-                html += ' <p class="red">￥' + item.SalePrice + '</p><p>' + item.Evaluation + '人评价</p></li>';
+                html += ' <p class="red">$' + item.SalePrice + '</p><p>' + item.Evaluation + '人评价</p></li>';
             })
             $('.search-list').append(html);
         }

@@ -42,7 +42,7 @@ $(function () {
                     {
                         field: "Amount", title: "退款", width: 90, align: "left",
                         formatter: function (value, row, index) {
-                            var html = "<span class='ftx-04'>" + '￥' + value + "</span>";
+                            var html = "<span class='ftx-04'>" + '$' + value + "</span>";
                             return html;
                         }
                     }]];

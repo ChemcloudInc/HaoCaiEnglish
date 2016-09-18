@@ -256,7 +256,7 @@ function loadHotSaleProduct() {
                             '<div class="p-name"><a href="/Product/Detail/' + data[i].Id.toString() + '" target="_blank" title="">' + data[i].Name + '</a></div>' +
                             '<div class="p-info p-bfc">' +
                                 '<div class="p-count fl"><s>' + (i + 1).toString() + '</s><b>Top Seller' + data[i].SaleCount.toString() + '</b></div>' +
-                                '<div class="p-price fr"><strong>￥+' + data[i].Price.toString + '</strong></div>' +
+                                '<div class="p-price fr"><strong>$+' + data[i].Price.toString + '</strong></div>' +
                             '</div>' +
                         '</li>';
                     html += text;

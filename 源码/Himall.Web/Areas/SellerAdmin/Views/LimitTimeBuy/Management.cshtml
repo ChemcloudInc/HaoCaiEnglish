@@ -86,9 +86,15 @@
                         }
                     },
                     { field: "StartTime", title: "Start time", width: 120, align: "center" },
+<<<<<<< HEAD
                     { field: "EndTime", title: "Finish time", width: 120, align: "center" },
                      { field: "MaxSaleCount", title: "Max sale count", width: 100, align: "center" },
                     { field: "SaleCount", title: "Sale count", width: 100, align: "center" },
+=======
+                    { field: "EndTime", title: "End time", width: 120, align: "center" },
+            { field: "MaxSaleCount", title: "Max sale count", width: 90, align: "center" },
+                    { field: "SaleCount", title: "Sale count", width: 80, align: "center" },
+>>>>>>> e8d6473420bac3aae2144fe990b951d6751527ef
                    {
                        field: "AuditStatus", title: "Audit status", width: 80, align: "center",
                        formatter: function (value, row, index) {
@@ -97,7 +103,11 @@
                        }
                    },
                 {
+<<<<<<< HEAD
                     field: "CancelReson", title: "Platform approval", width: 150,
+=======
+                    field: "CancelReson", title: "Platform approval", width: 120,
+>>>>>>> e8d6473420bac3aae2144fe990b951d6751527ef
                     formatter: function (value, row, index) {
                         var html = "<a href=\"javascript:showReason('" + value + "')\" >" + (value ? "view" : "") + "</a>";
                         return html;

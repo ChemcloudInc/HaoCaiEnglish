@@ -43,7 +43,7 @@
             {
                 field: "price", title: "售价", width: 100, align: "right",
                 formatter: function (value, row, index) {
-                    var html = '￥' + row.price.toFixed(2);
+                    var html = '$' + row.price.toFixed(2);
                     return html;
                 }
             },

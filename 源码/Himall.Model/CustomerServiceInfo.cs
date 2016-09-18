@@ -59,15 +59,15 @@ namespace Himall.Model
 		{
 			[Description("QQ")]
 			QQ = 1,
-			[Description("旺旺")]
+            [Description("Trademanager")]
 			Wangwang = 2
 		}
 
 		public enum ServiceType
 		{
-			[Description("售前")]
+			[Description("pre-sale")]
 			PreSale = 1,
-			[Description("售后")]
+			[Description("after-sale")]
 			AfterSale = 2
 		}
 	}

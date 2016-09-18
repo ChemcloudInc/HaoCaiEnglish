@@ -62,7 +62,7 @@ $(function () {
 			{
 			    field: "price", title: "价格", width: 70, align: "left",
 			    formatter: function (value, row, index) {
-			        return '￥' + value.toFixed(2);
+			        return '$' + value.toFixed(2);
 			    }
 			},
 			{ field: "state", title: "状态", width: 80, align: "left" },

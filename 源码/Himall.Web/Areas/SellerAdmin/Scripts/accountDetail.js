@@ -64,7 +64,7 @@ function searchOrder() {
         url: '../DetailList',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的数据',
+        NoDataMsg: 'No matching data',
         border: false,
         fit: true,
         fitColumns: true,
@@ -76,18 +76,18 @@ function searchOrder() {
         queryParams: { accountId: accountId, startDate: $("#inputStartDate").val(), endDate: $("#inputEndDate").val(), enumOrderTypeId: $("#selEnumOrderType").val() },
         columns:
         [[
-            { field: "OrderTypeDescription", title: "类型", width: 120, align: "center" },
+            { field: "OrderTypeDescription", title: "Type", width: 120, align: "center" },
             {
-                field: "OrderId", title: "订单编号", width: 120, align: "center",
+                field: "OrderId", title: "Order no.", width: 120, align: "center",
                 formatter: function (value, row, index) {
                     return "<a href='/SellerAdmin/Order/Detail/" + value + "'>" + value + "</a>"
                 }
             },
-            { field: "ProductActualPaidAmount", title: "商品实付金额", width: 80, align: "center" },
-            { field: "FreightAmount", title: "运费", width: 80, align: "center" },
-            { field: "CommissionAmount", title: "佣金", width: 80, align: "center" },
-            { field: "OrderDate", title: "下单日期", width: 180, align: "center" },
-            { field: "Date", title: "成交日期", width: 180, align: "center" }
+            { field: "ProductActualPaidAmount", title: "Actual paid", width: 80, align: "center" },
+            { field: "FreightAmount", title: "Freight", width: 80, align: "center" },
+            { field: "CommissionAmount", title: "Commission", width: 80, align: "center" },
+            { field: "OrderDate", title: "Order date", width: 180, align: "center" },
+            { field: "Date", title: "Date", width: 180, align: "center" }
         ]]
     });
 }
@@ -98,7 +98,7 @@ function searchReturnOrder() {
         url: '../DetailList',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的数据',
+        NoDataMsg: 'No matching data',
         border: false,
         fit: true,
         fitColumns: true,
@@ -110,18 +110,18 @@ function searchReturnOrder() {
         queryParams: { accountId: accountId, startDate: $("#inputStartDate").val(), endDate: $("#inputEndDate").val(), enumOrderTypeId: $("#selEnumOrderType").val() },
         columns:
         [[
-            { field: "OrderTypeDescription", title: "类型", width: 120, align: "center" },
+            { field: "OrderTypeDescription", title: "Type", width: 120, align: "center" },
             {
-                field: "OrderId", title: "订单编号", width: 120, align: "center",
+                field: "OrderId", title: "Order no.", width: 120, align: "center",
                 formatter: function (value, row, index) {
                     return "<a href='/SellerAdmin/Order/Detail/" + value + "'>" + value + "</a>"
                 }
             },
-            { field: "ProductActualPaidAmount", title: "商品实付金额", width: 80, align: "center" },
-            { field: "FreightAmount", title: "运费", width: 80, align: "center" },
-            { field: "RefundTotalAmount", title: "退款金额", width: 80, align: "center" },
-            { field: "RefundCommisAmount", title: "退还佣金", width: 80, align: "center" },
-            { field: "OrderRefundsDates", title: "退单日期", width: 180, align: "center" }
+            { field: "ProductActualPaidAmount", title: "Actual paid", width: 80, align: "center" },
+            { field: "FreightAmount", title: "Freight", width: 80, align: "center" },
+            { field: "RefundTotalAmount", title: "Refund total amount", width: 80, align: "center" },
+            { field: "RefundCommisAmount", title: "Refund commis amount", width: 80, align: "center" },
+            { field: "OrderRefundsDates", title: "Refund date", width: 180, align: "center" }
         ]]
     });
 }
@@ -131,7 +131,7 @@ function searchPurchaseAgreement() {
         url: '../MetaDetailList',
         nowrap: false,
         rownumbers: true,
-        NoDataMsg: '没有找到符合条件的数据',
+        NoDataMsg: 'No matching data',
         border: false,
         fit: true,
         fitColumns: true,
@@ -144,15 +144,15 @@ function searchPurchaseAgreement() {
         columns:
         [[
             {
-                field: "OrderTypeDescription", title: "类型", width: 120, align: "center",
+                field: "OrderTypeDescription", title: "Type", width: 120, align: "center",
                 formatter: function (value, row, index) {
-                    return '营销服务费';
+                    return 'Marketing services fee';
                 }
             },
-            { field: "MetaKey", title: "营销类型", width: 120, align: "center" },
-            { field: "MetaValue", title: "费用", width: 120, align: "center" },
+            { field: "MetaKey", title: "Marketing Type", width: 120, align: "center" },
+            { field: "MetaValue", title: "Fee", width: 120, align: "center" },
             {
-                field: "DateRange", title: "服务周期", width: 120, align: "center"
+                field: "DateRange", title: "Service period", width: 120, align: "center"
             }
         ]]
     });

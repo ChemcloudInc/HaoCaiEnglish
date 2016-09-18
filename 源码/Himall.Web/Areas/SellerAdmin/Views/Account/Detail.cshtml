@@ -12,13 +12,13 @@
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
-                <h3>温馨提示：</h3>
+                <h3>Tips</h3>
                 <span>*</span><p>店铺的结算明细都将显示在这里</p>
             </div>
         </em>
     </ul>
 
-    <h3 class="table-hd"><span class="total-account">本期应结： <b>￥@Model.AccountAmount</b> (@Model.StartDate.ToShortDateString() - @Model.EndDate.AddMilliseconds(-1).ToShortDateString())</span></h3>
+    <h3 class="table-hd"><span class="total-account">本期应结： <b>$@Model.AccountAmount</b> (@Model.StartDate.ToShortDateString() - @Model.EndDate.AddMilliseconds(-1).ToShortDateString())</span></h3>
     <table id="list" class="table"></table>
 
 </div>
