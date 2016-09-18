@@ -65,8 +65,9 @@
 .modle-box h3{ background:url(/Images/icon-c.png) no-repeat #e6e6e6;}
 .ms-myorder{ width:71%;  margin-right:2%; float:left;}
 .ms-myorder h3{background-image:none;}
-.ms-myorder h3 span{ margin:0 75px;}
-.ms-myorder h3 span:first-child{ margin-left:80px;width:30px}
+.ms-myorder h3 span{ margin:0 60px;}
+.ms-myorder h3 span:first-child{ margin-left:120px;}
+
 .mycollect dl{ margin:0;}
 .mycollect dl dd.two-child:before,.mycollect dl dd.two-child:after{ bottom:-20px;}
 .mycollect dl+dl {border-top: 1px dashed #e8e8e8;}

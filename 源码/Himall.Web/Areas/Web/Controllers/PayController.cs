@@ -191,31 +191,27 @@ namespace Himall.Web.Areas.Web.Controllers
 			return base.Content(str);
 		}
 
-		[ActionName("CapitalChargeReturn")]
-		[ValidateInput(false)]
-		public ActionResult PayReturn_Charge(string id)
+      
+        public ActionResult CapitalChargeReturn(string orderIds)
 		{
-			string empty = string.Empty;
+		 
 			try
 			{
-				id = DecodePaymentId(id);
-				Plugin<IPaymentPlugin> plugin = PluginsManagement.GetPlugin<IPaymentPlugin>(id);
-				if (plugin != null)
-				{
-					PaymentInfo paymentInfo = plugin.Biz.ProcessReturn(base.Request);
+				 
+					 
 					IMemberCapitalService memberCapitalService = ServiceHelper.Create<IMemberCapitalService>();
-					ChargeDetailInfo chargeDetail = memberCapitalService.GetChargeDetail(paymentInfo.OrderIds.FirstOrDefault());
+                    ChargeDetailInfo chargeDetail = memberCapitalService.GetChargeDetail(long.Parse(orderIds));
 					if (chargeDetail != null && chargeDetail.ChargeStatus != ChargeDetailInfo.ChargeDetailStatus.ChargeSuccess)
 					{
-						chargeDetail.ChargeWay = plugin.PluginInfo.DisplayName;
+						chargeDetail.ChargeWay = "PayPal";
 						chargeDetail.ChargeStatus = ChargeDetailInfo.ChargeDetailStatus.ChargeSuccess;
-						chargeDetail.ChargeTime = new DateTime?((paymentInfo.TradeTime.HasValue ? paymentInfo.TradeTime.Value : DateTime.Now));
+						chargeDetail.ChargeTime =DateTime.Now;
 						memberCapitalService.UpdateChargeDetail(chargeDetail);
-						plugin.Biz.ConfirmPayResult();
+						//plugin.Biz.ConfirmPayResult();
 						string str = CacheKeyCollection.PaymentState(chargeDetail.Id.ToString());
 						Cache.Insert(str, true, 15);
 					}
-				}
+				 
 			}
 			catch (Exception exception)
 			{

@@ -57,17 +57,10 @@
         $('input[name="requestUrl"]').change(function () {
             var url = $(this).val();
             if ($(this).attr('urlType') != '-1') {
-                
-
                 $('#nextBtn').attr('urlType', $(this).attr('urlType'));
                 $('#nextBtn').attr('formdata', url);
-
-                $('#nextBtn').removeAttr('href');
-                $('#nextBtn').removeAttr('target');
-                if ($(this).attr('urlType') != "2") {
-                    $('#nextBtn').attr('href', url);
-                    $('#nextBtn').attr('target', "_blank");
-                }
+                //$('#nextBtn').removeAttr('href');
+                //$('#nextBtn').removeAttr('target');
             }
             else {
                 $('#nextBtn').attr('urlType', $(this).attr('urlType'));
@@ -77,15 +70,11 @@
 
         $('#nextBtn').click(function () {
             var t = $("input[name='requestUrl']:checked").val();
-     
             if (t == undefined) {
                 $.dialog.tips('Please select payment method！');
                 return;
             }
-            //if ($(this).attr('urlType') == "2") {
-            //    var url = $(this).attr('formdata');
-            //    BuildPostForm('pay_form', url, '_blank').submit();
-            //}
+         
 
             if ($(this).attr('urlType') == "-1") {
                 if (parseFloat($('#capitalAmount').text()) < parseFloat($('#totalAmount').text())) {
@@ -152,20 +141,15 @@
             }
             else if ($(this).attr('urlType') == "2") {
                 //paypal
-               // $.dialog.confirm('确定现在付款吗？', function () {
-                    $.ajax({
-                        type: 'post',
-                        url: 'SetExpressCheckout',
-                        async: false,
-                        dataType: 'json',
-                        data: { "amount": parseFloat(totalmon), "currency_code": "USD", "item_name": orderIds, "return_false_url": location.href, "webtype": "zhifu", "fq": fq },
-                        success: function (result11) {
-                            if (result11 != "") {
-                                location.href = result11;
-                            }
-                        }
-                    });
-                //});
+                var totalmon = parseFloat($('#totalAmount').text());
+                openBlank('https://www.paypal.com/cgi-bin/webscr', {
+                    cmd: "_xclick",
+                    business: "fangmsen@sina.com",
+                    item_name: orderIds,
+                    amount: totalmon,
+                    notify_url: "/Pay/Return?orderid=" + orderIds + "&price=" + totalmon + "&paytype=0&type=webzf&iplm=2",
+                    currency_code: "USD"
+                }, true);
             }
         });
 
@@ -205,5 +189,15 @@
         e.action = url;
         return e;
     };
+
+    function openBlank(action, data, n) {
+        var form = $("<form/>").attr('action', action).attr('method', 'post');
+        if (n)
+            var input = '';
+        $.each(data, function (i, n) {
+            input += '<input type="hidden" name="' + i + '" value="' + n + '" />';
+        });
+        form.append(input).appendTo("body").css('display', 'none').submit();
+    }
 
 </script>

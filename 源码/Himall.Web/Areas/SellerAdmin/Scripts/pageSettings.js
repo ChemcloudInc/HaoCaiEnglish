@@ -22,7 +22,7 @@ function SetLogo() {
         $.dialog({
             title: 'LOGO设置',
             lock: true,
-            width: 350,
+            width: 620,
             id: 'logoArea',
             content: document.getElementById("logosetting"),
             padding: '20px 10px',
@@ -58,7 +58,7 @@ function imageAdsClickEventBind() {
         $.dialog({
             title: '',
             lock: true,
-            width: 360,
+            width: 620,
             id: 'goodsArea',
             content: ['<div class="dialog-form">',
                 '<div id="HandSlidePic" class="form-group upload-img clearfix">',

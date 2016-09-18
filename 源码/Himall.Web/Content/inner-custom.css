@@ -54,7 +54,11 @@ select.input-ssm { line-height: 24px; padding: 0 3px; }
 .two-title .active a{color:#3480eb;}
 .two-title li a:hover,.two-title li a:active,.two-title li a:visited{color:#3480eb;text-decoration: none;}
 
+<<<<<<< HEAD
+.label-inline { margin: 0; margin-right: 5px; font-weight: 200; width:114px; text-align: right; line-height: 24px; }
+=======
 .label-inline { margin: 0; margin-right: 5px; font-weight: 200; width: 90px; text-align: right; line-height: 24px; }
+>>>>>>> e8d6473420bac3aae2144fe990b951d6751527ef
 .custom-inline .submit { margin-top: 15px; padding-left: 63px; position: relative; }
 .nav-tabs-custom {  line-height: 42px; background-color:#e6e6e6; padding-left:15px; height:44px; }
 .nav-tabs-custom li { cursor: pointer; display: inline-block; font-size:14px; }
@@ -298,7 +302,7 @@ label.label-custom input { margin-right: 5px }
 .dialog-form .input-sm { width: 200px; display: inline-block }
 .dialog-form p { color: #999; margin-bottom: 2px }
 /*.dialog-form .upload-img .control-label{margin-bottom: 0;line-height: 20px;padding-left: 0;}*/
-.dialog-form .label-inline, .dialog-form .upload-img .control-label { padding: 0; margin: 0; width: 120px; text-align: right; margin-right: 20px; font-size: 14px;display: inline-block;}
+.dialog-form .label-inline, .dialog-form .upload-img .control-label { padding: 0; margin: 0; width: 160px; text-align: right; margin-right: 20px; font-size: 14px;display: inline-block;}
 .dialog-form .upload-img .control-label { margin-right: 5px; }
 .help-inline { display: inline-block; margin: 0 0 0 10px;   line-height: 24px;padding-left: 110px;}
 .dialog-form .help-block { padding-left: 105px; margin: 5px 0 0 0 }
@@ -343,7 +347,7 @@ label.label-custom input { margin-right: 5px }
 .modle-box h3 a{  display: inline-block;text-decoration: none; color:#333;}
 .modle-box h3 em{ color:#3480eb;}
 
-.ms-myorder h3 span{ margin:0 115px; font-size:14px; position:relative;}
+.ms-myorder h3 span{ margin:0 85px; font-size:14px; position:relative;}
 .ms-myorder h3 span:first-child{ margin-left:220px;}
 .ms-myorder h3 span:after{ position:absolute; bottom:-26px; left:50%; margin-left:-5px; content:''; width:11px; height:21px; background:url(/Images/user-icon.png) no-repeat;}
 .mycollect{ padding:0 20px; }

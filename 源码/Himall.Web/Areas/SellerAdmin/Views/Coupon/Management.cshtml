@@ -77,10 +77,10 @@
                 {
                     field: "CouponName", title: "Coupon name", width: 200, align: "left",
                 },
-               { field: "Price", title: "Value", width: 80, align: "center" },
-                { field: "PerMax", title: "Receive restrictions", width: 70, align: "left" },
-                { field: "OrderAmount", title: "Conditions of Use", align: "left", width: 90 },
-                { field: "Num", title: "Storage capacity", width: 90, align: "left" },
+               { field: "Price", title: "Value", width: 60, align: "center" },
+                { field: "PerMax", title: "Receive restrictions", width: 130, align: "left" },
+                { field: "OrderAmount", title: "Conditions of Use", align: "left", width: 130 },
+                { field: "Num", title: "Storage capacity", width: 120, align: "left" },
                 {
                     field: "Date", title: "Validity", align: "center",
                     formatter: function (value, row, index) {
@@ -90,14 +90,14 @@
                 },
 
                 {
-                    field: "Receive", title: "Receivers/every time", width: 100, align: "center",
+                    field: "Receive", title: "Receivers/every time", width: 150, align: "center",
                     formatter: function (value, row, index) {
                         var html = '<span>' + row.RecevicePeople + "/" + row.ReceviceNum + '</span>';
                         return html;
                     }
                 },
             {
-                field: "Used", title: "Have used", width: 50,
+                field: "Used", title: "Used", width: 50,
             },
             {
                 field: "operation", operation: true, title: "Operation",width:220,
