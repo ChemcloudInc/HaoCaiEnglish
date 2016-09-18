@@ -42,7 +42,7 @@ $(function () {
                 {
                     field: "OrderTotalAmount", title: "Amount paid", width: 100, align: "left",
                     formatter: function (value, row, index) {
-                        var html = "<span class='ftx-04'>" + '￥' + value + "</span>";
+                        var html = "<span class='ftx-04'>" + '$' + value + "</span>";
                         return html;
                     }
                 },				

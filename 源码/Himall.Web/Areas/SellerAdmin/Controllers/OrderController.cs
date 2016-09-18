@@ -232,11 +232,11 @@ namespace Himall.Web.Areas.SellerAdmin.Controllers
 						stringBuilder.AppendFormat("<td style=\"text-align:left\">{0}</td>", orderItemInfo.ProductName);
 						stringBuilder.AppendFormat("<td>{0} {1} {2}</td>", orderItemInfo.Color, orderItemInfo.Size, orderItemInfo.Version);
 						stringBuilder.AppendFormat("<td>{0}</td>", orderItemInfo.Quantity);
-						stringBuilder.AppendFormat("<td>￥{0}</td>", orderItemInfo.SalePrice);
-						stringBuilder.AppendFormat("<td>￥{0}</td>", orderItemInfo.RealTotalPrice);
+						stringBuilder.AppendFormat("<td>${0}</td>", orderItemInfo.SalePrice);
+						stringBuilder.AppendFormat("<td>${0}</td>", orderItemInfo.RealTotalPrice);
 						stringBuilder.Append("</tr>");
 					}
-					stringBuilder.AppendFormat("<tr><td style=\"text-align:right\" colspan=\"6\"><span>商品总价：￥{0} &nbsp; 运费：￥{1}</span> &nbsp; <b>实付金额：￥{2}</b></td></tr>", list.ProductTotalAmount, list.Freight, list.OrderTotalAmount);
+					stringBuilder.AppendFormat("<tr><td style=\"text-align:right\" colspan=\"6\"><span>商品总价：${0} &nbsp; 运费：${1}</span> &nbsp; <b>实付金额：${2}</b></td></tr>", list.ProductTotalAmount, list.Freight, list.OrderTotalAmount);
 					stringBuilder.AppendLine("</tbody></table>");
 				}
 				result.success = true;

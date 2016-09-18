@@ -46,7 +46,7 @@
 				{
 				    field: "TotalPrice", title: "Order total", width: 120, align: "right",
 				    formatter: function (value, row, index) {
-				        var html = "<span class='ftx-04'>" + '￥' + value.toFixed(2) + "</span>";
+				        var html = "<span class='ftx-04'>" + '$' + value.toFixed(2) + "</span>";
 				        return html;
 				    }
 				},

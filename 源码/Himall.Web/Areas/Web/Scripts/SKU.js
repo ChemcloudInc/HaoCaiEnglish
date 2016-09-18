@@ -187,7 +187,7 @@ function setSKUGroup(pId,SkuObj,colloPid){
                         var maxPrice = Math.max.apply(Math, prices);
                         var minPrice = Math.min.apply(Math, prices);
 						if(mProduct=="choose"){
-                        	maxPrice > minPrice ? minPrice + "-" + maxPrice : ($('#jd-price').text('￥ ' + maxPrice));
+                        	maxPrice > minPrice ? minPrice + "-" + maxPrice : ($('#jd-price').text('$ ' + maxPrice));
 						}else{
 							_this.find('.product-price').text(minPrice);
 						}

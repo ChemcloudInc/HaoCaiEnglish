@@ -37,7 +37,7 @@ function loadVshops(page) {
                     html += '<li>\
                         <a class="p-img" href="/' + areaname + '/product/detail/' + product.id + '"><img src="' + product.image + '" alt=""></a>\
                         <h3><a href="/'+ areaname + '/product/detail/' + product.id + '">' + product.name + '</a></h3>\
-                        <p><span>￥' + product.salePrice + '</span></p>\
+                        <p><span>$' + product.salePrice + '</span></p>\
                     </li>';
                 });
                 html += '</ul></div>';

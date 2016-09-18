@@ -59,7 +59,7 @@ namespace Himall.Service
             if (info.LeastCost > 0)
             {
                 int leastCost = info.LeastCost / 100;
-                str = string.Concat("满￥", leastCost.ToString("F2"), "使用");
+                str = string.Concat("满$", leastCost.ToString("F2"), "使用");
             }
             else
             {

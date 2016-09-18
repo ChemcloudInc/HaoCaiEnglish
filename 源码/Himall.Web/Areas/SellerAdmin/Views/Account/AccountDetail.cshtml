@@ -11,7 +11,7 @@
 <div class="container">
     <ul class="nav nav-tabs-custom clearfix">
         <strong>结算详情</strong>
-        <li class="active"><a>明细</a></li>
+        <li class="active"><a>Details</a></li>
         <em class="primary-btn">
             <span class="glyphicon glyphicon-question-sign"></span>
             <div class="primary">
@@ -23,27 +23,27 @@
     <div class="search-box" id="search-box">
         <form class="custom-inline" role="form">
             <div class="form-group">
-                <label class="label-inline" for="">类型</label>
+                <label class="label-inline" for="">Type</label>
                 <select class="form-control input-ssm" id="selEnumOrderType">
-                    <option selected="selected" value="1">订单列表</option>
-                    <option value="0">退款/退货列表</option>
-                    <option value="2">营销服务费列表</option>
+                    <option selected="selected" value="1">order list</option>
+                    <option value="0">Refund/Return list</option>
+                    <option value="2">Marketing service fee list</option>
                 </select>
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">开始日期</label>
+                <label class="label-inline" for="">Start date</label>
                 <input id="inputStartDate" class="form-control input-ssm start_datetime" type="text" >
             </div>
             <div class="form-group">
-                <label class="label-inline" for="">结束日期</label>
+                <label class="label-inline" for="">End date</label>
                 <input id="inputEndDate" class="form-control input-ssm end_datetime" type="text" >
             </div>
 
 
-            <div class="submit"><button type="button" class="btn btn-warning btn-ssm" id="searchButton" onclick="search()">搜索</button></div>
+            <div class="submit"><button type="button" class="btn btn-warning btn-ssm" id="searchButton" onclick="search()">Search</button></div>
         </form>
     </div>
-    <h3 class="table-hd">@Model.ShopName<span class="total-account">本期应结： <b>￥@Model.PeriodSettlement</b> (@Model.StartDate - @Model.EndDate)</span></h3>
+    <h3 class="table-hd">@Model.ShopName<span class="total-account">This period should settle <b>$@Model.PeriodSettlement</b> (@Model.StartDate - @Model.EndDate)</span></h3>
     <table id="ListOrder" class="table table-bordered"></table>
     <table id="ListReturnOrder" class="table table-bordered"></table>
     <table id="ListAgreement" class="table table-bordered"></table>

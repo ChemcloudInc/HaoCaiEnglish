@@ -4,7 +4,7 @@ var isLoad = true;
 isImgLoad(function () {
     ; (function (win, doc) {
         var $height = jQuery('#id_img').height();
-        var $ = function (elem) { return doc.getElementById(elem); },// 取得元素操作
+        var $ = function (elem) { return doc.getElementById(elem); },// 取得素操作
             //------- 为拖入编辑区域的控件绑定拖动事件
             widgetList = {},// 里面包含拖入到编辑区域的控件
             roundFun = function (numberRound, roundDigit) {//四舍五入，保留位数为roundDigit

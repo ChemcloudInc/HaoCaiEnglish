@@ -22,8 +22,8 @@
         <div class="item">
             <h4>@Model.Product.ProductName</h4>
             <h5 class="color">@Model.Product.ShortDescription</h5>
-            <p><s>市场价:￥@Model.Product.MarketPrice.ToString("F2")</s></p>
-            <h4>商城价:<em class="color" id="jd-price">￥@Model.Product.MinSalePrice.ToString("F2")</em><span>评价数：(@(ViewBag.CommentCount)条)</span><span style="margin-right:45px;">@(Model.Product.Himall_FreightTemplate !=null && Model.Product.Himall_FreightTemplate.IsFree == Himall.Model.FreightTemplateInfo.FreightTemplateType.Free ? "免运费" : "")</span></h4>
+            <p><s>市场价:$@Model.Product.MarketPrice.ToString("F2")</s></p>
+            <h4>商城价:<em class="color" id="jd-price">$@Model.Product.MinSalePrice.ToString("F2")</em><span>评价数：(@(ViewBag.CommentCount)条)</span><span style="margin-right:45px;">@(Model.Product.Himall_FreightTemplate !=null && Model.Product.Himall_FreightTemplate.IsFree == Himall.Model.FreightTemplateInfo.FreightTemplateType.Free ? "免运费" : "")</span></h4>
             @if(Model.CashDepositsServer.IsCustomerSecurity||Model.CashDepositsServer.IsSevenDayNoReasonReturn||Model.CashDepositsServer.IsTimelyShip)
             { 
 			    <ul class="ensary clearfix">

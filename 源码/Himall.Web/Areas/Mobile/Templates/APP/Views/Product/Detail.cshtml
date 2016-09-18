@@ -26,8 +26,8 @@
             <h5 style="padding-right:40px">@Model.Product.ProductName</h5>
             <i class="glyphicon glyphicon-share"><span class="glyphicon-shareIn">分享</span></i>
             <h6 class="color" style="padding-right:40px">@Model.Product.ShortDescription</h6>
-            <p><s>市场价:￥@Model.Product.MarketPrice.ToString("F2")</s></p>
-            <h4>商城价:<em class="color" id="jd-price">￥@Model.Product.MinSalePrice.ToString("F2")</em><span>评价数：(@(ViewBag.CommentCount)条)</span><span style="margin-right:50px;">@(Model.Product.Himall_FreightTemplate != null && Model.Product.Himall_FreightTemplate.IsFree == Himall.Model.FreightTemplateInfo.FreightTemplateType.Free ? "免运费" : "")</span></h4>
+            <p><s>市场价:$@Model.Product.MarketPrice.ToString("F2")</s></p>
+            <h4>商城价:<em class="color" id="jd-price">$@Model.Product.MinSalePrice.ToString("F2")</em><span>评价数：(@(ViewBag.CommentCount)条)</span><span style="margin-right:50px;">@(Model.Product.Himall_FreightTemplate != null && Model.Product.Himall_FreightTemplate.IsFree == Himall.Model.FreightTemplateInfo.FreightTemplateType.Free ? "免运费" : "")</span></h4>
         </div>
 
         @if (ViewBag.CouponCount != null || Model.Shop.FreeFreight > 0)
