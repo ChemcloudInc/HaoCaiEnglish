@@ -41,19 +41,8 @@
         $('.progress-').hide();
         var orderIds = $('#orderIds').val();
         $('input[name="requestUrl"]').change(function () {
-            var url = $(this).val();
-            if ($(this).attr('urlType') == "1")
-                url = '/pay/QRPay?url=' + url + '&id=' + $(this).attr('id') + '&orderIds=' + orderIds+'&type=charge';
-
             $('#nextBtn').attr('urlType', $(this).attr('urlType'));
             $('#nextBtn').attr('formdata', url);
-
-            $('#nextBtn').removeAttr('href');
-            $('#nextBtn').removeAttr('target');
-            if ($(this).attr('urlType') != "2" ) {
-                $('#nextBtn').attr('href', url);
-                $('#nextBtn').attr('target', "_blank");
-            }
         });
 
         $('#nextBtn').click(function () {
@@ -64,7 +53,7 @@
                 return;
             }
             if ($(this).attr('urlType') == "2") {
-                var totalmon = @(((decimal)ViewBag.RechargeMoney).ToString("F2"));
+                var totalmon = @(((decimal)ViewBag.TotalAmount).ToString("F2"));
                 openBlank('https://www.paypal.com/cgi-bin/webscr', {
                     cmd: "_xclick",
                     business: "fangmsen@sina.com",
@@ -73,9 +62,10 @@
                     notify_url: "/Pay/CapitalChargeReturn?orderid=" + orderIds + "&price=" + totalmon + "&paytype=0&type=webcz&iplm=2",
                     currency_code: "USD"
                 }, true);
-                //$('#nextBtn').attr('href', "/Pay/Return?orderid=" + orderIds + "&price=" + totalmon+ "&paytype=0&type=webcz&iplm=2");
+                //$('#nextBtn').attr('href', "/Pay/Return?orderid=" + orderIds + "&price=" + $("#totalAmount").html() + "&paytype=0&type=webcz&iplm=2");
                 //$('#nextBtn').attr('target', "_self");
             }
+
 
         });
 
