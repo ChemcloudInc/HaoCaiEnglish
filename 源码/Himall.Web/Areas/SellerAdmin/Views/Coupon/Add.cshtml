@@ -99,19 +99,19 @@
             <form role="form" class="form-horizontal" id="v-form" style="padding:10px;background:#f8f8f8;" method="post" action="@Url.Action("Edit")">
                 <div class="form-group">
                     <input type="hidden" id="CouponId" name="Id" value="@Model.Id" />
-                    <label class="col-sm-2 control-label" for="">Coupon Name:</label>
+                    <label class="col-sm-3 control-label" for="">Coupon Name:</label>
                     <div class="col-sm-6">
                         <input type="text" id="couponName" value="@Model.CouponName" data-d-group="0" name="couponName" class="auto form-control input-sm" id="freightInput">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">Denomination:</label>
+                    <label class="col-sm-3 control-label" for="">Denomination:</label>
                     <div class="col-sm-3">
                         <input type="text" data-a-sign="¥ " data-d-group="0" value="@Model.Price" name="price" class="auto form-control input-sm" id="price" @(Model.Id > 0 ? "disabled" : "")>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">Most receive:</label>
+                    <label class="col-sm-3 control-label" for="">Most receive:</label>
                     <div class="col-sm-3">
                         <select class="form-control input-sm" name="permax" data="@Model.PerMax" id="id_select">
                             <option value="0">Any</option>
@@ -124,7 +124,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">Order amount:</label>
+                    <label class="col-sm-3 control-label" for="">Order amount:</label>
                     <div class="col-sm-4">
                         <div class="radio  @(Model.Id > 0 ? "disabled" : "")">
                             <label>
@@ -142,32 +142,32 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">Total payment:</label>
+                    <label class="col-sm-3 control-label" for="">Total payment:</label>
                     <div class="col-sm-3">
                         <input type="text" data-d-group="0" value="@Model.Num" name="num" maxlength="7" class="auto form-control input-sm" id="num">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">Effective time:</label>
+                    <label class="col-sm-3 control-label" for="">Effective time:</label>
                     <div class="col-sm-3">
                         <input type="text" data-d-group="0" value="@Model.StartTime.ToString("yyyy-MM-dd")" name="StartTime" class="auto form-control input-sm start_datetime" id="starttime" @(Model.Id > 0 ? "disabled" : "")>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">Expiration time:</label>
+                    <label class="col-sm-3 control-label" for="">Expiration time:</label>
                     <div class="col-sm-3">
                         <input type="text" data-d-group="0" value="@Model.EndTime.ToString("yyyy-MM-dd")" name="EndTime" class="auto form-control input-sm end_datetime" id="endtime" @(Model.Id > 0 ? "disabled" : "")>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">Products can be used:</label>
-                    <div class="col-sm-10">
+                    <label class="col-sm-3 control-label" for="">Products can be used:</label>
+                    <div class="col-sm-5">
                         <p class="form-control-static">Can be used in all stores</p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">Receive mode:</label>
-                    <div class="col-sm-10">
+                    <label class="col-sm-3 control-label" for="">Receive mode:</label>
+                    <div class="col-sm-8">
                         <p class="form-control-static">
                             <label><input name="ReceiveType" type="radio" value="0" @(((int)Model.ReceiveType) == 0 ? "checked" : "") />Shop home</label>
                             @if (Model.Id > 0 || CanAddIntegralCoupon)
@@ -188,11 +188,11 @@
                             string pcchecked = pc ? "checked" : "";
                             string wapchecked = wap ? "checked" : "";
                         }
-                        <label class="col-sm-2 control-label" for="">Promotion:</label>
-                        <div class="col-sm-10">
-                            <input id="ChkPC" name="chkShow" type="checkbox" value="PC" @pcchecked />Promotion to PC navigation on the right side
-                            &nbsp;
-                            <input id="ChkWap" name="chkShow" type="checkbox" value="WAP" @wapchecked @(Model.CanVshopIndex ? "" : "disabled") />Promotion to Phone navigation on the home @Html.Raw(Model.CanVshopIndex ? "" : "<span class=\"red\">[Not open WeChat Shop]</span>")
+                        <label class="col-sm-3 control-label" for="">Promotion:</label>
+                        <div class="col-sm-8">
+                            <p><input id="ChkPC" name="chkShow" type="checkbox" value="PC" @pcchecked />to PC navigation on the right side</p>
+                            <br />
+                            <p><input id="ChkWap" name="chkShow" type="checkbox" value="WAP" @wapchecked @(Model.CanVshopIndex ? "" : "disabled") />to Phone navigation on the home @Html.Raw(Model.CanVshopIndex ? "" : "<span class=\"red\">[Not open WeChat Shop]</span>")</p>
                         </div>
                     </div>
                 </div>
@@ -200,7 +200,7 @@
                 {
                     <div class="rectypeitem">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label" for="">Integral required:</label>
+                            <label class="col-sm-3 control-label" for="">Integral required:</label>
                             <div class="col-sm-3">
                                 @Html.TextBoxFor(m => m.NeedIntegral, new { @class = "form-control input-sm", maxlength = "7" })
                             </div>
@@ -209,7 +209,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label" for="">Exchange deadline:</label>
+                            <label class="col-sm-3 control-label" for="">Exchange deadline:</label>
                             <div class="col-sm-3">
                                 <input type="text" data-d-group="0" value="@(Model.EndIntegralExchange.HasValue ? Model.EndIntegralExchange.Value.ToString():"")" name="EndIntegralExchange" id="EndIntegralExchange" class="auto form-control input-sm endintdatetime">
                             </div>
@@ -222,8 +222,8 @@
                 <div class="rectypeitem"> </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">Synchronize WeChat:</label>
-                    <div class="col-sm-5">
+                    <label class="col-sm-3 control-label" for="">Synchronize WeChat:</label>
+                    <div class="col-sm-8">
                         <p class="form-control-static">
                             <label>@Html.CheckBoxFor(m=>m.FormIsSyncWeiXin) Synchronize WeChat card vouchers</label>
                         </p>
@@ -234,7 +234,7 @@
                 </div>
                 <div id="syncwxbox" style="@(Model.IsSyncWeiXin == 1?"":"display:none;")">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="">Card color:</label>
+                        <label class="col-sm-3 control-label" for="">Card color:</label>
                         <div class="col-sm-5">
                             <p class="form-control-static">
                                 <select name="FormWXColor" id="FormWXColor">
@@ -248,7 +248,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="">Card title:</label>
+                        <label class="col-sm-3 control-label" for="">Card title:</label>
                         <div class="col-sm-5">
                             <p class="form-control-static">
                                 <input type="text" value="@(Model.WXCardInfo != null ? Model.WXCardInfo.CardTitle: "")" name="FormWXCTit" maxlength="18" class="auto form-control input-sm" id="FormWXCTit">
@@ -259,7 +259,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="">Card subtitle</label>
+                        <label class="col-sm-3 control-label" for="">Card subtitle</label>
                         <div class="col-sm-5">
                             <p class="form-control-static">
                                 <input type="text" value="@(Model.WXCardInfo != null ? Model.WXCardInfo.CardSubTitle: "")" name="FormWXCSubTit" maxlength="36" class="auto form-control input-sm" id="FormWXCSubTit">
@@ -277,7 +277,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label" for="">温馨提示：</label>
+                    <label class="col-sm-3 control-label" for="">温馨提示：</label>
                     <div class="col-sm-10">
                         <p class="form-control-static" style="color:#999;">The coupons extended to the PC and mobile shop home is not more than five</p>
                     </div>
