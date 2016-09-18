@@ -38,7 +38,7 @@ function showEditor(id,url,pic) {
     $.dialog({
         title: '',
         lock: true,
-        width: 360,
+        width: 620,
         id: 'goodsArea',
         content: ['<div class="dialog-form">',
             '<div id="HandSlidePic" class="form-group upload-img clearfix">',

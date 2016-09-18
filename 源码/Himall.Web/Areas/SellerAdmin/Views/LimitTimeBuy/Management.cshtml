@@ -76,8 +76,8 @@
                 queryParams: {},
                 columns:
                 [[
-                    { field: "Id", title: 'Id', hidden: true, width: 150 },
-                    { field: "ProductId", title: 'ProductId', hidden: true, width: 150 },
+                    { field: "Id", title: 'Id', hidden: true, width: 50 },
+                    { field: "ProductId", title: 'ProductId', hidden: true, width: 200 },
                     {
                         field: "ProductName", title: "Product name", align: "left",
                         formatter: function (value, row, index) {
@@ -85,10 +85,10 @@
                             return html;
                         }
                     },
-                    { field: "StartTime", title: "Start time", width: 150, align: "center" },
-                    { field: "EndTime", title: "Finish time", width: 150, align: "center" },
-            { field: "MaxSaleCount", title: "Max sale count", width: 60, align: "center" },
-                    { field: "SaleCount", title: "Sale count", width: 60, align: "center" },
+                    { field: "StartTime", title: "Start time", width: 120, align: "center" },
+                    { field: "EndTime", title: "Finish time", width: 120, align: "center" },
+                     { field: "MaxSaleCount", title: "Max sale count", width: 100, align: "center" },
+                    { field: "SaleCount", title: "Sale count", width: 100, align: "center" },
                    {
                        field: "AuditStatus", title: "Audit status", width: 80, align: "center",
                        formatter: function (value, row, index) {
@@ -97,7 +97,7 @@
                        }
                    },
                 {
-                    field: "CancelReson", title: "Platform approval", width: 100,
+                    field: "CancelReson", title: "Platform approval", width: 150,
                     formatter: function (value, row, index) {
                         var html = "<a href=\"javascript:showReason('" + value + "')\" >" + (value ? "view" : "") + "</a>";
                         return html;
