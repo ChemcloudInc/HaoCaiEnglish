@@ -644,7 +644,9 @@
     <Content Include="Plugins\Message\Himall.MessagePlugin.dll" />
     <Content Include="Plugins\Message\Himall.Plugin.Message.Email\Data\config.xml" />
     <Content Include="Plugins\Message\Himall.Plugin.Message.Email\Data\logo.png" />
-    <Content Include="Plugins\Message\Himall.Plugin.Message.Email\Data\MessageContent.xml" />
+    <Content Include="Plugins\Message\Himall.Plugin.Message.Email\Data\MessageContent.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Plugins\Message\Himall.Plugin.Message.Email\Himall.Plugin.Message.Email.dll" />
     <Content Include="Plugins\Message\Himall.Plugin.Message.SMS\Data\config.xml" />
     <Content Include="Plugins\Message\Himall.Plugin.Message.SMS\Data\MessageContent.xml" />
