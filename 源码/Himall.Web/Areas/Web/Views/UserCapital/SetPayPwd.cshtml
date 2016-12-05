@@ -14,7 +14,7 @@
                     <span class="label">Password：</span>
                     <div class="fl">
                         <input type="password" value="" id="new" name="userVo.realName" maxlength="20" class="itxt fl">
-                        <span id="new_msg" class="prompt-06" style="padding-left:10px;"></span><span>Passwords must be alphanumeric & between 6 and 20 characters</span>
+                        <span id="new_msg" class="prompt-06" style="padding-left:10px;"></span><span>Password must be alphanumeric and contain 6 and 20 characters.</span>
                     </div>
                 </div>
                 <div class="item">
@@ -40,7 +40,7 @@
             var d = $(this).val();
             if (d.length < 6) {
                 $('#new').css({ borderColor: '#f60' });
-                $('#new_msg').css({ color: '#f60' }).html('Passwords must be alphanumeric & between 6 and 20 characters!');
+                $('#new_msg').css({ color: '#f60' }).html('Password must be alphanumeric and contain 6 and 20 characters .');
                 stae2 = '';
             } else {
                 $('#new').css({ borderColor: '#ccc' });
@@ -69,7 +69,7 @@
             //console.log(stae1)
             if (!stae2) {
                 $('#new').css({ borderColor: '#f60' });
-                $('#new_msg').css({ color: '#f60' }).html('Passwords must be alphanumeric & between 6 and 20 characters!');
+                $('#new_msg').css({ color: '#f60' }).html('Password must be alphanumeric and contain 6 and 20 characters .');
             }
             if (!stae3) {
                 $('#confirm').css({ borderColor: '#f60' });

@@ -380,8 +380,9 @@
         <div class="w main">
             <div class="notice-search">
                 <span class="ns-icon"></span>
-                <div class="ns-content">
-                    <span>Sorry，Not found“<em>@(ViewBag.keywords + (string.IsNullOrWhiteSpace(ViewBag.exp_keywords) ? "" : "_" + ViewBag.exp_keywords))</em>”Related Products</span>
+                <div class="ns-content">                 
+                    <p><span>We have found 0 results for "<em>@(ViewBag.keywords + (string.IsNullOrWhiteSpace(ViewBag.exp_keywords) ? "" : "_" + ViewBag.exp_keywords))</em>".</span></p>
+                    <p><span>We are sorry we couldn’t find any items matching your searching term.</span></p>
                 </div>
             </div>
         </div>

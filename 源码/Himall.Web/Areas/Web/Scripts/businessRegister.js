@@ -138,9 +138,9 @@ function checkUsernameIsValid() {
     if (!username || username == 'username') {
         errorLabel.html('please enter user name').show();
     }
-    else if (!reg.test(username)) {
-        errorLabel.html('Username must be alphanumeric & between 4-20 characters').show();
-    }
+    //else if (!reg.test(username)) {
+    //    errorLabel.html('Username must be alphanumeric & between 4-20 characters').show();
+    //}
     else{
         $.ajax({
             type: "post",

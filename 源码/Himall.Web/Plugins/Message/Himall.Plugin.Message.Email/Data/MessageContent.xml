@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MessageContent>
-  <Bind><![CDATA[【#siteName#】尊敬的用户:#userName#,您正在进行邮箱验证操作，您的验证码为：#checkCode#,验证码有效期为24小时]]></Bind>
-  <OrderCreated><![CDATA[【#siteName#】尊敬的用户:#userName#，您的订单(#orderId#)已成功创建.]]></OrderCreated>
-  <OrderPay><![CDATA[【#siteName#】尊敬的用户:#userName#，您的订单(#orderId#)已成功付款#Total#元]]></OrderPay>
-  <OrderShipping><![CDATA[【#siteName#】尊敬的用户:#userName#，您的订单(#orderId#)已经发货，物流公司为:#shippingCompany#,物流单号：#shippingNumber#]]></OrderShipping>
-  <OrderRefund><![CDATA[【#siteName#】尊敬的用户:#userName#，您的订单(#orderId#),已经退款，退款金额:#RefundMoney#,请注意查收！]]></OrderRefund>
-  <FindPassWord><![CDATA[【#siteName#】尊敬的用户:#userName#，您已经成功通过邮件重置密码！]]></FindPassWord>
-  <ShopAudited><![CDATA[【#siteName#】尊敬的用户:#userName#，您申请的店铺#shopName#已经通过审核,请登录查看.]]></ShopAudited>
-  <ShopSuccess><![CDATA[【#siteName#】尊敬的用户:#userName#，您申请的店铺#shopName#已经开通,请登录查看.]]></ShopSuccess>
-  <ShopSettlement><![CDATA[【#siteName#】尊敬的用户:#userName#，您的店铺#shopName#,#Start#到#End#的结算金额为:#Amount#,请留意到帐情况。]]></ShopSettlement>
+  <Bind><![CDATA[【#siteName#】Dear Customer #userName#:, Email Verification，Verification Code is：#checkCode#, Verification  Code will expire in 24 hours]]></Bind>
+  <OrderCreated><![CDATA[【#siteName#】Dear Customer #userName#:，your order (#orderId#) has been placed  successfully.]]></OrderCreated>
+  <OrderPay><![CDATA[【#siteName#】Dear Customer #userName#:，your order (#orderId#) has been paid #Total# dollars successfully]]></OrderPay>
+  <OrderShipping><![CDATA[【#siteName#】Dear Customer #userName#:，your order (#orderId#)has been shipped，Logistic Company:#shippingCompany#,Tracking Number：#shippingNumber#]]></OrderShipping>
+  <OrderRefund><![CDATA[【#siteName#】Dear Customer #userName#:，your order (#orderId#),your payment has been  refunded ，The amount:#RefundMoney#,Please check.]]></OrderRefund>
+  <FindPassWord><![CDATA[【#siteName#】Dear Customer #userName#:，you have reset the password  successfully via email！]]></FindPassWord>
+  <ShopAudited><![CDATA[【#siteName#】Dear Customer #userName#:，your  application of #shopName# has been approved successfully.Please log in.]]></ShopAudited>
+  <ShopSuccess><![CDATA[【#siteName#】Dear Customer #userName#:，Open your store (#shopName#) successfully.Please log in.]]></ShopSuccess>
+  <ShopSettlement><![CDATA[【#siteName#】Dear Customer #userName#:，your store (#shopName#),your payment of  from #Start# to #End# has been processed.Please check.]]></ShopSettlement>
 </MessageContent>

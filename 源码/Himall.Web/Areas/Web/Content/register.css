@@ -58,7 +58,7 @@ a:visited { color: #333; text-decoration: none; }
 #regist .mt .extra a { color:#333; }
 #regist .mc { padding: 30px 0 20px; border: solid #dddddd; border-width: 0px 1px 1px; }
 .form { float: left; width: 800px; }
-#regist .item { padding-top: 10px; height: 60px; line-height: 34px; position: relative; z-index: 1; }
+#regist .item { padding-top: 10px; height: 63px; line-height: 34px; position: relative; z-index: 1; }
 .form label, .form input, .form select, .form textarea, .form button, .form .label { float: left; font-size: 12px; }
 #regist .label { width: 190px; text-align: right; font-size: 14px; color: #999; padding-right: 10px; }
 #regist .label b { margin-right: 5px; font-weight: normal; font-family: '宋体'; }
@@ -84,7 +84,7 @@ a:visited { color: #333; text-decoration: none; }
 #pwdstrength { color: #999; line-height: 22px; padding-right: 10px; clear: both; float: none; position: absolute; top: 41px; right: -9px; }
 #regist .checkbox { margin: 10px 3px 3px; }
 #regist .btn-regist { width: 320px; height: 36px; color: #FFF; font-family: "微软雅黑"; font-size: 16px; text-indent: -9999px; font-weight: 800; overflow: hidden; background: url(../images/regist-btn.jpg) no-repeat; border: none 0; }
-#regist .btn-regist:hover { background: url(../images/hover-btn.jpg) no-repeat }
+#regist .btn-regist:hover { background: url(../images/regist-btn.jpg) no-repeat }
 #footer { padding-bottom: 30px; text-align: center; }
 #footer .links a, #footer .links span { margin: 0 10px; }
 #footer .copyright { margin: 10px 0; }
